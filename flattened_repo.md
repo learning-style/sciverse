@@ -1,51 +1,55 @@
 <!--
   File: flattened_repo.md
   Source Directory: c:\monorepo\portfolio-website1
-  Date Generated: 2025-12-12T00:54:01.388Z
+  Date Generated: 2025-12-12T01:03:48.147Z
   ---
-  Total Files: 26
-  Approx. Tokens: 8057
+  Total Files: 30
+  Approx. Tokens: 10729
 -->
 
 <!-- Top 10 Text Files by Token Count -->
-1. src\components\layout\Navbar.tsx (869 tokens)
-2. src\Artifacts\DCE_README.md (741 tokens)
-3. src\Artifacts\A2-Technical-Scaffolding-Plan.md (680 tokens)
-4. src\Artifacts\A3-Implementation-Roadmap.md (658 tokens)
-5. src\Artifacts\A1-Project-Vision-and-Goals.md (608 tokens)
-6. src\features\contact\ContactPage.tsx (576 tokens)
-7. src\features\showcase\ShowcasePage.tsx (470 tokens)
-8. src\Artifacts\A5-GitHub-Repository-Setup-Guide.md (428 tokens)
-9. src\components\layout\Footer.tsx (415 tokens)
-10. src\Artifacts\A4-Developer-Environment-Setup-Guide.md (372 tokens)
+1. src\Artifacts\A7-Science-Learning-App-Design.md (942 tokens)
+2. src\features\science-lab\ScienceLab.tsx (874 tokens)
+3. src\components\layout\Navbar.tsx (869 tokens)
+4. src\Artifacts\DCE_README.md (741 tokens)
+5. src\features\showcase\components\ProjectCard.tsx (690 tokens)
+6. src\Artifacts\A2-Technical-Scaffolding-Plan.md (680 tokens)
+7. src\Artifacts\A1-Project-Vision-and-Goals.md (671 tokens)
+8. src\Artifacts\A3-Implementation-Roadmap.md (668 tokens)
+9. src\features\contact\ContactPage.tsx (576 tokens)
+10. src\Artifacts\A5-GitHub-Repository-Setup-Guide.md (428 tokens)
 
 <!-- Full File List -->
-1. src\App.tsx - Lines: 23 - Chars: 771 - Tokens: 193
+1. src\App.tsx - Lines: 28 - Chars: 1052 - Tokens: 263
 2. src\index.css - Lines: 26 - Chars: 497 - Tokens: 125
 3. src\main.tsx - Lines: 10 - Chars: 231 - Tokens: 58
-4. src\Artifacts\A1-Project-Vision-and-Goals.md - Lines: 45 - Chars: 2429 - Tokens: 608
+4. src\Artifacts\A1-Project-Vision-and-Goals.md - Lines: 49 - Chars: 2684 - Tokens: 671
 5. src\Artifacts\A2-Technical-Scaffolding-Plan.md - Lines: 60 - Chars: 2719 - Tokens: 680
-6. src\Artifacts\A3-Implementation-Roadmap.md - Lines: 52 - Chars: 2632 - Tokens: 658
+6. src\Artifacts\A3-Implementation-Roadmap.md - Lines: 53 - Chars: 2672 - Tokens: 668
 7. src\Artifacts\A4-Developer-Environment-Setup-Guide.md - Lines: 55 - Chars: 1487 - Tokens: 372
 8. src\Artifacts\A5-GitHub-Repository-Setup-Guide.md - Lines: 64 - Chars: 1712 - Tokens: 428
 9. src\Artifacts\A6-Development-and-Testing-Guide.md - Lines: 44 - Chars: 1414 - Tokens: 354
-10. src\Artifacts\DCE_README.md - Lines: 43 - Chars: 2962 - Tokens: 741
-11. src\components\layout\Footer.tsx - Lines: 32 - Chars: 1657 - Tokens: 415
-12. src\components\layout\Layout.tsx - Lines: 15 - Chars: 402 - Tokens: 101
-13. src\components\layout\Navbar.tsx - Lines: 80 - Chars: 3475 - Tokens: 869
-14. src\features\about\AboutPage.tsx - Lines: 23 - Chars: 1132 - Tokens: 283
-15. src\features\contact\ContactPage.tsx - Lines: 44 - Chars: 2303 - Tokens: 576
-16. src\features\home\HomePage.tsx - Lines: 29 - Chars: 1360 - Tokens: 340
-17. src\features\showcase\ShowcasePage.tsx - Lines: 33 - Chars: 1880 - Tokens: 470
-18. src\types\index.ts - Lines: 17 - Chars: 299 - Tokens: 75
-19. .gitignore - Lines: 18 - Chars: 107 - Tokens: 27
-20. package.json - Lines: 28 - Chars: 709 - Tokens: 178
-21. tsconfig.json - Lines: 31 - Chars: 726 - Tokens: 182
-22. tsconfig.node.json - Lines: 10 - Chars: 212 - Tokens: 53
-23. vite.config.ts - Lines: 13 - Chars: 269 - Tokens: 68
-24. index.html - Lines: 13 - Chars: 375 - Tokens: 94
-25. postcss.config.js - Lines: 6 - Chars: 79 - Tokens: 20
-26. tailwind.config.js - Lines: 16 - Chars: 354 - Tokens: 89
+10. src\Artifacts\A7-Science-Learning-App-Design.md - Lines: 84 - Chars: 3767 - Tokens: 942
+11. src\Artifacts\DCE_README.md - Lines: 43 - Chars: 2962 - Tokens: 741
+12. src\components\layout\Footer.tsx - Lines: 32 - Chars: 1657 - Tokens: 415
+13. src\components\layout\Layout.tsx - Lines: 15 - Chars: 402 - Tokens: 101
+14. src\components\layout\Navbar.tsx - Lines: 80 - Chars: 3475 - Tokens: 869
+15. src\features\about\AboutPage.tsx - Lines: 23 - Chars: 1132 - Tokens: 283
+16. src\features\contact\ContactPage.tsx - Lines: 44 - Chars: 2303 - Tokens: 576
+17. src\features\home\HomePage.tsx - Lines: 29 - Chars: 1360 - Tokens: 340
+18. src\features\science-lab\ScienceLab.tsx - Lines: 61 - Chars: 3493 - Tokens: 874
+19. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
+20. src\features\showcase\data\projectsData.ts - Lines: 23 - Chars: 1121 - Tokens: 281
+21. src\features\showcase\ShowcasePage.tsx - Lines: 21 - Chars: 847 - Tokens: 212
+22. src\types\index.ts - Lines: 17 - Chars: 299 - Tokens: 75
+23. .gitignore - Lines: 18 - Chars: 107 - Tokens: 27
+24. package.json - Lines: 28 - Chars: 709 - Tokens: 178
+25. tsconfig.json - Lines: 31 - Chars: 726 - Tokens: 182
+26. tsconfig.node.json - Lines: 10 - Chars: 212 - Tokens: 53
+27. vite.config.ts - Lines: 13 - Chars: 269 - Tokens: 68
+28. index.html - Lines: 13 - Chars: 375 - Tokens: 94
+29. postcss.config.js - Lines: 6 - Chars: 79 - Tokens: 20
+30. tailwind.config.js - Lines: 16 - Chars: 354 - Tokens: 89
 
 <file path="src/App.tsx">
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -54,17 +58,22 @@ import { HomePage } from '@/features/home/HomePage';
 import { AboutPage } from '@/features/about/AboutPage';
 import { ShowcasePage } from '@/features/showcase/ShowcasePage';
 import { ContactPage } from '@/features/contact/ContactPage';
+import { ScienceLab } from '@/features/science-lab/ScienceLab';
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* Main Portfolio Layout */}
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="showcase" element={<ShowcasePage />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>
+
+        {/* Standalone Project Routes (No Header/Footer from Portfolio to allow immersive experience) */}
+        <Route path="/projects/science-lab" element={<ScienceLab />} />
       </Routes>
     </Router>
   );
@@ -119,6 +128,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 # Artifact A1: Project Vision and Goals
 # Date Created: C0
 # Author: AI Model & Curator
+# Updated on: C2 (Included Science App details)
 
 - **Key/Value for A0:**
 - **Description:** Defines the core vision and phased goals for the Citizen Architect Portfolio.
@@ -144,14 +154,17 @@ The goal of this phase is to establish the technical groundwork and the primary 
     -   Build the **About Me** page detailing professional summary and skills.
 -   **Outcome:** A deployable, responsive website with navigation and core identity pages.
 
-### Phase 2: The Showcase
+### Phase 2: The Showcase & "The Inquiry Engine"
 
 This phase focuses on the heart of the portfolio: the projects.
 -   **Core Functionality:**
     -   Design and implement the **Project Showcase** component.
     -   Create a data structure to manage project metadata (title, description, tech stack, links).
-    -   Implement interactive cards or grid layouts to display projects.
--   **Outcome:** Users can browse, filter, or view details of specific projects the architect has built.
+    -   **Flagship Project: "The Inquiry Engine":** A science learning environment.
+        -   Implement a Socratic questioning engine.
+        -   Create a "Lab" interface within the portfolio.
+        -   Demonstrate complex state management and interactive logic.
+-   **Outcome:** Users can browse projects and interact deeply with the embedded Science App.
 
 ### Phase 3: Connection & Polish
 
@@ -230,11 +243,11 @@ src/
 # Artifact A3: Implementation Roadmap
 # Date Created: C0
 # Author: AI Model & Curator
-# Updated on: C1 (Mark Step 1 as active/complete)
+# Updated on: C2 (Add Science App steps)
 
 - **Key/Value for A0:**
 - **Description:** A step-by-step roadmap for implementing the portfolio.
-- **Tags:** documentation, roadmap, planning, cycle 0, cycle 1
+- **Tags:** documentation, roadmap, planning, cycle 0, cycle 1, cycle 2
 
 ## 1. Overview & Goal
 
@@ -242,34 +255,35 @@ This document provides a clear, step-by-step roadmap for the implementation of t
 
 ## 2. Implementation Steps
 
-### Step 1: Foundational Setup & Theme (Cycle 1)
+### Step 1: Foundational Setup & Theme (Completed C1)
 
 -   **Goal:** Initialize the project and establish the visual language.
 -   **Tasks:**
-    1.  **Scaffolding:** Initialize Vite + React + TypeScript project. (Completed C1)
-    2.  **Tailwind Setup:** Configure Tailwind CSS with the specific color palette (Dark Mode focus). (Completed C1)
-    3.  **Routing:** Set up React Router with placeholders for Home, About, Showcase, and Contact. (Completed C1)
-    4.  **Layout:** Create the global `Layout` component containing the Navigation Bar and Footer. (Completed C1)
+    1.  **Scaffolding:** Initialize Vite + React + TypeScript project. (Completed)
+    2.  **Tailwind Setup:** Configure Tailwind CSS with the specific color palette (Dark Mode focus). (Completed)
+    3.  **Routing:** Set up React Router with placeholders for Home, About, Showcase, and Contact. (Completed)
+    4.  **Layout:** Create the global `Layout` component containing the Navigation Bar and Footer. (Completed)
 -   **Outcome:** A navigating skeleton of the website with the correct styling foundation.
 
-### Step 2: Content Pages (Home & About)
+### Step 2: Content Pages & Showcase Data (Active C2)
 
--   **Goal:** Implement the informational sections of the site.
+-   **Goal:** Implement the informational sections and the project data layer.
 -   **Tasks:**
-    1.  **Home Page:** Design the "Hero" section with a headline, subheadline, and Call-to-Action (CTA).
-    2.  **About Page:** Create the layout for the bio and skills list.
-    3.  **Responsiveness:** Ensure these pages stack correctly on mobile devices.
--   **Outcome:** The primary identity pages are complete and readable.
+    1.  **Home & About:** (Completed C1)
+    2.  **Project Data:** Create `projectsData.ts` to store portfolio entries.
+    3.  **Project Card:** Refactor the Showcase page to use reusable card components.
+    4.  **Routing:** Add a sub-route for the Science App (`/projects/science-lab`).
+-   **Outcome:** The portfolio is data-driven and ready to host the new app.
 
-### Step 3: The Project Showcase
+### Step 3: "The Inquiry Engine" (Science App)
 
--   **Goal:** Build the core feature: the interactive project gallery.
+-   **Goal:** Build the interactive science learning environment.
 -   **Tasks:**
-    1.  **Data Structure:** Define the `Project` interface and create a `projectsData.ts` file.
-    2.  **Project Card:** Design a reusable component to display a single project's preview.
-    3.  **Grid Layout:** Implement a responsive grid to display the cards.
-    4.  **Tags/Filters:** Add visual tags for technologies used (e.g., "React", "Node").
--   **Outcome:** Users can view the architect's work in a structured, visual format.
+    1.  **Layout:** Create the "Lab Dashboard" layout (sidebar, main view, console).
+    2.  **Engine:** Build the State Machine hook to handle Question -> Response -> Branching logic.
+    3.  **Content:** Write the JSON scenario for "The Cell Lab".
+    4.  **UI:** Implement the visual components for the "Inquiry Terminal".
+-   **Outcome:** A fully functional, embedded educational app within the portfolio.
 
 ### Step 4: Contact & Polish
 
@@ -451,6 +465,93 @@ This compiles the TypeScript and assets into the `dist/` folder and starts a loc
 To run tests (if configured):
 ```bash
 npm run test
+</file_artifact>
+
+<file path="src/Artifacts/A7-Science-Learning-App-Design.md">
+# Artifact A7: Science Learning App Design - "The Inquiry Engine"
+# Date Created: C2
+# Author: AI Model & Curator
+
+- **Key/Value for A0:**
+- **Description:** Design and architecture for the science learning environment project.
+- **Tags:** documentation, design, science-app, cycle 2
+
+## 1. Project Overview
+
+**Project Name:** The Inquiry Engine
+**Concept:** A gamified, interactive science learning environment that moves beyond rote memorization. It focuses on **directional thinking**—guiding the learner from observation to hypothesis to conclusion using a digital Socratic method.
+
+## 2. Educational Mechanics (Ways to "Prompt Directional Thinking")
+
+To address your goal of prompting directional thinking, we will implement the following mechanics:
+
+### Mechanic A: The Socratic Branching Logic
+Instead of a simple "Correct/Incorrect" feedback loop, the app uses a decision tree.
+-   **Scenario:** A plant is wilting.
+-   **User Action:** User selects "Add more water."
+-   **System Response:** (If incorrect) "The soil is already damp. If the roots are wet but the leaves are dry, what part of the plant might be blocked?"
+-   **Directional Gain:** Forces the user to trace the path of water transport (Xylem) rather than guessing inputs.
+
+### Mechanic B: Predict-Observe-Explain (POE)
+This is a classic science education model adapted for the web.
+1.  **Predict:** The user adjusts sliders on a simulation (e.g., "Gravity: 2x") and predicts the trajectory of a ball.
+2.  **Observe:** The user hits "Run Experiment". The simulation plays out.
+3.  **Explain:** The user must select the principle that explains the difference between their prediction and the observation.
+
+### Mechanic C: Concept Mapping (The "Knowledge Node" System)
+Users build the logic themselves.
+-   **Interface:** A canvas with drifting nodes (terms like "Photosynthesis", "Sunlight", "Glucose").
+-   **Action:** User connects nodes with directional arrows.
+-   **Validation:** The system validates the *relationship* (e.g., "Sunlight" -> [provides energy for] -> "Photosynthesis").
+
+## 3. Selected MVP Feature: "The Cell Lab"
+
+For the initial build, we will focus on **Mechanic A (Socratic Logic)** within a **Cell Biology** context.
+
+-   **Goal:** Diagnose why a virtual cell is failing to produce energy.
+-   **Environment:** A dark-mode dashboard representing a microscope view and a data hud.
+-   **Interaction:**
+    1.  **Alert:** "Energy levels dropping."
+    2.  **Inquiry:** User clicks on organelles to inspect.
+    3.  **Dialogue:** "Mitochondria inspection: Structure looks folded, but raw materials are missing."
+    4.  **Decision:** User must direct "Glucose" or "Oxygen" to the organelle.
+
+## 4. Technical Architecture
+
+### State Management (The Game Loop)
+We will use a finite state machine (using `useReducer` or similar) to manage the learning flow.
+
+```typescript
+type GameState = 'OBSERVING' | 'HYPOTHESIZING' | 'EXPERIMENTING' | 'ANALYZING' | 'COMPLETE';
+```
+
+### Data Structure (The Scenario)
+Scenarios will be defined as JSON objects to allow easy creation of new "levels".
+
+```typescript
+interface Scenario {
+    id: string;
+    title: string;
+    initialState: string; // Description of the problem
+    nodes: {
+        id: string;
+        prompt: string;
+        options: {
+            label: string;
+            nextNodeId: string;
+            feedback: string; // The "directional thinking" hint
+        }[];
+    }[];
+}
+```
+
+## 5. UI/UX Design
+
+-   **Aesthetic:** "Futuristic Lab Interface." Dark slate backgrounds, neon blue/green accents (Tailwind `cyan-500`, `emerald-500`).
+-   **Layout:**
+    -   **Left Panel:** Visual simulation / Image.
+    -   **Right Panel:** The "Inquiry Terminal" (Chat/Prompt interface).
+    -   **Bottom Bar:** Inventory/Tools.
 </file_artifact>
 
 <file path="src/Artifacts/DCE_README.md">
@@ -740,7 +841,163 @@ export const HomePage = () => {
 };
 </file_artifact>
 
+<file path="src/features/science-lab/ScienceLab.tsx">
+import { ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+export const ScienceLab = () => {
+    return (
+        <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+            {/* Custom Header for the App */}
+            <header className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
+                <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                        <Link to="/showcase" className="text-slate-400 hover:text-white transition-colors">
+                            <ArrowLeft size={20} />
+                        </Link>
+                        <h1 className="text-xl font-bold text-emerald-400 tracking-wider">
+                            INQUIRY<span className="text-white">ENGINE</span>
+                        </h1>
+                    </div>
+                    <div className="text-xs font-mono text-slate-500">
+                        V1.0.0 // STATUS: INITIALIZING
+                    </div>
+                </div>
+            </header>
+
+            {/* Main Workspace Area */}
+            <main className="flex-grow flex items-center justify-center p-8">
+                <div className="max-w-2xl w-full text-center space-y-8">
+                    <div className="inline-block p-4 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4">
+                        <div className="w-16 h-16 rounded-full bg-emerald-500/20 animate-pulse flex items-center justify-center">
+                            <div className="w-8 h-8 rounded-full bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.5)]"></div>
+                        </div>
+                    </div>
+                    
+                    <h2 className="text-3xl font-bold">Lab Environment Loading...</h2>
+                    
+                    <p className="text-slate-400 text-lg">
+                        You have entered the "Inquiry Engine" prototype. 
+                        This environment will facilitate directional thinking through Socratic dialogue and interactive experimentation.
+                    </p>
+
+                    <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-left max-w-md mx-auto">
+                        <h3 className="text-sm font-bold text-slate-300 uppercase tracking-widest mb-4">Current Module</h3>
+                        <div className="space-y-4">
+                            <div className="flex justify-between items-center text-sm">
+                                <span className="text-slate-500">Subject:</span>
+                                <span className="text-emerald-400 font-mono">Cell Biology</span>
+                            </div>
+                            <div className="flex justify-between items-center text-sm">
+                                <span className="text-slate-500">Mode:</span>
+                                <span className="text-blue-400 font-mono">Socratic Diagnostic</span>
+                            </div>
+                            <div className="flex justify-between items-center text-sm">
+                                <span className="text-slate-500">Status:</span>
+                                <span className="text-orange-400 font-mono">Design Phase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    );
+};
+</file_artifact>
+
+<file path="src/features/showcase/components/ProjectCard.tsx">
+import { Link } from 'react-router-dom';
+import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { Project } from '@/types';
+
+interface ProjectCardProps {
+    project: Project;
+}
+
+export const ProjectCard = ({ project }: ProjectCardProps) => {
+    return (
+        <div className="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-colors group flex flex-col h-full">
+            {/* Image Placeholder */}
+            <div className="h-48 bg-slate-800 flex items-center justify-center text-slate-600 relative overflow-hidden">
+                <span className="z-10">{project.title} Preview</span>
+                <div className="absolute inset-0 bg-slate-800 group-hover:bg-slate-700 transition-colors" />
+            </div>
+
+            <div className="p-6 flex flex-col flex-grow">
+                <h3 className="text-xl font-semibold mb-2 text-slate-100 group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                </h3>
+                
+                <p className="text-slate-400 text-sm mb-4 flex-grow">
+                    {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech) => (
+                        <span key={tech} className="px-2 py-1 bg-slate-800 text-xs rounded-md text-slate-300 border border-slate-700">
+                            {tech}
+                        </span>
+                    ))}
+                </div>
+
+                <div className="flex items-center gap-3 mt-auto">
+                    {project.demoUrl && (
+                        <Link 
+                            to={project.demoUrl}
+                            className="flex-1 inline-flex justify-center items-center px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-colors"
+                        >
+                            Launch <ArrowRight size={16} className="ml-2" />
+                        </Link>
+                    )}
+                    
+                    {project.repoUrl && (
+                        <a 
+                            href={project.repoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex justify-center items-center p-2 rounded-lg border border-slate-700 hover:bg-slate-800 text-slate-300 hover:text-white transition-colors"
+                            aria-label="View Source Code"
+                        >
+                            <Github size={20} />
+                        </a>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+};
+</file_artifact>
+
+<file path="src/features/showcase/data/projectsData.ts">
+import { Project } from '@/types';
+
+export const projectsData: Project[] = [
+    {
+        id: 'science-lab',
+        title: 'The Inquiry Engine',
+        description: 'An interactive science learning environment that uses Socratic branching logic to guide learners through complex biological concepts. Features directional thinking prompts and a gamified "Lab" interface.',
+        imageUrl: '/api/placeholder/400/300', // We will replace this with a real screenshot later
+        technologies: ['React', 'TypeScript', 'State Machines', 'Tailwind CSS'],
+        demoUrl: '/projects/science-lab', // Internal route
+        repoUrl: 'https://github.com/rkpingali-stack',
+        featured: true
+    },
+    {
+        id: 'portfolio-v1',
+        title: 'Citizen Architect Portfolio',
+        description: 'The website you are currently looking at. A dark-mode-first, responsive personal portfolio built with modern web technologies.',
+        imageUrl: '/api/placeholder/400/300',
+        technologies: ['Vite', 'React', 'Tailwind CSS'],
+        repoUrl: 'https://github.com/rkpingali-stack',
+        featured: false
+    }
+];
+</file_artifact>
+
 <file path="src/features/showcase/ShowcasePage.tsx">
+import { projectsData } from './data/projectsData';
+import { ProjectCard } from './components/ProjectCard';
+
 export const ShowcasePage = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 py-16">
@@ -752,23 +1009,8 @@ export const ShowcasePage = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Placeholder Cards */}
-                {[1, 2, 3].map((i) => (
-                    <div key={i} className="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-colors group">
-                        <div className="h-48 bg-slate-800 flex items-center justify-center text-slate-600">
-                            Project Preview Image
-                        </div>
-                        <div className="p-6">
-                            <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-400 transition-colors">Project Title {i}</h3>
-                            <p className="text-slate-400 text-sm mb-4">
-                                A brief description of the project goes here. It explains the core problem solved and the value provided.
-                            </p>
-                            <div className="flex flex-wrap gap-2">
-                                <span className="px-2 py-1 bg-slate-800 text-xs rounded-md text-slate-300">React</span>
-                                <span className="px-2 py-1 bg-slate-800 text-xs rounded-md text-slate-300">TypeScript</span>
-                            </div>
-                        </div>
-                    </div>
+                {projectsData.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
                 ))}
             </div>
         </div>

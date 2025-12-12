@@ -1,6 +1,7 @@
 # Artifact A1: Project Vision and Goals
 # Date Created: C0
 # Author: AI Model & Curator
+# Updated on: C2 (Included Science App details)
 
 - **Key/Value for A0:**
 - **Description:** Defines the core vision and phased goals for the Citizen Architect Portfolio.
@@ -26,14 +27,17 @@ The goal of this phase is to establish the technical groundwork and the primary 
     -   Build the **About Me** page detailing professional summary and skills.
 -   **Outcome:** A deployable, responsive website with navigation and core identity pages.
 
-### Phase 2: The Showcase
+### Phase 2: The Showcase & "The Inquiry Engine"
 
 This phase focuses on the heart of the portfolio: the projects.
 -   **Core Functionality:**
     -   Design and implement the **Project Showcase** component.
     -   Create a data structure to manage project metadata (title, description, tech stack, links).
-    -   Implement interactive cards or grid layouts to display projects.
--   **Outcome:** Users can browse, filter, or view details of specific projects the architect has built.
+    -   **Flagship Project: "The Inquiry Engine":** A science learning environment.
+        -   Implement a Socratic questioning engine.
+        -   Create a "Lab" interface within the portfolio.
+        -   Demonstrate complex state management and interactive logic.
+-   **Outcome:** Users can browse projects and interact deeply with the embedded Science App.
 
 ### Phase 3: Connection & Polish
 
