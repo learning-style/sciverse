@@ -1,10 +1,11 @@
 # Artifact A3: Implementation Roadmap
 # Date Created: C0
 # Author: AI Model & Curator
+# Updated on: C1 (Mark Step 1 as active/complete)
 
 - **Key/Value for A0:**
 - **Description:** A step-by-step roadmap for implementing the portfolio.
-- **Tags:** documentation, roadmap, planning, cycle 0
+- **Tags:** documentation, roadmap, planning, cycle 0, cycle 1
 
 ## 1. Overview & Goal
 
@@ -12,14 +13,14 @@ This document provides a clear, step-by-step roadmap for the implementation of t
 
 ## 2. Implementation Steps
 
-### Step 1: Foundational Setup & Theme
+### Step 1: Foundational Setup & Theme (Cycle 1)
 
 -   **Goal:** Initialize the project and establish the visual language.
 -   **Tasks:**
-    1.  **Scaffolding:** Initialize Vite + React + TypeScript project.
-    2.  **Tailwind Setup:** Configure Tailwind CSS with the specific color palette (Dark Mode focus).
-    3.  **Routing:** Set up React Router with placeholders for Home, About, Showcase, and Contact.
-    4.  **Layout:** Create the global `Layout` component containing the Navigation Bar and Footer.
+    1.  **Scaffolding:** Initialize Vite + React + TypeScript project. (Completed C1)
+    2.  **Tailwind Setup:** Configure Tailwind CSS with the specific color palette (Dark Mode focus). (Completed C1)
+    3.  **Routing:** Set up React Router with placeholders for Home, About, Showcase, and Contact. (Completed C1)
+    4.  **Layout:** Create the global `Layout` component containing the Navigation Bar and Footer. (Completed C1)
 -   **Outcome:** A navigating skeleton of the website with the correct styling foundation.
 
 ### Step 2: Content Pages (Home & About)
