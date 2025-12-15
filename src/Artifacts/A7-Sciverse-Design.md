@@ -1,84 +1,83 @@
-# Artifact A7: Sciverse Design - Physics Dialog Series
-# Date Created: C3
+# Artifact A7: Sciverse Design & Architecture
+# Date Created: C2
 # Author: AI Model & Curator
+# Updated on: C4 (Integrate Matter.js and SSAL Architecture)
 
 - **Key/Value for A0:**
-- **Description:** Design and architecture for "Sciverse", a Socratic dialog-based science learning environment.
-- **Tags:** documentation, design, sciverse, physics, cycle 3
+- **Description:** Design and architecture for "Sciverse," a Socratic physics learning environment.
+- **Tags:** documentation, design, sciverse, physics, architecture, cycle 4
 
 ## 1. Project Overview
 
 **Project Name:** Sciverse
-**Concept:** A "Scientific Metaverse" of micro-learning modules. Sciverse moves beyond static text or video lectures by using a **Socratic Dialog Engine**. The system acts as a tutor (inspired by Khanmigo), guiding the user through physics concepts using questions, predictions, and interactive experiments.
+**Concept:** An interactive, browser-based physics learning environment aligned with AP Physics 1. It combines high-fidelity simulation with a "Socratic Dialog Engine" that guides students through inquiry-based learning.
 
-**Core Philosophy:** "Don't tell me the answer; help me find it."
+**Core Loop:**
+1.  **Prompt:** Mentor AI poses a scenario (e.g., "How does mass affect acceleration?").
+2.  **Predict:** Student makes a hypothesis.
+3.  **Experiment:** Student manipulates the simulation (Sim).
+4.  **Observe:** Student analyzes real-time data (Graphs/Vectors).
+5.  **Explain:** Student concludes the rule, verified by the Mentor.
 
-## 2. The Learning Experience (User Journey)
+## 2. Technical Architecture
 
-### Phase 1: The Hook (Context)
-The user enters a specific "Universe" (Module), e.g., **Newton's Playground**.
--   **Visual:** A car sitting on a flat track.
--   **Dialog:** "Welcome to the lab. Look at this car. If I give it a quick push and let go, what will happen to its speed as it rolls along this frictionless track?"
+The system is composed of three distinct layers: The **Physics Engine**, the **Abstraction Layer**, and the **Dialog Engine**.
 
-### Phase 2: The Prediction (Hypothesis)
-The user must commit to an answer before seeing the result.
--   **Interaction:** User selects from options:
-    A) It will slow down.
-    B) It will speed up.
-    C) It will stay the same speed.
--   **Socratic Response (if wrong):** If user picks A: "Interesting intuition. usually, things do slow down. But what usually causes things to slow down in the real world?" -> (Friction). "Exactly. But this track is *frictionless*."
+### 2.1. Layer 1: The Physics Engine (Matter.js)
+We will use **Matter.js** as the core physics kernel. It provides robust 2D rigid body dynamics, collision detection, and constraint solving.
+-   **Why Matter.js?** Standardizing on a library ensures accurate handling of collisions and forces, preventing "home-brewed physics" errors that could confuse learners.
+-   **Rendering:** We will use a custom React-based renderer (drawing to HTML5 Canvas) to allow for educational overlays (vectors, labels) on top of the Matter.js world.
 
-### Phase 3: The Experiment (Validation)
-The dialog unlocks a simulation control.
--   **Action:** "Go ahead. Push the 'Apply Force' button and watch the velocity graph."
--   **Observation:** The car moves at a constant speed. The graph is a flat horizontal line.
+### 2.2. Layer 2: SimState Abstraction Layer (SSAL)
+The SSAL is the critical bridge between the high-frequency physics loop (60fps) and the low-frequency UI/Dialog logic.
 
-### Phase 4: The Synthesis (Conclusion)
-The system asks the user to formulate the rule.
--   **Dialog:** "So, if no forces are acting on it (friction or push), what does the motion do?"
--   **User Input:** "It stays constant."
--   **System:** "Precisely. This is Newton's First Law."
+**Responsibility:**
+1.  **Extraction:** Runs every frame to extract `position`, `velocity`, `force` from Matter.js bodies.
+2.  **Normalization:** Converts engine units to "Educational Units" (e.g., pixels to meters).
+3.  **Exposure:** Provides a stable `useSimState()` hook for React components (UI overlays, graphs).
+4.  **Snapshot:** Generates a JSON payload of the *current state* when requested by the Dialog Engine.
 
-## 3. Technical Architecture
-
-### 3.1. The Layout
-The screen is split into two primary panes (mobile-responsive):
-1.  **The "Lab Bench" (Left/Top):** The visual simulation area. Contains the canvas/SVG elements and interactive controls (sliders, buttons).
-2.  **The "Comms Link" (Right/Bottom):** The chat interface. Displays the history of the conversation and the current input options.
-
-### 3.2. The Dialog Engine (Data Structure)
-The conversation is a directed graph.
-
+**SSAL Data Structure:**
 ```typescript
-// See src/features/sciverse/types.ts for full implementation
-interface DialogNode {
-    id: string;
-    speaker: 'AI' | 'User';
-    content: string; // The text to display
-    options?: DialogOption[]; // If it's a question
-    action?: string; // Trigger a simulation event (e.g., 'START_SIMULATION')
+interface SimStateSnapshot {
+    timestamp: number;
+    objects: {
+        id: string;
+        mass: number;
+        velocity: Vector2D;
+        acceleration: Vector2D;
+        netForce: Vector2D;
+    }[];
+    system: {
+        totalKineticEnergy: number;
+        totalMomentum: Vector2D;
+        frictionCoeff: number;
+        isPaused: boolean;
+    };
 }
 ```
 
-### 3.3. The Physics Engine
-For "Newton's Playground", we need a simple 1D kinematic engine.
--   **State:** `position (x)`, `velocity (v)`, `acceleration (a)`, `time (t)`.
--   **Loop:** A standard `useAnimationFrame` loop updating state based on $\Delta t$.
--   **Interactivity:** User inputs modify `a` (Force) or `v` (Initial Push).
+### 2.3. Layer 3: The Dialog Engine (Scripted Socratic Logic)
+For the Portfolio MVP, we will implement a **Deterministic Finite Automaton (DFA)** (a Directed Graph of script nodes) that mimics the behavior of an AI tutor.
 
-## 4. Content Syllabus: Module 1 - Newton's Playground
+-   **Why Scripted?** Ensures 100% pedagogical accuracy and allows the project to be hosted statically (no backend required).
+-   **AI-Ready:** The architecture is designed such that the "Script Interpreter" can be replaced by an "LLM Client" in the future without changing the UI or Physics layers. The script nodes effectively act as a pre-cached "Chain of Thought".
 
-### Topic 1.1: Inertia (The Hovercraft)
--   **Scenario:** A hovercraft on ice.
--   **Goal:** Understand that $F_{net} = 0 \implies \Delta v = 0$.
--   **Activity:** Try to make the hovercraft stop without using brakes (impossible on infinite ice).
+## 3. User Interface Design
 
-### Topic 1.2: Acceleration (The Rocket Car)
--   **Scenario:** A car with a rocket booster.
--   **Goal:** Understand that Constant Force $\implies$ Constant Acceleration $\neq$ Constant Velocity.
--   **Activity:** User controls the throttle. They must reach a target distance and stop. (Teaches that you must decelerate to stop).
+### 3.1. The "Lab Bench" (Simulation View)
+-   **Canvas:** The main play area.
+-   **Vector Overlay:** A transparent layer rendering arrows for $\vec{v}$ (Green), $\vec{a}$ (Yellow), and $\vec{F}_{net}$ (Red).
+-   **Control Panel:** Sliders for Input Variables (Mass, Force, Friction).
+-   **Graphing Monitor:** A draggable/minimizable window showing $x-t$ or $v-t$ charts.
 
-## 5. Visual Identity
--   **Theme:** "Hard Sci-Fi Interface".
--   **Colors:** Deep Space Blue (`slate-950`), Holographic Cyan (`cyan-400`), Warning Orange (`orange-500`).
--   **Typography:** Monospace headers (data), Sans-serif body (dialog).
+### 3.2. The "Comms Link" (Dialog View)
+-   A chat interface resembling a messaging app.
+-   Displays text, images, and "Choice Chips" for user responses.
+-   **Interactivity:** Some choices trigger Simulation Actions (e.g., "Let me run the test" -> Unlocks the 'Play' button).
+
+## 4. Implementation Strategy (Aligned with A9)
+
+1.  **Phase 1 (Kinematics):** Build the Matter.js wrapper and the Vector Overlay system.
+2.  **Phase 2 (Dynamics):** Implement the Force interactors and the Friction logic.
+3.  **Phase 3 (Content):** Encode the "Forces & Motion" script (A8) into the Dialog Engine format.

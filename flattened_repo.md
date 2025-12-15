@@ -1,10 +1,10 @@
 <!--
   File: flattened_repo.md
   Source Directory: c:\monorepo\portfolio-website1
-  Date Generated: 2025-12-15T23:22:18.357Z
+  Date Generated: 2025-12-15T23:39:58.691Z
   ---
-  Total Files: 37
-  Approx. Tokens: 45043
+  Total Files: 38
+  Approx. Tokens: 46203
 -->
 
 <!-- Top 10 Text Files by Token Count -->
@@ -13,50 +13,51 @@
 3. External_Context\Forces-Motion.md (6749 tokens)
 4. External_Context\Enhancing Physics Education Website.md (6714 tokens)
 5. src\features\science-lab\ScienceLab.tsx (2453 tokens)
-6. src\Artifacts\A7-Sciverse-Design.md (1033 tokens)
-7. src\Artifacts\A7-Science-Learning-App-Design.md (950 tokens)
-8. src\components\layout\Navbar.tsx (869 tokens)
-9. src\Artifacts\DCE_README.md (741 tokens)
-10. src\Artifacts\A1-Project-Vision-and-Goals.md (731 tokens)
+6. src\Artifacts\A9-Sciverse-Curriculum-Roadmap.md (1146 tokens)
+7. src\Artifacts\A7-Sciverse-Design.md (1065 tokens)
+8. src\Artifacts\A7-Science-Learning-App-Design.md (950 tokens)
+9. src\components\layout\Navbar.tsx (869 tokens)
+10. src\Artifacts\DCE_README.md (741 tokens)
 
 <!-- Full File List -->
 1. src\App.tsx - Lines: 28 - Chars: 1052 - Tokens: 263
 2. src\index.css - Lines: 26 - Chars: 497 - Tokens: 125
 3. src\main.tsx - Lines: 10 - Chars: 231 - Tokens: 58
-4. src\Artifacts\A1-Project-Vision-and-Goals.md - Lines: 49 - Chars: 2921 - Tokens: 731
+4. src\Artifacts\A1-Project-Vision-and-Goals.md - Lines: 40 - Chars: 2277 - Tokens: 570
 5. src\Artifacts\A2-Technical-Scaffolding-Plan.md - Lines: 60 - Chars: 2719 - Tokens: 680
-6. src\Artifacts\A3-Implementation-Roadmap.md - Lines: 54 - Chars: 2825 - Tokens: 707
+6. src\Artifacts\A3-Implementation-Roadmap.md - Lines: 56 - Chars: 2781 - Tokens: 696
 7. src\Artifacts\A4-Developer-Environment-Setup-Guide.md - Lines: 55 - Chars: 1487 - Tokens: 372
 8. src\Artifacts\A5-GitHub-Repository-Setup-Guide.md - Lines: 64 - Chars: 1712 - Tokens: 428
 9. src\Artifacts\A6-Development-and-Testing-Guide.md - Lines: 44 - Chars: 1414 - Tokens: 354
 10. src\Artifacts\A7-Science-Learning-App-Design.md - Lines: 93 - Chars: 3799 - Tokens: 950
-11. src\Artifacts\A7-Sciverse-Design.md - Lines: 84 - Chars: 4131 - Tokens: 1033
+11. src\Artifacts\A7-Sciverse-Design.md - Lines: 83 - Chars: 4259 - Tokens: 1065
 12. src\Artifacts\A8-Sciverse-Physics-Module-01.md - Lines: 62 - Chars: 2498 - Tokens: 625
-13. src\Artifacts\DCE_README.md - Lines: 43 - Chars: 2962 - Tokens: 741
-14. src\components\layout\Footer.tsx - Lines: 32 - Chars: 1657 - Tokens: 415
-15. src\components\layout\Layout.tsx - Lines: 15 - Chars: 402 - Tokens: 101
-16. src\components\layout\Navbar.tsx - Lines: 80 - Chars: 3475 - Tokens: 869
-17. src\features\about\AboutPage.tsx - Lines: 23 - Chars: 1132 - Tokens: 283
-18. src\features\contact\ContactPage.tsx - Lines: 44 - Chars: 2303 - Tokens: 576
-19. src\features\home\HomePage.tsx - Lines: 29 - Chars: 1360 - Tokens: 340
-20. src\features\science-lab\ScienceLab.tsx - Lines: 138 - Chars: 9811 - Tokens: 2453
-21. src\features\sciverse\types.ts - Lines: 69 - Chars: 1695 - Tokens: 424
-22. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
-23. src\features\showcase\data\projectsData.ts - Lines: 23 - Chars: 1186 - Tokens: 297
-24. src\features\showcase\ShowcasePage.tsx - Lines: 21 - Chars: 847 - Tokens: 212
-25. src\types\index.ts - Lines: 17 - Chars: 299 - Tokens: 75
-26. .gitignore - Lines: 18 - Chars: 107 - Tokens: 27
-27. package.json - Lines: 28 - Chars: 709 - Tokens: 178
-28. tsconfig.json - Lines: 31 - Chars: 726 - Tokens: 182
-29. tsconfig.node.json - Lines: 10 - Chars: 212 - Tokens: 53
-30. vite.config.ts - Lines: 13 - Chars: 269 - Tokens: 68
-31. index.html - Lines: 13 - Chars: 375 - Tokens: 94
-32. postcss.config.js - Lines: 6 - Chars: 79 - Tokens: 20
-33. tailwind.config.js - Lines: 16 - Chars: 354 - Tokens: 89
-34. External_Context\Enhancing Physics Education Website (1).md - Lines: 230 - Chars: 35813 - Tokens: 8954
-35. External_Context\Enhancing Physics Education Website.md - Lines: 179 - Chars: 26856 - Tokens: 6714
-36. External_Context\Forces-Motion.md - Lines: 555 - Chars: 26994 - Tokens: 6749
-37. External_Context\Physics Simulation Project Enhancement Plan.md - Lines: 250 - Chars: 32452 - Tokens: 8113
+13. src\Artifacts\A9-Sciverse-Curriculum-Roadmap.md - Lines: 76 - Chars: 4584 - Tokens: 1146
+14. src\Artifacts\DCE_README.md - Lines: 43 - Chars: 2962 - Tokens: 741
+15. src\components\layout\Footer.tsx - Lines: 32 - Chars: 1657 - Tokens: 415
+16. src\components\layout\Layout.tsx - Lines: 15 - Chars: 402 - Tokens: 101
+17. src\components\layout\Navbar.tsx - Lines: 80 - Chars: 3475 - Tokens: 869
+18. src\features\about\AboutPage.tsx - Lines: 23 - Chars: 1132 - Tokens: 283
+19. src\features\contact\ContactPage.tsx - Lines: 44 - Chars: 2303 - Tokens: 576
+20. src\features\home\HomePage.tsx - Lines: 29 - Chars: 1360 - Tokens: 340
+21. src\features\science-lab\ScienceLab.tsx - Lines: 138 - Chars: 9811 - Tokens: 2453
+22. src\features\sciverse\types.ts - Lines: 83 - Chars: 2312 - Tokens: 578
+23. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
+24. src\features\showcase\data\projectsData.ts - Lines: 23 - Chars: 1186 - Tokens: 297
+25. src\features\showcase\ShowcasePage.tsx - Lines: 21 - Chars: 847 - Tokens: 212
+26. src\types\index.ts - Lines: 17 - Chars: 299 - Tokens: 75
+27. .gitignore - Lines: 18 - Chars: 107 - Tokens: 27
+28. package.json - Lines: 28 - Chars: 709 - Tokens: 178
+29. tsconfig.json - Lines: 31 - Chars: 726 - Tokens: 182
+30. tsconfig.node.json - Lines: 10 - Chars: 212 - Tokens: 53
+31. vite.config.ts - Lines: 13 - Chars: 269 - Tokens: 68
+32. index.html - Lines: 13 - Chars: 375 - Tokens: 94
+33. postcss.config.js - Lines: 6 - Chars: 79 - Tokens: 20
+34. tailwind.config.js - Lines: 16 - Chars: 354 - Tokens: 89
+35. External_Context\Enhancing Physics Education Website (1).md - Lines: 230 - Chars: 35813 - Tokens: 8954
+36. External_Context\Enhancing Physics Education Website.md - Lines: 179 - Chars: 26856 - Tokens: 6714
+37. External_Context\Forces-Motion.md - Lines: 555 - Chars: 26994 - Tokens: 6749
+38. External_Context\Physics Simulation Project Enhancement Plan.md - Lines: 250 - Chars: 32452 - Tokens: 8113
 
 <file path="src/App.tsx">
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -135,11 +136,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 # Artifact A1: Project Vision and Goals
 # Date Created: C0
 # Author: AI Model & Curator
-# Updated on: C3 (Pivot to Sciverse Physics Dialogs)
+# Updated on: C4 (Refined Sciverse for AP Physics alignment)
 
 - **Key/Value for A0:**
 - **Description:** Defines the core vision and phased goals for the Citizen Architect Portfolio.
-- **Tags:** documentation, vision, planning, cycle 0
+- **Tags:** documentation, vision, planning, cycle 0, cycle 4
 
 ## 1. Project Vision
 
@@ -151,35 +152,26 @@ The site will act not just as a resume, but as a living testament to the archite
 
 The project will be executed in distinct phases to ensure steady progress and high-quality output.
 
-### Phase 1: Foundation & Identity
+### Phase 1: Foundation & Identity (Completed)
 
 The goal of this phase is to establish the technical groundwork and the primary static content.
--   **Core Functionality:**
-    -   Setup React + TypeScript + Vite scaffolding.
-    -   Implement the "Dark-Mode-First" design system using Tailwind CSS.
-    -   Build the **Home** page with a compelling headline and introduction.
-    -   Build the **About Me** page detailing professional summary and skills.
 -   **Outcome:** A deployable, responsive website with navigation and core identity pages.
 
-### Phase 2: The Showcase & "Sciverse"
+### Phase 2: The Showcase & "Sciverse" (In Progress)
 
-This phase focuses on the heart of the portfolio: the projects and the flagship interactive experience.
--   **Core Functionality:**
-    -   Design and implement the **Project Showcase** component.
-    -   Create a data structure to manage project metadata (title, description, tech stack, links).
-    -   **Flagship Project: "Sciverse":** An interactive physics learning environment.
-        -   **Socratic Dialog Engine:** A conversational interface that acts as a tutor, guiding users through concepts rather than lecturing.
-        -   **Hands-on Simulation:** Interactive physics playgrounds (using Canvas/Matter.js or custom logic) where users run experiments.
-        -   **Integrated Quizzes:** Knowledge checks seamlessly woven into the dialogue.
--   **Outcome:** Users can browse projects and engage with "Sciverse" to learn physics concepts through doing and discussing.
+This phase focuses on the heart of the portfolio: the flagship interactive experience.
+-   **Flagship Project: "Sciverse" (The Inquiry Engine):**
+    -   **Target Audience:** High School / AP Physics 1 Students.
+    -   **Pedagogy:** Inquiry-Based Learning using the "Predict-Observe-Explain" cycle.
+    -   **Technical Core:**
+        -   **Physics Engine:** Built on `Matter.js` for accurate rigid-body dynamics.
+        -   **SimState Abstraction:** A data layer that exposes physics state to the UI and AI.
+        -   **Socratic Dialog:** A "Simulated AI" tutor that guides students through labs (Kinematics, Dynamics, Momentum) without simply giving answers.
+-   **Outcome:** Users can engage with "Sciverse" to learn physics concepts through doing and discussing.
 
 ### Phase 3: Connection & Polish
 
 This phase rounds out the user experience and provides means for engagement.
--   **Core Functionality:**
-    -   Build the **Contact** page with social links (GitHub, LinkedIn) and a functional form.
-    -   Implement subtle animations and transitions to enhance the "modern" feel.
-    -   Conduct accessibility (a11y) and performance audits.
 -   **Outcome:** A polished, professional, and fully functional portfolio ready for public launch.
 </file_artifact>
 
@@ -250,11 +242,11 @@ src/
 # Artifact A3: Implementation Roadmap
 # Date Created: C0
 # Author: AI Model & Curator
-# Updated on: C3 (Align with Sciverse Plan)
+# Updated on: C4 (Refined Sciverse Phases)
 
 - **Key/Value for A0:**
 - **Description:** A step-by-step roadmap for implementing the portfolio.
-- **Tags:** documentation, roadmap, planning, cycle 0, cycle 1, cycle 2, cycle 3
+- **Tags:** documentation, roadmap, planning, cycle 0, cycle 1, cycle 2, cycle 4
 
 ## 1. Overview & Goal
 
@@ -265,35 +257,37 @@ This document provides a clear, step-by-step roadmap for the implementation of t
 ### Step 1: Foundational Setup & Theme (Completed C1)
 
 -   **Goal:** Initialize the project and establish the visual language.
--   **Tasks:**
-    1.  **Scaffolding:** Initialize Vite + React + TypeScript project. (Completed)
-    2.  **Tailwind Setup:** Configure Tailwind CSS with the specific color palette (Dark Mode focus). (Completed)
-    3.  **Routing:** Set up React Router with placeholders for Home, About, Showcase, and Contact. (Completed)
-    4.  **Layout:** Create the global `Layout` component containing the Navigation Bar and Footer. (Completed)
--   **Outcome:** A navigating skeleton of the website with the correct styling foundation.
+-   **Outcome:** A navigating skeleton of the website with the correct styling foundation. (Completed)
 
 ### Step 2: Content Pages & Showcase Data (Completed C2)
 
 -   **Goal:** Implement the informational sections and the project data layer.
+-   **Outcome:** The portfolio is data-driven and ready to host the new app. (Completed)
+
+### Step 3: Sciverse - Phase 1: Kinematics Engine (Cycle 4/5)
+
+*Refined based on Artifact A9.*
+
+-   **Goal:** Establish the Matter.js physics core and visualization tools.
 -   **Tasks:**
-    1.  **Home & About:** (Completed C1)
-    2.  **Project Data:** Create `projectsData.ts` to store portfolio entries. (Completed)
-    3.  **Project Card:** Refactor the Showcase page to use reusable card components. (Completed)
-    4.  **Routing:** Add a sub-route for the Science App (`/projects/science-lab`). (Completed)
--   **Outcome:** The portfolio is data-driven and ready to host the new app.
+    1.  **Physics Core:** Install `matter-js` and create the `PhysicsEngine` component (React wrapper).
+    2.  **SSAL:** Implement the `SimState` hook to extract data from the engine loop.
+    3.  **Visualization:** Build the `VectorOverlay` component to draw $\vec{v}$ and $\vec{a}$ arrows.
+    4.  **Graphing:** Implement a real-time chart (using Recharts or similar) for Velocity-Time data.
+    5.  **Lab 1:** Build "The Projectile Cannon" (Kinematics Lab).
+-   **Outcome:** A functioning physics playground where users can spawn objects and see vectors/graphs.
 
-### Step 3: "Sciverse" (Physics Dialog Series) (Active C3)
+### Step 4: Sciverse - Phase 2: Dynamics & Dialog (Cycle 6+)
 
--   **Goal:** Build the interactive Socratic physics environment.
+-   **Goal:** Implement the "Forces & Motion" module with the Socratic Guide.
 -   **Tasks:**
-    1.  **Architecture:** Design the `DialogEngine` hook and `SimStore`.
-    2.  **Layout:** Implement the Split-Screen layout (Simulation vs. Dialog).
-    3.  **Content:** Implement the "Forces & Motion" script (Artifact A8) as a JSON structure.
-    4.  **Components:** Build `ChatMessage`, `ChoiceContainer`, and `PhysicsCanvas`.
-    5.  **Integration:** Wire the "Push" button in the canvas to trigger the next node in the dialog.
--   **Outcome:** A functional MVP of the Sciverse Physics module.
+    1.  **Interactors:** Create UI controls for Mass, Applied Force, and Friction.
+    2.  **Dialog Engine:** Build the `ChatInterface` and the logic to parse Script Nodes.
+    3.  **Integration:** Connect the Dialog Engine to the SSAL (Dialog triggers Sim changes; Sim results unlock Dialog nodes).
+    4.  **Content:** Port the "Forces & Motion" script (A8) into the system.
+-   **Outcome:** The MVP "Module 01" is complete and playable.
 
-### Step 4: Contact & Polish
+### Step 5: Contact & Polish
 
 -   **Goal:** Finalize the user journey and prepare for launch.
 -   **Tasks:**
@@ -572,90 +566,89 @@ We will use a central `SciverseStore` (Context or Zustand) to bridge the two wor
 </file_artifact>
 
 <file path="src/Artifacts/A7-Sciverse-Design.md">
-# Artifact A7: Sciverse Design - Physics Dialog Series
-# Date Created: C3
+# Artifact A7: Sciverse Design & Architecture
+# Date Created: C2
 # Author: AI Model & Curator
+# Updated on: C4 (Integrate Matter.js and SSAL Architecture)
 
 - **Key/Value for A0:**
-- **Description:** Design and architecture for "Sciverse", a Socratic dialog-based science learning environment.
-- **Tags:** documentation, design, sciverse, physics, cycle 3
+- **Description:** Design and architecture for "Sciverse," a Socratic physics learning environment.
+- **Tags:** documentation, design, sciverse, physics, architecture, cycle 4
 
 ## 1. Project Overview
 
 **Project Name:** Sciverse
-**Concept:** A "Scientific Metaverse" of micro-learning modules. Sciverse moves beyond static text or video lectures by using a **Socratic Dialog Engine**. The system acts as a tutor (inspired by Khanmigo), guiding the user through physics concepts using questions, predictions, and interactive experiments.
+**Concept:** An interactive, browser-based physics learning environment aligned with AP Physics 1. It combines high-fidelity simulation with a "Socratic Dialog Engine" that guides students through inquiry-based learning.
 
-**Core Philosophy:** "Don't tell me the answer; help me find it."
+**Core Loop:**
+1.  **Prompt:** Mentor AI poses a scenario (e.g., "How does mass affect acceleration?").
+2.  **Predict:** Student makes a hypothesis.
+3.  **Experiment:** Student manipulates the simulation (Sim).
+4.  **Observe:** Student analyzes real-time data (Graphs/Vectors).
+5.  **Explain:** Student concludes the rule, verified by the Mentor.
 
-## 2. The Learning Experience (User Journey)
+## 2. Technical Architecture
 
-### Phase 1: The Hook (Context)
-The user enters a specific "Universe" (Module), e.g., **Newton's Playground**.
--   **Visual:** A car sitting on a flat track.
--   **Dialog:** "Welcome to the lab. Look at this car. If I give it a quick push and let go, what will happen to its speed as it rolls along this frictionless track?"
+The system is composed of three distinct layers: The **Physics Engine**, the **Abstraction Layer**, and the **Dialog Engine**.
 
-### Phase 2: The Prediction (Hypothesis)
-The user must commit to an answer before seeing the result.
--   **Interaction:** User selects from options:
-    A) It will slow down.
-    B) It will speed up.
-    C) It will stay the same speed.
--   **Socratic Response (if wrong):** If user picks A: "Interesting intuition. usually, things do slow down. But what usually causes things to slow down in the real world?" -> (Friction). "Exactly. But this track is *frictionless*."
+### 2.1. Layer 1: The Physics Engine (Matter.js)
+We will use **Matter.js** as the core physics kernel. It provides robust 2D rigid body dynamics, collision detection, and constraint solving.
+-   **Why Matter.js?** Standardizing on a library ensures accurate handling of collisions and forces, preventing "home-brewed physics" errors that could confuse learners.
+-   **Rendering:** We will use a custom React-based renderer (drawing to HTML5 Canvas) to allow for educational overlays (vectors, labels) on top of the Matter.js world.
 
-### Phase 3: The Experiment (Validation)
-The dialog unlocks a simulation control.
--   **Action:** "Go ahead. Push the 'Apply Force' button and watch the velocity graph."
--   **Observation:** The car moves at a constant speed. The graph is a flat horizontal line.
+### 2.2. Layer 2: SimState Abstraction Layer (SSAL)
+The SSAL is the critical bridge between the high-frequency physics loop (60fps) and the low-frequency UI/Dialog logic.
 
-### Phase 4: The Synthesis (Conclusion)
-The system asks the user to formulate the rule.
--   **Dialog:** "So, if no forces are acting on it (friction or push), what does the motion do?"
--   **User Input:** "It stays constant."
--   **System:** "Precisely. This is Newton's First Law."
+**Responsibility:**
+1.  **Extraction:** Runs every frame to extract `position`, `velocity`, `force` from Matter.js bodies.
+2.  **Normalization:** Converts engine units to "Educational Units" (e.g., pixels to meters).
+3.  **Exposure:** Provides a stable `useSimState()` hook for React components (UI overlays, graphs).
+4.  **Snapshot:** Generates a JSON payload of the *current state* when requested by the Dialog Engine.
 
-## 3. Technical Architecture
-
-### 3.1. The Layout
-The screen is split into two primary panes (mobile-responsive):
-1.  **The "Lab Bench" (Left/Top):** The visual simulation area. Contains the canvas/SVG elements and interactive controls (sliders, buttons).
-2.  **The "Comms Link" (Right/Bottom):** The chat interface. Displays the history of the conversation and the current input options.
-
-### 3.2. The Dialog Engine (Data Structure)
-The conversation is a directed graph.
-
+**SSAL Data Structure:**
 ```typescript
-// See src/features/sciverse/types.ts for full implementation
-interface DialogNode {
-    id: string;
-    speaker: 'AI' | 'User';
-    content: string; // The text to display
-    options?: DialogOption[]; // If it's a question
-    action?: string; // Trigger a simulation event (e.g., 'START_SIMULATION')
+interface SimStateSnapshot {
+    timestamp: number;
+    objects: {
+        id: string;
+        mass: number;
+        velocity: Vector2D;
+        acceleration: Vector2D;
+        netForce: Vector2D;
+    }[];
+    system: {
+        totalKineticEnergy: number;
+        totalMomentum: Vector2D;
+        frictionCoeff: number;
+        isPaused: boolean;
+    };
 }
 ```
 
-### 3.3. The Physics Engine
-For "Newton's Playground", we need a simple 1D kinematic engine.
--   **State:** `position (x)`, `velocity (v)`, `acceleration (a)`, `time (t)`.
--   **Loop:** A standard `useAnimationFrame` loop updating state based on $\Delta t$.
--   **Interactivity:** User inputs modify `a` (Force) or `v` (Initial Push).
+### 2.3. Layer 3: The Dialog Engine (Scripted Socratic Logic)
+For the Portfolio MVP, we will implement a **Deterministic Finite Automaton (DFA)** (a Directed Graph of script nodes) that mimics the behavior of an AI tutor.
 
-## 4. Content Syllabus: Module 1 - Newton's Playground
+-   **Why Scripted?** Ensures 100% pedagogical accuracy and allows the project to be hosted statically (no backend required).
+-   **AI-Ready:** The architecture is designed such that the "Script Interpreter" can be replaced by an "LLM Client" in the future without changing the UI or Physics layers. The script nodes effectively act as a pre-cached "Chain of Thought".
 
-### Topic 1.1: Inertia (The Hovercraft)
--   **Scenario:** A hovercraft on ice.
--   **Goal:** Understand that $F_{net} = 0 \implies \Delta v = 0$.
--   **Activity:** Try to make the hovercraft stop without using brakes (impossible on infinite ice).
+## 3. User Interface Design
 
-### Topic 1.2: Acceleration (The Rocket Car)
--   **Scenario:** A car with a rocket booster.
--   **Goal:** Understand that Constant Force $\implies$ Constant Acceleration $\neq$ Constant Velocity.
--   **Activity:** User controls the throttle. They must reach a target distance and stop. (Teaches that you must decelerate to stop).
+### 3.1. The "Lab Bench" (Simulation View)
+-   **Canvas:** The main play area.
+-   **Vector Overlay:** A transparent layer rendering arrows for $\vec{v}$ (Green), $\vec{a}$ (Yellow), and $\vec{F}_{net}$ (Red).
+-   **Control Panel:** Sliders for Input Variables (Mass, Force, Friction).
+-   **Graphing Monitor:** A draggable/minimizable window showing $x-t$ or $v-t$ charts.
 
-## 5. Visual Identity
--   **Theme:** "Hard Sci-Fi Interface".
--   **Colors:** Deep Space Blue (`slate-950`), Holographic Cyan (`cyan-400`), Warning Orange (`orange-500`).
--   **Typography:** Monospace headers (data), Sans-serif body (dialog).
+### 3.2. The "Comms Link" (Dialog View)
+-   A chat interface resembling a messaging app.
+-   Displays text, images, and "Choice Chips" for user responses.
+-   **Interactivity:** Some choices trigger Simulation Actions (e.g., "Let me run the test" -> Unlocks the 'Play' button).
+
+## 4. Implementation Strategy (Aligned with A9)
+
+1.  **Phase 1 (Kinematics):** Build the Matter.js wrapper and the Vector Overlay system.
+2.  **Phase 2 (Dynamics):** Implement the Force interactors and the Friction logic.
+3.  **Phase 3 (Content):** Encode the "Forces & Motion" script (A8) into the Dialog Engine format.
 </file_artifact>
 
 <file path="src/Artifacts/A8-Sciverse-Physics-Module-01.md">
@@ -721,6 +714,85 @@ For "Newton's Playground", we need a simple 1D kinematic engine.
 *   **Mentor:** "Test your hypothesis. Set Friction to 0 and Push."
 
 *(Script continues through Acceleration (F=ma) concepts)*
+</file_artifact>
+
+<file path="src/Artifacts/A9-Sciverse-Curriculum-Roadmap.md">
+# Artifact A9: Sciverse Curriculum & Technical Roadmap
+# Date Created: C4
+# Author: AI Model & Curator
+
+- **Key/Value for A0:**
+- **Description:** A comprehensive roadmap mapping AP Physics 1 standards to Sciverse technical implementation phases.
+- **Tags:** documentation, roadmap, curriculum, physics, sciverse
+
+## 1. Overview & Pedagogical Strategy
+
+This document outlines the curriculum roadmap for **Sciverse**, ensuring alignment with **AP Physics 1 / NGSS standards**. The pedagogical approach is **Adaptive Experiential Learning (AEL)**, utilizing a "Predict-Observe-Explain" cycle driven by a Socratic Dialog Engine.
+
+### Core Philosophy
+1.  **Visual First:** Concepts (Vectors, Graphs) must be visually represented in real-time.
+2.  **Inquiry Driven:** Students manipulate variables to discover laws, rather than verifying them.
+3.  **Misconception Targeted:** Specific labs are designed to trigger and correct common misconceptions (e.g., "Force is needed to sustain motion").
+
+## 2. Curriculum Modules & Phased Implementation
+
+The curriculum is divided into three sequential modules. Implementation will follow this sequence to build technical complexity incrementally.
+
+### Phase 1: Kinematics (The Language of Motion)
+**Goal:** Establish the simulation engine, vector visualization, and graphing capabilities.
+
+*   **Topic 1.1: 1D Motion & Graphing**
+    *   **Concept:** Position ($x$), Velocity ($v$), Acceleration ($a$).
+    *   **Lab:** "The Graph Matcher". User controls a car to match a target $v-t$ graph.
+    *   **Tech Requirement:** Real-time charting ($x(t), v(t)$), Matter.js bodies constrained to 1 axis.
+    
+*   **Topic 1.2: 2D Motion & Vectors**
+    *   **Concept:** Vector decomposition, independence of $x$ and $y$ axes.
+    *   **Lab:** "The Projectile Cannon".
+    *   **Learning Obj:** Adjust angle/velocity to hit a target. Observe that $v_x$ is constant while $v_y$ changes due to gravity.
+    *   **Tech Requirement:** Vector overlays (arrows showing components), Trail rendering.
+
+### Phase 2: Dynamics (The Cause of Motion)
+**Goal:** Implement Force interactions, Friction models, and Free Body Diagrams (FBD).
+
+*   **Topic 2.1: Newton's Second Law ($F=ma$)**
+    *   **Concept:** Net Force, Mass, Inertia.
+    *   **Lab:** "The Sliding Crate" (Module 01 MVP).
+    *   **Learning Obj:** Discover that $a \propto F$ and $a \propto 1/m$.
+    *   **Tech Requirement:** Variable mass, clickable forces, real-time FBD overlay.
+
+*   **Topic 2.2: Friction ($\mu_s$ vs $\mu_k$)**
+    *   **Concept:** Static vs. Kinetic friction thresholds.
+    *   **Lab:** "The Sticky Floor".
+    *   **Learning Obj:** Observe that $F_{applied}$ must exceed $\mu_s N$ to start motion, then drops to $\mu_k N$.
+    *   **Tech Requirement:** Custom friction logic in Matter.js loop (Matter.js default friction is simplified; may need custom constraint).
+
+### Phase 3: Conservation Laws (System Rules)
+**Goal:** Implement multi-body interactions and global system state tracking.
+
+*   **Topic 3.1: Linear Momentum & Collisions**
+    *   **Concept:** Conservation of Momentum ($p$), Elasticity ($e$).
+    *   **Lab:** "Collision Carts".
+    *   **Learning Obj:** Verify $\Sigma p_i = \Sigma p_f$ in elastic and inelastic collisions.
+    *   **Tech Requirement:** Multi-body collision handling, restitution control ($e=0$ to $1$).
+
+## 3. Technical Deliverables Timeline
+
+| Phase | Technical Feature | Pedagogical Deliverable |
+| :--- | :--- | :--- |
+| **P1** | **Matter.js Integration**<br>SimState Abstraction Layer (SSAL)<br>Vector Arrow Components<br>Real-time Graphing | **Kinematics Lab**<br>Interactive Graphing Activity |
+| **P2** | **Force Interactors**<br>Click-and-drag force application<br>Free Body Diagram (FBD) Overlay<br>Friction State Logic | **Dynamics Lab**<br>Force & Motion Dialog Script |
+| **P3** | **Global State Tracking**<br>System-wide Energy/Momentum calculation<br>Restitution (Bounciness) Sliders | **Collision Lab**<br>Momentum Conservation Dialog |
+
+## 4. Assessment Strategy (The Socratic Engine)
+
+The **Dialog Engine** will act as the "Verification Layer". It does not simply check if an answer is "Correct".
+
+1.  **Input:** User answers a multiple-choice question OR alters the simulation state (e.g., "Set friction to 0").
+2.  **Context:** The engine reads the `SSAL` (e.g., `SimState.current.friction`).
+3.  **Response:**
+    *   *If Correct:* "Excellent. You observed the velocity remained constant." -> Unlocks next tool.
+    *   *If Incorrect:* "Not quite. Look at the Velocity Graph. Is the slope changing?" -> Highlights the graph.
 </file_artifact>
 
 <file path="src/Artifacts/DCE_README.md">
@@ -1155,6 +1227,7 @@ export const ScienceLab = () => {
 /**
  * Sciverse Type Definitions
  * Defines the core data structures for the Socratic Dialog Engine and Physics Modules.
+ * Updated C4: To support SSAL (SimState Abstraction Layer)
  */
 
 // --- Dialog Engine Types ---
@@ -1166,60 +1239,73 @@ export interface DialogOption {
     label: string;
     nextNodeId: string; // The ID of the node this option leads to
     sentiment?: 'positive' | 'neutral' | 'negative'; // For UI styling
+    // New: Action to perform on the Simulation when this option is selected
+    simAction?: {
+        type: 'SET_FRICTION' | 'APPLY_FORCE' | 'RESET_SCENE' | 'UNLOCK_CONTROL';
+        payload?: any;
+    };
 }
 
 export interface DialogNode {
     id: string;
     speaker: SpeakerType;
     content: string; // Markdown supported text
-    
-    // If present, the user must choose an option to proceed
     options?: DialogOption[];
     
-    // If present, the system waits for a specific simulation state before proceeding
-    // e.g., "WAIT_FOR_SIM_COMPLETE"
-    requiredTrigger?: string;
+    // Conditions to auto-advance the dialog based on SimState
+    // e.g., "Wait until velocity > 0"
+    completionCondition?: {
+        variable: keyof OutputVariables;
+        operator: '>' | '<' | '==' | '!=';
+        value: number;
+    };
     
-    // Actions to execute when this node is entered
-    // e.g., "ENABLE_SIMULATION_CONTROLS", "SET_GRAVITY_ZERO"
-    onEnterAction?: string; 
-    
-    // The next node if no options are present (linear flow)
     nextNodeId?: string;
 }
 
-export interface DialogScript {
-    id: string;
-    title: string;
-    initialNodeId: string;
-    nodes: Record<string, DialogNode>; // Normalized state for O(1) lookup
-}
-
-// --- Physics Engine Types ---
+// --- Physics Engine Types (SSAL) ---
 
 export interface Vector2D {
     x: number;
     y: number;
 }
 
-export interface PhysicsObject {
-    id: string;
-    position: Vector2D;
-    velocity: Vector2D;
-    acceleration: Vector2D;
-    mass: number;
-    color: string;
-    type: 'particle' | 'box' | 'static';
+// 1. Input Variables (User Controlled)
+export interface InputVariables {
+    appliedForceVector: Vector2D; // Force applied by user
+    mass: number; // Mass of the primary object
+    frictionCoeff: {
+        static: number;
+        kinetic: number;
+    };
+    gravity: Vector2D; // Usually {x:0, y:9.8}
+    elasticity: number; // 0 to 1
 }
 
-export interface SimulationState {
-    isPlaying: boolean;
-    time: number;
-    objects: PhysicsObject[];
-    globalConfig: {
-        gravity: Vector2D;
-        friction: number;
-    };
+// 2. State Variables (Internal Engine State)
+export interface StateVariables {
+    position: Vector2D;
+    velocity: Vector2D;
+    angularVelocity: number;
+    isSleeping: boolean; // Optimization flag from Matter.js
+}
+
+// 3. Output Variables (Calculated/Observed for Analysis)
+export interface OutputVariables {
+    time: number; // Simulation time elapsed
+    netForceVector: Vector2D;
+    accelerationVector: Vector2D;
+    kineticEnergy: number;
+    momentumVector: Vector2D;
+}
+
+// The Unified Snapshot passed to the Dialog Engine
+export interface SimStateSnapshot {
+    timestamp: number;
+    inputs: InputVariables;
+    outputs: OutputVariables;
+    // For MVP, we assume a single primary object for analysis
+    primaryObject: StateVariables; 
 }
 </file_artifact>
 
