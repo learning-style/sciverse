@@ -1,7 +1,7 @@
 # Artifact A1: Project Vision and Goals
 # Date Created: C0
 # Author: AI Model & Curator
-# Updated on: C2 (Included Science App details)
+# Updated on: C3 (Pivot to Sciverse Physics Dialogs)
 
 - **Key/Value for A0:**
 - **Description:** Defines the core vision and phased goals for the Citizen Architect Portfolio.
@@ -27,23 +27,23 @@ The goal of this phase is to establish the technical groundwork and the primary 
     -   Build the **About Me** page detailing professional summary and skills.
 -   **Outcome:** A deployable, responsive website with navigation and core identity pages.
 
-### Phase 2: The Showcase & "The Inquiry Engine"
+### Phase 2: The Showcase & "Sciverse"
 
-This phase focuses on the heart of the portfolio: the projects.
+This phase focuses on the heart of the portfolio: the projects and the flagship interactive experience.
 -   **Core Functionality:**
     -   Design and implement the **Project Showcase** component.
     -   Create a data structure to manage project metadata (title, description, tech stack, links).
-    -   **Flagship Project: "The Inquiry Engine":** A science learning environment.
-        -   Implement a Socratic questioning engine.
-        -   Create a "Lab" interface within the portfolio.
-        -   Demonstrate complex state management and interactive logic.
--   **Outcome:** Users can browse projects and interact deeply with the embedded Science App.
+    -   **Flagship Project: "Sciverse":** An interactive physics learning environment.
+        -   **Socratic Dialog Engine:** A conversational interface that acts as a tutor, guiding users through concepts rather than lecturing.
+        -   **Hands-on Simulation:** Interactive physics playgrounds (using Canvas/Matter.js or custom logic) where users run experiments.
+        -   **Integrated Quizzes:** Knowledge checks seamlessly woven into the dialogue.
+-   **Outcome:** Users can browse projects and engage with "Sciverse" to learn physics concepts through doing and discussing.
 
 ### Phase 3: Connection & Polish
 
 This phase rounds out the user experience and provides means for engagement.
 -   **Core Functionality:**
-    -   Build the **Contact** page with social links (GitHub, LinkedIn) and a contact form (or direct email link).
+    -   Build the **Contact** page with social links (GitHub, LinkedIn) and a functional form.
     -   Implement subtle animations and transitions to enhance the "modern" feel.
     -   Conduct accessibility (a11y) and performance audits.
 -   **Outcome:** A polished, professional, and fully functional portfolio ready for public launch.

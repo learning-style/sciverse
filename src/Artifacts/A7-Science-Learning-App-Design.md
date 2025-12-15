@@ -1,84 +1,93 @@
-# Artifact A7: Science Learning App Design - "The Inquiry Engine"
+# Artifact A7: Sciverse Design & Architecture
 # Date Created: C2
 # Author: AI Model & Curator
+# Updated on: C3 (Rebrand to Sciverse, Focus on Physics Dialogs)
 
 - **Key/Value for A0:**
-- **Description:** Design and architecture for the science learning environment project.
-- **Tags:** documentation, design, science-app, cycle 2
+- **Description:** Design and architecture for "Sciverse," a Socratic physics learning environment.
+- **Tags:** documentation, design, sciverse, physics, cycle 3
 
 ## 1. Project Overview
 
-**Project Name:** The Inquiry Engine
-**Concept:** A gamified, interactive science learning environment that moves beyond rote memorization. It focuses on **directional thinking**—guiding the learner from observation to hypothesis to conclusion using a digital Socratic method.
+**Project Name:** Sciverse
+**Concept:** A physics learning environment inspired by the Socratic method. Unlike traditional learning apps that "tell" and then "test," Sciverse "converses" and "experiments."
 
-## 2. Educational Mechanics (Ways to "Prompt Directional Thinking")
+**Core Loop:**
+1.  **Prompt:** The "Mentor" (AI/Script) poses a problem or asks for a prediction.
+2.  **Activity:** The user interacts with a simulation (e.g., applies force to a block).
+3.  **Observation:** The user observes the outcome (e.g., the block slows down).
+4.  **Dialogue:** The Mentor asks "Why?" offering options that guide the user to deduce the physical law (e.g., Friction).
 
-To address your goal of prompting directional thinking, we will implement the following mechanics:
+## 2. Educational Mechanics
 
-### Mechanic A: The Socratic Branching Logic
-Instead of a simple "Correct/Incorrect" feedback loop, the app uses a decision tree.
--   **Scenario:** A plant is wilting.
--   **User Action:** User selects "Add more water."
--   **System Response:** (If incorrect) "The soil is already damp. If the roots are wet but the leaves are dry, what part of the plant might be blocked?"
--   **Directional Gain:** Forces the user to trace the path of water transport (Xylem) rather than guessing inputs.
+### Mechanic A: The Socratic Dialog Engine
+A chat-based interface where the system plays the role of a curious lab partner or mentor.
+-   **Structure:** Directed Graph (Nodes and Edges).
+-   **Interaction:** Users select responses from pre-defined options.
+-   **Feedback:** Wrong answers lead to "Correction Branches" where the Mentor offers a hint or a counter-example, rather than a red "X".
 
-### Mechanic B: Predict-Observe-Explain (POE)
-This is a classic science education model adapted for the web.
-1.  **Predict:** The user adjusts sliders on a simulation (e.g., "Gravity: 2x") and predicts the trajectory of a ball.
-2.  **Observe:** The user hits "Run Experiment". The simulation plays out.
-3.  **Explain:** The user must select the principle that explains the difference between their prediction and the observation.
+### Mechanic B: The "Lab Bench" (Simulation)
+A visual area where physics concepts come to life.
+-   **Tech:** HTML5 Canvas or CSS-based animations for the MVP.
+-   **Input:** Sliders (Force, Mass, Friction), Buttons (Push, Reset).
+-   **Feedback:** Real-time visual updates (velocity vectors, movement).
 
-### Mechanic C: Concept Mapping (The "Knowledge Node" System)
-Users build the logic themselves.
--   **Interface:** A canvas with drifting nodes (terms like "Photosynthesis", "Sunlight", "Glucose").
--   **Action:** User connects nodes with directional arrows.
--   **Validation:** The system validates the *relationship* (e.g., "Sunlight" -> [provides energy for] -> "Photosynthesis").
+### Mechanic C: Integrated Assessment
+Quizzes are not separate "tests" but part of the conversation.
+-   **Checkpoint:** "So, if we double the mass, what happens to acceleration?"
+-   **Reward:** Correctly deducing a concept unlocks the next module or simulation tool.
 
-## 3. Selected MVP Feature: "The Cell Lab"
+## 3. MVP Scope: "Module 01 - Forces & Motion"
 
-For the initial build, we will focus on **Mechanic A (Socratic Logic)** within a **Cell Biology** context.
+The initial build will focus on **Newton's Second Law and Friction**.
 
--   **Goal:** Diagnose why a virtual cell is failing to produce energy.
--   **Environment:** A dark-mode dashboard representing a microscope view and a data hud.
--   **Interaction:**
-    1.  **Alert:** "Energy levels dropping."
-    2.  **Inquiry:** User clicks on organelles to inspect.
-    3.  **Dialogue:** "Mitochondria inspection: Structure looks folded, but raw materials are missing."
-    4.  **Decision:** User must direct "Glucose" or "Oxygen" to the organelle.
+### The Layout
+The screen is split into two primary panes (responsive: stacked on mobile, side-by-side on desktop):
+1.  **Left/Top:** The **Simulation Viewport**. Shows the object, vectors, and controls.
+2.  **Right/Bottom:** The **Dialog Terminal**. Shows the conversation history and user response options.
 
 ## 4. Technical Architecture
 
-### State Management (The Game Loop)
-We will use a finite state machine (using `useReducer` or similar) to manage the learning flow.
+### 4.1. Data Models
 
+**The Dialog Node:**
 ```typescript
-type GameState = 'OBSERVING' | 'HYPOTHESIZING' | 'EXPERIMENTING' | 'ANALYZING' | 'COMPLETE';
-```
-
-### Data Structure (The Scenario)
-Scenarios will be defined as JSON objects to allow easy creation of new "levels".
-
-```typescript
-interface Scenario {
+interface DialogNode {
     id: string;
-    title: string;
-    initialState: string; // Description of the problem
-    nodes: {
-        id: string;
-        prompt: string;
-        options: {
-            label: string;
-            nextNodeId: string;
-            feedback: string; // The "directional thinking" hint
-        }[];
+    speaker: 'MENTOR' | 'SYSTEM';
+    text: string; // The query or statement
+    options: {
+        text: string; // The user's potential reply
+        nextNodeId: string; // Where this reply leads
+        action?: string; // Optional: Trigger a simulation event (e.g., 'ENABLE_SLIDER_MASS')
     }[];
 }
 ```
 
-## 5. UI/UX Design
+**The Simulation State:**
+```typescript
+interface SimState {
+    isRunning: boolean;
+    objects: {
+        id: string;
+        mass: number;
+        velocity: number;
+        frictionCoeff: number;
+    }[];
+    // Flags to unlock UI elements based on dialog progress
+    controlsUnlocked: {
+        forceSlider: boolean;
+        frictionSlider: boolean;
+    };
+}
+```
 
--   **Aesthetic:** "Futuristic Lab Interface." Dark slate backgrounds, neon blue/green accents (Tailwind `cyan-500`, `emerald-500`).
--   **Layout:**
-    -   **Left Panel:** Visual simulation / Image.
-    -   **Right Panel:** The "Inquiry Terminal" (Chat/Prompt interface).
-    -   **Bottom Bar:** Inventory/Tools.
+### 4.2. State Management
+We will use a central `SciverseStore` (Context or Zustand) to bridge the two worlds.
+-   The **Dialog Engine** reads the `SimState` to validate answers (e.g., "Did the user actually run the experiment?").
+-   The **Dialog Engine** dispatches actions to update `SimState` (e.g., "Unlock the Friction Slider").
+
+## 5. Visual Identity
+-   **Theme:** "Quantum Dark". Deep slate backgrounds, neon cyan/purple accents.
+-   **Typography:** Monospaced fonts for data/dialogue (JetBrains Mono/Fira Code), Sans-serif for headers.
+-   **Motion:** Smooth, physics-based transitions.

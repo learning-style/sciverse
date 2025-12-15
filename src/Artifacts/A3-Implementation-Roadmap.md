@@ -1,11 +1,11 @@
 # Artifact A3: Implementation Roadmap
 # Date Created: C0
 # Author: AI Model & Curator
-# Updated on: C2 (Add Science App steps)
+# Updated on: C3 (Align with Sciverse Plan)
 
 - **Key/Value for A0:**
 - **Description:** A step-by-step roadmap for implementing the portfolio.
-- **Tags:** documentation, roadmap, planning, cycle 0, cycle 1, cycle 2
+- **Tags:** documentation, roadmap, planning, cycle 0, cycle 1, cycle 2, cycle 3
 
 ## 1. Overview & Goal
 
@@ -23,25 +23,26 @@ This document provides a clear, step-by-step roadmap for the implementation of t
     4.  **Layout:** Create the global `Layout` component containing the Navigation Bar and Footer. (Completed)
 -   **Outcome:** A navigating skeleton of the website with the correct styling foundation.
 
-### Step 2: Content Pages & Showcase Data (Active C2)
+### Step 2: Content Pages & Showcase Data (Completed C2)
 
 -   **Goal:** Implement the informational sections and the project data layer.
 -   **Tasks:**
     1.  **Home & About:** (Completed C1)
-    2.  **Project Data:** Create `projectsData.ts` to store portfolio entries.
-    3.  **Project Card:** Refactor the Showcase page to use reusable card components.
-    4.  **Routing:** Add a sub-route for the Science App (`/projects/science-lab`).
+    2.  **Project Data:** Create `projectsData.ts` to store portfolio entries. (Completed)
+    3.  **Project Card:** Refactor the Showcase page to use reusable card components. (Completed)
+    4.  **Routing:** Add a sub-route for the Science App (`/projects/science-lab`). (Completed)
 -   **Outcome:** The portfolio is data-driven and ready to host the new app.
 
-### Step 3: "The Inquiry Engine" (Science App)
+### Step 3: "Sciverse" (Physics Dialog Series) (Active C3)
 
--   **Goal:** Build the interactive science learning environment.
+-   **Goal:** Build the interactive Socratic physics environment.
 -   **Tasks:**
-    1.  **Layout:** Create the "Lab Dashboard" layout (sidebar, main view, console).
-    2.  **Engine:** Build the State Machine hook to handle Question -> Response -> Branching logic.
-    3.  **Content:** Write the JSON scenario for "The Cell Lab".
-    4.  **UI:** Implement the visual components for the "Inquiry Terminal".
--   **Outcome:** A fully functional, embedded educational app within the portfolio.
+    1.  **Architecture:** Design the `DialogEngine` hook and `SimStore`.
+    2.  **Layout:** Implement the Split-Screen layout (Simulation vs. Dialog).
+    3.  **Content:** Implement the "Forces & Motion" script (Artifact A8) as a JSON structure.
+    4.  **Components:** Build `ChatMessage`, `ChoiceContainer`, and `PhysicsCanvas`.
+    5.  **Integration:** Wire the "Push" button in the canvas to trigger the next node in the dialog.
+-   **Outcome:** A functional MVP of the Sciverse Physics module.
 
 ### Step 4: Contact & Polish
 

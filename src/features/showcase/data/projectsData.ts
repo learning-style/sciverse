@@ -2,12 +2,12 @@ import { Project } from '@/types';
 
 export const projectsData: Project[] = [
     {
-        id: 'science-lab',
-        title: 'The Inquiry Engine',
-        description: 'An interactive science learning environment that uses Socratic branching logic to guide learners through complex biological concepts. Features directional thinking prompts and a gamified "Lab" interface.',
+        id: 'sciverse',
+        title: 'Sciverse: Physics Dialogs',
+        description: 'An interactive physics learning environment inspired by the Socratic method. Features a "Mentor" AI that guides learners through concepts like Forces and Motion using interactive simulations and directed questioning.',
         imageUrl: '/api/placeholder/400/300', // We will replace this with a real screenshot later
-        technologies: ['React', 'TypeScript', 'State Machines', 'Tailwind CSS'],
-        demoUrl: '/projects/science-lab', // Internal route
+        technologies: ['React', 'TypeScript', 'Socratic Logic', 'Interactive Canvas'],
+        demoUrl: '/projects/science-lab', // Keeping route same for now, or could change to /sciverse
         repoUrl: 'https://github.com/rkpingali-stack',
         featured: true
     },
