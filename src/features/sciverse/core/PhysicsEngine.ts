@@ -22,18 +22,10 @@ export class PhysicsEngine {
         // 1. Initialize Matter.js Engine
         this.engine = Matter.Engine.create();
         
-        // Matter.js gravity is 1 unit by default (approx 1px/tick^2). 
-        // We set scale to 0 to implement custom gravity force, OR we strictly map scale.
-        // For simple Kinematics, let's use Matter's built-in gravity but scaled.
-        // Matter.js defaults: y=1, scale=0.001.
-        // We want 9.8 m/s^2.
-        // 1m = 100px. 9.8m = 980px.
-        // Per second. Ticks are 60hz.
-        // acceleration = 980 px/s^2.
-        // Matter applies gravity as a force F = m * g.
+        // Default Gravity
         this.engine.gravity.x = 0;
-        this.engine.gravity.y = 1; // Direction only
-        this.engine.gravity.scale = 0.001; // Default matter scale
+        this.engine.gravity.y = 1; 
+        this.engine.gravity.scale = 0.001; 
 
         // 2. Initialize Runner (Fixed Time Step)
         this.runner = Matter.Runner.create({
@@ -121,11 +113,6 @@ export class PhysicsEngine {
         const entitySnapshots: PhysicsEntity[] = [];
 
         this.entities.forEach(({ body, label }, id) => {
-            // Calculate approximate acceleration from force (F=ma -> a=F/m)
-            // Note: Matter.js forces are cleared every step, so this captures instantaneous force applied this step
-            // For gravity, Matter applies it internally, it might not show up in 'force' property unless we manually applied it.
-            // Kinematics visualization often needs velocity primarily.
-            
             entitySnapshots.push({
                 id,
                 label,
@@ -157,61 +144,35 @@ export class PhysicsEngine {
 
     // --- Interaction Methods ---
 
-    public spawnProjectile(x: number, y: number, velocity: Vector2D) {
-        // Clear old projectiles
-        const entitiesToRemove: string[] = [];
-        this.entities.forEach((val, key) => {
-            if (val.label === 'Projectile') entitiesToRemove.push(key);
-        });
-        entitiesToRemove.forEach(key => {
-            const ent = this.entities.get(key);
-            if (ent) Matter.Composite.remove(this.engine.world, ent.body);
-            this.entities.delete(key);
-        });
+    public setGravity(x: number, y: number) {
+        this.engine.gravity.x = x;
+        this.engine.gravity.y = y;
+    }
 
-        const id = `proj_${Date.now()}`;
+    public spawnProjectile(x: number, y: number, velocity: Vector2D, label: string = 'Projectile') {
+        // Unique ID based on timestamp
+        const id = `${label}_${Date.now()}`;
+        
         const body = Matter.Bodies.circle(
             toPixels(x), 
             toPixels(y), 
-            20, // 20px radius
+            20, 
             { 
-                label: 'Projectile',
-                restitution: 0.8, // Bouncy
-                friction: 0.001,
-                frictionAir: 0.0, // Reduced for projectile motion logic
-                render: { fillStyle: '#4f46e5' } // Indigo-600
+                label: label,
+                restitution: 0.8,
+                friction: 0.00, // No friction for Kinematics Lesson
+                frictionAir: 0.0,
+                render: { fillStyle: '#4f46e5' }
             }
         );
 
-        // Set Initial Velocity (m/s -> px/tick)
-        // Velocity in Matter is per-step. 
-        // 10 m/s = 1000 px/s. 
-        // 60 ticks/s. -> 16.6 px/tick.
-        // But Matter.Body.setVelocity takes instantaneous velocity.
-        // Wait, Matter velocity is pixels per step? No, documentation says "velocity".
-        // It is roughly pixels/step.
-        const pxPerSecX = toPixels(velocity.x);
-        const pxPerSecY = toPixels(velocity.y);
-        
-        // Adjust for timestep
-        // v_matter = v_px_s * (1/60)?
-        // Actually, let's keep it simple. If we set velocity 10, it moves 10px next frame.
-        // So Velocity 10 = 600px/s.
-        // We want V_m_s. 
-        // V_px_s = V_m_s * 100.
-        // V_matter = V_px_s / 60 (approx, depending on runner delta).
-        // Let's implement a utility for this later, for now we assume input is "Engine Units".
-        // Correction: We will treat input velocity as m/s and convert.
-        
-        const velocityScale = 1 / 60 * 1.5; // Tuning factor for "feel"
-        
         Matter.Body.setVelocity(body, { 
-            x: toPixels(velocity.x) * (1/60), // Convert m/s to px/tick 
+            x: toPixels(velocity.x) * (1/60), 
             y: toPixels(velocity.y) * (1/60) 
         });
 
         Matter.Composite.add(this.engine.world, body);
-        this.entities.set(id, { body, label: 'Projectile' });
+        this.entities.set(id, { body, label });
     }
 
     private addBoundaries(width: number, height: number) {

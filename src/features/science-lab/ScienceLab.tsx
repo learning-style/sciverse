@@ -1,18 +1,59 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { KinematicsLab } from '@/features/sciverse/labs/KinematicsLab';
+import { ArrowLeft, BookOpen, FlaskConical } from 'lucide-react';
+import { SciverseProvider } from '../sciverse/context/SciverseContext';
+import { KinematicsLab } from '../sciverse/labs/KinematicsLab';
+import { KinematicsLesson } from '../sciverse/modules/KinematicsLesson';
 
 export const ScienceLab = () => {
+    const [mode, setMode] = useState<'lesson' | 'lab'>('lesson');
+
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
-            {/* Global Nav Back Link (Optional, could be part of layout) */}
-            <div className="absolute top-4 left-4 z-50 lg:hidden">
-                <Link to="/showcase" className="p-2 bg-slate-900 rounded-full border border-slate-800 text-slate-400">
-                    <ArrowLeft size={20} />
-                </Link>
+        <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-mono">
+            {/* Global Nav & Mode Switcher */}
+            <div className="h-16 border-b border-slate-800 bg-slate-900/80 backdrop-blur z-20 flex items-center justify-between px-4">
+                <div className="flex items-center gap-4">
+                    <Link to="/showcase" className="p-2 hover:bg-slate-800 rounded-full text-slate-400 transition-colors">
+                        <ArrowLeft size={20} />
+                    </Link>
+                    <div className="hidden md:block">
+                        <span className="font-bold text-lg tracking-tight">SCI<span className="text-indigo-500">VERSE</span></span>
+                    </div>
+                </div>
+
+                {/* Mode Toggles */}
+                <div className="flex bg-slate-900 p-1 rounded-lg border border-slate-800">
+                    <button 
+                        onClick={() => setMode('lesson')}
+                        className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
+                            mode === 'lesson' 
+                                ? 'bg-indigo-600 text-white shadow-lg' 
+                                : 'text-slate-400 hover:text-white'
+                        }`}
+                    >
+                        <BookOpen size={14} /> Lesson
+                    </button>
+                    <button 
+                        onClick={() => setMode('lab')}
+                        className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
+                            mode === 'lab' 
+                                ? 'bg-emerald-600 text-white shadow-lg' 
+                                : 'text-slate-400 hover:text-white'
+                        }`}
+                    >
+                        <FlaskConical size={14} /> Lab
+                    </button>
+                </div>
+
+                <div className="w-8"></div> {/* Spacer for balance */}
             </div>
 
-            <KinematicsLab />
+            {/* Main Content Area */}
+            <div className="flex-grow relative overflow-hidden">
+                <SciverseProvider>
+                    {mode === 'lesson' ? <KinematicsLesson /> : <KinematicsLab />}
+                </SciverseProvider>
+            </div>
         </div>
     );
 };

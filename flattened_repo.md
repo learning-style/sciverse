@@ -1,10 +1,10 @@
 <!--
   File: flattened_repo.md
   Source Directory: c:\monorepo\portfolio-website1
-  Date Generated: 2025-12-16T17:26:08.686Z
+  Date Generated: 2025-12-16T23:39:23.046Z
   ---
-  Total Files: 47
-  Approx. Tokens: 52049
+  Total Files: 51
+  Approx. Tokens: 55574
 -->
 
 <!-- Top 10 Text Files by Token Count -->
@@ -12,12 +12,12 @@
 2. External_Context\Physics Simulation Project Enhancement Plan.md (8113 tokens)
 3. External_Context\Forces-Motion.md (6749 tokens)
 4. External_Context\Enhancing Physics Education Website.md (6714 tokens)
-5. src\features\sciverse\core\PhysicsEngine.ts (2093 tokens)
-6. src\features\sciverse\labs\KinematicsLab.tsx (1687 tokens)
-7. src\Artifacts\A9-Sciverse-Curriculum-Roadmap.md (1146 tokens)
-8. src\features\sciverse\lib\engine-core.ts (1086 tokens)
-9. src\Artifacts\A7-Sciverse-Design.md (1065 tokens)
-10. src\features\sciverse\components\PhysicsViewport.tsx (1056 tokens)
+5. src\features\sciverse\labs\KinematicsLab.tsx (1687 tokens)
+6. src\features\sciverse\core\PhysicsEngine.ts (1524 tokens)
+7. src\features\sciverse\content\kinematicsScript.ts (1174 tokens)
+8. src\Artifacts\A9-Sciverse-Curriculum-Roadmap.md (1146 tokens)
+9. src\features\sciverse\lib\engine-core.ts (1086 tokens)
+10. src\Artifacts\A7-Sciverse-Design.md (1065 tokens)
 
 <!-- Full File List -->
 1. src\App.tsx - Lines: 28 - Chars: 1052 - Tokens: 263
@@ -25,7 +25,7 @@
 3. src\main.tsx - Lines: 10 - Chars: 231 - Tokens: 58
 4. src\Artifacts\A1-Project-Vision-and-Goals.md - Lines: 40 - Chars: 2277 - Tokens: 570
 5. src\Artifacts\A2-Technical-Scaffolding-Plan.md - Lines: 60 - Chars: 2719 - Tokens: 680
-6. src\Artifacts\A3-Implementation-Roadmap.md - Lines: 54 - Chars: 2811 - Tokens: 703
+6. src\Artifacts\A3-Implementation-Roadmap.md - Lines: 56 - Chars: 2695 - Tokens: 674
 7. src\Artifacts\A4-Developer-Environment-Setup-Guide.md - Lines: 55 - Chars: 1487 - Tokens: 372
 8. src\Artifacts\A5-GitHub-Repository-Setup-Guide.md - Lines: 64 - Chars: 1712 - Tokens: 428
 9. src\Artifacts\A6-Development-and-Testing-Guide.md - Lines: 44 - Chars: 1414 - Tokens: 354
@@ -40,33 +40,37 @@
 18. src\features\about\AboutPage.tsx - Lines: 23 - Chars: 1132 - Tokens: 283
 19. src\features\contact\ContactPage.tsx - Lines: 44 - Chars: 2303 - Tokens: 576
 20. src\features\home\HomePage.tsx - Lines: 29 - Chars: 1360 - Tokens: 340
-21. src\features\science-lab\ScienceLab.tsx - Lines: 18 - Chars: 689 - Tokens: 173
+21. src\features\science-lab\ScienceLab.tsx - Lines: 59 - Chars: 2829 - Tokens: 708
 22. src\features\sciverse\components\GraphMonitor.tsx - Lines: 77 - Chars: 3397 - Tokens: 850
 23. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 101 - Chars: 4222 - Tokens: 1056
-24. src\features\sciverse\config\physicsConfig.ts - Lines: 27 - Chars: 876 - Tokens: 219
-25. src\features\sciverse\core\PhysicsEngine.test.ts - Lines: 57 - Chars: 2364 - Tokens: 591
-26. src\features\sciverse\core\PhysicsEngine.ts - Lines: 224 - Chars: 8370 - Tokens: 2093
-27. src\features\sciverse\hooks\useMatter.ts - Lines: 36 - Chars: 1090 - Tokens: 273
-28. src\features\sciverse\hooks\usePhysics.ts - Lines: 46 - Chars: 1454 - Tokens: 364
-29. src\features\sciverse\labs\KinematicsLab.tsx - Lines: 135 - Chars: 6746 - Tokens: 1687
-30. src\features\sciverse\lib\engine-core.ts - Lines: 127 - Chars: 4341 - Tokens: 1086
-31. src\features\sciverse\types.ts - Lines: 71 - Chars: 1723 - Tokens: 431
-32. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
-33. src\features\showcase\data\projectsData.ts - Lines: 23 - Chars: 1186 - Tokens: 297
-34. src\features\showcase\ShowcasePage.tsx - Lines: 21 - Chars: 847 - Tokens: 212
-35. src\types\index.ts - Lines: 17 - Chars: 299 - Tokens: 75
-36. .gitignore - Lines: 18 - Chars: 107 - Tokens: 27
-37. package.json - Lines: 35 - Chars: 899 - Tokens: 225
-38. tsconfig.json - Lines: 31 - Chars: 726 - Tokens: 182
-39. tsconfig.node.json - Lines: 10 - Chars: 212 - Tokens: 53
-40. vite.config.ts - Lines: 13 - Chars: 269 - Tokens: 68
-41. index.html - Lines: 13 - Chars: 375 - Tokens: 94
-42. postcss.config.js - Lines: 6 - Chars: 79 - Tokens: 20
-43. tailwind.config.js - Lines: 16 - Chars: 354 - Tokens: 89
-44. External_Context\Enhancing Physics Education Website (1).md - Lines: 230 - Chars: 35813 - Tokens: 8954
-45. External_Context\Enhancing Physics Education Website.md - Lines: 179 - Chars: 26856 - Tokens: 6714
-46. External_Context\Forces-Motion.md - Lines: 555 - Chars: 26994 - Tokens: 6749
-47. External_Context\Physics Simulation Project Enhancement Plan.md - Lines: 250 - Chars: 32452 - Tokens: 8113
+24. src\features\sciverse\components\SocraticChat.tsx - Lines: 89 - Chars: 3902 - Tokens: 976
+25. src\features\sciverse\config\physicsConfig.ts - Lines: 27 - Chars: 876 - Tokens: 219
+26. src\features\sciverse\content\kinematicsScript.ts - Lines: 116 - Chars: 4696 - Tokens: 1174
+27. src\features\sciverse\core\PhysicsEngine.test.ts - Lines: 57 - Chars: 2364 - Tokens: 591
+28. src\features\sciverse\core\PhysicsEngine.ts - Lines: 185 - Chars: 6093 - Tokens: 1524
+29. src\features\sciverse\hooks\useDialogEngine.ts - Lines: 49 - Chars: 1985 - Tokens: 497
+30. src\features\sciverse\hooks\useMatter.ts - Lines: 36 - Chars: 1090 - Tokens: 273
+31. src\features\sciverse\hooks\usePhysics.ts - Lines: 46 - Chars: 1454 - Tokens: 364
+32. src\features\sciverse\labs\KinematicsLab.tsx - Lines: 135 - Chars: 6746 - Tokens: 1687
+33. src\features\sciverse\lib\engine-core.ts - Lines: 127 - Chars: 4341 - Tokens: 1086
+34. src\features\sciverse\modules\KinematicsLesson.tsx - Lines: 88 - Chars: 3760 - Tokens: 940
+35. src\features\sciverse\types.ts - Lines: 71 - Chars: 1723 - Tokens: 431
+36. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
+37. src\features\showcase\data\projectsData.ts - Lines: 23 - Chars: 1186 - Tokens: 297
+38. src\features\showcase\ShowcasePage.tsx - Lines: 21 - Chars: 847 - Tokens: 212
+39. src\types\index.ts - Lines: 17 - Chars: 299 - Tokens: 75
+40. .gitignore - Lines: 18 - Chars: 107 - Tokens: 27
+41. package.json - Lines: 36 - Chars: 901 - Tokens: 226
+42. tsconfig.json - Lines: 31 - Chars: 726 - Tokens: 182
+43. tsconfig.node.json - Lines: 10 - Chars: 212 - Tokens: 53
+44. vite.config.ts - Lines: 13 - Chars: 269 - Tokens: 68
+45. index.html - Lines: 13 - Chars: 375 - Tokens: 94
+46. postcss.config.js - Lines: 6 - Chars: 79 - Tokens: 20
+47. tailwind.config.js - Lines: 16 - Chars: 354 - Tokens: 89
+48. External_Context\Enhancing Physics Education Website (1).md - Lines: 230 - Chars: 35813 - Tokens: 8954
+49. External_Context\Enhancing Physics Education Website.md - Lines: 179 - Chars: 26856 - Tokens: 6714
+50. External_Context\Forces-Motion.md - Lines: 555 - Chars: 26994 - Tokens: 6749
+51. External_Context\Physics Simulation Project Enhancement Plan.md - Lines: 250 - Chars: 32452 - Tokens: 8113
 
 <file path="src/App.tsx">
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -251,11 +255,11 @@ src/
 # Artifact A3: Implementation Roadmap
 # Date Created: C0
 # Author: AI Model & Curator
-# Updated on: C6 (Phase 1 Implemented)
+# Updated on: C7 (Add Socratic Lesson Step)
 
 - **Key/Value for A0:**
 - **Description:** A step-by-step roadmap for implementing the portfolio.
-- **Tags:** documentation, roadmap, planning, cycle 0, cycle 1, cycle 2, cycle 4, cycle 6
+- **Tags:** documentation, roadmap, planning, cycle 0, cycle 1, cycle 2, cycle 4, cycle 6, cycle 7
 
 ## 1. Overview & Goal
 
@@ -273,24 +277,26 @@ This document provides a clear, step-by-step roadmap for the implementation of t
 -   **Goal:** Implement the informational sections and the project data layer.
 -   **Outcome:** The portfolio is data-driven and ready to host the new app. (Completed)
 
-### Step 3: Sciverse - Phase 1: Kinematics Engine (Completed C6)
+### Step 3: Sciverse - Phase 1: Kinematics Engine (Active C7)
 
--   **Goal:** Establish the Matter.js physics core and visualization tools.
+*Refined based on Artifact A9 and A10.*
+
+-   **Goal:** Establish the Matter.js physics core, SSAL, and testing infrastructure.
 -   **Tasks:**
-    1.  **Physics Core:** Install `matter-js` and create the `PhysicsEngine` component (React wrapper). (Completed)
-    2.  **SSAL:** Implement the `SimState` hook to extract data from the engine loop. (Completed)
-    3.  **Visualization:** Build the `VectorOverlay` component to draw $\vec{v}$ and $\vec{a}$ arrows. (Completed)
-    4.  **Graphing:** Implement a real-time chart (using Recharts) for Velocity-Time data. (Completed)
-    5.  **Lab 1:** Build "The Projectile Cannon" (Kinematics Lab). (Completed)
--   **Outcome:** A functioning physics playground where users can spawn objects and see vectors/graphs.
+    1.  **Physics Core:** Install `matter-js` and create the `PhysicsEngine` component. (Completed)
+    2.  **SSAL:** Implement the `SimState` hook. (Completed)
+    3.  **Visualization:** Build the `VectorOverlay` and Graphing components. (Completed)
+    4.  **Lesson 1:** Build the **"Kinematics Socratic Lesson"** (Interactive Concept Explainer). (Active)
+    5.  **Lab 1:** Build "The Projectile Cannon" (Sandbox Lab). (Pending Integration)
+-   **Outcome:** A functioning physics playground with a guided lesson module.
 
-### Step 4: Sciverse - Phase 2: Dynamics & Dialog (Next: Cycle 7+)
+### Step 4: Sciverse - Phase 2: Dynamics & Dialog (Upcoming)
 
 -   **Goal:** Implement the "Forces & Motion" module with the Socratic Guide.
 -   **Tasks:**
     1.  **Interactors:** Create UI controls for Mass, Applied Force, and Friction.
-    2.  **Dialog Engine:** Build the `ChatInterface` and the logic to parse Script Nodes.
-    3.  **Integration:** Connect the Dialog Engine to the SSAL (Dialog triggers Sim changes; Sim results unlock Dialog nodes).
+    2.  **Dialog Engine:** Enhance the engine for non-linear branching.
+    3.  **Integration:** Connect Dialog Engine to SSAL triggers.
     4.  **Content:** Port the "Forces & Motion" script (A8) into the system.
 -   **Outcome:** The MVP "Module 01" is complete and playable.
 
@@ -1090,21 +1096,62 @@ export const HomePage = () => {
 </file_artifact>
 
 <file path="src/features/science-lab/ScienceLab.tsx">
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { KinematicsLab } from '@/features/sciverse/labs/KinematicsLab';
+import { ArrowLeft, BookOpen, FlaskConical } from 'lucide-react';
+import { SciverseProvider } from '../sciverse/context/SciverseContext';
+import { KinematicsLab } from '../sciverse/labs/KinematicsLab';
+import { KinematicsLesson } from '../sciverse/modules/KinematicsLesson';
 
 export const ScienceLab = () => {
+    const [mode, setMode] = useState<'lesson' | 'lab'>('lesson');
+
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
-            {/* Global Nav Back Link (Optional, could be part of layout) */}
-            <div className="absolute top-4 left-4 z-50 lg:hidden">
-                <Link to="/showcase" className="p-2 bg-slate-900 rounded-full border border-slate-800 text-slate-400">
-                    <ArrowLeft size={20} />
-                </Link>
+        <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-mono">
+            {/* Global Nav & Mode Switcher */}
+            <div className="h-16 border-b border-slate-800 bg-slate-900/80 backdrop-blur z-20 flex items-center justify-between px-4">
+                <div className="flex items-center gap-4">
+                    <Link to="/showcase" className="p-2 hover:bg-slate-800 rounded-full text-slate-400 transition-colors">
+                        <ArrowLeft size={20} />
+                    </Link>
+                    <div className="hidden md:block">
+                        <span className="font-bold text-lg tracking-tight">SCI<span className="text-indigo-500">VERSE</span></span>
+                    </div>
+                </div>
+
+                {/* Mode Toggles */}
+                <div className="flex bg-slate-900 p-1 rounded-lg border border-slate-800">
+                    <button 
+                        onClick={() => setMode('lesson')}
+                        className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
+                            mode === 'lesson' 
+                                ? 'bg-indigo-600 text-white shadow-lg' 
+                                : 'text-slate-400 hover:text-white'
+                        }`}
+                    >
+                        <BookOpen size={14} /> Lesson
+                    </button>
+                    <button 
+                        onClick={() => setMode('lab')}
+                        className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
+                            mode === 'lab' 
+                                ? 'bg-emerald-600 text-white shadow-lg' 
+                                : 'text-slate-400 hover:text-white'
+                        }`}
+                    >
+                        <FlaskConical size={14} /> Lab
+                    </button>
+                </div>
+
+                <div className="w-8"></div> {/* Spacer for balance */}
             </div>
 
-            <KinematicsLab />
+            {/* Main Content Area */}
+            <div className="flex-grow relative overflow-hidden">
+                <SciverseProvider>
+                    {mode === 'lesson' ? <KinematicsLesson /> : <KinematicsLab />}
+                </SciverseProvider>
+            </div>
         </div>
     );
 };
@@ -1294,6 +1341,98 @@ const MetricRow = ({ label, value, unit, color }: { label: string, value: string
 );
 </file_artifact>
 
+<file path="src/features/sciverse/components/SocraticChat.tsx">
+import { useEffect, useRef } from 'react';
+import { DialogNode, DialogOption } from '../types';
+import { User, Cpu } from 'lucide-react';
+
+interface SocraticChatProps {
+    currentNode: DialogNode;
+    history: DialogNode[];
+    onOptionSelect: (option: DialogOption) => void;
+}
+
+export const SocraticChat = ({ currentNode, history, onOptionSelect }: SocraticChatProps) => {
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    // Auto-scroll to bottom
+    useEffect(() => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        }
+    }, [history, currentNode]);
+
+    return (
+        <div className="flex flex-col h-full bg-slate-950 border-t border-slate-800 lg:border-t-0 lg:border-l">
+            {/* Header */}
+            <div className="p-4 border-b border-slate-800 flex items-center gap-2 bg-slate-900/50 backdrop-blur-sm">
+                <Cpu size={18} className="text-indigo-400" />
+                <span className="font-bold text-sm text-slate-200 tracking-wide">MENTOR LINK</span>
+                <span className="ml-auto w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+            </div>
+
+            {/* Message Stream */}
+            <div ref={scrollRef} className="flex-grow overflow-y-auto p-4 space-y-6">
+                {/* History */}
+                {history.map((node, i) => (
+                    <ChatMessage key={i} node={node} isHistory />
+                ))}
+                
+                {/* Current Node */}
+                <ChatMessage node={currentNode} />
+            </div>
+
+            {/* Input Area (Options) */}
+            <div className="p-4 bg-slate-900 border-t border-slate-800">
+                <div className="grid grid-cols-1 gap-2">
+                    {currentNode.options?.map((opt) => (
+                        <button
+                            key={opt.id}
+                            onClick={() => onOptionSelect(opt)}
+                            className="w-full text-left px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-indigo-500 hover:text-indigo-200 transition-all text-sm text-slate-300 group"
+                        >
+                            <span className="font-mono text-indigo-500 mr-2 opacity-50 group-hover:opacity-100">{`>`}</span>
+                            {opt.label}
+                        </button>
+                    ))}
+                    {(!currentNode.options || currentNode.options.length === 0) && (
+                        <div className="text-center text-slate-500 text-xs italic">
+                            [End of Lesson Module]
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const ChatMessage = ({ node, isHistory = false }: { node: DialogNode, isHistory?: boolean }) => {
+    const isAI = node.speaker === 'AI';
+    
+    return (
+        <div className={`flex gap-3 ${!isAI ? 'flex-row-reverse' : ''} ${isHistory ? 'opacity-60' : ''}`}>
+            {/* Avatar */}
+            <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center border ${
+                isAI 
+                    ? 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400' 
+                    : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+            }`}>
+                {isAI ? <Cpu size={14} /> : <User size={14} />}
+            </div>
+
+            {/* Bubble */}
+            <div className={`max-w-[80%] rounded-2xl p-4 text-sm leading-relaxed border ${
+                isAI 
+                    ? 'bg-slate-900 border-slate-800 text-slate-200 rounded-tl-none' 
+                    : 'bg-indigo-600/10 border-indigo-500/20 text-indigo-100 rounded-tr-none'
+            }`}>
+                <div className="whitespace-pre-wrap">{node.content}</div>
+            </div>
+        </div>
+    );
+};
+</file_artifact>
+
 <file path="src/features/sciverse/config/physicsConfig.ts">
 /**
  * Physics Configuration Constants
@@ -1322,6 +1461,125 @@ export const PHYSICS_CONFIG = {
 
 export const toPixels = (meters: number) => meters * PHYSICS_CONFIG.METER_TO_PIXEL;
 export const toMeters = (pixels: number) => pixels / PHYSICS_CONFIG.METER_TO_PIXEL;
+</file_artifact>
+
+<file path="src/features/sciverse/content/kinematicsScript.ts">
+import { DialogNode } from '../types';
+
+/**
+ * Script: Kinematics Module 1 - Position & Velocity
+ * A Socratic dialogue to introduce the concepts before the interactive lab.
+ */
+export const kinematicsScript: Record<string, DialogNode> = {
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome, Cadet. Before we handle the launch codes, we need to understand *Motion* itself. \n\nIf you close your eyes, how do you know where you are?",
+        options: [
+            { id: 'opt1', label: "I can feel it.", nextNodeId: 'feel_it' },
+            { id: 'opt2', label: "I don't.", nextNodeId: 'reference_point' }
+        ]
+    },
+    'feel_it': {
+        id: 'feel_it',
+        speaker: 'AI',
+        content: "You might feel acceleration, but you can't feel *position*. To know where you are, you need a **Reference Point**.",
+        nextNodeId: 'reference_point'
+    },
+    'reference_point': {
+        id: 'reference_point',
+        speaker: 'AI',
+        content: "In Physics, we call this the **Origin (0,0)**. Look at the lab bench. I've marked the Origin.",
+        options: [
+            { 
+                id: 'spawn_origin', 
+                label: "Show me the Origin.", 
+                nextNodeId: 'define_position',
+                simAction: { 
+                    type: 'SPAWN_OBJECT', 
+                    payload: { label: 'Origin', position: { x: 6, y: 4 }, velocity: { x: 0, y: 0 } } 
+                }
+            }
+        ]
+    },
+    'define_position': {
+        id: 'define_position',
+        speaker: 'AI',
+        content: "That dot represents **Position**. It tells us *where* an object is relative to zero. \n\nNow, what happens if we change position over time?",
+        options: [
+            { id: 'movement', label: "We move.", nextNodeId: 'define_velocity' },
+            { id: 'teleport', label: "We teleport?", nextNodeId: 'define_velocity' }
+        ]
+    },
+    'define_velocity': {
+        id: 'define_velocity',
+        speaker: 'AI',
+        content: "Exactly. The rate at which position changes is called **Velocity**. \n\nLet's spawn a probe with a velocity of **5 m/s** to the right.",
+        options: [
+            { 
+                id: 'spawn_probe', 
+                label: "Launch Probe", 
+                nextNodeId: 'observe_velocity',
+                simAction: {
+                    type: 'SPAWN_OBJECT',
+                    payload: { label: 'Probe', position: { x: 1, y: 4 }, velocity: { x: 5, y: 0 } }
+                }
+            }
+        ]
+    },
+    'observe_velocity': {
+        id: 'observe_velocity',
+        speaker: 'AI',
+        content: "Observe the green arrow. That vector represents Velocity. \n\nNotice that because there is no gravity or friction here, the velocity remains **constant**.",
+        options: [
+            { id: 'why_constant', label: "Why constant?", nextNodeId: 'inertia_hint' },
+            { id: 'next', label: "Got it.", nextNodeId: 'intro_gravity' }
+        ]
+    },
+    'inertia_hint': {
+        id: 'inertia_hint',
+        speaker: 'AI',
+        content: "Newton's First Law: An object in motion stays in motion unless acted upon by a force. Here, no forces are acting on the probe.",
+        nextNodeId: 'intro_gravity'
+    },
+    'intro_gravity': {
+        id: 'intro_gravity',
+        speaker: 'AI',
+        content: "Now, let's turn on **Gravity**. How will this affect our probe's motion?",
+        options: [
+            { id: 'slow_down', label: "It will slow down.", nextNodeId: 'gravity_correction' },
+            { id: 'fall', label: "It will fall.", nextNodeId: 'demo_gravity' }
+        ]
+    },
+    'gravity_correction': {
+        id: 'gravity_correction',
+        speaker: 'AI',
+        content: "Not quite. Gravity pulls *down*, perpendicular to the motion. It won't slow the horizontal speed, but it will change the vertical speed.",
+        nextNodeId: 'demo_gravity'
+    },
+    'demo_gravity': {
+        id: 'demo_gravity',
+        speaker: 'AI',
+        content: "Let's enable Gravity and fire again. Watch the Green Arrow (Velocity) change direction.",
+        options: [
+            { 
+                id: 'fire_gravity', 
+                label: "Fire with Gravity", 
+                nextNodeId: 'end_lesson',
+                simAction: {
+                    type: 'RESET_AND_GRAVITY', // Custom action type we'll handle
+                    payload: { force: { x: 0, y: 1 } } // Gravity vector
+                } 
+            }
+        ]
+    },
+    'end_lesson': {
+        id: 'end_lesson',
+        speaker: 'AI',
+        content: "Excellent. You've seen Position (Static) and Velocity (Dynamic). You are ready for the Lab.",
+        options: []
+    }
+};
 </file_artifact>
 
 <file path="src/features/sciverse/core/PhysicsEngine.test.ts">
@@ -1409,18 +1667,10 @@ export class PhysicsEngine {
         // 1. Initialize Matter.js Engine
         this.engine = Matter.Engine.create();
         
-        // Matter.js gravity is 1 unit by default (approx 1px/tick^2). 
-        // We set scale to 0 to implement custom gravity force, OR we strictly map scale.
-        // For simple Kinematics, let's use Matter's built-in gravity but scaled.
-        // Matter.js defaults: y=1, scale=0.001.
-        // We want 9.8 m/s^2.
-        // 1m = 100px. 9.8m = 980px.
-        // Per second. Ticks are 60hz.
-        // acceleration = 980 px/s^2.
-        // Matter applies gravity as a force F = m * g.
+        // Default Gravity
         this.engine.gravity.x = 0;
-        this.engine.gravity.y = 1; // Direction only
-        this.engine.gravity.scale = 0.001; // Default matter scale
+        this.engine.gravity.y = 1; 
+        this.engine.gravity.scale = 0.001; 
 
         // 2. Initialize Runner (Fixed Time Step)
         this.runner = Matter.Runner.create({
@@ -1508,11 +1758,6 @@ export class PhysicsEngine {
         const entitySnapshots: PhysicsEntity[] = [];
 
         this.entities.forEach(({ body, label }, id) => {
-            // Calculate approximate acceleration from force (F=ma -> a=F/m)
-            // Note: Matter.js forces are cleared every step, so this captures instantaneous force applied this step
-            // For gravity, Matter applies it internally, it might not show up in 'force' property unless we manually applied it.
-            // Kinematics visualization often needs velocity primarily.
-            
             entitySnapshots.push({
                 id,
                 label,
@@ -1544,61 +1789,35 @@ export class PhysicsEngine {
 
     // --- Interaction Methods ---
 
-    public spawnProjectile(x: number, y: number, velocity: Vector2D) {
-        // Clear old projectiles
-        const entitiesToRemove: string[] = [];
-        this.entities.forEach((val, key) => {
-            if (val.label === 'Projectile') entitiesToRemove.push(key);
-        });
-        entitiesToRemove.forEach(key => {
-            const ent = this.entities.get(key);
-            if (ent) Matter.Composite.remove(this.engine.world, ent.body);
-            this.entities.delete(key);
-        });
+    public setGravity(x: number, y: number) {
+        this.engine.gravity.x = x;
+        this.engine.gravity.y = y;
+    }
 
-        const id = `proj_${Date.now()}`;
+    public spawnProjectile(x: number, y: number, velocity: Vector2D, label: string = 'Projectile') {
+        // Unique ID based on timestamp
+        const id = `${label}_${Date.now()}`;
+        
         const body = Matter.Bodies.circle(
             toPixels(x), 
             toPixels(y), 
-            20, // 20px radius
+            20, 
             { 
-                label: 'Projectile',
-                restitution: 0.8, // Bouncy
-                friction: 0.001,
-                frictionAir: 0.0, // Reduced for projectile motion logic
-                render: { fillStyle: '#4f46e5' } // Indigo-600
+                label: label,
+                restitution: 0.8,
+                friction: 0.00, // No friction for Kinematics Lesson
+                frictionAir: 0.0,
+                render: { fillStyle: '#4f46e5' }
             }
         );
 
-        // Set Initial Velocity (m/s -> px/tick)
-        // Velocity in Matter is per-step. 
-        // 10 m/s = 1000 px/s. 
-        // 60 ticks/s. -> 16.6 px/tick.
-        // But Matter.Body.setVelocity takes instantaneous velocity.
-        // Wait, Matter velocity is pixels per step? No, documentation says "velocity".
-        // It is roughly pixels/step.
-        const pxPerSecX = toPixels(velocity.x);
-        const pxPerSecY = toPixels(velocity.y);
-        
-        // Adjust for timestep
-        // v_matter = v_px_s * (1/60)?
-        // Actually, let's keep it simple. If we set velocity 10, it moves 10px next frame.
-        // So Velocity 10 = 600px/s.
-        // We want V_m_s. 
-        // V_px_s = V_m_s * 100.
-        // V_matter = V_px_s / 60 (approx, depending on runner delta).
-        // Let's implement a utility for this later, for now we assume input is "Engine Units".
-        // Correction: We will treat input velocity as m/s and convert.
-        
-        const velocityScale = 1 / 60 * 1.5; // Tuning factor for "feel"
-        
         Matter.Body.setVelocity(body, { 
-            x: toPixels(velocity.x) * (1/60), // Convert m/s to px/tick 
+            x: toPixels(velocity.x) * (1/60), 
             y: toPixels(velocity.y) * (1/60) 
         });
 
         Matter.Composite.add(this.engine.world, body);
-        this.entities.set(id, { body, label: 'Projectile' });
+        this.entities.set(id, { body, label });
     }
 
     private addBoundaries(width: number, height: number) {
@@ -1609,6 +1828,58 @@ export class PhysicsEngine {
         Matter.Composite.add(this.engine.world, [ground, leftWall, rightWall]);
     }
 }
+</file_artifact>
+
+<file path="src/features/sciverse/hooks/useDialogEngine.ts">
+import { useState, useCallback } from 'react';
+import { DialogNode, DialogOption, SimAction } from '../types';
+import { kinematicsScript } from '../content/kinematicsScript';
+
+interface UseDialogEngineProps {
+    onSimAction: (action: SimAction) => void;
+}
+
+export const useDialogEngine = ({ onSimAction }: UseDialogEngineProps) => {
+    // Current active node
+    const [currentNode, setCurrentNode] = useState<DialogNode>(kinematicsScript['root']);
+    const [history, setHistory] = useState<DialogNode[]>([]);
+
+    const handleOptionSelect = useCallback((option: DialogOption) => {
+        // 1. Trigger Sim Action if present
+        if (option.simAction) {
+            onSimAction(option.simAction);
+        } 
+        // Hack for the custom gravity action in script
+        // In a real engine, we'd have a parser for this. 
+        // For MVP, we map specific IDs or extend the type.
+        // Let's assume standard SimAction covers most, but we can emit custom events.
+        if (option.id === 'fire_gravity') {
+             // We'll treat this as a generic SimAction in the parent handler
+             // The payload in script was pseudo-code, we need to ensure it matches types
+             onSimAction({ type: 'RESET' }); // Clear old
+             setTimeout(() => {
+                 onSimAction({ type: 'APPLY_FORCE', payload: { id: 'GRAVITY_ON', force: {x:0, y:1} } }); // Signal to enable gravity
+                 onSimAction({ 
+                     type: 'SPAWN_OBJECT', 
+                     payload: { label: 'Projectile', position: {x:1, y:4}, velocity: {x:10, y:0} } 
+                 });
+             }, 100);
+        }
+
+        // 2. Advance Dialog
+        const nextNode = kinematicsScript[option.nextNodeId];
+        if (nextNode) {
+            setHistory(prev => [...prev, currentNode]);
+            setCurrentNode(nextNode);
+        }
+    }, [currentNode, onSimAction]);
+
+    return {
+        currentNode,
+        history,
+        handleOptionSelect
+    };
+};
 </file_artifact>
 
 <file path="src/features/sciverse/hooks/useMatter.ts">
@@ -1967,6 +2238,97 @@ export class EngineCore {
 }
 </file_artifact>
 
+<file path="src/features/sciverse/modules/KinematicsLesson.tsx">
+import { useRef, useEffect } from 'react';
+import { PhysicsViewport } from '../components/PhysicsViewport';
+import { SocraticChat } from '../components/SocraticChat';
+import { useDialogEngine } from '../hooks/useDialogEngine';
+import { useSciverse } from '../context/SciverseContext';
+import { SimAction } from '../types';
+
+export const KinematicsLesson = () => {
+    const { engine } = useSciverse();
+    
+    // Setup Engine state when mounting this lesson
+    useEffect(() => {
+        if (engine) {
+            engine.reset();
+            // Default to 0 gravity for the first part of the lesson
+            engine.setGravity(0, 0); 
+        }
+    }, [engine]);
+
+    const handleSimAction = (action: SimAction) => {
+        if (!engine) return;
+
+        switch (action.type) {
+            case 'SPAWN_OBJECT':
+                if (action.payload.position && action.payload.velocity) {
+                    engine.spawnProjectile(
+                        action.payload.position.x, 
+                        action.payload.position.y, 
+                        action.payload.velocity,
+                        action.payload.label || 'Object'
+                    );
+                }
+                break;
+            case 'RESET':
+                engine.reset();
+                engine.setGravity(0, 0);
+                break;
+            // Handling the special case from the hook where we passed a complex payload via multiple calls
+            // or we can handle the 'RESET_AND_GRAVITY' logic if we added it to types.
+            // For now, the hook handles the sequence of reset -> enable gravity -> spawn.
+            // We just need to handle the specific atomic actions.
+            case 'APPLY_FORCE':
+                // Used here as a signal to enable gravity
+                if (action.payload.id === 'GRAVITY_ON') {
+                    engine.setGravity(0, 1); // Enable normal gravity
+                }
+                break;
+        }
+    };
+
+    const { currentNode, history, handleOptionSelect } = useDialogEngine({
+        onSimAction: handleSimAction
+    });
+
+    return (
+        <div className="flex flex-col h-full bg-slate-950 text-slate-100 overflow-hidden">
+            {/* Top Bar */}
+            <div className="h-14 border-b border-slate-800 bg-slate-900/50 flex items-center px-6 backdrop-blur-sm">
+                <span className="text-xs font-bold tracking-widest text-indigo-400 uppercase">Lesson 01: Kinematics</span>
+                <div className="mx-4 h-4 w-px bg-slate-800"></div>
+                <span className="text-sm text-slate-400">Concept: Position & Velocity</span>
+            </div>
+
+            <div className="flex-grow flex flex-col lg:flex-row overflow-hidden">
+                {/* Left: Simulation (Visualizer) */}
+                <div className="flex-grow relative min-h-[400px] lg:h-full bg-slate-900/50">
+                    <PhysicsViewport />
+                    
+                    {/* Overlay Tip */}
+                    <div className="absolute bottom-4 left-4 right-4 text-center pointer-events-none">
+                        <span className="px-3 py-1 bg-slate-950/80 rounded-full text-xs text-slate-500 border border-slate-800">
+                            Visualization Mode: Interactive
+                        </span>
+                    </div>
+                </div>
+
+                {/* Right: Socratic Chat */}
+                <div className="w-full lg:w-[400px] h-[50vh] lg:h-full flex-shrink-0 z-10 shadow-xl">
+                    <SocraticChat 
+                        currentNode={currentNode}
+                        history={history}
+                        onOptionSelect={handleOptionSelect}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
+</file_artifact>
+
 <file path="src/features/sciverse/types.ts">
 /**
  * Sciverse Type Definitions
@@ -2226,8 +2588,8 @@ prompt.md
     "postcss": "^8.4.32",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8",
-    "vitest": "^1.2.0"
+    "vite": "^7.3.0",
+    "vitest": "^4.0.16"
   }
 }
 </file_artifact>

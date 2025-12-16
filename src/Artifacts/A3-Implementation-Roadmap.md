@@ -1,11 +1,11 @@
 # Artifact A3: Implementation Roadmap
 # Date Created: C0
 # Author: AI Model & Curator
-# Updated on: C6 (Phase 1 Implemented)
+# Updated on: C7 (Add Socratic Lesson Step)
 
 - **Key/Value for A0:**
 - **Description:** A step-by-step roadmap for implementing the portfolio.
-- **Tags:** documentation, roadmap, planning, cycle 0, cycle 1, cycle 2, cycle 4, cycle 6
+- **Tags:** documentation, roadmap, planning, cycle 0, cycle 1, cycle 2, cycle 4, cycle 6, cycle 7
 
 ## 1. Overview & Goal
 
@@ -23,24 +23,26 @@ This document provides a clear, step-by-step roadmap for the implementation of t
 -   **Goal:** Implement the informational sections and the project data layer.
 -   **Outcome:** The portfolio is data-driven and ready to host the new app. (Completed)
 
-### Step 3: Sciverse - Phase 1: Kinematics Engine (Completed C6)
+### Step 3: Sciverse - Phase 1: Kinematics Engine (Active C7)
 
--   **Goal:** Establish the Matter.js physics core and visualization tools.
+*Refined based on Artifact A9 and A10.*
+
+-   **Goal:** Establish the Matter.js physics core, SSAL, and testing infrastructure.
 -   **Tasks:**
-    1.  **Physics Core:** Install `matter-js` and create the `PhysicsEngine` component (React wrapper). (Completed)
-    2.  **SSAL:** Implement the `SimState` hook to extract data from the engine loop. (Completed)
-    3.  **Visualization:** Build the `VectorOverlay` component to draw $\vec{v}$ and $\vec{a}$ arrows. (Completed)
-    4.  **Graphing:** Implement a real-time chart (using Recharts) for Velocity-Time data. (Completed)
-    5.  **Lab 1:** Build "The Projectile Cannon" (Kinematics Lab). (Completed)
--   **Outcome:** A functioning physics playground where users can spawn objects and see vectors/graphs.
+    1.  **Physics Core:** Install `matter-js` and create the `PhysicsEngine` component. (Completed)
+    2.  **SSAL:** Implement the `SimState` hook. (Completed)
+    3.  **Visualization:** Build the `VectorOverlay` and Graphing components. (Completed)
+    4.  **Lesson 1:** Build the **"Kinematics Socratic Lesson"** (Interactive Concept Explainer). (Active)
+    5.  **Lab 1:** Build "The Projectile Cannon" (Sandbox Lab). (Pending Integration)
+-   **Outcome:** A functioning physics playground with a guided lesson module.
 
-### Step 4: Sciverse - Phase 2: Dynamics & Dialog (Next: Cycle 7+)
+### Step 4: Sciverse - Phase 2: Dynamics & Dialog (Upcoming)
 
 -   **Goal:** Implement the "Forces & Motion" module with the Socratic Guide.
 -   **Tasks:**
     1.  **Interactors:** Create UI controls for Mass, Applied Force, and Friction.
-    2.  **Dialog Engine:** Build the `ChatInterface` and the logic to parse Script Nodes.
-    3.  **Integration:** Connect the Dialog Engine to the SSAL (Dialog triggers Sim changes; Sim results unlock Dialog nodes).
+    2.  **Dialog Engine:** Enhance the engine for non-linear branching.
+    3.  **Integration:** Connect Dialog Engine to SSAL triggers.
     4.  **Content:** Port the "Forces & Motion" script (A8) into the system.
 -   **Outcome:** The MVP "Module 01" is complete and playable.
 
