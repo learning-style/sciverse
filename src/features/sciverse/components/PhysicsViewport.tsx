@@ -1,91 +1,101 @@
-import { useEffect, useRef } from 'react';
-import { useMatter } from '../hooks/useMatter';
-import { Vector2D } from '../types';
+import { useEffect } from 'react';
+import { usePhysics } from '../hooks/usePhysics';
+import { PhysicsEngine } from '../core/PhysicsEngine';
+import { SimSnapshot } from '../types';
+import { toPixels } from '../config/physicsConfig';
 
 interface PhysicsViewportProps {
-    onInit?: (engine: any) => void;
-    simStateRef?: React.MutableRefObject<any>;
+    onInit?: (engine: PhysicsEngine) => void;
+    onSnapshot?: (snapshot: SimSnapshot) => void;
 }
 
-export const PhysicsViewport = ({ onInit, simStateRef }: PhysicsViewportProps) => {
-    const { containerRef, engine, simState } = useMatter();
+export const PhysicsViewport = ({ onInit, onSnapshot }: PhysicsViewportProps) => {
+    const { containerRef, canvasRef, engine, snapshot } = usePhysics();
 
-    // Bubble up the engine instance to parent if needed
     useEffect(() => {
         if (engine && onInit) {
             onInit(engine);
         }
     }, [engine, onInit]);
 
-    // Update parent's ref if provided (for Graphing component to read without re-renders)
     useEffect(() => {
-        if (simStateRef && simState) {
-            simStateRef.current = simState;
+        if (snapshot && onSnapshot) {
+            onSnapshot(snapshot);
         }
-    }, [simState, simStateRef]);
+    }, [snapshot, onSnapshot]);
 
-    // --- Overlay Rendering Helpers ---
-    // Scale: 1 meter = 1 unit? 
-    // Visualization factor for vectors
-    const VEC_SCALE = 5; 
+    const primaryEntity = snapshot?.entities.find(e => e.label === 'Projectile');
 
     return (
-        <div className="relative w-full h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-2xl">
-            {/* Matter.js Canvas Container */}
-            <div ref={containerRef} className="absolute inset-0" />
+        <div ref={containerRef} className="relative w-full h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-inner">
+            {/* Matter.js Canvas */}
+            <canvas ref={canvasRef} className="absolute inset-0 block" />
 
             {/* Vector Overlay Layer (SVG) */}
-            <svg className="absolute inset-0 pointer-events-none w-full h-full">
-                {simState?.primaryObject && (
+            <svg className="absolute inset-0 pointer-events-none w-full h-full overflow-visible">
+                <defs>
+                    <marker id="arrow-v" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#10b981" />
+                    </marker>
+                    <marker id="arrow-a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#f59e0b" />
+                    </marker>
+                </defs>
+
+                {primaryEntity && (
                     <>
                         {/* Velocity Vector (Green) */}
                         <VectorArrow 
-                            origin={simState.primaryObject.position}
-                            vector={simState.primaryObject.velocity}
-                            color="#10b981" // emerald-500
-                            scale={VEC_SCALE}
-                            label="v"
+                            origin={primaryEntity.position}
+                            vector={primaryEntity.velocity}
+                            color="#10b981"
+                            scale={20} // Visual scale factor
+                            marker="arrow-v"
                         />
-                        {/* Net Force / Accel Vector (Yellow) - If we had force data */}
                     </>
                 )}
             </svg>
 
-            {/* UI Overlay: Metrics */}
-            <div className="absolute top-4 left-4 flex flex-col gap-2">
-                <MetricBadge label="v_x" value={simState?.primaryObject.velocity.x.toFixed(2) ?? '0.00'} unit="m/s" />
-                <MetricBadge label="v_y" value={simState?.primaryObject.velocity.y.toFixed(2) ?? '0.00'} unit="m/s" />
+            {/* Live Metrics HUD */}
+            <div className="absolute top-4 left-4 flex flex-col gap-2 pointer-events-none">
+                {primaryEntity ? (
+                    <>
+                        <MetricRow label="Vx" value={primaryEntity.velocity.x.toFixed(2)} unit="m/s" color="text-emerald-400" />
+                        <MetricRow label="Vy" value={(-primaryEntity.velocity.y).toFixed(2)} unit="m/s" color="text-emerald-400" />
+                        <MetricRow label="Py" value={((8 - primaryEntity.position.y)).toFixed(2)} unit="m" color="text-slate-300" />
+                    </>
+                ) : (
+                    <span className="text-slate-500 text-xs uppercase tracking-wider">Ready to Fire</span>
+                )}
             </div>
         </div>
     );
 };
 
-// --- Sub-components ---
-
-const VectorArrow = ({ origin, vector, color, scale, label }: { origin: Vector2D, vector: Vector2D, color: string, scale: number, label: string }) => {
-    // Don't draw tiny vectors
+const VectorArrow = ({ origin, vector, color, scale, marker }: { origin: {x:number, y:number}, vector: {x:number, y:number}, color: string, scale: number, marker: string }) => {
+    // Only draw if magnitude is significant
     if (Math.abs(vector.x) < 0.1 && Math.abs(vector.y) < 0.1) return null;
 
-    const endX = origin.x + vector.x * scale;
-    const endY = origin.y + vector.y * scale;
+    const startX = toPixels(origin.x);
+    const startY = toPixels(origin.y);
+    const endX = startX + vector.x * scale;
+    const endY = startY + vector.y * scale;
 
     return (
-        <g>
-            <line x1={origin.x} y1={origin.y} x2={endX} y2={endY} stroke={color} strokeWidth="3" markerEnd={`url(#arrowhead-${label})`} />
-            <defs>
-                <marker id={`arrowhead-${label}`} markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                    <polygon points="0 0, 10 3.5, 0 7" fill={color} />
-                </marker>
-            </defs>
-            <text x={endX + 10} y={endY} fill={color} fontSize="12" fontWeight="bold">{label}</text>
-        </g>
+        <line 
+            x1={startX} y1={startY} 
+            x2={endX} y2={endY} 
+            stroke={color} 
+            strokeWidth="2" 
+            markerEnd={`url(#${marker})`} 
+        />
     );
 };
 
-const MetricBadge = ({ label, value, unit }: { label: string, value: string, unit: string }) => (
-    <div className="px-2 py-1 bg-slate-900/90 rounded border border-slate-700 text-xs text-slate-300 font-mono shadow-sm backdrop-blur-sm">
-        <span className="text-slate-500 mr-2">{label}:</span>
-        <span className="text-white font-bold">{value}</span>
-        <span className="text-slate-500 ml-1">{unit}</span>
+const MetricRow = ({ label, value, unit, color }: { label: string, value: string, unit: string, color: string }) => (
+    <div className="bg-slate-900/80 backdrop-blur px-3 py-1.5 rounded border border-slate-700/50 flex items-center gap-3 shadow-sm">
+        <span className="text-slate-500 font-mono text-xs font-bold w-4">{label}</span>
+        <span className={`font-mono text-sm ${color}`}>{value}</span>
+        <span className="text-slate-600 text-xs">{unit}</span>
     </div>
 );
