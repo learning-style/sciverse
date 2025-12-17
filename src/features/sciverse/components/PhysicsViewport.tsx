@@ -2,18 +2,27 @@ import { useSciverse } from '../context/SciverseContext';
 import { toPixels } from '../config/physicsConfig';
 
 export const PhysicsViewport = () => {
-    // Viewport now acts as a "View" component.
-    // It consumes the engine state and attaches the refs from the Context.
     const { containerRef, canvasRef, snapshot } = useSciverse();
 
     const primaryEntity = snapshot?.entities.find(e => e.label === 'Projectile');
+    const originEntity = snapshot?.entities.find(e => e.label === 'Origin');
 
     return (
         <div 
             ref={containerRef} 
             className="relative w-full h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-inner"
         >
-            {/* Matter.js Canvas (Attached via Context Ref) */}
+            {/* Background Grid */}
+            <svg className="absolute inset-0 pointer-events-none w-full h-full opacity-20" aria-hidden="true">
+                <defs>
+                    <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="currentColor" strokeWidth="1" className="text-slate-500" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+
+            {/* Matter.js Canvas */}
             <canvas ref={canvasRef} className="absolute inset-0 block" />
 
             {/* Vector Overlay Layer (SVG) */}
@@ -27,18 +36,23 @@ export const PhysicsViewport = () => {
                     </marker>
                 </defs>
 
+                {/* Explicit Origin Marker */}
+                {originEntity && (
+                    <g transform={`translate(${toPixels(originEntity.position.x)}, ${toPixels(originEntity.position.y)})`}>
+                        <circle r="6" fill="#ffffff" stroke="#3b82f6" strokeWidth="2" />
+                        <text x="10" y="4" fill="#94a3b8" fontSize="12" fontFamily="monospace">Origin (0,0)</text>
+                    </g>
+                )}
+
+                {/* Velocity Vector */}
                 {primaryEntity && (
-                    <>
-                        {/* Velocity Vector (Green) */}
-                        <VectorArrow 
-                            origin={primaryEntity.position}
-                            vector={primaryEntity.velocity}
-                            color="#10b981"
-                            scale={20} // Visual scale factor
-                            marker="arrow-v"
-                        />
-                        {/* We could add Acceleration Vector here in future */}
-                    </>
+                    <VectorArrow 
+                        origin={primaryEntity.position}
+                        vector={primaryEntity.velocity}
+                        color="#10b981"
+                        scale={20}
+                        marker="arrow-v"
+                    />
                 )}
             </svg>
 
@@ -48,11 +62,12 @@ export const PhysicsViewport = () => {
                     <>
                         <MetricRow label="Vx" value={primaryEntity.velocity.x.toFixed(2)} unit="m/s" color="text-emerald-400" />
                         <MetricRow label="Vy" value={(-primaryEntity.velocity.y).toFixed(2)} unit="m/s" color="text-emerald-400" />
-                        {/* Display Height (assuming floor is at y=8m approx) */}
                         <MetricRow label="Py" value={((8 - primaryEntity.position.y)).toFixed(2)} unit="m" color="text-slate-300" />
                     </>
                 ) : (
-                    <span className="text-slate-500 text-xs uppercase tracking-wider">Ready to Fire</span>
+                    <span className="text-slate-500 text-xs uppercase tracking-wider bg-slate-950/50 px-2 py-1 rounded border border-slate-800">
+                        Viewport Active
+                    </span>
                 )}
             </div>
         </div>
@@ -60,7 +75,6 @@ export const PhysicsViewport = () => {
 };
 
 const VectorArrow = ({ origin, vector, color, scale, marker }: { origin: {x:number, y:number}, vector: {x:number, y:number}, color: string, scale: number, marker: string }) => {
-    // Only draw if magnitude is significant
     if (Math.abs(vector.x) < 0.1 && Math.abs(vector.y) < 0.1) return null;
 
     const startX = toPixels(origin.x);

@@ -29,7 +29,7 @@ export const kinematicsScript: Record<string, DialogNode> = {
             type: 'SPAWN_OBJECT', 
             payload: { 
                 label: 'Origin', 
-                position: { x: 6, y: 4 }, 
+                position: { x: 6, y: 3 }, // Raised from 4 to 3 (higher up visually) to avoid floor clipping
                 velocity: { x: 0, y: 0 },
                 isStatic: true,
                 color: '#ffffff'
@@ -59,7 +59,7 @@ export const kinematicsScript: Record<string, DialogNode> = {
                 nextNodeId: 'observe_velocity',
                 simAction: {
                     type: 'SPAWN_OBJECT',
-                    payload: { label: 'Probe', position: { x: 1, y: 4 }, velocity: { x: 5, y: 0 } }
+                    payload: { label: 'Probe', position: { x: 1, y: 3 }, velocity: { x: 5, y: 0 } }
                 }
             }
         ]
@@ -116,7 +116,7 @@ export const kinematicsScript: Record<string, DialogNode> = {
         // Auto-spawn the projectile again after reset, using onEnter to ensure sequence
         onEnterAction: {
             type: 'SPAWN_OBJECT',
-            payload: { label: 'Projectile', position: { x: 1, y: 4 }, velocity: { x: 10, y: 0 } }
+            payload: { label: 'Projectile', position: { x: 1, y: 3 }, velocity: { x: 10, y: 0 } }
         },
         content: "Excellent. You've seen Position (Static) and Velocity (Dynamic). You are ready for the Lab.",
         options: []

@@ -10,7 +10,7 @@ import { PhysicsEntity, SimSnapshot, Vector2D } from '../types';
 export class PhysicsEngine {
     public engine: Matter.Engine;
     public runner: Matter.Runner;
-    public render: Matter.Render | null = null; // For debug rendering if needed
+    public render: Matter.Render | null = null;
     
     private entities: Map<string, { body: Matter.Body, label: string }> = new Map();
     private subscribers: ((snapshot: SimSnapshot) => void)[] = [];
@@ -42,7 +42,7 @@ export class PhysicsEngine {
                 options: {
                     width: canvas.width,
                     height: canvas.height,
-                    background: 'transparent',
+                    background: 'transparent', // Important for SVG overlay visibility
                     wireframes: false, // Solid shapes
                     showAngleIndicator: false
                 }
@@ -82,6 +82,15 @@ export class PhysicsEngine {
         this.timeElapsed = 0;
         if (this.render) {
             this.addBoundaries(this.render.canvas.width, this.render.canvas.height);
+        }
+    }
+
+    public resize(width: number, height: number) {
+        if (this.render) {
+            this.render.canvas.width = width;
+            this.render.canvas.height = height;
+            // Also need to reset boundaries to match new size
+            this.reset();
         }
     }
 
@@ -149,9 +158,6 @@ export class PhysicsEngine {
         this.engine.gravity.y = y;
     }
 
-    /**
-     * Spawns a general physics object with configurable properties.
-     */
     public spawnObject(config: { 
         x: number, 
         y: number, 
@@ -190,15 +196,26 @@ export class PhysicsEngine {
         this.entities.set(id, { body, label });
     }
 
-    // Deprecated alias for backward compatibility with tests
+    // Deprecated alias for backward compatibility
     public spawnProjectile(x: number, y: number, velocity: Vector2D, label: string = 'Projectile') {
         this.spawnObject({ x, y, velocity, label });
     }
 
     private addBoundaries(width: number, height: number) {
-        const ground = Matter.Bodies.rectangle(width / 2, height + 50, width, 100, { isStatic: true, render: { fillStyle: '#1e293b' } });
-        const leftWall = Matter.Bodies.rectangle(-50, height / 2, 100, height, { isStatic: true });
-        const rightWall = Matter.Bodies.rectangle(width + 50, height / 2, 100, height, { isStatic: true });
+        // Floor: Positioned to be visible at the bottom
+        // Center Y = Height - 20 (so top edge is at Height - 40)
+        const floorHeight = 40;
+        const floorY = height - (floorHeight / 2);
+        
+        const ground = Matter.Bodies.rectangle(width / 2, floorY, width, floorHeight, { 
+            isStatic: true, 
+            label: 'Ground',
+            render: { fillStyle: '#334155' } // slate-700, visible "Bench"
+        });
+
+        // Walls (Invisible, just to keep objects in)
+        const leftWall = Matter.Bodies.rectangle(-50, height / 2, 100, height * 2, { isStatic: true });
+        const rightWall = Matter.Bodies.rectangle(width + 50, height / 2, 100, height * 2, { isStatic: true });
         
         Matter.Composite.add(this.engine.world, [ground, leftWall, rightWall]);
     }

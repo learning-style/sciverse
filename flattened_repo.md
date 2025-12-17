@@ -1,10 +1,10 @@
 <!--
   File: flattened_repo.md
   Source Directory: c:\monorepo\portfolio-website1
-  Date Generated: 2025-12-17T00:25:24.896Z
+  Date Generated: 2025-12-17T00:31:49.811Z
   ---
   Total Files: 52
-  Approx. Tokens: 56030
+  Approx. Tokens: 55010
 -->
 
 <!-- Top 10 Text Files by Token Count -->
@@ -12,11 +12,11 @@
 2. External_Context\Physics Simulation Project Enhancement Plan.md (8113 tokens)
 3. External_Context\Forces-Motion.md (6749 tokens)
 4. External_Context\Enhancing Physics Education Website.md (6714 tokens)
-5. src\features\sciverse\labs\KinematicsLab.tsx (1666 tokens)
-6. src\features\sciverse\core\PhysicsEngine.ts (1660 tokens)
-7. src\features\sciverse\content\kinematicsScript.ts (1256 tokens)
-8. src\Artifacts\A9-Sciverse-Curriculum-Roadmap.md (1146 tokens)
-9. src\features\sciverse\lib\engine-core.ts (1086 tokens)
+5. src\features\sciverse\core\PhysicsEngine.ts (1801 tokens)
+6. src\features\sciverse\labs\KinematicsLab.tsx (1666 tokens)
+7. src\features\sciverse\content\kinematicsScript.ts (1272 tokens)
+8. src\features\sciverse\components\PhysicsViewport.tsx (1180 tokens)
+9. src\Artifacts\A9-Sciverse-Curriculum-Roadmap.md (1146 tokens)
 10. src\Artifacts\A7-Sciverse-Design.md (1065 tokens)
 
 <!-- Full File List -->
@@ -42,18 +42,18 @@
 20. src\features\home\HomePage.tsx - Lines: 29 - Chars: 1360 - Tokens: 340
 21. src\features\science-lab\ScienceLab.tsx - Lines: 59 - Chars: 2829 - Tokens: 708
 22. src\features\sciverse\components\GraphMonitor.tsx - Lines: 77 - Chars: 3397 - Tokens: 850
-23. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 88 - Chars: 4096 - Tokens: 1024
+23. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 102 - Chars: 4719 - Tokens: 1180
 24. src\features\sciverse\components\SocraticChat.tsx - Lines: 89 - Chars: 3902 - Tokens: 976
 25. src\features\sciverse\config\physicsConfig.ts - Lines: 27 - Chars: 876 - Tokens: 219
-26. src\features\sciverse\content\kinematicsScript.ts - Lines: 124 - Chars: 5021 - Tokens: 1256
+26. src\features\sciverse\content\kinematicsScript.ts - Lines: 124 - Chars: 5087 - Tokens: 1272
 27. src\features\sciverse\context\SciverseContext.tsx - Lines: 33 - Chars: 1103 - Tokens: 276
 28. src\features\sciverse\core\PhysicsEngine.test.ts - Lines: 57 - Chars: 2364 - Tokens: 591
-29. src\features\sciverse\core\PhysicsEngine.ts - Lines: 205 - Chars: 6639 - Tokens: 1660
+29. src\features\sciverse\core\PhysicsEngine.ts - Lines: 222 - Chars: 7202 - Tokens: 1801
 30. src\features\sciverse\hooks\useDialogEngine.ts - Lines: 40 - Chars: 1294 - Tokens: 324
-31. src\features\sciverse\hooks\useMatter.ts - Lines: 36 - Chars: 1090 - Tokens: 273
-32. src\features\sciverse\hooks\usePhysics.ts - Lines: 53 - Chars: 1909 - Tokens: 478
+31. src\features\sciverse\hooks\useMatter.ts - Lines: 1 - Chars: 9 - Tokens: 3
+32. src\features\sciverse\hooks\usePhysics.ts - Lines: 63 - Chars: 1991 - Tokens: 498
 33. src\features\sciverse\labs\KinematicsLab.tsx - Lines: 134 - Chars: 6664 - Tokens: 1666
-34. src\features\sciverse\lib\engine-core.ts - Lines: 127 - Chars: 4341 - Tokens: 1086
+34. src\features\sciverse\lib\engine-core.ts - Lines: 1 - Chars: 9 - Tokens: 3
 35. src\features\sciverse\modules\KinematicsLesson.tsx - Lines: 92 - Chars: 3816 - Tokens: 954
 36. src\features\sciverse\types.ts - Lines: 74 - Chars: 1962 - Tokens: 491
 37. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
@@ -1243,18 +1243,27 @@ import { useSciverse } from '../context/SciverseContext';
 import { toPixels } from '../config/physicsConfig';
 
 export const PhysicsViewport = () => {
-    // Viewport now acts as a "View" component.
-    // It consumes the engine state and attaches the refs from the Context.
     const { containerRef, canvasRef, snapshot } = useSciverse();
 
     const primaryEntity = snapshot?.entities.find(e => e.label === 'Projectile');
+    const originEntity = snapshot?.entities.find(e => e.label === 'Origin');
 
     return (
         <div 
             ref={containerRef} 
             className="relative w-full h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-inner"
         >
-            {/* Matter.js Canvas (Attached via Context Ref) */}
+            {/* Background Grid */}
+            <svg className="absolute inset-0 pointer-events-none w-full h-full opacity-20" aria-hidden="true">
+                <defs>
+                    <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="currentColor" strokeWidth="1" className="text-slate-500" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+
+            {/* Matter.js Canvas */}
             <canvas ref={canvasRef} className="absolute inset-0 block" />
 
             {/* Vector Overlay Layer (SVG) */}
@@ -1268,18 +1277,23 @@ export const PhysicsViewport = () => {
                     </marker>
                 </defs>
 
+                {/* Explicit Origin Marker */}
+                {originEntity && (
+                    <g transform={`translate(${toPixels(originEntity.position.x)}, ${toPixels(originEntity.position.y)})`}>
+                        <circle r="6" fill="#ffffff" stroke="#3b82f6" strokeWidth="2" />
+                        <text x="10" y="4" fill="#94a3b8" fontSize="12" fontFamily="monospace">Origin (0,0)</text>
+                    </g>
+                )}
+
+                {/* Velocity Vector */}
                 {primaryEntity && (
-                    <>
-                        {/* Velocity Vector (Green) */}
-                        <VectorArrow 
-                            origin={primaryEntity.position}
-                            vector={primaryEntity.velocity}
-                            color="#10b981"
-                            scale={20} // Visual scale factor
-                            marker="arrow-v"
-                        />
-                        {/* We could add Acceleration Vector here in future */}
-                    </>
+                    <VectorArrow 
+                        origin={primaryEntity.position}
+                        vector={primaryEntity.velocity}
+                        color="#10b981"
+                        scale={20}
+                        marker="arrow-v"
+                    />
                 )}
             </svg>
 
@@ -1289,11 +1303,12 @@ export const PhysicsViewport = () => {
                     <>
                         <MetricRow label="Vx" value={primaryEntity.velocity.x.toFixed(2)} unit="m/s" color="text-emerald-400" />
                         <MetricRow label="Vy" value={(-primaryEntity.velocity.y).toFixed(2)} unit="m/s" color="text-emerald-400" />
-                        {/* Display Height (assuming floor is at y=8m approx) */}
                         <MetricRow label="Py" value={((8 - primaryEntity.position.y)).toFixed(2)} unit="m" color="text-slate-300" />
                     </>
                 ) : (
-                    <span className="text-slate-500 text-xs uppercase tracking-wider">Ready to Fire</span>
+                    <span className="text-slate-500 text-xs uppercase tracking-wider bg-slate-950/50 px-2 py-1 rounded border border-slate-800">
+                        Viewport Active
+                    </span>
                 )}
             </div>
         </div>
@@ -1301,7 +1316,6 @@ export const PhysicsViewport = () => {
 };
 
 const VectorArrow = ({ origin, vector, color, scale, marker }: { origin: {x:number, y:number}, vector: {x:number, y:number}, color: string, scale: number, marker: string }) => {
-    // Only draw if magnitude is significant
     if (Math.abs(vector.x) < 0.1 && Math.abs(vector.y) < 0.1) return null;
 
     const startX = toPixels(origin.x);
@@ -1483,7 +1497,7 @@ export const kinematicsScript: Record<string, DialogNode> = {
             type: 'SPAWN_OBJECT', 
             payload: { 
                 label: 'Origin', 
-                position: { x: 6, y: 4 }, 
+                position: { x: 6, y: 3 }, // Raised from 4 to 3 (higher up visually) to avoid floor clipping
                 velocity: { x: 0, y: 0 },
                 isStatic: true,
                 color: '#ffffff'
@@ -1513,7 +1527,7 @@ export const kinematicsScript: Record<string, DialogNode> = {
                 nextNodeId: 'observe_velocity',
                 simAction: {
                     type: 'SPAWN_OBJECT',
-                    payload: { label: 'Probe', position: { x: 1, y: 4 }, velocity: { x: 5, y: 0 } }
+                    payload: { label: 'Probe', position: { x: 1, y: 3 }, velocity: { x: 5, y: 0 } }
                 }
             }
         ]
@@ -1570,7 +1584,7 @@ export const kinematicsScript: Record<string, DialogNode> = {
         // Auto-spawn the projectile again after reset, using onEnter to ensure sequence
         onEnterAction: {
             type: 'SPAWN_OBJECT',
-            payload: { label: 'Projectile', position: { x: 1, y: 4 }, velocity: { x: 10, y: 0 } }
+            payload: { label: 'Projectile', position: { x: 1, y: 3 }, velocity: { x: 10, y: 0 } }
         },
         content: "Excellent. You've seen Position (Static) and Velocity (Dynamic). You are ready for the Lab.",
         options: []
@@ -1687,7 +1701,7 @@ import { PhysicsEntity, SimSnapshot, Vector2D } from '../types';
 export class PhysicsEngine {
     public engine: Matter.Engine;
     public runner: Matter.Runner;
-    public render: Matter.Render | null = null; // For debug rendering if needed
+    public render: Matter.Render | null = null;
     
     private entities: Map<string, { body: Matter.Body, label: string }> = new Map();
     private subscribers: ((snapshot: SimSnapshot) => void)[] = [];
@@ -1719,7 +1733,7 @@ export class PhysicsEngine {
                 options: {
                     width: canvas.width,
                     height: canvas.height,
-                    background: 'transparent',
+                    background: 'transparent', // Important for SVG overlay visibility
                     wireframes: false, // Solid shapes
                     showAngleIndicator: false
                 }
@@ -1759,6 +1773,15 @@ export class PhysicsEngine {
         this.timeElapsed = 0;
         if (this.render) {
             this.addBoundaries(this.render.canvas.width, this.render.canvas.height);
+        }
+    }
+
+    public resize(width: number, height: number) {
+        if (this.render) {
+            this.render.canvas.width = width;
+            this.render.canvas.height = height;
+            // Also need to reset boundaries to match new size
+            this.reset();
         }
     }
 
@@ -1826,9 +1849,6 @@ export class PhysicsEngine {
         this.engine.gravity.y = y;
     }
 
-    /**
-     * Spawns a general physics object with configurable properties.
-     */
     public spawnObject(config: { 
         x: number, 
         y: number, 
@@ -1867,15 +1887,26 @@ export class PhysicsEngine {
         this.entities.set(id, { body, label });
     }
 
-    // Deprecated alias for backward compatibility with tests
+    // Deprecated alias for backward compatibility
     public spawnProjectile(x: number, y: number, velocity: Vector2D, label: string = 'Projectile') {
         this.spawnObject({ x, y, velocity, label });
     }
 
     private addBoundaries(width: number, height: number) {
-        const ground = Matter.Bodies.rectangle(width / 2, height + 50, width, 100, { isStatic: true, render: { fillStyle: '#1e293b' } });
-        const leftWall = Matter.Bodies.rectangle(-50, height / 2, 100, height, { isStatic: true });
-        const rightWall = Matter.Bodies.rectangle(width + 50, height / 2, 100, height, { isStatic: true });
+        // Floor: Positioned to be visible at the bottom
+        // Center Y = Height - 20 (so top edge is at Height - 40)
+        const floorHeight = 40;
+        const floorY = height - (floorHeight / 2);
+        
+        const ground = Matter.Bodies.rectangle(width / 2, floorY, width, floorHeight, { 
+            isStatic: true, 
+            label: 'Ground',
+            render: { fillStyle: '#334155' } // slate-700, visible "Bench"
+        });
+
+        // Walls (Invisible, just to keep objects in)
+        const leftWall = Matter.Bodies.rectangle(-50, height / 2, 100, height * 2, { isStatic: true });
+        const rightWall = Matter.Bodies.rectangle(width + 50, height / 2, 100, height * 2, { isStatic: true });
         
         Matter.Composite.add(this.engine.world, [ground, leftWall, rightWall]);
     }
@@ -1926,42 +1957,7 @@ export const useDialogEngine = ({ onSimAction }: UseDialogEngineProps) => {
 </file_artifact>
 
 <file path="src/features/sciverse/hooks/useMatter.ts">
-import { useEffect, useRef, useState } from 'react';
-import { EngineCore } from '../lib/engine-core';
-
-export const useMatter = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const engineRef = useRef<EngineCore | null>(null);
-    const [simState, setSimState] = useState<any>(null);
-
-    useEffect(() => {
-        if (!containerRef.current) return;
-
-        // Initialize Engine
-        const core = new EngineCore();
-        core.mount(containerRef.current);
-        engineRef.current = core;
-
-        // Subscribe to SSAL updates
-        // Note: In high-performance scenarios, we might avoid useState 
-        // and update a Ref instead to prevent full React re-renders.
-        // For Phase 1 MVP, we'll throttle or accept the re-render overhead for overlays.
-        core.subscribeToUpdates((snapshot) => {
-            setSimState(snapshot);
-        });
-
-        return () => {
-            core.unmount();
-            engineRef.current = null;
-        };
-    }, []);
-
-    return {
-        containerRef,
-        engine: engineRef.current,
-        simState
-    };
-};
+// DELETE
 </file_artifact>
 
 <file path="src/features/sciverse/hooks/usePhysics.ts">
@@ -1970,48 +1966,58 @@ import { PhysicsEngine } from '../core/PhysicsEngine';
 import { SimSnapshot } from '../types';
 
 export const usePhysics = () => {
-    // We use useState instead of useRef for DOM elements to support "Callback Refs".
-    // This ensures we know exactly when the DOM elements are mounted/unmounted 
-    // when this hook is used in a Context Provider higher up the tree.
     const [container, setContainer] = useState<HTMLDivElement | null>(null);
     const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
     
     const [engine, setEngine] = useState<PhysicsEngine | null>(null);
     const [snapshot, setSnapshot] = useState<SimSnapshot | null>(null);
 
+    // Initialization Effect
     useEffect(() => {
         if (!container || !canvas) return;
 
-        // 1. Sync Canvas Size to Container
+        // 1. Initial Size
         canvas.width = container.clientWidth;
         canvas.height = container.clientHeight;
 
-        // 2. Initialize Physics Engine
+        // 2. Initialize Engine
         const newEngine = new PhysicsEngine(canvas);
         newEngine.start();
         setEngine(newEngine);
 
-        // 3. Subscribe to State Updates (Throttled for React Performance)
+        // 3. Subscribe
         let lastUpdate = 0;
         const cleanupSub = newEngine.subscribe((newSnapshot) => {
             const now = Date.now();
-            // Cap updates to ~20 FPS for UI to prevent main thread blocking
             if (now - lastUpdate > 50) { 
                 setSnapshot(newSnapshot);
                 lastUpdate = now;
             }
         });
 
-        // 4. Cleanup
+        // 4. Handle Resize
+        const handleResize = () => {
+            if (container && newEngine) {
+                // Delay slightly to let layout settle
+                requestAnimationFrame(() => {
+                    newEngine.resize(container.clientWidth, container.clientHeight);
+                });
+            }
+        };
+        
+        // ResizeObserver is better than window.resize for container-based changes
+        const resizeObserver = new ResizeObserver(handleResize);
+        resizeObserver.observe(container);
+
         return () => {
+            resizeObserver.disconnect();
             cleanupSub();
             newEngine.stop();
             setEngine(null);
         };
-    }, [container, canvas]); // Re-run if DOM nodes change
+    }, [container, canvas]);
 
     return {
-        // Return setter functions to be used as ref callbacks: ref={containerRef}
         containerRef: setContainer, 
         canvasRef: setCanvas,       
         engine,
@@ -2158,133 +2164,7 @@ export const KinematicsLab = () => {
 </file_artifact>
 
 <file path="src/features/sciverse/lib/engine-core.ts">
-import Matter from 'matter-js';
-import { Vector2D } from '../types';
-
-/**
- * EngineCore
- * Encapsulates the Matter.js boilerplate and provides a clean API for the React application.
- * Implements the SimState Abstraction Layer (SSAL) pattern.
- */
-export class EngineCore {
-    public engine: Matter.Engine;
-    public runner: Matter.Runner;
-    public render: Matter.Render | null = null;
-    
-    // SSAL Data Store
-    private _simStateCallback: ((data: any) => void) | null = null;
-
-    constructor() {
-        this.engine = Matter.Engine.create();
-        this.runner = Matter.Runner.create();
-        
-        // Disable default gravity initially or configure as needed
-        this.engine.gravity.y = 9.8 * 0.1; // Scale down for canvas pixels logic (optional tweak)
-        this.engine.gravity.scale = 0.001;
-    }
-
-    /**
-     * Initializes the Matter.Render instance attached to a DOM element.
-     */
-    public mount(element: HTMLElement) {
-        this.render = Matter.Render.create({
-            element: element,
-            engine: this.engine,
-            options: {
-                width: element.clientWidth,
-                height: element.clientHeight,
-                background: '#0f172a', // slate-900
-                wireframes: false, // Solid shapes
-                showAngleIndicator: false,
-            }
-        });
-
-        Matter.Render.run(this.render);
-        Matter.Runner.run(this.runner, this.engine);
-
-        // Hook into the update loop for SSAL
-        Matter.Events.on(this.engine, 'afterUpdate', this.handleUpdateLoop.bind(this));
-    }
-
-    /**
-     * Cleans up the engine instance.
-     */
-    public unmount() {
-        if (this.render) {
-            Matter.Render.stop(this.render);
-            if (this.render.canvas) {
-                this.render.canvas.remove();
-            }
-        }
-        Matter.Runner.stop(this.runner);
-        Matter.Engine.clear(this.engine);
-        this.render = null;
-    }
-
-    /**
-     * The heart of SSAL. Extract physics state and broadcast it.
-     */
-    private handleUpdateLoop() {
-        if (!this._simStateCallback) return;
-
-        const bodies = Matter.Composite.allBodies(this.engine.world);
-        
-        // For MVP, we assume the first body is our "Primary Object" (Projectile/Crate)
-        const primaryBody = bodies[0]; 
-
-        if (primaryBody) {
-            const snapshot = {
-                timestamp: this.engine.timing.timestamp,
-                primaryObject: {
-                    position: { x: primaryBody.position.x, y: primaryBody.position.y },
-                    velocity: { x: primaryBody.velocity.x, y: primaryBody.velocity.y },
-                    acceleration: { 
-                        // Matter.js doesn't store acceleration explicitly, we infer or track it if needed.
-                        // For now, we use force/mass or delta-v/delta-t. 
-                        // Simplified: Using previous velocity diff could be noisy.
-                        // We will just pass velocity for Kinematics Lab.
-                        x: 0, 
-                        y: 0 
-                    },
-                    netForce: { x: primaryBody.force.x, y: primaryBody.force.y }
-                }
-            };
-            this._simStateCallback(snapshot);
-        }
-    }
-
-    public subscribeToUpdates(callback: (data: any) => void) {
-        this._simStateCallback = callback;
-    }
-
-    // --- Interaction API ---
-
-    public spawnProjectile(x: number, y: number, velocity: Vector2D) {
-        Matter.Composite.clear(this.engine.world, false); // Clear previous objects
-
-        const ball = Matter.Bodies.circle(x, y, 20, {
-            restitution: 0.8, // Bouncy
-            friction: 0.005,
-            frictionAir: 0.001,
-            render: { fillStyle: '#4f46e5' } // Indigo-600
-        });
-
-        Matter.Body.setVelocity(ball, velocity);
-        Matter.Composite.add(this.engine.world, ball);
-
-        // Add ground
-        if (this.render) {
-            const ground = Matter.Bodies.rectangle(
-                this.render.options.width! / 2,
-                this.render.options.height!,
-                this.render.options.width!,
-                40,
-                { isStatic: true, render: { fillStyle: '#1e293b' } }
-            );
-            Matter.Composite.add(this.engine.world, ground);
-        }
-    }
-}
+// DELETE
 </file_artifact>
 
 <file path="src/features/sciverse/modules/KinematicsLesson.tsx">
