@@ -1,20 +1,21 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Play, RotateCcw, Crosshair } from 'lucide-react';
 import { PhysicsViewport } from '../components/PhysicsViewport';
 import { GraphMonitor } from '../components/GraphMonitor';
-import { PhysicsEngine } from '../core/PhysicsEngine';
-import { SimSnapshot } from '../types';
+import { useSciverse } from '../context/SciverseContext';
 
 export const KinematicsLab = () => {
-    const engineRef = useRef<PhysicsEngine | null>(null);
-    const [snapshot, setSnapshot] = useState<SimSnapshot | null>(null);
+    // Consume the shared Physics Engine from context
+    const { engine, snapshot } = useSciverse();
 
-    // Lab Parameters
+    // Lab Parameters (UI State)
     const [velocity, setVelocity] = useState(15);
     const [angle, setAngle] = useState(60);
 
     const handleFire = () => {
-        if (engineRef.current) {
+        if (engine) {
+            engine.reset(); // Clear previous shots
+            
             // Convert angle to radians
             const rad = (angle * Math.PI) / 180;
             // Calculate components
@@ -22,13 +23,13 @@ export const KinematicsLab = () => {
             const vy = -velocity * Math.sin(rad); // Negative because Y is down in Canvas
             
             // Spawn at bottom-left (1m, 7m)
-            engineRef.current.spawnProjectile(1, 7, { x: vx, y: vy });
+            engine.spawnProjectile(1, 7, { x: vx, y: vy });
         }
     };
 
     const handleReset = () => {
-        if (engineRef.current) {
-            engineRef.current.reset();
+        if (engine) {
+            engine.reset();
         }
     };
 
@@ -98,10 +99,8 @@ export const KinematicsLab = () => {
                 
                 {/* Visualizer (Left/Center) */}
                 <div className="flex-grow relative h-full min-h-[400px]">
-                    <PhysicsViewport 
-                        onInit={(eng) => engineRef.current = eng} 
-                        onSnapshot={setSnapshot} 
-                    />
+                    {/* Viewport no longer needs props; it connects to Context automatically */}
+                    <PhysicsViewport />
                 </div>
 
                 {/* Data Panel (Right) */}

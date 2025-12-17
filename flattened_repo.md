@@ -1,10 +1,10 @@
 <!--
   File: flattened_repo.md
   Source Directory: c:\monorepo\portfolio-website1
-  Date Generated: 2025-12-16T23:39:23.046Z
+  Date Generated: 2025-12-17T00:06:13.374Z
   ---
-  Total Files: 51
-  Approx. Tokens: 55574
+  Total Files: 52
+  Approx. Tokens: 55890
 -->
 
 <!-- Top 10 Text Files by Token Count -->
@@ -12,7 +12,7 @@
 2. External_Context\Physics Simulation Project Enhancement Plan.md (8113 tokens)
 3. External_Context\Forces-Motion.md (6749 tokens)
 4. External_Context\Enhancing Physics Education Website.md (6714 tokens)
-5. src\features\sciverse\labs\KinematicsLab.tsx (1687 tokens)
+5. src\features\sciverse\labs\KinematicsLab.tsx (1666 tokens)
 6. src\features\sciverse\core\PhysicsEngine.ts (1524 tokens)
 7. src\features\sciverse\content\kinematicsScript.ts (1174 tokens)
 8. src\Artifacts\A9-Sciverse-Curriculum-Roadmap.md (1146 tokens)
@@ -42,35 +42,36 @@
 20. src\features\home\HomePage.tsx - Lines: 29 - Chars: 1360 - Tokens: 340
 21. src\features\science-lab\ScienceLab.tsx - Lines: 59 - Chars: 2829 - Tokens: 708
 22. src\features\sciverse\components\GraphMonitor.tsx - Lines: 77 - Chars: 3397 - Tokens: 850
-23. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 101 - Chars: 4222 - Tokens: 1056
+23. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 88 - Chars: 4009 - Tokens: 1003
 24. src\features\sciverse\components\SocraticChat.tsx - Lines: 89 - Chars: 3902 - Tokens: 976
 25. src\features\sciverse\config\physicsConfig.ts - Lines: 27 - Chars: 876 - Tokens: 219
 26. src\features\sciverse\content\kinematicsScript.ts - Lines: 116 - Chars: 4696 - Tokens: 1174
-27. src\features\sciverse\core\PhysicsEngine.test.ts - Lines: 57 - Chars: 2364 - Tokens: 591
-28. src\features\sciverse\core\PhysicsEngine.ts - Lines: 185 - Chars: 6093 - Tokens: 1524
-29. src\features\sciverse\hooks\useDialogEngine.ts - Lines: 49 - Chars: 1985 - Tokens: 497
-30. src\features\sciverse\hooks\useMatter.ts - Lines: 36 - Chars: 1090 - Tokens: 273
-31. src\features\sciverse\hooks\usePhysics.ts - Lines: 46 - Chars: 1454 - Tokens: 364
-32. src\features\sciverse\labs\KinematicsLab.tsx - Lines: 135 - Chars: 6746 - Tokens: 1687
-33. src\features\sciverse\lib\engine-core.ts - Lines: 127 - Chars: 4341 - Tokens: 1086
-34. src\features\sciverse\modules\KinematicsLesson.tsx - Lines: 88 - Chars: 3760 - Tokens: 940
-35. src\features\sciverse\types.ts - Lines: 71 - Chars: 1723 - Tokens: 431
-36. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
-37. src\features\showcase\data\projectsData.ts - Lines: 23 - Chars: 1186 - Tokens: 297
-38. src\features\showcase\ShowcasePage.tsx - Lines: 21 - Chars: 847 - Tokens: 212
-39. src\types\index.ts - Lines: 17 - Chars: 299 - Tokens: 75
-40. .gitignore - Lines: 18 - Chars: 107 - Tokens: 27
-41. package.json - Lines: 36 - Chars: 901 - Tokens: 226
-42. tsconfig.json - Lines: 31 - Chars: 726 - Tokens: 182
-43. tsconfig.node.json - Lines: 10 - Chars: 212 - Tokens: 53
-44. vite.config.ts - Lines: 13 - Chars: 269 - Tokens: 68
-45. index.html - Lines: 13 - Chars: 375 - Tokens: 94
-46. postcss.config.js - Lines: 6 - Chars: 79 - Tokens: 20
-47. tailwind.config.js - Lines: 16 - Chars: 354 - Tokens: 89
-48. External_Context\Enhancing Physics Education Website (1).md - Lines: 230 - Chars: 35813 - Tokens: 8954
-49. External_Context\Enhancing Physics Education Website.md - Lines: 179 - Chars: 26856 - Tokens: 6714
-50. External_Context\Forces-Motion.md - Lines: 555 - Chars: 26994 - Tokens: 6749
-51. External_Context\Physics Simulation Project Enhancement Plan.md - Lines: 250 - Chars: 32452 - Tokens: 8113
+27. src\features\sciverse\context\SciverseContext.tsx - Lines: 33 - Chars: 1103 - Tokens: 276
+28. src\features\sciverse\core\PhysicsEngine.test.ts - Lines: 57 - Chars: 2364 - Tokens: 591
+29. src\features\sciverse\core\PhysicsEngine.ts - Lines: 185 - Chars: 6093 - Tokens: 1524
+30. src\features\sciverse\hooks\useDialogEngine.ts - Lines: 49 - Chars: 1985 - Tokens: 497
+31. src\features\sciverse\hooks\useMatter.ts - Lines: 36 - Chars: 1090 - Tokens: 273
+32. src\features\sciverse\hooks\usePhysics.ts - Lines: 53 - Chars: 1909 - Tokens: 478
+33. src\features\sciverse\labs\KinematicsLab.tsx - Lines: 134 - Chars: 6664 - Tokens: 1666
+34. src\features\sciverse\lib\engine-core.ts - Lines: 127 - Chars: 4341 - Tokens: 1086
+35. src\features\sciverse\modules\KinematicsLesson.tsx - Lines: 88 - Chars: 3760 - Tokens: 940
+36. src\features\sciverse\types.ts - Lines: 71 - Chars: 1723 - Tokens: 431
+37. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
+38. src\features\showcase\data\projectsData.ts - Lines: 23 - Chars: 1186 - Tokens: 297
+39. src\features\showcase\ShowcasePage.tsx - Lines: 21 - Chars: 847 - Tokens: 212
+40. src\types\index.ts - Lines: 17 - Chars: 299 - Tokens: 75
+41. .gitignore - Lines: 18 - Chars: 107 - Tokens: 27
+42. package.json - Lines: 36 - Chars: 901 - Tokens: 226
+43. tsconfig.json - Lines: 31 - Chars: 726 - Tokens: 182
+44. tsconfig.node.json - Lines: 10 - Chars: 212 - Tokens: 53
+45. vite.config.ts - Lines: 13 - Chars: 269 - Tokens: 68
+46. index.html - Lines: 13 - Chars: 375 - Tokens: 94
+47. postcss.config.js - Lines: 6 - Chars: 79 - Tokens: 20
+48. tailwind.config.js - Lines: 16 - Chars: 354 - Tokens: 89
+49. External_Context\Enhancing Physics Education Website (1).md - Lines: 230 - Chars: 35813 - Tokens: 8954
+50. External_Context\Enhancing Physics Education Website.md - Lines: 179 - Chars: 26856 - Tokens: 6714
+51. External_Context\Forces-Motion.md - Lines: 555 - Chars: 26994 - Tokens: 6749
+52. External_Context\Physics Simulation Project Enhancement Plan.md - Lines: 250 - Chars: 32452 - Tokens: 8113
 
 <file path="src/App.tsx">
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -1238,37 +1239,22 @@ export const GraphMonitor = ({ latestSnapshot }: GraphMonitorProps) => {
 </file_artifact>
 
 <file path="src/features/sciverse/components/PhysicsViewport.tsx">
-import { useEffect } from 'react';
-import { usePhysics } from '../hooks/usePhysics';
-import { PhysicsEngine } from '../core/PhysicsEngine';
-import { SimSnapshot } from '../types';
+import { useSciverse } from '../context/SciverseContext';
 import { toPixels } from '../config/physicsConfig';
 
-interface PhysicsViewportProps {
-    onInit?: (engine: PhysicsEngine) => void;
-    onSnapshot?: (snapshot: SimSnapshot) => void;
-}
-
-export const PhysicsViewport = ({ onInit, onSnapshot }: PhysicsViewportProps) => {
-    const { containerRef, canvasRef, engine, snapshot } = usePhysics();
-
-    useEffect(() => {
-        if (engine && onInit) {
-            onInit(engine);
-        }
-    }, [engine, onInit]);
-
-    useEffect(() => {
-        if (snapshot && onSnapshot) {
-            onSnapshot(snapshot);
-        }
-    }, [snapshot, onSnapshot]);
+export const PhysicsViewport = () => {
+    // Viewport now acts as a "View" component.
+    // It consumes the engine state and attaches the refs from the Context.
+    const { containerRef, canvasRef, snapshot } = useSciverse();
 
     const primaryEntity = snapshot?.entities.find(e => e.label === 'Projectile');
 
     return (
-        <div ref={containerRef} className="relative w-full h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-inner">
-            {/* Matter.js Canvas */}
+        <div 
+            ref={containerRef} 
+            className="relative w-full h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-inner"
+        >
+            {/* Matter.js Canvas (Attached via Context Ref) */}
             <canvas ref={canvasRef} className="absolute inset-0 block" />
 
             {/* Vector Overlay Layer (SVG) */}
@@ -1292,6 +1278,7 @@ export const PhysicsViewport = ({ onInit, onSnapshot }: PhysicsViewportProps) =>
                             scale={20} // Visual scale factor
                             marker="arrow-v"
                         />
+                        {/* We could add Acceleration Vector here in future */}
                     </>
                 )}
             </svg>
@@ -1302,6 +1289,7 @@ export const PhysicsViewport = ({ onInit, onSnapshot }: PhysicsViewportProps) =>
                     <>
                         <MetricRow label="Vx" value={primaryEntity.velocity.x.toFixed(2)} unit="m/s" color="text-emerald-400" />
                         <MetricRow label="Vy" value={(-primaryEntity.velocity.y).toFixed(2)} unit="m/s" color="text-emerald-400" />
+                        {/* Display Height (assuming floor is at y=8m approx) */}
                         <MetricRow label="Py" value={((8 - primaryEntity.position.y)).toFixed(2)} unit="m" color="text-slate-300" />
                     </>
                 ) : (
@@ -1579,6 +1567,42 @@ export const kinematicsScript: Record<string, DialogNode> = {
         content: "Excellent. You've seen Position (Static) and Velocity (Dynamic). You are ready for the Lab.",
         options: []
     }
+};
+</file_artifact>
+
+<file path="src/features/sciverse/context/SciverseContext.tsx">
+import React, { createContext, useContext, ReactNode } from 'react';
+import { usePhysics } from '../hooks/usePhysics';
+import { PhysicsEngine } from '../core/PhysicsEngine';
+import { SimSnapshot } from '../types';
+
+interface SciverseContextType {
+    engine: PhysicsEngine | null;
+    snapshot: SimSnapshot | null;
+    // We pass the ref setters so the Viewport component can attach them
+    containerRef: (node: HTMLDivElement | null) => void;
+    canvasRef: (node: HTMLCanvasElement | null) => void;
+}
+
+const SciverseContext = createContext<SciverseContextType | null>(null);
+
+export const SciverseProvider = ({ children }: { children: ReactNode }) => {
+    // The Provider owns the Physics Engine Lifecycle via the hook
+    const physics = usePhysics();
+
+    return (
+        <SciverseContext.Provider value={physics}>
+            {children}
+        </SciverseContext.Provider>
+    );
+};
+
+export const useSciverse = () => {
+    const context = useContext(SciverseContext);
+    if (!context) {
+        throw new Error('useSciverse must be used within a SciverseProvider');
+    }
+    return context;
 };
 </file_artifact>
 
@@ -1922,72 +1946,80 @@ export const useMatter = () => {
 </file_artifact>
 
 <file path="src/features/sciverse/hooks/usePhysics.ts">
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PhysicsEngine } from '../core/PhysicsEngine';
 import { SimSnapshot } from '../types';
 
 export const usePhysics = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const engineRef = useRef<PhysicsEngine | null>(null);
+    // We use useState instead of useRef for DOM elements to support "Callback Refs".
+    // This ensures we know exactly when the DOM elements are mounted/unmounted 
+    // when this hook is used in a Context Provider higher up the tree.
+    const [container, setContainer] = useState<HTMLDivElement | null>(null);
+    const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
+    
+    const [engine, setEngine] = useState<PhysicsEngine | null>(null);
     const [snapshot, setSnapshot] = useState<SimSnapshot | null>(null);
 
     useEffect(() => {
-        if (!canvasRef.current || !containerRef.current) return;
+        if (!container || !canvas) return;
 
-        // Initialize Engine
-        // Resize canvas to container
-        canvasRef.current.width = containerRef.current.clientWidth;
-        canvasRef.current.height = containerRef.current.clientHeight;
+        // 1. Sync Canvas Size to Container
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
 
-        const engine = new PhysicsEngine(canvasRef.current);
-        engine.start();
-        engineRef.current = engine;
+        // 2. Initialize Physics Engine
+        const newEngine = new PhysicsEngine(canvas);
+        newEngine.start();
+        setEngine(newEngine);
 
-        // Subscription for React State (Throttled for UI updates)
+        // 3. Subscribe to State Updates (Throttled for React Performance)
         let lastUpdate = 0;
-        const cleanup = engine.subscribe((newSnapshot) => {
+        const cleanupSub = newEngine.subscribe((newSnapshot) => {
             const now = Date.now();
-            if (now - lastUpdate > 50) { // 20fps cap for React state
+            // Cap updates to ~20 FPS for UI to prevent main thread blocking
+            if (now - lastUpdate > 50) { 
                 setSnapshot(newSnapshot);
                 lastUpdate = now;
             }
         });
 
+        // 4. Cleanup
         return () => {
-            cleanup();
-            engine.stop();
-            engineRef.current = null;
+            cleanupSub();
+            newEngine.stop();
+            setEngine(null);
         };
-    }, []);
+    }, [container, canvas]); // Re-run if DOM nodes change
 
     return {
-        containerRef,
-        canvasRef,
-        engine: engineRef.current,
+        // Return setter functions to be used as ref callbacks: ref={containerRef}
+        containerRef: setContainer, 
+        canvasRef: setCanvas,       
+        engine,
         snapshot
     };
 };
 </file_artifact>
 
 <file path="src/features/sciverse/labs/KinematicsLab.tsx">
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Play, RotateCcw, Crosshair } from 'lucide-react';
 import { PhysicsViewport } from '../components/PhysicsViewport';
 import { GraphMonitor } from '../components/GraphMonitor';
-import { PhysicsEngine } from '../core/PhysicsEngine';
-import { SimSnapshot } from '../types';
+import { useSciverse } from '../context/SciverseContext';
 
 export const KinematicsLab = () => {
-    const engineRef = useRef<PhysicsEngine | null>(null);
-    const [snapshot, setSnapshot] = useState<SimSnapshot | null>(null);
+    // Consume the shared Physics Engine from context
+    const { engine, snapshot } = useSciverse();
 
-    // Lab Parameters
+    // Lab Parameters (UI State)
     const [velocity, setVelocity] = useState(15);
     const [angle, setAngle] = useState(60);
 
     const handleFire = () => {
-        if (engineRef.current) {
+        if (engine) {
+            engine.reset(); // Clear previous shots
+            
             // Convert angle to radians
             const rad = (angle * Math.PI) / 180;
             // Calculate components
@@ -1995,13 +2027,13 @@ export const KinematicsLab = () => {
             const vy = -velocity * Math.sin(rad); // Negative because Y is down in Canvas
             
             // Spawn at bottom-left (1m, 7m)
-            engineRef.current.spawnProjectile(1, 7, { x: vx, y: vy });
+            engine.spawnProjectile(1, 7, { x: vx, y: vy });
         }
     };
 
     const handleReset = () => {
-        if (engineRef.current) {
-            engineRef.current.reset();
+        if (engine) {
+            engine.reset();
         }
     };
 
@@ -2071,10 +2103,8 @@ export const KinematicsLab = () => {
                 
                 {/* Visualizer (Left/Center) */}
                 <div className="flex-grow relative h-full min-h-[400px]">
-                    <PhysicsViewport 
-                        onInit={(eng) => engineRef.current = eng} 
-                        onSnapshot={setSnapshot} 
-                    />
+                    {/* Viewport no longer needs props; it connects to Context automatically */}
+                    <PhysicsViewport />
                 </div>
 
                 {/* Data Panel (Right) */}

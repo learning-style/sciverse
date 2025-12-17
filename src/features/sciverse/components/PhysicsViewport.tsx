@@ -1,34 +1,19 @@
-import { useEffect } from 'react';
-import { usePhysics } from '../hooks/usePhysics';
-import { PhysicsEngine } from '../core/PhysicsEngine';
-import { SimSnapshot } from '../types';
+import { useSciverse } from '../context/SciverseContext';
 import { toPixels } from '../config/physicsConfig';
 
-interface PhysicsViewportProps {
-    onInit?: (engine: PhysicsEngine) => void;
-    onSnapshot?: (snapshot: SimSnapshot) => void;
-}
-
-export const PhysicsViewport = ({ onInit, onSnapshot }: PhysicsViewportProps) => {
-    const { containerRef, canvasRef, engine, snapshot } = usePhysics();
-
-    useEffect(() => {
-        if (engine && onInit) {
-            onInit(engine);
-        }
-    }, [engine, onInit]);
-
-    useEffect(() => {
-        if (snapshot && onSnapshot) {
-            onSnapshot(snapshot);
-        }
-    }, [snapshot, onSnapshot]);
+export const PhysicsViewport = () => {
+    // Viewport now acts as a "View" component.
+    // It consumes the engine state and attaches the refs from the Context.
+    const { containerRef, canvasRef, snapshot } = useSciverse();
 
     const primaryEntity = snapshot?.entities.find(e => e.label === 'Projectile');
 
     return (
-        <div ref={containerRef} className="relative w-full h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-inner">
-            {/* Matter.js Canvas */}
+        <div 
+            ref={containerRef} 
+            className="relative w-full h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-inner"
+        >
+            {/* Matter.js Canvas (Attached via Context Ref) */}
             <canvas ref={canvasRef} className="absolute inset-0 block" />
 
             {/* Vector Overlay Layer (SVG) */}
@@ -52,6 +37,7 @@ export const PhysicsViewport = ({ onInit, onSnapshot }: PhysicsViewportProps) =>
                             scale={20} // Visual scale factor
                             marker="arrow-v"
                         />
+                        {/* We could add Acceleration Vector here in future */}
                     </>
                 )}
             </svg>
@@ -62,6 +48,7 @@ export const PhysicsViewport = ({ onInit, onSnapshot }: PhysicsViewportProps) =>
                     <>
                         <MetricRow label="Vx" value={primaryEntity.velocity.x.toFixed(2)} unit="m/s" color="text-emerald-400" />
                         <MetricRow label="Vy" value={(-primaryEntity.velocity.y).toFixed(2)} unit="m/s" color="text-emerald-400" />
+                        {/* Display Height (assuming floor is at y=8m approx) */}
                         <MetricRow label="Py" value={((8 - primaryEntity.position.y)).toFixed(2)} unit="m" color="text-slate-300" />
                     </>
                 ) : (
