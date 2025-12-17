@@ -149,8 +149,20 @@ export class PhysicsEngine {
         this.engine.gravity.y = y;
     }
 
-    public spawnProjectile(x: number, y: number, velocity: Vector2D, label: string = 'Projectile') {
-        // Unique ID based on timestamp
+    /**
+     * Spawns a general physics object with configurable properties.
+     */
+    public spawnObject(config: { 
+        x: number, 
+        y: number, 
+        velocity?: Vector2D, 
+        mass?: number,
+        label?: string, 
+        color?: string,
+        isStatic?: boolean 
+    }) {
+        const { x, y, velocity = {x:0, y:0}, label = 'Object', color = '#4f46e5', isStatic = false } = config;
+        
         const id = `${label}_${Date.now()}`;
         
         const body = Matter.Bodies.circle(
@@ -159,20 +171,28 @@ export class PhysicsEngine {
             20, 
             { 
                 label: label,
+                isStatic: isStatic,
                 restitution: 0.8,
-                friction: 0.00, // No friction for Kinematics Lesson
+                friction: 0.00,
                 frictionAir: 0.0,
-                render: { fillStyle: '#4f46e5' }
+                render: { fillStyle: color }
             }
         );
 
-        Matter.Body.setVelocity(body, { 
-            x: toPixels(velocity.x) * (1/60), 
-            y: toPixels(velocity.y) * (1/60) 
-        });
+        if (!isStatic) {
+            Matter.Body.setVelocity(body, { 
+                x: toPixels(velocity.x) * (1/60), 
+                y: toPixels(velocity.y) * (1/60) 
+            });
+        }
 
         Matter.Composite.add(this.engine.world, body);
         this.entities.set(id, { body, label });
+    }
+
+    // Deprecated alias for backward compatibility with tests
+    public spawnProjectile(x: number, y: number, velocity: Vector2D, label: string = 'Projectile') {
+        this.spawnObject({ x, y, velocity, label });
     }
 
     private addBoundaries(width: number, height: number) {

@@ -1,10 +1,10 @@
 <!--
   File: flattened_repo.md
   Source Directory: c:\monorepo\portfolio-website1
-  Date Generated: 2025-12-17T00:06:13.374Z
+  Date Generated: 2025-12-17T00:25:24.896Z
   ---
   Total Files: 52
-  Approx. Tokens: 55890
+  Approx. Tokens: 56030
 -->
 
 <!-- Top 10 Text Files by Token Count -->
@@ -13,8 +13,8 @@
 3. External_Context\Forces-Motion.md (6749 tokens)
 4. External_Context\Enhancing Physics Education Website.md (6714 tokens)
 5. src\features\sciverse\labs\KinematicsLab.tsx (1666 tokens)
-6. src\features\sciverse\core\PhysicsEngine.ts (1524 tokens)
-7. src\features\sciverse\content\kinematicsScript.ts (1174 tokens)
+6. src\features\sciverse\core\PhysicsEngine.ts (1660 tokens)
+7. src\features\sciverse\content\kinematicsScript.ts (1256 tokens)
 8. src\Artifacts\A9-Sciverse-Curriculum-Roadmap.md (1146 tokens)
 9. src\features\sciverse\lib\engine-core.ts (1086 tokens)
 10. src\Artifacts\A7-Sciverse-Design.md (1065 tokens)
@@ -42,20 +42,20 @@
 20. src\features\home\HomePage.tsx - Lines: 29 - Chars: 1360 - Tokens: 340
 21. src\features\science-lab\ScienceLab.tsx - Lines: 59 - Chars: 2829 - Tokens: 708
 22. src\features\sciverse\components\GraphMonitor.tsx - Lines: 77 - Chars: 3397 - Tokens: 850
-23. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 88 - Chars: 4009 - Tokens: 1003
+23. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 88 - Chars: 4096 - Tokens: 1024
 24. src\features\sciverse\components\SocraticChat.tsx - Lines: 89 - Chars: 3902 - Tokens: 976
 25. src\features\sciverse\config\physicsConfig.ts - Lines: 27 - Chars: 876 - Tokens: 219
-26. src\features\sciverse\content\kinematicsScript.ts - Lines: 116 - Chars: 4696 - Tokens: 1174
+26. src\features\sciverse\content\kinematicsScript.ts - Lines: 124 - Chars: 5021 - Tokens: 1256
 27. src\features\sciverse\context\SciverseContext.tsx - Lines: 33 - Chars: 1103 - Tokens: 276
 28. src\features\sciverse\core\PhysicsEngine.test.ts - Lines: 57 - Chars: 2364 - Tokens: 591
-29. src\features\sciverse\core\PhysicsEngine.ts - Lines: 185 - Chars: 6093 - Tokens: 1524
-30. src\features\sciverse\hooks\useDialogEngine.ts - Lines: 49 - Chars: 1985 - Tokens: 497
+29. src\features\sciverse\core\PhysicsEngine.ts - Lines: 205 - Chars: 6639 - Tokens: 1660
+30. src\features\sciverse\hooks\useDialogEngine.ts - Lines: 40 - Chars: 1294 - Tokens: 324
 31. src\features\sciverse\hooks\useMatter.ts - Lines: 36 - Chars: 1090 - Tokens: 273
 32. src\features\sciverse\hooks\usePhysics.ts - Lines: 53 - Chars: 1909 - Tokens: 478
 33. src\features\sciverse\labs\KinematicsLab.tsx - Lines: 134 - Chars: 6664 - Tokens: 1666
 34. src\features\sciverse\lib\engine-core.ts - Lines: 127 - Chars: 4341 - Tokens: 1086
-35. src\features\sciverse\modules\KinematicsLesson.tsx - Lines: 88 - Chars: 3760 - Tokens: 940
-36. src\features\sciverse\types.ts - Lines: 71 - Chars: 1723 - Tokens: 431
+35. src\features\sciverse\modules\KinematicsLesson.tsx - Lines: 92 - Chars: 3816 - Tokens: 954
+36. src\features\sciverse\types.ts - Lines: 74 - Chars: 1962 - Tokens: 491
 37. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
 38. src\features\showcase\data\projectsData.ts - Lines: 23 - Chars: 1186 - Tokens: 297
 39. src\features\showcase\ShowcasePage.tsx - Lines: 21 - Chars: 847 - Tokens: 212
@@ -1477,17 +1477,20 @@ export const kinematicsScript: Record<string, DialogNode> = {
     'reference_point': {
         id: 'reference_point',
         speaker: 'AI',
-        content: "In Physics, we call this the **Origin (0,0)**. Look at the lab bench. I've marked the Origin.",
+        content: "In Physics, we call this the **Origin (0,0)**. Look at the lab bench. I've marked the Origin with a white beacon.",
+        // Automatically spawn the Origin marker when this text appears
+        onEnterAction: { 
+            type: 'SPAWN_OBJECT', 
+            payload: { 
+                label: 'Origin', 
+                position: { x: 6, y: 4 }, 
+                velocity: { x: 0, y: 0 },
+                isStatic: true,
+                color: '#ffffff'
+            } 
+        },
         options: [
-            { 
-                id: 'spawn_origin', 
-                label: "Show me the Origin.", 
-                nextNodeId: 'define_position',
-                simAction: { 
-                    type: 'SPAWN_OBJECT', 
-                    payload: { label: 'Origin', position: { x: 6, y: 4 }, velocity: { x: 0, y: 0 } } 
-                }
-            }
+            { id: 'spawn_origin', label: "I see it.", nextNodeId: 'define_position' }
         ]
     },
     'define_position': {
@@ -1555,8 +1558,8 @@ export const kinematicsScript: Record<string, DialogNode> = {
                 label: "Fire with Gravity", 
                 nextNodeId: 'end_lesson',
                 simAction: {
-                    type: 'RESET_AND_GRAVITY', // Custom action type we'll handle
-                    payload: { force: { x: 0, y: 1 } } // Gravity vector
+                    type: 'RESET_AND_GRAVITY', 
+                    payload: { force: { x: 0, y: 1 } }
                 } 
             }
         ]
@@ -1564,6 +1567,11 @@ export const kinematicsScript: Record<string, DialogNode> = {
     'end_lesson': {
         id: 'end_lesson',
         speaker: 'AI',
+        // Auto-spawn the projectile again after reset, using onEnter to ensure sequence
+        onEnterAction: {
+            type: 'SPAWN_OBJECT',
+            payload: { label: 'Projectile', position: { x: 1, y: 4 }, velocity: { x: 10, y: 0 } }
+        },
         content: "Excellent. You've seen Position (Static) and Velocity (Dynamic). You are ready for the Lab.",
         options: []
     }
@@ -1818,8 +1826,20 @@ export class PhysicsEngine {
         this.engine.gravity.y = y;
     }
 
-    public spawnProjectile(x: number, y: number, velocity: Vector2D, label: string = 'Projectile') {
-        // Unique ID based on timestamp
+    /**
+     * Spawns a general physics object with configurable properties.
+     */
+    public spawnObject(config: { 
+        x: number, 
+        y: number, 
+        velocity?: Vector2D, 
+        mass?: number,
+        label?: string, 
+        color?: string,
+        isStatic?: boolean 
+    }) {
+        const { x, y, velocity = {x:0, y:0}, label = 'Object', color = '#4f46e5', isStatic = false } = config;
+        
         const id = `${label}_${Date.now()}`;
         
         const body = Matter.Bodies.circle(
@@ -1828,20 +1848,28 @@ export class PhysicsEngine {
             20, 
             { 
                 label: label,
+                isStatic: isStatic,
                 restitution: 0.8,
-                friction: 0.00, // No friction for Kinematics Lesson
+                friction: 0.00,
                 frictionAir: 0.0,
-                render: { fillStyle: '#4f46e5' }
+                render: { fillStyle: color }
             }
         );
 
-        Matter.Body.setVelocity(body, { 
-            x: toPixels(velocity.x) * (1/60), 
-            y: toPixels(velocity.y) * (1/60) 
-        });
+        if (!isStatic) {
+            Matter.Body.setVelocity(body, { 
+                x: toPixels(velocity.x) * (1/60), 
+                y: toPixels(velocity.y) * (1/60) 
+            });
+        }
 
         Matter.Composite.add(this.engine.world, body);
         this.entities.set(id, { body, label });
+    }
+
+    // Deprecated alias for backward compatibility with tests
+    public spawnProjectile(x: number, y: number, velocity: Vector2D, label: string = 'Projectile') {
+        this.spawnObject({ x, y, velocity, label });
     }
 
     private addBoundaries(width: number, height: number) {
@@ -1855,7 +1883,7 @@ export class PhysicsEngine {
 </file_artifact>
 
 <file path="src/features/sciverse/hooks/useDialogEngine.ts">
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { DialogNode, DialogOption, SimAction } from '../types';
 import { kinematicsScript } from '../content/kinematicsScript';
 
@@ -1868,28 +1896,19 @@ export const useDialogEngine = ({ onSimAction }: UseDialogEngineProps) => {
     const [currentNode, setCurrentNode] = useState<DialogNode>(kinematicsScript['root']);
     const [history, setHistory] = useState<DialogNode[]>([]);
 
+    // Handle "On Enter" Actions for the current node
+    useEffect(() => {
+        if (currentNode.onEnterAction) {
+            onSimAction(currentNode.onEnterAction);
+        }
+    }, [currentNode, onSimAction]);
+
     const handleOptionSelect = useCallback((option: DialogOption) => {
         // 1. Trigger Sim Action if present
         if (option.simAction) {
             onSimAction(option.simAction);
         } 
-        // Hack for the custom gravity action in script
-        // In a real engine, we'd have a parser for this. 
-        // For MVP, we map specific IDs or extend the type.
-        // Let's assume standard SimAction covers most, but we can emit custom events.
-        if (option.id === 'fire_gravity') {
-             // We'll treat this as a generic SimAction in the parent handler
-             // The payload in script was pseudo-code, we need to ensure it matches types
-             onSimAction({ type: 'RESET' }); // Clear old
-             setTimeout(() => {
-                 onSimAction({ type: 'APPLY_FORCE', payload: { id: 'GRAVITY_ON', force: {x:0, y:1} } }); // Signal to enable gravity
-                 onSimAction({ 
-                     type: 'SPAWN_OBJECT', 
-                     payload: { label: 'Projectile', position: {x:1, y:4}, velocity: {x:10, y:0} } 
-                 });
-             }, 100);
-        }
-
+        
         // 2. Advance Dialog
         const nextNode = kinematicsScript[option.nextNodeId];
         if (nextNode) {
@@ -2269,7 +2288,7 @@ export class EngineCore {
 </file_artifact>
 
 <file path="src/features/sciverse/modules/KinematicsLesson.tsx">
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 import { PhysicsViewport } from '../components/PhysicsViewport';
 import { SocraticChat } from '../components/SocraticChat';
 import { useDialogEngine } from '../hooks/useDialogEngine';
@@ -2277,7 +2296,7 @@ import { useSciverse } from '../context/SciverseContext';
 import { SimAction } from '../types';
 
 export const KinematicsLesson = () => {
-    const { engine } = useSciverse();
+    const { engine, setEngine } = useSciverse();
     
     // Setup Engine state when mounting this lesson
     useEffect(() => {
@@ -2293,28 +2312,32 @@ export const KinematicsLesson = () => {
 
         switch (action.type) {
             case 'SPAWN_OBJECT':
-                if (action.payload.position && action.payload.velocity) {
-                    engine.spawnProjectile(
-                        action.payload.position.x, 
-                        action.payload.position.y, 
-                        action.payload.velocity,
-                        action.payload.label || 'Object'
-                    );
+                if (action.payload.position) {
+                    engine.spawnObject({
+                        x: action.payload.position.x, 
+                        y: action.payload.position.y, 
+                        velocity: action.payload.velocity,
+                        label: action.payload.label || 'Object',
+                        color: action.payload.color,
+                        isStatic: action.payload.isStatic
+                    });
                 }
                 break;
             case 'RESET':
                 engine.reset();
                 engine.setGravity(0, 0);
                 break;
-            // Handling the special case from the hook where we passed a complex payload via multiple calls
-            // or we can handle the 'RESET_AND_GRAVITY' logic if we added it to types.
-            // For now, the hook handles the sequence of reset -> enable gravity -> spawn.
-            // We just need to handle the specific atomic actions.
             case 'APPLY_FORCE':
                 // Used here as a signal to enable gravity
                 if (action.payload.id === 'GRAVITY_ON') {
                     engine.setGravity(0, 1); // Enable normal gravity
                 }
+                break;
+            case 'RESET_AND_GRAVITY':
+                engine.reset();
+                engine.setGravity(0, 1);
+                // We typically spawn the object right after in the script logic, 
+                // but this case handles the environment reset.
                 break;
         }
     };
@@ -2335,7 +2358,7 @@ export const KinematicsLesson = () => {
             <div className="flex-grow flex flex-col lg:flex-row overflow-hidden">
                 {/* Left: Simulation (Visualizer) */}
                 <div className="flex-grow relative min-h-[400px] lg:h-full bg-slate-900/50">
-                    <PhysicsViewport />
+                    <PhysicsViewport onInit={setEngine} />
                     
                     {/* Overlay Tip */}
                     <div className="absolute bottom-4 left-4 right-4 text-center pointer-events-none">
@@ -2414,17 +2437,20 @@ export interface DialogNode {
     options?: DialogOption[];
     trigger?: SimTrigger;
     nextNodeId?: string;
+    // New: Trigger an action immediately when this node is displayed
+    onEnterAction?: SimAction;
 }
 
 // --- Integration Types ---
 
 export type SimAction = 
-    | { type: 'SPAWN_OBJECT'; payload: Partial<PhysicsEntity> }
+    | { type: 'SPAWN_OBJECT'; payload: Partial<PhysicsEntity> & { isStatic?: boolean; color?: string } }
     | { type: 'APPLY_FORCE'; payload: { id: string; force: Vector2D } }
     | { type: 'SET_FRICTION'; payload: { id: string; value: number } }
     | { type: 'PAUSE' }
     | { type: 'RESUME' }
-    | { type: 'RESET' };
+    | { type: 'RESET' }
+    | { type: 'RESET_AND_GRAVITY'; payload: { force: Vector2D } }; // Explicitly added for script
 
 export type SimTrigger = {
     condition: 'VELOCITY_ZERO' | 'TARGET_HIT' | 'TIME_ELAPSED';

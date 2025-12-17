@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 import { PhysicsViewport } from '../components/PhysicsViewport';
 import { SocraticChat } from '../components/SocraticChat';
 import { useDialogEngine } from '../hooks/useDialogEngine';
@@ -6,7 +6,7 @@ import { useSciverse } from '../context/SciverseContext';
 import { SimAction } from '../types';
 
 export const KinematicsLesson = () => {
-    const { engine } = useSciverse();
+    const { engine, setEngine } = useSciverse();
     
     // Setup Engine state when mounting this lesson
     useEffect(() => {
@@ -22,28 +22,32 @@ export const KinematicsLesson = () => {
 
         switch (action.type) {
             case 'SPAWN_OBJECT':
-                if (action.payload.position && action.payload.velocity) {
-                    engine.spawnProjectile(
-                        action.payload.position.x, 
-                        action.payload.position.y, 
-                        action.payload.velocity,
-                        action.payload.label || 'Object'
-                    );
+                if (action.payload.position) {
+                    engine.spawnObject({
+                        x: action.payload.position.x, 
+                        y: action.payload.position.y, 
+                        velocity: action.payload.velocity,
+                        label: action.payload.label || 'Object',
+                        color: action.payload.color,
+                        isStatic: action.payload.isStatic
+                    });
                 }
                 break;
             case 'RESET':
                 engine.reset();
                 engine.setGravity(0, 0);
                 break;
-            // Handling the special case from the hook where we passed a complex payload via multiple calls
-            // or we can handle the 'RESET_AND_GRAVITY' logic if we added it to types.
-            // For now, the hook handles the sequence of reset -> enable gravity -> spawn.
-            // We just need to handle the specific atomic actions.
             case 'APPLY_FORCE':
                 // Used here as a signal to enable gravity
                 if (action.payload.id === 'GRAVITY_ON') {
                     engine.setGravity(0, 1); // Enable normal gravity
                 }
+                break;
+            case 'RESET_AND_GRAVITY':
+                engine.reset();
+                engine.setGravity(0, 1);
+                // We typically spawn the object right after in the script logic, 
+                // but this case handles the environment reset.
                 break;
         }
     };
@@ -64,7 +68,7 @@ export const KinematicsLesson = () => {
             <div className="flex-grow flex flex-col lg:flex-row overflow-hidden">
                 {/* Left: Simulation (Visualizer) */}
                 <div className="flex-grow relative min-h-[400px] lg:h-full bg-slate-900/50">
-                    <PhysicsViewport />
+                    <PhysicsViewport onInit={setEngine} />
                     
                     {/* Overlay Tip */}
                     <div className="absolute bottom-4 left-4 right-4 text-center pointer-events-none">

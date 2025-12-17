@@ -52,17 +52,20 @@ export interface DialogNode {
     options?: DialogOption[];
     trigger?: SimTrigger;
     nextNodeId?: string;
+    // New: Trigger an action immediately when this node is displayed
+    onEnterAction?: SimAction;
 }
 
 // --- Integration Types ---
 
 export type SimAction = 
-    | { type: 'SPAWN_OBJECT'; payload: Partial<PhysicsEntity> }
+    | { type: 'SPAWN_OBJECT'; payload: Partial<PhysicsEntity> & { isStatic?: boolean; color?: string } }
     | { type: 'APPLY_FORCE'; payload: { id: string; force: Vector2D } }
     | { type: 'SET_FRICTION'; payload: { id: string; value: number } }
     | { type: 'PAUSE' }
     | { type: 'RESUME' }
-    | { type: 'RESET' };
+    | { type: 'RESET' }
+    | { type: 'RESET_AND_GRAVITY'; payload: { force: Vector2D } }; // Explicitly added for script
 
 export type SimTrigger = {
     condition: 'VELOCITY_ZERO' | 'TARGET_HIT' | 'TIME_ELAPSED';
