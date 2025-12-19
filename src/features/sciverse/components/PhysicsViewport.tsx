@@ -5,18 +5,17 @@ import { PhysicsEntity } from '../types';
 import { PhysicsEngine } from '../core/PhysicsEngine';
 
 interface PhysicsViewportProps {
-    onInit?: (engine: PhysicsEngine) => void; // Optional legacy support if needed, but context handles it mostly
+    onInit?: (engine: PhysicsEngine) => void;
     onResize?: (width: number, height: number) => void;
+    theme?: 'light' | 'dark'; // New Theme Prop
 }
 
-export const PhysicsViewport = ({ onInit, onResize }: PhysicsViewportProps) => {
+export const PhysicsViewport = ({ onInit, onResize, theme = 'dark' }: PhysicsViewportProps) => {
     const { containerRef, canvasRef, snapshot } = useSciverse();
     const wrapperRef = useRef<HTMLDivElement>(null);
 
-    // Monitor resize to report back to parent (for script coordinate calculations)
     useLayoutEffect(() => {
         if (!wrapperRef.current) return;
-        
         const observer = new ResizeObserver((entries) => {
             for (const entry of entries) {
                 if (onResize) {
@@ -24,38 +23,44 @@ export const PhysicsViewport = ({ onInit, onResize }: PhysicsViewportProps) => {
                 }
             }
         });
-        
         observer.observe(wrapperRef.current);
         return () => observer.disconnect();
     }, [onResize]);
 
-    // Sync the internal wrapper ref with the context's callback ref
     const handleRef = (el: HTMLDivElement | null) => {
         wrapperRef.current = el;
         containerRef(el);
     };
 
     const primaryEntity = snapshot?.entities.find(e => !e.isStatic);
+    
+    // Theme configurations
+    const isLight = theme === 'light';
+    const bgColor = isLight ? 'bg-slate-50' : 'bg-slate-950';
+    const borderColor = isLight ? 'border-slate-200' : 'border-slate-800';
+    const gridColor = isLight ? '#cbd5e1' : '#475569'; // slate-300 vs slate-600
+    const floorColor = isLight ? 'border-slate-300 bg-slate-200/50' : 'border-slate-700 bg-slate-800/50';
+    const textColor = isLight ? 'text-slate-600' : 'text-slate-400';
 
     return (
         <div 
             ref={handleRef} 
-            className="relative w-full h-full bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-inner group"
+            className={`relative w-full h-full ${bgColor} rounded-xl overflow-hidden border ${borderColor} shadow-inner group transition-colors duration-300`}
         >
             {/* 1. Grid Layer */}
             <div className="absolute inset-0 opacity-30 pointer-events-none" 
                 style={{ 
-                    backgroundImage: `linear-gradient(#475569 1px, transparent 1px), linear-gradient(90deg, #475569 1px, transparent 1px)`, 
+                    backgroundImage: `linear-gradient(${gridColor} 1px, transparent 1px), linear-gradient(90deg, ${gridColor} 1px, transparent 1px)`, 
                     backgroundSize: `${PHYSICS_CONFIG.METER_TO_PIXEL}px ${PHYSICS_CONFIG.METER_TO_PIXEL}px`
                 }}
             />
 
-            {/* 2. Visual Floor (Aligned to Bottom) */}
+            {/* 2. Visual Floor */}
             <div 
-                className="absolute w-full border-t-4 border-slate-700 bg-slate-800/50 pointer-events-none backdrop-blur-sm"
+                className={`absolute w-full border-t-4 ${floorColor} pointer-events-none backdrop-blur-sm`}
                 style={{ bottom: 0, height: '40px' }}
             >
-                <div className="absolute top-2 right-4 text-xs text-slate-500 font-mono tracking-wider">LAB FLOOR</div>
+                <div className={`absolute top-2 right-4 text-xs font-mono tracking-wider ${textColor}`}>LAB FLOOR</div>
             </div>
 
             {/* 3. Matter.js Canvas */}
@@ -73,7 +78,7 @@ export const PhysicsViewport = ({ onInit, onResize }: PhysicsViewportProps) => {
                 </defs>
 
                 {snapshot?.entities.map(entity => (
-                    <EntityOverlay key={entity.id} entity={entity} />
+                    <EntityOverlay key={entity.id} entity={entity} theme={theme} />
                 ))}
             </svg>
 
@@ -81,29 +86,36 @@ export const PhysicsViewport = ({ onInit, onResize }: PhysicsViewportProps) => {
             <div className="absolute top-4 left-4 flex flex-col gap-2 pointer-events-none transition-opacity duration-500">
                 {primaryEntity ? (
                     <>
-                        <MetricRow label="Vx" value={primaryEntity.velocity.x.toFixed(2)} unit="m/s" color="text-emerald-400" />
-                        <MetricRow label="Vy" value={(-primaryEntity.velocity.y).toFixed(2)} unit="m/s" color="text-emerald-400" />
+                        <MetricRow label="Vx" value={primaryEntity.velocity.x.toFixed(2)} unit="m/s" color="text-emerald-500" theme={theme} />
+                        <MetricRow label="Pos" value={primaryEntity.position.x.toFixed(2)} unit="m" color={isLight ? 'text-slate-600' : 'text-slate-300'} theme={theme} />
                     </>
                 ) : (
-                    <span className="text-slate-500 text-xs uppercase tracking-wider font-mono">System Idle</span>
+                    <span className={`text-xs uppercase tracking-wider font-mono ${textColor}`}>System Idle</span>
                 )}
             </div>
         </div>
     );
 };
 
-const EntityOverlay = ({ entity }: { entity: PhysicsEntity }) => {
+const EntityOverlay = ({ entity, theme }: { entity: PhysicsEntity, theme: string }) => {
     const px = toPixels(entity.position.x);
     const py = toPixels(entity.position.y);
+    const isLight = theme === 'light';
+    
+    // Ensure text is readable on chosen background
+    const labelColor = entity.color || (isLight ? '#334155' : '#cbd5e1');
 
     return (
         <g transform={`translate(${px}, ${py})`} data-testid={`entity-${entity.label}`}>
-            {/* Visual Guide Arrow (Bounce Animation) */}
+            {/* Visual Guide Arrow */}
             {entity.highlight && (
                 <g className="animate-bounce">
+                    {/* Make arrow Red in light mode for visibility? Or keep Amber? Amber works on both if dark enough. */}
                     <path d="M 0 -50 L 0 -30" stroke="#f59e0b" strokeWidth="2" />
                     <path d="M -5 -35 L 0 -30 L 5 -35" stroke="#f59e0b" strokeWidth="2" fill="none" />
-                    <text y="-60" textAnchor="middle" fill="#f59e0b" fontSize="10" fontFamily="monospace" fontWeight="bold">ORIGIN</text>
+                    <text y="-60" textAnchor="middle" fill="#f59e0b" fontSize="10" fontFamily="monospace" fontWeight="bold">
+                        {entity.label.toUpperCase()}
+                    </text>
                 </g>
             )}
 
@@ -113,21 +125,22 @@ const EntityOverlay = ({ entity }: { entity: PhysicsEntity }) => {
             )}
 
             {/* Text Label */}
-            <text 
-                y={-25} 
-                textAnchor="middle" 
-                fill={entity.color || '#cbd5e1'} 
-                fontSize="12" 
-                fontFamily="monospace" 
-                fontWeight="bold"
-                className="drop-shadow-md"
-                style={{ textShadow: '0px 2px 4px rgba(0,0,0,0.8)' }}
-            >
-                {entity.label.toUpperCase()}
-            </text>
+            {!entity.highlight && (
+                 <text 
+                    y={-25} 
+                    textAnchor="middle" 
+                    fill={labelColor} 
+                    fontSize="12" 
+                    fontFamily="monospace" 
+                    fontWeight="bold"
+                    className="drop-shadow-sm"
+                >
+                    {entity.label.toUpperCase()}
+                </text>
+            )}
             
             {/* Position Marker */}
-            <circle r="5" fill={entity.color || '#cbd5e1'} stroke="#0f172a" strokeWidth="2" />
+            <circle r="5" fill={entity.color || '#cbd5e1'} stroke={isLight ? '#64748b' : '#0f172a'} strokeWidth="2" />
         </g>
     );
 };
@@ -149,10 +162,13 @@ const VectorArrow = ({ vector, color, scale, marker }: { vector: {x:number, y:nu
     );
 };
 
-const MetricRow = ({ label, value, unit, color }: { label: string, value: string, unit: string, color: string }) => (
-    <div className="bg-slate-900/90 backdrop-blur px-3 py-1.5 rounded border border-slate-700/50 flex items-center gap-3 shadow-lg">
-        <span className="text-slate-500 font-mono text-xs font-bold w-4">{label}</span>
-        <span className={`font-mono text-sm ${color}`}>{value}</span>
-        <span className="text-slate-600 text-xs">{unit}</span>
-    </div>
-);
+const MetricRow = ({ label, value, unit, color, theme }: { label: string, value: string, unit: string, color: string, theme: string }) => {
+    const bg = theme === 'light' ? 'bg-white/90 border-slate-200' : 'bg-slate-900/90 border-slate-700/50';
+    return (
+        <div className={`${bg} backdrop-blur px-3 py-1.5 rounded border flex items-center gap-3 shadow-lg`}>
+            <span className="text-slate-500 font-mono text-xs font-bold w-4">{label}</span>
+            <span className={`font-mono text-sm ${color}`}>{value}</span>
+            <span className="text-slate-500 text-xs">{unit}</span>
+        </div>
+    );
+};
