@@ -1,10 +1,10 @@
 <!--
   File: flattened_repo.md
   Source Directory: c:\monorepo\portfolio-website1
-  Date Generated: 2025-12-19T18:11:47.623Z
+  Date Generated: 2025-12-19T18:21:00.282Z
   ---
   Total Files: 54
-  Approx. Tokens: 58754
+  Approx. Tokens: 58905
 -->
 
 <!-- Top 10 Text Files by Token Count -->
@@ -12,12 +12,12 @@
 2. External_Context\Physics Simulation Project Enhancement Plan.md (8113 tokens)
 3. External_Context\Forces-Motion.md (6749 tokens)
 4. External_Context\Enhancing Physics Education Website.md (6714 tokens)
-5. src\features\sciverse\components\PhysicsViewport.tsx (1854 tokens)
+5. src\features\sciverse\components\PhysicsViewport.tsx (1855 tokens)
 6. src\features\sciverse\core\PhysicsEngine.ts (1790 tokens)
-7. src\features\sciverse\content\kinematicsScript.ts (1691 tokens)
-8. src\features\sciverse\labs\KinematicsLab.tsx (1666 tokens)
-9. src\features\sciverse\content\module1-motion-1d.ts (1638 tokens)
-10. src\Artifacts\A9-Sciverse-Curriculum-Roadmap.md (1146 tokens)
+7. src\features\sciverse\content\module1-motion-1d.ts (1758 tokens)
+8. src\features\sciverse\content\kinematicsScript.ts (1691 tokens)
+9. src\features\sciverse\labs\KinematicsLab.tsx (1666 tokens)
+10. src\features\sciverse\modules\KinematicsLesson.tsx (1168 tokens)
 
 <!-- Full File List -->
 1. src\App.tsx - Lines: 28 - Chars: 1052 - Tokens: 263
@@ -43,11 +43,11 @@
 21. src\features\science-lab\ScienceLab.tsx - Lines: 59 - Chars: 2829 - Tokens: 708
 22. src\features\sciverse\components\GraphMonitor.tsx - Lines: 77 - Chars: 3397 - Tokens: 850
 23. src\features\sciverse\components\PhysicsViewport.test.tsx - Lines: 69 - Chars: 2252 - Tokens: 563
-24. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 174 - Chars: 7415 - Tokens: 1854
+24. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 175 - Chars: 7417 - Tokens: 1855
 25. src\features\sciverse\components\SocraticChat.tsx - Lines: 89 - Chars: 3902 - Tokens: 976
 26. src\features\sciverse\config\physicsConfig.ts - Lines: 27 - Chars: 876 - Tokens: 219
 27. src\features\sciverse\content\kinematicsScript.ts - Lines: 141 - Chars: 6763 - Tokens: 1691
-28. src\features\sciverse\content\module1-motion-1d.ts - Lines: 140 - Chars: 6549 - Tokens: 1638
+28. src\features\sciverse\content\module1-motion-1d.ts - Lines: 148 - Chars: 7031 - Tokens: 1758
 29. src\features\sciverse\context\SciverseContext.tsx - Lines: 33 - Chars: 1103 - Tokens: 276
 30. src\features\sciverse\core\PhysicsEngine.test.ts - Lines: 57 - Chars: 2364 - Tokens: 591
 31. src\features\sciverse\core\PhysicsEngine.ts - Lines: 226 - Chars: 7159 - Tokens: 1790
@@ -56,7 +56,7 @@
 34. src\features\sciverse\hooks\usePhysics.ts - Lines: 63 - Chars: 1991 - Tokens: 498
 35. src\features\sciverse\labs\KinematicsLab.tsx - Lines: 134 - Chars: 6664 - Tokens: 1666
 36. src\features\sciverse\lib\engine-core.ts - Lines: 1 - Chars: 9 - Tokens: 3
-37. src\features\sciverse\modules\KinematicsLesson.tsx - Lines: 106 - Chars: 4549 - Tokens: 1138
+37. src\features\sciverse\modules\KinematicsLesson.tsx - Lines: 108 - Chars: 4672 - Tokens: 1168
 38. src\features\sciverse\types.ts - Lines: 77 - Chars: 2119 - Tokens: 530
 39. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
 40. src\features\showcase\data\projectsData.ts - Lines: 23 - Chars: 1186 - Tokens: 297
@@ -1322,7 +1322,7 @@ import { PhysicsEngine } from '../core/PhysicsEngine';
 interface PhysicsViewportProps {
     onInit?: (engine: PhysicsEngine) => void;
     onResize?: (width: number, height: number) => void;
-    theme?: 'light' | 'dark'; // New Theme Prop
+    theme?: 'light' | 'dark';
 }
 
 export const PhysicsViewport = ({ onInit, onResize, theme = 'dark' }: PhysicsViewportProps) => {
@@ -1353,7 +1353,7 @@ export const PhysicsViewport = ({ onInit, onResize, theme = 'dark' }: PhysicsVie
     const isLight = theme === 'light';
     const bgColor = isLight ? 'bg-slate-50' : 'bg-slate-950';
     const borderColor = isLight ? 'border-slate-200' : 'border-slate-800';
-    const gridColor = isLight ? '#cbd5e1' : '#475569'; // slate-300 vs slate-600
+    const gridColor = isLight ? '#cbd5e1' : '#475569';
     const floorColor = isLight ? 'border-slate-300 bg-slate-200/50' : 'border-slate-700 bg-slate-800/50';
     const textColor = isLight ? 'text-slate-600' : 'text-slate-400';
 
@@ -1372,10 +1372,13 @@ export const PhysicsViewport = ({ onInit, onResize, theme = 'dark' }: PhysicsVie
 
             {/* 2. Visual Floor */}
             <div 
-                className={`absolute w-full border-t-4 ${floorColor} pointer-events-none backdrop-blur-sm`}
+                className={`absolute w-full border-t-4 ${floorColor} pointer-events-none backdrop-blur-sm flex items-center justify-center`}
                 style={{ bottom: 0, height: '40px' }}
             >
-                <div className={`absolute top-2 right-4 text-xs font-mono tracking-wider ${textColor}`}>LAB FLOOR</div>
+                {/* C14 Update: Explicit "LAB BENCH" Label for user clarity */}
+                <div className={`text-sm font-bold tracking-[0.2em] opacity-40 ${textColor}`}>
+                    LAB BENCH
+                </div>
             </div>
 
             {/* 3. Matter.js Canvas */}
@@ -1417,18 +1420,16 @@ const EntityOverlay = ({ entity, theme }: { entity: PhysicsEntity, theme: string
     const py = toPixels(entity.position.y);
     const isLight = theme === 'light';
     
-    // Ensure text is readable on chosen background
     const labelColor = entity.color || (isLight ? '#334155' : '#cbd5e1');
 
     return (
         <g transform={`translate(${px}, ${py})`} data-testid={`entity-${entity.label}`}>
-            {/* Visual Guide Arrow */}
+            {/* Visual Guide Arrow - C14 Update: Ensure visibility */}
             {entity.highlight && (
                 <g className="animate-bounce">
-                    {/* Make arrow Red in light mode for visibility? Or keep Amber? Amber works on both if dark enough. */}
-                    <path d="M 0 -50 L 0 -30" stroke="#f59e0b" strokeWidth="2" />
-                    <path d="M -5 -35 L 0 -30 L 5 -35" stroke="#f59e0b" strokeWidth="2" fill="none" />
-                    <text y="-60" textAnchor="middle" fill="#f59e0b" fontSize="10" fontFamily="monospace" fontWeight="bold">
+                    <path d="M 0 -50 L 0 -30" stroke="#f59e0b" strokeWidth="3" />
+                    <path d="M -5 -35 L 0 -30 L 5 -35" stroke="#f59e0b" strokeWidth="3" fill="none" />
+                    <text y="-60" textAnchor="middle" fill="#f59e0b" fontSize="12" fontFamily="monospace" fontWeight="bold">
                         {entity.label.toUpperCase()}
                     </text>
                 </g>
@@ -1439,7 +1440,7 @@ const EntityOverlay = ({ entity, theme }: { entity: PhysicsEntity, theme: string
                 <VectorArrow vector={entity.velocity} color="#10b981" scale={15} marker="arrow-v" />
             )}
 
-            {/* Text Label */}
+            {/* Text Label (Only show if not highlighted, to avoid clutter) */}
             {!entity.highlight && (
                  <text 
                     y={-25} 
@@ -1455,7 +1456,7 @@ const EntityOverlay = ({ entity, theme }: { entity: PhysicsEntity, theme: string
             )}
             
             {/* Position Marker */}
-            <circle r="5" fill={entity.color || '#cbd5e1'} stroke={isLight ? '#64748b' : '#0f172a'} strokeWidth="2" />
+            <circle r="6" fill={entity.color || '#cbd5e1'} stroke={isLight ? '#64748b' : '#0f172a'} strokeWidth="2" />
         </g>
     );
 };
@@ -1765,12 +1766,19 @@ import { toMeters } from '../config/physicsConfig';
  */
 export const generateKinematicsScript = (widthPx: number, heightPx: number): Record<string, DialogNode> => {
     
-    // Relative coordinates
-    const centerX = toMeters(widthPx * 0.5); 
-    // Position floor-relative. If floor is at bottom, 0.7y is good.
-    const centerY = toMeters(heightPx * 0.7); 
+    // Use explicit relative coordinates for the Origin to ensure it stays centered
+    // 0.5 = 50% width (Center), 0.8 = 80% height (Near bottom floor)
+    const relativeOrigin = { x: 0.5, y: 0.8 }; 
     
-    const step1X = centerX + 5; 
+    // For the runner, we calculate meters based on the relative start point
+    // We assume 100px = 1 meter. 
+    // This part is a bit tricky mixing relative/absolute, so for simplicity in this cycle,
+    // we will use the relative flag for the Origin (static) and absolute for the moving runner,
+    // calculating the runner's start based on the pixel value of the center.
+    const centerX_Meters = toMeters(widthPx * 0.5);
+    const centerY_Meters = toMeters(heightPx * 0.8);
+    
+    const step1X = centerX_Meters + 5; 
     const step2X = step1X - 2;
 
     return {
@@ -1792,17 +1800,17 @@ export const generateKinematicsScript = (widthPx: number, heightPx: number): Rec
         'reference_point': {
             id: 'reference_point',
             speaker: 'AI',
-            content: "I have placed a **Red Beacon** on the lab bench. This is our **Origin (x=0)**. \n\nEverything to the right is positive (+x). Everything to the left is negative (-x).",
+            content: "I have placed a **Red Beacon** on the **Lab Bench** (look at the bottom center of the white screen). \n\nThis is our **Origin (x=0)**.",
             onEnterAction: { 
                 type: 'SPAWN_OBJECT', 
                 payload: { 
                     label: 'Origin', 
-                    // Use relative positioning if viewport size might shift, or explicit meters
-                    // Here we use explicit meters derived from px
-                    position: { x: centerX, y: centerY }, 
+                    // C14 Fix: Use Relative Positioning so it stays centered
+                    isRelative: true,
+                    position: relativeOrigin, 
                     velocity: { x: 0, y: 0 },
                     isStatic: true,
-                    color: '#ef4444', // Red-500 for high contrast in Light Mode
+                    color: '#ef4444', // Red-500
                     highlight: true // Arrow pointing to it
                 } 
             },
@@ -1823,7 +1831,8 @@ export const generateKinematicsScript = (widthPx: number, heightPx: number): Rec
                         type: 'SPAWN_OBJECT',
                         payload: {
                             label: 'Runner',
-                            position: { x: step1X, y: centerY }, 
+                            // Use absolute meters for motion calculations
+                            position: { x: step1X, y: centerY_Meters }, 
                             velocity: { x: 0, y: 0 },
                             color: '#10b981' // Emerald
                         }
@@ -1844,7 +1853,7 @@ export const generateKinematicsScript = (widthPx: number, heightPx: number): Rec
                         type: 'SPAWN_OBJECT',
                         payload: {
                             label: 'Runner',
-                            position: { x: step2X, y: centerY }, // 5 - 2 = 3
+                            position: { x: step2X, y: centerY_Meters }, // 5 - 2 = 3
                             velocity: { x: 0, y: 0 },
                             color: '#10b981'
                         }
@@ -1892,7 +1901,7 @@ export const generateKinematicsScript = (widthPx: number, heightPx: number): Rec
             id: 'raoul_confirm',
             speaker: 'AI',
             content: "Exactly. Displacement is only equal to Distance if you move in a straight line without ever turning back. \n\nNext, we will look at how fast things move: **Speed vs Velocity**.",
-            options: [] // End of module
+            options: [] // End of module for now
         }
     };
 };
@@ -2523,15 +2532,16 @@ export const KinematicsLesson = () => {
     const { currentNode, history, handleOptionSelect } = useDialogEngine({
         script, 
         onSimAction: (action) => handleSimAction(action),
-        isReady: !!engine // C13: Pass engine readiness to prevent race conditions
+        isReady: !!engine 
     });
 
+    // C14 Fix: Removed 'script' from dependency array to prevent engine reset on resize
     useEffect(() => {
         if (engine) {
             engine.reset();
             engine.setGravity(0, 0); 
         }
-    }, [engine, script]);
+    }, [engine]); // Only reset when engine instance changes (mount)
 
     const handleSimAction = (action: SimAction) => {
         if (!engine) return;
@@ -2546,7 +2556,8 @@ export const KinematicsLesson = () => {
                         label: action.payload.label || 'Object',
                         color: action.payload.color,
                         isStatic: action.payload.isStatic,
-                        highlight: action.payload.highlight
+                        highlight: action.payload.highlight,
+                        isRelative: action.payload.isRelative
                     });
                 }
                 break;
@@ -2585,9 +2596,9 @@ export const KinematicsLesson = () => {
                     />
                     
                     {/* Overlay Tip */}
-                    <div className="absolute bottom-4 left-4 right-4 text-center pointer-events-none">
-                        <span className="px-3 py-1 bg-white/80 rounded-full text-xs text-slate-500 border border-slate-200 shadow-sm">
-                            Visualization Mode: Interactive
+                    <div className="absolute top-4 right-4 text-center pointer-events-none">
+                        <span className="px-3 py-1 bg-white/80 rounded-full text-xs text-slate-500 border border-slate-200 shadow-sm font-mono">
+                            Interactive Lab
                         </span>
                     </div>
                 </div>

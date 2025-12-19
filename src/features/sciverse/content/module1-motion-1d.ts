@@ -7,12 +7,19 @@ import { toMeters } from '../config/physicsConfig';
  */
 export const generateKinematicsScript = (widthPx: number, heightPx: number): Record<string, DialogNode> => {
     
-    // Relative coordinates
-    const centerX = toMeters(widthPx * 0.5); 
-    // Position floor-relative. If floor is at bottom, 0.7y is good.
-    const centerY = toMeters(heightPx * 0.7); 
+    // Use explicit relative coordinates for the Origin to ensure it stays centered
+    // 0.5 = 50% width (Center), 0.8 = 80% height (Near bottom floor)
+    const relativeOrigin = { x: 0.5, y: 0.8 }; 
     
-    const step1X = centerX + 5; 
+    // For the runner, we calculate meters based on the relative start point
+    // We assume 100px = 1 meter. 
+    // This part is a bit tricky mixing relative/absolute, so for simplicity in this cycle,
+    // we will use the relative flag for the Origin (static) and absolute for the moving runner,
+    // calculating the runner's start based on the pixel value of the center.
+    const centerX_Meters = toMeters(widthPx * 0.5);
+    const centerY_Meters = toMeters(heightPx * 0.8);
+    
+    const step1X = centerX_Meters + 5; 
     const step2X = step1X - 2;
 
     return {
@@ -34,17 +41,17 @@ export const generateKinematicsScript = (widthPx: number, heightPx: number): Rec
         'reference_point': {
             id: 'reference_point',
             speaker: 'AI',
-            content: "I have placed a **Red Beacon** on the lab bench. This is our **Origin (x=0)**. \n\nEverything to the right is positive (+x). Everything to the left is negative (-x).",
+            content: "I have placed a **Red Beacon** on the **Lab Bench** (look at the bottom center of the white screen). \n\nThis is our **Origin (x=0)**.",
             onEnterAction: { 
                 type: 'SPAWN_OBJECT', 
                 payload: { 
                     label: 'Origin', 
-                    // Use relative positioning if viewport size might shift, or explicit meters
-                    // Here we use explicit meters derived from px
-                    position: { x: centerX, y: centerY }, 
+                    // C14 Fix: Use Relative Positioning so it stays centered
+                    isRelative: true,
+                    position: relativeOrigin, 
                     velocity: { x: 0, y: 0 },
                     isStatic: true,
-                    color: '#ef4444', // Red-500 for high contrast in Light Mode
+                    color: '#ef4444', // Red-500
                     highlight: true // Arrow pointing to it
                 } 
             },
@@ -65,7 +72,8 @@ export const generateKinematicsScript = (widthPx: number, heightPx: number): Rec
                         type: 'SPAWN_OBJECT',
                         payload: {
                             label: 'Runner',
-                            position: { x: step1X, y: centerY }, 
+                            // Use absolute meters for motion calculations
+                            position: { x: step1X, y: centerY_Meters }, 
                             velocity: { x: 0, y: 0 },
                             color: '#10b981' // Emerald
                         }
@@ -86,7 +94,7 @@ export const generateKinematicsScript = (widthPx: number, heightPx: number): Rec
                         type: 'SPAWN_OBJECT',
                         payload: {
                             label: 'Runner',
-                            position: { x: step2X, y: centerY }, // 5 - 2 = 3
+                            position: { x: step2X, y: centerY_Meters }, // 5 - 2 = 3
                             velocity: { x: 0, y: 0 },
                             color: '#10b981'
                         }
@@ -134,7 +142,7 @@ export const generateKinematicsScript = (widthPx: number, heightPx: number): Rec
             id: 'raoul_confirm',
             speaker: 'AI',
             content: "Exactly. Displacement is only equal to Distance if you move in a straight line without ever turning back. \n\nNext, we will look at how fast things move: **Speed vs Velocity**.",
-            options: [] // End of module
+            options: [] // End of module for now
         }
     };
 };

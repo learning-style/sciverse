@@ -23,15 +23,16 @@ export const KinematicsLesson = () => {
     const { currentNode, history, handleOptionSelect } = useDialogEngine({
         script, 
         onSimAction: (action) => handleSimAction(action),
-        isReady: !!engine // C13: Pass engine readiness to prevent race conditions
+        isReady: !!engine 
     });
 
+    // C14 Fix: Removed 'script' from dependency array to prevent engine reset on resize
     useEffect(() => {
         if (engine) {
             engine.reset();
             engine.setGravity(0, 0); 
         }
-    }, [engine, script]);
+    }, [engine]); // Only reset when engine instance changes (mount)
 
     const handleSimAction = (action: SimAction) => {
         if (!engine) return;
@@ -46,7 +47,8 @@ export const KinematicsLesson = () => {
                         label: action.payload.label || 'Object',
                         color: action.payload.color,
                         isStatic: action.payload.isStatic,
-                        highlight: action.payload.highlight
+                        highlight: action.payload.highlight,
+                        isRelative: action.payload.isRelative
                     });
                 }
                 break;
@@ -85,9 +87,9 @@ export const KinematicsLesson = () => {
                     />
                     
                     {/* Overlay Tip */}
-                    <div className="absolute bottom-4 left-4 right-4 text-center pointer-events-none">
-                        <span className="px-3 py-1 bg-white/80 rounded-full text-xs text-slate-500 border border-slate-200 shadow-sm">
-                            Visualization Mode: Interactive
+                    <div className="absolute top-4 right-4 text-center pointer-events-none">
+                        <span className="px-3 py-1 bg-white/80 rounded-full text-xs text-slate-500 border border-slate-200 shadow-sm font-mono">
+                            Interactive Lab
                         </span>
                     </div>
                 </div>

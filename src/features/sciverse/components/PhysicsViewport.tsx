@@ -7,7 +7,7 @@ import { PhysicsEngine } from '../core/PhysicsEngine';
 interface PhysicsViewportProps {
     onInit?: (engine: PhysicsEngine) => void;
     onResize?: (width: number, height: number) => void;
-    theme?: 'light' | 'dark'; // New Theme Prop
+    theme?: 'light' | 'dark';
 }
 
 export const PhysicsViewport = ({ onInit, onResize, theme = 'dark' }: PhysicsViewportProps) => {
@@ -38,7 +38,7 @@ export const PhysicsViewport = ({ onInit, onResize, theme = 'dark' }: PhysicsVie
     const isLight = theme === 'light';
     const bgColor = isLight ? 'bg-slate-50' : 'bg-slate-950';
     const borderColor = isLight ? 'border-slate-200' : 'border-slate-800';
-    const gridColor = isLight ? '#cbd5e1' : '#475569'; // slate-300 vs slate-600
+    const gridColor = isLight ? '#cbd5e1' : '#475569';
     const floorColor = isLight ? 'border-slate-300 bg-slate-200/50' : 'border-slate-700 bg-slate-800/50';
     const textColor = isLight ? 'text-slate-600' : 'text-slate-400';
 
@@ -57,10 +57,13 @@ export const PhysicsViewport = ({ onInit, onResize, theme = 'dark' }: PhysicsVie
 
             {/* 2. Visual Floor */}
             <div 
-                className={`absolute w-full border-t-4 ${floorColor} pointer-events-none backdrop-blur-sm`}
+                className={`absolute w-full border-t-4 ${floorColor} pointer-events-none backdrop-blur-sm flex items-center justify-center`}
                 style={{ bottom: 0, height: '40px' }}
             >
-                <div className={`absolute top-2 right-4 text-xs font-mono tracking-wider ${textColor}`}>LAB FLOOR</div>
+                {/* C14 Update: Explicit "LAB BENCH" Label for user clarity */}
+                <div className={`text-sm font-bold tracking-[0.2em] opacity-40 ${textColor}`}>
+                    LAB BENCH
+                </div>
             </div>
 
             {/* 3. Matter.js Canvas */}
@@ -102,18 +105,16 @@ const EntityOverlay = ({ entity, theme }: { entity: PhysicsEntity, theme: string
     const py = toPixels(entity.position.y);
     const isLight = theme === 'light';
     
-    // Ensure text is readable on chosen background
     const labelColor = entity.color || (isLight ? '#334155' : '#cbd5e1');
 
     return (
         <g transform={`translate(${px}, ${py})`} data-testid={`entity-${entity.label}`}>
-            {/* Visual Guide Arrow */}
+            {/* Visual Guide Arrow - C14 Update: Ensure visibility */}
             {entity.highlight && (
                 <g className="animate-bounce">
-                    {/* Make arrow Red in light mode for visibility? Or keep Amber? Amber works on both if dark enough. */}
-                    <path d="M 0 -50 L 0 -30" stroke="#f59e0b" strokeWidth="2" />
-                    <path d="M -5 -35 L 0 -30 L 5 -35" stroke="#f59e0b" strokeWidth="2" fill="none" />
-                    <text y="-60" textAnchor="middle" fill="#f59e0b" fontSize="10" fontFamily="monospace" fontWeight="bold">
+                    <path d="M 0 -50 L 0 -30" stroke="#f59e0b" strokeWidth="3" />
+                    <path d="M -5 -35 L 0 -30 L 5 -35" stroke="#f59e0b" strokeWidth="3" fill="none" />
+                    <text y="-60" textAnchor="middle" fill="#f59e0b" fontSize="12" fontFamily="monospace" fontWeight="bold">
                         {entity.label.toUpperCase()}
                     </text>
                 </g>
@@ -124,7 +125,7 @@ const EntityOverlay = ({ entity, theme }: { entity: PhysicsEntity, theme: string
                 <VectorArrow vector={entity.velocity} color="#10b981" scale={15} marker="arrow-v" />
             )}
 
-            {/* Text Label */}
+            {/* Text Label (Only show if not highlighted, to avoid clutter) */}
             {!entity.highlight && (
                  <text 
                     y={-25} 
@@ -140,7 +141,7 @@ const EntityOverlay = ({ entity, theme }: { entity: PhysicsEntity, theme: string
             )}
             
             {/* Position Marker */}
-            <circle r="5" fill={entity.color || '#cbd5e1'} stroke={isLight ? '#64748b' : '#0f172a'} strokeWidth="2" />
+            <circle r="6" fill={entity.color || '#cbd5e1'} stroke={isLight ? '#64748b' : '#0f172a'} strokeWidth="2" />
         </g>
     );
 };
