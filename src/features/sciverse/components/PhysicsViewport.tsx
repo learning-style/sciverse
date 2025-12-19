@@ -1,16 +1,45 @@
+import { useLayoutEffect, useRef } from 'react';
 import { useSciverse } from '../context/SciverseContext';
 import { toPixels, PHYSICS_CONFIG } from '../config/physicsConfig';
 import { PhysicsEntity } from '../types';
+import { PhysicsEngine } from '../core/PhysicsEngine';
 
-export const PhysicsViewport = () => {
+interface PhysicsViewportProps {
+    onInit?: (engine: PhysicsEngine) => void; // Optional legacy support if needed, but context handles it mostly
+    onResize?: (width: number, height: number) => void;
+}
+
+export const PhysicsViewport = ({ onInit, onResize }: PhysicsViewportProps) => {
     const { containerRef, canvasRef, snapshot } = useSciverse();
+    const wrapperRef = useRef<HTMLDivElement>(null);
+
+    // Monitor resize to report back to parent (for script coordinate calculations)
+    useLayoutEffect(() => {
+        if (!wrapperRef.current) return;
+        
+        const observer = new ResizeObserver((entries) => {
+            for (const entry of entries) {
+                if (onResize) {
+                    onResize(entry.contentRect.width, entry.contentRect.height);
+                }
+            }
+        });
+        
+        observer.observe(wrapperRef.current);
+        return () => observer.disconnect();
+    }, [onResize]);
+
+    // Sync the internal wrapper ref with the context's callback ref
+    const handleRef = (el: HTMLDivElement | null) => {
+        wrapperRef.current = el;
+        containerRef(el);
+    };
 
     const primaryEntity = snapshot?.entities.find(e => !e.isStatic);
-    const floorY = toPixels(8); 
 
     return (
         <div 
-            ref={containerRef} 
+            ref={handleRef} 
             className="relative w-full h-full bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-inner group"
         >
             {/* 1. Grid Layer */}
@@ -21,19 +50,22 @@ export const PhysicsViewport = () => {
                 }}
             />
 
-            {/* 2. Visual Floor */}
+            {/* 2. Visual Floor (Aligned to Bottom) */}
             <div 
-                className="absolute w-full border-t-2 border-indigo-500/50 bg-indigo-500/10 pointer-events-none"
-                style={{ top: floorY, bottom: 0 }}
+                className="absolute w-full border-t-4 border-slate-700 bg-slate-800/50 pointer-events-none backdrop-blur-sm"
+                style={{ bottom: 0, height: '40px' }}
             >
-                <div className="absolute top-2 right-2 text-xs text-indigo-400 font-mono">LAB FLOOR (y=8m)</div>
+                <div className="absolute top-2 right-4 text-xs text-slate-500 font-mono tracking-wider">LAB FLOOR</div>
             </div>
 
             {/* 3. Matter.js Canvas */}
             <canvas ref={canvasRef} className="absolute inset-0 block" />
 
             {/* 4. SVG Overlay Layer */}
-            <svg className="absolute inset-0 pointer-events-none w-full h-full overflow-visible">
+            <svg 
+                className="absolute inset-0 pointer-events-none w-full h-full overflow-visible"
+                data-testid="overlay-layer"
+            >
                 <defs>
                     <marker id="arrow-v" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
                         <path d="M0,0 L0,6 L9,3 z" fill="#10b981" />
@@ -65,18 +97,19 @@ const EntityOverlay = ({ entity }: { entity: PhysicsEntity }) => {
     const py = toPixels(entity.position.y);
 
     return (
-        <g transform={`translate(${px}, ${py})`}>
-            {/* Velocity Vector */}
-            {!entity.isStatic && (
-                <VectorArrow vector={entity.velocity} color="#10b981" scale={15} marker="arrow-v" />
-            )}
-
+        <g transform={`translate(${px}, ${py})`} data-testid={`entity-${entity.label}`}>
             {/* Visual Guide Arrow (Bounce Animation) */}
             {entity.highlight && (
                 <g className="animate-bounce">
-                    <path d="M 0 -60 L 0 -40 L -5 -45 M 0 -40 L 5 -45" stroke="#f59e0b" strokeWidth="3" fill="none" />
-                    <text y="-70" textAnchor="middle" fill="#f59e0b" fontSize="10" fontFamily="monospace" fontWeight="bold">HERE</text>
+                    <path d="M 0 -50 L 0 -30" stroke="#f59e0b" strokeWidth="2" />
+                    <path d="M -5 -35 L 0 -30 L 5 -35" stroke="#f59e0b" strokeWidth="2" fill="none" />
+                    <text y="-60" textAnchor="middle" fill="#f59e0b" fontSize="10" fontFamily="monospace" fontWeight="bold">ORIGIN</text>
                 </g>
+            )}
+
+            {/* Velocity Vector */}
+            {!entity.isStatic && (
+                <VectorArrow vector={entity.velocity} color="#10b981" scale={15} marker="arrow-v" />
             )}
 
             {/* Text Label */}
@@ -94,7 +127,7 @@ const EntityOverlay = ({ entity }: { entity: PhysicsEntity }) => {
             </text>
             
             {/* Position Marker */}
-            <circle r="4" fill={entity.color || '#cbd5e1'} stroke="#0f172a" strokeWidth="2" />
+            <circle r="5" fill={entity.color || '#cbd5e1'} stroke="#0f172a" strokeWidth="2" />
         </g>
     );
 };

@@ -1,125 +1,141 @@
 import { DialogNode } from '../types';
+import { toMeters } from '../config/physicsConfig';
 
 /**
- * Script: Kinematics Module 1 - Position & Velocity
- * A Socratic dialogue to introduce the concepts before the interactive lab.
+ * Generates the Socratic Script for "Motion in One Dimension".
+ * 
+ * @param widthPx - Current width of the viewport in pixels
+ * @param heightPx - Current height of the viewport in pixels
  */
-export const kinematicsScript: Record<string, DialogNode> = {
-    'root': {
-        id: 'root',
-        speaker: 'AI',
-        content: "Welcome, Cadet. Before we handle the launch codes, we need to understand *Motion* itself. \n\nIf you close your eyes, how do you know where you are?",
-        options: [
-            { id: 'opt1', label: "I can feel it.", nextNodeId: 'feel_it' },
-            { id: 'opt2', label: "I don't.", nextNodeId: 'reference_point' }
-        ]
-    },
-    'feel_it': {
-        id: 'feel_it',
-        speaker: 'AI',
-        content: "You might feel acceleration, but you can't feel *position*. To know where you are, you need a **Reference Point**.",
-        nextNodeId: 'reference_point'
-    },
-    'reference_point': {
-        id: 'reference_point',
-        speaker: 'AI',
-        content: "In Physics, we call this the **Origin (0,0)**. Look at the lab bench. I've placed a beacon at the Origin.",
-        // Automatically spawn the Origin marker when this text appears
-        onEnterAction: { 
-            type: 'SPAWN_OBJECT', 
-            payload: { 
-                label: 'Origin', 
-                position: { x: 3.5, y: 3 }, // Centered better for small screens
-                velocity: { x: 0, y: 0 },
-                isStatic: true,
-                color: '#ffffff',
-                highlight: true // Enable visual arrow guide
-            } 
+export const generateKinematicsScript = (widthPx: number, heightPx: number): Record<string, DialogNode> => {
+    
+    // Calculate responsive coordinates (in meters)
+    // We want the Origin to be roughly 20% from the left and vertically centered relative to the floor.
+    // Assuming floor is at bottom, we place objects slightly above it.
+    const centerX = toMeters(widthPx * 0.2); 
+    const centerY = toMeters(heightPx * 0.6); 
+    
+    const step1X = centerX + 5; // Move 5 meters right
+    const step2X = step1X - 2;  // Move 2 meters back left (Total displacement +3)
+
+    return {
+        'root': {
+            id: 'root',
+            speaker: 'AI',
+            content: "Welcome to **Unit 1: Kinematics**. \n\nTo describe motion—whether it's a person walking or a rocket launching—we first need to agree on *where* we are measuring from. We call this a **Reference Frame**.",
+            options: [
+                { id: 'opt1', label: "Like a starting line?", nextNodeId: 'reference_point' },
+                { id: 'opt2', label: "Why does it matter?", nextNodeId: 'reference_importance' }
+            ]
         },
-        options: [
-            { id: 'spawn_origin', label: "I see it.", nextNodeId: 'define_position' }
-        ]
-    },
-    'define_position': {
-        id: 'define_position',
-        speaker: 'AI',
-        content: "That white beacon represents **Position**. It tells us *where* an object is relative to zero. \n\nNow, what happens if we change position over time?",
-        options: [
-            { id: 'movement', label: "We move.", nextNodeId: 'define_velocity' },
-            { id: 'teleport', label: "We teleport?", nextNodeId: 'define_velocity' }
-        ]
-    },
-    'define_velocity': {
-        id: 'define_velocity',
-        speaker: 'AI',
-        content: "Exactly. The rate at which position changes is called **Velocity**. \n\nLet's spawn a probe with a velocity of **5 m/s** to the right.",
-        options: [
-            { 
-                id: 'spawn_probe', 
-                label: "Launch Probe", 
-                nextNodeId: 'observe_velocity',
-                simAction: {
-                    type: 'SPAWN_OBJECT',
-                    payload: { label: 'Probe', position: { x: 1, y: 3 }, velocity: { x: 5, y: 0 } }
-                }
-            }
-        ]
-    },
-    'observe_velocity': {
-        id: 'observe_velocity',
-        speaker: 'AI',
-        content: "Observe the green arrow. That vector represents Velocity. \n\nNotice that because there is no gravity or friction here, the velocity remains **constant**.",
-        options: [
-            { id: 'why_constant', label: "Why constant?", nextNodeId: 'inertia_hint' },
-            { id: 'next', label: "Got it.", nextNodeId: 'intro_gravity' }
-        ]
-    },
-    'inertia_hint': {
-        id: 'inertia_hint',
-        speaker: 'AI',
-        content: "Newton's First Law: An object in motion stays in motion unless acted upon by a force. Here, no forces are acting on the probe.",
-        nextNodeId: 'intro_gravity'
-    },
-    'intro_gravity': {
-        id: 'intro_gravity',
-        speaker: 'AI',
-        content: "Now, let's turn on **Gravity**. How will this affect our probe's motion?",
-        options: [
-            { id: 'slow_down', label: "It will slow down.", nextNodeId: 'gravity_correction' },
-            { id: 'fall', label: "It will fall.", nextNodeId: 'demo_gravity' }
-        ]
-    },
-    'gravity_correction': {
-        id: 'gravity_correction',
-        speaker: 'AI',
-        content: "Not quite. Gravity pulls *down*, perpendicular to the motion. It won't slow the horizontal speed, but it will change the vertical speed.",
-        nextNodeId: 'demo_gravity'
-    },
-    'demo_gravity': {
-        id: 'demo_gravity',
-        speaker: 'AI',
-        content: "Let's enable Gravity and fire again. Watch the Green Arrow (Velocity) change direction.",
-        options: [
-            { 
-                id: 'fire_gravity', 
-                label: "Fire with Gravity", 
-                nextNodeId: 'end_lesson',
-                simAction: {
-                    type: 'RESET_AND_GRAVITY', 
-                    payload: { force: { x: 0, y: 1 } }
+        'reference_importance': {
+            id: 'reference_importance',
+            speaker: 'AI',
+            content: "Imagine you are on a train walking forward. To you, you are moving at 1 m/s. To someone outside, you might be moving at 100 m/s! \n\nPhysics requires a defined **Origin (0,0)** to make sense of these numbers.",
+            nextNodeId: 'reference_point'
+        },
+        'reference_point': {
+            id: 'reference_point',
+            speaker: 'AI',
+            content: "I have placed a **White Beacon** on the lab bench. This is our **Origin (x=0)**. \n\nEverything to the right is positive (+x). Everything to the left is negative (-x).",
+            onEnterAction: { 
+                type: 'SPAWN_OBJECT', 
+                payload: { 
+                    label: 'Origin', 
+                    position: { x: centerX, y: centerY }, 
+                    velocity: { x: 0, y: 0 },
+                    isStatic: true,
+                    color: '#ffffff',
+                    highlight: true // Arrow pointing to it
                 } 
-            }
-        ]
-    },
-    'end_lesson': {
-        id: 'end_lesson',
-        speaker: 'AI',
-        // Auto-spawn the projectile again after reset
-        onEnterAction: {
-            type: 'SPAWN_OBJECT',
-            payload: { label: 'Projectile', position: { x: 1, y: 3 }, velocity: { x: 10, y: 0 } }
+            },
+            options: [
+                { id: 'spawn_origin', label: "I see the Origin.", nextNodeId: 'distance_vs_displacement' }
+            ]
         },
-        content: "Excellent. You've seen Position (Static) and Velocity (Dynamic). You are ready for the Lab.",
-        options: []
-    }
+        'distance_vs_displacement': {
+            id: 'distance_vs_displacement',
+            speaker: 'AI',
+            content: "Now, let's explore **Distance** vs. **Displacement**. \n\nI'm going to spawn a Runner. Watch them move 5 meters to the right.",
+            options: [
+                { 
+                    id: 'move_5m', 
+                    label: "Move the Runner", 
+                    nextNodeId: 'move_back',
+                    simAction: {
+                        type: 'SPAWN_OBJECT',
+                        payload: {
+                            label: 'Runner',
+                            position: { x: step1X, y: centerY }, // Teleport for MVP, or animate in future
+                            velocity: { x: 0, y: 0 },
+                            color: '#10b981' // Emerald
+                        }
+                    }
+                }
+            ]
+        },
+        'move_back': {
+            id: 'move_back',
+            speaker: 'AI',
+            content: "The Runner is now at **x = 5m**. \n\nNow, imagine they walk **2 meters back** to the left.",
+            options: [
+                { 
+                    id: 'move_2m_left', 
+                    label: "Walk back 2m", 
+                    nextNodeId: 'quiz_displacement',
+                    simAction: {
+                        type: 'SPAWN_OBJECT',
+                        payload: {
+                            label: 'Runner',
+                            position: { x: step2X, y: centerY }, // 5 - 2 = 3
+                            velocity: { x: 0, y: 0 },
+                            color: '#10b981'
+                        }
+                    }
+                }
+            ]
+        },
+        'quiz_displacement': {
+            id: 'quiz_displacement',
+            speaker: 'AI',
+            content: "Okay, Analysis time. \n\nThe Runner walked 5m Right, then 2m Left.\n\nWhat is their **Total Distance** traveled, and what is their **Displacement** from the Origin?",
+            options: [
+                { id: 'wrong1', label: "Distance: 3m, Displacement: 3m", nextNodeId: 'correction_distance' },
+                { id: 'correct', label: "Distance: 7m, Displacement: 3m", nextNodeId: 'correct_displacement' }
+            ]
+        },
+        'correction_distance': {
+            id: 'correction_distance',
+            speaker: 'AI',
+            content: "Not quite. **Distance** is the total path length (5 + 2 = 7). It doesn't care about direction. \n\n**Displacement** is the change in position (Final - Initial). Try again.",
+            nextNodeId: 'quiz_displacement'
+        },
+        'correct_displacement': {
+            id: 'correct_displacement',
+            speaker: 'AI',
+            content: "Correct! \n\n**Distance** (7m) is a Scalar—it has no direction. \n**Displacement** (+3m) is a Vector—it cares that we ended up to the *right* of where we started.",
+            nextNodeId: 'critical_thinking'
+        },
+        'critical_thinking': {
+            id: 'critical_thinking',
+            speaker: 'AI',
+            content: "Here is a Critical Thinking question:\n\nRaoul claims: \"Displacement is always equal to the magnitude of Distance.\" \n\nBased on our experiment, is he right?",
+            options: [
+                { id: 'raoul_yes', label: "Yes, he's right.", nextNodeId: 'raoul_correction' },
+                { id: 'raoul_no', label: "No, he's wrong.", nextNodeId: 'raoul_confirm' }
+            ]
+        },
+        'raoul_correction': {
+            id: 'raoul_correction',
+            speaker: 'AI',
+            content: "Look at the Runner again. The Distance was 7m, but the Displacement was only 3m. They are not equal because the direction changed.",
+            nextNodeId: 'raoul_confirm'
+        },
+        'raoul_confirm': {
+            id: 'raoul_confirm',
+            speaker: 'AI',
+            content: "Exactly. Displacement is only equal to Distance if you move in a straight line without ever turning back. \n\nNext, we will look at how fast things move: **Speed vs Velocity**.",
+            options: [] // End of module for now
+        }
+    };
 };

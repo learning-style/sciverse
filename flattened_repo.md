@@ -1,10 +1,10 @@
 <!--
   File: flattened_repo.md
   Source Directory: c:\monorepo\portfolio-website1
-  Date Generated: 2025-12-19T17:49:21.965Z
+  Date Generated: 2025-12-19T18:02:46.016Z
   ---
-  Total Files: 52
-  Approx. Tokens: 55179
+  Total Files: 53
+  Approx. Tokens: 56867
 -->
 
 <!-- Top 10 Text Files by Token Count -->
@@ -13,11 +13,11 @@
 3. External_Context\Forces-Motion.md (6749 tokens)
 4. External_Context\Enhancing Physics Education Website.md (6714 tokens)
 5. src\features\sciverse\core\PhysicsEngine.ts (1790 tokens)
-6. src\features\sciverse\labs\KinematicsLab.tsx (1666 tokens)
-7. src\features\sciverse\components\PhysicsViewport.tsx (1298 tokens)
-8. src\features\sciverse\content\kinematicsScript.ts (1272 tokens)
-9. src\Artifacts\A9-Sciverse-Curriculum-Roadmap.md (1146 tokens)
-10. src\Artifacts\A7-Sciverse-Design.md (1065 tokens)
+6. src\features\sciverse\content\kinematicsScript.ts (1691 tokens)
+7. src\features\sciverse\labs\KinematicsLab.tsx (1666 tokens)
+8. src\features\sciverse\components\PhysicsViewport.tsx (1629 tokens)
+9. src\features\sciverse\modules\KinematicsLesson.tsx (1297 tokens)
+10. src\Artifacts\A9-Sciverse-Curriculum-Roadmap.md (1146 tokens)
 
 <!-- Full File List -->
 1. src\App.tsx - Lines: 28 - Chars: 1052 - Tokens: 263
@@ -42,36 +42,37 @@
 20. src\features\home\HomePage.tsx - Lines: 29 - Chars: 1360 - Tokens: 340
 21. src\features\science-lab\ScienceLab.tsx - Lines: 59 - Chars: 2829 - Tokens: 708
 22. src\features\sciverse\components\GraphMonitor.tsx - Lines: 77 - Chars: 3397 - Tokens: 850
-23. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 125 - Chars: 5191 - Tokens: 1298
-24. src\features\sciverse\components\SocraticChat.tsx - Lines: 89 - Chars: 3902 - Tokens: 976
-25. src\features\sciverse\config\physicsConfig.ts - Lines: 27 - Chars: 876 - Tokens: 219
-26. src\features\sciverse\content\kinematicsScript.ts - Lines: 125 - Chars: 5088 - Tokens: 1272
-27. src\features\sciverse\context\SciverseContext.tsx - Lines: 33 - Chars: 1103 - Tokens: 276
-28. src\features\sciverse\core\PhysicsEngine.test.ts - Lines: 57 - Chars: 2364 - Tokens: 591
-29. src\features\sciverse\core\PhysicsEngine.ts - Lines: 226 - Chars: 7159 - Tokens: 1790
-30. src\features\sciverse\hooks\useDialogEngine.ts - Lines: 40 - Chars: 1294 - Tokens: 324
-31. src\features\sciverse\hooks\useMatter.ts - Lines: 1 - Chars: 9 - Tokens: 3
-32. src\features\sciverse\hooks\usePhysics.ts - Lines: 63 - Chars: 1991 - Tokens: 498
-33. src\features\sciverse\labs\KinematicsLab.tsx - Lines: 134 - Chars: 6664 - Tokens: 1666
-34. src\features\sciverse\lib\engine-core.ts - Lines: 1 - Chars: 9 - Tokens: 3
-35. src\features\sciverse\modules\KinematicsLesson.tsx - Lines: 92 - Chars: 3907 - Tokens: 977
-36. src\features\sciverse\types.ts - Lines: 77 - Chars: 2119 - Tokens: 530
-37. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
-38. src\features\showcase\data\projectsData.ts - Lines: 23 - Chars: 1186 - Tokens: 297
-39. src\features\showcase\ShowcasePage.tsx - Lines: 21 - Chars: 847 - Tokens: 212
-40. src\types\index.ts - Lines: 17 - Chars: 299 - Tokens: 75
-41. .gitignore - Lines: 18 - Chars: 107 - Tokens: 27
-42. package.json - Lines: 36 - Chars: 901 - Tokens: 226
-43. tsconfig.json - Lines: 31 - Chars: 726 - Tokens: 182
-44. tsconfig.node.json - Lines: 10 - Chars: 212 - Tokens: 53
-45. vite.config.ts - Lines: 13 - Chars: 269 - Tokens: 68
-46. index.html - Lines: 13 - Chars: 375 - Tokens: 94
-47. postcss.config.js - Lines: 6 - Chars: 79 - Tokens: 20
-48. tailwind.config.js - Lines: 16 - Chars: 354 - Tokens: 89
-49. External_Context\Enhancing Physics Education Website (1).md - Lines: 230 - Chars: 35813 - Tokens: 8954
-50. External_Context\Enhancing Physics Education Website.md - Lines: 179 - Chars: 26856 - Tokens: 6714
-51. External_Context\Forces-Motion.md - Lines: 555 - Chars: 26994 - Tokens: 6749
-52. External_Context\Physics Simulation Project Enhancement Plan.md - Lines: 250 - Chars: 32452 - Tokens: 8113
+23. src\features\sciverse\components\PhysicsViewport.test.tsx - Lines: 69 - Chars: 2252 - Tokens: 563
+24. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 158 - Chars: 6515 - Tokens: 1629
+25. src\features\sciverse\components\SocraticChat.tsx - Lines: 89 - Chars: 3902 - Tokens: 976
+26. src\features\sciverse\config\physicsConfig.ts - Lines: 27 - Chars: 876 - Tokens: 219
+27. src\features\sciverse\content\kinematicsScript.ts - Lines: 141 - Chars: 6763 - Tokens: 1691
+28. src\features\sciverse\context\SciverseContext.tsx - Lines: 33 - Chars: 1103 - Tokens: 276
+29. src\features\sciverse\core\PhysicsEngine.test.ts - Lines: 57 - Chars: 2364 - Tokens: 591
+30. src\features\sciverse\core\PhysicsEngine.ts - Lines: 226 - Chars: 7159 - Tokens: 1790
+31. src\features\sciverse\hooks\useDialogEngine.ts - Lines: 49 - Chars: 1515 - Tokens: 379
+32. src\features\sciverse\hooks\useMatter.ts - Lines: 1 - Chars: 9 - Tokens: 3
+33. src\features\sciverse\hooks\usePhysics.ts - Lines: 63 - Chars: 1991 - Tokens: 498
+34. src\features\sciverse\labs\KinematicsLab.tsx - Lines: 134 - Chars: 6664 - Tokens: 1666
+35. src\features\sciverse\lib\engine-core.ts - Lines: 1 - Chars: 9 - Tokens: 3
+36. src\features\sciverse\modules\KinematicsLesson.tsx - Lines: 115 - Chars: 5187 - Tokens: 1297
+37. src\features\sciverse\types.ts - Lines: 77 - Chars: 2119 - Tokens: 530
+38. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
+39. src\features\showcase\data\projectsData.ts - Lines: 23 - Chars: 1186 - Tokens: 297
+40. src\features\showcase\ShowcasePage.tsx - Lines: 21 - Chars: 847 - Tokens: 212
+41. src\types\index.ts - Lines: 17 - Chars: 299 - Tokens: 75
+42. .gitignore - Lines: 18 - Chars: 107 - Tokens: 27
+43. package.json - Lines: 36 - Chars: 901 - Tokens: 226
+44. tsconfig.json - Lines: 31 - Chars: 726 - Tokens: 182
+45. tsconfig.node.json - Lines: 10 - Chars: 212 - Tokens: 53
+46. vite.config.ts - Lines: 13 - Chars: 269 - Tokens: 68
+47. index.html - Lines: 13 - Chars: 375 - Tokens: 94
+48. postcss.config.js - Lines: 6 - Chars: 79 - Tokens: 20
+49. tailwind.config.js - Lines: 16 - Chars: 354 - Tokens: 89
+50. External_Context\Enhancing Physics Education Website (1).md - Lines: 230 - Chars: 35813 - Tokens: 8954
+51. External_Context\Enhancing Physics Education Website.md - Lines: 179 - Chars: 26856 - Tokens: 6714
+52. External_Context\Forces-Motion.md - Lines: 555 - Chars: 26994 - Tokens: 6749
+53. External_Context\Physics Simulation Project Enhancement Plan.md - Lines: 250 - Chars: 32452 - Tokens: 8113
 
 <file path="src/App.tsx">
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -1238,20 +1239,121 @@ export const GraphMonitor = ({ latestSnapshot }: GraphMonitorProps) => {
 };
 </file_artifact>
 
+<file path="src/features/sciverse/components/PhysicsViewport.test.tsx">
+import { render, screen } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
+import { PhysicsViewport } from './PhysicsViewport';
+import { SciverseContext } from '../context/SciverseContext';
+import { PhysicsEntity } from '../types';
+
+// Mock Physics Config
+vi.mock('../config/physicsConfig', () => ({
+    PHYSICS_CONFIG: { METER_TO_PIXEL: 100 },
+    toPixels: (val: number) => val * 100
+}));
+
+describe('PhysicsViewport', () => {
+    it('renders the overlay layer', () => {
+        const mockContextValue: any = {
+            containerRef: vi.fn(),
+            canvasRef: vi.fn(),
+            snapshot: {
+                entities: [],
+                system: { isPaused: false, timeElapsed: 0, gravity: {x:0, y:0} }
+            }
+        };
+
+        render(
+            <SciverseContext.Provider value={mockContextValue}>
+                <PhysicsViewport />
+            </SciverseContext.Provider>
+        );
+
+        expect(screen.getByTestId('overlay-layer')).toBeInTheDocument();
+    });
+
+    it('renders an entity marker with correct label and position', () => {
+        const mockEntity: PhysicsEntity = {
+            id: 'test-1',
+            label: 'Origin',
+            mass: 10,
+            position: { x: 2, y: 3 }, // Should map to 200px, 300px
+            velocity: { x: 0, y: 0 },
+            acceleration: { x: 0, y: 0 },
+            force: { x: 0, y: 0 },
+            color: '#ff0000',
+            highlight: true,
+            isStatic: true
+        };
+
+        const mockContextValue: any = {
+            containerRef: vi.fn(),
+            canvasRef: vi.fn(),
+            snapshot: {
+                entities: [mockEntity],
+                system: { isPaused: false, timeElapsed: 0, gravity: {x:0, y:0} }
+            }
+        };
+
+        render(
+            <SciverseContext.Provider value={mockContextValue}>
+                <PhysicsViewport />
+            </SciverseContext.Provider>
+        );
+
+        const entityGroup = screen.getByTestId('entity-Origin');
+        expect(entityGroup).toBeInTheDocument();
+        expect(entityGroup).toHaveAttribute('transform', 'translate(200, 300)');
+        
+        // Check for Label
+        expect(screen.getByText('ORIGIN')).toBeInTheDocument();
+    });
+});
+</file_artifact>
+
 <file path="src/features/sciverse/components/PhysicsViewport.tsx">
+import { useLayoutEffect, useRef } from 'react';
 import { useSciverse } from '../context/SciverseContext';
 import { toPixels, PHYSICS_CONFIG } from '../config/physicsConfig';
 import { PhysicsEntity } from '../types';
+import { PhysicsEngine } from '../core/PhysicsEngine';
 
-export const PhysicsViewport = () => {
+interface PhysicsViewportProps {
+    onInit?: (engine: PhysicsEngine) => void; // Optional legacy support if needed, but context handles it mostly
+    onResize?: (width: number, height: number) => void;
+}
+
+export const PhysicsViewport = ({ onInit, onResize }: PhysicsViewportProps) => {
     const { containerRef, canvasRef, snapshot } = useSciverse();
+    const wrapperRef = useRef<HTMLDivElement>(null);
+
+    // Monitor resize to report back to parent (for script coordinate calculations)
+    useLayoutEffect(() => {
+        if (!wrapperRef.current) return;
+        
+        const observer = new ResizeObserver((entries) => {
+            for (const entry of entries) {
+                if (onResize) {
+                    onResize(entry.contentRect.width, entry.contentRect.height);
+                }
+            }
+        });
+        
+        observer.observe(wrapperRef.current);
+        return () => observer.disconnect();
+    }, [onResize]);
+
+    // Sync the internal wrapper ref with the context's callback ref
+    const handleRef = (el: HTMLDivElement | null) => {
+        wrapperRef.current = el;
+        containerRef(el);
+    };
 
     const primaryEntity = snapshot?.entities.find(e => !e.isStatic);
-    const floorY = toPixels(8); 
 
     return (
         <div 
-            ref={containerRef} 
+            ref={handleRef} 
             className="relative w-full h-full bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-inner group"
         >
             {/* 1. Grid Layer */}
@@ -1262,19 +1364,22 @@ export const PhysicsViewport = () => {
                 }}
             />
 
-            {/* 2. Visual Floor */}
+            {/* 2. Visual Floor (Aligned to Bottom) */}
             <div 
-                className="absolute w-full border-t-2 border-indigo-500/50 bg-indigo-500/10 pointer-events-none"
-                style={{ top: floorY, bottom: 0 }}
+                className="absolute w-full border-t-4 border-slate-700 bg-slate-800/50 pointer-events-none backdrop-blur-sm"
+                style={{ bottom: 0, height: '40px' }}
             >
-                <div className="absolute top-2 right-2 text-xs text-indigo-400 font-mono">LAB FLOOR (y=8m)</div>
+                <div className="absolute top-2 right-4 text-xs text-slate-500 font-mono tracking-wider">LAB FLOOR</div>
             </div>
 
             {/* 3. Matter.js Canvas */}
             <canvas ref={canvasRef} className="absolute inset-0 block" />
 
             {/* 4. SVG Overlay Layer */}
-            <svg className="absolute inset-0 pointer-events-none w-full h-full overflow-visible">
+            <svg 
+                className="absolute inset-0 pointer-events-none w-full h-full overflow-visible"
+                data-testid="overlay-layer"
+            >
                 <defs>
                     <marker id="arrow-v" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
                         <path d="M0,0 L0,6 L9,3 z" fill="#10b981" />
@@ -1306,18 +1411,19 @@ const EntityOverlay = ({ entity }: { entity: PhysicsEntity }) => {
     const py = toPixels(entity.position.y);
 
     return (
-        <g transform={`translate(${px}, ${py})`}>
-            {/* Velocity Vector */}
-            {!entity.isStatic && (
-                <VectorArrow vector={entity.velocity} color="#10b981" scale={15} marker="arrow-v" />
-            )}
-
+        <g transform={`translate(${px}, ${py})`} data-testid={`entity-${entity.label}`}>
             {/* Visual Guide Arrow (Bounce Animation) */}
             {entity.highlight && (
                 <g className="animate-bounce">
-                    <path d="M 0 -60 L 0 -40 L -5 -45 M 0 -40 L 5 -45" stroke="#f59e0b" strokeWidth="3" fill="none" />
-                    <text y="-70" textAnchor="middle" fill="#f59e0b" fontSize="10" fontFamily="monospace" fontWeight="bold">HERE</text>
+                    <path d="M 0 -50 L 0 -30" stroke="#f59e0b" strokeWidth="2" />
+                    <path d="M -5 -35 L 0 -30 L 5 -35" stroke="#f59e0b" strokeWidth="2" fill="none" />
+                    <text y="-60" textAnchor="middle" fill="#f59e0b" fontSize="10" fontFamily="monospace" fontWeight="bold">ORIGIN</text>
                 </g>
+            )}
+
+            {/* Velocity Vector */}
+            {!entity.isStatic && (
+                <VectorArrow vector={entity.velocity} color="#10b981" scale={15} marker="arrow-v" />
             )}
 
             {/* Text Label */}
@@ -1335,7 +1441,7 @@ const EntityOverlay = ({ entity }: { entity: PhysicsEntity }) => {
             </text>
             
             {/* Position Marker */}
-            <circle r="4" fill={entity.color || '#cbd5e1'} stroke="#0f172a" strokeWidth="2" />
+            <circle r="5" fill={entity.color || '#cbd5e1'} stroke="#0f172a" strokeWidth="2" />
         </g>
     );
 };
@@ -1490,129 +1596,145 @@ export const toMeters = (pixels: number) => pixels / PHYSICS_CONFIG.METER_TO_PIX
 
 <file path="src/features/sciverse/content/kinematicsScript.ts">
 import { DialogNode } from '../types';
+import { toMeters } from '../config/physicsConfig';
 
 /**
- * Script: Kinematics Module 1 - Position & Velocity
- * A Socratic dialogue to introduce the concepts before the interactive lab.
+ * Generates the Socratic Script for "Motion in One Dimension".
+ * 
+ * @param widthPx - Current width of the viewport in pixels
+ * @param heightPx - Current height of the viewport in pixels
  */
-export const kinematicsScript: Record<string, DialogNode> = {
-    'root': {
-        id: 'root',
-        speaker: 'AI',
-        content: "Welcome, Cadet. Before we handle the launch codes, we need to understand *Motion* itself. \n\nIf you close your eyes, how do you know where you are?",
-        options: [
-            { id: 'opt1', label: "I can feel it.", nextNodeId: 'feel_it' },
-            { id: 'opt2', label: "I don't.", nextNodeId: 'reference_point' }
-        ]
-    },
-    'feel_it': {
-        id: 'feel_it',
-        speaker: 'AI',
-        content: "You might feel acceleration, but you can't feel *position*. To know where you are, you need a **Reference Point**.",
-        nextNodeId: 'reference_point'
-    },
-    'reference_point': {
-        id: 'reference_point',
-        speaker: 'AI',
-        content: "In Physics, we call this the **Origin (0,0)**. Look at the lab bench. I've placed a beacon at the Origin.",
-        // Automatically spawn the Origin marker when this text appears
-        onEnterAction: { 
-            type: 'SPAWN_OBJECT', 
-            payload: { 
-                label: 'Origin', 
-                position: { x: 3.5, y: 3 }, // Centered better for small screens
-                velocity: { x: 0, y: 0 },
-                isStatic: true,
-                color: '#ffffff',
-                highlight: true // Enable visual arrow guide
-            } 
+export const generateKinematicsScript = (widthPx: number, heightPx: number): Record<string, DialogNode> => {
+    
+    // Calculate responsive coordinates (in meters)
+    // We want the Origin to be roughly 20% from the left and vertically centered relative to the floor.
+    // Assuming floor is at bottom, we place objects slightly above it.
+    const centerX = toMeters(widthPx * 0.2); 
+    const centerY = toMeters(heightPx * 0.6); 
+    
+    const step1X = centerX + 5; // Move 5 meters right
+    const step2X = step1X - 2;  // Move 2 meters back left (Total displacement +3)
+
+    return {
+        'root': {
+            id: 'root',
+            speaker: 'AI',
+            content: "Welcome to **Unit 1: Kinematics**. \n\nTo describe motion—whether it's a person walking or a rocket launching—we first need to agree on *where* we are measuring from. We call this a **Reference Frame**.",
+            options: [
+                { id: 'opt1', label: "Like a starting line?", nextNodeId: 'reference_point' },
+                { id: 'opt2', label: "Why does it matter?", nextNodeId: 'reference_importance' }
+            ]
         },
-        options: [
-            { id: 'spawn_origin', label: "I see it.", nextNodeId: 'define_position' }
-        ]
-    },
-    'define_position': {
-        id: 'define_position',
-        speaker: 'AI',
-        content: "That white beacon represents **Position**. It tells us *where* an object is relative to zero. \n\nNow, what happens if we change position over time?",
-        options: [
-            { id: 'movement', label: "We move.", nextNodeId: 'define_velocity' },
-            { id: 'teleport', label: "We teleport?", nextNodeId: 'define_velocity' }
-        ]
-    },
-    'define_velocity': {
-        id: 'define_velocity',
-        speaker: 'AI',
-        content: "Exactly. The rate at which position changes is called **Velocity**. \n\nLet's spawn a probe with a velocity of **5 m/s** to the right.",
-        options: [
-            { 
-                id: 'spawn_probe', 
-                label: "Launch Probe", 
-                nextNodeId: 'observe_velocity',
-                simAction: {
-                    type: 'SPAWN_OBJECT',
-                    payload: { label: 'Probe', position: { x: 1, y: 3 }, velocity: { x: 5, y: 0 } }
-                }
-            }
-        ]
-    },
-    'observe_velocity': {
-        id: 'observe_velocity',
-        speaker: 'AI',
-        content: "Observe the green arrow. That vector represents Velocity. \n\nNotice that because there is no gravity or friction here, the velocity remains **constant**.",
-        options: [
-            { id: 'why_constant', label: "Why constant?", nextNodeId: 'inertia_hint' },
-            { id: 'next', label: "Got it.", nextNodeId: 'intro_gravity' }
-        ]
-    },
-    'inertia_hint': {
-        id: 'inertia_hint',
-        speaker: 'AI',
-        content: "Newton's First Law: An object in motion stays in motion unless acted upon by a force. Here, no forces are acting on the probe.",
-        nextNodeId: 'intro_gravity'
-    },
-    'intro_gravity': {
-        id: 'intro_gravity',
-        speaker: 'AI',
-        content: "Now, let's turn on **Gravity**. How will this affect our probe's motion?",
-        options: [
-            { id: 'slow_down', label: "It will slow down.", nextNodeId: 'gravity_correction' },
-            { id: 'fall', label: "It will fall.", nextNodeId: 'demo_gravity' }
-        ]
-    },
-    'gravity_correction': {
-        id: 'gravity_correction',
-        speaker: 'AI',
-        content: "Not quite. Gravity pulls *down*, perpendicular to the motion. It won't slow the horizontal speed, but it will change the vertical speed.",
-        nextNodeId: 'demo_gravity'
-    },
-    'demo_gravity': {
-        id: 'demo_gravity',
-        speaker: 'AI',
-        content: "Let's enable Gravity and fire again. Watch the Green Arrow (Velocity) change direction.",
-        options: [
-            { 
-                id: 'fire_gravity', 
-                label: "Fire with Gravity", 
-                nextNodeId: 'end_lesson',
-                simAction: {
-                    type: 'RESET_AND_GRAVITY', 
-                    payload: { force: { x: 0, y: 1 } }
+        'reference_importance': {
+            id: 'reference_importance',
+            speaker: 'AI',
+            content: "Imagine you are on a train walking forward. To you, you are moving at 1 m/s. To someone outside, you might be moving at 100 m/s! \n\nPhysics requires a defined **Origin (0,0)** to make sense of these numbers.",
+            nextNodeId: 'reference_point'
+        },
+        'reference_point': {
+            id: 'reference_point',
+            speaker: 'AI',
+            content: "I have placed a **White Beacon** on the lab bench. This is our **Origin (x=0)**. \n\nEverything to the right is positive (+x). Everything to the left is negative (-x).",
+            onEnterAction: { 
+                type: 'SPAWN_OBJECT', 
+                payload: { 
+                    label: 'Origin', 
+                    position: { x: centerX, y: centerY }, 
+                    velocity: { x: 0, y: 0 },
+                    isStatic: true,
+                    color: '#ffffff',
+                    highlight: true // Arrow pointing to it
                 } 
-            }
-        ]
-    },
-    'end_lesson': {
-        id: 'end_lesson',
-        speaker: 'AI',
-        // Auto-spawn the projectile again after reset
-        onEnterAction: {
-            type: 'SPAWN_OBJECT',
-            payload: { label: 'Projectile', position: { x: 1, y: 3 }, velocity: { x: 10, y: 0 } }
+            },
+            options: [
+                { id: 'spawn_origin', label: "I see the Origin.", nextNodeId: 'distance_vs_displacement' }
+            ]
         },
-        content: "Excellent. You've seen Position (Static) and Velocity (Dynamic). You are ready for the Lab.",
-        options: []
-    }
+        'distance_vs_displacement': {
+            id: 'distance_vs_displacement',
+            speaker: 'AI',
+            content: "Now, let's explore **Distance** vs. **Displacement**. \n\nI'm going to spawn a Runner. Watch them move 5 meters to the right.",
+            options: [
+                { 
+                    id: 'move_5m', 
+                    label: "Move the Runner", 
+                    nextNodeId: 'move_back',
+                    simAction: {
+                        type: 'SPAWN_OBJECT',
+                        payload: {
+                            label: 'Runner',
+                            position: { x: step1X, y: centerY }, // Teleport for MVP, or animate in future
+                            velocity: { x: 0, y: 0 },
+                            color: '#10b981' // Emerald
+                        }
+                    }
+                }
+            ]
+        },
+        'move_back': {
+            id: 'move_back',
+            speaker: 'AI',
+            content: "The Runner is now at **x = 5m**. \n\nNow, imagine they walk **2 meters back** to the left.",
+            options: [
+                { 
+                    id: 'move_2m_left', 
+                    label: "Walk back 2m", 
+                    nextNodeId: 'quiz_displacement',
+                    simAction: {
+                        type: 'SPAWN_OBJECT',
+                        payload: {
+                            label: 'Runner',
+                            position: { x: step2X, y: centerY }, // 5 - 2 = 3
+                            velocity: { x: 0, y: 0 },
+                            color: '#10b981'
+                        }
+                    }
+                }
+            ]
+        },
+        'quiz_displacement': {
+            id: 'quiz_displacement',
+            speaker: 'AI',
+            content: "Okay, Analysis time. \n\nThe Runner walked 5m Right, then 2m Left.\n\nWhat is their **Total Distance** traveled, and what is their **Displacement** from the Origin?",
+            options: [
+                { id: 'wrong1', label: "Distance: 3m, Displacement: 3m", nextNodeId: 'correction_distance' },
+                { id: 'correct', label: "Distance: 7m, Displacement: 3m", nextNodeId: 'correct_displacement' }
+            ]
+        },
+        'correction_distance': {
+            id: 'correction_distance',
+            speaker: 'AI',
+            content: "Not quite. **Distance** is the total path length (5 + 2 = 7). It doesn't care about direction. \n\n**Displacement** is the change in position (Final - Initial). Try again.",
+            nextNodeId: 'quiz_displacement'
+        },
+        'correct_displacement': {
+            id: 'correct_displacement',
+            speaker: 'AI',
+            content: "Correct! \n\n**Distance** (7m) is a Scalar—it has no direction. \n**Displacement** (+3m) is a Vector—it cares that we ended up to the *right* of where we started.",
+            nextNodeId: 'critical_thinking'
+        },
+        'critical_thinking': {
+            id: 'critical_thinking',
+            speaker: 'AI',
+            content: "Here is a Critical Thinking question:\n\nRaoul claims: \"Displacement is always equal to the magnitude of Distance.\" \n\nBased on our experiment, is he right?",
+            options: [
+                { id: 'raoul_yes', label: "Yes, he's right.", nextNodeId: 'raoul_correction' },
+                { id: 'raoul_no', label: "No, he's wrong.", nextNodeId: 'raoul_confirm' }
+            ]
+        },
+        'raoul_correction': {
+            id: 'raoul_correction',
+            speaker: 'AI',
+            content: "Look at the Runner again. The Distance was 7m, but the Displacement was only 3m. They are not equal because the direction changed.",
+            nextNodeId: 'raoul_confirm'
+        },
+        'raoul_confirm': {
+            id: 'raoul_confirm',
+            speaker: 'AI',
+            content: "Exactly. Displacement is only equal to Distance if you move in a straight line without ever turning back. \n\nNext, we will look at how fast things move: **Speed vs Velocity**.",
+            options: [] // End of module for now
+        }
+    };
 };
 </file_artifact>
 
@@ -1944,16 +2066,24 @@ export class PhysicsEngine {
 <file path="src/features/sciverse/hooks/useDialogEngine.ts">
 import { useState, useCallback, useEffect } from 'react';
 import { DialogNode, DialogOption, SimAction } from '../types';
-import { kinematicsScript } from '../content/kinematicsScript';
 
 interface UseDialogEngineProps {
+    script: Record<string, DialogNode>;
     onSimAction: (action: SimAction) => void;
 }
 
-export const useDialogEngine = ({ onSimAction }: UseDialogEngineProps) => {
+export const useDialogEngine = ({ script, onSimAction }: UseDialogEngineProps) => {
     // Current active node
-    const [currentNode, setCurrentNode] = useState<DialogNode>(kinematicsScript['root']);
+    const [currentNode, setCurrentNode] = useState<DialogNode>(script['root']);
     const [history, setHistory] = useState<DialogNode[]>([]);
+
+    // Reset if script changes significantly (optional safety)
+    useEffect(() => {
+        if (!script[currentNode.id]) {
+            setCurrentNode(script['root']);
+            setHistory([]);
+        }
+    }, [script]);
 
     // Handle "On Enter" Actions for the current node
     useEffect(() => {
@@ -1969,15 +2099,16 @@ export const useDialogEngine = ({ onSimAction }: UseDialogEngineProps) => {
         } 
         
         // 2. Advance Dialog
-        const nextNode = kinematicsScript[option.nextNodeId];
+        const nextNode = script[option.nextNodeId];
         if (nextNode) {
             setHistory(prev => [...prev, currentNode]);
             setCurrentNode(nextNode);
         }
-    }, [currentNode, onSimAction]);
+    }, [currentNode, script, onSimAction]);
 
     return {
         currentNode,
+        setCurrentNode,
         history,
         handleOptionSelect
     };
@@ -2196,24 +2327,50 @@ export const KinematicsLab = () => {
 </file_artifact>
 
 <file path="src/features/sciverse/modules/KinematicsLesson.tsx">
-import { useEffect } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { PhysicsViewport } from '../components/PhysicsViewport';
 import { SocraticChat } from '../components/SocraticChat';
 import { useDialogEngine } from '../hooks/useDialogEngine';
 import { useSciverse } from '../context/SciverseContext';
-import { SimAction } from '../types';
+import { SimAction, DialogNode } from '../types';
+import { generateKinematicsScript } from '../content/kinematicsScript';
 
 export const KinematicsLesson = () => {
     const { engine, setEngine } = useSciverse();
+    const [viewportSize, setViewportSize] = useState({ width: 800, height: 600 });
     
-    // Setup Engine state when mounting this lesson
+    // We need to know the viewport size to generate the script with correct coordinates.
+    // We can hook into the PhysicsViewport resizing via a callback or context, 
+    // but for simplicity, we will initialize with defaults and update if possible, 
+    // or just let the Viewport handle the "View" and the script handle "Logic" 
+    // by passing a handler to PhysicsViewport.
+    
+    // Better approach: Let PhysicsViewport report its size on mount/resize.
+    const handleViewportResize = (width: number, height: number) => {
+        setViewportSize({ width, height });
+    };
+
+    // Memoize the script so it doesn't regenerate on every render, 
+    // but does update if the window size changes significantly (optional).
+    // For now, generating once on mount/resize is fine.
+    const script = useMemo(() => {
+        return generateKinematicsScript(viewportSize.width, viewportSize.height);
+    }, [viewportSize.width, viewportSize.height]);
+
+    const { currentNode, history, handleOptionSelect, setCurrentNode } = useDialogEngine({
+        script, // Pass the dynamic script to the hook
+        onSimAction: (action) => handleSimAction(action)
+    });
+
+    // Reset logic when script changes (e.g. resize) or on mount
     useEffect(() => {
         if (engine) {
             engine.reset();
-            // Default to 0 gravity for the first part of the lesson
             engine.setGravity(0, 0); 
+            // Re-trigger the start node's action if needed? 
+            // Actually, preserving state might be better, but for this Cycle let's just reset.
         }
-    }, [engine]);
+    }, [engine, script]); // Dependencies ensure we reset if script coordinates shift
 
     const handleSimAction = (action: SimAction) => {
         if (!engine) return;
@@ -2227,7 +2384,8 @@ export const KinematicsLesson = () => {
                         velocity: action.payload.velocity,
                         label: action.payload.label || 'Object',
                         color: action.payload.color,
-                        isStatic: action.payload.isStatic
+                        isStatic: action.payload.isStatic,
+                        highlight: action.payload.highlight
                     });
                 }
                 break;
@@ -2236,37 +2394,33 @@ export const KinematicsLesson = () => {
                 engine.setGravity(0, 0);
                 break;
             case 'APPLY_FORCE':
-                // Used here as a signal to enable gravity
                 if (action.payload.id === 'GRAVITY_ON') {
-                    engine.setGravity(0, 1); // Enable normal gravity
+                    engine.setGravity(0, 1);
                 }
                 break;
             case 'RESET_AND_GRAVITY':
                 engine.reset();
                 engine.setGravity(0, 1);
-                // We typically spawn the object right after in the script logic, 
-                // but this case handles the environment reset.
                 break;
         }
     };
-
-    const { currentNode, history, handleOptionSelect } = useDialogEngine({
-        onSimAction: handleSimAction
-    });
 
     return (
         <div className="flex flex-col h-full bg-slate-950 text-slate-100 overflow-hidden">
             {/* Top Bar */}
             <div className="h-14 border-b border-slate-800 bg-slate-900/50 flex items-center px-6 backdrop-blur-sm">
-                <span className="text-xs font-bold tracking-widest text-indigo-400 uppercase">Lesson 01: Kinematics</span>
+                <span className="text-xs font-bold tracking-widest text-indigo-400 uppercase">Lesson 01: Motion in 1D</span>
                 <div className="mx-4 h-4 w-px bg-slate-800"></div>
-                <span className="text-sm text-slate-400">Concept: Position & Velocity</span>
+                <span className="text-sm text-slate-400">Reference Frames & Displacement</span>
             </div>
 
             <div className="flex-grow flex flex-col lg:flex-row overflow-hidden">
                 {/* Left: Simulation (Visualizer) */}
                 <div className="flex-grow relative min-h-[400px] lg:h-full bg-slate-900/50">
-                    <PhysicsViewport onInit={setEngine} />
+                    <PhysicsViewport 
+                        onInit={setEngine} 
+                        onResize={handleViewportResize} 
+                    />
                     
                     {/* Overlay Tip */}
                     <div className="absolute bottom-4 left-4 right-4 text-center pointer-events-none">
@@ -2277,7 +2431,7 @@ export const KinematicsLesson = () => {
                 </div>
 
                 {/* Right: Socratic Chat */}
-                <div className="w-full lg:w-[400px] h-[50vh] lg:h-full flex-shrink-0 z-10 shadow-xl">
+                <div className="w-full lg:w-[400px] h-[50vh] lg:h-full flex-shrink-0 z-10 shadow-xl border-l border-slate-800">
                     <SocraticChat 
                         currentNode={currentNode}
                         history={history}

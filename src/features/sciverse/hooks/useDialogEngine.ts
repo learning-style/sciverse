@@ -1,15 +1,23 @@
 import { useState, useCallback, useEffect } from 'react';
 import { DialogNode, DialogOption, SimAction } from '../types';
-import { kinematicsScript } from '../content/kinematicsScript';
 
 interface UseDialogEngineProps {
+    script: Record<string, DialogNode>;
     onSimAction: (action: SimAction) => void;
 }
 
-export const useDialogEngine = ({ onSimAction }: UseDialogEngineProps) => {
+export const useDialogEngine = ({ script, onSimAction }: UseDialogEngineProps) => {
     // Current active node
-    const [currentNode, setCurrentNode] = useState<DialogNode>(kinematicsScript['root']);
+    const [currentNode, setCurrentNode] = useState<DialogNode>(script['root']);
     const [history, setHistory] = useState<DialogNode[]>([]);
+
+    // Reset if script changes significantly (optional safety)
+    useEffect(() => {
+        if (!script[currentNode.id]) {
+            setCurrentNode(script['root']);
+            setHistory([]);
+        }
+    }, [script]);
 
     // Handle "On Enter" Actions for the current node
     useEffect(() => {
@@ -25,15 +33,16 @@ export const useDialogEngine = ({ onSimAction }: UseDialogEngineProps) => {
         } 
         
         // 2. Advance Dialog
-        const nextNode = kinematicsScript[option.nextNodeId];
+        const nextNode = script[option.nextNodeId];
         if (nextNode) {
             setHistory(prev => [...prev, currentNode]);
             setCurrentNode(nextNode);
         }
-    }, [currentNode, onSimAction]);
+    }, [currentNode, script, onSimAction]);
 
     return {
         currentNode,
+        setCurrentNode,
         history,
         handleOptionSelect
     };
