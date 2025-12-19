@@ -83,6 +83,20 @@ const ChatMessage = ({ node, isHistory = false }: { node: DialogNode, isHistory?
                     : 'bg-indigo-600/10 border-indigo-500/20 text-indigo-100 rounded-tr-none'
             }`}>
                 <div className="whitespace-pre-wrap">{node.content}</div>
+                
+                {/* Image Attachment */}
+                {node.image && (
+                    <div className="mt-3 mb-1">
+                        <img 
+                            src={node.image.url} 
+                            alt={node.image.alt} 
+                            className="rounded-lg border border-slate-700 w-full h-auto object-cover max-h-48"
+                        />
+                        {node.image.caption && (
+                            <p className="text-xs text-slate-500 mt-1 italic text-center">{node.image.caption}</p>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );

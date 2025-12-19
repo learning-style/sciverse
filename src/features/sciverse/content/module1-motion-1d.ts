@@ -1,12 +1,21 @@
 import { DialogNode } from '../types';
+import { toMeters } from '../config/physicsConfig';
 
 /**
  * Script: Motion in One Dimension
  * Source: OpenStax Physics Chapter 2
- * Update C15: Pivoted to text-focused socratic flow to circumvent visual sync issues.
  */
-export const generateKinematicsScript = (_widthPx: number, _heightPx: number): Record<string, DialogNode> => {
+export const generateKinematicsScript = (widthPx: number, heightPx: number): Record<string, DialogNode> => {
     
+    // Use explicit relative coordinates for the Origin to ensure it stays centered
+    const relativeOrigin = { x: 0.5, y: 0.8 }; 
+    
+    const centerX_Meters = toMeters(widthPx * 0.5);
+    const centerY_Meters = toMeters(heightPx * 0.8);
+    
+    const step1X = centerX_Meters + 5; 
+    const step2X = step1X - 2;
+
     return {
         'root': {
             id: 'root',
@@ -26,20 +35,49 @@ export const generateKinematicsScript = (_widthPx: number, _heightPx: number): R
         'reference_point': {
             id: 'reference_point',
             speaker: 'AI',
-            content: "Think of a straight line on the floor. We pick one spot and call it our **Origin (x=0)**. \n\nBy convention, we say everything to the right is positive (+x) and everything to the left is negative (-x). This is our system of coordinates.",
+            content: "I have placed a **Red Beacon** on the **Lab Bench** (look at the bottom center of the white screen). \n\nThis is our **Origin (x=0)**. \n\nEverything to the right is positive (+x). Everything to the left is negative (-x).",
+            onEnterAction: { 
+                type: 'SPAWN_OBJECT', 
+                payload: { 
+                    label: 'Origin', 
+                    // C14 Fix: Use Relative Positioning so it stays centered
+                    isRelative: true,
+                    position: relativeOrigin, 
+                    velocity: { x: 0, y: 0 },
+                    isStatic: true,
+                    color: '#ef4444', // Red-500
+                    highlight: true // Arrow pointing to it
+                } 
+            },
             options: [
-                { id: 'spawn_origin', label: "I understand the Origin.", nextNodeId: 'distance_vs_displacement' }
+                { id: 'spawn_origin', label: "I see the Origin.", nextNodeId: 'distance_vs_displacement' }
             ]
         },
         'distance_vs_displacement': {
             id: 'distance_vs_displacement',
             speaker: 'AI',
-            content: "Now, let's look at the difference between **Distance** and **Displacement**. \n\nImagine a runner starts at the **Origin (x=0)** and moves **5 meters to the right** (+5m).",
+            content: "Now, let's look at the difference between **Distance** and **Displacement**.",
+            // C16 Update: Added placeholder image for Displacement concept
+            image: {
+                url: "https://placehold.co/600x300/1e293b/ffffff?text=Distance+vs+Displacement+Diagram",
+                alt: "Diagram showing a curved path (Distance) versus a straight line (Displacement) between two points.",
+                caption: "Figure 2.4: Distance vs Displacement (Placeholder)"
+            },
             options: [
                 { 
                     id: 'move_5m', 
-                    label: "They moved 5m right.", 
-                    nextNodeId: 'move_back'
+                    label: "Move the Runner 5m right.", 
+                    nextNodeId: 'move_back',
+                    simAction: {
+                        type: 'SPAWN_OBJECT',
+                        payload: {
+                            label: 'Runner',
+                            // Use absolute meters for motion calculations
+                            position: { x: step1X, y: centerY_Meters }, 
+                            velocity: { x: 0, y: 0 },
+                            color: '#10b981' // Emerald
+                        }
+                    }
                 }
             ]
         },
@@ -51,7 +89,16 @@ export const generateKinematicsScript = (_widthPx: number, _heightPx: number): R
                 { 
                     id: 'move_2m_left', 
                     label: "They walked 2m back.", 
-                    nextNodeId: 'quiz_displacement'
+                    nextNodeId: 'quiz_displacement',
+                    simAction: {
+                        type: 'SPAWN_OBJECT',
+                        payload: {
+                            label: 'Runner',
+                            position: { x: step2X, y: centerY_Meters }, // 5 - 2 = 3
+                            velocity: { x: 0, y: 0 },
+                            color: '#10b981'
+                        }
+                    }
                 }
             ]
         },

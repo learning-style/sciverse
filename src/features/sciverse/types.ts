@@ -24,6 +24,7 @@ export interface PhysicsEntity {
     radius?: number; // meters (if circle)
     width?: number; // meters (if rectangle)
     height?: number; // meters (if rectangle)
+    isRelative?: boolean; // If true, position is 0-1 relative to viewport
 }
 
 export interface SimSnapshot {
@@ -48,10 +49,17 @@ export interface DialogOption {
     simAction?: SimAction;
 }
 
+export interface DialogImage {
+    url: string;
+    alt: string;
+    caption?: string;
+}
+
 export interface DialogNode {
     id: string;
     speaker: SpeakerType;
     content: string;
+    image?: DialogImage; // New: Support for inline images
     options?: DialogOption[];
     trigger?: SimTrigger;
     nextNodeId?: string;
@@ -62,7 +70,7 @@ export interface DialogNode {
 // --- Integration Types ---
 
 export type SimAction = 
-    | { type: 'SPAWN_OBJECT'; payload: Partial<PhysicsEntity> & { isStatic?: boolean; color?: string; highlight?: boolean } }
+    | { type: 'SPAWN_OBJECT'; payload: Partial<PhysicsEntity> & { isStatic?: boolean; color?: string; highlight?: boolean; isRelative?: boolean } }
     | { type: 'APPLY_FORCE'; payload: { id: string; force: Vector2D } }
     | { type: 'SET_FRICTION'; payload: { id: string; value: number } }
     | { type: 'PAUSE' }
