@@ -1,10 +1,10 @@
 <!--
   File: flattened_repo.md
   Source Directory: c:\monorepo\portfolio-website1
-  Date Generated: 2025-12-19T18:21:00.282Z
+  Date Generated: 2025-12-19T18:41:00.993Z
   ---
   Total Files: 54
-  Approx. Tokens: 58905
+  Approx. Tokens: 58430
 -->
 
 <!-- Top 10 Text Files by Token Count -->
@@ -14,9 +14,9 @@
 4. External_Context\Enhancing Physics Education Website.md (6714 tokens)
 5. src\features\sciverse\components\PhysicsViewport.tsx (1855 tokens)
 6. src\features\sciverse\core\PhysicsEngine.ts (1790 tokens)
-7. src\features\sciverse\content\module1-motion-1d.ts (1758 tokens)
-8. src\features\sciverse\content\kinematicsScript.ts (1691 tokens)
-9. src\features\sciverse\labs\KinematicsLab.tsx (1666 tokens)
+7. src\features\sciverse\content\kinematicsScript.ts (1691 tokens)
+8. src\features\sciverse\labs\KinematicsLab.tsx (1666 tokens)
+9. src\features\sciverse\content\module1-motion-1d.ts (1360 tokens)
 10. src\features\sciverse\modules\KinematicsLesson.tsx (1168 tokens)
 
 <!-- Full File List -->
@@ -25,7 +25,7 @@
 3. src\main.tsx - Lines: 10 - Chars: 231 - Tokens: 58
 4. src\Artifacts\A1-Project-Vision-and-Goals.md - Lines: 40 - Chars: 2277 - Tokens: 570
 5. src\Artifacts\A2-Technical-Scaffolding-Plan.md - Lines: 60 - Chars: 2719 - Tokens: 680
-6. src\Artifacts\A3-Implementation-Roadmap.md - Lines: 56 - Chars: 2695 - Tokens: 674
+6. src\Artifacts\A3-Implementation-Roadmap.md - Lines: 46 - Chars: 2388 - Tokens: 597
 7. src\Artifacts\A4-Developer-Environment-Setup-Guide.md - Lines: 55 - Chars: 1487 - Tokens: 372
 8. src\Artifacts\A5-GitHub-Repository-Setup-Guide.md - Lines: 64 - Chars: 1712 - Tokens: 428
 9. src\Artifacts\A6-Development-and-Testing-Guide.md - Lines: 44 - Chars: 1414 - Tokens: 354
@@ -47,7 +47,7 @@
 25. src\features\sciverse\components\SocraticChat.tsx - Lines: 89 - Chars: 3902 - Tokens: 976
 26. src\features\sciverse\config\physicsConfig.ts - Lines: 27 - Chars: 876 - Tokens: 219
 27. src\features\sciverse\content\kinematicsScript.ts - Lines: 141 - Chars: 6763 - Tokens: 1691
-28. src\features\sciverse\content\module1-motion-1d.ts - Lines: 148 - Chars: 7031 - Tokens: 1758
+28. src\features\sciverse\content\module1-motion-1d.ts - Lines: 101 - Chars: 5439 - Tokens: 1360
 29. src\features\sciverse\context\SciverseContext.tsx - Lines: 33 - Chars: 1103 - Tokens: 276
 30. src\features\sciverse\core\PhysicsEngine.test.ts - Lines: 57 - Chars: 2364 - Tokens: 591
 31. src\features\sciverse\core\PhysicsEngine.ts - Lines: 226 - Chars: 7159 - Tokens: 1790
@@ -258,11 +258,11 @@ src/
 # Artifact A3: Implementation Roadmap
 # Date Created: C0
 # Author: AI Model & Curator
-# Updated on: C7 (Add Socratic Lesson Step)
+# Updated on: C15 (Pivot Lesson 1 to Text-First Socratic Flow)
 
 - **Key/Value for A0:**
 - **Description:** A step-by-step roadmap for implementing the portfolio.
-- **Tags:** documentation, roadmap, planning, cycle 0, cycle 1, cycle 2, cycle 4, cycle 6, cycle 7
+- **Tags:** documentation, roadmap, planning, cycle 15
 
 ## 1. Overview & Goal
 
@@ -272,45 +272,35 @@ This document provides a clear, step-by-step roadmap for the implementation of t
 
 ### Step 1: Foundational Setup & Theme (Completed C1)
 
--   **Goal:** Initialize the project and establish the visual language.
--   **Outcome:** A navigating skeleton of the website with the correct styling foundation. (Completed)
+-   **Outcome:** A navigating skeleton of the website with the correct styling foundation.
 
 ### Step 2: Content Pages & Showcase Data (Completed C2)
 
--   **Goal:** Implement the informational sections and the project data layer.
--   **Outcome:** The portfolio is data-driven and ready to host the new app. (Completed)
+-   **Outcome:** The portfolio is data-driven and ready to host the new app.
 
-### Step 3: Sciverse - Phase 1: Kinematics Engine (Active C7)
+### Step 3: Sciverse - Phase 1: Kinematics Engine (Active C7-C15)
 
-*Refined based on Artifact A9 and A10.*
+*Refined based on User Feedback regarding visual sync issues.*
 
--   **Goal:** Establish the Matter.js physics core, SSAL, and testing infrastructure.
+-   **Goal:** Establish the Matter.js physics core while ensuring the educational content is resilient to visual rendering bugs.
 -   **Tasks:**
     1.  **Physics Core:** Install `matter-js` and create the `PhysicsEngine` component. (Completed)
     2.  **SSAL:** Implement the `SimState` hook. (Completed)
     3.  **Visualization:** Build the `VectorOverlay` and Graphing components. (Completed)
-    4.  **Lesson 1:** Build the **"Kinematics Socratic Lesson"** (Interactive Concept Explainer). (Active)
-    5.  **Lab 1:** Build "The Projectile Cannon" (Sandbox Lab). (Pending Integration)
--   **Outcome:** A functioning physics playground with a guided lesson module.
+    4.  **Lesson 1 (Stabilization):** Pivot the **"Kinematics Socratic Lesson"** to a text-driven flow. Remove tight coupling between dialogue nodes and physics markers to ensure a smooth learning experience. (Active C15)
+    5.  **Interactive Debugging:** Address the "Blank White Screen" and race conditions between React mount and Matter.js init in isolation from the curriculum. (Pending)
+-   **Outcome:** A stable, playable Socratic lesson that introduces motion concepts reliably.
 
 ### Step 4: Sciverse - Phase 2: Dynamics & Dialog (Upcoming)
 
--   **Goal:** Implement the "Forces & Motion" module with the Socratic Guide.
+-   **Goal:** Implement the "Forces & Motion" module.
 -   **Tasks:**
     1.  **Interactors:** Create UI controls for Mass, Applied Force, and Friction.
-    2.  **Dialog Engine:** Enhance the engine for non-linear branching.
-    3.  **Integration:** Connect Dialog Engine to SSAL triggers.
-    4.  **Content:** Port the "Forces & Motion" script (A8) into the system.
+    2.  **Dialog Engine:** Refine the engine to support both purely conceptual and simulator-active nodes.
+    3.  **Integration:** Use the "Lab" mode for experimentation and "Lesson" mode for guided conceptual work.
 -   **Outcome:** The MVP "Module 01" is complete and playable.
 
 ### Step 5: Contact & Polish
-
--   **Goal:** Finalize the user journey and prepare for launch.
--   **Tasks:**
-    1.  **Contact Page:** Implement links and/or a functional form.
-    2.  **Animations:** Add subtle hover effects and page transitions.
-    3.  **Review:** Check for broken links, spelling errors, and visual bugs.
--   **Outcome:** A complete, professional portfolio ready for deployment.
 </file_artifact>
 
 <file path="src/Artifacts/A4-Developer-Environment-Setup-Guide.md">
@@ -1758,34 +1748,19 @@ export const generateKinematicsScript = (widthPx: number, heightPx: number): Rec
 
 <file path="src/features/sciverse/content/module1-motion-1d.ts">
 import { DialogNode } from '../types';
-import { toMeters } from '../config/physicsConfig';
 
 /**
  * Script: Motion in One Dimension
  * Source: OpenStax Physics Chapter 2
+ * Update C15: Pivoted to text-focused socratic flow to circumvent visual sync issues.
  */
-export const generateKinematicsScript = (widthPx: number, heightPx: number): Record<string, DialogNode> => {
+export const generateKinematicsScript = (_widthPx: number, _heightPx: number): Record<string, DialogNode> => {
     
-    // Use explicit relative coordinates for the Origin to ensure it stays centered
-    // 0.5 = 50% width (Center), 0.8 = 80% height (Near bottom floor)
-    const relativeOrigin = { x: 0.5, y: 0.8 }; 
-    
-    // For the runner, we calculate meters based on the relative start point
-    // We assume 100px = 1 meter. 
-    // This part is a bit tricky mixing relative/absolute, so for simplicity in this cycle,
-    // we will use the relative flag for the Origin (static) and absolute for the moving runner,
-    // calculating the runner's start based on the pixel value of the center.
-    const centerX_Meters = toMeters(widthPx * 0.5);
-    const centerY_Meters = toMeters(heightPx * 0.8);
-    
-    const step1X = centerX_Meters + 5; 
-    const step2X = step1X - 2;
-
     return {
         'root': {
             id: 'root',
             speaker: 'AI',
-            content: "Welcome to **Unit 1: Kinematics**. \n\nTo describe motion—whether it's a person walking or a rocket launching—we first need to agree on *where* things are.",
+            content: "Welcome to **Unit 1: Kinematics**. \n\nTo describe motion—whether it's a person walking or a rocket launching—we first need to agree on *where* things are. In Physics, we define a **Reference Frame** to keep our measurements consistent.",
             options: [
                 { id: 'opt1', label: "Like a starting line?", nextNodeId: 'reference_point' },
                 { id: 'opt2', label: "Why does it matter?", nextNodeId: 'reference_importance' }
@@ -1794,77 +1769,45 @@ export const generateKinematicsScript = (widthPx: number, heightPx: number): Rec
         'reference_importance': {
             id: 'reference_importance',
             speaker: 'AI',
-            content: "Imagine you are on a train walking forward. To you, you are moving at 1 m/s. To someone outside, you might be moving at 100 m/s! \n\nPhysics requires a defined **Origin (0,0)** to make sense of these numbers.",
+            content: "Imagine you are on a train walking forward. To you, you might be moving at 1 m/s. But to someone standing outside the train, you are moving at 100 m/s! \n\nWithout a fixed **Origin (0,0)** to measure from, the numbers don't tell the whole story.",
             nextNodeId: 'reference_point'
         },
         'reference_point': {
             id: 'reference_point',
             speaker: 'AI',
-            content: "I have placed a **Red Beacon** on the **Lab Bench** (look at the bottom center of the white screen). \n\nThis is our **Origin (x=0)**.",
-            onEnterAction: { 
-                type: 'SPAWN_OBJECT', 
-                payload: { 
-                    label: 'Origin', 
-                    // C14 Fix: Use Relative Positioning so it stays centered
-                    isRelative: true,
-                    position: relativeOrigin, 
-                    velocity: { x: 0, y: 0 },
-                    isStatic: true,
-                    color: '#ef4444', // Red-500
-                    highlight: true // Arrow pointing to it
-                } 
-            },
+            content: "Think of a straight line on the floor. We pick one spot and call it our **Origin (x=0)**. \n\nBy convention, we say everything to the right is positive (+x) and everything to the left is negative (-x). This is our system of coordinates.",
             options: [
-                { id: 'spawn_origin', label: "I see the Origin.", nextNodeId: 'distance_vs_displacement' }
+                { id: 'spawn_origin', label: "I understand the Origin.", nextNodeId: 'distance_vs_displacement' }
             ]
         },
         'distance_vs_displacement': {
             id: 'distance_vs_displacement',
             speaker: 'AI',
-            content: "Now, let's explore **Distance** vs. **Displacement**. \n\nI'm going to spawn a Runner. Watch them move 5 meters to the right.",
+            content: "Now, let's look at the difference between **Distance** and **Displacement**. \n\nImagine a runner starts at the **Origin (x=0)** and moves **5 meters to the right** (+5m).",
             options: [
                 { 
                     id: 'move_5m', 
-                    label: "Move the Runner", 
-                    nextNodeId: 'move_back',
-                    simAction: {
-                        type: 'SPAWN_OBJECT',
-                        payload: {
-                            label: 'Runner',
-                            // Use absolute meters for motion calculations
-                            position: { x: step1X, y: centerY_Meters }, 
-                            velocity: { x: 0, y: 0 },
-                            color: '#10b981' // Emerald
-                        }
-                    }
+                    label: "They moved 5m right.", 
+                    nextNodeId: 'move_back'
                 }
             ]
         },
         'move_back': {
             id: 'move_back',
             speaker: 'AI',
-            content: "The Runner is now at **x = 5m**. \n\nNow, imagine they walk **2 meters back** to the left.",
+            content: "Our runner is now standing at the 5-meter mark. \n\nNow, they turn around and walk **2 meters back** toward the left.",
             options: [
                 { 
                     id: 'move_2m_left', 
-                    label: "Walk back 2m", 
-                    nextNodeId: 'quiz_displacement',
-                    simAction: {
-                        type: 'SPAWN_OBJECT',
-                        payload: {
-                            label: 'Runner',
-                            position: { x: step2X, y: centerY_Meters }, // 5 - 2 = 3
-                            velocity: { x: 0, y: 0 },
-                            color: '#10b981'
-                        }
-                    }
+                    label: "They walked 2m back.", 
+                    nextNodeId: 'quiz_displacement'
                 }
             ]
         },
         'quiz_displacement': {
             id: 'quiz_displacement',
             speaker: 'AI',
-            content: "Okay, Analysis time. \n\nThe Runner walked 5m Right, then 2m Left.\n\nWhat is their **Total Distance** traveled, and what is their **Displacement** from the Origin?",
+            content: "Time for a quick check. \n\nThe runner walked 5m Right, then 2m Left.\n\nWhat is the **Total Distance** they covered, and what is their final **Displacement** from the Origin?",
             options: [
                 { id: 'wrong1', label: "Distance: 3m, Displacement: 3m", nextNodeId: 'correction_distance' },
                 { id: 'correct', label: "Distance: 7m, Displacement: 3m", nextNodeId: 'correct_displacement' }
@@ -1873,35 +1816,35 @@ export const generateKinematicsScript = (widthPx: number, heightPx: number): Rec
         'correction_distance': {
             id: 'correction_distance',
             speaker: 'AI',
-            content: "Not quite. **Distance** is the total path length (5 + 2 = 7). It doesn't care about direction. \n\n**Displacement** is the change in position (Final - Initial). Try again.",
+            content: "Not quite. \n\n**Distance** is the total length of the path traveled—like an odometer in a car (5 + 2 = 7). \n\n**Displacement** is simply the change in position: where you are now compared to where you started (Final - Initial). Try that one again!",
             nextNodeId: 'quiz_displacement'
         },
         'correct_displacement': {
             id: 'correct_displacement',
             speaker: 'AI',
-            content: "Correct! \n\n**Distance** (7m) is a Scalar—it has no direction. \n**Displacement** (+3m) is a Vector—it cares that we ended up to the *right* of where we started.",
+            content: "Correct! \n\n**Distance** (7m) is a *Scalar*—it only has magnitude. \n**Displacement** (+3m) is a *Vector*—it has magnitude AND direction. It tells us the runner ended up 3 meters to the right of the start.",
             nextNodeId: 'critical_thinking'
         },
         'critical_thinking': {
             id: 'critical_thinking',
             speaker: 'AI',
-            content: "Here is a Critical Thinking question:\n\nRaoul claims: \"Displacement is always equal to the magnitude of Distance.\" \n\nBased on our experiment, is he right?",
+            content: "Here is a Critical Thinking puzzle:\n\nA student claims: \"Displacement is always equal to the magnitude of Distance.\" \n\nBased on our runner's trip, is that student correct?",
             options: [
-                { id: 'raoul_yes', label: "Yes, he's right.", nextNodeId: 'raoul_correction' },
-                { id: 'raoul_no', label: "No, he's wrong.", nextNodeId: 'raoul_confirm' }
+                { id: 'raoul_yes', label: "Yes, they are the same.", nextNodeId: 'raoul_correction' },
+                { id: 'raoul_no', label: "No, they can be different.", nextNodeId: 'raoul_confirm' }
             ]
         },
         'raoul_correction': {
             id: 'raoul_correction',
             speaker: 'AI',
-            content: "Look at the Runner again. The Distance was 7m, but the Displacement was only 3m. They are not equal because the direction changed.",
+            content: "Think back to the numbers: The distance was 7m, but the displacement was only 3m. \n\nThey only match if you move in a perfectly straight line and never turn back!",
             nextNodeId: 'raoul_confirm'
         },
         'raoul_confirm': {
             id: 'raoul_confirm',
             speaker: 'AI',
-            content: "Exactly. Displacement is only equal to Distance if you move in a straight line without ever turning back. \n\nNext, we will look at how fast things move: **Speed vs Velocity**.",
-            options: [] // End of module for now
+            content: "Precisely. Displacement is the 'as the crow flies' measurement. \n\nNow that we can describe *where* things are, let's talk about how fast they change: **Speed vs Velocity**.",
+            options: [] // End of current module segment
         }
     };
 };
