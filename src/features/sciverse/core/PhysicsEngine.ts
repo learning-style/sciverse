@@ -12,7 +12,8 @@ export class PhysicsEngine {
     public runner: Matter.Runner;
     public render: Matter.Render | null = null;
     
-    private entities: Map<string, { body: Matter.Body, label: string }> = new Map();
+    // Store visual props separately as Matter.js body properties can be inconsistent/complex to access
+    private entities: Map<string, { body: Matter.Body, label: string, color?: string, highlight?: boolean }> = new Map();
     private subscribers: ((snapshot: SimSnapshot) => void)[] = [];
     private animationFrameId: number | null = null;
     private isPaused: boolean = false;
@@ -42,8 +43,8 @@ export class PhysicsEngine {
                 options: {
                     width: canvas.width,
                     height: canvas.height,
-                    background: 'transparent', // Important for SVG overlay visibility
-                    wireframes: false, // Solid shapes
+                    background: 'transparent', 
+                    wireframes: false, 
                     showAngleIndicator: false
                 }
             });
@@ -107,10 +108,6 @@ export class PhysicsEngine {
         this.broadcastState();
     };
 
-    /**
-     * SSAL: Broadcast State
-     * Extracts the current physics state and sends it to subscribers (React Context).
-     */
     private broadcastState() {
         if (this.subscribers.length === 0) return;
 
@@ -121,10 +118,13 @@ export class PhysicsEngine {
     public getSnapshot(): SimSnapshot {
         const entitySnapshots: PhysicsEntity[] = [];
 
-        this.entities.forEach(({ body, label }, id) => {
+        this.entities.forEach(({ body, label, color, highlight }, id) => {
             entitySnapshots.push({
                 id,
                 label,
+                color,
+                highlight,
+                isStatic: body.isStatic,
                 mass: body.mass,
                 position: { x: toMeters(body.position.x), y: toMeters(body.position.y) },
                 velocity: { x: toMeters(body.velocity.x), y: toMeters(body.velocity.y) },
@@ -165,9 +165,17 @@ export class PhysicsEngine {
         mass?: number,
         label?: string, 
         color?: string,
-        isStatic?: boolean 
+        isStatic?: boolean,
+        highlight?: boolean
     }) {
-        const { x, y, velocity = {x:0, y:0}, label = 'Object', color = '#4f46e5', isStatic = false } = config;
+        const { 
+            x, y, 
+            velocity = {x:0, y:0}, 
+            label = 'Object', 
+            color = '#4f46e5', 
+            isStatic = false,
+            highlight = false
+        } = config;
         
         const id = `${label}_${Date.now()}`;
         
@@ -193,27 +201,23 @@ export class PhysicsEngine {
         }
 
         Matter.Composite.add(this.engine.world, body);
-        this.entities.set(id, { body, label });
+        this.entities.set(id, { body, label, color, highlight });
     }
 
-    // Deprecated alias for backward compatibility
     public spawnProjectile(x: number, y: number, velocity: Vector2D, label: string = 'Projectile') {
         this.spawnObject({ x, y, velocity, label });
     }
 
     private addBoundaries(width: number, height: number) {
-        // Floor: Positioned to be visible at the bottom
-        // Center Y = Height - 20 (so top edge is at Height - 40)
         const floorHeight = 40;
         const floorY = height - (floorHeight / 2);
         
         const ground = Matter.Bodies.rectangle(width / 2, floorY, width, floorHeight, { 
             isStatic: true, 
             label: 'Ground',
-            render: { fillStyle: '#334155' } // slate-700, visible "Bench"
+            render: { fillStyle: '#334155' } 
         });
 
-        // Walls (Invisible, just to keep objects in)
         const leftWall = Matter.Bodies.rectangle(-50, height / 2, 100, height * 2, { isStatic: true });
         const rightWall = Matter.Bodies.rectangle(width + 50, height / 2, 100, height * 2, { isStatic: true });
         

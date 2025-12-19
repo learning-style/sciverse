@@ -23,16 +23,17 @@ export const kinematicsScript: Record<string, DialogNode> = {
     'reference_point': {
         id: 'reference_point',
         speaker: 'AI',
-        content: "In Physics, we call this the **Origin (0,0)**. Look at the lab bench. I've marked the Origin with a white beacon.",
+        content: "In Physics, we call this the **Origin (0,0)**. Look at the lab bench. I've placed a beacon at the Origin.",
         // Automatically spawn the Origin marker when this text appears
         onEnterAction: { 
             type: 'SPAWN_OBJECT', 
             payload: { 
                 label: 'Origin', 
-                position: { x: 6, y: 3 }, // Raised from 4 to 3 (higher up visually) to avoid floor clipping
+                position: { x: 3.5, y: 3 }, // Centered better for small screens
                 velocity: { x: 0, y: 0 },
                 isStatic: true,
-                color: '#ffffff'
+                color: '#ffffff',
+                highlight: true // Enable visual arrow guide
             } 
         },
         options: [
@@ -42,7 +43,7 @@ export const kinematicsScript: Record<string, DialogNode> = {
     'define_position': {
         id: 'define_position',
         speaker: 'AI',
-        content: "That dot represents **Position**. It tells us *where* an object is relative to zero. \n\nNow, what happens if we change position over time?",
+        content: "That white beacon represents **Position**. It tells us *where* an object is relative to zero. \n\nNow, what happens if we change position over time?",
         options: [
             { id: 'movement', label: "We move.", nextNodeId: 'define_velocity' },
             { id: 'teleport', label: "We teleport?", nextNodeId: 'define_velocity' }
@@ -113,7 +114,7 @@ export const kinematicsScript: Record<string, DialogNode> = {
     'end_lesson': {
         id: 'end_lesson',
         speaker: 'AI',
-        // Auto-spawn the projectile again after reset, using onEnter to ensure sequence
+        // Auto-spawn the projectile again after reset
         onEnterAction: {
             type: 'SPAWN_OBJECT',
             payload: { label: 'Projectile', position: { x: 1, y: 3 }, velocity: { x: 10, y: 0 } }

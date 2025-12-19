@@ -12,12 +12,15 @@ export interface Vector2D {
 
 export interface PhysicsEntity {
     id: string;
-    label: string; // "Projectile", "Target", etc.
+    label: string; // "Projectile", "Target", "Origin", etc.
     mass: number; // kg
     position: Vector2D; // meters (normalized)
     velocity: Vector2D; // m/s
     acceleration: Vector2D; // m/s^2
     force: Vector2D; // N
+    isStatic?: boolean; // If true, unaffected by forces
+    color?: string; // Hex code for rendering
+    highlight?: boolean; // If true, render a guide arrow
     radius?: number; // meters (if circle)
     width?: number; // meters (if rectangle)
     height?: number; // meters (if rectangle)
@@ -52,20 +55,20 @@ export interface DialogNode {
     options?: DialogOption[];
     trigger?: SimTrigger;
     nextNodeId?: string;
-    // New: Trigger an action immediately when this node is displayed
+    // Trigger an action immediately when this node is displayed
     onEnterAction?: SimAction;
 }
 
 // --- Integration Types ---
 
 export type SimAction = 
-    | { type: 'SPAWN_OBJECT'; payload: Partial<PhysicsEntity> & { isStatic?: boolean; color?: string } }
+    | { type: 'SPAWN_OBJECT'; payload: Partial<PhysicsEntity> & { isStatic?: boolean; color?: string; highlight?: boolean } }
     | { type: 'APPLY_FORCE'; payload: { id: string; force: Vector2D } }
     | { type: 'SET_FRICTION'; payload: { id: string; value: number } }
     | { type: 'PAUSE' }
     | { type: 'RESUME' }
     | { type: 'RESET' }
-    | { type: 'RESET_AND_GRAVITY'; payload: { force: Vector2D } }; // Explicitly added for script
+    | { type: 'RESET_AND_GRAVITY'; payload: { force: Vector2D } }; 
 
 export type SimTrigger = {
     condition: 'VELOCITY_ZERO' | 'TARGET_HIT' | 'TIME_ELAPSED';

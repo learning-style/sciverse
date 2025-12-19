@@ -1,10 +1,10 @@
 <!--
   File: flattened_repo.md
   Source Directory: c:\monorepo\portfolio-website1
-  Date Generated: 2025-12-17T00:31:49.811Z
+  Date Generated: 2025-12-19T17:49:21.965Z
   ---
   Total Files: 52
-  Approx. Tokens: 55010
+  Approx. Tokens: 55179
 -->
 
 <!-- Top 10 Text Files by Token Count -->
@@ -12,10 +12,10 @@
 2. External_Context\Physics Simulation Project Enhancement Plan.md (8113 tokens)
 3. External_Context\Forces-Motion.md (6749 tokens)
 4. External_Context\Enhancing Physics Education Website.md (6714 tokens)
-5. src\features\sciverse\core\PhysicsEngine.ts (1801 tokens)
+5. src\features\sciverse\core\PhysicsEngine.ts (1790 tokens)
 6. src\features\sciverse\labs\KinematicsLab.tsx (1666 tokens)
-7. src\features\sciverse\content\kinematicsScript.ts (1272 tokens)
-8. src\features\sciverse\components\PhysicsViewport.tsx (1180 tokens)
+7. src\features\sciverse\components\PhysicsViewport.tsx (1298 tokens)
+8. src\features\sciverse\content\kinematicsScript.ts (1272 tokens)
 9. src\Artifacts\A9-Sciverse-Curriculum-Roadmap.md (1146 tokens)
 10. src\Artifacts\A7-Sciverse-Design.md (1065 tokens)
 
@@ -42,20 +42,20 @@
 20. src\features\home\HomePage.tsx - Lines: 29 - Chars: 1360 - Tokens: 340
 21. src\features\science-lab\ScienceLab.tsx - Lines: 59 - Chars: 2829 - Tokens: 708
 22. src\features\sciverse\components\GraphMonitor.tsx - Lines: 77 - Chars: 3397 - Tokens: 850
-23. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 102 - Chars: 4719 - Tokens: 1180
+23. src\features\sciverse\components\PhysicsViewport.tsx - Lines: 125 - Chars: 5191 - Tokens: 1298
 24. src\features\sciverse\components\SocraticChat.tsx - Lines: 89 - Chars: 3902 - Tokens: 976
 25. src\features\sciverse\config\physicsConfig.ts - Lines: 27 - Chars: 876 - Tokens: 219
-26. src\features\sciverse\content\kinematicsScript.ts - Lines: 124 - Chars: 5087 - Tokens: 1272
+26. src\features\sciverse\content\kinematicsScript.ts - Lines: 125 - Chars: 5088 - Tokens: 1272
 27. src\features\sciverse\context\SciverseContext.tsx - Lines: 33 - Chars: 1103 - Tokens: 276
 28. src\features\sciverse\core\PhysicsEngine.test.ts - Lines: 57 - Chars: 2364 - Tokens: 591
-29. src\features\sciverse\core\PhysicsEngine.ts - Lines: 222 - Chars: 7202 - Tokens: 1801
+29. src\features\sciverse\core\PhysicsEngine.ts - Lines: 226 - Chars: 7159 - Tokens: 1790
 30. src\features\sciverse\hooks\useDialogEngine.ts - Lines: 40 - Chars: 1294 - Tokens: 324
 31. src\features\sciverse\hooks\useMatter.ts - Lines: 1 - Chars: 9 - Tokens: 3
 32. src\features\sciverse\hooks\usePhysics.ts - Lines: 63 - Chars: 1991 - Tokens: 498
 33. src\features\sciverse\labs\KinematicsLab.tsx - Lines: 134 - Chars: 6664 - Tokens: 1666
 34. src\features\sciverse\lib\engine-core.ts - Lines: 1 - Chars: 9 - Tokens: 3
-35. src\features\sciverse\modules\KinematicsLesson.tsx - Lines: 92 - Chars: 3816 - Tokens: 954
-36. src\features\sciverse\types.ts - Lines: 74 - Chars: 1962 - Tokens: 491
+35. src\features\sciverse\modules\KinematicsLesson.tsx - Lines: 92 - Chars: 3907 - Tokens: 977
+36. src\features\sciverse\types.ts - Lines: 77 - Chars: 2119 - Tokens: 530
 37. src\features\showcase\components\ProjectCard.tsx - Lines: 60 - Chars: 2757 - Tokens: 690
 38. src\features\showcase\data\projectsData.ts - Lines: 23 - Chars: 1186 - Tokens: 297
 39. src\features\showcase\ShowcasePage.tsx - Lines: 21 - Chars: 847 - Tokens: 212
@@ -1240,92 +1240,115 @@ export const GraphMonitor = ({ latestSnapshot }: GraphMonitorProps) => {
 
 <file path="src/features/sciverse/components/PhysicsViewport.tsx">
 import { useSciverse } from '../context/SciverseContext';
-import { toPixels } from '../config/physicsConfig';
+import { toPixels, PHYSICS_CONFIG } from '../config/physicsConfig';
+import { PhysicsEntity } from '../types';
 
 export const PhysicsViewport = () => {
     const { containerRef, canvasRef, snapshot } = useSciverse();
 
-    const primaryEntity = snapshot?.entities.find(e => e.label === 'Projectile');
-    const originEntity = snapshot?.entities.find(e => e.label === 'Origin');
+    const primaryEntity = snapshot?.entities.find(e => !e.isStatic);
+    const floorY = toPixels(8); 
 
     return (
         <div 
             ref={containerRef} 
-            className="relative w-full h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-inner"
+            className="relative w-full h-full bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-inner group"
         >
-            {/* Background Grid */}
-            <svg className="absolute inset-0 pointer-events-none w-full h-full opacity-20" aria-hidden="true">
-                <defs>
-                    <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
-                        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="currentColor" strokeWidth="1" className="text-slate-500" />
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
+            {/* 1. Grid Layer */}
+            <div className="absolute inset-0 opacity-30 pointer-events-none" 
+                style={{ 
+                    backgroundImage: `linear-gradient(#475569 1px, transparent 1px), linear-gradient(90deg, #475569 1px, transparent 1px)`, 
+                    backgroundSize: `${PHYSICS_CONFIG.METER_TO_PIXEL}px ${PHYSICS_CONFIG.METER_TO_PIXEL}px`
+                }}
+            />
 
-            {/* Matter.js Canvas */}
+            {/* 2. Visual Floor */}
+            <div 
+                className="absolute w-full border-t-2 border-indigo-500/50 bg-indigo-500/10 pointer-events-none"
+                style={{ top: floorY, bottom: 0 }}
+            >
+                <div className="absolute top-2 right-2 text-xs text-indigo-400 font-mono">LAB FLOOR (y=8m)</div>
+            </div>
+
+            {/* 3. Matter.js Canvas */}
             <canvas ref={canvasRef} className="absolute inset-0 block" />
 
-            {/* Vector Overlay Layer (SVG) */}
+            {/* 4. SVG Overlay Layer */}
             <svg className="absolute inset-0 pointer-events-none w-full h-full overflow-visible">
                 <defs>
                     <marker id="arrow-v" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
                         <path d="M0,0 L0,6 L9,3 z" fill="#10b981" />
                     </marker>
-                    <marker id="arrow-a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                        <path d="M0,0 L0,6 L9,3 z" fill="#f59e0b" />
-                    </marker>
                 </defs>
 
-                {/* Explicit Origin Marker */}
-                {originEntity && (
-                    <g transform={`translate(${toPixels(originEntity.position.x)}, ${toPixels(originEntity.position.y)})`}>
-                        <circle r="6" fill="#ffffff" stroke="#3b82f6" strokeWidth="2" />
-                        <text x="10" y="4" fill="#94a3b8" fontSize="12" fontFamily="monospace">Origin (0,0)</text>
-                    </g>
-                )}
-
-                {/* Velocity Vector */}
-                {primaryEntity && (
-                    <VectorArrow 
-                        origin={primaryEntity.position}
-                        vector={primaryEntity.velocity}
-                        color="#10b981"
-                        scale={20}
-                        marker="arrow-v"
-                    />
-                )}
+                {snapshot?.entities.map(entity => (
+                    <EntityOverlay key={entity.id} entity={entity} />
+                ))}
             </svg>
 
-            {/* Live Metrics HUD */}
-            <div className="absolute top-4 left-4 flex flex-col gap-2 pointer-events-none">
+            {/* 5. Live Metrics HUD */}
+            <div className="absolute top-4 left-4 flex flex-col gap-2 pointer-events-none transition-opacity duration-500">
                 {primaryEntity ? (
                     <>
                         <MetricRow label="Vx" value={primaryEntity.velocity.x.toFixed(2)} unit="m/s" color="text-emerald-400" />
                         <MetricRow label="Vy" value={(-primaryEntity.velocity.y).toFixed(2)} unit="m/s" color="text-emerald-400" />
-                        <MetricRow label="Py" value={((8 - primaryEntity.position.y)).toFixed(2)} unit="m" color="text-slate-300" />
                     </>
                 ) : (
-                    <span className="text-slate-500 text-xs uppercase tracking-wider bg-slate-950/50 px-2 py-1 rounded border border-slate-800">
-                        Viewport Active
-                    </span>
+                    <span className="text-slate-500 text-xs uppercase tracking-wider font-mono">System Idle</span>
                 )}
             </div>
         </div>
     );
 };
 
-const VectorArrow = ({ origin, vector, color, scale, marker }: { origin: {x:number, y:number}, vector: {x:number, y:number}, color: string, scale: number, marker: string }) => {
+const EntityOverlay = ({ entity }: { entity: PhysicsEntity }) => {
+    const px = toPixels(entity.position.x);
+    const py = toPixels(entity.position.y);
+
+    return (
+        <g transform={`translate(${px}, ${py})`}>
+            {/* Velocity Vector */}
+            {!entity.isStatic && (
+                <VectorArrow vector={entity.velocity} color="#10b981" scale={15} marker="arrow-v" />
+            )}
+
+            {/* Visual Guide Arrow (Bounce Animation) */}
+            {entity.highlight && (
+                <g className="animate-bounce">
+                    <path d="M 0 -60 L 0 -40 L -5 -45 M 0 -40 L 5 -45" stroke="#f59e0b" strokeWidth="3" fill="none" />
+                    <text y="-70" textAnchor="middle" fill="#f59e0b" fontSize="10" fontFamily="monospace" fontWeight="bold">HERE</text>
+                </g>
+            )}
+
+            {/* Text Label */}
+            <text 
+                y={-25} 
+                textAnchor="middle" 
+                fill={entity.color || '#cbd5e1'} 
+                fontSize="12" 
+                fontFamily="monospace" 
+                fontWeight="bold"
+                className="drop-shadow-md"
+                style={{ textShadow: '0px 2px 4px rgba(0,0,0,0.8)' }}
+            >
+                {entity.label.toUpperCase()}
+            </text>
+            
+            {/* Position Marker */}
+            <circle r="4" fill={entity.color || '#cbd5e1'} stroke="#0f172a" strokeWidth="2" />
+        </g>
+    );
+};
+
+const VectorArrow = ({ vector, color, scale, marker }: { vector: {x:number, y:number}, color: string, scale: number, marker: string }) => {
     if (Math.abs(vector.x) < 0.1 && Math.abs(vector.y) < 0.1) return null;
 
-    const startX = toPixels(origin.x);
-    const startY = toPixels(origin.y);
-    const endX = startX + vector.x * scale;
-    const endY = startY + vector.y * scale;
+    const endX = vector.x * scale;
+    const endY = vector.y * scale;
 
     return (
         <line 
-            x1={startX} y1={startY} 
+            x1={0} y1={0} 
             x2={endX} y2={endY} 
             stroke={color} 
             strokeWidth="2" 
@@ -1335,7 +1358,7 @@ const VectorArrow = ({ origin, vector, color, scale, marker }: { origin: {x:numb
 };
 
 const MetricRow = ({ label, value, unit, color }: { label: string, value: string, unit: string, color: string }) => (
-    <div className="bg-slate-900/80 backdrop-blur px-3 py-1.5 rounded border border-slate-700/50 flex items-center gap-3 shadow-sm">
+    <div className="bg-slate-900/90 backdrop-blur px-3 py-1.5 rounded border border-slate-700/50 flex items-center gap-3 shadow-lg">
         <span className="text-slate-500 font-mono text-xs font-bold w-4">{label}</span>
         <span className={`font-mono text-sm ${color}`}>{value}</span>
         <span className="text-slate-600 text-xs">{unit}</span>
@@ -1491,16 +1514,17 @@ export const kinematicsScript: Record<string, DialogNode> = {
     'reference_point': {
         id: 'reference_point',
         speaker: 'AI',
-        content: "In Physics, we call this the **Origin (0,0)**. Look at the lab bench. I've marked the Origin with a white beacon.",
+        content: "In Physics, we call this the **Origin (0,0)**. Look at the lab bench. I've placed a beacon at the Origin.",
         // Automatically spawn the Origin marker when this text appears
         onEnterAction: { 
             type: 'SPAWN_OBJECT', 
             payload: { 
                 label: 'Origin', 
-                position: { x: 6, y: 3 }, // Raised from 4 to 3 (higher up visually) to avoid floor clipping
+                position: { x: 3.5, y: 3 }, // Centered better for small screens
                 velocity: { x: 0, y: 0 },
                 isStatic: true,
-                color: '#ffffff'
+                color: '#ffffff',
+                highlight: true // Enable visual arrow guide
             } 
         },
         options: [
@@ -1510,7 +1534,7 @@ export const kinematicsScript: Record<string, DialogNode> = {
     'define_position': {
         id: 'define_position',
         speaker: 'AI',
-        content: "That dot represents **Position**. It tells us *where* an object is relative to zero. \n\nNow, what happens if we change position over time?",
+        content: "That white beacon represents **Position**. It tells us *where* an object is relative to zero. \n\nNow, what happens if we change position over time?",
         options: [
             { id: 'movement', label: "We move.", nextNodeId: 'define_velocity' },
             { id: 'teleport', label: "We teleport?", nextNodeId: 'define_velocity' }
@@ -1581,7 +1605,7 @@ export const kinematicsScript: Record<string, DialogNode> = {
     'end_lesson': {
         id: 'end_lesson',
         speaker: 'AI',
-        // Auto-spawn the projectile again after reset, using onEnter to ensure sequence
+        // Auto-spawn the projectile again after reset
         onEnterAction: {
             type: 'SPAWN_OBJECT',
             payload: { label: 'Projectile', position: { x: 1, y: 3 }, velocity: { x: 10, y: 0 } }
@@ -1703,7 +1727,8 @@ export class PhysicsEngine {
     public runner: Matter.Runner;
     public render: Matter.Render | null = null;
     
-    private entities: Map<string, { body: Matter.Body, label: string }> = new Map();
+    // Store visual props separately as Matter.js body properties can be inconsistent/complex to access
+    private entities: Map<string, { body: Matter.Body, label: string, color?: string, highlight?: boolean }> = new Map();
     private subscribers: ((snapshot: SimSnapshot) => void)[] = [];
     private animationFrameId: number | null = null;
     private isPaused: boolean = false;
@@ -1733,8 +1758,8 @@ export class PhysicsEngine {
                 options: {
                     width: canvas.width,
                     height: canvas.height,
-                    background: 'transparent', // Important for SVG overlay visibility
-                    wireframes: false, // Solid shapes
+                    background: 'transparent', 
+                    wireframes: false, 
                     showAngleIndicator: false
                 }
             });
@@ -1798,10 +1823,6 @@ export class PhysicsEngine {
         this.broadcastState();
     };
 
-    /**
-     * SSAL: Broadcast State
-     * Extracts the current physics state and sends it to subscribers (React Context).
-     */
     private broadcastState() {
         if (this.subscribers.length === 0) return;
 
@@ -1812,10 +1833,13 @@ export class PhysicsEngine {
     public getSnapshot(): SimSnapshot {
         const entitySnapshots: PhysicsEntity[] = [];
 
-        this.entities.forEach(({ body, label }, id) => {
+        this.entities.forEach(({ body, label, color, highlight }, id) => {
             entitySnapshots.push({
                 id,
                 label,
+                color,
+                highlight,
+                isStatic: body.isStatic,
                 mass: body.mass,
                 position: { x: toMeters(body.position.x), y: toMeters(body.position.y) },
                 velocity: { x: toMeters(body.velocity.x), y: toMeters(body.velocity.y) },
@@ -1856,9 +1880,17 @@ export class PhysicsEngine {
         mass?: number,
         label?: string, 
         color?: string,
-        isStatic?: boolean 
+        isStatic?: boolean,
+        highlight?: boolean
     }) {
-        const { x, y, velocity = {x:0, y:0}, label = 'Object', color = '#4f46e5', isStatic = false } = config;
+        const { 
+            x, y, 
+            velocity = {x:0, y:0}, 
+            label = 'Object', 
+            color = '#4f46e5', 
+            isStatic = false,
+            highlight = false
+        } = config;
         
         const id = `${label}_${Date.now()}`;
         
@@ -1884,27 +1916,23 @@ export class PhysicsEngine {
         }
 
         Matter.Composite.add(this.engine.world, body);
-        this.entities.set(id, { body, label });
+        this.entities.set(id, { body, label, color, highlight });
     }
 
-    // Deprecated alias for backward compatibility
     public spawnProjectile(x: number, y: number, velocity: Vector2D, label: string = 'Projectile') {
         this.spawnObject({ x, y, velocity, label });
     }
 
     private addBoundaries(width: number, height: number) {
-        // Floor: Positioned to be visible at the bottom
-        // Center Y = Height - 20 (so top edge is at Height - 40)
         const floorHeight = 40;
         const floorY = height - (floorHeight / 2);
         
         const ground = Matter.Bodies.rectangle(width / 2, floorY, width, floorHeight, { 
             isStatic: true, 
             label: 'Ground',
-            render: { fillStyle: '#334155' } // slate-700, visible "Bench"
+            render: { fillStyle: '#334155' } 
         });
 
-        // Walls (Invisible, just to keep objects in)
         const leftWall = Matter.Bodies.rectangle(-50, height / 2, 100, height * 2, { isStatic: true });
         const rightWall = Matter.Bodies.rectangle(width + 50, height / 2, 100, height * 2, { isStatic: true });
         
@@ -2277,12 +2305,15 @@ export interface Vector2D {
 
 export interface PhysicsEntity {
     id: string;
-    label: string; // "Projectile", "Target", etc.
+    label: string; // "Projectile", "Target", "Origin", etc.
     mass: number; // kg
     position: Vector2D; // meters (normalized)
     velocity: Vector2D; // m/s
     acceleration: Vector2D; // m/s^2
     force: Vector2D; // N
+    isStatic?: boolean; // If true, unaffected by forces
+    color?: string; // Hex code for rendering
+    highlight?: boolean; // If true, render a guide arrow
     radius?: number; // meters (if circle)
     width?: number; // meters (if rectangle)
     height?: number; // meters (if rectangle)
@@ -2317,20 +2348,20 @@ export interface DialogNode {
     options?: DialogOption[];
     trigger?: SimTrigger;
     nextNodeId?: string;
-    // New: Trigger an action immediately when this node is displayed
+    // Trigger an action immediately when this node is displayed
     onEnterAction?: SimAction;
 }
 
 // --- Integration Types ---
 
 export type SimAction = 
-    | { type: 'SPAWN_OBJECT'; payload: Partial<PhysicsEntity> & { isStatic?: boolean; color?: string } }
+    | { type: 'SPAWN_OBJECT'; payload: Partial<PhysicsEntity> & { isStatic?: boolean; color?: string; highlight?: boolean } }
     | { type: 'APPLY_FORCE'; payload: { id: string; force: Vector2D } }
     | { type: 'SET_FRICTION'; payload: { id: string; value: number } }
     | { type: 'PAUSE' }
     | { type: 'RESUME' }
     | { type: 'RESET' }
-    | { type: 'RESET_AND_GRAVITY'; payload: { force: Vector2D } }; // Explicitly added for script
+    | { type: 'RESET_AND_GRAVITY'; payload: { force: Vector2D } }; 
 
 export type SimTrigger = {
     condition: 'VELOCITY_ZERO' | 'TARGET_HIT' | 'TIME_ELAPSED';
