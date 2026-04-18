@@ -1,0 +1,17 @@
+node_modules
+
+package-lock.json
+
+dist
+
+out
+
+*.vsix
+
+.vscode-test/
+
+.vscode/
+
+prompt.md
+
+.vscode/dce_cache/
