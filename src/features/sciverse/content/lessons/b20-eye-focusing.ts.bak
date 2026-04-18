@@ -1,0 +1,66 @@
+import { DialogNode } from '../../types';
+
+/**
+ * B20 — Eye Focusing
+ * Big Idea 20: "How Do Lenses Change What We See?"
+ */
+export const getB20Script = (): Record<string, DialogNode> => ({
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome to Vision Lab. Your eye lens changes focus between a nearby book and a distant sign through **accommodation**.\n\nIn this lesson we will use three terms:\n- **Near vision**: focusing on close objects\n- **Far vision**: focusing on distant objects\n- **Myopia (near-sightedness)**: near vision is clearer than far vision",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', target: 'near' } },
+        options: [
+            { id: 'move_retina', label: 'The retina slides back and forth.', nextNodeId: 'misconception' },
+            { id: 'lens_shape', label: 'Ciliary muscles adjust lens shape.', nextNodeId: 'correct', sentiment: 'positive' }
+        ]
+    },
+    'misconception': {
+        id: 'misconception',
+        speaker: 'AI',
+        content: "In normal focusing, retina position is fixed. Lens curvature changes to place the image on retina.",
+        options: [{ id: 'next', label: 'Show accommodation.', nextNodeId: 'correct' }]
+    },
+    'correct': {
+        id: 'correct',
+        speaker: 'AI',
+        content: "Correct. Near targets require stronger optical power; lens shape increases curvature to keep the image on the **retina**.\n\nFor far vision, the lens can flatten more. If far objects stay blurry while near objects are clear, that pattern is called **myopia**.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'accommodation', showLensChange: true } },
+        options: [{ id: 'checkpoint', label: 'Checkpoint.', nextNodeId: 'checkpoint' }]
+    },
+    'checkpoint': {
+        id: 'checkpoint',
+        speaker: 'AI',
+        content: "What is a common effect of reduced accommodation with age, especially for near vision tasks?",
+        options: [
+            { id: 'near_blur', label: 'Near vision becomes harder without correction.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'perfect', label: 'All distances become perfectly sharp.', nextNodeId: 'checkpoint_wrong' }
+        ]
+    },
+    'checkpoint_wrong': {
+        id: 'checkpoint_wrong',
+        speaker: 'AI',
+        content: "Reduced flexibility usually weakens near focusing, often requiring reading correction.",
+        options: [{ id: 'retry', label: 'Less accommodation can blur near text.', nextNodeId: 'checkpoint_correct' }]
+    },
+    'checkpoint_correct': {
+        id: 'checkpoint_correct',
+        speaker: 'AI',
+        content: "Exactly. Biological optics and external lenses can work together to restore focus.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', correction: 'reading-lens' } },
+        options: [{ id: 'discovery', label: 'Main lesson?', nextNodeId: 'discovery' }]
+    },
+    'discovery': {
+        id: 'discovery',
+        speaker: 'AI',
+        content: "Discovery: vision depends on precise focusing on the **retina** through active lens control and dynamic **accommodation**.\n\n| Term | Meaning |\n| --- | --- |\n| Near vision | Focusing clearly on close objects |\n| Far vision | Focusing clearly on distant objects |\n| Myopia | Near vision clearer than far vision |",
+        options: [{ id: 'complete', label: 'Complete B20', nextNodeId: 'complete' }]
+    },
+    'complete': {
+        id: 'complete',
+        speaker: 'AI',
+        content: "🔗 **Big Idea 20 Complete — How Do Lenses Change What We See?**\n\n- Physics (P20): Lens Ray Physics — refraction, focus, and magnification bend light to form images\n- Chemistry (C20): Optical Materials — refractive index and lens chemistry determine how glass bends light\n- Biology (B20): Eye Focusing System — your eye's lens changes shape (accommodation) to focus near and far\n\nIn all three: **lenses — whether glass or biological — bend light to reveal the world!** 🔍🧪👁️\n\n✅ **Lesson B20 Complete!**",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+        options: []
+    }
+});

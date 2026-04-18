@@ -59,7 +59,7 @@ export interface DialogNode {
     id: string;
     speaker: SpeakerType;
     content: string;
-    image?: DialogImage; // New: Support for inline images
+    image?: DialogImage; // Use object for structured image data
     options?: DialogOption[];
     trigger?: SimTrigger;
     nextNodeId?: string;
@@ -76,10 +76,51 @@ export type SimAction =
     | { type: 'PAUSE' }
     | { type: 'RESUME' }
     | { type: 'RESET' }
-    | { type: 'RESET_AND_GRAVITY'; payload: { force: Vector2D } }; 
+    | { type: 'RESET_AND_GRAVITY'; payload: { force: Vector2D } }
+    | { type: 'SET_VISUAL'; payload: Record<string, unknown> }; 
+
+// --- Lesson Metadata Types ---
+
+export type Discipline = 'physics' | 'chemistry' | 'biology';
+
+export interface LessonMeta {
+    id: string;
+    title: string;
+    subtitle: string;
+    discipline: Discipline;
+    bigIdea: number;
+    bigIdeaTitle: string;
+    icon: string;
+    accentColor: string;
+    crossLinks: string[];
+}
 
 export type SimTrigger = {
     condition: 'VELOCITY_ZERO' | 'TARGET_HIT' | 'TIME_ELAPSED';
     targetId?: string;
     value?: number;
 };
+
+// --- Assessment Types ---
+
+export type Difficulty = 'easy' | 'medium' | 'hard';
+
+export interface AssessmentQuestion {
+    id: number;
+    difficulty: Difficulty;
+    discipline: Discipline | 'cross';
+    question: string;
+    options: string[];
+    correctIndex: number;
+    hint: string;
+    explanation: string;
+    optionExplanations?: string[];
+}
+
+export interface AssessmentData {
+    bigIdea: number;
+    title: string;
+    subtitle: string;
+    icon: string;
+    questions: AssessmentQuestion[];
+}

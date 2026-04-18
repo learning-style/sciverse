@@ -1,0 +1,75 @@
+import { DialogNode } from '../../types';
+
+export function getB26Script(): Record<string, DialogNode> {
+    return {
+        root: {
+            id: 'root',
+            speaker: 'AI',
+            content: `Welcome to **B26: Weather & Life Lab**!\n\nIn this lab, you'll test how living systems respond to changing weather using three levers:\n- **Behavior** (short-term actions)\n- **Migration** (movement across regions)\n- **Adaptation** (long-term biological change)\n\nUse the sliders, then compare outcomes like a scientist.`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', behavior: 50, migration: 50, adaptation: 0 } },
+            options: [
+                { id: 'start', label: 'Start Exploring', nextNodeId: 'observe' }
+            ]
+        },
+        observe: {
+            id: 'observe',
+            speaker: 'AI',
+            content: `First pass: move one slider at a time and watch what changes.\n\nFocus on:\n- **Speed** of response\n- **Energy cost** of response\n- **Survival value** in unstable weather`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'observe' } },
+            options: [
+                { id: 'behavior_first', label: 'Behavior changes fastest.', nextNodeId: 'behavior_path', sentiment: 'positive' },
+                { id: 'adaptation_first', label: 'Adaptation always changes fastest.', nextNodeId: 'adaptation_fix' }
+            ]
+        },
+        adaptation_fix: {
+            id: 'adaptation_fix',
+            speaker: 'AI',
+            content: `Good attempt. **Adaptation** can be powerful, but it usually acts over longer timescales (generations).\n\n**Behavior** is typically fastest, while **migration** and **adaptation** can stabilize survival over broader conditions.`,
+            options: [
+                { id: 'continue', label: 'Got it: response times differ.', nextNodeId: 'behavior_path' }
+            ]
+        },
+        behavior_path: {
+            id: 'behavior_path',
+            speaker: 'AI',
+            content: `Exactly. Weather resilience is usually a **stacked strategy**:\n- **Behavior** for immediate response\n- **Migration** for seasonal risk management\n- **Adaptation** for long-term fit\n\nNow test combinations with all three sliders.`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'combined_test' } },
+            options: [
+                { id: 'checkpoint', label: 'Checkpoint', nextNodeId: 'checkpoint' }
+            ]
+        },
+        checkpoint: {
+            id: 'checkpoint',
+            speaker: 'AI',
+            content: `A population facing increasingly unpredictable storms should rely on:`,
+            options: [
+                { id: 'single', label: 'Only one response mode forever.', nextNodeId: 'checkpoint_wrong' },
+                { id: 'mixed', label: 'A flexible mix of behavior, migration, and adaptation.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' }
+            ]
+        },
+        checkpoint_wrong: {
+            id: 'checkpoint_wrong',
+            speaker: 'AI',
+            content: `Single strategies are fragile. Mixed strategies improve robustness when weather patterns shift.\n\nIn biology, **flexibility** is often the difference between persistence and collapse.`,
+            options: [
+                { id: 'retry', label: 'Use a flexible mixed strategy.', nextNodeId: 'checkpoint_correct' }
+            ]
+        },
+        checkpoint_correct: {
+            id: 'checkpoint_correct',
+            speaker: 'AI',
+            content: `Correct. **Resilience** comes from combining short-term and long-term responses.\n\nYou're ready for the summary.`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'summary' } },
+            options: [
+                { id: 'summary', label: 'Show Summary', nextNodeId: 'complete' }
+            ]
+        },
+        complete: {
+            id: 'complete',
+            speaker: 'AI',
+            content: `🔗 **Big Idea 26 Complete — How Do Weather Systems Shape Life?**\n\n- **Physics (P26):** Weather Dynamics — motion and energy flow drive storms, wind, and pressure patterns\n- **Chemistry (C26):** Atmospheric Chemistry — gas interactions control air quality, acidity, and climate stressors\n- **Biology (B26):** Weather & Life Responses — organisms survive through behavior, migration, and long-term change\n\n**Summary Table:**\n| Lesson | Core Driver | Population-Level Gist |\n| --- | --- | --- |\n| **P26 Weather Dynamics** | **Energy + fluid motion** | **Physical conditions set environmental pressure** |\n| **C26 Atmospheric Chemistry** | **Chemical composition shifts** | **Habitat quality changes over time** |\n| **B26 Weather & Life Responses** | **Biological flexibility** | **Survival improves with mixed response strategies** |\n\nIn all three: **system changes propagate across physics, chemistry, and biology**.\n\n✅ **Lesson B26 Complete!**`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+            options: []
+        }
+    };
+}

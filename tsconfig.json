@@ -27,5 +27,8 @@
     }
   },
   "include": ["src"],
+  "exclude": [
+    "src/**/level2/**"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

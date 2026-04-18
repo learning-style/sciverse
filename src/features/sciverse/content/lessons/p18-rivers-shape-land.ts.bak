@@ -1,0 +1,108 @@
+import { DialogNode } from '../../types';
+
+/**
+ * P18 — Rivers Shape Land
+ * Big Idea 18: "How Do Rivers Shape the Land?"
+ */
+export const getP18Script = (): Record<string, DialogNode> => ({
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome to the River Channel Model. Why do some river bends erode quickly while others deposit sand?",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', flowSpeed: 3, bend: 'moderate' } },
+        options: [
+            { id: 'random', label: 'It is random each season.', nextNodeId: 'misconception' },
+            { id: 'speed', label: 'Flow speed controls erosion and deposition.', nextNodeId: 'correct', sentiment: 'positive' }
+        ]
+    },
+    'misconception': {
+        id: 'misconception',
+        speaker: 'AI',
+        content: "Patterns are not random. Water speed and channel shape strongly predict where sediment moves.",
+        options: [{ id: 'continue', label: 'Show the speed map.', nextNodeId: 'correct' }]
+    },
+    'correct': {
+        id: 'correct',
+        speaker: 'AI',
+        content: "Correct. Fast flow lifts and carries particles; slower flow drops them. Outer bends erode, inner bends deposit.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'transport', showVelocityBands: true } },
+        options: [{ id: 'checkpoint', label: 'Checkpoint.', nextNodeId: 'checkpoint' }]
+    },
+    'checkpoint': {
+        id: 'checkpoint',
+        speaker: 'AI',
+        content: "If a flood doubles river speed, what is most likely?",
+        options: [
+            { id: 'carry_more', label: 'River carries larger particles downstream.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'carry_less', label: 'River drops all particles immediately.', nextNodeId: 'checkpoint_wrong' }
+        ]
+    },
+    'checkpoint_wrong': {
+        id: 'checkpoint_wrong',
+        speaker: 'AI',
+        content: "Higher speed usually increases carrying capacity. Deposition dominates later when flow slows.",
+        options: [{ id: 'retry', label: 'Fast flow first, deposition later.', nextNodeId: 'checkpoint_correct' }]
+    },
+    'checkpoint_correct': {
+        id: 'checkpoint_correct',
+        speaker: 'AI',
+        content: "Exactly. Flow energy decides when sediment is picked up versus dropped.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', flood: true } },
+        options: [
+            { id: 'discovery', label: 'Summarize P18.', nextNodeId: 'discovery' },
+            { id: 'summary_now', label: 'Show summary table first.', nextNodeId: 'summary_table' }
+        ]
+    },
+
+    'discovery': {
+        id: 'discovery',
+        speaker: 'AI',
+        content: "🎉 **Discovery:** Rivers are moving energy systems that reshape landscapes by sorting sediment with speed.\n\nFast outer-bend flow erodes banks; slow inner-bend flow deposits sediment. Over time this creates meanders, floodplains, and deltas.",
+        options: [
+            { id: 'summary', label: 'Show summary table.', nextNodeId: 'summary_table' },
+            { id: 'reflect', label: 'Ask me reflection questions.', nextNodeId: 'reflection_questions' }
+        ]
+    },
+
+    'summary_table': {
+        id: 'summary_table',
+        speaker: 'AI',
+        content: "| **Factor** | **How It Works** | **Lab Pattern** |\n|---|---|---|\n| **Flow speed** | Faster water lifts and carries larger particles | Higher slope → faster flow → more erosion |\n| **Terrain slope** | Steeper gradient increases flow energy | Raising slope increased sediment load |\n| **Erosion** | Outer bends and steep reaches lose bank material | Eroded faces appeared where flow was fastest |\n| **Deposition** | Inner bends and flat reaches accumulate sediment | Sediment settled where current slowed |\n| **Sediment size** | Larger particles need faster flow to move | Fine silt travels farther than gravel |",
+        options: [
+            { id: 'reflect_after_table', label: 'Now ask reflection questions.', nextNodeId: 'reflection_questions' },
+            { id: 'to_complete', label: 'Wrap up P18.', nextNodeId: 'complete' }
+        ]
+    },
+
+    'reflection_questions': {
+        id: 'reflection_questions',
+        speaker: 'AI',
+        content: "🧠 **Think Like A Geologist**\n\n1. Why does a river meander more over centuries instead of cutting a straight line?\n2. After a dam is built upstream, what happens to the sediment supply downstream?\n3. How could you predict where a flood will deposit the most material?",
+        options: [
+            { id: 'reflect_good', label: 'Meanders grow because erosion on outer bends and deposition on inner bends shift the channel sideways over time.', nextNodeId: 'reflection_feedback', sentiment: 'positive' },
+            { id: 'reflect_bad', label: 'Rivers meander randomly with no predictable pattern.', nextNodeId: 'reflection_retry' }
+        ]
+    },
+
+    'reflection_retry': {
+        id: 'reflection_retry',
+        speaker: 'AI',
+        content: "Meanders are not random. Faster flow on the outer bend erodes the bank while slower flow on the inner bend deposits sediment. This feedback loop pushes the curve further with each flood cycle.",
+        options: [{ id: 'retry_to_feedback', label: 'Understood. Erosion and deposition create a feedback loop.', nextNodeId: 'reflection_feedback' }]
+    },
+
+    'reflection_feedback': {
+        id: 'reflection_feedback',
+        speaker: 'AI',
+        content: "Great reasoning. You are connecting flow dynamics to long-term landscape change.",
+        options: [{ id: 'finish', label: 'Finish P18', nextNodeId: 'complete' }]
+    },
+
+    'complete': {
+        id: 'complete',
+        speaker: 'AI',
+        content: "🔗 **Cross-Links**\n- In **C18**, water chemistry explains how rivers dissolve and transport minerals that shape rock formations.\n- In **B18**, river flow patterns create distinct habitats for aquatic food webs.\n\n✅ **Lesson P18 Complete!**",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+        options: []
+    }
+});

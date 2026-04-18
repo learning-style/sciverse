@@ -1,0 +1,79 @@
+import { DialogNode } from '../../types';
+
+/**
+ * P19 — Soil Physics
+ * Big Idea 19: "How Does Soil Support Life?"
+ */
+export const getP19Script = (): Record<string, DialogNode> => ({
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome to the Soil Column Lab. Two soils get the same rain, but one floods while the other drains. Why?\n\nPhysics lens: we are comparing how pore geometry changes permeability and water flux.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', soilA: 'sand', soilB: 'clay' } },
+        options: [
+            { id: 'same', label: 'Rain amount is all that matters.', nextNodeId: 'misconception' },
+            { id: 'pores', label: 'Pore size and connectivity matter.', nextNodeId: 'correct', sentiment: 'positive' }
+        ]
+    },
+    'misconception': {
+        id: 'misconception',
+        speaker: 'AI',
+        content: "Equal rain can produce different outcomes because water movement depends on pore structure, permeability, and the pressure gradient that drives flow.",
+        options: [{ id: 'next', label: 'Show porosity.', nextNodeId: 'correct' }]
+    },
+    'correct': {
+        id: 'correct',
+        speaker: 'AI',
+        content: "Correct. Sand has larger pores and usually higher hydraulic conductivity, while clay has tiny pores and lower conductivity.\n\nDrainage speed is only part of the story. Root zones also depend on gas diffusion, capillary water retention, and how gravity competes with capillary forces.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'porosity', showPores: true } },
+        options: [{ id: 'deeper', label: 'Explain why pore structure changes root conditions.', nextNodeId: 'explain_pore_effects' }]
+    },
+    'explain_pore_effects': {
+        id: 'explain_pore_effects',
+        speaker: 'AI',
+        content: "Think of soil as a network of tiny tunnels where transport physics controls outcomes.\n\n- Large connected pores increase permeability and infiltration rate.\n- Very tiny tightly packed pores increase capillary hold but reduce oxygen diffusion.\n- Compaction decreases pore radius, raising resistance to flow and lowering effective conductivity.\n\nHealthy root zones need a balance: enough retained water for uptake and enough connected air space for gas exchange.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'analysis', showPores: true, showAirPaths: true } },
+        options: [{ id: 'mini_observe', label: 'Give me a quick observation task before checkpoint.', nextNodeId: 'pre_checkpoint_observation' }]
+    },
+    'pre_checkpoint_observation': {
+        id: 'pre_checkpoint_observation',
+        speaker: 'AI',
+        content: "Quick observation task:\n1. Increase compaction and watch pore channels narrow.\n2. Predict what drops first: infiltration rate or oxygen diffusion to roots.\n3. Increase organic matter and see how pore stability and capillary balance improve.\n4. Connect your observation to which crops fail after heavy rain.\n\nNow you are ready for the checkpoint.",
+        options: [{ id: 'checkpoint', label: 'Continue to checkpoint.', nextNodeId: 'checkpoint' }]
+    },
+    'checkpoint': {
+        id: 'checkpoint',
+        speaker: 'AI',
+        content: "For plant roots needing both water and oxygen, which soil is most likely to have balanced permeability and capillary retention?",
+        options: [
+            { id: 'balanced', label: 'Loam with mixed particle sizes.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'pure_clay', label: 'Pure dense clay only.', nextNodeId: 'checkpoint_wrong' }
+        ]
+    },
+    'checkpoint_wrong': {
+        id: 'checkpoint_wrong',
+        speaker: 'AI',
+        content: "Dense clay can hold water but may limit airflow and slow infiltration. Physics view: low permeability can trap water while reducing oxygen transport.",
+        options: [{ id: 'retry', label: 'Balanced texture supports both.', nextNodeId: 'checkpoint_correct' }]
+    },
+    'checkpoint_correct': {
+        id: 'checkpoint_correct',
+        speaker: 'AI',
+        content: "Exactly. Mixed soils often provide both moisture and oxygen pathways because they balance conductivity, capillary storage, and diffusion routes.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', bestSoil: 'loam' } },
+        options: [{ id: 'discovery', label: 'Summarize.', nextNodeId: 'discovery' }]
+    },
+    'discovery': {
+        id: 'discovery',
+        speaker: 'AI',
+        content: "Discovery: soil supports life by controlling transport physics in pore networks.\n\n| Physics Term | In this lab |\n| --- | --- |\n| Permeability | How easily water passes through pore channels |\n| Hydraulic conductivity | How fast water moves through a given soil |\n| Capillary action | How small pores retain and pull water |\n| Diffusion | How oxygen moves through air-filled pores |",
+        options: [{ id: 'complete', label: 'Complete P19', nextNodeId: 'complete' }]
+    },
+    'complete': {
+        id: 'complete',
+        speaker: 'AI',
+        content: "P19 complete. Continue to C19 soil chemistry and B19 soil biodiversity.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+        options: []
+    }
+});

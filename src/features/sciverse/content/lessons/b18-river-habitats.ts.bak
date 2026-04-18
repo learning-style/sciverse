@@ -1,0 +1,139 @@
+import { DialogNode } from '../../types';
+
+/**
+ * B18 — River Habitats
+ * Big Idea 18: "How Do Rivers Shape the Land?"
+ */
+export const getB18Script = (): Record<string, DialogNode> => ({
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome to River Habitat Explorer! 🐟\n\nYou sample two nearby river zones. One is a fast, oxygen-rich riffle over stones. The other is a slow pool with warmer, calmer water.\n\nWhy do these zones often host different communities even in the same river?",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', zone: 'riffle' } },
+        options: [
+            { id: 'same_life', label: 'All river zones should support identical communities.', nextNodeId: 'misconception' },
+            { id: 'niche', label: 'Flow, oxygen, temperature, and substrate create different niches.', nextNodeId: 'correct', sentiment: 'positive' },
+            { id: 'food_only', label: 'Only food quantity matters; habitat structure is secondary.', nextNodeId: 'misconception_food' }
+        ]
+    },
+
+    'misconception': {
+        id: 'misconception',
+        speaker: 'AI',
+        content: "River habitats are heterogeneous. Physical and chemical differences between zones produce different survival conditions and therefore different community patterns.",
+        options: [{ id: 'next', label: 'Show zone differences.', nextNodeId: 'correct' }]
+    },
+
+    'misconception_food': {
+        id: 'misconception_food',
+        speaker: 'AI',
+        content: "Food matters, but habitat structure controls shelter, spawning sites, flow exposure, and oxygen availability. Community outcome is multi-factor, not single-factor.",
+        options: [{ id: 'next2', label: 'So habitat context shapes food-web survival.', nextNodeId: 'correct' }]
+    },
+
+    'correct': {
+        id: 'correct',
+        speaker: 'AI',
+        content: "Correct. Fast oxygen-rich zones favor some species, while calmer warmer zones favor others.\n\nIn this lab, change oxygen, flow stability, and temperature to see how habitat health responds.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'zones', showSpeciesMap: true } },
+        options: [
+            { id: 'checkpoint', label: 'Give me a checkpoint.', nextNodeId: 'checkpoint' },
+            { id: 'experiment_first', label: 'Let me test controls before checkpoint.', nextNodeId: 'experiment_prompt' }
+        ]
+    },
+
+    'experiment_prompt': {
+        id: 'experiment_prompt',
+        speaker: 'AI',
+        content: "Run this habitat test:\n1. Keep flow stable and raise dissolved oxygen.\n2. Increase water temperature and watch health trend.\n3. Lower flow stability and compare resilience.\n\nThen answer the checkpoint using your observations.",
+        options: [{ id: 'to_checkpoint', label: 'I tested it. Ask checkpoint.', nextNodeId: 'checkpoint' }]
+    },
+
+    'checkpoint': {
+        id: 'checkpoint',
+        speaker: 'AI',
+        content: "⏸️ **Checkpoint**\n\nWhat is the most likely near-term ecological effect if fine sediment suddenly buries rocky streambeds?",
+        options: [
+            { id: 'habitat_loss', label: 'Species tied to rocky habitat may decline.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'no_change', label: 'No ecological change is expected.', nextNodeId: 'checkpoint_wrong' },
+            { id: 'instant_gain', label: 'All species improve immediately.', nextNodeId: 'checkpoint_wrong2' }
+        ]
+    },
+
+    'checkpoint_wrong': {
+        id: 'checkpoint_wrong',
+        speaker: 'AI',
+        content: "Substrate change can remove shelter, feeding surfaces, and breeding sites.",
+        options: [{ id: 'retry', label: 'Habitat structure drives community structure.', nextNodeId: 'checkpoint_correct' }]
+    },
+
+    'checkpoint_wrong2': {
+        id: 'checkpoint_wrong2',
+        speaker: 'AI',
+        content: "Major habitat shifts usually create winners and losers. Sensitive taxa often decline first when structural habitat is lost.",
+        options: [{ id: 'retry2', label: 'Disturbance can reduce specialist species first.', nextNodeId: 'checkpoint_correct' }]
+    },
+
+    'checkpoint_correct': {
+        id: 'checkpoint_correct',
+        speaker: 'AI',
+        content: "Exactly. Physical river changes propagate through food webs and alter species persistence patterns.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', impact: 'substrate-shift' } },
+        options: [
+            { id: 'discovery', label: 'Main takeaway?', nextNodeId: 'discovery' },
+            { id: 'summary_now', label: 'Show summary table first.', nextNodeId: 'summary_table' }
+        ]
+    },
+
+    'discovery': {
+        id: 'discovery',
+        speaker: 'AI',
+        content: "🎉 **Discovery:** River ecology tracks hydrology, chemistry, and channel structure across connected habitats.\n\nThe **blue wavy lines** in the visual are **flow current lines** — they show water movement direction and speed. Faster, denser lines mean higher flow stability, which keeps oxygen mixed and habitats intact. When flow drops, currents weaken and fish populations shrink.\n\nSmall physical changes can cascade into major biological changes.",
+        options: [
+            { id: 'summary', label: 'Show summary table.', nextNodeId: 'summary_table' },
+            { id: 'reflect', label: 'Ask me reflection questions.', nextNodeId: 'reflection_questions' }
+        ]
+    },
+
+    'summary_table': {
+        id: 'summary_table',
+        speaker: 'AI',
+        content: "| **Habitat Factor** | **Ecological Meaning** | **Lab Pattern** |\n|---|---|---|\n| **Dissolved oxygen** | Metabolic support and species tolerance | Higher oxygen improved habitat health trend |\n| **Temperature** | Stress and oxygen-solubility interaction | Higher temperature often reduced health score |\n| **Flow stability** | Shelter persistence and disturbance regime | Lower stability increased vulnerability |\n| **Substrate structure** | Spawning and refuge availability | Burial of rocky beds reduced specialist support |",
+        options: [
+            { id: 'reflect_after_table', label: 'Now ask reflection questions.', nextNodeId: 'reflection_questions' },
+            { id: 'to_complete', label: 'Wrap up B18.', nextNodeId: 'complete' }
+        ]
+    },
+
+    'reflection_questions': {
+        id: 'reflection_questions',
+        speaker: 'AI',
+        content: "🧠 **Think Like A River Ecologist**\n\n1. Why might one restoration project fail if it improves only one variable?\n2. How can temperature rise indirectly affect species through oxygen dynamics?\n3. Why are connected habitats more resilient than isolated patches?",
+        options: [
+            { id: 'reflect_good', label: 'River health is multi-factor; oxygen, flow, temperature, and habitat structure interact.', nextNodeId: 'reflection_feedback', sentiment: 'positive' },
+            { id: 'reflect_bad', label: 'One metric alone can fully predict ecosystem success.', nextNodeId: 'reflection_retry' }
+        ]
+    },
+
+    'reflection_retry': {
+        id: 'reflection_retry',
+        speaker: 'AI',
+        content: "Complex ecosystems rarely respond to one variable in isolation. Strong interventions usually coordinate multiple habitat factors.",
+        options: [{ id: 'retry_to_feedback', label: 'Got it. Multi-factor thinking is needed.', nextNodeId: 'reflection_feedback' }]
+    },
+
+    'reflection_feedback': {
+        id: 'reflection_feedback',
+        speaker: 'AI',
+        content: "Excellent. You are reasoning with systems ecology instead of single-variable shortcuts.",
+        options: [{ id: 'finish', label: 'Finish B18', nextNodeId: 'complete' }]
+    },
+
+    'complete': {
+        id: 'complete',
+        speaker: 'AI',
+        content: "🔗 **Big Idea 18 Complete — How Do Rivers Shape the Land?**\n\n- Physics (P18): River Flow & Erosion — speed-driven transport carves and deposits sediment\n- Chemistry (C18): Dissolved River Chemistry — invisible ions and watershed chemistry shape water quality\n- Biology (B18): River Habitat Webs — flow zones create ecological niches; species adapt to current, depth, and chemistry\n\nIn all three: **flowing water is the sculptor — shaping land, chemistry, and life!** 🌊🐟💧\n\n✅ **Lesson B18 Complete!**",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+        options: []
+    }
+});

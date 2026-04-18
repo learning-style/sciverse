@@ -4,10 +4,11 @@ import { DialogNode, DialogOption, SimAction } from '../types';
 interface UseDialogEngineProps {
     script: Record<string, DialogNode>;
     onSimAction: (action: SimAction) => void;
-    isReady?: boolean; // New prop to prevent firing actions before engine is ready
+    isReady?: boolean;
+    resetKey?: string; // Change this to force a full reset (e.g. lessonId)
 }
 
-export const useDialogEngine = ({ script, onSimAction, isReady = true }: UseDialogEngineProps) => {
+export const useDialogEngine = ({ script, onSimAction, isReady = true, resetKey }: UseDialogEngineProps) => {
     const [currentNode, setCurrentNode] = useState<DialogNode>(script['root']);
     const [history, setHistory] = useState<DialogNode[]>([]);
     
@@ -15,7 +16,14 @@ export const useDialogEngine = ({ script, onSimAction, isReady = true }: UseDial
     // to prevent double-firing or firing before ready.
     const actionProcessedRef = useRef<string | null>(null);
 
-    // Reset if script changes
+    // Full reset when resetKey changes (e.g. navigating to a different lesson)
+    useEffect(() => {
+        setCurrentNode(script['root']);
+        setHistory([]);
+        actionProcessedRef.current = null;
+    }, [resetKey]);
+
+    // Reset if script changes and current node is no longer valid
     useEffect(() => {
         if (!script[currentNode.id]) {
             setCurrentNode(script['root']);
@@ -51,10 +59,21 @@ export const useDialogEngine = ({ script, onSimAction, isReady = true }: UseDial
         }
     }, [currentNode, script, onSimAction]);
 
+    const rewindTo = useCallback((historyIndex: number) => {
+        if (historyIndex < 0 || historyIndex >= history.length) return;
+        const targetNode = history[historyIndex];
+        // Trim history to everything before the clicked node
+        setHistory(history.slice(0, historyIndex));
+        setCurrentNode(targetNode);
+        // Allow onEnterAction to re-fire for the rewound node
+        actionProcessedRef.current = null;
+    }, [history]);
+
     return {
         currentNode,
         setCurrentNode,
         history,
-        handleOptionSelect
+        handleOptionSelect,
+        rewindTo
     };
 };

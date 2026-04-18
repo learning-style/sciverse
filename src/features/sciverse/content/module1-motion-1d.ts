@@ -1,148 +1,123 @@
-import { DialogNode } from '../types';
-import { toMeters } from '../config/physicsConfig';
+﻿import { DialogNode } from '../types';
 
 /**
  * Script: Motion in One Dimension
  * Source: OpenStax Physics Chapter 2
+ * 
+ * Flow:
+ * 1. Reference Frames (Maglev Train)
+ * 2. Coordinate Systems (Origin)
+ * 3. Distance vs Displacement (Path vs Vector)
+ * 
+ * Note: All interactive "Beacons" and "SimActions" have been removed to prevent 
+ * visual synchronization bugs. This is a text+image led lesson.
  */
-export const generateKinematicsScript = (widthPx: number, heightPx: number): Record<string, DialogNode> => {
+export const generateKinematicsScript = (_widthPx: number, _heightPx: number): Record<string, DialogNode> => {
     
-    // Use explicit relative coordinates for the Origin to ensure it stays centered
-    const relativeOrigin = { x: 0.5, y: 0.8 }; 
-    
-    const centerX_Meters = toMeters(widthPx * 0.5);
-    const centerY_Meters = toMeters(heightPx * 0.8);
-    
-    const step1X = centerX_Meters + 5; 
-    const step2X = step1X - 2;
-
     return {
         'root': {
             id: 'root',
             speaker: 'AI',
-            content: "Welcome to **Unit 1: Kinematics**. \n\nTo describe motion—whether it's a person walking or a rocket launching—we first need to agree on *where* things are. In Physics, we define a **Reference Frame** to keep our measurements consistent.",
+            content: "Welcome to **Unit 1: Kinematics**. \n\nPhysics is about describing the universe. To describe *motion*—whether it's a person walking or a rocket launching—we first need to agree on *where* we are measuring from.",
             options: [
                 { id: 'opt1', label: "Like a starting line?", nextNodeId: 'reference_point' },
-                { id: 'opt2', label: "Why does it matter?", nextNodeId: 'reference_importance' }
+                { id: 'opt2', label: "Can't we just measure speed?", nextNodeId: 'reference_importance' }
             ]
         },
         'reference_importance': {
             id: 'reference_importance',
             speaker: 'AI',
-            content: "Imagine you are on a train walking forward. To you, you might be moving at 1 m/s. But to someone standing outside the train, you are moving at 100 m/s! \n\nWithout a fixed **Origin (0,0)** to measure from, the numbers don't tell the whole story.",
+            content: "Speed is relative! \n\nImagine you are walking forward on a train. To you, you move at 1 m/s. To someone standing outside, you might be moving at 100 m/s!",
+            image: {
+                url: "https://placehold.co/600x350/0f172a/a5f3fc?text=Figure+2.1:+Relative+Motion",
+                alt: "A Maglev train showing motion relative to different observers",
+                caption: "Figure 2.1: Motion depends on your Reference Frame."
+            },
             nextNodeId: 'reference_point'
         },
         'reference_point': {
             id: 'reference_point',
             speaker: 'AI',
-            content: "I have placed a **Red Beacon** on the **Lab Bench** (look at the bottom center of the white screen). \n\nThis is our **Origin (x=0)**. \n\nEverything to the right is positive (+x). Everything to the left is negative (-x).",
-            onEnterAction: { 
-                type: 'SPAWN_OBJECT', 
-                payload: { 
-                    label: 'Origin', 
-                    // C14 Fix: Use Relative Positioning so it stays centered
-                    isRelative: true,
-                    position: relativeOrigin, 
-                    velocity: { x: 0, y: 0 },
-                    isStatic: true,
-                    color: '#ef4444', // Red-500
-                    highlight: true // Arrow pointing to it
-                } 
+            content: "In Physics, we define a **Coordinate System**. \n\nThink of a number line stretching out in front of you. The spot you are standing on is 0. We call this the **Origin**.",
+            image: {
+                url: "https://placehold.co/600x300/0f172a/10b981?text=Figure+2.2:+Coordinate+System",
+                alt: "A coordinate system showing Origin (0) with positive values to the right and negative to the left",
+                caption: "Figure 2.2: The Origin is our reference point (x=0)."
             },
             options: [
-                { id: 'spawn_origin', label: "I see the Origin.", nextNodeId: 'distance_vs_displacement' }
+                { id: 'spawn_origin', label: "Got it. 0 is the center.", nextNodeId: 'distance_vs_displacement' }
             ]
         },
         'distance_vs_displacement': {
             id: 'distance_vs_displacement',
             speaker: 'AI',
-            content: "Now, let's look at the difference between **Distance** and **Displacement**.",
-            // C16 Update: Added placeholder image for Displacement concept
-            image: {
-                url: "https://placehold.co/600x300/1e293b/ffffff?text=Distance+vs+Displacement+Diagram",
-                alt: "Diagram showing a curved path (Distance) versus a straight line (Displacement) between two points.",
-                caption: "Figure 2.4: Distance vs Displacement (Placeholder)"
-            },
+            content: "Now, let's distinguish between **Distance** and **Displacement**. \n\nImagine a professor pacing in front of a whiteboard. She starts at the Origin (0) and walks **2.0 meters to the Right**.",
             options: [
                 { 
-                    id: 'move_5m', 
-                    label: "Move the Runner 5m right.", 
-                    nextNodeId: 'move_back',
-                    simAction: {
-                        type: 'SPAWN_OBJECT',
-                        payload: {
-                            label: 'Runner',
-                            // Use absolute meters for motion calculations
-                            position: { x: step1X, y: centerY_Meters }, 
-                            velocity: { x: 0, y: 0 },
-                            color: '#10b981' // Emerald
-                        }
-                    }
+                    id: 'move_2m', 
+                    label: "She is at x = 2.0m.", 
+                    nextNodeId: 'move_back'
                 }
             ]
         },
         'move_back': {
             id: 'move_back',
             speaker: 'AI',
-            content: "Our runner is now standing at the 5-meter mark. \n\nNow, they turn around and walk **2 meters back** toward the left.",
+            content: "Correct. Now, imagine she turns around and walks **4.0 meters to the Left**.",
+            image: {
+                url: "https://placehold.co/600x300/0f172a/f472b6?text=Figure+2.3:+Displacement+Vectors",
+                alt: "Diagram showing a person walking 2m right, then 4m left, ending at -2m.",
+                caption: "Figure 2.3: Total Distance vs Net Displacement."
+            },
             options: [
                 { 
-                    id: 'move_2m_left', 
-                    label: "They walked 2m back.", 
-                    nextNodeId: 'quiz_displacement',
-                    simAction: {
-                        type: 'SPAWN_OBJECT',
-                        payload: {
-                            label: 'Runner',
-                            position: { x: step2X, y: centerY_Meters }, // 5 - 2 = 3
-                            velocity: { x: 0, y: 0 },
-                            color: '#10b981'
-                        }
-                    }
+                    id: 'move_4m_left', 
+                    label: "She walked past the Origin.", 
+                    nextNodeId: 'quiz_displacement'
                 }
             ]
         },
         'quiz_displacement': {
             id: 'quiz_displacement',
             speaker: 'AI',
-            content: "Time for a quick check. \n\nThe runner walked 5m Right, then 2m Left.\n\nWhat is the **Total Distance** they covered, and what is their final **Displacement** from the Origin?",
+            content: "Let's analyze her trip:\n1. 2.0m Right (+2.0)\n2. 4.0m Left (-4.0)\n\nWhat is the **Total Distance** she walked (steps taken)?\nAnd what is her **Displacement** (Final Position - Initial Position)?",
             options: [
-                { id: 'wrong1', label: "Distance: 3m, Displacement: 3m", nextNodeId: 'correction_distance' },
-                { id: 'correct', label: "Distance: 7m, Displacement: 3m", nextNodeId: 'correct_displacement' }
+                { id: 'wrong1', label: "Distance: 2.0m, Displacement: -2.0m", nextNodeId: 'correction_distance' },
+                { id: 'correct', label: "Distance: 6.0m, Displacement: -2.0m", nextNodeId: 'correct_displacement' }
             ]
         },
         'correction_distance': {
             id: 'correction_distance',
             speaker: 'AI',
-            content: "Not quite. \n\n**Distance** is the total length of the path traveled—like an odometer in a car (5 + 2 = 7). \n\n**Displacement** is simply the change in position: where you are now compared to where you started (Final - Initial). Try that one again!",
+            content: "Not quite. **Distance** adds up *every* step you take, regardless of direction (2.0 + 4.0). \n\n**Displacement** is simply where you ended up relative to the start.",
             nextNodeId: 'quiz_displacement'
         },
         'correct_displacement': {
             id: 'correct_displacement',
             speaker: 'AI',
-            content: "Correct! \n\n**Distance** (7m) is a *Scalar*—it only has magnitude. \n**Displacement** (+3m) is a *Vector*—it has magnitude AND direction. It tells us the runner ended up 3 meters to the right of the start.",
+            content: "Exactly!\n\n**Distance** (6.0m) is a *Scalar*—it has no direction, just magnitude.\n**Displacement** (-2.0m) is a *Vector*—it includes direction (The negative sign means to the left of the Origin).",
             nextNodeId: 'critical_thinking'
         },
         'critical_thinking': {
             id: 'critical_thinking',
             speaker: 'AI',
-            content: "Here is a Critical Thinking puzzle:\n\nA student claims: \"Displacement is always equal to the magnitude of Distance.\" \n\nBased on our runner's trip, is that student correct?",
+            content: "Critical Thinking Check:\n\nIf the professor walked *all the way back* to the Origin, what would her **Displacement** be?",
             options: [
-                { id: 'raoul_yes', label: "Yes, they are the same.", nextNodeId: 'raoul_correction' },
-                { id: 'raoul_no', label: "No, they can be different.", nextNodeId: 'raoul_confirm' }
+                { id: 'ct_zero', label: "Zero.", nextNodeId: 'ct_correct' },
+                { id: 'ct_dist', label: "The total distance walked.", nextNodeId: 'ct_correction' }
             ]
         },
-        'raoul_correction': {
-            id: 'raoul_correction',
+        'ct_correction': {
+            id: 'ct_correction',
             speaker: 'AI',
-            content: "Think back to the numbers: The distance was 7m, but the displacement was only 3m. \n\nThey only match if you move in a perfectly straight line and never turn back!",
-            nextNodeId: 'raoul_confirm'
+            content: "That would be the Distance. Displacement is (Final Position - Initial Position). If you start at 0 and end at 0...",
+            nextNodeId: 'ct_correct'
         },
-        'raoul_confirm': {
-            id: 'raoul_confirm',
+        'ct_correct': {
+            id: 'ct_correct',
             speaker: 'AI',
-            content: "Precisely. Displacement is the 'as the crow flies' measurement. \n\nNow that we can describe *where* things are, let's talk about how fast they change: **Speed vs Velocity**.",
-            options: [] // End of current module segment
+            content: "Spot on. Zero Displacement. Even if you ran a marathon, if you finish where you started, your displacement is zero.\n\nThis distinction is crucial for understanding Velocity next.",
+            options: [] // End of module
         }
     };
 };

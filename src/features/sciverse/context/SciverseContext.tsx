@@ -1,4 +1,4 @@
-import React, { createContext, useContext, ReactNode } from 'react';
+import { createContext, useContext, ReactNode } from 'react';
 import { usePhysics } from '../hooks/usePhysics';
 import { PhysicsEngine } from '../core/PhysicsEngine';
 import { SimSnapshot } from '../types';
@@ -11,7 +11,7 @@ interface SciverseContextType {
     canvasRef: (node: HTMLCanvasElement | null) => void;
 }
 
-const SciverseContext = createContext<SciverseContextType | null>(null);
+export const SciverseContext = createContext<SciverseContextType | null>(null);
 
 export const SciverseProvider = ({ children }: { children: ReactNode }) => {
     // The Provider owns the Physics Engine Lifecycle via the hook

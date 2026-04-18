@@ -166,7 +166,8 @@ export class PhysicsEngine {
         label?: string, 
         color?: string,
         isStatic?: boolean,
-        highlight?: boolean
+        highlight?: boolean,
+        isRelative?: boolean
     }) {
         const { 
             x, y, 
@@ -174,14 +175,18 @@ export class PhysicsEngine {
             label = 'Object', 
             color = '#4f46e5', 
             isStatic = false,
-            highlight = false
+            highlight = false,
+            isRelative = false
         } = config;
         
         const id = `${label}_${Date.now()}`;
         
+        const spawnX = isRelative && this.render ? x * this.render.canvas.width : toPixels(x);
+        const spawnY = isRelative && this.render ? y * this.render.canvas.height : toPixels(y);
+
         const body = Matter.Bodies.circle(
-            toPixels(x), 
-            toPixels(y), 
+            spawnX,
+            spawnY,
             20, 
             { 
                 label: label,

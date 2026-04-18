@@ -1,0 +1,139 @@
+import { DialogNode } from '../../types';
+
+/**
+ * C17 — Construction Materials
+ * Big Idea 17: "How Do Structures Stay Standing?"
+ */
+export const getC17Script = (): Record<string, DialogNode> => ({
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome to the Construction Materials Mixer! 🧱\n\nA designer must choose materials for a long-span building in variable weather. The design needs compression strength, tensile reliability, and durability across years.\n\nWhy do engineers often combine materials instead of using one universally perfect material?",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', material: 'concrete' } },
+        options: [
+            { id: 'single_best', label: 'One material is always perfect in all conditions.', nextNodeId: 'misconception' },
+            { id: 'combine', label: 'Material combinations cover different stress modes and environments.', nextNodeId: 'correct', sentiment: 'positive' },
+            { id: 'cost_only', label: 'Material choice is mostly cost; mechanics are secondary.', nextNodeId: 'misconception_cost' }
+        ]
+    },
+
+    'misconception': {
+        id: 'misconception',
+        speaker: 'AI',
+        content: "In real design, no single material optimizes every property. Teams usually balance compression, tension, corrosion risk, thermal response, and lifecycle performance.",
+        options: [{ id: 'next', label: 'Show concrete plus steel.', nextNodeId: 'correct' }]
+    },
+
+    'misconception_cost': {
+        id: 'misconception_cost',
+        speaker: 'AI',
+        content: "Cost matters, but failure risk, maintenance burden, and environmental exposure are equally important for long-term performance.",
+        options: [{ id: 'next2', label: 'So design is multi-objective.', nextNodeId: 'correct' }]
+    },
+
+    'correct': {
+        id: 'correct',
+        speaker: 'AI',
+        content: "Correct. Concrete usually handles **compression** well, while steel reinforcement improves **tensile** performance and ductility.\n\nNow use the controls to compare material choice against moisture and temperature stress.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'composite', showRebar: true } },
+        options: [
+            { id: 'checkpoint', label: 'Give me a checkpoint.', nextNodeId: 'checkpoint' },
+            { id: 'experiment_first', label: 'Let me test controls first.', nextNodeId: 'experiment_prompt' }
+        ]
+    },
+
+    'experiment_prompt': {
+        id: 'experiment_prompt',
+        speaker: 'AI',
+        content: "Run this materials test:\n1. Keep conditions fixed and compare concrete, steel, and wood baseline values.\n2. Increase moisture and note which material degrades faster.\n3. Increase temperature and compare thermal penalty behavior.\n\nThen answer checkpoint reasoning.",
+        options: [{ id: 'to_checkpoint', label: 'I tested it. Ask checkpoint.', nextNodeId: 'checkpoint' }]
+    },
+
+    'checkpoint': {
+        id: 'checkpoint',
+        speaker: 'AI',
+        content: "⏸️ **Checkpoint**\n\nFor a beam sagging downward at mid-span, where is tensile stress usually highest?",
+        options: [
+            { id: 'bottom', label: 'Bottom side of the beam.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'top', label: 'Top side only.', nextNodeId: 'checkpoint_wrong' },
+            { id: 'none', label: 'Bending does not create tension-compression zones.', nextNodeId: 'checkpoint_wrong2' }
+        ]
+    },
+
+    'checkpoint_wrong': {
+        id: 'checkpoint_wrong',
+        speaker: 'AI',
+        content: "In common sagging beam loading, top tends toward compression and bottom toward tension.",
+        options: [{ id: 'retry', label: 'Bottom tension explains rebar placement.', nextNodeId: 'checkpoint_correct' }]
+    },
+
+    'checkpoint_wrong2': {
+        id: 'checkpoint_wrong2',
+        speaker: 'AI',
+        content: "Bending creates internal stress gradients. Ignoring those zones can lead to poor reinforcement strategy and early failure risk.",
+        options: [{ id: 'retry2', label: 'Bending zones guide reinforcement placement.', nextNodeId: 'checkpoint_correct' }]
+    },
+
+    'checkpoint_correct': {
+        id: 'checkpoint_correct',
+        speaker: 'AI',
+        content: "Right. Chemistry and microstructure choices must match where tension and compression occur in the real structure.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', stressCase: 'bending' } },
+        options: [
+            { id: 'discovery', label: 'Summarize C17.', nextNodeId: 'discovery' },
+            { id: 'summary_now', label: 'Show summary table first.', nextNodeId: 'summary_table' }
+        ]
+    },
+
+    'discovery': {
+        id: 'discovery',
+        speaker: 'AI',
+        content: "🎉 **Discovery:** Construction chemistry is design chemistry. Material behavior must be mapped to stress patterns, environment, and maintenance constraints.",
+        options: [
+            { id: 'summary', label: 'Show summary table.', nextNodeId: 'summary_table' },
+            { id: 'reflect', label: 'Ask me reflection questions.', nextNodeId: 'reflection_questions' }
+        ]
+    },
+
+    'summary_table': {
+        id: 'summary_table',
+        speaker: 'AI',
+        content: "| **Material Factor** | **Design Meaning** | **Lab Pattern** |\n|---|---|---|\n| **Concrete** | Strong compression performance | Good baseline in compression scenarios |\n| **Steel reinforcement** | Improves tensile response and ductility | Supports bending zones where tension is high |\n| **Moisture exposure** | Corrosion/degradation risk channel | Higher moisture reduced effective strength |\n| **Temperature stress** | Thermal penalty and durability impact | Strength trends shifted with high temperature |",
+        options: [
+            { id: 'reflect_after_table', label: 'Now ask reflection questions.', nextNodeId: 'reflection_questions' },
+            { id: 'to_complete', label: 'Wrap up C17.', nextNodeId: 'complete' }
+        ]
+    },
+
+    'reflection_questions': {
+        id: 'reflection_questions',
+        speaker: 'AI',
+        content: "🧠 **Think Like A Materials Designer**\n\n1. Why might the best material in one climate fail in another?\n2. How do moisture and temperature alter lifecycle cost?\n3. Why does reinforcement placement matter as much as reinforcement amount?",
+        options: [
+            { id: 'reflect_good', label: 'Environment-specific chemistry and stress patterns drive design choices.', nextNodeId: 'reflection_feedback', sentiment: 'positive' },
+            { id: 'reflect_bad', label: 'Material labels are enough; context does not matter.', nextNodeId: 'reflection_retry' }
+        ]
+    },
+
+    'reflection_retry': {
+        id: 'reflection_retry',
+        speaker: 'AI',
+        content: "Good engineering is contextual. Materials, geometry, and environment must be considered together for durable structures.",
+        options: [{ id: 'retry_to_feedback', label: 'Understood. Context matters.', nextNodeId: 'reflection_feedback' }]
+    },
+
+    'reflection_feedback': {
+        id: 'reflection_feedback',
+        speaker: 'AI',
+        content: "Excellent. You are evaluating performance over full lifecycle, not just initial strength.",
+        options: [{ id: 'finish', label: 'Finish C17', nextNodeId: 'complete' }]
+    },
+
+    'complete': {
+        id: 'complete',
+        speaker: 'AI',
+        content: "🔗 **Cross-Links**\n- In **P17**, you modeled load path behavior and structural stability.\n- In **B17**, you will see how living tissue uses architecture + remodeling to stay strong.\n\n✅ **Lesson C17 Complete!**",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+        options: []
+    }
+});

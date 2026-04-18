@@ -44,3 +44,13 @@ This document provides a clear, step-by-step roadmap for the implementation of t
 -   **Outcome:** The MVP "Module 01" is complete and playable.
 
 ### Step 5: Contact & Polish
+
+### Step 6: Lesson Interactivity Expansion (Active)
+
+-   **Goal:** Increase learner engagement by adding direct user-driven controls to visual labs where concepts benefit from experimentation.
+-   **Tasks:**
+    1.  Add in-canvas or overlay controls (dropdowns, toggles, sliders) for high-leverage lessons.
+    2.  Preserve compatibility with scripted `SET_VISUAL` transitions used by dialog flow.
+    3.  Maintain a lab coverage list in A6 so manual QA is predictable.
+-   **Current Additions:** Big Idea 10 labs (`p10`, `c10`, `b10`) now expose direct interaction controls.
+-   **Outcome:** Lessons remain guided but also support exploratory learning and faster concept checks.

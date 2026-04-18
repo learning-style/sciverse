@@ -1,0 +1,338 @@
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+
+interface B26WeatherLabProps {
+    state: Record<string, unknown>;
+    onStateChange: (key: string, value: unknown) => void;
+}
+
+export const B26WeatherLab = ({ state, onStateChange }: B26WeatherLabProps) => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const animRef = useRef<number>(0);
+    const tRef = useRef(0);
+
+    const [behavior, setBehavior] = useState(50);
+    const [migration, setMigration] = useState(50);
+    const [adaptation, setAdaptation] = useState(0);
+    const phase = (state.phase as string) || 'intro';
+
+    // Derived biology state
+    const summary = useMemo(() => {
+        if (behavior > 70 && migration > 70 && adaptation > 60) return 'Organisms are highly responsive to weather!';
+        if (migration > 70) return 'Migration likely.';
+        if (adaptation > 70) return 'Rapid long-term change in progress.';
+        if (behavior < 30) return 'Minimal behavioral response.';
+        return 'Mixed biological responses.';
+    }, [behavior, migration, adaptation]);
+
+    const draw = useCallback(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        const W = canvas.width;
+        const H = canvas.height;
+        tRef.current += 0.016;
+
+        // Background
+        ctx.fillStyle = '#fef9c3';
+        ctx.fillRect(0, 0, W, H);
+
+        // Behavior label
+        ctx.font = 'bold 32px monospace';
+        ctx.fillStyle = '#f59e42';
+        ctx.fillText('BEHAVIOR', W * 0.12, H * 0.18);
+        ctx.font = 'bold 28px monospace';
+        ctx.fillStyle = '#b45309';
+        ctx.fillText(behavior.toString(), W * 0.12, H * 0.25);
+
+        // Migration label
+        ctx.font = 'bold 32px monospace';
+        ctx.fillStyle = '#34d399';
+        ctx.fillText('MIGRATION', W * 0.42, H * 0.18);
+        ctx.font = 'bold 28px monospace';
+        ctx.fillStyle = '#047857';
+        ctx.fillText(migration.toString(), W * 0.42, H * 0.25);
+
+        // Long-term label (adaptation signal)
+        ctx.font = 'bold 32px monospace';
+        ctx.fillStyle = '#818cf8';
+        ctx.fillText('LONG-TERM', W * 0.72, H * 0.18);
+        ctx.font = 'bold 28px monospace';
+        ctx.fillStyle = '#3730a3';
+        ctx.fillText(adaptation.toString(), W * 0.72, H * 0.25);
+
+        // Biology icons — always visible, scaled by slider values
+        const safeRight = W - 285;
+        const iconY = H * 0.45;
+
+        // === Behavior (short-term): bird flapping wings ===
+        const bScale = 0.4 + (behavior / 100) * 0.6;
+        const bAlpha = 0.35 + (behavior / 100) * 0.6;
+        const bX = safeRight * 0.2;
+        ctx.save();
+        ctx.globalAlpha = bAlpha;
+        // Bird body
+        ctx.fillStyle = '#f59e42';
+        ctx.beginPath();
+        ctx.ellipse(bX, iconY, 18 * bScale, 10 * bScale, 0, 0, Math.PI * 2);
+        ctx.fill();
+        // Wings — flap with time when behavior is high
+        const wingFlap = behavior > 40 ? Math.sin(tRef.current * 4) * 12 * bScale : 0;
+        ctx.beginPath();
+        ctx.moveTo(bX - 12 * bScale, iconY);
+        ctx.quadraticCurveTo(bX - 30 * bScale, iconY - 20 * bScale + wingFlap, bX - 6 * bScale, iconY - 8 * bScale);
+        ctx.moveTo(bX + 12 * bScale, iconY);
+        ctx.quadraticCurveTo(bX + 30 * bScale, iconY - 20 * bScale + wingFlap, bX + 6 * bScale, iconY - 8 * bScale);
+        ctx.strokeStyle = '#b45309';
+        ctx.lineWidth = 2.5 * bScale;
+        ctx.stroke();
+        // Label
+        ctx.fillStyle = '#000000';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Behavior', bX, iconY + 28 * bScale);
+        ctx.font = '11px sans-serif';
+        ctx.fillStyle = '#78716c';
+        ctx.fillText('(short-term)', bX, iconY + 42 * bScale);
+        ctx.restore();
+
+        // === Migration (movement): arrow path with moving dot ===
+        const mScale = 0.4 + (migration / 100) * 0.6;
+        const mAlpha = 0.35 + (migration / 100) * 0.6;
+        const mX = safeRight * 0.5;
+        ctx.save();
+        ctx.globalAlpha = mAlpha;
+        // Curved arrow path
+        ctx.beginPath();
+        ctx.moveTo(mX - 40 * mScale, iconY + 10 * mScale);
+        ctx.quadraticCurveTo(mX, iconY - 25 * mScale, mX + 40 * mScale, iconY + 10 * mScale);
+        ctx.strokeStyle = '#34d399';
+        ctx.lineWidth = 3 * mScale;
+        ctx.stroke();
+        // Arrowhead
+        ctx.beginPath();
+        ctx.moveTo(mX + 40 * mScale, iconY + 10 * mScale);
+        ctx.lineTo(mX + 30 * mScale, iconY + 2 * mScale);
+        ctx.lineTo(mX + 30 * mScale, iconY + 18 * mScale);
+        ctx.closePath();
+        ctx.fillStyle = '#34d399';
+        ctx.fill();
+        // Moving dot along path
+        const mProgress = (tRef.current * 0.4 * (0.3 + migration / 100 * 0.7)) % 1;
+        const dotT = mProgress;
+        const dotX = (1-dotT)*(1-dotT)*(mX - 40*mScale) + 2*(1-dotT)*dotT*mX + dotT*dotT*(mX + 40*mScale);
+        const dotY = (1-dotT)*(1-dotT)*(iconY + 10*mScale) + 2*(1-dotT)*dotT*(iconY - 25*mScale) + dotT*dotT*(iconY + 10*mScale);
+        ctx.beginPath();
+        ctx.arc(dotX, dotY, 5 * mScale, 0, Math.PI * 2);
+        ctx.fillStyle = '#047857';
+        ctx.fill();
+        // Label
+        ctx.fillStyle = '#000000';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Migration', mX, iconY + 32 * mScale);
+        ctx.font = '11px sans-serif';
+        ctx.fillStyle = '#78716c';
+        ctx.fillText('(movement)', mX, iconY + 46 * mScale);
+        ctx.restore();
+
+        // === Adaptation (long-term): DNA helix ===
+        const aScale = 0.4 + (adaptation / 100) * 0.6;
+        const aAlpha = 0.35 + (adaptation / 100) * 0.6;
+        const aX = safeRight * 0.8;
+        ctx.save();
+        ctx.globalAlpha = aAlpha;
+        const helixH = 50 * aScale;
+        const helixW = 14 * aScale;
+        const helixSteps = 24;
+        ctx.lineWidth = 2.5 * aScale;
+        // Strand 1
+        ctx.beginPath();
+        for (let i = 0; i <= helixSteps; i++) {
+            const frac = i / helixSteps;
+            const yy = iconY - helixH / 2 + frac * helixH;
+            const xx = aX + Math.sin(frac * Math.PI * 3 + tRef.current * 1.5) * helixW;
+            i === 0 ? ctx.moveTo(xx, yy) : ctx.lineTo(xx, yy);
+        }
+        ctx.strokeStyle = '#818cf8';
+        ctx.stroke();
+        // Strand 2
+        ctx.beginPath();
+        for (let i = 0; i <= helixSteps; i++) {
+            const frac = i / helixSteps;
+            const yy = iconY - helixH / 2 + frac * helixH;
+            const xx = aX - Math.sin(frac * Math.PI * 3 + tRef.current * 1.5) * helixW;
+            i === 0 ? ctx.moveTo(xx, yy) : ctx.lineTo(xx, yy);
+        }
+        ctx.strokeStyle = '#c084fc';
+        ctx.stroke();
+        // Cross rungs
+        for (let i = 2; i < helixSteps; i += 4) {
+            const frac = i / helixSteps;
+            const yy = iconY - helixH / 2 + frac * helixH;
+            const x1 = aX + Math.sin(frac * Math.PI * 3 + tRef.current * 1.5) * helixW;
+            const x2 = aX - Math.sin(frac * Math.PI * 3 + tRef.current * 1.5) * helixW;
+            ctx.beginPath();
+            ctx.moveTo(x1, yy);
+            ctx.lineTo(x2, yy);
+            ctx.strokeStyle = '#a5b4fc';
+            ctx.lineWidth = 1.5 * aScale;
+            ctx.stroke();
+        }
+        // Label
+        ctx.fillStyle = '#000000';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Adaptation', aX, iconY + helixH / 2 + 18);
+        ctx.font = '11px sans-serif';
+        ctx.fillStyle = '#78716c';
+        ctx.fillText('(long-term)', aX, iconY + helixH / 2 + 32);
+        ctx.restore();
+
+        // === Animated feedback cycle (right-bottom) ===
+        const cycleX = safeRight * 0.7;
+        const cycleY = H * 0.78;
+        const rX = Math.min(130, safeRight * 0.2);
+        const rY = Math.min(60, H * 0.1);
+
+        // Dashed ellipse track
+        ctx.save();
+        ctx.setLineDash([6, 4]);
+        ctx.strokeStyle = '#94a3b8';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.ellipse(cycleX, cycleY, rX, rY, 0, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
+
+        // Stage labels
+        ctx.save();
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#000000';
+        ctx.fillText('Step 1: ↓ Weather pressure', cycleX, cycleY - rY - 10);
+        ctx.fillStyle = '#dc2626';
+        ctx.textAlign = 'left';
+        ctx.fillText('Step 2: Behavior responds →', cycleX + rX + 8, cycleY - 4);
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#000000';
+        ctx.fillText('Step 4: ← Adaptation evolves', cycleX - rX - 8, cycleY - 4);
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#dc2626';
+        ctx.fillText('Step 3: ↑ Migration redistributes', cycleX, cycleY + rY + 16);
+        ctx.restore();
+
+        // Animated particles
+        const particleCount = 10;
+        const avgLever = (behavior + migration + adaptation) / 300;
+        const speed = 0.25 + avgLever * 0.5;
+        ctx.save();
+        for (let i = 0; i < particleCount; i++) {
+            const angle = ((tRef.current * speed + i / particleCount) % 1) * Math.PI * 2;
+            const px = cycleX + rX * Math.cos(angle);
+            const py = cycleY + rY * Math.sin(angle);
+            const sz = 3 + avgLever * 3;
+            const rising = Math.sin(angle) < 0;
+            ctx.globalAlpha = 0.7 + 0.3 * Math.abs(Math.sin(angle));
+            ctx.fillStyle = rising ? '#34d399' : '#f59e42';
+            ctx.beginPath();
+            ctx.arc(px, py, sz, 0, Math.PI * 2);
+            ctx.fill();
+            // Arrow head
+            const na = angle + 0.15;
+            const dx = -rX * Math.sin(na);
+            const dy = rY * Math.cos(na);
+            const mag = Math.sqrt(dx * dx + dy * dy) || 1;
+            ctx.beginPath();
+            ctx.moveTo(px + (dx / mag) * 6, py + (dy / mag) * 6);
+            ctx.lineTo(px - (dy / mag) * 2.5, py + (dx / mag) * 2.5);
+            ctx.lineTo(px + (dy / mag) * 2.5, py - (dx / mag) * 2.5);
+            ctx.closePath();
+            ctx.fill();
+        }
+        ctx.restore();
+
+        // Center label
+        ctx.save();
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.fillStyle = '#475569';
+        ctx.fillText('Feedback Cycle', cycleX, cycleY + 3);
+        ctx.restore();
+
+        // Summary
+        ctx.font = 'bold 24px monospace';
+        ctx.fillStyle = '#334155';
+        ctx.fillText(summary, W*0.5, H*0.92);
+
+        // Phase label
+        ctx.font = 'bold 14px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'right';
+        ctx.fillText(`Phase: ${phase}`, W - 12, 22);
+        ctx.textAlign = 'start';
+
+        if (phase === 'complete') {
+            ctx.fillStyle = 'rgba(0,0,0,0.72)';
+            ctx.fillRect(0, H * 0.18, W, H * 0.52);
+            ctx.fillStyle = '#fbbf24';
+            ctx.font = 'bold 20px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText('✅ Big Idea 26 Complete!', W / 2, H * 0.30);
+            ctx.fillStyle = '#f1f5f9';
+            ctx.font = 'bold 14px monospace';
+            ctx.fillText('How Do Weather Systems Shape Life?', W / 2, H * 0.38);
+            ctx.font = '12px monospace';
+            ctx.fillStyle = '#93c5fd';
+            ctx.fillText('P26 Weather Dynamics', W / 2, H * 0.46);
+            ctx.fillStyle = '#86efac';
+            ctx.fillText('C26 Atmospheric Chemistry', W / 2, H * 0.52);
+            ctx.fillStyle = '#fca5a5';
+            ctx.fillText('B26 Weather & Life Responses', W / 2, H * 0.58);
+            ctx.fillStyle = '#e2e8f0';
+            ctx.font = '11px monospace';
+            ctx.fillText('Weather pressure drives biological strategy shifts.', W / 2, H * 0.65);
+            ctx.textAlign = 'start';
+        }
+
+        animRef.current = requestAnimationFrame(draw);
+    }, [behavior, migration, adaptation, summary, phase]);
+
+    useEffect(() => {
+        const node = containerRef.current;
+        if (!node) return;
+        const obs = new ResizeObserver(() => {
+            const canvas = canvasRef.current;
+            if (!canvas) return;
+            canvas.width = node.clientWidth;
+            canvas.height = node.clientHeight;
+        });
+        obs.observe(node);
+        return () => obs.disconnect();
+    }, []);
+
+    useEffect(() => {
+        cancelAnimationFrame(animRef.current);
+        animRef.current = requestAnimationFrame(draw);
+        return () => cancelAnimationFrame(animRef.current);
+    }, [draw]);
+
+    return (
+        <div ref={containerRef} className="relative w-full h-full bg-white">
+            <canvas ref={canvasRef} className="w-full h-full" />
+            <div data-lab-controls="true" className="absolute left-2 bottom-2 border border-slate-500/40 rounded-lg p-2 w-[260px] bg-transparent backdrop-blur-[1px] z-10">
+                <label className="text-[13px] font-extrabold text-[#f59e42] drop-shadow">Behavior: <span className="font-extrabold">{behavior}</span></label>
+                <input className="w-full accent-amber-500 mb-0.5" type="range" min={0} max={100} value={behavior}
+                    onChange={e => { const v = Number(e.target.value); setBehavior(v); onStateChange('behavior', v); }} />
+                <label className="text-[13px] font-extrabold text-[#34d399] drop-shadow">Migration: <span className="font-extrabold">{migration}</span></label>
+                <input className="w-full accent-emerald-400 mb-0.5" type="range" min={0} max={100} value={migration}
+                    onChange={e => { const v = Number(e.target.value); setMigration(v); onStateChange('migration', v); }} />
+                <label className="text-[13px] font-extrabold text-[#818cf8] drop-shadow">Long-term: <span className="font-extrabold">{adaptation}</span></label>
+                <input className="w-full accent-indigo-400" type="range" min={0} max={100} value={adaptation}
+                    onChange={e => { const v = Number(e.target.value); setAdaptation(v); onStateChange('adaptation', v); }} />
+            </div>
+        </div>
+    );
+};

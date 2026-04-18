@@ -2,17 +2,15 @@ import { useLayoutEffect, useRef } from 'react';
 import { useSciverse } from '../context/SciverseContext';
 import { toPixels, PHYSICS_CONFIG } from '../config/physicsConfig';
 import { PhysicsEntity } from '../types';
-import { PhysicsEngine } from '../core/PhysicsEngine';
 
 interface PhysicsViewportProps {
-    onInit?: (engine: PhysicsEngine) => void;
     onResize?: (width: number, height: number) => void;
     theme?: 'light' | 'dark';
 }
 
-export const PhysicsViewport = ({ onInit, onResize, theme = 'dark' }: PhysicsViewportProps) => {
+export const PhysicsViewport = ({ onResize, theme = 'dark' }: PhysicsViewportProps) => {
     const { containerRef, canvasRef, snapshot } = useSciverse();
-    const wrapperRef = useRef<HTMLDivElement>(null);
+    const wrapperRef = useRef<HTMLDivElement | null>(null);
 
     useLayoutEffect(() => {
         if (!wrapperRef.current) return;

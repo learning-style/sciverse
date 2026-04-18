@@ -1,0 +1,93 @@
+import { DialogNode } from '../../types';
+
+/**
+ * P20 — Lenses and Vision
+ * Big Idea 20: "How Do Lenses Change What We See?"
+ */
+export const getP20Script = (): Record<string, DialogNode> => ({
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome to the Optics Bench. In this Level 1 lesson, we will compare a **convex lens**, a **concave lens**, and a **mirror**.\n\nMain idea: these tools do not make new light. They change the direction of light rays, and that changes where an image appears and whether it looks upright or upside down.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', lensType: 'convex', focalLength: 10 } },
+        options: [
+            { id: 'glass_magic', label: 'Glass adds new light.', nextNodeId: 'misconception' },
+            { id: 'refraction', label: 'Lenses and mirrors redirect light rays.', nextNodeId: 'correct', sentiment: 'positive' }
+        ]
+    },
+    'misconception': {
+        id: 'misconception',
+        speaker: 'AI',
+        content: "Lenses and mirrors do not create light. They redirect existing light so images form at different positions, sizes, and orientations.",
+        options: [{ id: 'next', label: 'Show ray paths.', nextNodeId: 'correct' }]
+    },
+    'correct': {
+        id: 'correct',
+        speaker: 'AI',
+        content: "Correct.\n\n- A **convex lens** bends rays inward and can focus them.\n- A **concave lens** spreads rays outward.\n- A **concave mirror** reflects rays inward toward a focus.\n\nThe two big beginner questions are: Where does the image form, and is the image **upright** or **inverted**?",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'rays', showRayDiagram: true } },
+        options: [{ id: 'compare', label: 'Compare convex, concave, and mirror.', nextNodeId: 'compare_tools' }]
+    },
+    'compare_tools': {
+        id: 'compare_tools',
+        speaker: 'AI',
+        content: "Quick comparison:\n\n| Tool | What it does to rays | Common beginner image idea |\n| --- | --- | --- |\n| Convex lens | Brings rays together | Can make real or virtual images |\n| Concave lens | Spreads rays apart | Usually upright and smaller |\n| Concave mirror | Reflects rays together | Can flip orientation depending on distance |\n\nA **real image** forms where rays really meet. A **virtual image** appears where rays seem to come from.",
+        options: [{ id: 'orientation', label: 'Explain image orientation simply.', nextNodeId: 'orientation_explainer' }]
+    },
+    'orientation_explainer': {
+        id: 'orientation_explainer',
+        speaker: 'AI',
+        content: "Level 1 rule of thumb:\n\n- **Upright** means the top of the object still looks on top.\n- **Inverted** means the image is flipped upside down.\n\nFor a convex lens or concave mirror, moving the object closer or farther than the focal length can change both image position and orientation. A concave lens is simpler: it usually gives an upright, smaller virtual image.",
+        options: [{ id: 'checkpoint', label: 'Try a checkpoint.', nextNodeId: 'checkpoint' }]
+    },
+    'checkpoint': {
+        id: 'checkpoint',
+        speaker: 'AI',
+        content: "If you move an object closer than the focal length of a convex magnifying lens, what do you usually see?",
+        options: [
+            { id: 'upright_large', label: 'Upright enlarged virtual image.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'inverted_small', label: 'Inverted tiny real image.', nextNodeId: 'checkpoint_wrong' }
+        ]
+    },
+    'checkpoint_wrong': {
+        id: 'checkpoint_wrong',
+        speaker: 'AI',
+        content: "For magnifiers, close objects usually produce an upright virtual image that appears larger to the eye. The rays spread after the lens, but your brain traces them backward.",
+        options: [{ id: 'retry', label: 'So close object gives upright magnification.', nextNodeId: 'checkpoint_correct' }]
+    },
+    'checkpoint_correct': {
+        id: 'checkpoint_correct',
+        speaker: 'AI',
+        content: "Exactly. Object distance and focal length control whether the image is upright or inverted, and whether it appears larger or smaller.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', magnified: true } },
+        options: [{ id: 'mirror_check', label: 'What about mirrors?', nextNodeId: 'mirror_checkpoint' }]
+    },
+    'mirror_checkpoint': {
+        id: 'mirror_checkpoint',
+        speaker: 'AI',
+        content: "Mirror check: a concave mirror can also change image orientation. If the object is far enough from the mirror, the reflected rays can meet and form a real inverted image.",
+        options: [
+            { id: 'mirror_right', label: 'So mirrors can also make upside-down real images.', nextNodeId: 'discovery', sentiment: 'positive' },
+            { id: 'mirror_wrong', label: 'Mirrors only make upright images.', nextNodeId: 'mirror_retry' }
+        ]
+    },
+    'mirror_retry': {
+        id: 'mirror_retry',
+        speaker: 'AI',
+        content: "Plane mirrors keep images upright, but concave mirrors are different. They can make upright virtual images or inverted real images depending on distance.",
+        options: [{ id: 'retry2', label: 'Continue to summary.', nextNodeId: 'discovery' }]
+    },
+    'discovery': {
+        id: 'discovery',
+        speaker: 'AI',
+        content: "Discovery:\n\n| Tool | Beginner image rule |\n| --- | --- |\n| Convex lens | Can focus light and may make upright or inverted images |\n| Concave lens | Spreads light and usually makes upright smaller images |\n| Concave mirror | Reflects light inward and can flip orientation |\n\nThe key physics idea is simple ray geometry: where rays meet, or seem to meet, determines the image.",
+        options: [{ id: 'complete', label: 'Complete P20', nextNodeId: 'complete' }]
+    },
+    'complete': {
+        id: 'complete',
+        speaker: 'AI',
+        content: "P20 complete. Continue to C20 optical materials and B20 eye focusing.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+        options: []
+    }
+});

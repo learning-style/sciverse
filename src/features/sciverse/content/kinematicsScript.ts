@@ -1,4 +1,4 @@
-import { DialogNode } from '../types';
+﻿import { DialogNode } from '../types';
 import { toMeters } from '../config/physicsConfig';
 
 /**

@@ -74,3 +74,56 @@ The **Dialog Engine** will act as the "Verification Layer". It does not simply c
 3.  **Response:**
     *   *If Correct:* "Excellent. You observed the velocity remained constant." -> Unlocks next tool.
     *   *If Incorrect:* "Not quite. Look at the Velocity Graph. Is the slope changing?" -> Highlights the graph.
+
+## 5. Sciverse V2 Expansion (Implemented)
+
+Sciverse has been expanded beyond the original AP-physics-first framing into a broader cross-discipline curriculum.
+
+- **Current scope:** 15 Big Ideas, 45 lessons, 15 assessments.
+- **Structure per Big Idea:** Physics + Chemistry + Biology lesson triad, followed by one assessment shell.
+- **Implementation contract:** every new lesson must include
+    - dialog script registration,
+    - lesson metadata registration,
+    - visual lab routing in `LessonShell`,
+    - assessment registry mapping,
+    - lesson hub discoverability.
+
+### New Big Ideas Added
+
+11. How Do We Stay Healthy?
+- P11 Blood Pressure
+- C11 Acids, Bases, and pH
+- B11 Immune Defense
+
+12. How Do Hidden Rules Shape Big Patterns?
+- P12 Gravity and Orbits
+- C12 Periodic Table Patterns
+- B12 Natural Selection
+
+13. How Does Structure Shape Function?
+- P13 Gears and Pulleys
+- C13 Polymers and Materials
+- B13 Photosynthesis Engine
+
+14. How Is Information Coded and Transmitted?
+- P14 Waves and Signals
+- C14 Chemical Bonding Code
+- B14 DNA and Genetics
+
+15. How Do Systems Find Balance?
+- P15 Pendulum and Resonance
+- C15 Chemical Equilibrium
+- B15 Predator-Prey Cycles
+
+## 6. Multi-Level Curriculum Plan (Approved Direction)
+
+Sciverse will follow a three-level progression over a shared Big Idea backbone.
+
+- **Level 1 (Grades 3-8):** broad conceptual coverage across 50 Big Ideas.
+- **Level 2 (Grades 9-12):** deeper treatment of the same 50 Big Ideas with higher rigor.
+- **Level 3 (Advanced):** systems-level depth and synthesis across the same 50 Big Ideas.
+
+Implementation note:
+- Big Ideas 1-15 are currently implemented.
+- Big Ideas 16-55 are now defined as the next Level 1 expansion set in:
+    - `src/Artifacts/A11-Sciverse-Level1-BigIdeas-16-55.md`

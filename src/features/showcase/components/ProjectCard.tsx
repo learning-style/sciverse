@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { Github, ArrowRight } from 'lucide-react';
 import { Project } from '@/types';
 
 interface ProjectCardProps {

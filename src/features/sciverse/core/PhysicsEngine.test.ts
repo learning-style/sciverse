@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { PhysicsEngine } from './PhysicsEngine';
-import { PHYSICS_CONFIG } from '../config/physicsConfig';
 
 describe('PhysicsEngine Core', () => {
     let engine: PhysicsEngine;

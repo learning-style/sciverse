@@ -7,7 +7,7 @@ import { SimAction } from '../types';
 import { generateKinematicsScript } from '../content/module1-motion-1d';
 
 export const KinematicsLesson = () => {
-    const { engine, setEngine } = useSciverse();
+    const { engine } = useSciverse();
     const [viewportSize, setViewportSize] = useState({ width: 800, height: 600 });
     
     // Handle viewport resize to regenerate script coordinates
@@ -81,7 +81,6 @@ export const KinematicsLesson = () => {
                 {/* Left: Simulation (Visualizer) - Using Light Theme for Cycle 13 */}
                 <div className="flex-grow relative min-h-[400px] lg:h-full bg-slate-50">
                     <PhysicsViewport 
-                        onInit={setEngine} 
                         onResize={handleViewportResize}
                         theme="light" // Explicitly setting Light Mode
                     />

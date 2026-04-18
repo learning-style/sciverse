@@ -1,0 +1,95 @@
+import { DialogNode } from '../../types';
+
+/**
+ * C26 — Atmospheric Chemistry
+ * Big Idea 26: "How Do Weather Systems Form and Change?"
+ */
+export function getC26Script(): Record<string, DialogNode> {
+    return {
+        root: {
+            id: 'root',
+            speaker: 'AI',
+            content: `What chemistry drives the clouds, rain, and air quality we experience every day?\n\n**Visual legend:**\n- **Indigo cloud**: Cloud formation from condensed **water vapor**.\n- **Cyan droplets**: Precipitation — liquid water falling from clouds.\n- **Pink droplet**: Rapid **phase change** (evaporation or condensation).\n\n**Key words:**\n- **Humidity**: The concentration of **water vapor** (H₂O gas) in the atmosphere. Warm air holds more moisture than cold air.\n- **Condensation**: Water vapor cooling below the **dew point** and forming liquid droplets on tiny particles called **condensation nuclei**.\n- **Evaporation**: Liquid water absorbing energy and escaping into the gas phase — the reverse of condensation.\n- **Phase change**: Any transition between solid, liquid, and gas states. Each involves **latent heat** — energy absorbed or released without changing temperature.\n- **Cloud formation**: When rising air cools, vapor condenses onto aerosol particles, creating visible clouds.\n\nWhy do you think clouds form at specific altitudes instead of everywhere?`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
+            options: [
+                { id: 'temp_answer', label: 'Rising air cools to the dew point at a certain height, so condensation starts there.', nextNodeId: 'correct', sentiment: 'positive' },
+                { id: 'random_answer', label: 'Clouds are just random collections of mist.', nextNodeId: 'misconception' }
+            ]
+        },
+        misconception: {
+            id: 'misconception',
+            speaker: 'AI',
+            content: `Clouds might look random, but they form through precise **chemistry and physics**. Water vapor is invisible — you can't see it. What you see in a cloud is millions of tiny **liquid droplets** or **ice crystals** that formed when air cooled below its **dew point**. The altitude where this happens depends on temperature, pressure, and humidity — all measurable quantities.`,
+            options: [
+                { id: 'cont', label: 'So cloud formation is a chemical phase change, not just random mist.', nextNodeId: 'correct' }
+            ]
+        },
+        correct: {
+            id: 'correct',
+            speaker: 'AI',
+            content: `Exactly! Atmospheric chemistry revolves around **three interacting variables**:\n\n1. **Humidity** — The amount of water vapor in the air. Warmer air can hold more vapor (this relationship is described by the **Clausius-Clapeyron equation**).\n2. **Cloud formation** — When humidity reaches 100% (**saturation**), vapor condenses onto **aerosol particles** (dust, pollen, pollution). More aerosols → more cloud droplets → brighter, longer-lasting clouds.\n3. **Phase changes** — Every transition (liquid→gas, gas→liquid, liquid→solid) involves **latent heat**. Condensation *releases* heat, which warms the surrounding air and drives it upward — fueling more cloud growth.\n\nThese three processes create a **feedback cycle** that powers weather from gentle fog to violent thunderstorms.`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'explore' } },
+            options: [
+                { id: 'mech', label: 'How does this chemistry create rain?', nextNodeId: 'mechanism' }
+            ]
+        },
+        mechanism: {
+            id: 'mechanism',
+            speaker: 'AI',
+            content: `**How rain forms — the chemistry step by step:**\n\n1. **Evaporation**: Solar energy heats water surfaces. H₂O molecules gain enough kinetic energy to escape into the gas phase. This requires ~2,260 kJ/kg of **latent heat of vaporization**.\n2. **Transport**: Wind carries humid air upward and horizontally. As air rises, it expands and cools (**adiabatic cooling** — about 6.5°C per 1,000 m).\n3. **Saturation**: When the air temperature drops to the **dew point**, relative humidity reaches 100%. The air can't hold any more vapor.\n4. **Nucleation**: Vapor molecules cluster onto **condensation nuclei** — tiny aerosol particles. Without nuclei, air can actually become *supersaturated* without forming droplets.\n5. **Droplet growth**: Cloud droplets start at ~10 µm. They grow by **collision-coalescence** (bumping into neighbors) or the **Bergeron process** (ice crystals growing at the expense of liquid droplets).\n6. **Precipitation**: When droplets reach ~2 mm, gravity overcomes updrafts and they fall as rain. If they freeze, you get snow, sleet, or hail.\n\n**Try it:** Set humidity high, clouds high, and phase change above 60 to trigger heavy precipitation in the visual!`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'mechanism' } },
+            options: [
+                { id: 'cp', label: 'Let me test my understanding.', nextNodeId: 'checkpoint' }
+            ]
+        },
+        checkpoint: {
+            id: 'checkpoint',
+            speaker: 'AI',
+            content: `**Checkpoint:** What role do condensation nuclei play in cloud formation?`,
+            options: [
+                { id: 'nuclei_right', label: 'They provide surfaces for water vapor to condense onto, enabling droplet formation.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+                { id: 'nuclei_wrong', label: 'They heat the air to create clouds.', nextNodeId: 'checkpoint_wrong' }
+            ]
+        },
+        checkpoint_wrong: {
+            id: 'checkpoint_wrong',
+            speaker: 'AI',
+            content: `Not quite. **Condensation nuclei** don't heat the air — they provide **surfaces** where water molecules can cluster and form droplets. Without them, the air would need to be *extremely* supersaturated before droplets could form spontaneously. Common nuclei include **dust**, **sea salt**, **pollen**, and **pollution particles**. This is why air quality and cloud formation are chemically linked!`,
+            options: [
+                { id: 'retry', label: 'So nuclei are tiny platforms that let vapor become liquid droplets.', nextNodeId: 'checkpoint_correct' }
+            ]
+        },
+        checkpoint_correct: {
+            id: 'checkpoint_correct',
+            speaker: 'AI',
+            content: `Correct! **Condensation nuclei** are essential — they lower the energy barrier for **phase change** from gas to liquid. This is why polluted air can actually produce *more* cloud droplets (but smaller ones), making clouds brighter and longer-lasting. It's a direct connection between **air chemistry** and **climate**.\n\nThis also explains why scientists study **aerosol chemistry** — the types and concentrations of particles in the atmosphere directly affect cloud properties, rainfall patterns, and even global temperature.`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint' } },
+            options: [
+                { id: 'atmo', label: 'What about other atmospheric chemistry?', nextNodeId: 'atmosphere' }
+            ]
+        },
+        atmosphere: {
+            id: 'atmosphere',
+            speaker: 'AI',
+            content: `**Beyond water — key atmospheric reactions:**\n\n- **Ozone (O₃)**: Formed when UV light splits O₂ and the free oxygen atoms recombine with O₂. The **ozone layer** absorbs harmful UV radiation. CFCs destroyed ozone by releasing chlorine radicals.\n- **Greenhouse effect**: CO₂, CH₄, and H₂O vapor absorb **infrared radiation** re-emitted by Earth's surface, trapping heat. More greenhouse gases → higher surface temperature.\n- **Acid rain**: SO₂ and NOₓ from combustion dissolve in cloud water to form **sulfuric acid** (H₂SO₄) and **nitric acid** (HNO₃), lowering rain pH below 5.6.\n- **Photochemical smog**: Sunlight drives reactions between NOₓ and volatile organic compounds (VOCs), producing ground-level ozone and harmful particulates.\n\nAll of these reactions are shaped by **temperature** and **pressure** — the same variables that control weather patterns.`,
+            options: [
+                { id: 'disc', label: 'Let\'s summarize the big picture.', nextNodeId: 'discovery' }
+            ]
+        },
+        discovery: {
+            id: 'discovery',
+            speaker: 'AI',
+            content: `**Discovery:** Atmospheric chemistry is the engine behind weather. **Humidity**, **condensation**, and **phase changes** interact in feedback loops — evaporation supplies moisture, cooling triggers condensation, and the released latent heat drives air upward to continue the cycle. Meanwhile, **aerosol particles** act as chemical catalysts for cloud formation, and **greenhouse gases** trap energy that powers the entire system.\n\nWeather isn't just physics — it's chemistry in action at a planetary scale.`,
+            options: [
+                { id: 'done', label: 'Complete C26', nextNodeId: 'complete' }
+            ]
+        },
+        complete: {
+            id: 'complete',
+            speaker: 'AI',
+            content: `🔗 **Big Idea 26 Complete — How Do Weather Systems Form and Change?**\n\n- **Physics (P26):** Weather Patterns — pressure, humidity, and wind create storms through feedback loops\n- **Chemistry (C26):** Atmospheric Chemistry — phase changes, condensation nuclei, and greenhouse reactions drive clouds and precipitation\n- **Biology (B26):** Ecosystems & Climate — organisms adapt to weather cycles through migration, phenology, and behavioral responses\n\n**Summary Table:**\n| Variable | Low Value | High Value | Chemical Effect |\n| --- | --- | --- | --- |\n| Humidity | Dry air, no condensation | Saturated air, cloud formation | Controls vapor → liquid transition |\n| Clouds | Clear sky | Dense cloud cover | Reflects sunlight, holds precipitation |\n| Phase Change | Slow evaporation/condensation | Rapid transitions | Releases/absorbs latent heat |\n| Aerosol concentration | Few nuclei, large droplets | Many nuclei, small droplets | Changes cloud brightness & lifetime |\n\n**Key takeaways:**\n- **Condensation nuclei** are essential for cloud droplet formation\n- **Latent heat** released during condensation drives convective storms\n- **Greenhouse gases** (CO₂, CH₄, H₂O) trap infrared radiation\n- **Acid rain** forms when SO₂/NOₓ dissolve in cloud water\n- The **Clausius-Clapeyron relation** links temperature to moisture capacity\n- Atmospheric chemistry connects **air quality**, **climate**, and **weather** in one system\n\n✅ **Lesson C26 Complete!**`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+            options: []
+        }
+    };
+}
