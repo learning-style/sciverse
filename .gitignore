@@ -1,0 +1,27 @@
+node_modules
+
+dce_history_export.json
+
+package-lock.json
+
+yarn.lock
+
+dist
+
+out
+
+*.vsix
+
+.vscode-test/
+
+.vscode/
+
+prompt.md
+
+.vscode/dce_cache/
+
+flattened_repo.md
+
+src/Artifacts/A0. DCE Master Artifact List.md
+
+*.db
