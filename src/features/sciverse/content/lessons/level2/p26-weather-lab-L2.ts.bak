@@ -1,0 +1,95 @@
+import { DialogNode } from '../../types';
+
+/**
+ * P26 — Weather Patterns
+ * Big Idea 26: "How Do Weather Systems Form and Change?"
+ */
+export function getP26Script(): Record<string, DialogNode> {
+    return {
+        root: {
+            id: 'root',
+            speaker: 'AI',
+            content: `What causes the weather to change from one day to the next?\n\n**Visual legend:**\n- **Yellow sun**: High-pressure, clear skies.\n- **Light-blue cloud with droplets**: Rain caused by high **humidity**.\n- **Dark cloud with lightning bolt**: A **storm** — low pressure + high humidity + strong wind.\n- **Curved amber lines**: Wind flow across the atmosphere.\n\n**Key words:**\n- **Atmospheric pressure**: The weight of air pushing down on the surface. Low pressure often means unsettled weather; high pressure means calm, clear skies.\n- **Humidity**: How much **water vapor** the air holds. More moisture → more clouds and rain.\n- **Wind**: Air moving from high-pressure areas to low-pressure areas. Stronger pressure differences → stronger wind.\n- **Front**: The boundary where two different **air masses** meet — warm fronts bring steady rain, cold fronts bring sudden storms.\n- **Convection**: Warm air rises, cools, and forms clouds — the engine behind thunderstorms.\n\nWhy do you think some days are stormy while others are perfectly clear?`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
+            options: [
+                { id: 'pressure_answer', label: 'Differences in pressure, humidity, and wind interact to create different weather.', nextNodeId: 'correct', sentiment: 'positive' },
+                { id: 'random_answer', label: 'Weather is mostly random and unpredictable.', nextNodeId: 'misconception' }
+            ]
+        },
+        misconception: {
+            id: 'misconception',
+            speaker: 'AI',
+            content: `Weather can feel random, but it actually follows **physical laws**. Every storm, sunny day, or rain shower is driven by measurable quantities — **pressure**, **humidity**, and **wind**. Meteorologists use these variables to make forecasts days in advance. The atmosphere is a fluid system, and like all fluids, it obeys the rules of **thermodynamics** and **fluid dynamics**.`,
+            options: [
+                { id: 'cont', label: 'So weather is predictable if we track the right variables.', nextNodeId: 'correct' }
+            ]
+        },
+        correct: {
+            id: 'correct',
+            speaker: 'AI',
+            content: `Exactly! Weather is the result of **three interacting variables**:\n\n1. **Atmospheric pressure** — Low pressure creates rising air and clouds. High pressure pushes air down, clearing the sky.\n2. **Humidity** — Moist air supplies the water for clouds and rain. When rising air cools past the **dew point**, water condenses into droplets.\n3. **Wind** — Driven by pressure differences. Stronger gradients → faster wind → more intense weather.\n\nThese three variables don't act alone — they **reinforce** each other. A drop in pressure pulls moist air upward, wind carries it across regions, and **convection** amplifies the cycle.\n\nLet's explore how storms actually form.`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'explore' } },
+            options: [
+                { id: 'mech', label: 'How do storms form step by step?', nextNodeId: 'mechanism' }
+            ]
+        },
+        mechanism: {
+            id: 'mechanism',
+            speaker: 'AI',
+            content: `**How a storm forms — step by step:**\n\n1. **Heating**: The Sun warms the ground unevenly. Warm surfaces create rising columns of air (**thermals**).\n2. **Rising & cooling**: Warm, humid air rises and cools. When it reaches the **dew point**, water vapor **condenses** into cloud droplets, releasing **latent heat** that pushes the air even higher.\n3. **Low-pressure zone**: The rising air leaves lower pressure at the surface, pulling in surrounding air — that's **wind**.\n4. **Feedback loop**: Incoming wind brings more moisture, fueling more convection. The system strengthens.\n5. **Storm peak**: When pressure is low, humidity is high, and wind is strong, you get **thunderstorms** with heavy rain, lightning, and gusty winds.\n6. **Dissipation**: Once the moisture supply is cut off or cool air undercuts the updraft, the storm weakens.\n\n**Try it:** Set pressure low, humidity high, and wind high on the sliders to trigger a storm in the visual!\n\nReady for a checkpoint?`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'mechanism' } },
+            options: [
+                { id: 'cp', label: 'Yes, let\'s check my understanding.', nextNodeId: 'checkpoint' }
+            ]
+        },
+        checkpoint: {
+            id: 'checkpoint',
+            speaker: 'AI',
+            content: `**Checkpoint:** Which combination of conditions is most likely to produce a strong thunderstorm?`,
+            options: [
+                { id: 'storm_right', label: 'Low pressure + high humidity + strong wind.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+                { id: 'storm_wrong', label: 'High pressure + low humidity + calm wind.', nextNodeId: 'checkpoint_wrong' }
+            ]
+        },
+        checkpoint_wrong: {
+            id: 'checkpoint_wrong',
+            speaker: 'AI',
+            content: `Not quite. **High pressure** pushes air downward, which **suppresses** cloud formation. **Low humidity** means there isn't enough moisture to form clouds. **Calm wind** means there's no energy being transported. That combination actually describes a clear, sunny day!\n\nStorms need the opposite: **low pressure** (rising air), **high humidity** (moisture supply), and **strong wind** (energy transport). Think of it as all three dials turned to "active."`,
+            options: [
+                { id: 'retry', label: 'Got it — storms need low pressure, high moisture, and strong wind.', nextNodeId: 'checkpoint_correct' }
+            ]
+        },
+        checkpoint_correct: {
+            id: 'checkpoint_correct',
+            speaker: 'AI',
+            content: `Correct! **Low pressure** lets air rise, **high humidity** supplies water for clouds and rain, and **strong wind** feeds the system with energy and moisture. All three reinforce each other in a **positive feedback loop** — which is why storms can intensify rapidly.\n\nThis same principle explains why weather forecasters track **pressure systems**, **moisture fronts**, and **wind patterns** on weather maps.`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint' } },
+            options: [
+                { id: 'predict', label: 'Can we predict weather from these variables?', nextNodeId: 'prediction' }
+            ]
+        },
+        prediction: {
+            id: 'prediction',
+            speaker: 'AI',
+            content: `**Weather prediction** relies on exactly these variables:\n\n- **Barometers** measure pressure — a falling barometer warns of approaching storms.\n- **Hygrometers** measure humidity — rising humidity suggests rain is coming.\n- **Anemometers** measure wind speed and direction — shifting winds signal a **front** passing through.\n\nModern weather models divide the atmosphere into a 3D grid and calculate pressure, temperature, humidity, and wind at every point. They run the equations of **fluid dynamics** (Navier-Stokes equations) forward in time to forecast what comes next.\n\n**Fun fact:** Despite advances, weather forecasts lose accuracy beyond about **10 days** because tiny differences in initial conditions grow exponentially — this is called the **butterfly effect**, and it's a key concept in **chaos theory**.`,
+            options: [
+                { id: 'disc', label: 'Let\'s pull it all together.', nextNodeId: 'discovery' }
+            ]
+        },
+        discovery: {
+            id: 'discovery',
+            speaker: 'AI',
+            content: `**Discovery:** Weather systems are driven by the interaction of **pressure**, **humidity**, and **wind**. These variables create **feedback loops** — rising moist air lowers pressure, which draws in more wind, which brings more moisture. Storms form when all three amplify each other; clear skies return when high pressure suppresses convection.\n\nThis is a beautiful example of how **simple physical rules** — conservation of energy, fluid dynamics, and thermodynamics — combine to produce the complex, ever-changing weather we experience every day.`,
+            options: [
+                { id: 'done', label: 'Complete P26', nextNodeId: 'complete' }
+            ]
+        },
+        complete: {
+            id: 'complete',
+            speaker: 'AI',
+            content: `🔗 **Big Idea 26 Complete — How Do Weather Systems Form and Change?**\n\n- **Physics (P26):** Weather Patterns — pressure, humidity, and wind interact through feedback loops to create storms, fronts, and clear skies\n- **Chemistry (C26):** Atmospheric Chemistry — gas-phase reactions, ozone formation, and greenhouse effects shaped by temperature and pressure\n- **Biology (B26):** Ecosystems & Climate — organisms adapt behavior, migration, and phenology to seasonal weather cycles\n\n**Summary Table:**\n| Variable | Low Value | High Value | Weather Effect |\n| --- | --- | --- | --- |\n| Pressure | Rising air, clouds, storms | Sinking air, clear skies | Controls vertical air motion |\n| Humidity | Dry, clear | Moist, rain/fog | Supplies water for clouds |\n| Wind | Calm conditions | Gusty, energy transport | Moves air masses and fronts |\n| All three combined | Stable, clear day | Thunderstorm / cyclone | Feedback loop amplification |\n\n**Key takeaways:**\n- **Low pressure + high humidity + strong wind = storms**\n- **High pressure + low humidity + calm wind = clear skies**\n- Weather follows **physical laws**, not randomness\n- **Fronts** form where different air masses collide\n- **Convection** is the engine that powers thunderstorms\n- **Chaos theory** limits long-range forecasts beyond ~10 days\n\n✅ **Lesson P26 Complete!**`,
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+            options: []
+        }
+    };
+}

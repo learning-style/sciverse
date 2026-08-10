@@ -1,0 +1,282 @@
+import { useRef, useEffect, useCallback, useState } from 'react';
+
+interface P11BloodPressureLabProps {
+    state: Record<string, unknown>;
+    onStateChange: (key: string, value: unknown) => void;
+}
+
+export const P11BloodPressureLab = ({ state, onStateChange }: P11BloodPressureLabProps) => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const animRef = useRef<number>(0);
+    const beatRef = useRef(0); // 0-1 beat phase
+
+    const [heartRate, setHeartRate] = useState(70);
+    const [arteryWidth, setArteryWidth] = useState(100); // percent of normal
+
+    const phase = (state.phase as string) || 'intro';
+    const showLabels = (state.showLabels as boolean) || false;
+    const showRanges = (state.showRanges as boolean) || false;
+    const showArteryControl = (state.showArteryControl as boolean) || false;
+
+    const systolic = Math.round(80 + (heartRate / 70) * 40 * (100 / arteryWidth));
+    const diastolic = Math.round(40 + (heartRate / 70) * 20 * (100 / arteryWidth));
+
+    const bpCategory = systolic < 120 ? 'Normal' : systolic < 130 ? 'Elevated' : systolic < 140 ? 'High Stage 1' : 'High Stage 2';
+    const bpColor = systolic < 120 ? '#22c55e' : systolic < 130 ? '#eab308' : systolic < 140 ? '#f97316' : '#ef4444';
+
+    const animate = useCallback(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        const W = canvas.width;
+        const H = canvas.height;
+
+        // Advance beat phase based on heart rate
+        beatRef.current += (heartRate / 60) / 60; // per frame at 60fps
+        if (beatRef.current > 1) beatRef.current -= 1;
+        const beat = beatRef.current;
+        // Create sharp beat pulse: sharp peak near 0, then diastolic trough
+        const beatWave = beat < 0.15
+            ? Math.sin((beat / 0.15) * Math.PI)
+            : beat < 0.5 ? Math.sin(((beat - 0.15) / 0.35) * Math.PI * 0.3) * 0.2
+            : 0;
+
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, W, H);
+
+        // Title
+        ctx.fillStyle = '#1e293b';
+        ctx.font = 'bold 18px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('Heart & Blood Pressure Lab', W / 2, 26);
+
+        // ─── Heart drawing ───
+        const hx = W * 0.25;
+        const hy = H * 0.4;
+        const heartSize = 38 + beatWave * 14;
+
+        ctx.save();
+        ctx.translate(hx, hy);
+        ctx.fillStyle = `rgba(239,68,68,${0.8 + beatWave * 0.2})`;
+        ctx.beginPath();
+        // Simple heart shape
+        ctx.moveTo(0, heartSize * 0.3);
+        ctx.bezierCurveTo(-heartSize, -heartSize * 0.3, -heartSize * 1.2, heartSize * 0.6, 0, heartSize * 1.1);
+        ctx.bezierCurveTo(heartSize * 1.2, heartSize * 0.6, heartSize, -heartSize * 0.3, 0, heartSize * 0.3);
+        ctx.fill();
+        ctx.fillStyle = '#fca5a5';
+        ctx.font = 'bold 20px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('♥', 0, heartSize * 0.5);
+        ctx.restore();
+
+        // BPM label
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '13px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(`${heartRate} BPM`, hx, hy + heartSize + 30);
+
+        // ─── Artery cross-section ───
+        const ax = W * 0.5;
+        const ay = H * 0.35;
+        const maxArteryR = 30;
+        const arteryR = maxArteryR * (arteryWidth / 100);
+        const plaqueThick = maxArteryR - arteryR;
+
+        // Outer wall
+        ctx.beginPath();
+        ctx.arc(ax, ay, maxArteryR + 6, 0, Math.PI * 2);
+        ctx.fillStyle = '#dc2626';
+        ctx.fill();
+
+        // Plaque (visible buildup)
+        if (plaqueThick > 2) {
+            ctx.beginPath();
+            ctx.arc(ax, ay, arteryR + plaqueThick, 0, Math.PI * 2);
+            ctx.fillStyle = '#92400e';
+            ctx.fill();
+        }
+
+        // Blood flow (inner)
+        const bloodAlpha = 0.6 + beatWave * 0.4;
+        ctx.beginPath();
+        ctx.arc(ax, ay, arteryR, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(239,68,68,${bloodAlpha})`;
+        ctx.fill();
+
+        ctx.fillStyle = '#1e293b';
+        ctx.font = '11px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('Artery', ax, ay + maxArteryR + 18);
+        if (arteryWidth < 80) {
+            ctx.fillStyle = '#f97316';
+            ctx.font = 'bold 10px monospace';
+            ctx.fillText('⚠ Plaque', ax, ay + maxArteryR + 30);
+        }
+
+        // ─── Blood pressure gauge ───
+        const gx = W * 0.78;
+        const gy = H * 0.42;
+        const gr = 50;
+
+        // Gauge background
+        ctx.beginPath();
+        ctx.arc(gx, gy, gr, Math.PI, 0);
+        ctx.strokeStyle = '#334155';
+        ctx.lineWidth = 10;
+        ctx.stroke();
+
+        // Color arcs
+        const arcAngles = [
+            { max: 120, color: '#22c55e' },   // normal green
+            { max: 130, color: '#eab308' },   // elevated yellow
+            { max: 140, color: '#f97316' },   // stage1 orange
+            { max: 200, color: '#ef4444' }    // stage2 red
+        ];
+        let prevAngle = Math.PI;
+        for (const arc of arcAngles) {
+            const nextAngle = Math.PI + (arc.max / 200) * Math.PI;
+            ctx.beginPath();
+            ctx.arc(gx, gy, gr - 3, prevAngle, nextAngle);
+            ctx.strokeStyle = arc.color;
+            ctx.lineWidth = 6;
+            ctx.stroke();
+            prevAngle = nextAngle;
+        }
+
+        // Needle
+        const needleAngle = Math.PI + ((systolic + beatWave * (systolic - diastolic)) / 200) * Math.PI;
+        ctx.strokeStyle = '#f1f5f9';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(gx, gy);
+        ctx.lineTo(gx + Math.cos(needleAngle) * (gr - 8), gy + Math.sin(needleAngle) * (gr - 8));
+        ctx.stroke();
+
+        // Center dot
+        ctx.beginPath();
+        ctx.arc(gx, gy, 4, 0, Math.PI * 2);
+        ctx.fillStyle = '#1e293b';
+        ctx.fill();
+
+        // BP numbers
+        ctx.fillStyle = '#1e293b';
+        ctx.font = 'bold 15px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(`${systolic}/${diastolic}`, gx, gy + 16);
+        ctx.font = '11px monospace';
+        ctx.fillText('mmHg', gx, gy + 30);
+
+        if (showLabels) {
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '10px monospace';
+            ctx.fillText('Systolic / Diastolic', gx, gy + 44);
+        }
+
+        // BP category label
+        ctx.fillStyle = bpColor;
+        ctx.font = 'bold 13px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(bpCategory, gx, gy - gr - 10);
+
+        // ─── Pulse wave graph (bottom) ───
+        const graphX = 12, graphY = H * 0.72, graphW = W - 24, graphH = 56;
+        ctx.fillStyle = '#1e293b';
+        ctx.fillRect(graphX, graphY, graphW, graphH);
+        ctx.strokeStyle = '#475569';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(graphX, graphY, graphW, graphH);
+
+        ctx.fillStyle = '#475569';
+        ctx.font = '10px monospace';
+        ctx.textAlign = 'left';
+        ctx.fillText('Blood Pressure Wave', graphX + 4, graphY + 11);
+
+        // Draw scrolling waveform
+        ctx.strokeStyle = '#f87171';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        for (let px = 0; px < graphW; px++) {
+            const t = ((px / graphW) + beatRef.current) % 1;
+            const y = t < 0.15
+                ? Math.sin((t / 0.15) * Math.PI)
+                : t < 0.5 ? Math.sin(((t - 0.15) / 0.35) * Math.PI * 0.3) * 0.2
+                : 0;
+            const sy = graphY + graphH - 8 - y * (graphH - 16);
+            if (px === 0) ctx.moveTo(graphX + px, sy);
+            else ctx.lineTo(graphX + px, sy);
+        }
+        ctx.stroke();
+
+        // Range labels
+        if (showRanges) {
+            const ranges = [
+                { label: '🟢 Normal <120', color: '#22c55e' },
+                { label: '🟡 Elevated 120-129', color: '#eab308' },
+                { label: '🔴 High 130+', color: '#f97316' }
+            ];
+            ctx.font = '10px monospace';
+            ctx.textAlign = 'left';
+            ranges.forEach((r, i) => {
+                ctx.fillStyle = r.color;
+                ctx.fillText(r.label, graphX + 4, graphY + graphH + 14 + i * 13);
+            });
+        }
+
+        animRef.current = requestAnimationFrame(animate);
+    }, [heartRate, arteryWidth, systolic, diastolic, bpColor, bpCategory, phase, showLabels, showRanges]);
+
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+        const obs = new ResizeObserver(() => {
+            const canvas = canvasRef.current;
+            if (!canvas) return;
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+        });
+        obs.observe(container);
+        return () => obs.disconnect();
+    }, []);
+
+    useEffect(() => {
+        cancelAnimationFrame(animRef.current);
+        animRef.current = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(animRef.current);
+    }, [animate]);
+
+    return (
+        <div ref={containerRef} className="relative w-full h-full bg-white">
+            <canvas ref={canvasRef} className="w-full h-full" />
+            <div data-lab-controls="true" className="absolute left-3 bottom-3 flex flex-col gap-2 bg-slate-800/90 border border-slate-600 rounded-xl p-3 min-w-[180px]">
+                <div className="text-slate-300 text-xs font-bold uppercase tracking-wider mb-1">Lab Controls</div>
+
+                <label className="text-slate-300 text-xs font-semibold">
+                    Heart Rate: <span className="text-rose-400">{heartRate} BPM</span>
+                </label>
+                <input type="range" min={40} max={160} value={heartRate}
+                    onChange={e => { setHeartRate(Number(e.target.value)); onStateChange('heartRate', Number(e.target.value)); }}
+                    className="w-full accent-rose-500" />
+
+                {(phase === 'show_plaque' || showArteryControl || phase === 'artery_demo') && (
+                    <>
+                        <label className="text-slate-300 text-xs font-semibold mt-1">
+                            Artery Width: <span className="text-orange-400">{arteryWidth}%</span>
+                        </label>
+                        <input type="range" min={40} max={100} value={arteryWidth}
+                            onChange={e => setArteryWidth(Number(e.target.value))}
+                            className="w-full accent-orange-500" />
+                    </>
+                )}
+
+                <div className="mt-1 text-center">
+                    <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ color: bpColor, border: `1px solid ${bpColor}` }}>
+                        {bpCategory}
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
+};

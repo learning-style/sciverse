@@ -1,0 +1,66 @@
+import { DialogNode } from '../../types';
+
+/**
+ * C20 — Optical Materials
+ * Big Idea 20: "How Do Lenses Change What We See?"
+ */
+export const getC20Script = (): Record<string, DialogNode> => ({
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome to Optical Materials. Why are camera lenses made from specific glass or polymer formulas with different **refractive index** values? **Refractive index** is how strongly a material slows and bends light.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', material: 'glassA' } },
+        options: [
+            { id: 'all_same', label: 'Transparent materials all bend light the same way.', nextNodeId: 'misconception' },
+            { id: 'index', label: 'Refractive index differs by material chemistry.', nextNodeId: 'correct', sentiment: 'positive' }
+        ]
+    },
+    'misconception': {
+        id: 'misconception',
+        speaker: 'AI',
+        content: "Transparency alone is not enough. Different compositions produce different refractive behavior.",
+        options: [{ id: 'next', label: 'Show index comparison.', nextNodeId: 'correct' }]
+    },
+    'correct': {
+        id: 'correct',
+        speaker: 'AI',
+        content: "Correct. Lens chemistry controls **refractive index**, **dispersion**, durability, and coating compatibility. **Dispersion** means different wavelengths bend by different amounts, which can spread colors and alter image quality.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'materials', showIndexTable: true } },
+        options: [{ id: 'checkpoint', label: 'Checkpoint.', nextNodeId: 'checkpoint' }]
+    },
+    'checkpoint': {
+        id: 'checkpoint',
+        speaker: 'AI',
+        content: "If two lenses have identical shape but different refractive index, what changes?",
+        options: [
+            { id: 'focus', label: 'Focal behavior changes.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'nothing', label: 'Nothing changes at all.', nextNodeId: 'checkpoint_wrong' }
+        ]
+    },
+    'checkpoint_wrong': {
+        id: 'checkpoint_wrong',
+        speaker: 'AI',
+        content: "Index directly affects ray bending, so focus and aberration behavior can shift.",
+        options: [{ id: 'retry', label: 'Material chemistry changes optical performance.', nextNodeId: 'checkpoint_correct' }]
+    },
+    'checkpoint_correct': {
+        id: 'checkpoint_correct',
+        speaker: 'AI',
+        content: "Exactly. Optical design is both geometry and chemistry.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', compared: true } },
+        options: [{ id: 'discovery', label: 'Main takeaway?', nextNodeId: 'discovery' }]
+    },
+    'discovery': {
+        id: 'discovery',
+        speaker: 'AI',
+        content: "Discovery: chemistry determines lens material properties such as **transmittance** and dispersion that physics then turns into image behavior.",
+        options: [{ id: 'complete', label: 'Complete C20', nextNodeId: 'complete' }]
+    },
+    'complete': {
+        id: 'complete',
+        speaker: 'AI',
+        content: "C20 complete. Cross-links: P20 refraction and B20 eye focusing.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+        options: []
+    }
+});

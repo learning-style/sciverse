@@ -1,0 +1,139 @@
+import { DialogNode } from '../../types';
+
+/**
+ * P17 — Structures Stay Standing
+ * Big Idea 17: "How Do Structures Stay Standing?"
+ */
+export const getP17Script = (): Record<string, DialogNode> => ({
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome to the Structure Test Bench! 🏗️\n\nTwo bridges are built with similar total mass. One survives heavy traffic; the other starts cracking much earlier.\n\nIf they weigh about the same, why is their safety so different?",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', load: 10, bridgeType: 'beam' } },
+        options: [
+            { id: 'mass_only', label: 'More mass always means stronger structure.', nextNodeId: 'misconception' },
+            { id: 'load_path', label: 'Load path, bracing, and geometry determine stress distribution.', nextNodeId: 'correct', sentiment: 'positive' },
+            { id: 'material_only', label: 'Only material type matters; shape is secondary.', nextNodeId: 'misconception_shape' }
+        ]
+    },
+
+    'misconception': {
+        id: 'misconception',
+        speaker: 'AI',
+        content: "Mass alone is not a design guarantee. A poorly braced heavy structure can fail earlier than a lighter but well-distributed one.",
+        options: [{ id: 'next', label: 'Show me force paths and bracing effects.', nextNodeId: 'correct' }]
+    },
+
+    'misconception_shape': {
+        id: 'misconception_shape',
+        speaker: 'AI',
+        content: "Material matters, but geometry controls how force flows. The same material can perform very differently under different support and bracing layouts.",
+        options: [{ id: 'next2', label: 'So geometry and load path are central.', nextNodeId: 'correct' }]
+    },
+
+    'correct': {
+        id: 'correct',
+        speaker: 'AI',
+        content: "Exactly. Triangular bracing resists shape change and spreads load, while weak joints can concentrate stress and become failure points.\n\nUse the lab controls to vary **base width**, **load**, and **bracing**, then compare stability metrics.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'analysis', showStressMap: true } },
+        options: [
+            { id: 'checkpoint', label: 'Give me a checkpoint.', nextNodeId: 'checkpoint' },
+            { id: 'experiment_first', label: 'Let me test controls before checkpoint.', nextNodeId: 'experiment_prompt' }
+        ]
+    },
+
+    'experiment_prompt': {
+        id: 'experiment_prompt',
+        speaker: 'AI',
+        content: "Try this mini test:\n1. Keep load steady and increase bracing.\n2. Keep bracing steady and increase load.\n3. Widen base and check if safety margin improves.\n\nThen answer a reasoning checkpoint.",
+        options: [{ id: 'to_checkpoint', label: 'I tested it. Ask checkpoint.', nextNodeId: 'checkpoint' }]
+    },
+
+    'checkpoint': {
+        id: 'checkpoint',
+        speaker: 'AI',
+        content: "⏸️ **Checkpoint**\n\nA mid-span load doubles. Which design is safer in general?",
+        options: [
+            { id: 'truss', label: 'Truss with distributed members.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'single', label: 'Single thin beam with no bracing.', nextNodeId: 'checkpoint_wrong' },
+            { id: 'same', label: 'Both are identical if total mass is similar.', nextNodeId: 'checkpoint_wrong2' }
+        ]
+    },
+
+    'checkpoint_wrong': {
+        id: 'checkpoint_wrong',
+        speaker: 'AI',
+        content: "Unbraced beams can work in limited cases, but under larger loads they often develop larger stress concentrations and lower redundancy.",
+        options: [{ id: 'retry', label: 'Distributed members reduce peak stress.', nextNodeId: 'checkpoint_correct' }]
+    },
+
+    'checkpoint_wrong2': {
+        id: 'checkpoint_wrong2',
+        speaker: 'AI',
+        content: "Equal mass does not imply equal structural behavior. Load path topology and support conditions can change failure risk dramatically.",
+        options: [{ id: 'retry2', label: 'Geometry can outperform raw mass matching.', nextNodeId: 'checkpoint_correct' }]
+    },
+
+    'checkpoint_correct': {
+        id: 'checkpoint_correct',
+        speaker: 'AI',
+        content: "Right. Strong structures spread force so no single connection or member carries excessive stress.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', bestDesign: 'truss' } },
+        options: [
+            { id: 'discovery', label: 'Summarize P17.', nextNodeId: 'discovery' },
+            { id: 'summary_now', label: 'Show summary table first.', nextNodeId: 'summary_table' }
+        ]
+    },
+
+    'discovery': {
+        id: 'discovery',
+        speaker: 'AI',
+        content: "🎉 **Discovery:** Structures stay standing when geometry, support conditions, and material limits are designed as one system.\n\nThis is why engineers model load paths, not just total weight.",
+        options: [
+            { id: 'summary', label: 'Show summary table.', nextNodeId: 'summary_table' },
+            { id: 'reflect', label: 'Ask me reflection questions.', nextNodeId: 'reflection_questions' }
+        ]
+    },
+
+    'summary_table': {
+        id: 'summary_table',
+        speaker: 'AI',
+        content: "| **Design Factor** | **Why It Matters** | **Lab Pattern** |\n|---|---|---|\n| **Base width** | Improves stability margin | Wider base usually raised stability score |\n| **Bracing** | Spreads and redirects force | Higher bracing reduced overload risk |\n| **Load** | Increases demand on members | Higher load reduced safety margin |\n| **Load path** | Controls stress concentration | Better distribution reduced peak stress |",
+        options: [
+            { id: 'reflect_after_table', label: 'Now ask reflection questions.', nextNodeId: 'reflection_questions' },
+            { id: 'to_complete', label: 'Wrap up P17.', nextNodeId: 'complete' }
+        ]
+    },
+
+    'reflection_questions': {
+        id: 'reflection_questions',
+        speaker: 'AI',
+        content: "🧠 **Think Like A Structural Engineer**\n\n1. If budget allows only one upgrade, when is added bracing more useful than added mass?\n2. Why can a high-strength material still fail in a poor geometry?\n3. How should you test a design before full-scale deployment?",
+        options: [
+            { id: 'reflect_good', label: 'Force distribution and weak-point control are often more valuable than just adding mass.', nextNodeId: 'reflection_feedback', sentiment: 'positive' },
+            { id: 'reflect_bad', label: 'Mass increase alone is always sufficient.', nextNodeId: 'reflection_retry' }
+        ]
+    },
+
+    'reflection_retry': {
+        id: 'reflection_retry',
+        speaker: 'AI',
+        content: "Good engineering balances material, geometry, and uncertainty. More mass can help, but poor force pathways can still cause failure.",
+        options: [{ id: 'retry_to_feedback', label: 'Understood. Design is about force pathways.', nextNodeId: 'reflection_feedback' }]
+    },
+
+    'reflection_feedback': {
+        id: 'reflection_feedback',
+        speaker: 'AI',
+        content: "Great reasoning. You are evaluating systems, not just components.",
+        options: [{ id: 'finish', label: 'Finish P17', nextNodeId: 'complete' }]
+    },
+
+    'complete': {
+        id: 'complete',
+        speaker: 'AI',
+        content: "🔗 **Cross-Links**\n- In **C17**, material chemistry explains why concrete + steel combinations perform better under mixed stress.\n- In **B17**, bone architecture shows a biological version of efficient load-bearing design.\n\n✅ **Lesson P17 Complete!**",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+        options: []
+    }
+});

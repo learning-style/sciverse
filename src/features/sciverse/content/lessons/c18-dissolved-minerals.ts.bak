@@ -1,0 +1,108 @@
+import { DialogNode } from '../../types';
+
+/**
+ * C18 — Dissolved Minerals in Rivers
+ * Big Idea 18: "How Do Rivers Shape the Land?"
+ */
+export const getC18Script = (): Record<string, DialogNode> => ({
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome to the River Chemistry Station. Why does river water carry dissolved ions even when it looks clear?",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', turbidity: 'low' } },
+        options: [
+            { id: 'pure', label: 'Clear water means chemically pure water.', nextNodeId: 'misconception' },
+            { id: 'dissolved', label: 'Dissolved substances are molecularly mixed and often invisible.', nextNodeId: 'correct', sentiment: 'positive' }
+        ]
+    },
+    'misconception': {
+        id: 'misconception',
+        speaker: 'AI',
+        content: "Clear does not equal pure. Many ions are dissolved below visible scale.",
+        options: [{ id: 'continue', label: 'Show dissolution sources.', nextNodeId: 'correct' }]
+    },
+    'correct': {
+        id: 'correct',
+        speaker: 'AI',
+        content: "Correct. Water-rock interaction dissolves minerals, adding ions such as calcium and bicarbonate to flow.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'dissolution', showIons: true } },
+        options: [{ id: 'checkpoint', label: 'Checkpoint.', nextNodeId: 'checkpoint' }]
+    },
+    'checkpoint': {
+        id: 'checkpoint',
+        speaker: 'AI',
+        content: "If evaporation increases while inflow drops, what often happens to ion concentration?",
+        options: [
+            { id: 'increase', label: 'Concentration often increases.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'zero', label: 'Concentration always goes to zero.', nextNodeId: 'checkpoint_wrong' }
+        ]
+    },
+    'checkpoint_wrong': {
+        id: 'checkpoint_wrong',
+        speaker: 'AI',
+        content: "Removing water can raise concentration when dissolved mass remains in the system.",
+        options: [{ id: 'retry', label: 'Less solvent can mean higher concentration.', nextNodeId: 'checkpoint_correct' }]
+    },
+    'checkpoint_correct': {
+        id: 'checkpoint_correct',
+        speaker: 'AI',
+        content: "Exactly. River chemistry changes with flow, temperature, and watershed inputs.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', concentrationTrend: 'up' } },
+        options: [
+            { id: 'discovery', label: 'Summarize C18.', nextNodeId: 'discovery' },
+            { id: 'summary_now', label: 'Show summary table first.', nextNodeId: 'summary_table' }
+        ]
+    },
+
+    'discovery': {
+        id: 'discovery',
+        speaker: 'AI',
+        content: "🎉 **Discovery:** Rivers shape landscapes physically **and** chemically by transporting dissolved and suspended matter.\n\nThe **blue conductivity bar** at the bottom of the visual shows how easily electricity flows through the solution. More dissolved ions → higher conductivity. pH also matters: extreme acidity or alkalinity changes which minerals dissolve and how many ions are free in solution.",
+        options: [
+            { id: 'summary', label: 'Show summary table.', nextNodeId: 'summary_table' },
+            { id: 'reflect', label: 'Ask me reflection questions.', nextNodeId: 'reflection_questions' }
+        ]
+    },
+
+    'summary_table': {
+        id: 'summary_table',
+        speaker: 'AI',
+        content: "| **Factor** | **What It Does** | **Lab Pattern** |\n|---|---|---|\n| **Dissolved Minerals** | Ions from rock-water interaction enter the solution | Higher mineral slider → more floating ions in the beaker |\n| **pH** | Controls which minerals dissolve and ion availability | Extreme pH changed solution color and conductivity |\n| **Conductivity** | Measures free-ion density (blue bar at bottom) | Rose with minerals; peaked near neutral pH |\n| **Evaporation** | Removes water, concentrating remaining ions | Less solvent → higher concentration |\n| **Ion types** | + cations, − anions, · neutral molecules | Different colored symbols in the beaker |",
+        options: [
+            { id: 'reflect_after_table', label: 'Now ask reflection questions.', nextNodeId: 'reflection_questions' },
+            { id: 'to_complete', label: 'Wrap up C18.', nextNodeId: 'complete' }
+        ]
+    },
+
+    'reflection_questions': {
+        id: 'reflection_questions',
+        speaker: 'AI',
+        content: "🧠 **Think Like A Water Chemist**\n\n1. Why can crystal-clear spring water still taste mineral-rich?\n2. If acid rain lowers river pH, how might dissolved mineral levels change?\n3. A farmer tests conductivity downstream of a limestone quarry — predict the reading compared to upstream.",
+        options: [
+            { id: 'reflect_good', label: 'Limestone dissolves easily, so downstream conductivity should be higher because more calcium and carbonate ions enter the water.', nextNodeId: 'reflection_feedback', sentiment: 'positive' },
+            { id: 'reflect_bad', label: 'Conductivity would be the same everywhere in the river.', nextNodeId: 'reflection_retry' }
+        ]
+    },
+
+    'reflection_retry': {
+        id: 'reflection_retry',
+        speaker: 'AI',
+        content: "Rivers pick up new ions as they flow over different rock types. Limestone is highly soluble, so downstream of a quarry the water gains extra calcium and carbonate ions — raising conductivity.",
+        options: [{ id: 'retry_to_feedback', label: 'Got it. Rock type changes the chemistry downstream.', nextNodeId: 'reflection_feedback' }]
+    },
+
+    'reflection_feedback': {
+        id: 'reflection_feedback',
+        speaker: 'AI',
+        content: "Excellent reasoning. You are connecting rock chemistry to water quality — exactly what environmental scientists do.",
+        options: [{ id: 'finish', label: 'Finish C18', nextNodeId: 'complete' }]
+    },
+
+    'complete': {
+        id: 'complete',
+        speaker: 'AI',
+        content: "🔗 **Cross-Links**\n- In **P18**, physical flow dynamics show how rivers erode and deposit sediment.\n- In **B18**, dissolved minerals and water chemistry determine which aquatic species can thrive.\n\n✅ **Lesson C18 Complete!",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+        options: []
+    }
+});

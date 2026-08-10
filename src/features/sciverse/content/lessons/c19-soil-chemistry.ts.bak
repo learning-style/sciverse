@@ -1,0 +1,108 @@
+import { DialogNode } from '../../types';
+
+/**
+ * C19 — Soil Chemistry and Nutrients
+ * Big Idea 19: "How Does Soil Support Life?"
+ */
+export const getC19Script = (): Record<string, DialogNode> => ({
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome to the Soil Chemistry Lab. Two fields get fertilizer, but only one improves. Why?",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', soilPH: 5.2 } },
+        options: [
+            { id: 'fert_always', label: 'Fertilizer always works the same.', nextNodeId: 'misconception' },
+            { id: 'ph_matter', label: 'pH and chemistry affect nutrient availability.', nextNodeId: 'correct', sentiment: 'positive' }
+        ]
+    },
+    'misconception': {
+        id: 'misconception',
+        speaker: 'AI',
+        content: "Nutrients can be present but still hard for roots to absorb if pH is outside useful ranges.",
+        options: [{ id: 'next', label: 'Show pH effect.', nextNodeId: 'correct' }]
+    },
+    'correct': {
+        id: 'correct',
+        speaker: 'AI',
+        content: "Correct. Soil pH changes solubility and ion form, which changes plant access.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'availability', showPHCurve: true } },
+        options: [{ id: 'checkpoint', label: 'Checkpoint.', nextNodeId: 'checkpoint' }]
+    },
+    'checkpoint': {
+        id: 'checkpoint',
+        speaker: 'AI',
+        content: "If soil is strongly acidic, which action may improve nutrient availability?",
+        options: [
+            { id: 'adjust', label: 'Adjust pH gradually toward target range.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'ignore', label: 'Ignore pH and only add more fertilizer.', nextNodeId: 'checkpoint_wrong' }
+        ]
+    },
+    'checkpoint_wrong': {
+        id: 'checkpoint_wrong',
+        speaker: 'AI',
+        content: "Adding more input can waste resources if chemical conditions block uptake.",
+        options: [{ id: 'retry', label: 'Chemical conditions must be corrected too.', nextNodeId: 'checkpoint_correct' }]
+    },
+    'checkpoint_correct': {
+        id: 'checkpoint_correct',
+        speaker: 'AI',
+        content: "Exactly. Soil chemistry management is about availability, not only quantity.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', strategy: 'pH-adjust' } },
+        options: [
+            { id: 'discovery', label: 'Summarize C19.', nextNodeId: 'discovery' },
+            { id: 'summary_now', label: 'Show summary table first.', nextNodeId: 'summary_table' }
+        ]
+    },
+
+    'discovery': {
+        id: 'discovery',
+        speaker: 'AI',
+        content: "🎉 **Discovery:** Productive soil depends on balanced chemical conditions that keep nutrients bioavailable.\n\n**What's in the flask?**\n- 🟢 **Green diamonds (N)** = nitrogen nutrient particles. More nitrogen → more green diamonds floating in solution. These are the nutrients plants need.\n- 🟠 **Orange circles (S)** = salt ions (salinity stress). More salinity → more orange circles. Salt competes with nutrients and blocks root uptake.\n- The **solution color** shifts with pH: greenish at optimal pH (~6.8), reddish when too acidic or alkaline.\n\nThe best soil chemistry has lots of green N's, few orange S's, and a near-neutral pH.",
+        options: [
+            { id: 'summary', label: 'Show summary table.', nextNodeId: 'summary_table' },
+            { id: 'reflect', label: 'Ask me reflection questions.', nextNodeId: 'reflection_questions' }
+        ]
+    },
+
+    'summary_table': {
+        id: 'summary_table',
+        speaker: 'AI',
+        content: "| **Factor** | **Role in Soil** | **Lab Pattern** |\n|---|---|---|\n| **Soil pH** | Controls ion solubility and nutrient form | Optimal ~6.8; extremes dropped availability |\n| **Nitrogen (green ◆)** | Primary plant nutrient | More N → more green diamonds → higher availability |\n| **Salinity (orange ●)** | Osmotic stress; blocks nutrient uptake | More salt → more orange circles → lower availability |\n| **Nutrient Availability** | Net usable nutrients for plant roots | Rose with nitrogen; fell with salinity and pH extremes |\n| **Solution color** | Visual pH indicator | Green = healthy; red/purple = stressed range |",
+        options: [
+            { id: 'reflect_after_table', label: 'Now ask reflection questions.', nextNodeId: 'reflection_questions' },
+            { id: 'to_complete', label: 'Wrap up C19.', nextNodeId: 'complete' }
+        ]
+    },
+
+    'reflection_questions': {
+        id: 'reflection_questions',
+        speaker: 'AI',
+        content: "🧠 **Think Like A Soil Chemist**\n\n1. A farmer adds lime to acidic soil. What chemical change improves nutrient uptake?\n2. Why can over-fertilizing damage crops even though it adds nutrients?\n3. Two fields get identical fertilizer but one is near a coast with salty groundwater — predict the outcome difference.",
+        options: [
+            { id: 'reflect_good', label: 'Coastal salt competes with nutrients, so the salty field gets less benefit from the same fertilizer.', nextNodeId: 'reflection_feedback', sentiment: 'positive' },
+            { id: 'reflect_bad', label: 'Both fields respond identically since fertilizer input is the same.', nextNodeId: 'reflection_retry' }
+        ]
+    },
+
+    'reflection_retry': {
+        id: 'reflection_retry',
+        speaker: 'AI',
+        content: "Salinity creates osmotic competition. Even with identical nutrients, the salty field's roots struggle to absorb them — the orange salt ions crowd out the green nitrogen.",
+        options: [{ id: 'retry_to_feedback', label: 'So chemical context matters as much as nutrient quantity.', nextNodeId: 'reflection_feedback' }]
+    },
+
+    'reflection_feedback': {
+        id: 'reflection_feedback',
+        speaker: 'AI',
+        content: "Excellent reasoning. You are connecting chemical environment to biological outcome — exactly what agronomists do.",
+        options: [{ id: 'finish', label: 'Finish C19', nextNodeId: 'complete' }]
+    },
+
+    'complete': {
+        id: 'complete',
+        speaker: 'AI',
+        content: "🔗 **Cross-Links**\n- In **P19**, water movement through soil pores controls how nutrients reach roots.\n- In **B19**, decomposers recycle organic matter back into the chemical nutrient pool the flask models.\n\n✅ **Lesson C19 Complete!",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+        options: []
+    }
+});

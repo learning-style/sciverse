@@ -1,0 +1,66 @@
+import { DialogNode } from '../../types';
+
+/**
+ * B19 — Soil Biodiversity
+ * Big Idea 19: "How Does Soil Support Life?"
+ */
+export const getB19Script = (): Record<string, DialogNode> => ({
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome to Underground Ecosystems. Why is healthy soil full of organisms from microbes to worms?",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', zoom: 'surface' } },
+        options: [
+            { id: 'dirt_only', label: 'Soil is mostly inert dirt with little life.', nextNodeId: 'misconception' },
+            { id: 'foodweb', label: 'Soil hosts active food webs and decomposition cycles.', nextNodeId: 'correct', sentiment: 'positive' }
+        ]
+    },
+    'misconception': {
+        id: 'misconception',
+        speaker: 'AI',
+        content: "Soil is biologically active. Decomposers recycle matter and support nutrient flow.",
+        options: [{ id: 'next', label: 'Show decomposer network.', nextNodeId: 'correct' }]
+    },
+    'correct': {
+        id: 'correct',
+        speaker: 'AI',
+        content: "Correct. Bacteria, fungi, and invertebrates transform dead organic matter into usable nutrients.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'foodweb', showDecomposers: true } },
+        options: [{ id: 'checkpoint', label: 'Checkpoint.', nextNodeId: 'checkpoint' }]
+    },
+    'checkpoint': {
+        id: 'checkpoint',
+        speaker: 'AI',
+        content: "If decomposer populations crash, what is a likely medium-term effect?",
+        options: [
+            { id: 'slower_cycle', label: 'Nutrient cycling slows and plant growth can decline.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'faster_cycle', label: 'Nutrient cycling instantly accelerates.', nextNodeId: 'checkpoint_wrong' }
+        ]
+    },
+    'checkpoint_wrong': {
+        id: 'checkpoint_wrong',
+        speaker: 'AI',
+        content: "Without decomposers, conversion of organic matter to available nutrients slows.",
+        options: [{ id: 'retry', label: 'Decomposers are essential recyclers.', nextNodeId: 'checkpoint_correct' }]
+    },
+    'checkpoint_correct': {
+        id: 'checkpoint_correct',
+        speaker: 'AI',
+        content: "Exactly. Soil biodiversity underpins ecosystem productivity.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', nutrientCycle: 'slower' } },
+        options: [{ id: 'discovery', label: 'Summary?', nextNodeId: 'discovery' }]
+    },
+    'discovery': {
+        id: 'discovery',
+        speaker: 'AI',
+        content: "Discovery: living soil is a biological engine that recycles matter and stabilizes food systems.",
+        options: [{ id: 'complete', label: 'Complete B19', nextNodeId: 'complete' }]
+    },
+    'complete': {
+        id: 'complete',
+        speaker: 'AI',
+        content: "🔗 **Big Idea 19 Complete — How Does Soil Support Life?**\n\n- Physics (P19): Soil Physics — porosity, drainage, and aeration control how water and air move underground\n- Chemistry (C19): Soil Chemistry — pH and nutrient availability determine what plants can absorb\n- Biology (B19): Soil Biodiversity — decomposers recycle nutrients, making soil a living ecosystem\n\nIn all three: **healthy soil is a partnership of physics, chemistry, and biology beneath our feet!** 🪨🌱🪱\n\n✅ **Lesson B19 Complete!**",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+        options: []
+    }
+});

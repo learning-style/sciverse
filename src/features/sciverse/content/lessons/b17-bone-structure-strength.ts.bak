@@ -1,0 +1,139 @@
+import { DialogNode } from '../../types';
+
+/**
+ * B17 — Bone Structure and Strength
+ * Big Idea 17: "How Do Structures Stay Standing?"
+ */
+export const getB17Script = (): Record<string, DialogNode> => ({
+    'root': {
+        id: 'root',
+        speaker: 'AI',
+        content: "Welcome to the Bone Mechanics Lab! 🦴\n\nBones carry load daily, absorb impact, and still allow movement. But bones are not solid stone columns. They are organized living tissue with changing internal structure.\n\nWhy is that biological design useful?",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', model: 'femur' } },
+        options: [
+            { id: 'solid_best', label: 'Completely solid bone is always the best design.', nextNodeId: 'misconception' },
+            { id: 'optimized', label: 'Bone balances strength, mass, remodeling, and repair.', nextNodeId: 'correct', sentiment: 'positive' },
+            { id: 'static', label: 'Bone structure is fixed after growth and barely changes.', nextNodeId: 'misconception_static' }
+        ]
+    },
+
+    'misconception': {
+        id: 'misconception',
+        speaker: 'AI',
+        content: "A fully solid design would be heavy, metabolically expensive, and less adaptable. Biology optimizes for movement, loading, and repair over time.",
+        options: [{ id: 'next', label: 'Show internal architecture.', nextNodeId: 'correct' }]
+    },
+
+    'misconception_static': {
+        id: 'misconception_static',
+        speaker: 'AI',
+        content: "Bone is dynamic tissue. Remodeling cells continuously reshape microstructure in response to stress, nutrition, and hormonal signaling.",
+        options: [{ id: 'next2', label: 'So bone is a living adaptive structure.', nextNodeId: 'correct' }]
+    },
+
+    'correct': {
+        id: 'correct',
+        speaker: 'AI',
+        content: "Correct. Compact outer bone provides strong load-bearing shell behavior, while trabecular inner structure offers lightweight support and energy management.\n\nUse the lab controls for calcium, activity level, and age factor to see how strength changes.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'architecture', showTrabeculae: true } },
+        options: [
+            { id: 'checkpoint', label: 'Give me a checkpoint.', nextNodeId: 'checkpoint' },
+            { id: 'experiment_first', label: 'Let me test controls first.', nextNodeId: 'experiment_prompt' }
+        ]
+    },
+
+    'experiment_prompt': {
+        id: 'experiment_prompt',
+        speaker: 'AI',
+        content: "Run this biology mechanics test:\n1. Increase activity with moderate calcium and observe strength trend.\n2. Lower calcium and compare decline at the same activity level.\n3. Raise age factor and inspect risk trend.\n\nThen answer checkpoint reasoning.",
+        options: [{ id: 'to_checkpoint', label: 'I tested it. Ask checkpoint.', nextNodeId: 'checkpoint' }]
+    },
+
+    'checkpoint': {
+        id: 'checkpoint',
+        speaker: 'AI',
+        content: "⏸️ **Checkpoint**\n\nWhich change most directly increases long-term weakening risk in load-bearing bone?",
+        options: [
+            { id: 'density_loss', label: 'Loss of mineral density and microstructure.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'skin_color', label: 'Skin pigment change.', nextNodeId: 'checkpoint_wrong' },
+            { id: 'height_only', label: 'Height alone without tissue-quality change.', nextNodeId: 'checkpoint_wrong2' }
+        ]
+    },
+
+    'checkpoint_wrong': {
+        id: 'checkpoint_wrong',
+        speaker: 'AI',
+        content: "Bone strength tracks tissue quality, density, and architecture, not skin pigmentation.",
+        options: [{ id: 'retry', label: 'Strength depends on bone material and structure.', nextNodeId: 'checkpoint_correct' }]
+    },
+
+    'checkpoint_wrong2': {
+        id: 'checkpoint_wrong2',
+        speaker: 'AI',
+        content: "Body size can affect loading, but weakening risk depends more directly on density, microarchitecture, and remodeling balance.",
+        options: [{ id: 'retry2', label: 'Tissue quality and remodeling are key.', nextNodeId: 'checkpoint_correct' }]
+    },
+
+    'checkpoint_correct': {
+        id: 'checkpoint_correct',
+        speaker: 'AI',
+        content: "Exactly. Bone follows engineering-like constraints but with biology-specific adaptation and repair mechanisms.",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', risk: 'osteoporosis' } },
+        options: [
+            { id: 'discovery', label: 'Summarize B17.', nextNodeId: 'discovery' },
+            { id: 'summary_now', label: 'Show summary table first.', nextNodeId: 'summary_table' }
+        ]
+    },
+
+    'discovery': {
+        id: 'discovery',
+        speaker: 'AI',
+        content: "🎉 **Discovery:** Bones are dynamic load-bearing structures tuned for strength, mobility, and repair over time.\n\nThe key idea is not maximum mass; it is adaptive performance under changing demands.",
+        options: [
+            { id: 'summary', label: 'Show summary table.', nextNodeId: 'summary_table' },
+            { id: 'reflect', label: 'Ask me reflection questions.', nextNodeId: 'reflection_questions' }
+        ]
+    },
+
+    'summary_table': {
+        id: 'summary_table',
+        speaker: 'AI',
+        content: "| **Biological Factor** | **Mechanics Meaning** | **Lab Pattern** |\n|---|---|---|\n| **Calcium support** | Material quality for mineralized tissue | Lower calcium reduced strength score |\n| **Activity loading** | Stimulus for remodeling and adaptation | Moderate/healthy loading improved resilience |\n| **Age factor** | Recovery/remodeling constraint trend | Higher age factor increased vulnerability |\n| **Architecture** | Compact + trabecular balance | Strength without excessive mass |",
+        options: [
+            { id: 'reflect_after_table', label: 'Now ask reflection questions.', nextNodeId: 'reflection_questions' },
+            { id: 'to_complete', label: 'Wrap up B17.', nextNodeId: 'complete' }
+        ]
+    },
+
+    'reflection_questions': {
+        id: 'reflection_questions',
+        speaker: 'AI',
+        content: "🧠 **Think Like A Biomechanics Scientist**\n\n1. Why can too little loading and too much loading both be harmful over time?\n2. How do nutrition and activity interact rather than act independently?\n3. Why is fracture prevention a systems problem, not one-number problem?",
+        options: [
+            { id: 'reflect_good', label: 'Bone health comes from balanced loading, nutrition, and remodeling capacity.', nextNodeId: 'reflection_feedback', sentiment: 'positive' },
+            { id: 'reflect_bad', label: 'Only one variable matters for lifelong bone strength.', nextNodeId: 'reflection_retry' }
+        ]
+    },
+
+    'reflection_retry': {
+        id: 'reflection_retry',
+        speaker: 'AI',
+        content: "Good biology reasoning combines multiple interacting factors. Bone outcomes emerge from long-term balance, not isolated single-variable control.",
+        options: [{ id: 'retry_to_feedback', label: 'Understood. It is a multi-factor system.', nextNodeId: 'reflection_feedback' }]
+    },
+
+    'reflection_feedback': {
+        id: 'reflection_feedback',
+        speaker: 'AI',
+        content: "Excellent. You are applying systems thinking to biological structure and function.",
+        options: [{ id: 'finish', label: 'Finish B17', nextNodeId: 'complete' }]
+    },
+
+    'complete': {
+        id: 'complete',
+        speaker: 'AI',
+        content: "🔗 **Big Idea 17 Complete — How Do Structures Stay Standing?**\n\n- Physics (P17): Structures & Loads — geometry and force paths distribute weight to prevent collapse\n- Chemistry (C17): Construction Materials — concrete, steel, and composites have different strength profiles\n- Biology (B17): Bone Strength Design — living bone balances lightweight structure with incredible strength\n\nIn all three: **smart structure design — whether bridges, materials, or bones — resists forces efficiently!** 🏗️🧱🦴\n\n✅ **Lesson B17 Complete!**",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+        options: []
+    }
+});
