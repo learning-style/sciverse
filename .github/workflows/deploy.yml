@@ -7,6 +7,48 @@ on:
     branches: [main]
 
 jobs:
+  # ── Step 0: Publish GitHub Pages (on merge to main) ──
+  # Pages source is "Deploy from a branch" -> gh-pages, so this job pushes the
+  # built site there rather than using the Pages Actions artifact flow. The
+  # project site lives at /sciverse/, hence the --base; index.html is copied to
+  # 404.html because Pages has no SPA fallback for client-side routes.
+  deploy-pages:
+    name: Publish GitHub Pages
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npx tsc --noEmit
+
+      - name: Test
+        run: npx vitest run
+
+      - name: Build for Pages
+        run: |
+          npx vite build --base=/sciverse/
+          cp dist/index.html dist/404.html
+          touch dist/.nojekyll
+
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+
   # ── Step 1: Type-check & Build ──
   build:
     name: Type-check & Build
