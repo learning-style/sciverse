@@ -17,7 +17,6 @@ export const B20EyeFocusingLab = ({ state, onStateChange }: B20EyeFocusingLabPro
 
     const idealMuscle = useMemo(() => Math.max(10, Math.min(90, Math.round(100 - targetDistance * 0.9))), [targetDistance]);
     const clarity = Math.max(0, Math.round(100 - Math.abs(idealMuscle - lensMuscle) * 2));
-    const accommodationError = Math.abs(idealMuscle - lensMuscle);
 
     const draw = useCallback(() => {
         const canvas = canvasRef.current;

@@ -5,7 +5,7 @@ interface C18DissolvedMineralsLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const C18DissolvedMineralsLab = ({ state, onStateChange }: C18DissolvedMineralsLabProps) => {
+export const C18DissolvedMineralsLab = ({ onStateChange }: C18DissolvedMineralsLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -13,7 +13,6 @@ export const C18DissolvedMineralsLab = ({ state, onStateChange }: C18DissolvedMi
 
     const [mineralLevel, setMineralLevel] = useState(40);
     const [ph, setPh] = useState(7);
-    const phase = (state.phase as string) || 'intro';
 
     const conductivity = useMemo(() => {
         const neutralBonus = 12 - Math.abs(7 - ph) * 3;

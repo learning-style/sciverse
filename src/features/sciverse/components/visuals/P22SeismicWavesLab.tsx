@@ -5,14 +5,13 @@ interface P22SeismicWavesLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const P22SeismicWavesLab = ({ state, onStateChange }: P22SeismicWavesLabProps) => {
+export const P22SeismicWavesLab = ({ onStateChange }: P22SeismicWavesLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
     const tRef = useRef(0);
 
     const [match, setMatch] = useState(55);
-    const phase = (state.phase as string) || 'intro';
 
     const clarity = useMemo(
         () => Math.max(0, Math.min(100, Math.round(match * 0.72 + 28))),

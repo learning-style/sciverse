@@ -85,7 +85,7 @@ export const B24VascularTransportLab = ({ state, onStateChange }: B24VascularTra
         }
 
         // Leaves at top
-        [-1, 0, 1].forEach((dir, idx) => {
+        [-1, 0, 1].forEach((dir) => {
             const lx = cx + dir * W * 0.12;
             const ly = stemTop - 5;
             ctx.fillStyle = `rgba(34,197,94,${0.4 + effFrac * 0.4})`;

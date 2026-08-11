@@ -5,14 +5,13 @@ interface C22SpectroscopyLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const C22SpectroscopyLab = ({ state, onStateChange }: C22SpectroscopyLabProps) => {
+export const C22SpectroscopyLab = ({ onStateChange }: C22SpectroscopyLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
     const tRef = useRef(0);
 
     const [matchLevel, setMatchLevel] = useState(55);
-    const phase = (state.phase as string) || 'intro';
 
     const identificationScore = useMemo(
         () => Math.max(0, Math.min(100, Math.round(matchLevel * 0.72 + 28))),

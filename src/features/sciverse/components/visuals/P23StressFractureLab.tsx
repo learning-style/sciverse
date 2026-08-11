@@ -5,7 +5,7 @@ interface P23StressFractureLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const P23StressFractureLab = ({ state, onStateChange }: P23StressFractureLabProps) => {
+export const P23StressFractureLab = ({ onStateChange }: P23StressFractureLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -13,7 +13,6 @@ export const P23StressFractureLab = ({ state, onStateChange }: P23StressFracture
 
     const [load, setLoad] = useState(55);
     const [notch, setNotch] = useState(35);
-    const phase = (state.phase as string) || 'intro';
 
     const failureRisk = useMemo(() => Math.max(0, Math.min(100, Math.round(load * 0.65 + notch * 0.45))), [load, notch]);
 
@@ -54,7 +53,6 @@ export const P23StressFractureLab = ({ state, onStateChange }: P23StressFracture
 
         // Stress concentration lines around notch
         const stressRadius = 10 + failureRisk * 0.5;
-        const stressAlpha = failureRisk / 100;
         for (let i = 0; i < 6; i++) {
             const angle = (i / 6) * Math.PI + Math.PI;
             const r1 = notchDepth + 4;

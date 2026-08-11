@@ -5,7 +5,7 @@ interface P17StructuresStandingLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const P17StructuresStandingLab = ({ state, onStateChange }: P17StructuresStandingLabProps) => {
+export const P17StructuresStandingLab = ({ onStateChange }: P17StructuresStandingLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -14,7 +14,6 @@ export const P17StructuresStandingLab = ({ state, onStateChange }: P17Structures
     const [baseWidth, setBaseWidth] = useState(50);
     const [load, setLoad] = useState(45);
     const [bracing, setBracing] = useState(60);
-    const phase = (state.phase as string) || 'intro';
 
     const stability = useMemo(() => {
         const raw = baseWidth * 0.45 + bracing * 0.45 - load * 0.55 + 35;

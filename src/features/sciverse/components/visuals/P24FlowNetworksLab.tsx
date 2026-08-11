@@ -5,7 +5,7 @@ interface P24FlowNetworksLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const P24FlowNetworksLab = ({ state, onStateChange }: P24FlowNetworksLabProps) => {
+export const P24FlowNetworksLab = ({ onStateChange }: P24FlowNetworksLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -13,7 +13,6 @@ export const P24FlowNetworksLab = ({ state, onStateChange }: P24FlowNetworksLabP
 
     const [pressure, setPressure] = useState(60);
     const [resistance, setResistance] = useState(35);
-    const phase = (state.phase as string) || 'intro';
 
     const throughput = useMemo(() => Math.max(0, Math.min(100, Math.round(pressure * 0.75 - resistance * 0.5 + 15))), [pressure, resistance]);
 

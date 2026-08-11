@@ -15,7 +15,6 @@ export function getP32Script(): Record<string, DialogNode> {
         misconception: {
             id: 'misconception',
             speaker: 'AI',
-            content: "Wind helps spread particles, but the real factor is **size vs. gravity**! Even in perfectly still air, some particles float for hours or even days.\n\nThe reason is **air resistance** -- tiny particles are so light that the air molecules bumping into them keep them suspended. The smaller the particle, the longer it floats. Big particles like sand fall fast, but particles smaller than 2.5 micrometers (called **PM2.5**) can hang in the air for days!",
             content: "Wind helps spread particles, but the real factor is **size vs. gravity**! Even in perfectly still air, some particles float for hours or even days.\n\nThe reason is **air resistance** -- tiny particles are so light that the air molecules bumping into them keep them suspended. The smaller the particle, the longer it floats. Big particles like sand fall fast, but particles smaller than 2.5 micrometers (called **PM2.5 (Particulate Matter)**) can hang in the air for days!",
             options: [
                 { id: 'cont', label: "So size determines how long a particle stays in the air?", nextNodeId: 'correct' }
@@ -24,7 +23,6 @@ export function getP32Script(): Record<string, DialogNode> {
         correct: {
             id: 'correct',
             speaker: 'AI',
-            content: "Exactly! **Particle size** determines everything about how dangerous air pollution is:\n\n1. **Large particles** (>10 micrometers) -- dust, pollen. They fall quickly and your nose catches most of them\n2. **PM10** (2.5-10 micrometers) -- fine dust. Float longer and get past your nose into your throat\n3. **PM2.5** (<2.5 micrometers) -- smoke, exhaust. Float for days and reach deep into your lungs\n4. **Ultrafine** (<0.1 micrometers) -- can pass through lung walls into your blood!\n\nThe smaller the particle, the more dangerous -- because **gravity can't pull it down** and your body can't filter it out.\n\nTry the **Particle Size** slider to see how different sizes behave in air!",
             content: "Exactly! **Particle size** determines everything about how dangerous air pollution is:\n\n1. **Large particles** (>10 micrometers) -- dust, pollen. They fall quickly and your nose catches most of them\n2. **PM10 (Particulate Matter)** (2.5-10 micrometers) -- fine dust. Float longer and get past your nose into your throat\n3. **PM2.5 (Particulate Matter)** (<2.5 micrometers) -- smoke, exhaust. Float for days and reach deep into your lungs\n4. **Ultrafine** (<0.1 micrometers) -- can pass through lung walls into your blood!\n\nThe smaller the particle, the more dangerous -- because **gravity can't pull it down** and your body can't filter it out.\n\nTry the **Particle Size** slider to see how different sizes behave in air!",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'explore' } },
             options: [
@@ -52,7 +50,6 @@ export function getP32Script(): Record<string, DialogNode> {
         checkpoint_wrong: {
             id: 'checkpoint_wrong',
             speaker: 'AI',
-            content: "The campfire is more immediately noticeable, but factory smoke can be worse! The tiny **PM2.5** particles from factories are so small they float for days and travel hundreds of miles.\n\nA tall smokestack doesn't make pollution disappear -- it just spreads it over a wider area. Those tiny particles eventually drift back down to ground level, where people breathe them in. The campfire smoke is visible but contains larger particles that settle faster!",
             content: "The campfire is more immediately noticeable, but factory smoke can be worse! The tiny **PM2.5 (Particulate Matter)** particles from factories are so small they float for days and travel hundreds of miles.\n\nA tall smokestack doesn't make pollution disappear -- it just spreads it over a wider area. Those tiny particles eventually drift back down to ground level, where people breathe them in. The campfire smoke is visible but contains larger particles that settle faster!",
             options: [
                 { id: 'retry', label: "Oh -- tall smokestacks just spread the tiny particles further!", nextNodeId: 'checkpoint_correct' }
@@ -61,7 +58,6 @@ export function getP32Script(): Record<string, DialogNode> {
         checkpoint_correct: {
             id: 'checkpoint_correct',
             speaker: 'AI',
-            content: "Correct! Height doesn't save you from tiny particles. **PM2.5 can travel for days** across hundreds of miles because gravity barely pulls on them.\n\nThis is why air pollution is a regional problem, not just a local one. A factory in one city can affect air quality in another city far away!\n\nIn C32 you'll learn about the **chemical reactions** that create some of the worst air pollutants -- and why some pollution is invisible!",
             content: "Correct! Height doesn't save you from tiny particles. **PM2.5 (Particulate Matter) can travel for days** across hundreds of miles because gravity barely pulls on them.\n\nThis is why air pollution is a regional problem, not just a local one. A factory in one city can affect air quality in another city far away!\n\nIn C32 you'll learn about the **chemical reactions** that create some of the worst air pollutants -- and why some pollution is invisible!",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint' } },
             options: [
@@ -71,7 +67,6 @@ export function getP32Script(): Record<string, DialogNode> {
         discovery: {
             id: 'discovery',
             speaker: 'AI',
-            content: "**You discovered the physics of air particles!**\n\nParticle size determines how air pollution behaves:\n- **Large particles** fall fast -- gravity wins easily\n- **PM2.5** (tiny particles) float for days -- air resistance beats gravity\n- Smaller particles reach **deeper** into your lungs\n- Tall smokestacks spread pollution further, not less\n- Air pollution is a **regional** problem because tiny particles travel far\n\nIn C32 you'll see how chemical reactions in the atmosphere create dangerous invisible pollutants!",
             content: "**You discovered the physics of air particles!**\n\nParticle size determines how air pollution behaves:\n- **Large particles** fall fast -- gravity wins easily\n- **PM2.5 (Particulate Matter)** (tiny particles) float for days -- air resistance beats gravity\n- Smaller particles reach **deeper** into your lungs\n- Tall smokestacks spread pollution further, not less\n- Air pollution is a **regional** problem because tiny particles travel far\n\nIn C32 you'll see how chemical reactions in the atmosphere create dangerous invisible pollutants!",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery' } },
             options: [
@@ -81,7 +76,6 @@ export function getP32Script(): Record<string, DialogNode> {
         complete: {
             id: 'complete',
             speaker: 'AI',
-            content: "**P32 Complete -- Particle Drift!**\n\nParticle size controls how long pollution stays in the air.\n\n**Summary Table:**\n| What You Learned | Key Idea | Why It Matters |\n| --- | --- | --- |\n| Tiny particles float for days | Air resistance beats gravity | PM2.5 stays airborne |\n| Bigger particles fall fast | Gravity wins | Less dangerous |\n| Smokestacks spread pollution | Height does not remove particles | Regional problem |\n\n**Up next:** C32 (Smog Reactions) -- how chemistry creates invisible air pollution!",
             content: "**P32 Complete -- Particle Drift!**\n\nParticle size controls how long pollution stays in the air.\n\n**Summary Table:**\n| What You Learned | Key Idea | Why It Matters |\n| --- | --- | --- |\n| Tiny particles float for days | Air resistance beats gravity | PM2.5 (Particulate Matter) stays airborne |\n| Bigger particles fall fast | Gravity wins | Less dangerous |\n| Smokestacks spread pollution | Height does not remove particles | Regional problem |\n\n**Up next:** C32 (Smog Reactions) -- how chemistry creates invisible air pollution!",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
             options: []

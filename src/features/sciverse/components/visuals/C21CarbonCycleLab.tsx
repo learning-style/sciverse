@@ -5,7 +5,7 @@ interface C21CarbonCycleLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const C21CarbonCycleLab = ({ state, onStateChange }: C21CarbonCycleLabProps) => {
+export const C21CarbonCycleLab = ({ onStateChange }: C21CarbonCycleLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -14,7 +14,6 @@ export const C21CarbonCycleLab = ({ state, onStateChange }: C21CarbonCycleLabPro
     const [photosynthesis, setPhotosynthesis] = useState(55);
     const [combustion, setCombustion] = useState(45);
     const [oceanUptake, setOceanUptake] = useState(50);
-    const phase = (state.phase as string) || 'intro';
 
     const plantUptake = useMemo(() => Math.round(photosynthesis * 0.8), [photosynthesis]);
     const emissionFlux = useMemo(() => Math.round(combustion * 0.9), [combustion]);

@@ -11,7 +11,7 @@ const MATERIAL_BASE: Record<string, number> = {
     wood: 62,
 };
 
-export const C17ConstructionMaterialsLab = ({ state, onStateChange }: C17ConstructionMaterialsLabProps) => {
+export const C17ConstructionMaterialsLab = ({ onStateChange }: C17ConstructionMaterialsLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -20,7 +20,6 @@ export const C17ConstructionMaterialsLab = ({ state, onStateChange }: C17Constru
     const [material, setMaterial] = useState<'concrete' | 'steel' | 'wood'>('concrete');
     const [moisture, setMoisture] = useState(25);
     const [temperature, setTemperature] = useState(20);
-    const phase = (state.phase as string) || 'intro';
 
     const strength = useMemo(() => {
         const base = MATERIAL_BASE[material];

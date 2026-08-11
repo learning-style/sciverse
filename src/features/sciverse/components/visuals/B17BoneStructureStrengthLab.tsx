@@ -29,7 +29,6 @@ export const B17BoneStructureStrengthLab = ({ state, onStateChange }: B17BoneStr
         const W = canvas.width;
         const H = canvas.height;
         tRef.current += 0.016;
-        const t = tRef.current;
 
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, W, H);

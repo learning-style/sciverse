@@ -5,7 +5,7 @@ interface P19SoilSupportsLifeLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const P19SoilSupportsLifeLab = ({ state, onStateChange }: P19SoilSupportsLifeLabProps) => {
+export const P19SoilSupportsLifeLab = ({ onStateChange }: P19SoilSupportsLifeLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -14,7 +14,6 @@ export const P19SoilSupportsLifeLab = ({ state, onStateChange }: P19SoilSupports
     const [compaction, setCompaction] = useState(35);
     const [moisture, setMoisture] = useState(55);
     const [organicMatter, setOrganicMatter] = useState(45);
-    const phase = (state.phase as string) || 'intro';
 
     const rootSupport = useMemo(() => {
         const moistureWindow = Math.max(0, 100 - Math.abs(moisture - 55) * 2.2);

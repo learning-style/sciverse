@@ -5,7 +5,7 @@ interface C23CorrosionLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const C23CorrosionLab = ({ state, onStateChange }: C23CorrosionLabProps) => {
+export const C23CorrosionLab = ({ onStateChange }: C23CorrosionLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -13,7 +13,6 @@ export const C23CorrosionLab = ({ state, onStateChange }: C23CorrosionLabProps) 
 
     const [humidity, setHumidity] = useState(60);
     const [salinity, setSalinity] = useState(45);
-    const phase = (state.phase as string) || 'intro';
 
     const oxidationRate = useMemo(() => Math.max(0, Math.min(100, Math.round(humidity * 0.5 + salinity * 0.45))), [humidity, salinity]);
 

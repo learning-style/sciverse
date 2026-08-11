@@ -5,7 +5,7 @@ interface P25ChaosMotionLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const P25ChaosMotionLab = ({ state, onStateChange }: P25ChaosMotionLabProps) => {
+export const P25ChaosMotionLab = ({ onStateChange }: P25ChaosMotionLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -15,7 +15,6 @@ export const P25ChaosMotionLab = ({ state, onStateChange }: P25ChaosMotionLabPro
 
     const [initialOffset, setInitialOffset] = useState(20);
     const [nonlinearity, setNonlinearity] = useState(55);
-    const phase = (state.phase as string) || 'intro';
 
     const divergence = useMemo(() => Math.max(0, Math.min(100, Math.round(initialOffset * 0.5 + nonlinearity * 0.7))), [initialOffset, nonlinearity]);
 

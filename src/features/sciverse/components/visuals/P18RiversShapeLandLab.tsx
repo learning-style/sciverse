@@ -5,7 +5,7 @@ interface P18RiversShapeLandLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const P18RiversShapeLandLab = ({ state, onStateChange }: P18RiversShapeLandLabProps) => {
+export const P18RiversShapeLandLab = ({ onStateChange }: P18RiversShapeLandLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -14,7 +14,6 @@ export const P18RiversShapeLandLab = ({ state, onStateChange }: P18RiversShapeLa
     const [flow, setFlow] = useState(55);
     const [slope, setSlope] = useState(40);
     const [sediment, setSediment] = useState(45);
-    const phase = (state.phase as string) || 'intro';
 
     const erosion = useMemo(() => Math.max(0, Math.min(100, Math.round(flow * 0.45 + slope * 0.45 - sediment * 0.18))), [flow, slope, sediment]);
 

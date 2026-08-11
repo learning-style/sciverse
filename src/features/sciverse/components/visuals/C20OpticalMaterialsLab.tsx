@@ -12,7 +12,7 @@ const REFRACTIVE_INDEX: Record<string, number> = {
     acrylic: 1.49,
 };
 
-export const C20OpticalMaterialsLab = ({ state, onStateChange }: C20OpticalMaterialsLabProps) => {
+export const C20OpticalMaterialsLab = ({ onStateChange }: C20OpticalMaterialsLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -20,7 +20,6 @@ export const C20OpticalMaterialsLab = ({ state, onStateChange }: C20OpticalMater
 
     const [material, setMaterial] = useState<'air' | 'water' | 'glass' | 'acrylic'>('glass');
     const [incidentAngle, setIncidentAngle] = useState(35);
-    const phase = (state.phase as string) || 'intro';
 
     const refractedAngle = useMemo(() => {
         const n2 = REFRACTIVE_INDEX[material];
@@ -30,7 +29,6 @@ export const C20OpticalMaterialsLab = ({ state, onStateChange }: C20OpticalMater
     }, [material, incidentAngle]);
 
     const transmittance = material === 'glass' ? 92 : material === 'acrylic' ? 90 : material === 'water' ? 88 : 98;
-    const bendStrength = useMemo(() => Math.max(0, Math.round(incidentAngle - refractedAngle)), [incidentAngle, refractedAngle]);
 
     const draw = useCallback(() => {
         const canvas = canvasRef.current;

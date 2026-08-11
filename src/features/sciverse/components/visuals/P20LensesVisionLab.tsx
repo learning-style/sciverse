@@ -5,7 +5,7 @@ interface P20LensesVisionLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const P20LensesVisionLab = ({ state, onStateChange }: P20LensesVisionLabProps) => {
+export const P20LensesVisionLab = ({ onStateChange }: P20LensesVisionLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -14,7 +14,6 @@ export const P20LensesVisionLab = ({ state, onStateChange }: P20LensesVisionLabP
     const [opticType, setOpticType] = useState<'convex-lens' | 'concave-lens' | 'concave-mirror'>('convex-lens');
     const [focalLengthCm, setFocalLengthCm] = useState(20);
     const [objectDistanceCm, setObjectDistanceCm] = useState(45);
-    const phase = (state.phase as string) || 'intro';
 
     const imageDistance = useMemo(() => {
         const f = opticType === 'concave-lens' ? -focalLengthCm : focalLengthCm;

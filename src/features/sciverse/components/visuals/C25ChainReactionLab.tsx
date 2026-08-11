@@ -5,7 +5,7 @@ interface C25ChainReactionLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const C25ChainReactionLab = ({ state, onStateChange }: C25ChainReactionLabProps) => {
+export const C25ChainReactionLab = ({ onStateChange }: C25ChainReactionLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -13,7 +13,6 @@ export const C25ChainReactionLab = ({ state, onStateChange }: C25ChainReactionLa
 
     const [initiator, setInitiator] = useState(20);
     const [inhibitor, setInhibitor] = useState(30);
-    const phase = (state.phase as string) || 'intro';
 
     const amplification = useMemo(() => Math.max(0, Math.min(100, Math.round(initiator * 0.8 - inhibitor * 0.6 + 25))), [initiator, inhibitor]);
 
@@ -30,7 +29,6 @@ export const C25ChainReactionLab = ({ state, onStateChange }: C25ChainReactionLa
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, W, H);
 
-        const initFrac = initiator / 100;
         const inhFrac = inhibitor / 100;
         const ampFrac = amplification / 100;
 
@@ -54,7 +52,6 @@ export const C25ChainReactionLab = ({ state, onStateChange }: C25ChainReactionLa
                 const isActive = i < activeCount;
 
                 // Connection from parent
-                const parentG = g === 0 ? 0 : g;
                 const parentX = g === 0 ? startX : gx - (W * 0.82 / gens);
                 const parentY = g === 0 ? startY : H * 0.15 + (H * 0.7 / (Math.max(1, maxPerGen[g - 1]) + 1)) * (Math.floor(i / 2) + 1);
 

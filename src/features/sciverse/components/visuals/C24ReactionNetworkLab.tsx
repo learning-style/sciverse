@@ -5,7 +5,7 @@ interface C24ReactionNetworkLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const C24ReactionNetworkLab = ({ state, onStateChange }: C24ReactionNetworkLabProps) => {
+export const C24ReactionNetworkLab = ({ onStateChange }: C24ReactionNetworkLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -13,7 +13,6 @@ export const C24ReactionNetworkLab = ({ state, onStateChange }: C24ReactionNetwo
 
     const [catalyst, setCatalyst] = useState(40);
     const [bottleneck, setBottleneck] = useState(50);
-    const phase = (state.phase as string) || 'intro';
 
     const yieldScore = useMemo(() => Math.max(0, Math.min(100, Math.round(catalyst * 0.65 - bottleneck * 0.45 + 30))), [catalyst, bottleneck]);
 

@@ -5,7 +5,7 @@ interface C19SoilChemistryLabProps {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-export const C19SoilChemistryLab = ({ state, onStateChange }: C19SoilChemistryLabProps) => {
+export const C19SoilChemistryLab = ({ onStateChange }: C19SoilChemistryLabProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const animRef = useRef<number>(0);
@@ -14,7 +14,6 @@ export const C19SoilChemistryLab = ({ state, onStateChange }: C19SoilChemistryLa
     const [ph, setPh] = useState(6.8);
     const [nitrogen, setNitrogen] = useState(55);
     const [salinity, setSalinity] = useState(20);
-    const phase = (state.phase as string) || 'intro';
 
     const nutrientAvailability = useMemo(() => {
         const phPenalty = Math.abs(6.8 - ph) * 30;
