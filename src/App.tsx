@@ -9,9 +9,14 @@ import { LessonShell } from '@/features/sciverse/modules/LessonShell';
 import { ScienceLab } from '@/features/science-lab/ScienceLab';
 import { AssessmentShell } from '@/features/sciverse/modules/AssessmentShell';
 
+// Vite injects BASE_URL from the build's --base flag: '/' for Vercel and the
+// dev server, '/sciverse/' for the GitHub Pages project site. Router needs it
+// without the trailing slash.
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 function App() {
   return (
-    <Router>
+    <Router basename={basename}>
       <Routes>
         {/* Main Portfolio Layout */}
         <Route path="/" element={<Layout />}>
