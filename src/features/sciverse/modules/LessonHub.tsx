@@ -42,10 +42,18 @@ const BIG_IDEA_COLORS = [
     'from-purple-700/20 to-purple-900/10',
     'from-cyan-600/20 to-cyan-800/10',
     'from-red-700/20 to-red-900/10',
+    'from-lime-600/20 to-lime-800/10',
+    'from-amber-600/20 to-amber-800/10',
+    'from-teal-600/20 to-teal-800/10',
+    'from-sky-600/20 to-sky-800/10',
+    'from-violet-600/20 to-violet-800/10',
+    'from-fuchsia-600/20 to-fuchsia-800/10',
+    'from-slate-600/20 to-slate-800/10',
+    'from-emerald-600/20 to-emerald-800/10',
 ];
 
 export const LessonHub = () => {
-    const bigIdeas = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
+    const bigIdeas = Array.from({ length: 40 }, (_, i) => i + 1);
 
     return (
         <div className="min-h-screen bg-slate-950 text-slate-100 font-mono">
@@ -57,7 +65,7 @@ export const LessonHub = () => {
                     </Link>
                     <span className="font-bold text-lg tracking-tight">SCI<span className="text-indigo-500">VERSE</span></span>
                 </div>
-                <span className="text-xs text-slate-500 tracking-widest uppercase">96 Interactive Lessons</span>
+                <span className="text-xs text-slate-500 tracking-widest uppercase">120 Interactive Lessons</span>
             </div>
 
             {/* Hero */}
@@ -66,7 +74,7 @@ export const LessonHub = () => {
                     Explore Science Across <span className="text-indigo-400">Disciplines</span>
                 </h1>
                 <p className="text-slate-400 text-sm max-w-xl mx-auto">
-                    32 Big Ideas. 3 Disciplines. 96 Lessons connecting Physics, Chemistry, and Biology.
+                    40 Big Ideas. 3 Disciplines. 120 Lessons connecting Physics, Chemistry, and Biology.
                 </p>
                 <div className="flex justify-center gap-6 mt-6">
                     {Object.entries(DISCIPLINE_BADGE).map(([key, d]) => {
