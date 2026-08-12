@@ -102,6 +102,7 @@ import { B31WaterWasteBiologyLab } from '../components/visuals/B31WaterWasteBiol
 import { P32AirQualityPhysicsLab } from '../components/visuals/P32AirQualityPhysicsLab';
 import { C32AirQualityChemistryLab } from '../components/visuals/C32AirQualityChemistryLab';
 import { B32AirQualityBiologyLab } from '../components/visuals/B32AirQualityBiologyLab';
+import { EXTENDED_LAB_COMPONENTS } from '../components/visuals/extendedLabs';
 
 const DISCIPLINE_CONFIG = {
     physics: { icon: Atom, color: 'text-indigo-400', bg: 'bg-indigo-500/10', border: 'border-indigo-500/30', accent: 'indigo' },
@@ -138,6 +139,14 @@ const LESSONS_WITH_NATIVE_CONTROLS = new Set([
     'p30', 'c30', 'b30',
     'p31', 'c31', 'b31',
     'p32', 'c32', 'b32',
+    'p33', 'c33', 'b33',
+    'p34', 'c34', 'b34',
+    'p35', 'c35', 'b35',
+    'p36', 'c36', 'b36',
+    'p37', 'c37', 'b37',
+    'p38', 'c38', 'b38',
+    'p39', 'c39', 'b39',
+    'p40', 'c40', 'b40',
 ]);
 
 interface WalkthroughGuide {
@@ -532,6 +541,8 @@ const VisualPanel = ({ state, lesson }: { state: Record<string, unknown>; lesson
 export const LessonShell = () => {
     const { lessonId: rawLessonId } = useParams<{ lessonId: string }>();
     const lessonId = (rawLessonId || '').toLowerCase();
+    // Big Idea 33+ labs are resolved from a map instead of the ternary chain below.
+    const ExtendedLab = EXTENDED_LAB_COMPONENTS[lessonId];
     const [visualState, setVisualState] = useState<Record<string, unknown>>({ phase: 'intro' });
     const [showCanvasControls, setShowCanvasControls] = useState(true);
 
@@ -768,7 +779,9 @@ export const LessonShell = () => {
                     )}
 
                     <div className="flex-grow relative min-h-0 flex">
-                    {lessonId === 'p1' ? (
+                    {ExtendedLab ? (
+                        <ExtendedLab state={visualState} onStateChange={handleSliderChange} />
+                    ) : lessonId === 'p1' ? (
                         <P1CrateLab state={visualState} onStateChange={handleSliderChange} />
                     ) : lessonId === 'c1' ? (
                         <C1ParticleLab state={visualState} onSliderChange={(temp) => handleSliderChange('temperature', temp)} />

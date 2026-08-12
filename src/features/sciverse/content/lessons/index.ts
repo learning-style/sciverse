@@ -102,6 +102,30 @@ import { getB31Script } from './b31-water-waste-biology';
 import { getP32Script } from './p32-air-quality-physics';
 import { getC32Script } from './c32-air-quality-chemistry';
 import { getB32Script } from './b32-air-quality-biology';
+import { getP33Script } from './p33-energy-flow-physics';
+import { getC33Script } from './c33-nutrient-cycling';
+import { getB33Script } from './b33-ecosystem-services';
+import { getP34Script } from './p34-irrigation-physics';
+import { getC34Script } from './c34-fertilizer-chemistry';
+import { getB34Script } from './b34-farm-biology';
+import { getP35Script } from './p35-waste-sorting-physics';
+import { getC35Script } from './c35-recycling-chemistry';
+import { getB35Script } from './b35-composting-biology';
+import { getP36Script } from './p36-filtration-physics';
+import { getC36Script } from './c36-water-purification-chemistry';
+import { getB36Script } from './b36-water-safety-biology';
+import { getP37Script } from './p37-energy-storage-physics';
+import { getC37Script } from './c37-battery-chemistry';
+import { getB37Script } from './b37-energy-storage-biology';
+import { getP38Script } from './p38-feedback-loops-physics';
+import { getC38Script } from './c38-sensor-materials-chemistry';
+import { getB38Script } from './b38-biological-sensing';
+import { getP39Script } from './p39-binary-logic-physics';
+import { getC39Script } from './c39-semiconductor-chemistry';
+import { getB39Script } from './b39-neural-logic-biology';
+import { getP40Script } from './p40-measurement-uncertainty';
+import { getC40Script } from './c40-experimental-controls';
+import { getB40Script } from './b40-evidence-biology';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -968,6 +992,30 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'p32': getP32Script,
     'c32': getC32Script,
     'b32': getB32Script,
+    'p33': getP33Script,
+    'c33': getC33Script,
+    'b33': getB33Script,
+    'p34': getP34Script,
+    'c34': getC34Script,
+    'b34': getB34Script,
+    'p35': getP35Script,
+    'c35': getC35Script,
+    'b35': getB35Script,
+    'p36': getP36Script,
+    'c36': getC36Script,
+    'b36': getB36Script,
+    'p37': getP37Script,
+    'c37': getC37Script,
+    'b37': getB37Script,
+    'p38': getP38Script,
+    'c38': getC38Script,
+    'b38': getB38Script,
+    'p39': getP39Script,
+    'c39': getC39Script,
+    'b39': getB39Script,
+    'p40': getP40Script,
+    'c40': getC40Script,
+    'b40': getB40Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1246,5 +1294,45 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'p32', title: 'Particle Drift', subtitle: 'How particle size controls airflow and danger', discipline: 'physics', bigIdea: 32, bigIdeaTitle: 'How Does Air Quality Affect Breathing?', icon: '💨', accentColor: 'indigo', crossLinks: ['c32', 'b32'] },
     { id: 'c32', title: 'Smog Reactions', subtitle: 'How sunlight turns exhaust into dangerous ozone', discipline: 'chemistry', bigIdea: 32, bigIdeaTitle: 'How Does Air Quality Affect Breathing?', icon: '🌫️', accentColor: 'emerald', crossLinks: ['p32', 'b32'] },
     { id: 'b32', title: 'Breathing Under Siege', subtitle: 'How pollution particles damage your lungs', discipline: 'biology', bigIdea: 32, bigIdeaTitle: 'How Does Air Quality Affect Breathing?', icon: '🫁', accentColor: 'rose', crossLinks: ['p32', 'c32'] },
+
+    // Big Idea 33: "How Do Ecosystems Support Human Life?"
+    { id: 'p33', title: 'The Energy Ladder', subtitle: 'Sunlight shrinks 90% at every step', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🌞', accentColor: 'indigo', crossLinks: ['c33', 'b33'] },
+    { id: 'c33', title: 'Nature\'s Recycling Loop', subtitle: 'Atoms get used over and over forever', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🍂', accentColor: 'emerald', crossLinks: ['p33', 'b33'] },
+    { id: 'b33', title: 'Nature\'s Free Gifts', subtitle: 'Clean air, water, and food for free', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🐝', accentColor: 'rose', crossLinks: ['p33', 'c33'] },
+
+    // Big Idea 34: "How Do Farms Feed a Growing World?"
+    { id: 'p34', title: 'Water on the Move', subtitle: 'Getting water to roots without wasting it', discipline: 'physics', bigIdea: 34, bigIdeaTitle: 'How Do Farms Feed a Growing World?', icon: '💧', accentColor: 'indigo', crossLinks: ['c34', 'b34'] },
+    { id: 'c34', title: 'Plant Food Chemistry', subtitle: 'Feeding crops without poisoning rivers', discipline: 'chemistry', bigIdea: 34, bigIdeaTitle: 'How Do Farms Feed a Growing World?', icon: '🧪', accentColor: 'emerald', crossLinks: ['p34', 'b34'] },
+    { id: 'b34', title: 'The Farm Team', subtitle: 'Bees, worms, and pests decide the harvest', discipline: 'biology', bigIdea: 34, bigIdeaTitle: 'How Do Farms Feed a Growing World?', icon: '🐝', accentColor: 'rose', crossLinks: ['p34', 'c34'] },
+
+    // Big Idea 35: "How Can We Turn Waste Into Resources?"
+    { id: 'p35', title: 'The Sorting Machine', subtitle: 'Magnets, air, and density pull trash apart', discipline: 'physics', bigIdea: 35, bigIdeaTitle: 'How Can We Turn Waste Into Resources?', icon: '🧲', accentColor: 'indigo', crossLinks: ['c35', 'b35'] },
+    { id: 'c35', title: 'Melt and Remake', subtitle: 'Why metal recycles forever but plastic does not', discipline: 'chemistry', bigIdea: 35, bigIdeaTitle: 'How Can We Turn Waste Into Resources?', icon: '🔥', accentColor: 'emerald', crossLinks: ['p35', 'b35'] },
+    { id: 'b35', title: 'The Compost Crew', subtitle: 'Microbes turn scraps into soil', discipline: 'biology', bigIdea: 35, bigIdeaTitle: 'How Can We Turn Waste Into Resources?', icon: '🪱', accentColor: 'rose', crossLinks: ['p35', 'c35'] },
+
+    // Big Idea 36: "How Do We Make Water Safe to Drink?"
+    { id: 'p36', title: 'Trapped by the Filter', subtitle: 'Hole size decides what gets caught', discipline: 'physics', bigIdea: 36, bigIdeaTitle: 'How Do We Make Water Safe to Drink?', icon: '🕳️', accentColor: 'indigo', crossLinks: ['c36', 'b36'] },
+    { id: 'c36', title: 'Chlorine Patrol', subtitle: 'Chemistry destroys what filters miss', discipline: 'chemistry', bigIdea: 36, bigIdeaTitle: 'How Do We Make Water Safe to Drink?', icon: '🧴', accentColor: 'emerald', crossLinks: ['p36', 'b36'] },
+    { id: 'b36', title: 'Water Detectives', subtitle: 'Growing invisible germs until you can count them', discipline: 'biology', bigIdea: 36, bigIdeaTitle: 'How Do We Make Water Safe to Drink?', icon: '🔬', accentColor: 'rose', crossLinks: ['p36', 'c36'] },
+
+    // Big Idea 37: "How Do We Store Energy for Later?"
+    { id: 'p37', title: 'Save It for Later', subtitle: 'Pumping water uphill to store energy', discipline: 'physics', bigIdea: 37, bigIdeaTitle: 'How Do We Store Energy for Later?', icon: '⛰️', accentColor: 'indigo', crossLinks: ['c37', 'b37'] },
+    { id: 'c37', title: 'Inside a Battery', subtitle: 'A chemical reaction waiting to happen', discipline: 'chemistry', bigIdea: 37, bigIdeaTitle: 'How Do We Store Energy for Later?', icon: '🔋', accentColor: 'emerald', crossLinks: ['p37', 'b37'] },
+    { id: 'b37', title: 'Your Body\'s Battery', subtitle: 'Fast glycogen and huge fat reserves', discipline: 'biology', bigIdea: 37, bigIdeaTitle: 'How Do We Store Energy for Later?', icon: '🍞', accentColor: 'rose', crossLinks: ['p37', 'c37'] },
+
+    // Big Idea 38: "How Do Robots Sense and Act?"
+    { id: 'p38', title: 'The Feedback Loop', subtitle: 'Sense, compare, correct, repeat', discipline: 'physics', bigIdea: 38, bigIdeaTitle: 'How Do Robots Sense and Act?', icon: '🔁', accentColor: 'indigo', crossLinks: ['c38', 'b38'] },
+    { id: 'c38', title: 'Sensors Made of Chemistry', subtitle: 'Turning light and heat into electricity', discipline: 'chemistry', bigIdea: 38, bigIdeaTitle: 'How Do Robots Sense and Act?', icon: '📡', accentColor: 'emerald', crossLinks: ['p38', 'b38'] },
+    { id: 'b38', title: 'Nature\'s Robots', subtitle: 'Animals ran this loop first', discipline: 'biology', bigIdea: 38, bigIdeaTitle: 'How Do Robots Sense and Act?', icon: '🦇', accentColor: 'rose', crossLinks: ['p38', 'c38'] },
+
+    // Big Idea 39: "How Do Computers Use Logic to Solve Problems?"
+    { id: 'p39', title: 'On, Off, Answer', subtitle: 'Switches and gates make every decision', discipline: 'physics', bigIdea: 39, bigIdeaTitle: 'How Do Computers Use Logic to Solve Problems?', icon: '🔌', accentColor: 'indigo', crossLinks: ['c39', 'b39'] },
+    { id: 'c39', title: 'The Magic Middle', subtitle: 'Silicon: not quite conductor, not quite insulator', discipline: 'chemistry', bigIdea: 39, bigIdeaTitle: 'How Do Computers Use Logic to Solve Problems?', icon: '🔬', accentColor: 'emerald', crossLinks: ['p39', 'b39'] },
+    { id: 'b39', title: 'Brain Circuits', subtitle: 'Neurons fire all-or-nothing, and they learn', discipline: 'biology', bigIdea: 39, bigIdeaTitle: 'How Do Computers Use Logic to Solve Problems?', icon: '🧠', accentColor: 'rose', crossLinks: ['p39', 'c39'] },
+
+    // Big Idea 40: "How Do We Use Data to Know What Is True?"
+    { id: 'p40', title: 'Measure It Again', subtitle: 'Every measurement has wiggle room', discipline: 'physics', bigIdea: 40, bigIdeaTitle: 'How Do We Use Data to Know What Is True?', icon: '📏', accentColor: 'indigo', crossLinks: ['c40', 'b40'] },
+    { id: 'c40', title: 'The Fair Test', subtitle: 'Change one thing, keep the rest the same', discipline: 'chemistry', bigIdea: 40, bigIdeaTitle: 'How Do We Use Data to Know What Is True?', icon: '⚗️', accentColor: 'emerald', crossLinks: ['p40', 'b40'] },
+    { id: 'b40', title: 'Follow the Evidence', subtitle: 'Sample size decides what you can claim', discipline: 'biology', bigIdea: 40, bigIdeaTitle: 'How Do We Use Data to Know What Is True?', icon: '🔍', accentColor: 'rose', crossLinks: ['p40', 'c40'] },
 ];
 

@@ -123,7 +123,10 @@ Sciverse will follow a three-level progression over a shared Big Idea backbone.
 - **Level 2 (Grades 9-12):** deeper treatment of the same 50 Big Ideas with higher rigor.
 - **Level 3 (Advanced):** systems-level depth and synthesis across the same 50 Big Ideas.
 
-Implementation note:
-- Big Ideas 1-15 are currently implemented.
-- Big Ideas 16-55 are now defined as the next Level 1 expansion set in:
+Implementation note (updated 2026-08-11):
+- **Big Ideas 1-40 are implemented** for Level 1 — 120 lessons with scripts, visual labs,
+  registry entries, shell routing, and assessments.
+- **Big Ideas 41-50 remain** to complete the Level 1 target.
+- Big Ideas 51-55 are defined but held as a reserve pool outside the 50-Big-Idea target.
+- The canonical Big Idea catalog (and the single source of truth for numbering) is:
     - `src/Artifacts/A11-Sciverse-Level1-BigIdeas-16-55.md`

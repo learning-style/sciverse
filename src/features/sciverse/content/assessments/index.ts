@@ -24,6 +24,21 @@ import { bigIdea22Assessment } from './bigIdea22';
 import { bigIdea23Assessment } from './bigIdea23';
 import { bigIdea24Assessment } from './bigIdea24';
 import { bigIdea25Assessment } from './bigIdea25';
+import { bigIdea26Assessment } from './bigIdea26';
+import { bigIdea27Assessment } from './bigIdea27';
+import { bigIdea28Assessment } from './bigIdea28';
+import { bigIdea29Assessment } from './bigIdea29';
+import { bigIdea30Assessment } from './bigIdea30';
+import { bigIdea31Assessment } from './bigIdea31';
+import { bigIdea32Assessment } from './bigIdea32';
+import { bigIdea33Assessment } from './bigIdea33';
+import { bigIdea34Assessment } from './bigIdea34';
+import { bigIdea35Assessment } from './bigIdea35';
+import { bigIdea36Assessment } from './bigIdea36';
+import { bigIdea37Assessment } from './bigIdea37';
+import { bigIdea38Assessment } from './bigIdea38';
+import { bigIdea39Assessment } from './bigIdea39';
+import { bigIdea40Assessment } from './bigIdea40';
 
 export const ASSESSMENTS: Record<number, AssessmentData> = {
     1: bigIdea1Assessment,
@@ -51,6 +66,21 @@ export const ASSESSMENTS: Record<number, AssessmentData> = {
     23: bigIdea23Assessment,
     24: bigIdea24Assessment,
     25: bigIdea25Assessment,
+    26: bigIdea26Assessment,
+    27: bigIdea27Assessment,
+    28: bigIdea28Assessment,
+    29: bigIdea29Assessment,
+    30: bigIdea30Assessment,
+    31: bigIdea31Assessment,
+    32: bigIdea32Assessment,
+    33: bigIdea33Assessment,
+    34: bigIdea34Assessment,
+    35: bigIdea35Assessment,
+    36: bigIdea36Assessment,
+    37: bigIdea37Assessment,
+    38: bigIdea38Assessment,
+    39: bigIdea39Assessment,
+    40: bigIdea40Assessment,
 };
 
 export const getAssessment = (bigIdea: number): AssessmentData | undefined =>
