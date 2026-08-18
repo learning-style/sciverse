@@ -7,7 +7,7 @@ interface Props {
 }
 
 const LEVELS = ['Grass', 'Rabbits', 'Foxes', 'Hawks', 'Eagles'];
-const COLORS = ['#65a30d', '#ca8a04', '#c2410c', '#9f1239', '#581c87'];
+const COLORS = ['#4d7c0f', '#a16207', '#c2410c', '#9f1239', '#5b21b6'];
 
 /** Energy pyramid: each trophic level keeps only ~10% of the level below. */
 export const P33EnergyLadderLab = ({ state, onStateChange }: Props) => {
@@ -15,61 +15,68 @@ export const P33EnergyLadderLab = ({ state, onStateChange }: Props) => {
 
     const drawScene = ({ ctx, H, safeRight, raw }: LabScene) => {
         const steps = raw;
-        const baseY = H - 110;
-        const bandH = 30;
-        const maxW = safeRight * 0.62;
+        const cx = safeRight / 2;
+
+        // Reserve space: headline block above, sun caption below. Bands then
+        // share whatever is left, so 5 levels fit without overlapping.
+        const pyramidBottom = H - 62;
+        const pyramidTop = 132;
+        const slot = Math.max(26, (pyramidBottom - pyramidTop) / steps);
+        const bandH = Math.min(36, slot * 0.72);
+        const maxW = safeRight * 0.5;
 
         for (let i = 0; i < steps; i++) {
-            // Each level keeps 10% of the one below it.
-            const energy = Math.pow(0.1, i);
-            // Width uses a gentler scale so the top bands stay visible.
-            const w = Math.max(18, maxW * Math.pow(0.45, i));
-            const y = baseY - i * (bandH + 12);
-            const x = safeRight / 2 - w / 2;
+            const w = Math.max(46, maxW * Math.pow(0.58, i));
+            const y = pyramidBottom - i * slot - bandH;
+            const x = cx - w / 2;
 
             ctx.fillStyle = COLORS[i];
             ctx.fillRect(x, y, w, bandH);
-            ctx.strokeStyle = '#1e293b';
+            ctx.strokeStyle = '#0f172a';
             ctx.lineWidth = 2;
             ctx.strokeRect(x, y, w, bandH);
 
-            outlineText(ctx, LEVELS[i], safeRight / 2, y + 20, 'bold 13px monospace', '#ffffff');
+            // Name sits inside the band, white on a dark fill.
+            ctx.font = 'bold 15px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText(LEVELS[i], cx, y + bandH / 2 + 5);
 
-            const pct = energy * 100;
-            const label = pct >= 1 ? `${pct.toFixed(0)}%` : pct >= 0.01 ? `${pct.toFixed(2)}%` : `${pct.toExponential(0)}%`;
-            outlineText(ctx, label, x + w + 46, y + 20, 'bold 12px monospace');
+            // Energy remaining, clamped so it never runs into the gutter.
+            const energyPct = Math.pow(0.1, i) * 100;
+            const label = energyPct >= 1 ? `${energyPct.toFixed(0)}%`
+                : energyPct >= 0.01 ? `${energyPct.toFixed(2)}%`
+                : `${energyPct.toExponential(0)}%`;
+            const lx = Math.min(x + w + 12, safeRight - 96);
+            outlineText(ctx, `${label} left`, lx, y + bandH / 2 + 5, 'bold 14px monospace', '#0f172a', 'left');
 
-            // Heat escaping from this level.
+            // Heat escaping, on the opposite side so the two never collide.
             if (i < steps - 1) {
-                ctx.fillStyle = '#f97316';
-                ctx.font = '13px monospace';
-                ctx.textAlign = 'left';
-                ctx.fillText('heat lost', x + w + 90, y + 20);
+                const hx = Math.max(x - 12, 84);
+                outlineText(ctx, '90% lost as heat', hx, y + bandH / 2 + 5, 'bold 12px monospace', '#c2410c', 'right');
             }
         }
 
-        // Sun feeding the base.
+        // Sun caption anchored to the bottom edge.
         ctx.fillStyle = '#facc15';
         ctx.beginPath();
-        ctx.arc(safeRight / 2, baseY + 52, 20, 0, Math.PI * 2);
+        ctx.arc(cx - 132, H - 34, 11, 0, Math.PI * 2);
         ctx.fill();
-        ctx.strokeStyle = '#ca8a04';
+        ctx.strokeStyle = '#a16207';
         ctx.lineWidth = 2;
         ctx.stroke();
-        outlineText(ctx, 'SUN: 100% energy in', safeRight / 2, baseY + 92, 'bold 12px monospace');
+        outlineText(ctx, 'SUN — 100% of the energy enters here', cx + 12, H - 29, 'bold 14px monospace');
 
+        // Headline readouts.
         const topEnergy = Math.pow(0.1, steps - 1) * 100;
+        const topLabel = topEnergy >= 0.01 ? topEnergy.toFixed(2) : topEnergy.toExponential(0);
+        outlineText(ctx, `Top animal receives ${topLabel}% of the Sun's energy`, cx, 88, 'bold 15px monospace');
         const msg = steps <= 2
-            ? 'Short chain! Most of the Sun\'s energy is still here.'
+            ? 'Short chain — most of the energy is still here.'
             : steps === 3
-                ? 'Three steps: only 1% of the Sun\'s energy is left.'
-                : 'Long chain! Almost all the energy is gone as heat.';
-        outlineText(ctx, msg, safeRight / 2, 82, 'bold 13px monospace');
-        outlineText(
-            ctx,
-            `Top level keeps ${topEnergy >= 0.01 ? topEnergy.toFixed(2) : topEnergy.toExponential(0)}% of the sunlight`,
-            safeRight / 2, 104, 'bold 12px monospace'
-        );
+                ? 'Three steps — only about 1% is left.'
+                : 'Long chain — nearly all the energy is gone.';
+        outlineText(ctx, msg, cx, 112, 'bold 14px monospace');
     };
 
     return (

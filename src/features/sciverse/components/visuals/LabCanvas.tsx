@@ -172,12 +172,17 @@ export const LabCanvas = ({
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
-        const W = canvas.width;
-        const H = canvas.height;
+        // The backing store is sized in device pixels so text stays sharp on
+        // high-DPI screens; the transform below lets every scene keep drawing
+        // in plain CSS pixels.
+        const dpr = window.devicePixelRatio || 1;
+        const W = canvas.width / dpr;
+        const H = canvas.height / dpr;
         if (W === 0 || H === 0) {
             animRef.current = requestAnimationFrame(draw);
             return;
         }
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
         tRef.current += 0.016;
         const t = tRef.current;
@@ -190,8 +195,8 @@ export const LabCanvas = ({
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, W, H);
 
-        outlineText(ctx, title, safeRight / 2, 28, 'bold 20px monospace');
-        outlineText(ctx, readout({ v, raw }), safeRight / 2, 54, 'bold 15px monospace');
+        outlineText(ctx, title, safeRight / 2, 30, 'bold 22px monospace');
+        outlineText(ctx, readout({ v, raw }), safeRight / 2, 56, 'bold 16px monospace');
 
         drawScene({ ctx, W, H, safeRight, t, v, raw });
 
@@ -222,8 +227,9 @@ export const LabCanvas = ({
         const resize = () => {
             const canvas = canvasRef.current;
             if (!canvas) return;
-            canvas.width = node.clientWidth;
-            canvas.height = node.clientHeight;
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = Math.round(node.clientWidth * dpr);
+            canvas.height = Math.round(node.clientHeight * dpr);
         };
         resize();
         const obs = new ResizeObserver(resize);
@@ -244,9 +250,9 @@ export const LabCanvas = ({
             <canvas ref={canvasRef} className="w-full h-full" />
             <div
                 data-lab-controls="true"
-                className="absolute left-2 bottom-2 bg-white border border-slate-300 rounded-lg p-2 w-[210px] shadow-md z-10"
+                className="absolute right-2 top-2 bg-white/95 backdrop-blur-sm border border-slate-300 rounded-lg p-3 w-[240px] max-w-[46%] shadow-md z-10"
             >
-                <label className={`text-[13px] font-bold ${ACCENT_TEXT[accent]}`}>
+                <label className={`block mb-1 text-[13px] font-bold leading-snug ${ACCENT_TEXT[accent]}`}>
                     {controlLabel}: {display}
                 </label>
                 <input
