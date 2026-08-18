@@ -167,13 +167,13 @@ export const AssessmentShell = () => {
         <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-800">
             {/* Header */}
             <div className="bg-white border-b border-slate-200 px-4 py-3 flex items-center gap-4">
-                <Link to="/projects/science-lab" className="text-slate-400 hover:text-slate-600 font-bold text-lg">←</Link>
+                <Link to="/projects/science-lab" className="text-slate-500 hover:text-slate-800 font-bold text-lg">←</Link>
                 <div className="flex-1">
-                    <p className="text-xs font-bold text-slate-400 uppercase tracking-wide">Assessment</p>
+                    <p className="text-xs font-bold text-slate-600 uppercase tracking-wide">Assessment</p>
                     <p className="text-sm font-bold text-slate-700">{assessment.icon} Big Idea {bigIdea}: {assessment.title}</p>
                 </div>
                 <div className="text-right">
-                    <p className="text-xs text-slate-400">Score</p>
+                    <p className="text-xs text-slate-600">Score</p>
                     <p className="text-sm font-bold text-blue-600">{score}/{total}</p>
                 </div>
             </div>
@@ -186,7 +186,7 @@ export const AssessmentShell = () => {
             <div className="max-w-2xl mx-auto p-6">
                 {/* Question number + badges */}
                 <div className="flex items-center gap-2 mb-4">
-                    <span className="text-sm font-bold text-slate-400">Q{currentQ + 1}/{total}</span>
+                    <span className="text-sm font-bold text-slate-600">Q{currentQ + 1}/{total}</span>
                     <span className={`text-xs font-bold px-2 py-0.5 rounded-full border ${diffClass}`}>{q.difficulty.toUpperCase()}</span>
                     <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${disc.color}`}>{disc.label}</span>
                 </div>
@@ -219,7 +219,7 @@ export const AssessmentShell = () => {
                                 disabled={answerState === 'correct'}
                                 className={`w-full text-left px-5 py-3.5 rounded-xl border-2 font-medium transition-all ${optClass}`}
                             >
-                                <span className="font-bold text-slate-400 mr-3">{String.fromCharCode(65 + idx)}.</span>
+                                <span className="font-bold text-slate-600 mr-3">{String.fromCharCode(65 + idx)}.</span>
                                 {formatChoiceLabel(opt)}
                                 {answerState === 'correct' && idx === q.shuffledCorrectIndex && <span className="ml-2 text-green-600">✓</span>}
                                 {answerState === 'wrong' && idx === selected && <span className="ml-2 text-red-500">✗</span>}

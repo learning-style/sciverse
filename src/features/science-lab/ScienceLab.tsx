@@ -9,11 +9,11 @@ export const ScienceLab = () => {
     const [mode, setMode] = useState<'lesson' | 'lab'>('lesson');
 
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-mono">
+        <div className="min-h-screen bg-white text-slate-900 flex flex-col font-mono">
             {/* Global Nav & Mode Switcher */}
-            <div className="h-16 border-b border-slate-800 bg-slate-900/80 backdrop-blur z-20 flex items-center justify-between px-4">
+            <div className="h-16 border-b border-slate-200 bg-white/90 backdrop-blur z-20 flex items-center justify-between px-4">
                 <div className="flex items-center gap-4">
-                    <Link to="/showcase" className="p-2 hover:bg-slate-800 rounded-full text-slate-400 transition-colors">
+                    <Link to="/showcase" className="p-2 hover:bg-slate-100 rounded-full text-slate-500 transition-colors">
                         <ArrowLeft size={20} />
                     </Link>
                     <div className="hidden md:block">
@@ -22,13 +22,13 @@ export const ScienceLab = () => {
                 </div>
 
                 {/* Mode Toggles */}
-                <div className="flex bg-slate-900 p-1 rounded-lg border border-slate-800">
+                <div className="flex bg-slate-100 p-1 rounded-lg border border-slate-200">
                     <button 
                         onClick={() => setMode('lesson')}
                         className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
                             mode === 'lesson' 
                                 ? 'bg-indigo-600 text-white shadow-lg' 
-                                : 'text-slate-400 hover:text-white'
+                                : 'text-slate-600 hover:text-slate-900'
                         }`}
                     >
                         <BookOpen size={14} /> Lesson
@@ -37,8 +37,8 @@ export const ScienceLab = () => {
                         onClick={() => setMode('lab')}
                         className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
                             mode === 'lab' 
-                                ? 'bg-emerald-600 text-white shadow-lg' 
-                                : 'text-slate-400 hover:text-white'
+                                ? 'bg-emerald-700 text-white shadow-lg' 
+                                : 'text-slate-600 hover:text-slate-900'
                         }`}
                     >
                         <FlaskConical size={14} /> Lab

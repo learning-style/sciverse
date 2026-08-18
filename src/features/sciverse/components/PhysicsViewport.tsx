@@ -8,7 +8,7 @@ interface PhysicsViewportProps {
     theme?: 'light' | 'dark';
 }
 
-export const PhysicsViewport = ({ onResize, theme = 'dark' }: PhysicsViewportProps) => {
+export const PhysicsViewport = ({ onResize, theme = 'light' }: PhysicsViewportProps) => {
     const { containerRef, canvasRef, snapshot } = useSciverse();
     const wrapperRef = useRef<HTMLDivElement | null>(null);
 

@@ -30,9 +30,9 @@ export const GraphMonitor = ({ latestSnapshot }: GraphMonitorProps) => {
     }, [latestSnapshot]);
 
     return (
-        <div className="bg-slate-900 rounded-xl border border-slate-800 p-4 h-64 w-full flex flex-col shadow-inner">
+        <div className="bg-white rounded-xl border border-slate-200 p-4 h-64 w-full flex flex-col shadow-inner">
             <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest">Velocity-Time Graph (Y-Axis)</h3>
+                <h3 className="text-xs font-bold text-slate-600 uppercase tracking-widest">Velocity-Time Graph (Y-Axis)</h3>
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             </div>
             

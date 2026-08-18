@@ -105,9 +105,9 @@ import { B32AirQualityBiologyLab } from '../components/visuals/B32AirQualityBiol
 import { EXTENDED_LAB_COMPONENTS } from '../components/visuals/extendedLabs';
 
 const DISCIPLINE_CONFIG = {
-    physics: { icon: Atom, color: 'text-indigo-400', bg: 'bg-indigo-500/10', border: 'border-indigo-500/30', accent: 'indigo' },
-    chemistry: { icon: Beaker, color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/30', accent: 'emerald' },
-    biology: { icon: Dna, color: 'text-rose-400', bg: 'bg-rose-500/10', border: 'border-rose-500/30', accent: 'rose' },
+    physics: { icon: Atom, color: 'text-indigo-600', bg: 'bg-indigo-500/10', border: 'border-indigo-500/30', accent: 'indigo' },
+    chemistry: { icon: Beaker, color: 'text-emerald-700', bg: 'bg-emerald-500/10', border: 'border-emerald-500/30', accent: 'emerald' },
+    biology: { icon: Dna, color: 'text-rose-600', bg: 'bg-rose-500/10', border: 'border-rose-500/30', accent: 'rose' },
 } as const;
 
 const LESSONS_WITH_NATIVE_CONTROLS = new Set([
@@ -531,7 +531,7 @@ const VisualPanel = ({ state, lesson }: { state: Record<string, unknown>; lesson
             </div>
 
             {/* Lesson title watermark */}
-            <div className="absolute bottom-4 right-4 text-slate-300 text-xs font-mono">
+            <div className="absolute bottom-4 right-4 text-slate-500 text-xs font-mono">
                 {lesson.id.toUpperCase()} — {lesson.title}
             </div>
         </div>
@@ -675,10 +675,10 @@ export const LessonShell = () => {
 
     if (!lesson || !scriptFactory) {
         return (
-            <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center">
+            <div className="min-h-screen bg-white text-slate-900 flex items-center justify-center">
                 <div className="text-center">
                     <p className="text-2xl mb-4">Lesson not found</p>
-                    <Link to="/projects/science-lab" className="text-indigo-400 hover:underline">← Back to Sciverse</Link>
+                    <Link to="/projects/science-lab" className="text-indigo-600 hover:underline">← Back to Sciverse</Link>
                 </div>
             </div>
         );
@@ -691,27 +691,27 @@ export const LessonShell = () => {
     const enhancement = showShellGuide ? BIG_IDEA_ENHANCEMENTS[lesson.bigIdea] : undefined;
 
     return (
-        <div className="flex flex-col h-screen bg-slate-950 text-slate-100 overflow-hidden font-mono">
+        <div className="flex flex-col h-screen bg-white text-slate-900 overflow-hidden font-mono">
             {/* Top Bar */}
-            <div className="h-14 border-b border-slate-800 bg-slate-900/80 backdrop-blur flex items-center px-4 gap-3 z-20">
-                <Link to="/projects/science-lab" className="p-2 hover:bg-slate-800 rounded-full text-slate-400 transition-colors">
+            <div className="h-14 border-b border-slate-200 bg-white/90 backdrop-blur flex items-center px-4 gap-3 z-20">
+                <Link to="/projects/science-lab" className="p-2 hover:bg-slate-100 rounded-full text-slate-500 transition-colors">
                     <ArrowLeft size={18} />
                 </Link>
                 <DisciplineIcon size={16} className={config.color} />
                 <span className={`text-xs font-bold tracking-widest uppercase ${config.color}`}>
                     {lesson.id.toUpperCase()}
                 </span>
-                <div className="h-4 w-px bg-slate-800" />
-                <span className="text-sm text-slate-300 font-medium">{lesson.title}</span>
-                <span className="text-xs text-slate-500 hidden md:inline">— {lesson.subtitle}</span>
+                <div className="h-4 w-px bg-slate-300" />
+                <span className="text-sm text-slate-900 font-medium">{lesson.title}</span>
+                <span className="text-xs text-slate-600 hidden md:inline">— {lesson.subtitle}</span>
                 <div className="ml-auto">
                     <button
                         onClick={() => setShowCanvasControls(v => !v)}
-                        className={`mr-3 px-2.5 py-1 rounded-md text-xs font-semibold border transition-colors ${showCanvasControls ? 'bg-sky-500/20 text-sky-300 border-sky-500/40' : 'bg-slate-800 text-slate-300 border-slate-700'}`}
+                        className={`mr-3 px-2.5 py-1 rounded-md text-xs font-semibold border transition-colors ${showCanvasControls ? 'bg-sky-50 text-sky-700 border-sky-300' : 'bg-slate-100 text-slate-600 border-slate-300'}`}
                     >
                         Controls: {showCanvasControls ? 'On' : 'Off'}
                     </button>
-                    <span className="text-xs text-slate-600">Big Idea {lesson.bigIdea}: {lesson.bigIdeaTitle}</span>
+                    <span className="text-xs text-slate-500">Big Idea {lesson.bigIdea}: {lesson.bigIdeaTitle}</span>
                 </div>
             </div>
 
@@ -981,7 +981,7 @@ export const LessonShell = () => {
                 </div>
 
                 {/* Right: Socratic Chat */}
-                <div className="w-full lg:w-[400px] h-[50vh] lg:h-full flex-shrink-0 z-10 shadow-xl border-l border-slate-800">
+                <div className="w-full lg:w-[400px] h-[50vh] lg:h-full flex-shrink-0 z-10 shadow-xl border-l border-slate-200">
                     <SocraticChat
                         currentNode={currentNode}
                         history={history}

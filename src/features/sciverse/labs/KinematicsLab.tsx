@@ -34,22 +34,22 @@ export const KinematicsLab = () => {
     };
 
     return (
-        <div className="flex flex-col h-full bg-slate-950 text-slate-100">
+        <div className="flex flex-col h-full bg-white text-slate-900">
             {/* Top Toolbar */}
-            <div className="h-16 border-b border-slate-800 bg-slate-900/50 flex items-center justify-between px-6 backdrop-blur-sm z-10">
+            <div className="h-16 border-b border-slate-200 bg-slate-50 flex items-center justify-between px-6 backdrop-blur-sm z-10">
                 <div className="flex items-center gap-8">
                     <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded bg-indigo-500/20 flex items-center justify-center text-indigo-400">
                             <Crosshair size={18} />
                         </div>
-                        <span className="font-bold tracking-tight text-sm text-slate-200">PROJECTILE LAUNCHER</span>
+                        <span className="font-bold tracking-tight text-sm text-slate-900">PROJECTILE LAUNCHER</span>
                     </div>
                     
-                    <div className="h-8 w-px bg-slate-800"></div>
+                    <div className="h-8 w-px bg-slate-300"></div>
 
                     <div className="flex items-center gap-6">
                         <div className="flex flex-col gap-1">
-                            <div className="flex justify-between text-xs text-slate-400 font-mono uppercase">
+                            <div className="flex justify-between text-xs text-slate-600 font-mono uppercase">
                                 <span>Velocity</span>
                                 <span className="text-indigo-400">{velocity} m/s</span>
                             </div>
@@ -57,12 +57,12 @@ export const KinematicsLab = () => {
                                 type="range" min="5" max="30" step="1"
                                 value={velocity} 
                                 onChange={(e) => setVelocity(Number(e.target.value))}
-                                className="w-32 h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-indigo-500 hover:accent-indigo-400"
+                                className="w-32 h-1.5 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-indigo-500 hover:accent-indigo-600"
                             />
                         </div>
 
                         <div className="flex flex-col gap-1">
-                            <div className="flex justify-between text-xs text-slate-400 font-mono uppercase">
+                            <div className="flex justify-between text-xs text-slate-600 font-mono uppercase">
                                 <span>Angle</span>
                                 <span className="text-emerald-400">{angle}°</span>
                             </div>
@@ -70,7 +70,7 @@ export const KinematicsLab = () => {
                                 type="range" min="0" max="90" step="1"
                                 value={angle} 
                                 onChange={(e) => setAngle(Number(e.target.value))}
-                                className="w-32 h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500 hover:accent-emerald-400"
+                                className="w-32 h-1.5 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-emerald-500 hover:accent-emerald-600"
                             />
                         </div>
                     </div>
@@ -79,7 +79,7 @@ export const KinematicsLab = () => {
                 <div className="flex items-center gap-3">
                     <button 
                         onClick={handleReset}
-                        className="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-full transition-colors"
+                        className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-full transition-colors"
                         title="Reset Simulation"
                     >
                         <RotateCcw size={20} />
@@ -109,9 +109,9 @@ export const KinematicsLab = () => {
                     <GraphMonitor latestSnapshot={snapshot} />
                     
                     {/* Mission Context */}
-                    <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 flex-grow overflow-y-auto">
-                        <h4 className="font-bold text-slate-200 mb-3 text-sm uppercase tracking-wide border-b border-slate-800 pb-2">Lab Objectives</h4>
-                        <ul className="space-y-3 text-sm text-slate-400">
+                    <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 flex-grow overflow-y-auto">
+                        <h4 className="font-bold text-slate-900 mb-3 text-sm uppercase tracking-wide border-b border-slate-200 pb-2">Lab Objectives</h4>
+                        <ul className="space-y-3 text-sm text-slate-600">
                             <li className="flex gap-2">
                                 <span className="text-indigo-500">•</span>
                                 <span>Observe how the <strong className="text-emerald-400">Vertical Velocity (Vy)</strong> changes over time due to gravity.</span>

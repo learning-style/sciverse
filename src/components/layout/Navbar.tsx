@@ -14,12 +14,12 @@ export const Navbar = () => {
     const location = useLocation();
 
     return (
-        <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex-shrink-0">
-                        <Link to="/" className="text-xl font-bold tracking-tight text-white">
-                            Citizen<span className="text-blue-500">Architect</span>
+                        <Link to="/" className="text-xl font-bold tracking-tight text-slate-900">
+                            Citizen<span className="text-blue-600">Architect</span>
                         </Link>
                     </div>
                     
@@ -32,8 +32,8 @@ export const Navbar = () => {
                                     to={item.path}
                                     className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                                         location.pathname === item.path
-                                            ? 'text-blue-400'
-                                            : 'text-slate-300 hover:text-white'
+                                            ? 'text-blue-600'
+                                            : 'text-slate-600 hover:text-slate-900'
                                     }`}
                                 >
                                     {item.label}
@@ -46,7 +46,7 @@ export const Navbar = () => {
                     <div className="md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="text-slate-300 hover:text-white p-2"
+                            className="text-slate-600 hover:text-slate-900 p-2"
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
@@ -56,7 +56,7 @@ export const Navbar = () => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="md:hidden bg-slate-900 border-b border-slate-800">
+                <div className="md:hidden bg-white border-b border-slate-200">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         {navItems.map((item) => (
                             <Link
@@ -65,8 +65,8 @@ export const Navbar = () => {
                                 onClick={() => setIsOpen(false)}
                                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                                     location.pathname === item.path
-                                        ? 'text-blue-400 bg-slate-800'
-                                        : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                                        ? 'text-blue-700 bg-blue-50'
+                                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                                 }`}
                             >
                                 {item.label}

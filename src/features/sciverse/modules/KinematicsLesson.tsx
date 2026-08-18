@@ -69,12 +69,12 @@ export const KinematicsLesson = () => {
     };
 
     return (
-        <div className="flex flex-col h-full bg-slate-950 text-slate-100 overflow-hidden">
+        <div className="flex flex-col h-full bg-white text-slate-900 overflow-hidden">
             {/* Top Bar */}
-            <div className="h-14 border-b border-slate-800 bg-slate-900/50 flex items-center px-6 backdrop-blur-sm">
+            <div className="h-14 border-b border-slate-200 bg-slate-50 flex items-center px-6 backdrop-blur-sm">
                 <span className="text-xs font-bold tracking-widest text-indigo-400 uppercase">Lesson 01: Motion in 1D</span>
-                <div className="mx-4 h-4 w-px bg-slate-800"></div>
-                <span className="text-sm text-slate-400">Reference Frames & Displacement</span>
+                <div className="mx-4 h-4 w-px bg-slate-300"></div>
+                <span className="text-sm text-slate-600">Reference Frames & Displacement</span>
             </div>
 
             <div className="flex-grow flex flex-col lg:flex-row overflow-hidden">
@@ -94,7 +94,7 @@ export const KinematicsLesson = () => {
                 </div>
 
                 {/* Right: Socratic Chat - Keeps Dark theme for contrast/UI consistency */}
-                <div className="w-full lg:w-[400px] h-[50vh] lg:h-full flex-shrink-0 z-10 shadow-xl border-l border-slate-800">
+                <div className="w-full lg:w-[400px] h-[50vh] lg:h-full flex-shrink-0 z-10 shadow-xl border-l border-slate-200">
                     <SocraticChat 
                         currentNode={currentNode}
                         history={history}

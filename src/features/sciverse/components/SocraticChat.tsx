@@ -23,11 +23,11 @@ export const SocraticChat = ({ currentNode, history, onOptionSelect, onRewindTo,
     }, [history, currentNode]);
 
     return (
-        <div className="flex flex-col h-full bg-slate-950 border-t border-slate-800 lg:border-t-0 lg:border-l">
+        <div className="flex flex-col h-full bg-white border-t border-slate-200 lg:border-t-0 lg:border-l">
             {/* Header */}
-            <div className="p-4 border-b border-slate-800 flex items-center gap-2 bg-slate-900/50 backdrop-blur-sm">
-                <Cpu size={18} className="text-indigo-400" />
-                <span className="font-bold text-sm text-slate-200 tracking-wide">MENTOR LINK</span>
+            <div className="p-4 border-b border-slate-200 flex items-center gap-2 bg-slate-50 backdrop-blur-sm">
+                <Cpu size={18} className="text-indigo-600" />
+                <span className="font-bold text-sm text-slate-900 tracking-wide">MENTOR LINK</span>
                 <span className="ml-auto w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
             </div>
 
@@ -40,7 +40,7 @@ export const SocraticChat = ({ currentNode, history, onOptionSelect, onRewindTo,
                         {onRewindTo && node.speaker === 'AI' && node.options && node.options.length > 0 && (
                             <button
                                 onClick={() => onRewindTo(i)}
-                                className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity p-1.5 rounded-full bg-slate-800 border border-slate-600 hover:border-indigo-500 hover:bg-slate-700 text-slate-400 hover:text-indigo-300"
+                                className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity p-1.5 rounded-full bg-white border border-slate-300 hover:border-indigo-500 hover:bg-indigo-50 text-slate-500 hover:text-indigo-700 shadow-sm"
                                 title="Go back to this point"
                             >
                                 <RotateCcw size={12} />
@@ -54,15 +54,15 @@ export const SocraticChat = ({ currentNode, history, onOptionSelect, onRewindTo,
             </div>
 
             {/* Input Area (Options) */}
-            <div className="p-4 bg-slate-900 border-t border-slate-800">
+            <div className="p-4 bg-slate-50 border-t border-slate-200">
                 <div className="grid grid-cols-1 gap-2">
                     {currentNode.options?.map((opt) => (
                         <button
                             key={opt.id}
                             onClick={() => onOptionSelect(opt)}
-                            className="w-full text-left px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-indigo-500 hover:text-indigo-200 transition-all text-sm text-slate-300 group"
+                            className="w-full text-left px-4 py-3 rounded-lg bg-white border border-slate-300 hover:bg-indigo-50 hover:border-indigo-500 hover:text-indigo-900 transition-all text-sm text-slate-800 group"
                         >
-                            <span className="font-mono text-indigo-500 mr-2 opacity-50 group-hover:opacity-100">{`>`}</span>
+                            <span className="font-mono text-indigo-600 mr-2 opacity-60 group-hover:opacity-100">{`>`}</span>
                             {opt.label}
                         </button>
                     ))}
@@ -75,7 +75,7 @@ export const SocraticChat = ({ currentNode, history, onOptionSelect, onRewindTo,
                                 {prevLesson && (
                                     <Link
                                         to={`/projects/science-lab/lesson/${prevLesson.id}`}
-                                        className="flex items-center justify-center gap-2 flex-1 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 hover:border-slate-500 transition-colors text-sm font-bold"
+                                        className="flex items-center justify-center gap-2 flex-1 py-3 rounded-lg bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400 transition-colors text-sm font-bold"
                                     >
                                         <ArrowLeft size={16} /> {prevLesson.icon} Prev
                                     </Link>
@@ -83,7 +83,7 @@ export const SocraticChat = ({ currentNode, history, onOptionSelect, onRewindTo,
                                 {nextLesson && (
                                     <Link
                                         to={`/projects/science-lab/lesson/${nextLesson.id}`}
-                                        className="flex items-center justify-center gap-2 flex-1 py-3 rounded-lg bg-indigo-600/20 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-600/30 transition-colors text-sm font-bold"
+                                        className="flex items-center justify-center gap-2 flex-1 py-3 rounded-lg bg-indigo-50 border border-indigo-300 text-indigo-700 hover:bg-indigo-100 transition-colors text-sm font-bold"
                                     >
                                         Next: {nextLesson.icon} {nextLesson.title} <ArrowRight size={16} />
                                     </Link>
@@ -118,7 +118,7 @@ function renderContent(content: string): React.ReactNode {
         const parts = text.split(/(\*\*[^*]+\*\*)/g);
         return parts.map((p, i) =>
             p.startsWith('**') && p.endsWith('**')
-                ? <strong key={i} className="font-semibold text-slate-100">{p.slice(2, -2)}</strong>
+                ? <strong key={i} className="font-semibold text-slate-900">{p.slice(2, -2)}</strong>
                 : <span key={i}>{p}</span>,
         );
     };
@@ -141,12 +141,12 @@ function renderContent(content: string): React.ReactNode {
             const rows = tableLines.slice(dataStart).map(parseRow);
 
             blocks.push(
-                <div key={blockKey++} className="overflow-x-auto my-2 rounded-lg border border-slate-700">
+                <div key={blockKey++} className="overflow-x-auto my-2 rounded-lg border border-slate-300">
                     <table className="w-full text-xs">
                         <thead>
-                            <tr className="bg-slate-800/80">
+                            <tr className="bg-slate-100">
                                 {headers.map((h, hi) => (
-                                    <th key={hi} className="px-2 py-1.5 text-left font-semibold text-indigo-300 border-b border-slate-700">
+                                    <th key={hi} className="px-2 py-1.5 text-left font-semibold text-indigo-700 border-b border-slate-300">
                                         {inlineBold(h)}
                                     </th>
                                 ))}
@@ -154,9 +154,9 @@ function renderContent(content: string): React.ReactNode {
                         </thead>
                         <tbody>
                             {rows.map((row, ri) => (
-                                <tr key={ri} className={ri % 2 === 0 ? 'bg-slate-900/50' : 'bg-slate-800/30'}>
+                                <tr key={ri} className={ri % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
                                     {row.map((cell, ci) => (
-                                        <td key={ci} className="px-2 py-1.5 border-b border-slate-800/50 text-slate-300">
+                                        <td key={ci} className="px-2 py-1.5 border-b border-slate-200 text-slate-700">
                                             {inlineBold(cell)}
                                         </td>
                                     ))}
@@ -185,8 +185,8 @@ const ChatMessage = ({ node, isHistory = false }: { node: DialogNode, isHistory?
             {/* Avatar */}
             <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center border ${
                 isAI 
-                    ? 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400' 
-                    : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                    ? 'bg-indigo-50 border-indigo-300 text-indigo-600' 
+                    : 'bg-emerald-50 border-emerald-300 text-emerald-600'
             }`}>
                 {isAI ? <Cpu size={14} /> : <User size={14} />}
             </div>
@@ -194,8 +194,8 @@ const ChatMessage = ({ node, isHistory = false }: { node: DialogNode, isHistory?
             {/* Bubble */}
             <div className={`max-w-[85%] rounded-2xl p-4 text-sm leading-relaxed border ${
                 isAI 
-                    ? 'bg-slate-900 border-slate-800 text-slate-200 rounded-tl-none' 
-                    : 'bg-indigo-600/10 border-indigo-500/20 text-indigo-100 rounded-tr-none'
+                    ? 'bg-slate-50 border-slate-200 text-slate-800 rounded-tl-none' 
+                    : 'bg-indigo-50 border-indigo-200 text-indigo-900 rounded-tr-none'
             }`}>
                 <div className="mb-2">{rendered}</div>
                 
@@ -206,10 +206,10 @@ const ChatMessage = ({ node, isHistory = false }: { node: DialogNode, isHistory?
                             src={node.image.url} 
                             alt={node.image.alt} 
                             loading="lazy"
-                            className="rounded-lg border border-slate-700 w-full h-auto object-cover max-h-60 shadow-md hover:shadow-lg transition-shadow"
+                            className="rounded-lg border border-slate-300 w-full h-auto object-cover max-h-60 shadow-md hover:shadow-lg transition-shadow"
                         />
                         {node.image.caption && (
-                            <p className="text-xs text-slate-500 mt-2 italic text-center border-t border-slate-800 pt-2">
+                            <p className="text-xs text-slate-500 mt-2 italic text-center border-t border-slate-200 pt-2">
                                 {node.image.caption}
                             </p>
                         )}

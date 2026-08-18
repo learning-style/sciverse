@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  /* Default to dark mode color scheme preferences */
-  color-scheme: dark;
+  /* Light theme: tells the browser to render form controls and scrollbars light */
+  color-scheme: light;
 }
 
 body {
-  /* Dark-mode-first defaults: Slate-900 background, Slate-50 text */
-  @apply bg-slate-950 text-slate-100 antialiased;
+  /* White background with near-black text for strong contrast */
+  @apply bg-white text-slate-900 antialiased;
 }
 
 /* Custom scrollbar for a polished feel */
@@ -18,9 +18,9 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-slate-900;
+  @apply bg-slate-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-700 rounded-full hover:bg-slate-600;
+  @apply bg-slate-300 rounded-full hover:bg-slate-400;
 }

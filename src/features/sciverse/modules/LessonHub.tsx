@@ -4,9 +4,9 @@ import { LESSON_REGISTRY } from '../content/lessons';
 import { Discipline } from '../types';
 
 const DISCIPLINE_BADGE: Record<Discipline, { icon: typeof Atom; label: string; bg: string; text: string }> = {
-    physics: { icon: Atom, label: 'Physics', bg: 'bg-indigo-500/20 border-indigo-500/40', text: 'text-indigo-300' },
-    chemistry: { icon: Beaker, label: 'Chemistry', bg: 'bg-emerald-500/20 border-emerald-500/40', text: 'text-emerald-300' },
-    biology: { icon: Dna, label: 'Biology', bg: 'bg-rose-500/20 border-rose-500/40', text: 'text-rose-300' },
+    physics: { icon: Atom, label: 'Physics', bg: 'bg-indigo-50 border-indigo-200', text: 'text-indigo-700' },
+    chemistry: { icon: Beaker, label: 'Chemistry', bg: 'bg-emerald-50 border-emerald-200', text: 'text-emerald-700' },
+    biology: { icon: Dna, label: 'Biology', bg: 'bg-rose-50 border-rose-200', text: 'text-rose-700' },
 };
 
 const BIG_IDEA_COLORS = [
@@ -56,24 +56,24 @@ export const LessonHub = () => {
     const bigIdeas = Array.from({ length: 40 }, (_, i) => i + 1);
 
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-100 font-mono">
+        <div className="min-h-screen bg-white text-slate-900 font-mono">
             {/* Header */}
-            <div className="h-16 border-b border-slate-800 bg-slate-900/80 backdrop-blur-sm sticky top-0 z-20 flex items-center justify-between px-6">
+            <div className="h-16 border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-20 flex items-center justify-between px-6">
                 <div className="flex items-center gap-4">
-                    <Link to="/showcase" className="p-2 hover:bg-slate-800 rounded-full text-slate-400 transition-colors">
+                    <Link to="/showcase" className="p-2 hover:bg-slate-100 rounded-full text-slate-500 transition-colors">
                         <ArrowLeft size={20} />
                     </Link>
-                    <span className="font-bold text-lg tracking-tight">SCI<span className="text-indigo-500">VERSE</span></span>
+                    <span className="font-bold text-lg tracking-tight">SCI<span className="text-indigo-600">VERSE</span></span>
                 </div>
-                <span className="text-xs text-slate-500 tracking-widest uppercase">120 Interactive Lessons</span>
+                <span className="text-xs text-slate-600 tracking-widest uppercase">120 Interactive Lessons</span>
             </div>
 
             {/* Hero */}
-            <div className="px-6 py-10 text-center border-b border-slate-800/50">
+            <div className="px-6 py-10 text-center border-b border-slate-200">
                 <h1 className="text-3xl md:text-4xl font-bold mb-3">
-                    Explore Science Across <span className="text-indigo-400">Disciplines</span>
+                    Explore Science Across <span className="text-indigo-600">Disciplines</span>
                 </h1>
-                <p className="text-slate-400 text-sm max-w-xl mx-auto">
+                <p className="text-slate-600 text-sm max-w-xl mx-auto">
                     40 Big Ideas. 3 Disciplines. 120 Lessons connecting Physics, Chemistry, and Biology.
                 </p>
                 <div className="flex justify-center gap-6 mt-6">
@@ -95,12 +95,12 @@ export const LessonHub = () => {
                     const title = lessons[0]?.bigIdeaTitle || '';
 
                     return (
-                        <section key={bigIdeaNum} className={`rounded-xl border border-slate-800 bg-gradient-to-br ${BIG_IDEA_COLORS[bigIdeaNum - 1]} overflow-hidden`}>
+                        <section key={bigIdeaNum} className={`rounded-xl border border-slate-200 bg-gradient-to-br ${BIG_IDEA_COLORS[bigIdeaNum - 1]} overflow-hidden`}>
                             {/* Big Idea Header */}
-                            <div className="px-6 py-4 border-b border-slate-800/50">
+                            <div className="px-6 py-4 border-b border-slate-200">
                                 <div className="flex items-baseline gap-3">
-                                    <span className="text-xs font-bold tracking-widest text-slate-500 uppercase">Big Idea {bigIdeaNum}</span>
-                                    <h2 className="text-lg font-bold text-slate-200">{title}</h2>
+                                    <span className="text-xs font-bold tracking-widest text-slate-600 uppercase">Big Idea {bigIdeaNum}</span>
+                                    <h2 className="text-lg font-bold text-slate-900">{title}</h2>
                                 </div>
                             </div>
 
@@ -114,7 +114,7 @@ export const LessonHub = () => {
                                         <Link
                                             key={lesson.id}
                                             to={`/projects/science-lab/lesson/${lesson.id}`}
-                                            className="group block p-4 rounded-lg bg-slate-900/60 border border-slate-800 hover:border-slate-600 hover:bg-slate-900 transition-all"
+                                            className="group block p-4 rounded-lg bg-white/80 border border-slate-200 hover:border-slate-400 hover:bg-white hover:shadow-md transition-all"
                                         >
                                             <div className="flex items-start gap-3">
                                                 <span className="text-3xl">{lesson.icon}</span>
@@ -124,8 +124,8 @@ export const LessonHub = () => {
                                                             <BadgeIcon size={10} /> {lesson.id.toUpperCase()}
                                                         </span>
                                                     </div>
-                                                    <h3 className="text-sm font-bold text-slate-200 group-hover:text-white transition-colors">{lesson.title}</h3>
-                                                    <p className="text-xs text-slate-500 mt-1">{lesson.subtitle}</p>
+                                                    <h3 className="text-sm font-bold text-slate-900 group-hover:text-indigo-700 transition-colors">{lesson.title}</h3>
+                                                    <p className="text-xs text-slate-600 mt-1">{lesson.subtitle}</p>
                                                 </div>
                                             </div>
                                         </Link>
@@ -137,7 +137,7 @@ export const LessonHub = () => {
                             <div className="px-4 pb-4">
                                 <Link
                                     to={`/projects/science-lab/assessment/${bigIdeaNum}`}
-                                    className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-indigo-600/20 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-600/30 transition-colors text-sm font-bold"
+                                    className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 transition-colors text-sm font-bold"
                                 >
                                     📝 Take Big Idea {bigIdeaNum} Assessment
                                 </Link>
