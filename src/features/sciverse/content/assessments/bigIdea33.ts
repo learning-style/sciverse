@@ -73,11 +73,11 @@ export const bigIdea33Assessment: AssessmentData = {
             id: 7,
             difficulty: 'hard',
             discipline: 'cross',
-            question: "Why can one field feed more people growing beans than raising beef?",
-            options: ["Eating plants directly skips a step where 90% of energy is lost", "Beans weigh more than beef", "Cows eat no grass", "Beef contains no energy"],
+            question: "A meadow supports thousands of mice but only one or two owls. Why?",
+            options: ["Owls are a step higher, so only about 10% of the energy reaches them", "Owls need less space than mice", "Mice eat more than owls do", "Owls do not need energy"],
             correctIndex: 0,
-            hint: "Count the steps in each food chain.",
-            explanation: "Each extra step wastes about 90% of the energy, so shorter chains feed more."
+            hint: "Count the steps from the grass upward.",
+            explanation: "Each step up keeps only about 10% of the energy, so higher levels support far fewer animals."
         },
         {
             id: 8,
