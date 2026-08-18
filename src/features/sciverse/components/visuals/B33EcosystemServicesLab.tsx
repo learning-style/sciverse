@@ -35,18 +35,31 @@ export const B33EcosystemServicesLab = ({ state, onStateChange }: Props) => {
         // Services scale with variety, but with diminishing returns.
         const health = Math.pow(v, 0.7);
         const boxW = (safeRight - 60) / SERVICES.length;
+        const boxH = 34;
+        const y = 100;
         SERVICES.forEach((name, i) => {
             const x = 30 + i * boxW;
-            const y = 100;
             const strong = health > 0.55;
-            ctx.fillStyle = strong ? '#16a34a' : health > 0.28 ? '#eab308' : '#dc2626';
-            ctx.fillRect(x + 6, y, boxW - 12, 26);
-            ctx.strokeStyle = '#1e293b';
+            ctx.fillStyle = strong ? '#15803d' : health > 0.28 ? '#a16207' : '#b91c1c';
+            ctx.fillRect(x + 6, y, boxW - 12, boxH);
+            ctx.strokeStyle = '#0f172a';
             ctx.lineWidth = 2;
-            ctx.strokeRect(x + 6, y, boxW - 12, 26);
-            outlineText(ctx, name, x + boxW / 2, y + 18, 'bold 11px monospace', '#ffffff');
+            ctx.strokeRect(x + 6, y, boxW - 12, boxH);
+
+            // Plain white fill, no halo: these sit on a solid dark chip, so an
+            // outline only muddies the glyphs. Shrink to fit narrow columns.
+            const avail = boxW - 20;
+            let size = 14;
+            ctx.textAlign = 'center';
+            do {
+                ctx.font = `bold ${size}px monospace`;
+                if (ctx.measureText(name).width <= avail) break;
+                size -= 1;
+            } while (size > 9);
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText(name, x + boxW / 2, y + boxH / 2 + size / 2 - 1);
         });
-        outlineText(ctx, 'Free services this ecosystem provides', safeRight / 2, 148, 'bold 11px monospace');
+        outlineText(ctx, 'Free services this ecosystem provides', safeRight / 2, y + boxH + 24, 'bold 13px monospace');
 
         meterBar(
             ctx, safeRight * 0.15, H - 92, safeRight * 0.7, health,

@@ -64,7 +64,24 @@ const ACCENT_RANGE: Record<Accent, string> = {
     rose: 'accent-rose-500',
 };
 
-/** Draws text with a white halo so it stays readable over any artwork. */
+/** True for pale fills, which need a dark halo rather than a white one. */
+const isPale = (color: string): boolean => {
+    const m = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(color.trim());
+    if (!m) return false;
+    let h = m[1];
+    if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+    const r = parseInt(h.slice(0, 2), 16);
+    const g = parseInt(h.slice(2, 4), 16);
+    const b = parseInt(h.slice(4, 6), 16);
+    // Perceived brightness; 0.6 sits comfortably between slate-400 and white.
+    return (0.299 * r + 0.587 * g + 0.114 * b) / 255 > 0.6;
+};
+
+/**
+ * Draws text with a contrasting halo so it stays readable over any artwork.
+ * The halo flips to dark for pale text -- a white halo behind white glyphs
+ * swallows the letterforms entirely.
+ */
 export const outlineText = (
     ctx: CanvasRenderingContext2D,
     text: string,
@@ -76,8 +93,13 @@ export const outlineText = (
 ) => {
     ctx.font = font;
     ctx.textAlign = align;
-    ctx.strokeStyle = '#ffffff';
-    ctx.lineWidth = 4;
+    ctx.strokeStyle = isPale(color) ? '#0f172a' : '#ffffff';
+    // Scale the halo to the type size: a fixed width swallows small glyphs.
+    const size = Number(/(\d+(?:\.\d+)?)px/.exec(font)?.[1] ?? 14);
+    ctx.lineWidth = Math.max(2, Math.min(4, size * 0.25));
+    // Round joins stop thin strokes throwing spikes off sharp corners.
+    ctx.lineJoin = 'round';
+    ctx.miterLimit = 2;
     ctx.strokeText(text, x, y);
     ctx.fillStyle = color;
     ctx.fillText(text, x, y);
