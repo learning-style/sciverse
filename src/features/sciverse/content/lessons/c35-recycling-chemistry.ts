@@ -23,7 +23,7 @@ export function getC35Script(): Record<string, DialogNode> {
         correct: {
             id: 'correct',
             speaker: 'AI',
-            content: "Exactly! This is the difference between two kinds of recycling:\n\n**Closed-loop recycling** (metal and glass)\n- Melt it, and the **atoms** rearrange without changing\n- New can is exactly as good as the old one\n- Can be repeated endlessly\n- Recycling aluminium uses only about **5%** of the energy of making it from ore!\n\n**Downcycling** (most plastic)\n- Heat shortens the **polymer** chains\n- Each round makes weaker, lower-quality material\n- Bottle becomes bench becomes stuffing becomes waste\n- Usually possible only once or twice\n\nSlide **Melting Temperature** and watch what heat does to each material!",
+            content: "Exactly! This is the difference between two kinds of recycling:\n\n**Closed-loop recycling** (metal and glass)\n- Melt it, and the **atoms** rearrange without changing\n- New can is exactly as good as the old one\n- Can be repeated endlessly\n- Recycling aluminium uses only about **5%** of the energy of making it from ore!\n\n**Downcycling** (most plastic)\n- Heat shortens the **polymer** chains\n- Each round makes weaker, lower-quality material\n- Bottle becomes bench becomes stuffing becomes waste\n- Usually possible only once or twice\n\nSlide **Furnace Temperature** and watch what heat does to each material!",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'explore' } },
             options: [
                 { id: 'cp', label: "Let me heat them up and compare!", nextNodeId: 'checkpoint' }
