@@ -10,21 +10,21 @@ interface Props {
 export const C38PhotoresistorLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, t, v }: LabScene) => {
+    const drawScene = ({ ctx, H, safeRight, t, v, stageTop }: LabScene) => {
         const sensorX = safeRight / 2;
         const sensorY = H * 0.44;
 
         // Lamp shining down on the sensor.
         ctx.fillStyle = `rgba(250,204,21,${0.25 + v * 0.7})`;
         ctx.beginPath();
-        ctx.moveTo(sensorX, 108);
+        ctx.moveTo(sensorX, stageTop + 22);
         ctx.lineTo(sensorX - 70, sensorY - 20);
         ctx.lineTo(sensorX + 70, sensorY - 20);
         ctx.closePath();
         ctx.fill();
         ctx.fillStyle = '#facc15';
         ctx.beginPath();
-        ctx.arc(sensorX, 104, 16, 0, Math.PI * 2);
+        ctx.arc(sensorX, stageTop + 18, 16, 0, Math.PI * 2);
         ctx.fill();
         ctx.strokeStyle = '#a16207';
         ctx.lineWidth = 2;

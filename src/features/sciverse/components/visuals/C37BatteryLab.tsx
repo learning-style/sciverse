@@ -10,9 +10,12 @@ interface Props {
 export const C37BatteryLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, t, v }: LabScene) => {
-        const cellY = 130;
-        const cellH = H - cellY - 160;
+    const drawScene = ({ ctx, safeRight, t, v, stageTop, stageBottom }: LabScene) => {
+        // The outer circuit sits above the cell, so anchor the wire to the top of
+        // the stage and hang the cell beneath it.
+        const wireY = stageTop + 40;
+        const cellY = wireY + 46;
+        const cellH = Math.max(120, stageBottom - cellY - 34);
         const anodeX = 60;
         const cathodeX = safeRight - 110;
 
@@ -46,7 +49,6 @@ export const C37BatteryLab = ({ state, onStateChange }: Props) => {
         }
 
         // Outer circuit: the long way round, through the bulb.
-        const wireY = cellY - 46;
         ctx.strokeStyle = '#1e293b';
         ctx.lineWidth = 3;
         ctx.beginPath();

@@ -69,6 +69,9 @@ interface LabCanvasProps {
     drawScene: (scene: LabScene) => LabFooter | void;
 }
 
+/** Reserved band at the top holding the title and readout. */
+const HEADER_H = 70;
+
 /** Height of the reserved footer band: meter, its labels, and one caption line. */
 const FOOTER_H = 128;
 
@@ -273,9 +276,6 @@ export const LabCanvas = ({
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, W, H);
 
-        fitCaption(ctx, title, safeRight / 2, 30, safeRight - 24, 22);
-        fitCaption(ctx, readout({ v, raw }), safeRight / 2, 56, safeRight - 24, 16);
-
         // Reserved bands: headings above, meter and caption below. The stage in
         // between is clipped so a scene cannot spill into either one.
         const stageTop = 124;
@@ -287,6 +287,13 @@ export const LabCanvas = ({
         ctx.clip();
         const footer = drawScene({ ctx, W, H, safeRight, t, v, raw, stageTop, stageBottom }) || {};
         ctx.restore();
+
+        // Heading band, painted over the scene for the same reason as the footer:
+        // a scene that draws high can no longer obscure the title or readout.
+        ctx.fillStyle = 'rgba(255,255,255,0.90)';
+        ctx.fillRect(0, 0, W, HEADER_H);
+        fitCaption(ctx, title, safeRight / 2, 30, safeRight - 24, 22);
+        fitCaption(ctx, readout({ v, raw }), safeRight / 2, 56, safeRight - 24, 16);
 
         // Footer band, painted over whatever the scene drew.
         ctx.fillStyle = 'rgba(255,255,255,0.94)';
