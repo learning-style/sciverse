@@ -6311,7 +6311,7 @@ Plastic is made of **polymers** -- molecules like extremely long chains. Heat **
 - Bottle becomes bench becomes stuffing becomes waste
 - Usually possible only once or twice
 
-Slide **Melting Temperature** and watch what heat does to each material!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"cp",label:"Let me heat them up and compare!",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:`**Checkpoint:** A city wants to cut the energy used by its waste system. It can either recycle **1 tonne of aluminium cans** or **1 tonne of plastic bottles**.
+Slide **Furnace Temperature** and watch what heat does to each material!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"cp",label:"Let me heat them up and compare!",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:`**Checkpoint:** A city wants to cut the energy used by its waste system. It can either recycle **1 tonne of aluminium cans** or **1 tonne of plastic bottles**.
 
 Which saves far more energy?`,options:[{id:"right",label:"Aluminium -- melting a can takes only a tiny fraction of the energy needed to pull fresh aluminium out of ore.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"Plastic -- plastic melts at a much lower temperature, so it must take less energy.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`Plastic really does melt at a lower temperature. But the energy saving is not about the melting -- it is about **what you avoid doing instead**.
 
@@ -6528,7 +6528,7 @@ Scientists do not test for every possible disease, which would take forever. Ins
 
 For drinking water the safe limit is strict: **zero** *E. coli* in 100 millilitres.
 
-Slide **Germ Level** and watch the test dish reveal what is hiding!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"cp",label:"Let me run the test and count colonies!",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:`**Checkpoint:** A village well is tested once and comes back clean. The village decides no further testing is needed, since the water has been proven safe.
+Slide **Germs in the Sample** and watch the test dish reveal what is hiding!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"cp",label:"Let me run the test and count colonies!",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:`**Checkpoint:** A village well is tested once and comes back clean. The village decides no further testing is needed, since the water has been proven safe.
 
 Is that a good decision?`,options:[{id:"right",label:"No -- one test only describes that one moment, and a well can be contaminated later by flooding, a leak, or a cracked lining.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"Yes -- the water came from that well and tested clean, so that well produces clean water.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`A water test is a **photograph, not a promise**. It tells you about the water in that bottle, on that day -- and nothing more.
 
