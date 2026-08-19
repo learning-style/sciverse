@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -10,9 +10,9 @@ interface Props {
 export const P37PumpedHydroLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, t, v }: LabScene) => {
-        const groundY = H - 140;
-        const maxLift = H * 0.42;
+    const drawScene = ({ ctx, safeRight, t, v, stageBottom }: LabScene) => {
+        const groundY = stageBottom - 46;
+        const maxLift = stageBottom * 0.42;
         const lift = 20 + v * maxLift;
         const upperY = groundY - lift;
 
@@ -36,8 +36,8 @@ export const P37PumpedHydroLab = ({ state, onStateChange }: Props) => {
 
         // Lower lake.
         ctx.fillStyle = '#0284c7';
-        ctx.fillRect(20, groundY, safeRight - 40, H - groundY);
-        outlineText(ctx, 'lower lake', safeRight * 0.85, groundY + 24, 'bold 11px monospace', '#ffffff');
+        ctx.fillRect(20, groundY, safeRight - 40, stageBottom - groundY);
+        outlineText(ctx, 'lower lake', safeRight * 0.85, groundY + 28, 'bold 12px monospace', '#ffffff');
 
         // Pipe joining the two lakes.
         ctx.strokeStyle = '#334155';
@@ -77,17 +77,13 @@ export const P37PumpedHydroLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, `Energy you get back: ${Math.round(returned * 100)} units (20% lost as heat)`,
             safeRight / 2, 106, 'bold 12px monospace');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, stored,
-            'Stored Energy (weight x height)', 'Almost none', 'Full'
-        );
 
         const msg = v < 0.25
             ? 'Barely lifted. Very little energy is stored at this height.'
             : v < 0.6
                 ? 'Higher lake, more stored energy -- double the height, double the energy.'
                 : 'High up! Huge energy stored -- this is why these are built in mountains.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: stored, caption: 'Stored Energy (weight x height)', low: 'Almost none', high: 'Full' }, note: msg };
     };
 
     return (

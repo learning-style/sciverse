@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -12,7 +12,7 @@ const VARIABLES = ['Additive', 'Temperature', 'Stirring', 'Fresh batch'];
 export const C40FairTestLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, raw }: LabScene) => {
+    const drawScene = ({ ctx, safeRight, raw }: LabScene) => {
         const changed = raw;
         const topY = 110;
 
@@ -65,17 +65,13 @@ export const C40FairTestLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, verdict, safeRight / 2, 88, 'bold 13px monospace',
             changed === 1 ? '#15803d' : changed === 0 ? '#64748b' : '#b91c1c');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, confidence,
-            'Can You Name the Cause?', 'No idea', 'Certain'
-        );
 
         const msg = changed === 0
             ? 'Change exactly one thing to start a fair test.'
             : changed === 1
                 ? 'Perfect. One variable changed, everything else held fixed.'
                 : 'The reaction sped up -- but was it the additive, or one of the others?';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: confidence, caption: 'Can You Name the Cause?', low: 'No idea', high: 'Certain' }, note: msg };
     };
 
     return (

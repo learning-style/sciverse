@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -69,10 +69,6 @@ export const P36FilterLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, `Blocked ${blocked} of 4 particle types   |   Flow speed ${Math.round(flow * 100)}%`,
             safeRight / 2, 84, 'bold 12px monospace');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, blocked / PARTICLES.length,
-            'Cleaning Power', 'Catches nothing', 'Catches everything'
-        );
 
         const msg = holeUm > 50
             ? 'Big holes: only sand is caught. Water looks dirty and IS dirty.'
@@ -81,7 +77,7 @@ export const P36FilterLab = ({ state, onStateChange }: Props) => {
                 : holeUm > 0.5
                     ? 'Bacteria are blocked! Water looks clean, but viruses still pass.'
                     : 'Tiny holes catch almost everything -- but the flow slows to a trickle.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: blocked / PARTICLES.length, caption: 'Cleaning Power', low: 'Catches nothing', high: 'Catches everything' }, note: msg };
     };
 
     return (

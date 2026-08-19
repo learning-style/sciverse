@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -66,10 +66,6 @@ export const P35SortingMachineLab = ({ state, onStateChange }: Props) => {
 
         outlineText(ctx, `Magnet catches ${Math.round(accuracy * 100)}% of the steel`, safeRight / 2, 82, 'bold 13px monospace');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, sorted,
-            'Material Sorted Per Hour', 'Very little', 'Lots'
-        );
 
         const msg = v < 0.2
             ? 'Very slow. Sorting is accurate but the plant barely processes anything.'
@@ -78,7 +74,7 @@ export const P35SortingMachineLab = ({ state, onStateChange }: Props) => {
                 : v < 0.78
                     ? 'Getting too fast -- items are stacking up and some steel slips past.'
                     : 'Far too fast! Items pile on each other and most steel is missed.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: sorted, caption: 'Material Sorted Per Hour', low: 'Very little', high: 'Lots' }, note: msg };
     };
 
     return (

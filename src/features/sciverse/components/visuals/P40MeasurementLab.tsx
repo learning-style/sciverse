@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -79,17 +79,13 @@ export const P40MeasurementLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, `Average: ${mean.toFixed(2)} cm  ±  ${uncertainty.toFixed(2)} cm`,
             safeRight / 2, 106, 'bold 14px monospace', '#b91c1c');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, 1 - uncertainty / 0.35,
-            'Confidence in the Answer', 'Very unsure', 'Confident'
-        );
 
         const msg = n <= 2
             ? 'One or two readings tell you very little -- the wobble could be anywhere.'
             : n < 15
                 ? 'The average is settling down as the high and low readings cancel out.'
                 : 'Many readings! The random wobble has mostly cancelled and the range is tight.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: 1 - uncertainty / 0.35, caption: 'Confidence in the Answer', low: 'Very unsure', high: 'Confident' }, note: msg };
     };
 
     return (

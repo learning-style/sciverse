@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -81,17 +81,13 @@ export const C37BatteryLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'Electrons must go the long way -- that is what powers the device',
             safeRight / 2, 90, 'bold 12px monospace');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, v,
-            'Charge Remaining', 'Empty', 'Full'
-        );
 
         const msg = v < 0.15
             ? 'Nearly flat. Few electrons left to push -- the light is dim.'
             : v < 0.6
                 ? 'Half charged. The reaction is still running steadily.'
                 : 'Fully charged! Plenty of stored chemical reaction ready to go.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: v, caption: 'Charge Remaining', low: 'Empty', high: 'Full' }, note: msg };
     };
 
     return (

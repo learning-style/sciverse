@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -61,17 +61,13 @@ export const B33EcosystemServicesLab = ({ state, onStateChange }: Props) => {
         });
         outlineText(ctx, 'Free services this ecosystem provides', safeRight / 2, y + boxH + 24, 'bold 13px monospace');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, health,
-            'Ecosystem Resilience', 'Fragile', 'Strong'
-        );
 
         const msg = v < 0.25
             ? 'Very few species -- one disease could collapse everything.'
             : v < 0.6
                 ? 'Some variety. The ecosystem can absorb small shocks.'
                 : 'High biodiversity! Plenty of backup if one species struggles.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: health, caption: 'Ecosystem Resilience', low: 'Fragile', high: 'Strong' }, note: msg };
     };
 
     return (

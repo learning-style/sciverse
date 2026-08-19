@@ -82,7 +82,7 @@ export const P39LogicGateLab = ({ state, onStateChange }: Props) => {
         const msg = andOut === orOut
             ? 'Here AND and OR agree -- both inputs are the same.'
             : 'AND and OR DISAGREE here! This is why picking the right gate matters.';
-        outlineText(ctx, msg, safeRight / 2, H - 40, 'bold 12px monospace');
+        return { note: msg };
     };
 
     return (

@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -71,17 +71,13 @@ export const P38FeedbackLoopLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, state_, safeRight / 2, 108, 'bold 14px monospace',
             state_ === 'STABLE' ? '#15803d' : '#b91c1c');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, tracking,
-            'Tracking Quality', 'Lost the line', 'Perfect'
-        );
 
         const msg = gain < 0.3
             ? 'Gain too low -- the robot corrects too gently and drifts away from the line.'
             : gain <= 0.62
                 ? 'Just right! The robot corrects just enough and stays smoothly on the line.'
                 : 'Gain too high -- it overshoots each way and the wobble keeps growing.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: tracking, caption: 'Tracking Quality', low: 'Lost the line', high: 'Perfect' }, note: msg };
     };
 
     return (

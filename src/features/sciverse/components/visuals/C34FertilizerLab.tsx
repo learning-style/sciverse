@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -79,10 +79,6 @@ export const C34FertilizerLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, `Crop health: ${Math.round(health * 100)}%   River health: ${Math.round(fishAlive * 100)}%`,
             safeRight / 2, 82, 'bold 13px monospace');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, Math.min(health, fishAlive),
-            'Overall Farm Score (crop AND river)', 'Poor', 'Great'
-        );
 
         const msg = v < 0.2
             ? 'Not enough plant food -- the crop grows small and pale.'
@@ -91,7 +87,7 @@ export const C34FertilizerLab = ({ state, onStateChange }: Props) => {
                 : v < 0.85
                     ? 'Too much. The extra washes into the river and feeds algae.'
                     : 'Way too much! The crop is burning and the river is choking.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: Math.min(health, fishAlive), caption: 'Overall Farm Score (crop AND river)', low: 'Poor', high: 'Great' }, note: msg };
     };
 
     return (

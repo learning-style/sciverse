@@ -21,6 +21,20 @@ export interface LabScene {
     v: number;
     /** Raw slider value (min..max). */
     raw: number;
+    /** Top of the drawing stage. Everything above is reserved for headings. */
+    stageTop: number;
+    /** Bottom of the drawing stage. Everything below is the footer band -- art
+     *  drawn past this point will be painted over. */
+    stageBottom: number;
+}
+
+/**
+ * What a scene hands back for the footer. LabCanvas paints this after the art,
+ * on a reserved band, so a meter or caption can never be buried by the drawing.
+ */
+export interface LabFooter {
+    meter?: { fraction: number; caption: string; low: string; high: string };
+    note?: string;
 }
 
 export type Accent = 'indigo' | 'emerald' | 'rose';
@@ -50,9 +64,13 @@ interface LabCanvasProps {
     sky?: [string, string];
     phase: string;
     onStateChange: (key: string, value: unknown) => void;
-    /** Draws the lesson-specific scene. Called every animation frame. */
-    drawScene: (scene: LabScene) => void;
+    /** Draws the lesson-specific scene. Called every animation frame.
+     *  May return footer content for LabCanvas to render in the reserved band. */
+    drawScene: (scene: LabScene) => LabFooter | void;
 }
+
+/** Height of the reserved footer band: meter, its labels, and one caption line. */
+const FOOTER_H = 116;
 
 const ACCENT_TEXT: Record<Accent, string> = {
     indigo: 'text-indigo-600',
@@ -222,7 +240,36 @@ export const LabCanvas = ({
         outlineText(ctx, title, safeRight / 2, 30, 'bold 22px monospace');
         outlineText(ctx, readout({ v, raw }), safeRight / 2, 56, 'bold 16px monospace');
 
-        drawScene({ ctx, W, H, safeRight, t, v, raw });
+        // Reserved bands: headings above, meter and caption below. The stage in
+        // between is clipped so a scene cannot spill into either one.
+        const stageTop = 124;
+        const stageBottom = H - FOOTER_H;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(0, 0, W, stageBottom);
+        ctx.clip();
+        const footer = drawScene({ ctx, W, H, safeRight, t, v, raw, stageTop, stageBottom }) || {};
+        ctx.restore();
+
+        // Footer band, painted over whatever the scene drew.
+        ctx.fillStyle = 'rgba(255,255,255,0.94)';
+        ctx.fillRect(0, stageBottom, W, H - stageBottom);
+        ctx.strokeStyle = '#cbd5e1';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(0, stageBottom + 0.5);
+        ctx.lineTo(safeRight, stageBottom + 0.5);
+        ctx.stroke();
+
+        if (footer.meter) {
+            const m = footer.meter;
+            meterBar(ctx, safeRight * 0.12, stageBottom + 20, safeRight * 0.76,
+                m.fraction, m.caption, m.low, m.high);
+        }
+        if (footer.note) {
+            outlineText(ctx, footer.note, safeRight / 2, H - 14, 'bold 13px monospace');
+        }
 
         if (phase === 'complete') {
             ctx.fillStyle = 'rgba(0,0,0,0.72)';

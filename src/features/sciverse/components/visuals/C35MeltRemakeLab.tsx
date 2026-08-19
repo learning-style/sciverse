@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -88,17 +88,13 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, `Plastic quality after melting: ${Math.round(plasticQuality * 100)}%`,
             midX + midX / 2, topY + panelH + 24, 'bold 11px monospace', plasticQuality > 0.6 ? '#15803d' : '#b91c1c');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, plasticQuality,
-            'How Good the Recycled Plastic Is', 'Ruined', 'Like new'
-        );
 
         const msg = tempC < plasticMelts
             ? `${tempC}\u00B0C -- not hot enough to melt either one yet.`
             : tempC < metalMelts
                 ? `${tempC}\u00B0C -- plastic has melted and its chains are snapping.`
                 : `${tempC}\u00B0C -- both melted. Metal atoms will re-stack perfectly; plastic will not.`;
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: plasticQuality, caption: 'How Good the Recycled Plastic Is', low: 'Ruined', high: 'Like new' }, note: msg };
     };
 
     return (

@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -68,10 +68,6 @@ export const B34FarmTeamLab = ({ state, onStateChange }: Props) => {
         ctx.beginPath(); ctx.arc(safeRight - 170, 106, 6, 0, Math.PI * 2); ctx.fill();
         outlineText(ctx, 'apple!', safeRight - 130, 110, 'bold 10px monospace');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, pollinated,
-            'Harvest Size', 'Almost none', 'Full crop'
-        );
 
         const msg = v < 0.15
             ? 'Hardly any bees -- the trees look healthy but make almost no fruit.'
@@ -80,7 +76,7 @@ export const B34FarmTeamLab = ({ state, onStateChange }: Props) => {
                 : v < 0.85
                     ? 'Good pollinator numbers -- most flowers become fruit!'
                     : 'Plenty of bees. Every flower gets visited; extra bees add little more.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: pollinated, caption: 'Harvest Size', low: 'Almost none', high: 'Full crop' }, note: msg };
     };
 
     return (

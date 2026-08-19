@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -65,17 +65,13 @@ export const C39SemiconductorLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, `${dopantCount} added atoms in ${rows * cols} -- real chips use about 1 in a million`,
             safeRight / 2, H - 116, 'bold 11px monospace');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, conduction,
-            'How Well It Carries Electricity', 'Blocks', 'Conducts'
-        );
 
         const msg = v < 0.12
             ? 'No dopant atoms: electrons are stuck and nothing flows.'
             : v < 0.5
                 ? 'A few added atoms free some electrons -- current begins to flow.'
                 : 'Plenty of free electrons. The silicon now conducts and the switch is on.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: conduction, caption: 'How Well It Carries Electricity', low: 'Blocks', high: 'Conducts' }, note: msg };
     };
 
     return (

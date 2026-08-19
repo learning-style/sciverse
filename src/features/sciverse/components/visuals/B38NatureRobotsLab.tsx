@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar, chip } from './LabCanvas';
+import { LabCanvas, outlineText, chip } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -66,17 +66,13 @@ export const B38NatureRobotsLab = ({ state, onStateChange }: Props) => {
 
         // Burn damage grows with how long your hand stays on the hot surface.
         const damage = Math.min(1, (reactionS - 0.05) / 0.25);
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, 1 - damage,
-            'How Well You Avoid the Burn', 'Bad burn', 'Barely a mark'
-        );
 
         const msg = v < 0.3
             ? 'Fast reflex! The spine handles it and your hand is away in a flash.'
             : v < 0.55
                 ? 'Getting slower -- more of the signal path is being used.'
                 : 'Slow loop through the brain. Your hand stays on the heat much longer.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: 1 - damage, caption: 'How Well You Avoid the Burn', low: 'Bad burn', high: 'Barely a mark' }, note: msg };
     };
 
     return (

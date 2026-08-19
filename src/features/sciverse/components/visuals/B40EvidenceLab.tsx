@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -58,10 +58,6 @@ export const B40EvidenceLab = ({ state, onStateChange }: Props) => {
             conclusive ? '#15803d' : '#b91c1c'
         );
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, conclusive ? Math.min(1, 1 - margin / trueEffect) : 0.05,
-            'Strength of the Evidence', 'Just a story', 'Convincing'
-        );
 
         const msg = n < 5
             ? 'This is anecdotal -- a handful of cases proves nothing at all.'
@@ -70,7 +66,7 @@ export const B40EvidenceLab = ({ state, onStateChange }: Props) => {
                 : n < 300
                     ? 'The pattern is holding up as the sample grows.'
                     : 'Large sample! The real effect now stands clearly above the noise.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: conclusive ? Math.min(1, 1 - margin / trueEffect) : 0.05, caption: 'Strength of the Evidence', low: 'Just a story', high: 'Convincing' }, note: msg };
     };
 
     return (

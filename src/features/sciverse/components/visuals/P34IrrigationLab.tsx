@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -78,17 +78,13 @@ export const P34IrrigationLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, 104, 'bold 12px monospace'
         );
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, absorbed,
-            'Watering Efficiency', 'Wasteful', 'Efficient'
-        );
 
         const msg = v < 0.3
             ? 'Slow and steady -- like drip irrigation. Almost nothing is wasted!'
             : v < 0.65
                 ? 'Medium flow. Some water soaks in, some slides away.'
                 : 'Too fast! The soil cannot drink it and most of it runs off.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: absorbed, caption: 'Watering Efficiency', low: 'Wasteful', high: 'Efficient' }, note: msg };
     };
 
     return (

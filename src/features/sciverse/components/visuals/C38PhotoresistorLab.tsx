@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -64,10 +64,6 @@ export const C38PhotoresistorLab = ({ state, onStateChange }: Props) => {
             outlineText(ctx, 'SATURATED -- everything looks equally bright!', safeRight / 2, H - 118, 'bold 13px monospace', '#b91c1c');
         }
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, signal,
-            'Electrical Signal to the Computer', 'Dark', 'Maxed out'
-        );
 
         const msg = v < 0.15
             ? 'Dark. Electrons stay locked in place, so the material blocks current.'
@@ -76,7 +72,7 @@ export const C38PhotoresistorLab = ({ state, onStateChange }: Props) => {
                 : saturated
                     ? 'Too bright! The sensor is maxed out and can no longer tell shades apart.'
                     : 'Bright light, strong signal -- still inside the sensor\'s useful range.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: signal, caption: 'Electrical Signal to the Computer', low: 'Dark', high: 'Maxed out' }, note: msg };
     };
 
     return (

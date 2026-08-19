@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -71,11 +71,6 @@ export const C36ChlorineLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, verdict, safeRight / 2, tankY + tankH + 26, 'bold 14px monospace',
             safe ? '#15803d' : killed < 0.97 ? '#b91c1c' : '#a16207');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7,
-            safe ? 1 : killed < 0.97 ? killed * 0.6 : 0.62,
-            'Water Safety Score', 'Dangerous', 'Perfect'
-        );
 
         const msg = v < 0.2
             ? 'Too little chlorine -- many germs survive the treatment.'
@@ -84,7 +79,7 @@ export const C36ChlorineLab = ({ state, onStateChange }: Props) => {
                 : v <= 0.7
                     ? 'Great dose! Germs destroyed and the water still tastes fine.'
                     : 'Too much. It is safe, but it smells and tastes like a swimming pool.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: safe ? 1 : killed < 0.97 ? killed * 0.6 : 0.62, caption: 'Water Safety Score', low: 'Dangerous', high: 'Perfect' }, note: msg };
     };
 
     return (

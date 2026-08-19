@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -97,17 +97,13 @@ export const B39NeuronLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, fires ? 'FIRING! Full strength signal sent.' : 'Silent -- total has not reached the threshold.',
             safeRight / 2, 88, 'bold 14px monospace', fires ? '#15803d' : '#64748b');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, fires ? 1 : 0,
-            'Neuron Output (all or nothing)', 'Silent', 'Full signal'
-        );
 
         const msg = v < THRESHOLD - 0.15
             ? 'Not enough incoming votes. The neuron stays completely quiet.'
             : v < THRESHOLD
                 ? 'So close! Just below the threshold -- still nothing happens.'
                 : 'Threshold crossed! The neuron fires at full strength -- never halfway.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: fires ? 1 : 0, caption: 'Neuron Output (all or nothing)', low: 'Silent', high: 'Full signal' }, note: msg };
     };
 
     return (

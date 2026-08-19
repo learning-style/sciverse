@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar, chip } from './LabCanvas';
+import { LabCanvas, outlineText, chip } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -74,17 +74,13 @@ export const C33NutrientCycleLab = ({ state, onStateChange }: Props) => {
             outlineText(ctx, 'Dead leaves piling up!', 88, H - 148, 'bold 11px monospace', '#b91c1c');
         }
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, v,
-            'Nutrients Returned to the Soil', 'Locked up', 'Recycled'
-        );
 
         const msg = v < 0.25
             ? 'Slow crew: nutrients stay trapped in dead material.'
             : v < 0.7
                 ? 'The loop is turning -- soil is being restocked.'
                 : 'Fast crew! Atoms race back to the soil for new plants.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: v, caption: 'Nutrients Returned to the Soil', low: 'Locked up', high: 'Recycled' }, note: msg };
     };
 
     return (

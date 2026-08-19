@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -73,10 +73,6 @@ export const B35CompostCrewLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, tempC > 45 ? 'Hot enough to kill weed seeds and germs!' : 'Pile is cool -- breakdown is slow.',
             safeRight / 2, 106, 'bold 12px monospace');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, activity,
-            'Composting Speed', 'Stalled', 'Fast'
-        );
 
         const msg = v < 0.28
             ? 'Too dry! Microbes need water to live and cannot work.'
@@ -85,7 +81,7 @@ export const B35CompostCrewLab = ({ state, onStateChange }: Props) => {
                 : v <= 0.72
                     ? 'Just right -- damp like a wrung-out sponge. The pile is heating up!'
                     : 'Too wet and packed. Air is squeezed out and it turns smelly.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: activity, caption: 'Composting Speed', low: 'Stalled', high: 'Fast' }, note: msg };
     };
 
     return (

@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -53,17 +53,13 @@ export const B36WaterDetectiveLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, verdict, cx, 106, 'bold 13px monospace',
             colonies === 0 ? '#15803d' : colonies < 10 ? '#b45309' : '#b91c1c');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, 1 - v,
-            'Water Safety Verdict', 'Contaminated', 'Safe to drink'
-        );
 
         const msg = colonies === 0
             ? 'No colonies grew. This sample passes -- but test again next month!'
             : colonies < 10
                 ? 'Even a few colonies mean sewage reached this water. Do not drink.'
                 : 'The dish is covered. This water is badly contaminated.';
-        outlineText(ctx, msg, cx, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: 1 - v, caption: 'Water Safety Verdict', low: 'Contaminated', high: 'Safe to drink' }, note: msg };
     };
 
     return (

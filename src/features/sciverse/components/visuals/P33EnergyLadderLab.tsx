@@ -13,14 +13,14 @@ const COLORS = ['#4d7c0f', '#a16207', '#c2410c', '#9f1239', '#5b21b6'];
 export const P33EnergyLadderLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, raw }: LabScene) => {
+    const drawScene = ({ ctx, safeRight, raw, stageTop, stageBottom }: LabScene) => {
         const steps = raw;
         const cx = safeRight / 2;
 
-        // Reserve space: headline block above, sun caption below. Bands then
-        // share whatever is left, so 5 levels fit without overlapping.
-        const pyramidBottom = H - 62;
-        const pyramidTop = 132;
+        // Bands share the stage, leaving a strip at the bottom for the Sun
+        // caption. Everything stays inside stageTop..stageBottom.
+        const pyramidBottom = stageBottom - 44;
+        const pyramidTop = stageTop + 4;
         const slot = Math.max(26, (pyramidBottom - pyramidTop) / steps);
         const bandH = Math.min(36, slot * 0.72);
         const maxW = safeRight * 0.5;
@@ -60,12 +60,12 @@ export const P33EnergyLadderLab = ({ state, onStateChange }: Props) => {
         // Sun caption anchored to the bottom edge.
         ctx.fillStyle = '#facc15';
         ctx.beginPath();
-        ctx.arc(cx - 132, H - 34, 11, 0, Math.PI * 2);
+        ctx.arc(cx - 132, stageBottom - 16, 11, 0, Math.PI * 2);
         ctx.fill();
         ctx.strokeStyle = '#a16207';
         ctx.lineWidth = 2;
         ctx.stroke();
-        outlineText(ctx, 'SUN — 100% of the energy enters here', cx + 12, H - 29, 'bold 14px monospace');
+        outlineText(ctx, 'SUN — 100% of the energy enters here', cx + 12, stageBottom - 11, 'bold 14px monospace');
 
         // Headline readouts.
         const topEnergy = Math.pow(0.1, steps - 1) * 100;
@@ -76,7 +76,7 @@ export const P33EnergyLadderLab = ({ state, onStateChange }: Props) => {
             : steps === 3
                 ? 'Three steps — only about 1% is left.'
                 : 'Long chain — nearly all the energy is gone.';
-        outlineText(ctx, msg, cx, 112, 'bold 14px monospace');
+        return { note: msg };
     };
 
     return (

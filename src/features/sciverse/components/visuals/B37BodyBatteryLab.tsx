@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText, meterBar } from './LabCanvas';
+import { LabCanvas, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -65,10 +65,6 @@ export const B37BodyBatteryLab = ({ state, onStateChange }: Props) => {
             : 'Fast store full -- extra energy is being packed away as fat',
             safeRight / 2, 88, 'bold 12px monospace');
 
-        meterBar(
-            ctx, safeRight * 0.15, H - 92, safeRight * 0.7, (glycogen * 0.2 + fat * 0.8),
-            'Total Energy Stored', 'Empty', 'Loaded'
-        );
 
         const msg = v < 0.2
             ? 'Light meal. Glycogen is topping up for quick energy.'
@@ -77,7 +73,7 @@ export const B37BodyBatteryLab = ({ state, onStateChange }: Props) => {
                 : v < 0.75
                     ? 'Glycogen is full, so the extra is now being stored as fat.'
                     : 'Big surplus. Most of this meal goes into long-term fat storage.';
-        outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
+        return { meter: { fraction: (glycogen * 0.2 + fat * 0.8), caption: 'Total Energy Stored', low: 'Empty', high: 'Loaded' }, note: msg };
     };
 
     return (
