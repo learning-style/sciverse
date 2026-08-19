@@ -93,7 +93,10 @@ export const P36FilterLab = ({ state, onStateChange }: Props) => {
             }}
             controlLabel="Filter Hole Size"
             controlKey="filterHoleSize"
-            controlDisplay={raw => `${100 - raw}% wide`}
+            controlDisplay={(_raw, v) => {
+                const um = Math.pow(10, 2.3 - v * 3.6);
+                return `${um >= 1 ? um.toFixed(0) : um.toFixed(2)} micrometres`;
+            }}
             controlInitial={30}
             accent="indigo"
             sky={['#e0f2fe', '#f8fafc']}

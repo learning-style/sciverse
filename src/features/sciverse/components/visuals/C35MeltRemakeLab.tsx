@@ -14,6 +14,13 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
         const midX = safeRight / 2;
         const topY = 120;
         const panelH = H - topY - 130;
+        // Slider spans room temperature to 700C, which brackets both real
+        // melting points the lesson talks about.
+        const tempC = Math.round(20 + v * 680);
+        const plasticMelts = 250;   // typical bottle plastic
+        const metalMelts = 660;     // aluminium
+        // Chains only start snapping once the plastic is molten.
+        const chainDamage = Math.max(0, Math.min(1, (tempC - plasticMelts) / 350));
 
         // Divider between the two materials.
         ctx.strokeStyle = '#94a3b8';
@@ -23,11 +30,15 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
         ctx.lineTo(midX, topY + panelH);
         ctx.stroke();
 
-        outlineText(ctx, 'ALUMINIUM (atoms)', midX / 2, topY - 20, 'bold 12px monospace');
-        outlineText(ctx, 'PLASTIC (long chains)', midX + midX / 2, topY - 20, 'bold 12px monospace');
+        outlineText(ctx, tempC >= metalMelts ? 'ALUMINIUM - MELTED' : 'ALUMINIUM (solid)',
+            midX / 2, topY - 38, 'bold 13px monospace');
+        outlineText(ctx, `melts at ${metalMelts}\u00B0C`, midX / 2, topY - 20, 'bold 11px monospace');
+        outlineText(ctx, tempC >= plasticMelts ? 'PLASTIC - MELTED' : 'PLASTIC (solid)',
+            midX + midX / 2, topY - 38, 'bold 13px monospace');
+        outlineText(ctx, `melts at about ${plasticMelts}\u00B0C`, midX + midX / 2, topY - 20, 'bold 11px monospace');
 
         // Left: metal atoms jiggle more with heat but stay whole.
-        const jiggle = v * 6;
+        const jiggle = Math.min(1, tempC / metalMelts) * 6;
         for (let row = 0; row < 5; row++) {
             for (let col = 0; col < 7; col++) {
                 const x = 40 + col * ((midX - 80) / 6) + Math.sin(t * 4 + row + col) * jiggle;
@@ -43,7 +54,7 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
         }
 
         // Right: polymer chains break into shorter pieces as heat rises.
-        const breaks = Math.floor(v * 4);          // how many cuts per chain
+        const breaks = Math.floor(chainDamage * 4);   // how many cuts per chain
         const segLen = 8;
         for (let chain = 0; chain < 4; chain++) {
             const y = topY + 30 + chain * 30;
@@ -70,7 +81,7 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
         }
 
         const metalQuality = 1;
-        const plasticQuality = Math.max(0.1, 1 - v * 0.85);
+        const plasticQuality = Math.max(0.1, 1 - chainDamage * 0.9);
 
         outlineText(ctx, `Metal quality after melting: ${Math.round(metalQuality * 100)}%`,
             midX / 2, topY + panelH + 24, 'bold 11px monospace', '#15803d');
@@ -82,21 +93,22 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
             'How Good the Recycled Plastic Is', 'Ruined', 'Like new'
         );
 
-        const msg = v < 0.25
-            ? 'Gentle heat. Both materials survive fine.'
-            : v < 0.6
-                ? 'Metal is unchanged, but plastic chains are starting to snap.'
-                : 'Hot! Metal atoms re-stack perfectly -- plastic chains are badly broken.';
+        const msg = tempC < plasticMelts
+            ? `${tempC}\u00B0C -- not hot enough to melt either one yet.`
+            : tempC < metalMelts
+                ? `${tempC}\u00B0C -- plastic has melted and its chains are snapping.`
+                : `${tempC}\u00B0C -- both melted. Metal atoms will re-stack perfectly; plastic will not.`;
         outlineText(ctx, msg, safeRight / 2, H - 34, 'bold 12px monospace');
     };
 
     return (
         <LabCanvas
             title="Melt and Remake"
-            readout={({ raw }) => `Melting temperature: ${raw}%`}
-            controlLabel="Melting Temperature"
+            readout={({ v }) => `Furnace temperature: ${Math.round(20 + v * 680)}\u00B0C`}
+            controlLabel="Furnace Temperature"
             controlKey="meltTemperature"
-            controlInitial={30}
+            controlInitial={15}
+            controlDisplay={(_raw, v) => `${Math.round(20 + v * 680)}\u00B0C`}
             accent="emerald"
             sky={['#fee2e2', '#f8fafc']}
             completeTitle="C35 Complete!"

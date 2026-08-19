@@ -98,6 +98,7 @@ export const P37PumpedHydroLab = ({ state, onStateChange }: Props) => {
             controlKey="liftHeight"
             controlMin={5}
             controlInitial={40}
+            controlDisplay={(_raw, v) => `${Math.round(v * 200)} metres`}
             accent="indigo"
             sky={['#dbeafe', '#f8fafc']}
             completeTitle="P37 Complete!"

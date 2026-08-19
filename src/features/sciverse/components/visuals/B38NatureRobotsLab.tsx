@@ -86,6 +86,7 @@ export const B38NatureRobotsLab = ({ state, onStateChange }: Props) => {
             controlLabel="Reaction Time"
             controlKey="reactionTime"
             controlInitial={25}
+            controlDisplay={(_raw, v) => `${(0.05 + v * 0.25).toFixed(2)} seconds`}
             accent="rose"
             sky={['#ffe4e6', '#f8fafc']}
             completeTitle="B38 Complete!"

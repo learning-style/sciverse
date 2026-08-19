@@ -69,10 +69,11 @@ export const B36WaterDetectiveLab = ({ state, onStateChange }: Props) => {
     return (
         <LabCanvas
             title="Water Detectives"
-            readout={({ raw }) => `Germ level in the sample: ${raw}%`}
-            controlLabel="Germ Level"
+            readout={({ v }) => `${Math.round(v * 40)} colonies grew from a 100 mL sample`}
+            controlLabel="Germs in the Sample"
             controlKey="germLevel"
             controlInitial={30}
+            controlDisplay={(_raw, v) => `${Math.round(v * 40)} colonies`}
             accent="rose"
             sky={['#fef9c3', '#f8fafc']}
             completeTitle="B36 Complete!"

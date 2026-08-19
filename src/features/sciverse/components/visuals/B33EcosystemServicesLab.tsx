@@ -77,11 +77,12 @@ export const B33EcosystemServicesLab = ({ state, onStateChange }: Props) => {
     return (
         <LabCanvas
             title="Nature's Free Gifts"
-            readout={({ raw }) => `Species variety: ${raw}%`}
+            readout={({ v }) => `${Math.max(1, Math.round(v * 10))} different species living here`}
             controlLabel="Species Variety"
             controlKey="speciesVariety"
             controlMin={5}
             controlInitial={50}
+            controlDisplay={(_raw, v) => `${Math.max(1, Math.round(v * 10))} species`}
             accent="rose"
             sky={['#dbeafe', '#f0fdf4']}
             completeTitle="B33 Complete!"

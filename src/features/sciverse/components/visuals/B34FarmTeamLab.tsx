@@ -86,10 +86,11 @@ export const B34FarmTeamLab = ({ state, onStateChange }: Props) => {
     return (
         <LabCanvas
             title="The Farm Team"
-            readout={({ raw }) => `Pollinator count: ${raw}%`}
+            readout={({ v }) => `${Math.round(v * 12)} pollinators visiting this orchard`}
             controlLabel="Pollinator Count"
             controlKey="pollinatorCount"
             controlInitial={45}
+            controlDisplay={(_raw, v) => `${Math.round(v * 12)} bees`}
             accent="rose"
             sky={['#dbeafe', '#fef9c3']}
             completeTitle="B34 Complete!"

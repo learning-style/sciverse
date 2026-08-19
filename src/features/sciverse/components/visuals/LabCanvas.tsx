@@ -37,8 +37,10 @@ interface LabCanvasProps {
     controlMin?: number;
     controlMax?: number;
     controlInitial?: number;
-    /** Formats the value shown next to the slider label. Defaults to "N%". */
-    controlDisplay?: (raw: number) => string;
+    /** Formats the value shown next to the slider label. Defaults to "N%".
+     *  Receives the raw slider value and the same 0..1 `v` the scene gets, so a
+     *  control can show its real unit (°C, metres, seconds) instead of a percentage. */
+    controlDisplay?: (raw: number, v: number) => string;
     accent?: Accent;
     /** Overlay text shown when the lesson reaches its complete phase. */
     completeTitle: string;
@@ -265,7 +267,8 @@ export const LabCanvas = ({
         return () => cancelAnimationFrame(animRef.current);
     }, [draw]);
 
-    const display = controlDisplay ? controlDisplay(raw) : `${raw}%`;
+    const controlV = (raw - controlMin) / (controlMax - controlMin || 1);
+    const display = controlDisplay ? controlDisplay(raw, controlV) : `${raw}%`;
 
     return (
         <div ref={containerRef} className="relative w-full h-full bg-white">
