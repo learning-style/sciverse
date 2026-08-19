@@ -70,7 +70,7 @@ interface LabCanvasProps {
 }
 
 /** Height of the reserved footer band: meter, its labels, and one caption line. */
-const FOOTER_H = 116;
+const FOOTER_H = 128;
 
 const ACCENT_TEXT: Record<Accent, string> = {
     indigo: 'text-indigo-600',
@@ -183,6 +183,42 @@ export const chip = (
     ctx.fillText(text, cx, cy + 4);
 };
 
+
+/**
+ * Draws a centred caption that always fits `maxWidth`: shrinks the type first,
+ * then wraps onto a second line. Without this, a long line silently runs off
+ * the edge of the canvas.
+ */
+const fitCaption = (
+    ctx: CanvasRenderingContext2D,
+    text: string,
+    cx: number,
+    baseline: number,
+    maxWidth: number,
+    startSize = 13
+) => {
+    let size = startSize;
+    ctx.font = `bold ${size}px monospace`;
+    while (size > 10 && ctx.measureText(text).width > maxWidth) {
+        size -= 1;
+        ctx.font = `bold ${size}px monospace`;
+    }
+    if (ctx.measureText(text).width <= maxWidth) {
+        outlineText(ctx, text, cx, baseline, `bold ${size}px monospace`);
+        return;
+    }
+    // Still too wide: split at the space nearest the middle.
+    const words = text.split(' ');
+    let best = Math.floor(words.length / 2);
+    for (let i = 1; i < words.length; i++) {
+        if (Math.abs(i - words.length / 2) < Math.abs(best - words.length / 2)) best = i;
+    }
+    const l1 = words.slice(0, best).join(' ');
+    const l2 = words.slice(best).join(' ');
+    outlineText(ctx, l1, cx, baseline - 15, `bold ${size}px monospace`);
+    outlineText(ctx, l2, cx, baseline, `bold ${size}px monospace`);
+};
+
 export const LabCanvas = ({
     title,
     readout,
@@ -237,8 +273,8 @@ export const LabCanvas = ({
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, W, H);
 
-        outlineText(ctx, title, safeRight / 2, 30, 'bold 22px monospace');
-        outlineText(ctx, readout({ v, raw }), safeRight / 2, 56, 'bold 16px monospace');
+        fitCaption(ctx, title, safeRight / 2, 30, safeRight - 24, 22);
+        fitCaption(ctx, readout({ v, raw }), safeRight / 2, 56, safeRight - 24, 16);
 
         // Reserved bands: headings above, meter and caption below. The stage in
         // between is clipped so a scene cannot spill into either one.
@@ -262,13 +298,17 @@ export const LabCanvas = ({
         ctx.lineTo(safeRight, stageBottom + 0.5);
         ctx.stroke();
 
+        // The control sits in the top-right corner only, so the footer is free
+        // to use the whole canvas width and centre on it rather than on the art.
+        const footCx = W / 2;
+        const footW = Math.min(W - 48, 620);
         if (footer.meter) {
             const m = footer.meter;
-            meterBar(ctx, safeRight * 0.12, stageBottom + 20, safeRight * 0.76,
+            meterBar(ctx, footCx - footW / 2, stageBottom + 18, footW,
                 m.fraction, m.caption, m.low, m.high);
         }
         if (footer.note) {
-            outlineText(ctx, footer.note, safeRight / 2, H - 14, 'bold 13px monospace');
+            fitCaption(ctx, footer.note, footCx, H - 12, W - 32);
         }
 
         if (phase === 'complete') {
