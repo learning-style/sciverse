@@ -31,9 +31,9 @@ export const P40MeasurementLab = ({ state, onStateChange }: Props) => {
             ctx.moveTo(x, axisY - 7);
             ctx.lineTo(x, axisY + 7);
             ctx.stroke();
-            outlineText(ctx, (81 + i * 0.5).toFixed(1), x, axisY + 26, 'bold 11px monospace');
+            outlineText(ctx, (81 + i * 0.5).toFixed(1), x, axisY + 26, 'bold 13px monospace');
         }
-        outlineText(ctx, 'measured length (cm)', safeRight / 2, axisY + 48, 'bold 11px monospace');
+        outlineText(ctx, 'measured length (cm)', safeRight / 2, axisY + 48, 'bold 13px monospace');
 
         // The true value, marked for reference.
         const trueX = axisX + ((TRUE_VALUE - 81) / 2) * axisW;
@@ -45,7 +45,7 @@ export const P40MeasurementLab = ({ state, onStateChange }: Props) => {
         ctx.lineTo(trueX, axisY + 10);
         ctx.stroke();
         ctx.setLineDash([]);
-        outlineText(ctx, 'true length', trueX, axisY - 140, 'bold 11px monospace', '#15803d');
+        outlineText(ctx, 'true length', trueX, axisY - 140, 'bold 13px monospace', '#15803d');
 
         // Deterministic pseudo-random readings so the picture is stable while sliding.
         let sum = 0;
@@ -75,9 +75,9 @@ export const P40MeasurementLab = ({ state, onStateChange }: Props) => {
         ctx.closePath();
         ctx.fill();
 
-        outlineText(ctx, `${n} measurement${n === 1 ? '' : 's'}`, safeRight / 2, 84, 'bold 13px monospace');
+        outlineText(ctx, `${n} measurement${n === 1 ? '' : 's'}`, safeRight / 2, 84, 'bold 15px monospace');
         outlineText(ctx, `Average: ${mean.toFixed(2)} cm  ±  ${uncertainty.toFixed(2)} cm`,
-            safeRight / 2, 106, 'bold 14px monospace', '#b91c1c');
+            safeRight / 2, 106, 'bold 15px monospace', '#b91c1c');
 
 
         const msg = n <= 2

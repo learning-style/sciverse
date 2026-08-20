@@ -27,8 +27,8 @@ export const C40FairTestLab = ({ state, onStateChange }: Props) => {
             ctx.strokeStyle = '#1e293b';
             ctx.lineWidth = 1.5;
             ctx.stroke();
-            outlineText(ctx, name, 120, y + 19, 'bold 12px monospace');
-            outlineText(ctx, isChanged ? 'CHANGED' : 'held fixed', safeRight - 130, y + 19, 'bold 11px monospace',
+            outlineText(ctx, name, 120, y + 19, 'bold 14px monospace');
+            outlineText(ctx, isChanged ? 'CHANGED' : 'held fixed', safeRight - 130, y + 19, 'bold 13px monospace',
                 isChanged ? '#b91c1c' : '#15803d');
         });
 
@@ -48,7 +48,7 @@ export const C40FairTestLab = ({ state, onStateChange }: Props) => {
                 ctx.arc(x + 10 + (i * 13) % 44, beakerY + 32 + (i * 9) % 24, 3.5, 0, Math.PI * 2);
                 ctx.fill();
             }
-            outlineText(ctx, label, x + 29, beakerY + 80, 'bold 11px monospace');
+            outlineText(ctx, label, x + 29, beakerY + 80, 'bold 13px monospace');
         };
 
         drawBeaker(safeRight * 0.3 - 29, 'CONTROL', 2, '#93c5fd');
@@ -62,7 +62,7 @@ export const C40FairTestLab = ({ state, onStateChange }: Props) => {
             : changed === 1
                 ? 'FAIR TEST -- any difference must be caused by the additive.'
                 : `CONFOUNDED -- ${changed} things changed, so the cause is unknown.`;
-        outlineText(ctx, verdict, safeRight / 2, 88, 'bold 13px monospace',
+        outlineText(ctx, verdict, safeRight / 2, 88, 'bold 15px monospace',
             changed === 1 ? '#15803d' : changed === 0 ? '#64748b' : '#b91c1c');
 
 

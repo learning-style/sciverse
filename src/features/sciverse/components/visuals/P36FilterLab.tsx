@@ -34,7 +34,7 @@ export const P36FilterLab = ({ state, onStateChange }: Props) => {
             ctx.fillRect(x, filterY, gapW, 16);
         }
         outlineText(ctx, `FILTER: holes ${holeUm >= 1 ? holeUm.toFixed(0) : holeUm.toFixed(2)} micrometres`,
-            safeRight / 2, filterY - 24, 'bold 12px monospace');
+            safeRight / 2, filterY - 24, 'bold 14px monospace');
 
         // Particles fall; those bigger than a hole stop on top of the filter.
         let blocked = 0;
@@ -59,15 +59,15 @@ export const P36FilterLab = ({ state, onStateChange }: Props) => {
             ctx.lineWidth = 1.5;
             ctx.stroke();
 
-            outlineText(ctx, p.label, laneX, 100, 'bold 10px monospace');
+            outlineText(ctx, p.label, laneX, 100, 'bold 13px monospace');
             outlineText(ctx, passes ? 'passes' : 'BLOCKED', laneX, filterY + 40,
-                'bold 10px monospace', passes ? '#b91c1c' : '#15803d');
+                'bold 13px monospace', passes ? '#b91c1c' : '#15803d');
         });
 
         // Flow rate drops as holes shrink.
         const flow = Math.max(0.05, 1 - v * 0.92);
         outlineText(ctx, `Blocked ${blocked} of 4 particle types   |   Flow speed ${Math.round(flow * 100)}%`,
-            safeRight / 2, 84, 'bold 12px monospace');
+            safeRight / 2, 84, 'bold 14px monospace');
 
 
         const msg = holeUm > 50

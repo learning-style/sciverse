@@ -6,86 +6,96 @@ interface Props {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-/** Pure silicon barely conducts; a whisper of dopant atoms turns it into a switch. */
+const THRESHOLD = 0.5;
+
+/** Three materials side by side: copper always conducts, rubber never, silicon on demand. */
 export const C39SemiconductorLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, t, v }: LabScene) => {
-        const gridX = 50;
-        const gridY = 120;
-        const cols = 9;
-        const rows = 5;
-        const cellW = (safeRight - 100) / cols;
-        const cellH = 26;
+    const drawScene = ({ ctx, safeRight, t, v, stageTop, stageBottom }: LabScene) => {
+        const siliconOn = v >= THRESHOLD;
+        const rows = [
+            { name: 'COPPER', kind: 'conductor', fill: '#b45309', flows: true },
+            { name: 'RUBBER', kind: 'insulator', fill: '#334155', flows: false },
+            { name: 'SILICON', kind: 'semiconductor', fill: siliconOn ? '#0ea5e9' : '#94a3b8', flows: siliconOn },
+        ];
 
-        // Silicon lattice. A few atoms are swapped for dopant atoms.
-        const dopantCount = Math.round(v * 8);
-        let placed = 0;
-        for (let r = 0; r < rows; r++) {
-            for (let c = 0; c < cols; c++) {
-                const x = gridX + c * cellW + cellW / 2;
-                const y = gridY + r * cellH + cellH / 2;
-                // Spread dopants evenly through the lattice.
-                const isDopant = placed < dopantCount && (r * cols + c) % Math.max(1, Math.floor((rows * cols) / Math.max(1, dopantCount))) === 0;
-                if (isDopant) placed++;
+        const stageH = stageBottom - stageTop;
+        const rowH = stageH / rows.length;
+        const barX = safeRight * 0.28;
+        const barW = safeRight * 0.42;
+        const barH = Math.max(26, Math.min(52, rowH * 0.34));
 
-                ctx.fillStyle = isDopant ? '#f97316' : '#94a3b8';
-                ctx.beginPath();
-                ctx.arc(x, y, isDopant ? 8 : 7, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.strokeStyle = '#1e293b';
-                ctx.lineWidth = 1.5;
-                ctx.stroke();
+        rows.forEach((row, i) => {
+            const cy = stageTop + rowH * (i + 0.5);
+
+            // Material name and family.
+            outlineText(ctx, row.name, barX - 16, cy + 2, 'bold 16px monospace', '#0f172a', 'right');
+            outlineText(ctx, row.kind, barX - 16, cy + 20, 'bold 15px monospace', '#475569', 'right');
+
+            // The material itself.
+            ctx.fillStyle = row.fill;
+            ctx.fillRect(barX, cy - barH / 2, barW, barH);
+            ctx.strokeStyle = '#0f172a';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(barX, cy - barH / 2, barW, barH);
+
+            // Electrons moving through, or a blocked sign.
+            if (row.flows) {
+                for (let e = 0; e < 7; e++) {
+                    const p = ((t * 0.5 + e / 7) % 1);
+                    ctx.fillStyle = '#fef08a';
+                    ctx.beginPath();
+                    ctx.arc(barX + p * barW, cy, Math.max(5, barH * 0.16), 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.strokeStyle = '#a16207';
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+                }
+            } else {
+                outlineText(ctx, 'BLOCKED', barX + barW / 2, cy + 5, 'bold 15px monospace', '#ffffff');
             }
-        }
 
-        outlineText(ctx, 'silicon atom', gridX + 60, gridY + rows * cellH + 24, 'bold 10px monospace');
-        ctx.fillStyle = '#94a3b8';
-        ctx.beginPath(); ctx.arc(gridX + 8, gridY + rows * cellH + 20, 6, 0, Math.PI * 2); ctx.fill();
-        outlineText(ctx, 'added atom (dopant)', safeRight - 120, gridY + rows * cellH + 24, 'bold 10px monospace');
-        ctx.fillStyle = '#f97316';
-        ctx.beginPath(); ctx.arc(safeRight - 210, gridY + rows * cellH + 20, 6, 0, Math.PI * 2); ctx.fill();
-
-        // Free electrons only appear once dopants are present.
-        const conduction = v;
-        for (let i = 0; i < Math.round(conduction * 12); i++) {
-            const seed = i * 59.3;
-            const x = gridX + ((seed * 9.1 + t * 70) % (safeRight - 100));
-            const y = gridY + 10 + ((seed * 7.3) % (rows * cellH - 20));
-            ctx.fillStyle = '#0ea5e9';
+            // Bulb showing the result.
+            const bulbX = barX + barW + 46;
+            const bulbR = Math.max(16, Math.min(26, barH * 0.55));
+            ctx.fillStyle = row.flows ? '#fbbf24' : '#e2e8f0';
             ctx.beginPath();
-            ctx.arc(x, y, 4, 0, Math.PI * 2);
+            ctx.arc(bulbX, cy, bulbR, 0, Math.PI * 2);
             ctx.fill();
-        }
+            ctx.strokeStyle = '#0f172a';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            outlineText(ctx, row.flows ? 'ON' : 'OFF', bulbX, cy + bulbR + 20, 'bold 15px monospace',
+                row.flows ? '#a16207' : '#64748b');
+        });
 
-        const label = v < 0.12 ? 'PURE SILICON -- blocks current (like an insulator)'
-            : v < 0.5 ? 'LIGHTLY DOPED -- starts to conduct'
-                : 'DOPED SILICON -- conducts well (switch is ON)';
-        outlineText(ctx, label, safeRight / 2, 90, 'bold 12px monospace');
-        outlineText(ctx, `${dopantCount} added atoms in ${rows * cols} -- real chips use about 1 in a million`,
-            safeRight / 2, H - 116, 'bold 11px monospace');
+        outlineText(ctx,
+            siliconOn ? 'Signal is strong enough -- silicon lets electricity through!'
+                : 'Signal too weak -- silicon is blocking, like rubber.',
+            safeRight / 2, 96, 'bold 15px monospace');
 
-
-        const msg = v < 0.12
-            ? 'No dopant atoms: electrons are stuck and nothing flows.'
-            : v < 0.5
-                ? 'A few added atoms free some electrons -- current begins to flow.'
-                : 'Plenty of free electrons. The silicon now conducts and the switch is on.';
-        return { meter: { fraction: conduction, caption: 'How Well It Carries Electricity', low: 'Blocks', high: 'Conducts' }, note: msg };
+        const msg = !siliconOn
+            ? 'Copper is stuck ON and rubber is stuck OFF. Only silicon can change.'
+            : 'Silicon switched ON. Turn the signal down and it blocks again -- that is a switch!';
+        return {
+            meter: { fraction: v, caption: 'Control Signal Sent to the Silicon', low: 'Off', high: 'On' },
+            note: msg,
+        };
     };
 
     return (
         <LabCanvas
             title="The Magic Middle"
-            readout={({ raw }) => `Doping amount: ${raw}%`}
-            controlLabel="Doping Amount"
-            controlKey="dopingAmount"
-            controlInitial={0}
+            readout={({ v }) => `Silicon switch is ${v >= THRESHOLD ? 'ON' : 'OFF'}`}
+            controlLabel="Control Signal"
+            controlKey="controlSignal"
+            controlInitial={20}
             accent="emerald"
             sky={['#f1f5f9', '#f8fafc']}
             completeTitle="C39 Complete!"
             completeSubtitle="How Do Computers Use Logic to Solve Problems?"
-            completeNote="One atom in a million turns silicon into a switch!"
+            completeNote="Silicon can say yes AND no -- that is what makes it a switch!"
             phase={phase}
             onStateChange={onStateChange}
             drawScene={drawScene}

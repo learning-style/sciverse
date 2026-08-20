@@ -30,7 +30,7 @@ export const B33EcosystemServicesLab = ({ state, onStateChange }: Props) => {
             ctx.fillText(CREATURES[i], x, groundY - 18 - row * 46 + bob);
         }
 
-        outlineText(ctx, `${count} different species living here`, safeRight / 2, 82, 'bold 13px monospace');
+        outlineText(ctx, `${count} different species living here`, safeRight / 2, 82, 'bold 15px monospace');
 
         // Services scale with variety, but with diminishing returns.
         const health = Math.pow(v, 0.7);
@@ -59,7 +59,7 @@ export const B33EcosystemServicesLab = ({ state, onStateChange }: Props) => {
             ctx.fillStyle = '#ffffff';
             ctx.fillText(name, x + boxW / 2, y + boxH / 2 + size / 2 - 1);
         });
-        outlineText(ctx, 'Free services this ecosystem provides', safeRight / 2, y + boxH + 24, 'bold 13px monospace');
+        outlineText(ctx, 'Free services this ecosystem provides', safeRight / 2, y + boxH + 24, 'bold 15px monospace');
 
 
         const msg = v < 0.25

@@ -53,7 +53,7 @@ export const B35CompostCrewLab = ({ state, onStateChange }: Props) => {
 
         // Stink lines when it goes anaerobic.
         if (soggy) {
-            outlineText(ctx, '~ ~ ~ PHEW! ~ ~ ~', safeRight / 2, binY - 62, 'bold 14px monospace', '#65a30d');
+            outlineText(ctx, '~ ~ ~ PHEW! ~ ~ ~', safeRight / 2, binY - 62, 'bold 15px monospace', '#65a30d');
         }
 
         // Thermometer.
@@ -66,12 +66,12 @@ export const B35CompostCrewLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#1e293b';
         ctx.lineWidth = 2;
         ctx.strokeRect(thX, binY, 18, binH);
-        outlineText(ctx, `${tempC}°C`, thX + 9, binY - 10, 'bold 12px monospace');
+        outlineText(ctx, `${tempC}°C`, thX + 9, binY - 10, 'bold 14px monospace');
 
         outlineText(ctx, soggy ? 'Waterlogged -- no air for the fast crew!' : `Microbes working at ${Math.round(activity * 100)}%`,
-            safeRight / 2, 84, 'bold 13px monospace');
+            safeRight / 2, 84, 'bold 15px monospace');
         outlineText(ctx, tempC > 45 ? 'Hot enough to kill weed seeds and germs!' : 'Pile is cool -- breakdown is slow.',
-            safeRight / 2, 106, 'bold 12px monospace');
+            safeRight / 2, 106, 'bold 14px monospace');
 
 
         const msg = v < 0.28

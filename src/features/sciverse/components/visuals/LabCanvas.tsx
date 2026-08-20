@@ -153,8 +153,8 @@ export const meterBar = (
     ctx.lineWidth = 2;
     ctx.strokeRect(x, y, w, h);
 
-    outlineText(ctx, caption, x + w / 2, y + 30, 'bold 12px monospace');
-    ctx.font = 'bold 11px monospace';
+    outlineText(ctx, caption, x + w / 2, y + 30, 'bold 14px monospace');
+    ctx.font = 'bold 13px monospace';
     ctx.fillStyle = '#000000';
     ctx.textAlign = 'left';
     ctx.fillText(lowLabel, x, y + 46);
@@ -171,8 +171,8 @@ export const chip = (
     fill: string,
     textColor = '#ffffff'
 ) => {
-    ctx.font = 'bold 11px monospace';
-    const w = ctx.measureText(text).width + 14;
+    ctx.font = 'bold 13px monospace';
+    const w = ctx.measureText(text).width + 16;
     const h = 20;
     ctx.fillStyle = fill;
     ctx.beginPath();
@@ -329,7 +329,7 @@ export const LabCanvas = ({
             ctx.font = 'bold 14px monospace';
             ctx.fillText(completeSubtitle, W / 2, H * 0.38);
             ctx.fillStyle = '#e2e8f0';
-            ctx.font = '11px monospace';
+            ctx.font = '13px monospace';
             ctx.fillText(completeNote, W / 2, H * 0.44);
         }
 

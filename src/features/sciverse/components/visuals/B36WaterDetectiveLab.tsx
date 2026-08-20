@@ -43,14 +43,14 @@ export const B36WaterDetectiveLab = ({ state, onStateChange }: Props) => {
             ctx.stroke();
         }
 
-        outlineText(ctx, 'Culture dish after 24 hours', cx, cy + r + 26, 'bold 12px monospace');
-        outlineText(ctx, `${colonies} colonies counted in a 100 mL sample`, cx, 84, 'bold 13px monospace');
+        outlineText(ctx, 'Culture dish after 24 hours', cx, cy + r + 26, 'bold 14px monospace');
+        outlineText(ctx, `${colonies} colonies counted in a 100 mL sample`, cx, 84, 'bold 15px monospace');
 
         // Verdict against the drinking-water limit of zero E. coli per 100 mL.
         const verdict = colonies === 0 ? 'SAFE -- zero E. coli found'
             : colonies < 10 ? 'UNSAFE -- E. coli detected'
                 : 'DANGEROUS -- heavy contamination';
-        outlineText(ctx, verdict, cx, 106, 'bold 13px monospace',
+        outlineText(ctx, verdict, cx, 106, 'bold 15px monospace',
             colonies === 0 ? '#15803d' : colonies < 10 ? '#b45309' : '#b91c1c');
 
 

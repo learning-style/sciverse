@@ -28,13 +28,13 @@ export const C37BatteryLab = ({ state, onStateChange }: Props) => {
         ctx.lineWidth = 2;
         ctx.strokeRect(anodeX, cellY, 40, cellH);
         ctx.strokeRect(cathodeX, cellY, 40, cellH);
-        outlineText(ctx, '- ANODE', anodeX + 20, cellY + cellH + 22, 'bold 11px monospace');
-        outlineText(ctx, '+ CATHODE', cathodeX + 20, cellY + cellH + 22, 'bold 11px monospace');
+        outlineText(ctx, '- ANODE', anodeX + 20, cellY + cellH + 22, 'bold 13px monospace');
+        outlineText(ctx, '+ CATHODE', cathodeX + 20, cellY + cellH + 22, 'bold 13px monospace');
 
         // Electrolyte between them.
         ctx.fillStyle = 'rgba(56,189,248,0.28)';
         ctx.fillRect(anodeX + 40, cellY, cathodeX - anodeX - 40, cellH);
-        outlineText(ctx, 'ELECTROLYTE (ions cross here)', (anodeX + cathodeX) / 2 + 20, cellY + cellH - 12, 'bold 10px monospace');
+        outlineText(ctx, 'ELECTROLYTE (ions cross here)', (anodeX + cathodeX) / 2 + 20, cellY + cellH - 12, 'bold 13px monospace');
 
         // Ions drifting across the electrolyte.
         for (let i = 0; i < 7; i++) {
@@ -45,7 +45,7 @@ export const C37BatteryLab = ({ state, onStateChange }: Props) => {
             ctx.beginPath();
             ctx.arc(x, y, 6, 0, Math.PI * 2);
             ctx.fill();
-            outlineText(ctx, '+', x, y + 4, 'bold 10px monospace', '#ffffff');
+            outlineText(ctx, '+', x, y + 4, 'bold 13px monospace', '#ffffff');
         }
 
         // Outer circuit: the long way round, through the bulb.
@@ -67,7 +67,7 @@ export const C37BatteryLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#1e293b';
         ctx.lineWidth = 2;
         ctx.stroke();
-        outlineText(ctx, 'device', bulbX, wireY - 28, 'bold 11px monospace');
+        outlineText(ctx, 'device', bulbX, wireY - 28, 'bold 13px monospace');
 
         // Electrons travelling the outer wire.
         for (let i = 0; i < Math.max(1, Math.round(v * 8)); i++) {
@@ -77,11 +77,11 @@ export const C37BatteryLab = ({ state, onStateChange }: Props) => {
             ctx.beginPath();
             ctx.arc(x, wireY, 5, 0, Math.PI * 2);
             ctx.fill();
-            outlineText(ctx, '-', x, wireY + 4, 'bold 10px monospace', '#ffffff');
+            outlineText(ctx, '-', x, wireY + 4, 'bold 13px monospace', '#ffffff');
         }
 
         outlineText(ctx, 'Electrons must go the long way -- that is what powers the device',
-            safeRight / 2, 90, 'bold 12px monospace');
+            safeRight / 2, 90, 'bold 14px monospace');
 
 
         const msg = v < 0.15

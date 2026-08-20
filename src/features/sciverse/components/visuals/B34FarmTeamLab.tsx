@@ -58,15 +58,15 @@ export const B34FarmTeamLab = ({ state, onStateChange }: Props) => {
         }
 
         outlineText(ctx, `${bees} pollinators working   |   ${Math.round(pollinated * 100)}% of flowers became fruit`,
-            safeRight / 2, 82, 'bold 12px monospace');
+            safeRight / 2, 82, 'bold 14px monospace');
 
         // Legend for the blossom colours.
         ctx.fillStyle = '#fbcfe8';
         ctx.beginPath(); ctx.arc(40, 106, 5, 0, Math.PI * 2); ctx.fill();
-        outlineText(ctx, 'unpollinated flower', 130, 110, 'bold 10px monospace');
+        outlineText(ctx, 'unpollinated flower', 130, 110, 'bold 13px monospace');
         ctx.fillStyle = '#dc2626';
         ctx.beginPath(); ctx.arc(safeRight - 170, 106, 6, 0, Math.PI * 2); ctx.fill();
-        outlineText(ctx, 'apple!', safeRight - 130, 110, 'bold 10px monospace');
+        outlineText(ctx, 'apple!', safeRight - 130, 110, 'bold 13px monospace');
 
 
         const msg = v < 0.15

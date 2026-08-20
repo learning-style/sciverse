@@ -27,8 +27,8 @@ export const P39LogicGateLab = ({ state, onStateChange }: Props) => {
             ctx.strokeStyle = '#1e293b';
             ctx.lineWidth = 2;
             ctx.stroke();
-            outlineText(ctx, on ? 'ON' : 'OFF', 71, y + 5, 'bold 12px monospace', '#ffffff');
-            outlineText(ctx, label, 20, y + 5, 'bold 14px monospace');
+            outlineText(ctx, on ? 'ON' : 'OFF', 71, y + 5, 'bold 14px monospace', '#ffffff');
+            outlineText(ctx, label, 20, y + 5, 'bold 15px monospace');
         };
 
         const aY = H * 0.34;
@@ -47,7 +47,7 @@ export const P39LogicGateLab = ({ state, onStateChange }: Props) => {
             ctx.lineWidth = 3;
             ctx.stroke();
             outlineText(ctx, name, x + 55, gy - 6, 'bold 18px monospace');
-            outlineText(ctx, desc, x + 55, gy + 18, 'bold 10px monospace');
+            outlineText(ctx, desc, x + 55, gy + 18, 'bold 13px monospace');
 
             // Wires in from the switches.
             ctx.strokeStyle = a ? '#22c55e' : '#cbd5e1';
@@ -67,16 +67,16 @@ export const P39LogicGateLab = ({ state, onStateChange }: Props) => {
             ctx.strokeStyle = '#1e293b';
             ctx.lineWidth = 2;
             ctx.stroke();
-            outlineText(ctx, out ? 'ON' : 'OFF', x + 164, gy + 40, 'bold 12px monospace',
+            outlineText(ctx, out ? 'ON' : 'OFF', x + 164, gy + 40, 'bold 14px monospace',
                 out ? '#15803d' : '#64748b');
         };
 
         drawGate('AND', andOut, safeRight * 0.28, 'both must be on');
         drawGate('OR', orOut, safeRight * 0.62, 'either one works');
 
-        outlineText(ctx, `Inputs: A=${a ? 1 : 0}  B=${b ? 1 : 0}`, safeRight / 2, 84, 'bold 14px monospace');
+        outlineText(ctx, `Inputs: A=${a ? 1 : 0}  B=${b ? 1 : 0}`, safeRight / 2, 84, 'bold 15px monospace');
         outlineText(ctx, `AND says ${andOut ? '1' : '0'}   |   OR says ${orOut ? '1' : '0'}`,
-            safeRight / 2, 106, 'bold 13px monospace',
+            safeRight / 2, 106, 'bold 15px monospace',
             andOut === orOut ? '#15803d' : '#b91c1c');
 
         const msg = andOut === orOut

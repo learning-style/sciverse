@@ -18,7 +18,7 @@ export const P34IrrigationLab = ({ state, onStateChange }: Props) => {
         ctx.fillRect(0, soilY, safeRight, stageBottom - soilY);
         ctx.fillStyle = '#78350f';
         ctx.fillRect(0, soilY + 46, safeRight, stageBottom - soilY - 46);
-        outlineText(ctx, 'root zone', 60, soilY + 40, 'bold 11px monospace', '#ffffff');
+        outlineText(ctx, 'root zone', 60, soilY + 40, 'bold 13px monospace', '#ffffff');
 
         // Plant.
         const px = safeRight / 2;
@@ -68,14 +68,14 @@ export const P34IrrigationLab = ({ state, onStateChange }: Props) => {
             ctx.fillStyle = '#38bdf8';
             const w = runoff * safeRight * 0.45;
             ctx.fillRect(safeRight - w - 10, soilY - 8, w, 8);
-            outlineText(ctx, 'runoff!', safeRight - w / 2 - 10, soilY - 16, 'bold 11px monospace', '#b91c1c');
+            outlineText(ctx, 'runoff!', safeRight - w / 2 - 10, soilY - 16, 'bold 13px monospace', '#b91c1c');
         }
 
-        outlineText(ctx, `Soaked into roots: ${Math.round(absorbed * 100)}%`, safeRight / 2, 82, 'bold 13px monospace');
+        outlineText(ctx, `Soaked into roots: ${Math.round(absorbed * 100)}%`, safeRight / 2, 82, 'bold 15px monospace');
         outlineText(
             ctx,
             `Lost to evaporation: ${Math.round(evaporation * 100)}%   Lost to runoff: ${Math.round(runoff * 100)}%`,
-            safeRight / 2, 104, 'bold 12px monospace'
+            safeRight / 2, 104, 'bold 14px monospace'
         );
 
 

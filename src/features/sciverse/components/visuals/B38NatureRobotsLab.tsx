@@ -61,8 +61,8 @@ export const B38NatureRobotsLab = ({ state, onStateChange }: Props) => {
         ctx.stroke();
 
         outlineText(ctx, viaBrain ? 'Signal travels all the way to the brain' : 'Reflex arc -- signal turns around at the spine',
-            safeRight / 2, 84, 'bold 12px monospace');
-        outlineText(ctx, `Reaction time: ${reactionS.toFixed(2)} seconds`, safeRight / 2, 106, 'bold 13px monospace');
+            safeRight / 2, 84, 'bold 14px monospace');
+        outlineText(ctx, `Reaction time: ${reactionS.toFixed(2)} seconds`, safeRight / 2, 106, 'bold 15px monospace');
 
         // Burn damage grows with how long your hand stays on the hot surface.
         const damage = Math.min(1, (reactionS - 0.05) / 0.25);

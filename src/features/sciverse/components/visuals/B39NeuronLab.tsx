@@ -45,7 +45,7 @@ export const B39NeuronLab = ({ state, onStateChange }: Props) => {
                 ctx.fill();
             }
         }
-        outlineText(ctx, 'dendrites', bodyX - 130, bodyY + 100, 'bold 11px monospace');
+        outlineText(ctx, 'dendrites', bodyX - 130, bodyY + 100, 'bold 13px monospace');
 
         // Cell body, glowing when it fires.
         ctx.fillStyle = fires ? '#fbbf24' : '#e2e8f0';
@@ -55,7 +55,7 @@ export const B39NeuronLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#1e293b';
         ctx.lineWidth = 3;
         ctx.stroke();
-        outlineText(ctx, 'cell body', bodyX, bodyY + 56, 'bold 11px monospace');
+        outlineText(ctx, 'cell body', bodyX, bodyY + 56, 'bold 13px monospace');
 
         // Axon carrying the output away.
         ctx.strokeStyle = fires ? '#f59e0b' : '#cbd5e1';
@@ -64,7 +64,7 @@ export const B39NeuronLab = ({ state, onStateChange }: Props) => {
         ctx.moveTo(bodyX + 34, bodyY);
         ctx.lineTo(safeRight - 50, bodyY);
         ctx.stroke();
-        outlineText(ctx, 'axon', (bodyX + safeRight - 50) / 2, bodyY - 18, 'bold 11px monospace');
+        outlineText(ctx, 'axon', (bodyX + safeRight - 50) / 2, bodyY - 18, 'bold 13px monospace');
 
         if (fires) {
             const p = (t * 1.6) % 1;
@@ -92,10 +92,10 @@ export const B39NeuronLab = ({ state, onStateChange }: Props) => {
         ctx.moveTo(gaugeX + gaugeW * THRESHOLD, gaugeY - 8);
         ctx.lineTo(gaugeX + gaugeW * THRESHOLD, gaugeY + 24);
         ctx.stroke();
-        outlineText(ctx, 'THRESHOLD', gaugeX + gaugeW * THRESHOLD, gaugeY - 14, 'bold 10px monospace', '#b91c1c');
+        outlineText(ctx, 'THRESHOLD', gaugeX + gaugeW * THRESHOLD, gaugeY - 14, 'bold 13px monospace', '#b91c1c');
 
         outlineText(ctx, fires ? 'FIRING! Full strength signal sent.' : 'Silent -- total has not reached the threshold.',
-            safeRight / 2, 88, 'bold 14px monospace', fires ? '#15803d' : '#64748b');
+            safeRight / 2, 88, 'bold 15px monospace', fires ? '#15803d' : '#64748b');
 
 
         const msg = v < THRESHOLD - 0.15

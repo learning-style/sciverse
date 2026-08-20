@@ -31,9 +31,9 @@ export const B37BodyBatteryLab = ({ state, onStateChange }: Props) => {
             ctx.strokeStyle = '#1e293b';
             ctx.lineWidth = 3;
             ctx.strokeRect(x, topY, tankW, tankH);
-            outlineText(ctx, label, x + tankW / 2, topY - 32, 'bold 13px monospace');
-            outlineText(ctx, capacity, x + tankW / 2, topY - 12, 'bold 10px monospace');
-            outlineText(ctx, `${Math.round(fill * 100)}% full`, x + tankW / 2, topY + tankH + 24, 'bold 12px monospace');
+            outlineText(ctx, label, x + tankW / 2, topY - 32, 'bold 15px monospace');
+            outlineText(ctx, capacity, x + tankW / 2, topY - 12, 'bold 13px monospace');
+            outlineText(ctx, `${Math.round(fill * 100)}% full`, x + tankW / 2, topY + tankH + 24, 'bold 14px monospace');
         };
 
         drawTank(glyX, glycogen, '#f59e0b', 'GLYCOGEN', 'fast - about 2,000 calories');
@@ -48,7 +48,7 @@ export const B37BodyBatteryLab = ({ state, onStateChange }: Props) => {
             ctx.moveTo(glyX + tankW + 6, y);
             ctx.lineTo(fatX - 8, y);
             ctx.stroke();
-            outlineText(ctx, 'overflow', (glyX + tankW + fatX) / 2, y - 10, 'bold 11px monospace', '#b91c1c');
+            outlineText(ctx, 'overflow', (glyX + tankW + fatX) / 2, y - 10, 'bold 13px monospace', '#b91c1c');
         }
 
         // Glucose arriving from a meal.
@@ -60,12 +60,12 @@ export const B37BodyBatteryLab = ({ state, onStateChange }: Props) => {
             ctx.arc(x, topY + 30, 5, 0, Math.PI * 2);
             ctx.fill();
         }
-        outlineText(ctx, 'glucose', 40, topY + 56, 'bold 10px monospace');
+        outlineText(ctx, 'glucose', 40, topY + 56, 'bold 13px monospace');
 
         outlineText(ctx, glycogen < 1
             ? 'Filling the fast store first'
             : 'Fast store full -- extra energy is being packed away as fat',
-            safeRight / 2, 88, 'bold 12px monospace');
+            safeRight / 2, 88, 'bold 14px monospace');
 
 
         const msg = v < 0.2

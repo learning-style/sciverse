@@ -22,7 +22,7 @@ export const P38FeedbackLoopLab = ({ state, onStateChange }: Props) => {
         ctx.lineTo(safeRight - 30, lineY);
         ctx.stroke();
         ctx.setLineDash([]);
-        outlineText(ctx, 'target line', safeRight - 90, lineY - 14, 'bold 11px monospace');
+        outlineText(ctx, 'target line', safeRight - 90, lineY - 14, 'bold 13px monospace');
 
         // Gain maps to three behaviours: drift, stable, oscillation.
         const gain = v;
@@ -65,10 +65,10 @@ export const P38FeedbackLoopLab = ({ state, onStateChange }: Props) => {
         const error = Math.abs(ry - lineY);
         const tracking = Math.max(0, 1 - error / 90);
 
-        outlineText(ctx, `Distance off the line: ${Math.round(error)} px`, safeRight / 2, 86, 'bold 13px monospace');
+        outlineText(ctx, `Distance off the line: ${Math.round(error)} px`, safeRight / 2, 86, 'bold 15px monospace');
 
         const state_ = gain < 0.3 ? 'DRIFTING' : gain > 0.68 ? 'OSCILLATING' : 'STABLE';
-        outlineText(ctx, state_, safeRight / 2, 108, 'bold 14px monospace',
+        outlineText(ctx, state_, safeRight / 2, 108, 'bold 15px monospace',
             state_ === 'STABLE' ? '#15803d' : '#b91c1c');
 
 

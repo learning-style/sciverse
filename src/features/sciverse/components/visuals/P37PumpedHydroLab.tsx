@@ -32,12 +32,12 @@ export const P37PumpedHydroLab = ({ state, onStateChange }: Props) => {
         // Upper lake.
         ctx.fillStyle = '#0ea5e9';
         ctx.fillRect(safeRight * 0.35, upperY - 12, safeRight * 0.2, 16);
-        outlineText(ctx, 'upper lake', safeRight * 0.45, upperY - 22, 'bold 11px monospace');
+        outlineText(ctx, 'upper lake', safeRight * 0.45, upperY - 22, 'bold 13px monospace');
 
         // Lower lake.
         ctx.fillStyle = '#0284c7';
         ctx.fillRect(20, groundY, safeRight - 40, stageBottom - groundY);
-        outlineText(ctx, 'lower lake', safeRight * 0.85, groundY + 28, 'bold 12px monospace', '#ffffff');
+        outlineText(ctx, 'lower lake', safeRight * 0.85, groundY + 28, 'bold 14px monospace', '#ffffff');
 
         // Pipe joining the two lakes.
         ctx.strokeStyle = '#334155';
@@ -67,15 +67,15 @@ export const P37PumpedHydroLab = ({ state, onStateChange }: Props) => {
         ctx.lineTo(safeRight * 0.78, upperY);
         ctx.stroke();
         ctx.setLineDash([]);
-        outlineText(ctx, `${Math.round(v * 200)} m`, safeRight * 0.78, (groundY + upperY) / 2, 'bold 12px monospace', '#b91c1c');
+        outlineText(ctx, `${Math.round(v * 200)} m`, safeRight * 0.78, (groundY + upperY) / 2, 'bold 14px monospace', '#b91c1c');
 
         // Stored energy is proportional to height; 80% comes back out.
         const stored = v;
         const returned = stored * 0.8;
 
-        outlineText(ctx, `Energy stored: ${Math.round(stored * 100)} units`, safeRight / 2, 84, 'bold 13px monospace');
+        outlineText(ctx, `Energy stored: ${Math.round(stored * 100)} units`, safeRight / 2, 84, 'bold 15px monospace');
         outlineText(ctx, `Energy you get back: ${Math.round(returned * 100)} units (20% lost as heat)`,
-            safeRight / 2, 106, 'bold 12px monospace');
+            safeRight / 2, 106, 'bold 14px monospace');
 
 
         const msg = v < 0.25

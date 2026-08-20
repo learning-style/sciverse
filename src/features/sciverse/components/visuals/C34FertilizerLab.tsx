@@ -53,7 +53,7 @@ export const C34FertilizerLab = ({ state, onStateChange }: Props) => {
         const algae = excess;
         ctx.fillStyle = `rgb(${Math.round(56 + algae * 40)},${Math.round(160 + algae * 70)},${Math.round(220 - algae * 150)})`;
         ctx.fillRect(riverX, soilY - 30, safeRight - riverX, stageBottom - soilY + 30);
-        outlineText(ctx, 'RIVER', riverX + (safeRight - riverX) / 2, soilY - 40, 'bold 11px monospace');
+        outlineText(ctx, 'RIVER', riverX + (safeRight - riverX) / 2, soilY - 40, 'bold 13px monospace');
 
         // Runoff arrow carrying the excess.
         if (excess > 0.08) {
@@ -63,7 +63,7 @@ export const C34FertilizerLab = ({ state, onStateChange }: Props) => {
             ctx.moveTo(riverX - 70, soilY - 6);
             ctx.lineTo(riverX - 6, soilY - 6);
             ctx.stroke();
-            outlineText(ctx, 'runoff', riverX - 38, soilY - 14, 'bold 11px monospace', '#b91c1c');
+            outlineText(ctx, 'runoff', riverX - 38, soilY - 14, 'bold 13px monospace', '#b91c1c');
         }
 
         // Fish struggle as algae take the oxygen.
@@ -77,7 +77,7 @@ export const C34FertilizerLab = ({ state, onStateChange }: Props) => {
         }
 
         outlineText(ctx, `Crop health: ${Math.round(health * 100)}%   River health: ${Math.round(fishAlive * 100)}%`,
-            safeRight / 2, 82, 'bold 13px monospace');
+            safeRight / 2, 82, 'bold 15px monospace');
 
 
         const msg = v < 0.2

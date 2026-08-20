@@ -60,7 +60,7 @@ export const C33NutrientCycleLab = ({ state, onStateChange }: Props) => {
             ctx.stroke();
         }
 
-        outlineText(ctx, 'Carbon atoms never leave -- they just move house', cx, 82, 'bold 13px monospace');
+        outlineText(ctx, 'Carbon atoms never leave -- they just move house', cx, 82, 'bold 15px monospace');
 
         // Pile of undecomposed leaf litter when the crew is slow.
         const litter = Math.round((1 - v) * 12);
@@ -71,7 +71,7 @@ export const C33NutrientCycleLab = ({ state, onStateChange }: Props) => {
             ctx.fill();
         }
         if (litter > 6) {
-            outlineText(ctx, 'Dead leaves piling up!', 88, H - 148, 'bold 11px monospace', '#b91c1c');
+            outlineText(ctx, 'Dead leaves piling up!', 88, H - 148, 'bold 13px monospace', '#b91c1c');
         }
 
 

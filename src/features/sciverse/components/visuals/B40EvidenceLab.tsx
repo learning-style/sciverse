@@ -32,7 +32,7 @@ export const B40EvidenceLab = ({ state, onStateChange }: Props) => {
                 ctx.arc(x, y, 3.2, 0, Math.PI * 2);
                 ctx.fill();
             }
-            outlineText(ctx, label, cx, plotY + plotH + 22, 'bold 12px monospace');
+            outlineText(ctx, label, cx, plotY + plotH + 22, 'bold 14px monospace');
         };
 
         drawGroup(midX - 110, 'no treatment', 'rgba(100,116,139,0.7)', 0);
@@ -46,15 +46,15 @@ export const B40EvidenceLab = ({ state, onStateChange }: Props) => {
         const margin = 30 / Math.sqrt(n);           // uncertainty shrinks with sample size
         const conclusive = margin < trueEffect;     // effect is bigger than the wobble
 
-        outlineText(ctx, `Sample size: ${n} per group`, safeRight / 2, 84, 'bold 13px monospace');
+        outlineText(ctx, `Sample size: ${n} per group`, safeRight / 2, 84, 'bold 15px monospace');
         outlineText(ctx, `Measured difference: ${measured.toFixed(1)}%  ±  ${margin.toFixed(1)}%`,
-            safeRight / 2, 106, 'bold 13px monospace', conclusive ? '#15803d' : '#b91c1c');
+            safeRight / 2, 106, 'bold 15px monospace', conclusive ? '#15803d' : '#b91c1c');
 
         outlineText(
             ctx,
             conclusive ? 'The effect is bigger than the wobble -- this is real evidence.'
                 : 'The wobble is bigger than the effect -- this could easily be luck.',
-            safeRight / 2, stageBottom - 12, 'bold 12px monospace',
+            safeRight / 2, stageBottom - 12, 'bold 14px monospace',
             conclusive ? '#15803d' : '#b91c1c'
         );
 

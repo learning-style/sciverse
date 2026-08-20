@@ -49,7 +49,7 @@ export const C38PhotoresistorLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#a16207';
         ctx.lineWidth = 3;
         ctx.stroke();
-        if (showLampLabel) outlineText(ctx, 'LAMP', cx, lampLabelY, 'bold 14px monospace');
+        if (showLampLabel) outlineText(ctx, 'LAMP', cx, lampLabelY, 'bold 15px monospace');
 
         // The sensor chip.
         ctx.fillStyle = '#334155';
@@ -82,11 +82,11 @@ export const C38PhotoresistorLab = ({ state, onStateChange }: Props) => {
 
         outlineText(ctx,
             `Resistance: ${resistance > 0.6 ? 'HIGH' : resistance > 0.25 ? 'MEDIUM' : 'LOW'}   |   Signal out: ${Math.round(signal * 100)}%`,
-            cx, 92, 'bold 14px monospace');
+            cx, 92, 'bold 15px monospace');
 
         if (saturated) {
             outlineText(ctx, 'SATURATED -- everything looks equally bright!',
-                cx, stageBottom - 12, 'bold 14px monospace', '#b91c1c');
+                cx, stageBottom - 12, 'bold 15px monospace', '#b91c1c');
         }
 
         const msg = v < 0.15

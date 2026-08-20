@@ -31,11 +31,11 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
         ctx.stroke();
 
         outlineText(ctx, tempC >= metalMelts ? 'ALUMINIUM - MELTED' : 'ALUMINIUM (solid)',
-            midX / 2, topY - 38, 'bold 13px monospace');
-        outlineText(ctx, `melts at ${metalMelts}\u00B0C`, midX / 2, topY - 20, 'bold 11px monospace');
+            midX / 2, topY - 38, 'bold 15px monospace');
+        outlineText(ctx, `melts at ${metalMelts}\u00B0C`, midX / 2, topY - 20, 'bold 13px monospace');
         outlineText(ctx, tempC >= plasticMelts ? 'PLASTIC - MELTED' : 'PLASTIC (solid)',
-            midX + midX / 2, topY - 38, 'bold 13px monospace');
-        outlineText(ctx, `melts at about ${plasticMelts}\u00B0C`, midX + midX / 2, topY - 20, 'bold 11px monospace');
+            midX + midX / 2, topY - 38, 'bold 15px monospace');
+        outlineText(ctx, `melts at about ${plasticMelts}\u00B0C`, midX + midX / 2, topY - 20, 'bold 13px monospace');
 
         // Left: metal atoms jiggle more with heat but stay whole.
         const jiggle = Math.min(1, tempC / metalMelts) * 6;
@@ -75,7 +75,7 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
                     ctx.lineTo(x + ((midX - 70) / segLen) - 6, y);
                     ctx.stroke();
                 } else if (isBreak) {
-                    outlineText(ctx, '✂', x + 12, y + 5, 'bold 14px monospace', '#dc2626');
+                    outlineText(ctx, '✂', x + 12, y + 5, 'bold 15px monospace', '#dc2626');
                 }
             }
         }
@@ -84,9 +84,9 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
         const plasticQuality = Math.max(0.1, 1 - chainDamage * 0.9);
 
         outlineText(ctx, `Metal quality after melting: ${Math.round(metalQuality * 100)}%`,
-            midX / 2, topY + panelH + 24, 'bold 11px monospace', '#15803d');
+            midX / 2, topY + panelH + 24, 'bold 13px monospace', '#15803d');
         outlineText(ctx, `Plastic quality after melting: ${Math.round(plasticQuality * 100)}%`,
-            midX + midX / 2, topY + panelH + 24, 'bold 11px monospace', plasticQuality > 0.6 ? '#15803d' : '#b91c1c');
+            midX + midX / 2, topY + panelH + 24, 'bold 13px monospace', plasticQuality > 0.6 ? '#15803d' : '#b91c1c');
 
 
         const msg = tempC < plasticMelts

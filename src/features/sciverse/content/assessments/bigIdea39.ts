@@ -52,11 +52,11 @@ export const bigIdea39Assessment: AssessmentData = {
             id: 5,
             difficulty: 'medium',
             discipline: 'chemistry',
-            question: "Doping means:",
-            options: ["Adding about one atom of another element per million silicon atoms", "Heating silicon until it melts", "Coating silicon in plastic", "Removing all impurities forever"],
+            question: "What makes silicon useful for building switches?",
+            options: ["A small control signal decides whether it conducts or blocks", "It always conducts, like copper", "It never conducts, like rubber", "It changes colour when switched"],
             correctIndex: 0,
-            hint: "It is a tiny, deliberate addition.",
-            explanation: "Doping creates n-type or p-type silicon, which builds transistors."
+            hint: "A switch has to do two jobs.",
+            explanation: "Silicon blocks by default but conducts when told, so it can be switched on and off."
         },
         {
             id: 6,
@@ -83,11 +83,11 @@ export const bigIdea39Assessment: AssessmentData = {
             id: 8,
             difficulty: 'hard',
             discipline: 'cross',
-            question: "Why do chip factories need extreme cleanliness?",
-            options: ["Doping works at 1 atom per million, so one dust speck carries billions of wrong atoms", "Dust makes the chips look bad", "Workers are allergic to dust", "Dust is magnetic"],
+            question: "An engineer builds a logic gate out of copper wire. What goes wrong?",
+            options: ["Copper always conducts, so the gate can never say \"no\"", "Copper is too heavy for a chip", "Copper only works when cold", "Nothing - copper works fine"],
             correctIndex: 0,
-            hint: "Think about how precise doping is.",
-            explanation: "A single speck overwhelms the careful atomic recipe and ruins the chip."
+            hint: "A gate must be able to answer on OR off.",
+            explanation: "A conductor is stuck on, so it cannot act as a switch; silicon can block as well as conduct."
         }
     ]
 };

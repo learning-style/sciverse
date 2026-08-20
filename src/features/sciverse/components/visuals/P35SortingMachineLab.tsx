@@ -26,7 +26,7 @@ export const P35SortingMachineLab = ({ state, onStateChange }: Props) => {
         const magX = safeRight * 0.62;
         ctx.fillStyle = '#334155';
         ctx.fillRect(magX - 34, beltY - 84, 68, 22);
-        outlineText(ctx, 'MAGNET', magX, beltY - 68, 'bold 11px monospace', '#fbbf24');
+        outlineText(ctx, 'MAGNET', magX, beltY - 68, 'bold 13px monospace', '#fbbf24');
 
         // Accuracy falls off once the belt outruns the magnet.
         const accuracy = v < 0.45 ? 0.97 : Math.max(0.12, 0.97 - (v - 0.45) * 1.5);
@@ -58,13 +58,13 @@ export const P35SortingMachineLab = ({ state, onStateChange }: Props) => {
             ctx.strokeStyle = '#1e293b';
             ctx.lineWidth = 1;
             ctx.strokeRect(x, 96, 12, 12);
-            outlineText(ctx, label, x + 48, 106, 'bold 10px monospace');
+            outlineText(ctx, label, x + 48, 106, 'bold 13px monospace');
         };
         lg('steel', '#94a3b8', 30);
         lg('plastic', '#0ea5e9', safeRight * 0.38);
         lg('paper', '#f59e0b', safeRight * 0.72);
 
-        outlineText(ctx, `Magnet catches ${Math.round(accuracy * 100)}% of the steel`, safeRight / 2, 82, 'bold 13px monospace');
+        outlineText(ctx, `Magnet catches ${Math.round(accuracy * 100)}% of the steel`, safeRight / 2, 82, 'bold 15px monospace');
 
 
         const msg = v < 0.2
