@@ -10,10 +10,10 @@ interface Props {
 export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, t, v }: LabScene) => {
+    const drawScene = ({ ctx, safeRight, t, v, stageTop, stageBottom }: LabScene) => {
         const midX = safeRight / 2;
-        const topY = 120;
-        const panelH = H - topY - 130;
+        const topY = stageTop + 44;
+        const panelH = Math.max(80, stageBottom - topY - 40);
         // Slider spans room temperature to 700C, which brackets both real
         // melting points the lesson talks about.
         const tempC = Math.round(20 + v * 680);

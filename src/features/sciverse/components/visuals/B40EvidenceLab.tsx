@@ -10,11 +10,11 @@ interface Props {
 export const B40EvidenceLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, raw }: LabScene) => {
+    const drawScene = ({ ctx, safeRight, raw, stageTop, stageBottom }: LabScene) => {
         // Sample size sweeps 1 -> 1000 on a log scale.
         const n = Math.max(1, Math.round(Math.pow(10, (raw / 100) * 3)));
-        const plotY = 120;
-        const plotH = H - plotY - 150;
+        const plotY = stageTop + 6;
+        const plotH = Math.max(80, stageBottom - plotY - 36);
         const midX = safeRight / 2;
 
         // Two groups of dots: treated (right) and untreated (left).

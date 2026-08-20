@@ -10,14 +10,14 @@ interface Props {
 export const P34IrrigationLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, t, v }: LabScene) => {
-        const soilY = H - 150;
+    const drawScene = ({ ctx, safeRight, t, v, stageBottom }: LabScene) => {
+        const soilY = stageBottom - 118;
 
         // Soil and root zone.
         ctx.fillStyle = '#a16207';
-        ctx.fillRect(0, soilY, safeRight, H - soilY);
+        ctx.fillRect(0, soilY, safeRight, stageBottom - soilY);
         ctx.fillStyle = '#78350f';
-        ctx.fillRect(0, soilY + 46, safeRight, H - soilY - 46);
+        ctx.fillRect(0, soilY + 46, safeRight, stageBottom - soilY - 46);
         outlineText(ctx, 'root zone', 60, soilY + 40, 'bold 11px monospace', '#ffffff');
 
         // Plant.

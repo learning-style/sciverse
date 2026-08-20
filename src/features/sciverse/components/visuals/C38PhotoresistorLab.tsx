@@ -10,7 +10,7 @@ interface Props {
 export const C38PhotoresistorLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, t, v, stageTop }: LabScene) => {
+    const drawScene = ({ ctx, safeRight, t, v, stageTop, stageBottom }: LabScene) => {
         const sensorX = safeRight / 2;
         const sensorY = H * 0.44;
 
@@ -61,7 +61,7 @@ export const C38PhotoresistorLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, 84, 'bold 12px monospace');
 
         if (saturated) {
-            outlineText(ctx, 'SATURATED -- everything looks equally bright!', safeRight / 2, H - 118, 'bold 13px monospace', '#b91c1c');
+            outlineText(ctx, 'SATURATED -- everything looks equally bright!', safeRight / 2, stageBottom - 14, 'bold 13px monospace', '#b91c1c');
         }
 
 

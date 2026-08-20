@@ -10,11 +10,11 @@ interface Props {
 export const C36ChlorineLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, t, v }: LabScene) => {
+    const drawScene = ({ ctx, safeRight, t, v, stageTop, stageBottom }: LabScene) => {
         const tankX = 40;
-        const tankY = 110;
+        const tankY = stageTop + 6;
         const tankW = safeRight - 80;
-        const tankH = H - tankY - 150;
+        const tankH = Math.max(90, stageBottom - tankY - 44);
 
         // Germ kill rises quickly with dose; taste gets worse past the safe window.
         const killed = 1 - Math.exp(-5.5 * v);

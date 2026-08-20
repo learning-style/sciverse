@@ -10,9 +10,11 @@ interface Props {
 export const B37BodyBatteryLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, t, v }: LabScene) => {
-        const topY = 120;
-        const tankH = H - topY - 150;
+    const drawScene = ({ ctx, safeRight, t, v, stageTop, stageBottom }: LabScene) => {
+        // Labels sit above (topY-32) and below (topY+tankH+24) each tank, so the
+        // tank must leave room for both inside the stage.
+        const topY = stageTop + 40;
+        const tankH = Math.max(80, stageBottom - topY - 40);
         const tankW = safeRight * 0.24;
         const glyX = safeRight * 0.2 - tankW / 2;
         const fatX = safeRight * 0.68 - tankW / 2;

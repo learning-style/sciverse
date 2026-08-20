@@ -10,12 +10,12 @@ interface Props {
 export const C34FertilizerLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, H, safeRight, t, v }: LabScene) => {
-        const soilY = H - 150;
+    const drawScene = ({ ctx, safeRight, t, v, stageBottom }: LabScene) => {
+        const soilY = stageBottom - 112;
         const riverX = safeRight - 90;
 
         ctx.fillStyle = '#a16207';
-        ctx.fillRect(0, soilY, riverX, H - soilY);
+        ctx.fillRect(0, soilY, riverX, stageBottom - soilY);
 
         // Crop grows until the plant's limit, then stops (and burns if overdosed).
         const uptake = Math.min(v, 0.5) / 0.5;          // plant can only use up to half dose
@@ -52,7 +52,7 @@ export const C34FertilizerLab = ({ state, onStateChange }: Props) => {
         // The river, greening with algae as excess runs off.
         const algae = excess;
         ctx.fillStyle = `rgb(${Math.round(56 + algae * 40)},${Math.round(160 + algae * 70)},${Math.round(220 - algae * 150)})`;
-        ctx.fillRect(riverX, soilY - 30, safeRight - riverX, H - soilY + 30);
+        ctx.fillRect(riverX, soilY - 30, safeRight - riverX, stageBottom - soilY + 30);
         outlineText(ctx, 'RIVER', riverX + (safeRight - riverX) / 2, soilY - 40, 'bold 11px monospace');
 
         // Runoff arrow carrying the excess.
@@ -71,7 +71,7 @@ export const C34FertilizerLab = ({ state, onStateChange }: Props) => {
         ctx.font = '18px serif';
         ctx.textAlign = 'center';
         for (let i = 0; i < 3; i++) {
-            const y = soilY + 8 + i * 26;
+            const y = soilY + 22 + i * 28;
             const drift = Math.sin(t * 1.2 + i) * 5;
             ctx.fillText(i / 3 < fishAlive ? '🐟' : '💀', riverX + (safeRight - riverX) / 2 + drift, y);
         }
