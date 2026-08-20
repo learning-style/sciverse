@@ -1322,7 +1322,7 @@ export const LESSON_REGISTRY: LessonMeta[] = [
 
     // Big Idea 38: "How Do Robots Sense and Act?"
     { id: 'p38', title: 'The Feedback Loop', subtitle: 'Sense, compare, correct, repeat', discipline: 'physics', bigIdea: 38, bigIdeaTitle: 'How Do Robots Sense and Act?', icon: '🔁', accentColor: 'indigo', crossLinks: ['c38', 'b38'] },
-    { id: 'c38', title: 'Sensors Made of Chemistry', subtitle: 'Turning light and heat into electricity', discipline: 'chemistry', bigIdea: 38, bigIdeaTitle: 'How Do Robots Sense and Act?', icon: '📡', accentColor: 'emerald', crossLinks: ['p38', 'b38'] },
+    { id: 'c38', title: 'Materials That Sense', subtitle: 'Turning light and heat into electricity', discipline: 'chemistry', bigIdea: 38, bigIdeaTitle: 'How Do Robots Sense and Act?', icon: '📡', accentColor: 'emerald', crossLinks: ['p38', 'b38'] },
     { id: 'b38', title: 'Nature\'s Robots', subtitle: 'Animals ran this loop first', discipline: 'biology', bigIdea: 38, bigIdeaTitle: 'How Do Robots Sense and Act?', icon: '🦇', accentColor: 'rose', crossLinks: ['p38', 'c38'] },
 
     // Big Idea 39: "How Do Computers Use Logic to Solve Problems?"

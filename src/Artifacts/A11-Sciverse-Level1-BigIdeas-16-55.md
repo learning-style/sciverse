@@ -107,7 +107,7 @@ routed in `src/features/sciverse/modules/LessonShell.tsx`, assessed via
 | 35 | How Can We Turn Waste Into Resources? | p35 The Sorting Machine | c35 Melt and Remake | b35 The Compost Crew |
 | 36 | How Do We Make Water Safe to Drink? | p36 Trapped by the Filter | c36 Chlorine Patrol | b36 Water Detectives |
 | 37 | How Do We Store Energy for Later? | p37 Save It for Later | c37 Inside a Battery | b37 Your Body's Battery |
-| 38 | How Do Robots Sense and Act? | p38 The Feedback Loop | c38 Sensors Made of Chemistry | b38 Nature's Robots |
+| 38 | How Do Robots Sense and Act? | p38 The Feedback Loop | c38 Materials That Sense | b38 Nature's Robots |
 | 39 | How Do Computers Use Logic to Solve Problems? | p39 On, Off, Answer | c39 The Magic Middle | b39 Brain Circuits |
 | 40 | How Do We Use Data to Know What Is True? | p40 Measure It Again | c40 The Fair Test | b40 Follow the Evidence |
 

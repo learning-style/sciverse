@@ -67,7 +67,7 @@ export function getP38Script(): Record<string, DialogNode> {
         complete: {
             id: 'complete',
             speaker: 'AI',
-            content: "**P38 Complete -- The Feedback Loop!**\n\nMachines stay on target by noticing they are wrong and fixing it, over and over.\n\n**Summary Table:**\n| What You Learned | Key Idea | Why It Matters |\n| --- | --- | --- |\n| Sense, compare, correct, repeat | The **feedback loop** | Runs every self-controlling machine |\n| The gap is the **error** | Measure reality, not hope | Blind plans drift off course |\n| **Gain** sets correction strength | How hard to push back | The critical setting |\n| Too much gain wobbles | **Oscillation** grows | Stronger is not better |\n\n**Up next:** C38 (Sensors Made of Chemistry) -- how machines feel the world!",
+            content: "**P38 Complete -- The Feedback Loop!**\n\nMachines stay on target by noticing they are wrong and fixing it, over and over.\n\n**Summary Table:**\n| What You Learned | Key Idea | Why It Matters |\n| --- | --- | --- |\n| Sense, compare, correct, repeat | The **feedback loop** | Runs every self-controlling machine |\n| The gap is the **error** | Measure reality, not hope | Blind plans drift off course |\n| **Gain** sets correction strength | How hard to push back | The critical setting |\n| Too much gain wobbles | **Oscillation** grows | Stronger is not better |\n\n**Up next:** C38 (Materials That Sense) -- how machines feel the world!",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
             options: []
         }

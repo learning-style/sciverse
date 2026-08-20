@@ -54,7 +54,7 @@ export const B40EvidenceLab = ({ state, onStateChange }: Props) => {
             ctx,
             conclusive ? 'The effect is bigger than the wobble -- this is real evidence.'
                 : 'The wobble is bigger than the effect -- this could easily be luck.',
-            safeRight / 2, H - 116, 'bold 12px monospace',
+            safeRight / 2, stageBottom - 12, 'bold 12px monospace',
             conclusive ? '#15803d' : '#b91c1c'
         );
 

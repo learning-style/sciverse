@@ -67,7 +67,7 @@ export function getC38Script(): Record<string, DialogNode> {
         complete: {
             id: 'complete',
             speaker: 'AI',
-            content: "**C38 Complete -- Sensors Made of Chemistry!**\n\nEvery sensor is a material chosen for how it changes when the world changes.\n\n**Summary Table:**\n| What You Learned | Key Idea | Why It Matters |\n| --- | --- | --- |\n| Sensors make electricity | Chips understand nothing else | The conversion is the whole job |\n| Light lowers resistance | Freed **electrons** carry current | How a **photoresistor** works |\n| Materials pick the sense | Heat, pressure, gas, humidity | Chemistry decides capability |\n| Sensors max out | **Saturation** ends the range | Bright sun blinds robots |\n\n**Up next:** B38 (Nature's Robots) -- animals have been doing this for millions of years!",
+            content: "**C38 Complete -- Materials That Sense!**\n\nEvery sensor is a material chosen for how it changes when the world changes.\n\n**Summary Table:**\n| What You Learned | Key Idea | Why It Matters |\n| --- | --- | --- |\n| Sensors make electricity | Chips understand nothing else | The conversion is the whole job |\n| Light lowers resistance | Freed **electrons** carry current | How a **photoresistor** works |\n| Materials pick the sense | Heat, pressure, gas, humidity | Chemistry decides capability |\n| Sensors max out | **Saturation** ends the range | Bright sun blinds robots |\n\n**Up next:** B38 (Nature's Robots) -- animals have been doing this for millions of years!",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
             options: []
         }
