@@ -1,12 +1,17 @@
 import { AssessmentData } from '../../types';
 
+/**
+ * Big Idea 31 Assessment: "How Do Cities Move Water and Waste?"
+ * Covers P31 (Downhill Flow), C31 (Clean Water), B31 (Invisible Enemies)
+ * 12 questions: 4 easy → 4 medium → 4 hard
+ */
 export const bigIdea31Assessment: AssessmentData = {
     bigIdea: 31,
     title: 'How Do We Move Water and Waste?',
     subtitle: 'Physics of Flow, Chemical Treatment, and Biological Safety',
     icon: '🚰',
     questions: [
-        // EASY
+        // ── EASY ──
         {
             id: 1,
             difficulty: 'easy',
@@ -37,9 +42,19 @@ export const bigIdea31Assessment: AssessmentData = {
             hint: 'Think about what happens if you drink dirty water.',
             explanation: 'Clean water prevents the spread of disease and keeps people healthy.'
         },
-        // MEDIUM
         {
             id: 4,
+            difficulty: 'easy',
+            discipline: 'biology',
+            question: 'Keeping sewage separate from drinking water prevents:',
+            options: ['Deadly waterborne disease', 'Water from freezing', 'Pipes from bending', 'Rain from falling'],
+            correctIndex: 0,
+            hint: 'Think about what sewage carries.',
+            explanation: 'Separation stops disease-causing organisms reaching drinking supplies.'
+        },
+        // ── MEDIUM ──
+        {
+            id: 5,
             difficulty: 'medium',
             discipline: 'cross',
             question: 'Which statement connects all three lessons?',
@@ -48,9 +63,39 @@ export const bigIdea31Assessment: AssessmentData = {
             hint: 'Think about the whole water system.',
             explanation: 'Water systems use physics, chemistry, and biology to keep water safe.'
         },
-        // HARD
         {
-            id: 5,
+            id: 6,
+            difficulty: 'medium',
+            discipline: 'physics',
+            question: 'A taller water tower produces:',
+            options: ['Higher pressure and stronger flow', 'Lower pressure', 'No flow at all', 'Colder water'],
+            correctIndex: 0,
+            hint: 'Height stores energy, as in P37.',
+            explanation: 'Greater height increases the pressure driving water through the pipes.'
+        },
+        {
+            id: 7,
+            difficulty: 'medium',
+            discipline: 'chemistry',
+            question: 'Clumping chemicals are added to water so that dirt particles:',
+            options: ['Stick together and sink', 'Dissolve completely', 'Turn into gas', 'Become invisible but stay'],
+            correctIndex: 0,
+            hint: 'Small specks must become big ones.',
+            explanation: 'Coagulation aggregates fine particles into settleable clumps.'
+        },
+        {
+            id: 8,
+            difficulty: 'medium',
+            discipline: 'physics',
+            question: 'Sewer pipes are laid on a slope so that:',
+            options: ['Gravity carries waste away without pumping', 'Water flows uphill', 'Pipes stay warm', 'Waste stays still'],
+            correctIndex: 0,
+            hint: 'Gravity does the work.',
+            explanation: 'A downhill gradient keeps waste moving without energy input.'
+        },
+        // ── HARD ──
+        {
+            id: 9,
             difficulty: 'hard',
             discipline: 'cross',
             question: 'A broken sewer system can cause:',
@@ -58,6 +103,36 @@ export const bigIdea31Assessment: AssessmentData = {
             correctIndex: 0,
             hint: 'Think about what happens if waste is not removed.',
             explanation: 'Broken sewers can spread disease and pollute the environment.'
+        },
+        {
+            id: 10,
+            difficulty: 'hard',
+            discipline: 'chemistry',
+            question: 'Why is filtering alone not enough to make water safe?',
+            options: ['Filters cannot catch the smallest germs', 'Filters add chemicals', 'Filters make water acidic', 'Filters remove all minerals'],
+            correctIndex: 0,
+            hint: 'Clear is not the same as clean.',
+            explanation: 'Bacteria and viruses can be smaller than the filter openings.'
+        },
+        {
+            id: 11,
+            difficulty: 'hard',
+            discipline: 'biology',
+            question: 'Boiling water makes it safer because heat:',
+            options: ['Destroys germs', 'Removes all dissolved metals', 'Adds oxygen', 'Filters out sand'],
+            correctIndex: 0,
+            hint: 'Heat kills living things.',
+            explanation: 'High temperature denatures the structures germs need to survive.'
+        },
+        {
+            id: 12,
+            difficulty: 'hard',
+            discipline: 'cross',
+            question: 'A city needs physics, chemistry and biology for safe water because it must:',
+            options: ['Move it, treat it, and confirm it is free of germs', 'Only move it', 'Only treat it', 'Only test it once'],
+            correctIndex: 0,
+            hint: 'Three lessons, three jobs.',
+            explanation: 'Delivery, treatment and verification are all required together.'
         }
     ]
 };

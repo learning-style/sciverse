@@ -1,12 +1,17 @@
 import { AssessmentData } from '../../types';
 
+/**
+ * Big Idea 27 Assessment: "How Does Food Become Usable Energy?"
+ * Covers P27 (Mechanical Digestion), C27 (Enzyme Chemistry), B27 (The Food Tube)
+ * 12 questions: 4 easy → 4 medium → 4 hard
+ */
 export const bigIdea27Assessment: AssessmentData = {
     bigIdea: 27,
     title: 'How Does Digestion Power Life?',
     subtitle: 'Physical Breakdown, Chemical Reactions, and Nutrient Absorption',
     icon: '🍽️',
     questions: [
-        // EASY
+        // ── EASY ──
         {
             id: 1,
             difficulty: 'easy',
@@ -37,9 +42,19 @@ export const bigIdea27Assessment: AssessmentData = {
             hint: 'Think about where absorption happens.',
             explanation: 'The small intestine has villi that absorb nutrients into the bloodstream.'
         },
-        // MEDIUM
         {
             id: 4,
+            difficulty: 'easy',
+            discipline: 'biology',
+            question: 'Digestion involves many organs working:',
+            options: ['Together in sequence along one pathway', 'Completely independently', 'Only in the mouth', 'Only while asleep'],
+            correctIndex: 0,
+            hint: 'Think of a pipeline.',
+            explanation: 'Each organ performs a stage in a coordinated sequence.'
+        },
+        // ── MEDIUM ──
+        {
+            id: 5,
             difficulty: 'medium',
             discipline: 'cross',
             question: 'Which statement connects all three lessons?',
@@ -48,9 +63,39 @@ export const bigIdea27Assessment: AssessmentData = {
             hint: 'Think about the whole digestive process.',
             explanation: 'Digestion requires mechanical breakdown, chemical reactions, and biological absorption.'
         },
-        // HARD
         {
-            id: 5,
+            id: 6,
+            difficulty: 'medium',
+            discipline: 'physics',
+            question: 'Chewing helps digestion mainly by:',
+            options: ['Increasing the surface area enzymes can act on', 'Making food warmer', 'Removing all water', 'Adding enzymes'],
+            correctIndex: 0,
+            hint: 'Smaller pieces expose more surface.',
+            explanation: 'More exposed surface lets chemical breakdown proceed faster.'
+        },
+        {
+            id: 7,
+            difficulty: 'medium',
+            discipline: 'chemistry',
+            question: 'Enzymes speed up digestion by:',
+            options: ['Breaking specific molecules apart quickly', 'Adding energy to food', 'Cooling the stomach', 'Making food larger'],
+            correctIndex: 0,
+            hint: 'Each enzyme has a specific job.',
+            explanation: 'Enzymes catalyse the breakdown of particular nutrient types.'
+        },
+        {
+            id: 8,
+            difficulty: 'medium',
+            discipline: 'chemistry',
+            question: 'Which enzyme acts on starch?',
+            options: ['Amylase', 'Protease', 'Lipase', 'Insulin'],
+            correctIndex: 0,
+            hint: 'The names hint at their targets.',
+            explanation: 'Amylase breaks starch into smaller sugars.'
+        },
+        // ── HARD ──
+        {
+            id: 9,
             difficulty: 'hard',
             discipline: 'cross',
             question: 'A person with no stomach acid would have trouble:',
@@ -58,6 +103,36 @@ export const bigIdea27Assessment: AssessmentData = {
             correctIndex: 0,
             hint: 'What does acid do in the stomach?',
             explanation: 'Without acid, proteins are not properly denatured for enzyme action.'
+        },
+        {
+            id: 10,
+            difficulty: 'hard',
+            discipline: 'chemistry',
+            question: 'Stomach enzymes work best in acid, while intestinal enzymes prefer neutral conditions. This shows enzymes depend on:',
+            options: ['The pH of their surroundings', 'The colour of the food', 'The time of day', 'The size of the meal'],
+            correctIndex: 0,
+            hint: 'Conditions must match the enzyme.',
+            explanation: 'Each enzyme has an optimal pH range for its shape and activity.'
+        },
+        {
+            id: 11,
+            difficulty: 'hard',
+            discipline: 'physics',
+            question: 'Peristalsis moves food along by:',
+            options: ['Waves of muscle squeezing behind the food', 'Gravity alone', 'Blowing air', 'Electrical sparks'],
+            correctIndex: 0,
+            hint: 'It works even lying down.',
+            explanation: 'Sequential muscular contractions push food along the tract.'
+        },
+        {
+            id: 12,
+            difficulty: 'hard',
+            discipline: 'cross',
+            question: 'Why does digestion need both mechanical and chemical steps?',
+            options: ['Grinding exposes surface area so enzymes can work fast enough', 'Chemistry alone is illegal', 'Grinding produces enzymes', 'Enzymes cannot touch food'],
+            correctIndex: 0,
+            hint: 'One step enables the other.',
+            explanation: 'Mechanical breakdown multiplies the surface available for enzyme action.'
         }
     ]
 };
