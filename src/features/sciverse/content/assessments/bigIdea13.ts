@@ -1,11 +1,17 @@
 import { AssessmentData } from '../../types';
 
+/**
+ * Big Idea 13 Assessment: "How Does Structure Shape Function?"
+ * Covers P13 (Gears & Pulleys), C13 (Polymers), B13 (Photosynthesis Engine)
+ * 12 questions: 4 easy → 4 medium → 4 hard
+ */
 export const bigIdea13Assessment: AssessmentData = {
     bigIdea: 13,
     title: 'How Does Structure Shape Function?',
     subtitle: 'Gears, Polymers & Photosynthesis',
     icon: '🎯',
     questions: [
+        // ── EASY ──
         {
             id: 1,
             difficulty: 'easy',
@@ -38,6 +44,17 @@ export const bigIdea13Assessment: AssessmentData = {
         },
         {
             id: 4,
+            difficulty: 'easy',
+            discipline: 'biology',
+            question: 'Which leaf structure lets gases move in and out?',
+            options: ['Stomata', 'Roots', 'Bark', 'Seeds'],
+            correctIndex: 0,
+            hint: 'Think about the tiny openings shown in B13.',
+            explanation: 'Stomata are adjustable pores that let carbon dioxide in and oxygen and water vapour out.'
+        },
+        // ── MEDIUM ──
+        {
+            id: 5,
             difficulty: 'medium',
             discipline: 'physics',
             question: 'A larger driven gear connected to a smaller driver generally gives:',
@@ -47,7 +64,7 @@ export const bigIdea13Assessment: AssessmentData = {
             explanation: 'Higher gear ratio increases torque while reducing rotational speed.'
         },
         {
-            id: 5,
+            id: 6,
             difficulty: 'medium',
             discipline: 'chemistry',
             question: 'Compared with heavily branched polymer chains, straighter chains usually:',
@@ -57,7 +74,7 @@ export const bigIdea13Assessment: AssessmentData = {
             explanation: 'Linear chains can pack tightly, often increasing density/strength.'
         },
         {
-            id: 6,
+            id: 7,
             difficulty: 'medium',
             discipline: 'biology',
             question: 'In photosynthesis, oxygen released mainly comes from:',
@@ -67,7 +84,18 @@ export const bigIdea13Assessment: AssessmentData = {
             explanation: 'Oxygen gas in photosynthesis is produced from water molecules.'
         },
         {
-            id: 7,
+            id: 8,
+            difficulty: 'medium',
+            discipline: 'cross',
+            question: 'A gear train, a polymer chain, and a leaf all show that:',
+            options: ['How something is built decides what it can do', 'Bigger is always better', 'Structure and function are unrelated', 'Only living things have structure'],
+            correctIndex: 0,
+            hint: 'Read the Big Idea 13 question again.',
+            explanation: 'In each case the arrangement of parts - teeth, chains, cells - determines the behaviour.'
+        },
+        // ── HARD ──
+        {
+            id: 9,
             difficulty: 'hard',
             discipline: 'cross',
             question: 'Common idea across this Big Idea is:',
@@ -77,7 +105,7 @@ export const bigIdea13Assessment: AssessmentData = {
             explanation: 'Configuration strongly controls behavior in mechanical, chemical, and biological systems.'
         },
         {
-            id: 8,
+            id: 10,
             difficulty: 'hard',
             discipline: 'physics',
             question: 'For an ideal pulley with 3 supporting rope segments, required force is about:',
@@ -87,7 +115,7 @@ export const bigIdea13Assessment: AssessmentData = {
             explanation: 'Ideal mechanical advantage approximates number of supporting segments.'
         },
         {
-            id: 9,
+            id: 11,
             difficulty: 'hard',
             discipline: 'chemistry',
             question: 'Cross-linking in polymers often makes materials:',
@@ -95,6 +123,16 @@ export const bigIdea13Assessment: AssessmentData = {
             correctIndex: 1,
             hint: 'Links between chains limit sliding.',
             explanation: 'Cross-links form network structures that increase rigidity/toughness.'
+        },
+        {
+            id: 12,
+            difficulty: 'hard',
+            discipline: 'cross',
+            question: 'A machine lets you lift a heavy load with a small force. What is the trade-off?',
+            options: ['You must pull a much longer distance', 'You get energy for free', 'The load becomes lighter', 'Friction disappears'],
+            correctIndex: 0,
+            hint: 'Work = force x distance, and it is conserved.',
+            explanation: 'Machines trade force against distance; the total work done cannot be reduced.'
         }
     ]
 };

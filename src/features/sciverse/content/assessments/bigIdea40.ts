@@ -1,12 +1,17 @@
 import { AssessmentData } from '../../types';
 
+/**
+ * Big Idea 40 Assessment: "How Do We Use Data to Know What Is True?"
+ * Covers P40 (Measure It Again), C40 (The Fair Test), B40 (Follow the Evidence)
+ * 12 questions: 4 easy → 4 medium → 4 hard
+ */
 export const bigIdea40Assessment: AssessmentData = {
     bigIdea: 40,
     title: 'How Do We Use Data to Know What Is True?',
     subtitle: 'Measurement Uncertainty, Fair Tests, and Judging Evidence',
     icon: '📊',
     questions: [
-        // EASY
+        // ── EASY ──
         {
             id: 1,
             difficulty: 'easy',
@@ -37,9 +42,19 @@ export const bigIdea40Assessment: AssessmentData = {
             hint: "It is just one case.",
             explanation: "A single story cannot separate a real effect from luck."
         },
-        // MEDIUM
         {
             id: 4,
+            difficulty: 'easy',
+            discipline: 'physics',
+            question: 'Two rulers give slightly different readings for the same desk. This shows that:',
+            options: ['Every measurement carries some uncertainty', 'One ruler is broken', 'Desks change size', 'Measuring is pointless'],
+            correctIndex: 0,
+            hint: 'Think about the plus-or-minus range.',
+            explanation: 'Small variation is normal; that is why measurements are reported with an uncertainty.'
+        },
+        // ── MEDIUM ──
+        {
+            id: 5,
             difficulty: 'medium',
             discipline: 'physics',
             question: "Repeating a measurement many times fixes:",
@@ -49,7 +64,7 @@ export const bigIdea40Assessment: AssessmentData = {
             explanation: "Averaging cancels random scatter but never a consistent bias."
         },
         {
-            id: 5,
+            id: 6,
             difficulty: 'medium',
             discipline: 'chemistry',
             question: "A control group must be:",
@@ -59,7 +74,7 @@ export const bigIdea40Assessment: AssessmentData = {
             explanation: "Any other difference becomes a confounding variable."
         },
         {
-            id: 6,
+            id: 7,
             difficulty: 'medium',
             discipline: 'biology',
             question: "Why does biology need large sample sizes?",
@@ -68,9 +83,19 @@ export const bigIdea40Assessment: AssessmentData = {
             hint: "Think about natural variation.",
             explanation: "High variation means you need many individuals to see a real effect."
         },
-        // HARD
         {
-            id: 7,
+            id: 8,
+            difficulty: 'medium',
+            discipline: 'chemistry',
+            question: 'In a fair test, the controlled variables are the ones you:',
+            options: ['Deliberately keep the same', 'Change on purpose', 'Measure as the result', 'Ignore completely'],
+            correctIndex: 0,
+            hint: 'Only one thing should change.',
+            explanation: 'Holding everything else fixed is what lets you attribute the effect to the one change.'
+        },
+        // ── HARD ──
+        {
+            id: 9,
             difficulty: 'hard',
             discipline: 'cross',
             question: "A scale reads 10 grams heavy. She weighs a rock 500 times. Her result is:",
@@ -80,7 +105,7 @@ export const bigIdea40Assessment: AssessmentData = {
             explanation: "Consistency without correctness is precision without accuracy."
         },
         {
-            id: 8,
+            id: 10,
             difficulty: 'hard',
             discipline: 'cross',
             question: "\"Children who take music lessons score higher in maths.\" What should you conclude?",
@@ -88,6 +113,26 @@ export const bigIdea40Assessment: AssessmentData = {
             correctIndex: 0,
             hint: "Correlation is not causation.",
             explanation: "A confounding factor such as family resources could cause both."
+        },
+        {
+            id: 11,
+            difficulty: 'hard',
+            discipline: 'biology',
+            question: 'A treatment appears to help 8 out of 10 people. Why is this weak evidence?',
+            options: ['With only ten people, luck could easily produce that result', 'Eight is too small a number to matter', 'Treatments never work', 'The people were not measured'],
+            correctIndex: 0,
+            hint: 'Think about sample size and noise.',
+            explanation: 'Small samples fluctuate widely, so a striking result can appear by chance alone.'
+        },
+        {
+            id: 12,
+            difficulty: 'hard',
+            discipline: 'cross',
+            question: 'A study finds ice cream sales and drowning both rise together. The best conclusion is:',
+            options: ['A third factor, hot weather, causes both', 'Ice cream causes drowning', 'Drowning causes ice cream sales', 'The study is worthless'],
+            correctIndex: 0,
+            hint: 'Correlation is not causation.',
+            explanation: 'A confounding variable can drive both measures without either causing the other.'
         }
     ]
 };

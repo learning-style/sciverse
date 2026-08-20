@@ -1,12 +1,17 @@
 import { AssessmentData } from '../../types';
 
+/**
+ * Big Idea 33 Assessment: "How Do Ecosystems Support Human Life?"
+ * Covers P33 (The Energy Ladder), C33 (Nature's Recycling Loop), B33 (Nature's Free Gifts)
+ * 12 questions: 4 easy → 4 medium → 4 hard
+ */
 export const bigIdea33Assessment: AssessmentData = {
     bigIdea: 33,
     title: 'How Do Ecosystems Support Human Life?',
     subtitle: 'Energy Flow, Nutrient Cycling, and Ecosystem Services',
     icon: '🌍',
     questions: [
-        // EASY
+        // ── EASY ──
         {
             id: 1,
             difficulty: 'easy',
@@ -37,9 +42,19 @@ export const bigIdea33Assessment: AssessmentData = {
             hint: "The word \"diversity\" means variety.",
             explanation: "Biodiversity is the variety of species living in an area."
         },
-        // MEDIUM
         {
             id: 4,
+            difficulty: 'easy',
+            discipline: 'physics',
+            question: 'In an energy pyramid, which level has the most energy?',
+            options: ['The bottom level, the plants', 'The top predators', 'The middle level', 'They are all equal'],
+            correctIndex: 0,
+            hint: 'Think about where the sunlight arrives first.',
+            explanation: 'Producers capture the sunlight, so the bottom level holds by far the most energy.'
+        },
+        // ── MEDIUM ──
+        {
+            id: 5,
             difficulty: 'medium',
             discipline: 'physics',
             question: "About how much energy passes from one step of a food chain to the next?",
@@ -49,7 +64,7 @@ export const bigIdea33Assessment: AssessmentData = {
             explanation: "Roughly 10% moves up; the other 90% escapes as heat."
         },
         {
-            id: 5,
+            id: 6,
             difficulty: 'medium',
             discipline: 'chemistry',
             question: "Why do the same atoms get used over and over on Earth?",
@@ -59,7 +74,7 @@ export const bigIdea33Assessment: AssessmentData = {
             explanation: "Matter cycles because atoms cannot be created or destroyed."
         },
         {
-            id: 6,
+            id: 7,
             difficulty: 'medium',
             discipline: 'biology',
             question: "Why does a farm field with only one crop face more risk than a wild meadow?",
@@ -68,9 +83,19 @@ export const bigIdea33Assessment: AssessmentData = {
             hint: "Think about backups.",
             explanation: "Low biodiversity means no backup when one threat arrives."
         },
-        // HARD
         {
-            id: 7,
+            id: 8,
+            difficulty: 'medium',
+            discipline: 'biology',
+            question: 'Why does a meadow support thousands of mice but only one or two owls?',
+            options: ['Owls are a step higher, so only about 10% of the energy reaches them', 'Owls need less food', 'Mice are bigger than owls', 'Owls prefer to live alone'],
+            correctIndex: 0,
+            hint: 'Count the steps up from the grass.',
+            explanation: 'Each step keeps only about a tenth of the energy, so higher levels support far fewer animals.'
+        },
+        // ── HARD ──
+        {
+            id: 9,
             difficulty: 'hard',
             discipline: 'cross',
             question: "A meadow supports thousands of mice but only one or two owls. Why?",
@@ -80,7 +105,7 @@ export const bigIdea33Assessment: AssessmentData = {
             explanation: "Each step up keeps only about 10% of the energy, so higher levels support far fewer animals."
         },
         {
-            id: 8,
+            id: 10,
             difficulty: 'hard',
             discipline: 'cross',
             question: "A town removes a wetland and later suffers floods, dirty water, and more mosquitoes. Best explanation?",
@@ -88,6 +113,26 @@ export const bigIdea33Assessment: AssessmentData = {
             correctIndex: 0,
             hint: "Think about what the wetland was quietly doing.",
             explanation: "One habitat often provides many services, so losing it breaks several at once."
+        },
+        {
+            id: 11,
+            difficulty: 'hard',
+            discipline: 'physics',
+            question: 'If a food chain has four steps, roughly what share of the original sunlight energy reaches the top?',
+            options: ['About 0.1%', 'About 10%', 'About 50%', 'All of it'],
+            correctIndex: 0,
+            hint: 'Multiply 10% by itself for each step.',
+            explanation: 'Ten percent per step over three transfers leaves roughly one-thousandth of the starting energy.'
+        },
+        {
+            id: 12,
+            difficulty: 'hard',
+            discipline: 'cross',
+            question: 'Energy must be resupplied by the Sun daily, but nutrients do not need resupplying. Why?',
+            options: ['Energy leaves as heat, while atoms are recycled in place', 'Nutrients are made by plants', 'The Sun supplies nutrients too', 'Energy is stored underground'],
+            correctIndex: 0,
+            hint: 'Compare flow with cycling.',
+            explanation: 'Energy flows one way and escapes as heat; matter cycles round and is reused.'
         }
     ]
 };

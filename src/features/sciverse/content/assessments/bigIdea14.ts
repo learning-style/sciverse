@@ -1,11 +1,17 @@
 import { AssessmentData } from '../../types';
 
+/**
+ * Big Idea 14 Assessment: "How Is Information Coded and Transmitted?"
+ * Covers P14 (Waves & Signals), C14 (Chemical Bonding), B14 (DNA & Genetics)
+ * 12 questions: 4 easy → 4 medium → 4 hard
+ */
 export const bigIdea14Assessment: AssessmentData = {
     bigIdea: 14,
     title: 'How Is Information Coded and Transmitted?',
     subtitle: 'Waves, Bonding & DNA',
     icon: '🎯',
     questions: [
+        // ── EASY ──
         {
             id: 1,
             difficulty: 'easy',
@@ -38,6 +44,17 @@ export const bigIdea14Assessment: AssessmentData = {
         },
         {
             id: 4,
+            difficulty: 'easy',
+            discipline: 'chemistry',
+            question: 'In an ionic bond, electrons are:',
+            options: ['Transferred from one atom to another', 'Shared equally', 'Destroyed', 'Turned into protons'],
+            correctIndex: 0,
+            hint: 'Think about how ions get their charges in C14.',
+            explanation: 'Ionic bonding transfers electrons, creating oppositely charged ions that attract.'
+        },
+        // ── MEDIUM ──
+        {
+            id: 5,
             difficulty: 'medium',
             discipline: 'physics',
             question: 'If wave speed is constant in a medium, increasing frequency causes wavelength to:',
@@ -47,7 +64,7 @@ export const bigIdea14Assessment: AssessmentData = {
             explanation: 'With fixed speed, frequency and wavelength are inversely related.'
         },
         {
-            id: 5,
+            id: 6,
             difficulty: 'medium',
             discipline: 'chemistry',
             question: 'Water (H2O) bonds are best described as:',
@@ -57,7 +74,7 @@ export const bigIdea14Assessment: AssessmentData = {
             explanation: 'O-H bonds are polar covalent due to electronegativity difference.'
         },
         {
-            id: 6,
+            id: 7,
             difficulty: 'medium',
             discipline: 'biology',
             question: 'A codon is:',
@@ -67,7 +84,18 @@ export const bigIdea14Assessment: AssessmentData = {
             explanation: 'Codons are triplets that map to amino acids or control signals.'
         },
         {
-            id: 7,
+            id: 8,
+            difficulty: 'medium',
+            discipline: 'cross',
+            question: 'Radio waves, chemical bonds, and DNA all store or carry information using:',
+            options: ['A code built from a small set of repeating options', 'Sound only', 'Electricity only', 'Random patterns'],
+            correctIndex: 0,
+            hint: 'Think about what the three lessons share.',
+            explanation: 'Each uses a limited alphabet - wave states, bond types, or four DNA bases - combined into meaning.'
+        },
+        // ── HARD ──
+        {
+            id: 9,
             difficulty: 'hard',
             discipline: 'cross',
             question: 'Best cross-disciplinary statement is:',
@@ -77,7 +105,7 @@ export const bigIdea14Assessment: AssessmentData = {
             explanation: 'Across domains, information depends on structured symbols and physical carriers.'
         },
         {
-            id: 8,
+            id: 10,
             difficulty: 'hard',
             discipline: 'physics',
             question: 'In a noisy channel, one major reason digital encoding is robust is:',
@@ -87,7 +115,7 @@ export const bigIdea14Assessment: AssessmentData = {
             explanation: 'Binary thresholds can recover intended values despite moderate noise.'
         },
         {
-            id: 9,
+            id: 11,
             difficulty: 'hard',
             discipline: 'biology',
             question: 'Identical twins can still differ in traits mainly because:',
@@ -95,6 +123,16 @@ export const bigIdea14Assessment: AssessmentData = {
             correctIndex: 1,
             hint: 'Epigenetics and life history matter.',
             explanation: 'Shared DNA does not guarantee identical expression outcomes.'
+        },
+        {
+            id: 12,
+            difficulty: 'hard',
+            discipline: 'cross',
+            question: 'Why is a digital signal harder to corrupt than an analog one?',
+            options: ['It only has to be read as one of two states, so small noise does not change it', 'It travels faster', 'It uses no energy', 'It has no wavelength'],
+            correctIndex: 0,
+            hint: 'Compare with the binary idea from P39.',
+            explanation: 'Two well-separated states leave a large margin, so noise rarely flips the reading.'
         }
     ]
 };

@@ -1,11 +1,17 @@
 import { AssessmentData } from '../../types';
 
+/**
+ * Big Idea 15 Assessment: "How Do Systems Find Balance?"
+ * Covers P15 (Pendulum), C15 (Chemical Equilibrium), B15 (Predator-Prey)
+ * 12 questions: 4 easy → 4 medium → 4 hard
+ */
 export const bigIdea15Assessment: AssessmentData = {
     bigIdea: 15,
     title: 'How Do Systems Find Balance?',
     subtitle: 'Pendulum, Equilibrium & Predator-Prey',
     icon: '🎯',
     questions: [
+        // ── EASY ──
         {
             id: 1,
             difficulty: 'easy',
@@ -38,6 +44,17 @@ export const bigIdea15Assessment: AssessmentData = {
         },
         {
             id: 4,
+            difficulty: 'easy',
+            discipline: 'biology',
+            question: 'In a predator-prey cycle, when prey numbers rise, predator numbers usually:',
+            options: ['Rise afterwards, because there is more food', 'Fall immediately', 'Stay exactly the same', 'Disappear'],
+            correctIndex: 0,
+            hint: 'Think about the cycles you watched in B15.',
+            explanation: 'More prey supports more predators, whose rise then pushes prey numbers back down.'
+        },
+        // ── MEDIUM ──
+        {
+            id: 5,
             difficulty: 'medium',
             discipline: 'physics',
             question: 'Resonance occurs when driving frequency is:',
@@ -47,7 +64,7 @@ export const bigIdea15Assessment: AssessmentData = {
             explanation: 'Near-match between driving and natural frequencies yields large amplitude response.'
         },
         {
-            id: 5,
+            id: 6,
             difficulty: 'medium',
             discipline: 'chemistry',
             question: 'By Le Chatelier principle, adding reactant to an equilibrium system tends to shift:',
@@ -57,7 +74,7 @@ export const bigIdea15Assessment: AssessmentData = {
             explanation: 'Adding reactant usually drives reaction toward products to offset the change.'
         },
         {
-            id: 6,
+            id: 7,
             difficulty: 'medium',
             discipline: 'biology',
             question: 'Predator-prey population peaks often show a lag because:',
@@ -67,7 +84,18 @@ export const bigIdea15Assessment: AssessmentData = {
             explanation: 'Predator populations typically respond after prey rises, creating phase lag.'
         },
         {
-            id: 7,
+            id: 8,
+            difficulty: 'medium',
+            discipline: 'cross',
+            question: 'A pendulum, a reversible reaction, and a predator-prey cycle all show:',
+            options: ['Systems swinging around a balance point rather than sitting still', 'Systems that never change', 'One-way change only', 'Perfectly straight-line growth'],
+            correctIndex: 0,
+            hint: 'Look at the Big Idea 15 question.',
+            explanation: 'Each oscillates around equilibrium, with feedback pulling it back toward balance.'
+        },
+        // ── HARD ──
+        {
+            id: 9,
             difficulty: 'hard',
             discipline: 'cross',
             question: 'Which statement best captures balance across these systems?',
@@ -77,7 +105,7 @@ export const bigIdea15Assessment: AssessmentData = {
             explanation: 'Many stable systems are dynamic, not static.'
         },
         {
-            id: 8,
+            id: 10,
             difficulty: 'hard',
             discipline: 'physics',
             question: 'Increasing damping in an oscillator generally:',
@@ -87,7 +115,7 @@ export const bigIdea15Assessment: AssessmentData = {
             explanation: 'Damping removes energy from oscillation, shrinking amplitude.'
         },
         {
-            id: 9,
+            id: 11,
             difficulty: 'hard',
             discipline: 'chemistry',
             question: 'Equilibrium does not require equal amounts of reactants/products because it depends on:',
@@ -95,6 +123,16 @@ export const bigIdea15Assessment: AssessmentData = {
             correctIndex: 1,
             hint: 'Rate balance, not amount equality.',
             explanation: 'Equilibrium condition is equal rates, not equal concentrations.'
+        },
+        {
+            id: 12,
+            difficulty: 'hard',
+            discipline: 'cross',
+            question: 'Why is chemical equilibrium described as dynamic rather than stopped?',
+            options: ['Both forward and reverse reactions keep running at equal rates', 'The reaction has finished', 'Nothing is moving', 'The reactants are used up'],
+            correctIndex: 0,
+            hint: 'Think about what is happening at the molecular level.',
+            explanation: 'Equilibrium means the two opposing rates match, so amounts hold steady while reactions continue.'
         }
     ]
 };

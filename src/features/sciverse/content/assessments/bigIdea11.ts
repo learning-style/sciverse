@@ -1,11 +1,17 @@
 import { AssessmentData } from '../../types';
 
+/**
+ * Big Idea 11 Assessment: "How Do We Stay Healthy?"
+ * Covers P11 (Blood Pressure), C11 (Acids, Bases & pH), B11 (Immune Defense)
+ * 12 questions: 4 easy → 4 medium → 4 hard
+ */
 export const bigIdea11Assessment: AssessmentData = {
     bigIdea: 11,
     title: 'How Do We Stay Healthy?',
     subtitle: 'Blood Pressure, pH & Immune System',
     icon: '🎯',
     questions: [
+        // ── EASY ──
         {
             id: 1,
             difficulty: 'easy',
@@ -38,6 +44,17 @@ export const bigIdea11Assessment: AssessmentData = {
         },
         {
             id: 4,
+            difficulty: 'easy',
+            discipline: 'biology',
+            question: 'What is the job of your immune system?',
+            options: ['To find and destroy invaders like germs', 'To pump blood around the body', 'To digest your food', 'To keep your bones hard'],
+            correctIndex: 0,
+            hint: 'Think about B11 and your body\'s defence army.',
+            explanation: 'The immune system identifies invaders and destroys them using layered defences.'
+        },
+        // ── MEDIUM ──
+        {
+            id: 5,
             difficulty: 'medium',
             discipline: 'physics',
             question: 'If artery diameter decreases while flow demand stays similar, blood pressure usually:',
@@ -47,7 +64,7 @@ export const bigIdea11Assessment: AssessmentData = {
             explanation: 'Narrower arteries increase resistance, often raising pressure.'
         },
         {
-            id: 5,
+            id: 6,
             difficulty: 'medium',
             discipline: 'chemistry',
             question: 'Why does an antacid help heartburn?',
@@ -57,7 +74,7 @@ export const bigIdea11Assessment: AssessmentData = {
             explanation: 'Most antacids are basic compounds that neutralize excess acid.'
         },
         {
-            id: 6,
+            id: 7,
             difficulty: 'medium',
             discipline: 'biology',
             question: 'Vaccines primarily train which immune response?',
@@ -67,7 +84,18 @@ export const bigIdea11Assessment: AssessmentData = {
             explanation: 'Vaccines train adaptive immunity to produce memory cells.'
         },
         {
-            id: 7,
+            id: 8,
+            difficulty: 'medium',
+            discipline: 'cross',
+            question: 'Blood pH must stay near 7.4, and blood pressure must stay in a healthy range. What do these have in common?',
+            options: ['Both are kept steady by the body, and drifting too far is dangerous', 'Both are controlled by the stomach', 'Neither changes during the day', 'Both are measured with a thermometer'],
+            correctIndex: 0,
+            hint: 'Think about what "staying healthy" means across all three lessons.',
+            explanation: 'Healthy bodies hold key measures inside narrow ranges; large drifts in either pH or pressure cause harm.'
+        },
+        // ── HARD ──
+        {
+            id: 9,
             difficulty: 'hard',
             discipline: 'cross',
             question: 'Which combination best supports homeostasis?',
@@ -77,7 +105,7 @@ export const bigIdea11Assessment: AssessmentData = {
             explanation: 'Homeostasis requires coordinated regulation across systems.'
         },
         {
-            id: 8,
+            id: 10,
             difficulty: 'hard',
             discipline: 'chemistry',
             question: 'If blood pH falls below normal, breathing faster can help because it:',
@@ -87,7 +115,7 @@ export const bigIdea11Assessment: AssessmentData = {
             explanation: 'Faster breathing lowers CO2, reducing carbonic acid and raising pH.'
         },
         {
-            id: 9,
+            id: 11,
             difficulty: 'hard',
             discipline: 'physics',
             question: 'Blood pressure is commonly written 120/80. The top value is:',
@@ -95,6 +123,16 @@ export const bigIdea11Assessment: AssessmentData = {
             correctIndex: 2,
             hint: 'Think heart squeeze phase.',
             explanation: 'Systolic pressure is the peak pressure during heart contraction.'
+        },
+        {
+            id: 12,
+            difficulty: 'hard',
+            discipline: 'cross',
+            question: 'Why does a narrowed artery force the heart to work harder?',
+            options: ['A smaller opening needs more pressure to push the same blood through', 'Narrow arteries hold more blood', 'The blood becomes more acidic', 'The immune system blocks the flow'],
+            correctIndex: 0,
+            hint: 'Pressure = force ÷ area.',
+            explanation: 'Squeezing the same flow through a smaller area demands higher pressure, which strains the heart over time.'
         }
     ]
 };

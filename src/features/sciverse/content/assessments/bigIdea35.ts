@@ -1,12 +1,17 @@
 import { AssessmentData } from '../../types';
 
+/**
+ * Big Idea 35 Assessment: "How Can We Turn Waste Into Resources?"
+ * Covers P35 (The Sorting Machine), C35 (Melt and Remake), B35 (The Compost Crew)
+ * 12 questions: 4 easy → 4 medium → 4 hard
+ */
 export const bigIdea35Assessment: AssessmentData = {
     bigIdea: 35,
     title: 'How Can We Turn Waste Into Resources?',
     subtitle: 'Sorting Physics, Recycling Chemistry, and Composting Biology',
     icon: '♻️',
     questions: [
-        // EASY
+        // ── EASY ──
         {
             id: 1,
             difficulty: 'easy',
@@ -37,9 +42,19 @@ export const bigIdea35Assessment: AssessmentData = {
             hint: "The centre is hottest, even at night.",
             explanation: "Decomposers release heat as they break material down."
         },
-        // MEDIUM
         {
             id: 4,
+            difficulty: 'easy',
+            discipline: 'physics',
+            question: 'An eddy current separator is used to remove:',
+            options: ['Aluminium, which is not magnetic', 'Steel cans', 'Paper', 'Glass bottles'],
+            correctIndex: 0,
+            hint: 'It flings a metal that a magnet cannot lift.',
+            explanation: 'A moving magnetic field pushes aluminium off the belt even though aluminium is not magnetic.'
+        },
+        // ── MEDIUM ──
+        {
+            id: 5,
             difficulty: 'medium',
             discipline: 'physics',
             question: "Why does a greasy pizza box cause problems at a recycling plant?",
@@ -49,7 +64,7 @@ export const bigIdea35Assessment: AssessmentData = {
             explanation: "Contamination can send a whole bale to landfill."
         },
         {
-            id: 5,
+            id: 6,
             difficulty: 'medium',
             discipline: 'chemistry',
             question: "Why does plastic get weaker each time it is recycled?",
@@ -59,7 +74,7 @@ export const bigIdea35Assessment: AssessmentData = {
             explanation: "Shorter chains make weaker plastic, which is why this is downcycling."
         },
         {
-            id: 6,
+            id: 7,
             difficulty: 'medium',
             discipline: 'biology',
             question: "A wet, tightly packed compost bin turns cold and smelly because:",
@@ -68,9 +83,19 @@ export const bigIdea35Assessment: AssessmentData = {
             hint: "Think about what the fast decomposers need.",
             explanation: "Without oxygen, anaerobic microbes take over and produce smelly gases."
         },
-        // HARD
         {
-            id: 7,
+            id: 8,
+            difficulty: 'medium',
+            discipline: 'chemistry',
+            question: 'Why must different plastic types be kept separate?',
+            options: ['Mixing them produces a weak, low-quality blend', 'They explode when mixed', 'Mixing makes them magnetic', 'They cannot be melted at all'],
+            correctIndex: 0,
+            hint: 'That is what the numbers on bottles are for.',
+            explanation: 'Different polymers do not blend well, so a mixed batch is weaker than any single type.'
+        },
+        // ── HARD ──
+        {
+            id: 9,
             difficulty: 'hard',
             discipline: 'cross',
             question: "Recycling 1 tonne of aluminium saves far more energy than 1 tonne of plastic. Why?",
@@ -80,7 +105,7 @@ export const bigIdea35Assessment: AssessmentData = {
             explanation: "Making new aluminium from ore is extremely energy-hungry; melting scrap saves about 95%."
         },
         {
-            id: 8,
+            id: 10,
             difficulty: 'hard',
             discipline: 'cross',
             question: "Which statement best connects all three lessons?",
@@ -88,6 +113,26 @@ export const bigIdea35Assessment: AssessmentData = {
             correctIndex: 0,
             hint: "Think about the three different tools.",
             explanation: "Each science handles a different part of turning waste back into a resource."
+        },
+        {
+            id: 11,
+            difficulty: 'hard',
+            discipline: 'biology',
+            question: 'A compost pile is hot in the middle even on a cold night. What does that prove?',
+            options: ['The heat is made inside by microbes, not absorbed from outside', 'The Sun warms the centre first', 'Compost stores summer heat', 'The pile is on fire'],
+            correctIndex: 0,
+            hint: 'Where is the pile hottest, and when?',
+            explanation: 'Internal heat that persists at night must be produced by the decomposers themselves.'
+        },
+        {
+            id: 12,
+            difficulty: 'hard',
+            discipline: 'cross',
+            question: 'Which waste stream keeps its quality through unlimited recycling, and why?',
+            options: ['Aluminium, because melting only rearranges whole atoms', 'Plastic, because it melts easily', 'Paper, because it is natural', 'Food waste, because it rots'],
+            correctIndex: 0,
+            hint: 'Compare atoms with polymer chains.',
+            explanation: 'Metal atoms re-stack unchanged after melting, while polymer chains snap and shorten.'
         }
     ]
 };
