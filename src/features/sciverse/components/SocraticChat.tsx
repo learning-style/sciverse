@@ -8,12 +8,18 @@ interface SocraticChatProps {
     history: DialogNode[];
     onOptionSelect: (option: DialogOption) => void;
     onRewindTo?: (historyIndex: number) => void;
+    /** The lesson being shown, used to offer the Big Idea assessment at the end. */
+    lesson?: LessonMeta;
     nextLesson?: LessonMeta;
     prevLesson?: LessonMeta;
 }
 
-export const SocraticChat = ({ currentNode, history, onOptionSelect, onRewindTo, nextLesson, prevLesson }: SocraticChatProps) => {
+export const SocraticChat = ({ currentNode, history, onOptionSelect, onRewindTo, lesson, nextLesson, prevLesson }: SocraticChatProps) => {
     const scrollRef = useRef<HTMLDivElement>(null);
+
+    // Biology is the third and final lesson of every Big Idea, so finishing it
+    // means the whole topic is done and the assessment is due.
+    const finishedBigIdea = lesson?.discipline === 'biology';
 
     // Auto-scroll to bottom
     useEffect(() => {
@@ -71,6 +77,28 @@ export const SocraticChat = ({ currentNode, history, onOptionSelect, onRewindTo,
                             <div className="text-center text-slate-500 text-xs italic">
                                 [End of Lesson Module]
                             </div>
+
+                            {finishedBigIdea && lesson && (
+                                <div className="rounded-lg border-2 border-amber-300 bg-amber-50 p-4 space-y-3">
+                                    <p className="text-sm font-bold text-amber-900 text-center">
+                                        🎉 That completes Big Idea {lesson.bigIdea}!
+                                    </p>
+                                    <p className="text-xs text-amber-800 text-center leading-relaxed">
+                                        You have finished all three lessons. Let&apos;s test your understanding
+                                        with 12 questions across physics, chemistry and biology.
+                                    </p>
+                                    <Link
+                                        to={`/projects/science-lab/assessment/${lesson.bigIdea}`}
+                                        className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-amber-500 border border-amber-600 text-white hover:bg-amber-600 transition-colors text-sm font-bold"
+                                    >
+                                        📝 Take the Big Idea {lesson.bigIdea} Assessment
+                                    </Link>
+                                    <p className="text-[11px] text-amber-700 text-center">
+                                        Not ready? Skip it and come back any time from the lesson hub.
+                                    </p>
+                                </div>
+                            )}
+
                             <div className="flex gap-2">
                                 {prevLesson && (
                                     <Link
@@ -80,12 +108,20 @@ export const SocraticChat = ({ currentNode, history, onOptionSelect, onRewindTo,
                                         <ArrowLeft size={16} /> {prevLesson.icon} Prev
                                     </Link>
                                 )}
+                                {!nextLesson && finishedBigIdea && (
+                                    <Link
+                                        to="/projects/science-lab"
+                                        className="flex items-center justify-center gap-2 flex-1 py-3 rounded-lg bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 transition-colors text-sm font-bold"
+                                    >
+                                        Skip for now <ArrowRight size={16} />
+                                    </Link>
+                                )}
                                 {nextLesson && (
                                     <Link
                                         to={`/projects/science-lab/lesson/${nextLesson.id}`}
                                         className="flex items-center justify-center gap-2 flex-1 py-3 rounded-lg bg-indigo-50 border border-indigo-300 text-indigo-700 hover:bg-indigo-100 transition-colors text-sm font-bold"
                                     >
-                                        Next: {nextLesson.icon} {nextLesson.title} <ArrowRight size={16} />
+                                        {finishedBigIdea ? 'Skip for now' : `Next: ${nextLesson.icon} ${nextLesson.title}`} <ArrowRight size={16} />
                                     </Link>
                                 )}
                             </div>

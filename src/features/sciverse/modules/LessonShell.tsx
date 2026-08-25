@@ -987,6 +987,7 @@ export const LessonShell = () => {
                         history={history}
                         onOptionSelect={handleOptionSelect}
                         onRewindTo={rewindTo}
+                        lesson={lesson}
                         nextLesson={nextLesson}
                         prevLesson={prevLesson}
                     />
