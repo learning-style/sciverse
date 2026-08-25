@@ -24,6 +24,9 @@ import { B39NeuronLab } from './B39NeuronLab';
 import { P40MeasurementLab } from './P40MeasurementLab';
 import { C40FairTestLab } from './C40FairTestLab';
 import { B40EvidenceLab } from './B40EvidenceLab';
+import { P41ProbabilityLab } from './P41ProbabilityLab';
+import { C41CollisionLab } from './C41CollisionLab';
+import { B41InheritanceLab } from './B41InheritanceLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -59,4 +62,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     p40: P40MeasurementLab,
     c40: C40FairTestLab,
     b40: B40EvidenceLab,
+    p41: P41ProbabilityLab,
+    c41: C41CollisionLab,
+    b41: B41InheritanceLab,
 };

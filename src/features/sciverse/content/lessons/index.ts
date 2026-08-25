@@ -126,6 +126,9 @@ import { getB39Script } from './b39-neural-logic-biology';
 import { getP40Script } from './p40-measurement-uncertainty';
 import { getC40Script } from './c40-experimental-controls';
 import { getB40Script } from './b40-evidence-biology';
+import { getP41Script } from './p41-randomness-statistics';
+import { getC41Script } from './c41-collision-probability';
+import { getB41Script } from './b41-genetics-probability';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1016,6 +1019,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'p40': getP40Script,
     'c40': getC40Script,
     'b40': getB40Script,
+    'p41': getP41Script,
+    'c41': getC41Script,
+    'b41': getB41Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1334,5 +1340,10 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'p40', title: 'Measure It Again', subtitle: 'Every measurement has wiggle room', discipline: 'physics', bigIdea: 40, bigIdeaTitle: 'How Do We Use Data to Know What Is True?', icon: '📏', accentColor: 'indigo', crossLinks: ['c40', 'b40'] },
     { id: 'c40', title: 'The Fair Test', subtitle: 'Change one thing, keep the rest the same', discipline: 'chemistry', bigIdea: 40, bigIdeaTitle: 'How Do We Use Data to Know What Is True?', icon: '⚗️', accentColor: 'emerald', crossLinks: ['p40', 'b40'] },
     { id: 'b40', title: 'Follow the Evidence', subtitle: 'Sample size decides what you can claim', discipline: 'biology', bigIdea: 40, bigIdeaTitle: 'How Do We Use Data to Know What Is True?', icon: '🔍', accentColor: 'rose', crossLinks: ['p40', 'c40'] },
+
+    // Big Idea 41: "How Do Patterns and Probability Guide Decisions?"
+    { id: 'p41', title: 'Rolling the Dice', subtitle: 'Many random tries make a reliable pattern', discipline: 'physics', bigIdea: 41, bigIdeaTitle: 'How Do Patterns and Probability Guide Decisions?', icon: '🎲', accentColor: 'indigo', crossLinks: ['c41', 'b41'] },
+    { id: 'c41', title: 'Lucky Collisions', subtitle: 'Why reactions need luck as well as energy', discipline: 'chemistry', bigIdea: 41, bigIdeaTitle: 'How Do Patterns and Probability Guide Decisions?', icon: '💥', accentColor: 'emerald', crossLinks: ['p41', 'b41'] },
+    { id: 'b41', title: 'Chance and Inheritance', subtitle: 'How probability decides which traits appear', discipline: 'biology', bigIdea: 41, bigIdeaTitle: 'How Do Patterns and Probability Guide Decisions?', icon: '👀', accentColor: 'rose', crossLinks: ['p41', 'c41'] },
 ];
 
