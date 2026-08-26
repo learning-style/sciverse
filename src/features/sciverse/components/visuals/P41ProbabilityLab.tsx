@@ -22,13 +22,26 @@ export const P41ProbabilityLab = ({ state, onStateChange }: Props) => {
         const maxCount = Math.max(...counts, 1);
 
         const baseY = stageBottom - 44;
-        const chartTop = stageTop + 34;
+        const chartTop = stageTop + 56;
         const chartH = baseY - chartTop;
         const slotW = (safeRight - 90) / 6;
 
-        // Fair-share line: every bar should approach this level.
         const expY = baseY - (expected / maxCount) * chartH;
-        ctx.strokeStyle = '#dc2626';
+        const barX = (f: number) => 45 + f * slotW + slotW * 0.15;
+        const barW = slotW * 0.7;
+
+        // 1. Bars first, so the reference line can sit on top of them.
+        for (let f = 0; f < 6; f++) {
+            const h = (counts[f] / maxCount) * chartH;
+            ctx.fillStyle = '#6366f1';
+            ctx.fillRect(barX(f), baseY - h, barW, h);
+            ctx.strokeStyle = '#1e293b';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(barX(f), baseY - h, barW, h);
+        }
+
+        // 2. Fair-share line over the bars, semi-transparent so both stay readable.
+        ctx.strokeStyle = 'rgba(220,38,38,0.75)';
         ctx.lineWidth = 2;
         ctx.setLineDash([7, 5]);
         ctx.beginPath();
@@ -36,20 +49,25 @@ export const P41ProbabilityLab = ({ state, onStateChange }: Props) => {
         ctx.lineTo(safeRight - 45, expY);
         ctx.stroke();
         ctx.setLineDash([]);
-        outlineText(ctx, 'a fair share of the rolls', safeRight / 2, expY - 10, 'bold 13px monospace', '#b91c1c');
 
+        // 3. Numbers last, so nothing is drawn over them.
         for (let f = 0; f < 6; f++) {
-            const x = 45 + f * slotW + slotW * 0.15;
-            const w = slotW * 0.7;
             const h = (counts[f] / maxCount) * chartH;
-            ctx.fillStyle = '#6366f1';
-            ctx.fillRect(x, baseY - h, w, h);
-            ctx.strokeStyle = '#1e293b';
-            ctx.lineWidth = 2;
-            ctx.strokeRect(x, baseY - h, w, h);
-            outlineText(ctx, String(f + 1), x + w / 2, baseY + 24, 'bold 16px monospace');
-            outlineText(ctx, String(counts[f]), x + w / 2, baseY - h - 8, 'bold 14px monospace');
+            outlineText(ctx, String(f + 1), barX(f) + barW / 2, baseY + 24, 'bold 16px monospace');
+            outlineText(ctx, String(counts[f]), barX(f) + barW / 2, baseY - h - 8, 'bold 14px monospace');
         }
+
+        // 4. Legend sits in the headroom above the tallest bar, clear of the chart.
+        const legY = stageTop + 24;
+        ctx.strokeStyle = 'rgba(220,38,38,0.85)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([7, 5]);
+        ctx.beginPath();
+        ctx.moveTo(45, legY);
+        ctx.lineTo(85, legY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        outlineText(ctx, 'a fair share of the rolls', 93, legY + 5, 'bold 13px monospace', '#b91c1c', 'left');
 
         // Distance of the worst face from its fair share.
         const worst = Math.max(...counts.map(c => Math.abs(c - expected)));
