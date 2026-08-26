@@ -67,9 +67,9 @@ export const P41ProbabilityLab = ({ state, onStateChange }: Props) => {
         ctx.lineTo(85, legY);
         ctx.stroke();
         ctx.setLineDash([]);
-        outlineText(ctx, 'a fair share of the rolls', 93, legY + 5, 'bold 13px monospace', '#b91c1c', 'left');
+        outlineText(ctx, `equal share: about ${Math.round(expected)} each`, 93, legY + 5, 'bold 14px monospace', '#b91c1c', 'left');
 
-        // Distance of the worst face from its fair share.
+        // Distance of the worst face from its equal share.
         const worst = Math.max(...counts.map(c => Math.abs(c - expected)));
         const evenness = expected > 0 ? Math.max(0, 1 - worst / expected) : 0;
 
@@ -77,8 +77,10 @@ export const P41ProbabilityLab = ({ state, onStateChange }: Props) => {
             ? 'Very few rolls -- the bars are all over the place.'
             : rolls < 120
                 ? 'The bars are starting to even out.'
-                : 'Lots of rolls -- every face is close to a fair share.',
-            safeRight / 2, 96, 'bold 15px monospace');
+                : 'Lots of rolls -- every face is close to an equal share.',
+            safeRight / 2, 94, 'bold 15px monospace');
+        outlineText(ctx, `${rolls} roll${rolls === 1 ? '' : 's'} shared between 6 numbers = about ${Math.round(expected)} each`,
+            safeRight / 2, 116, 'bold 13px monospace');
 
         const msg = rolls < 20
             ? 'With so few rolls, luck decides everything you see.'
