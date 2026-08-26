@@ -129,6 +129,9 @@ import { getB40Script } from './b40-evidence-biology';
 import { getP41Script } from './p41-randomness-statistics';
 import { getC41Script } from './c41-collision-probability';
 import { getB41Script } from './b41-genetics-probability';
+import { getP42Script } from './p42-force-momentum';
+import { getC42Script } from './c42-hydration-electrolytes';
+import { getB42Script } from './b42-muscle-recovery';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1022,6 +1025,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'p41': getP41Script,
     'c41': getC41Script,
     'b41': getB41Script,
+    'p42': getP42Script,
+    'c42': getC42Script,
+    'b42': getB42Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1345,5 +1351,10 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'p41', title: 'Rolling the Dice', subtitle: 'Many random tries make a reliable pattern', discipline: 'physics', bigIdea: 41, bigIdeaTitle: 'How Do Patterns and Probability Guide Decisions?', icon: '🎲', accentColor: 'indigo', crossLinks: ['c41', 'b41'] },
     { id: 'c41', title: 'Lucky Collisions', subtitle: 'Why reactions need luck as well as energy', discipline: 'chemistry', bigIdea: 41, bigIdeaTitle: 'How Do Patterns and Probability Guide Decisions?', icon: '💥', accentColor: 'emerald', crossLinks: ['p41', 'b41'] },
     { id: 'b41', title: 'Chance and Inheritance', subtitle: 'How probability decides which traits appear', discipline: 'biology', bigIdea: 41, bigIdeaTitle: 'How Do Patterns and Probability Guide Decisions?', icon: '👀', accentColor: 'rose', crossLinks: ['p41', 'c41'] },
+
+    // Big Idea 42: "How Does Sports Science Improve Performance?"
+    { id: 'p42', title: 'Follow Through', subtitle: 'Why a longer push sends the ball faster', discipline: 'physics', bigIdea: 42, bigIdeaTitle: 'How Does Sports Science Improve Performance?', icon: '⚽', accentColor: 'indigo', crossLinks: ['c42', 'b42'] },
+    { id: 'c42', title: 'Sweat and Salt', subtitle: 'Why water alone does not rehydrate you', discipline: 'chemistry', bigIdea: 42, bigIdeaTitle: 'How Does Sports Science Improve Performance?', icon: '💧', accentColor: 'emerald', crossLinks: ['p42', 'b42'] },
+    { id: 'b42', title: 'Rest and Rebuild', subtitle: 'Muscles grow on the days you rest', discipline: 'biology', bigIdea: 42, bigIdeaTitle: 'How Does Sports Science Improve Performance?', icon: '💪', accentColor: 'rose', crossLinks: ['p42', 'c42'] },
 ];
 
