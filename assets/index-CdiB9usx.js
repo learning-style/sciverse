@@ -7368,7 +7368,9 @@ A collision only works if two things happen at once: the molecules must hit **ha
 
 That is why a reaction rate is so reliable even though every single collision is a matter of luck. You cannot predict one bump, but you can predict a beaker full of them.
 
-Slide **Temperature** and watch the share of successful collisions climb!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"cp",label:"Let me heat it up and watch the lucky collisions!",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:`**Checkpoint:** Milk kept on a warm counter spoils in a day. The same milk in a fridge lasts a week.
+In the picture each circle is a molecule. **Grey** means it bounced off unchanged. **Red** means that collision had enough energy to react.
+
+Slide **Temperature** and watch the red ones multiply!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"cp",label:"Let me heat it up and watch the lucky collisions!",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:`**Checkpoint:** Milk kept on a warm counter spoils in a day. The same milk in a fridge lasts a week.
 
 What is the fridge really doing?`,options:[{id:"right",label:"Cooling the milk means fewer collisions have enough energy to work, so the spoiling reactions run far more slowly.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"The fridge stops the reactions completely, which is why cold milk never spoils.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`Cold milk **does** spoil -- just slowly. Leave it in the fridge for a month and you will find out!
 
@@ -7420,9 +7422,11 @@ When that parent has a child, they pass on **one copy chosen at random**. If bot
 
 If both parents carry one brown and one hidden blue, there are four equally likely combinations. Only one of the four gives two blues -- so roughly **1 child in 4** has blue eyes.
 
-Remember **P41 Rolling the Dice**? For one child that 1-in-4 means very little. Across hundreds of families the pattern shows up clearly.
+**1 in 4 is the same as 25%**, and 25% is the number the chart compares against. Each dot in the picture is one child: **brown** for brown eyes, **blue** for blue eyes.
 
-Slide **Number of Children** and watch the ratio settle!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"cp",label:"Let me see the pattern appear across many families!",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:`**Checkpoint:** Two parents each carry one brown and one hidden blue instruction. Their first three children all have brown eyes.
+Remember **P41 Rolling the Dice**? For one family that 1-in-4 means very little. Across hundreds of children the pattern shows up clearly.
+
+Slide **Number of Children** and watch how close the blue share gets to 25%!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"cp",label:"Let me see the pattern appear across many families!",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:`**Checkpoint:** Two parents each carry one brown and one hidden blue instruction. Their first three children all have brown eyes.
 
 What is the chance the fourth child has blue eyes?`,options:[{id:"right",label:"Still about 1 in 4 -- each child is a fresh, independent roll of the dice.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"Higher than 1 in 4, because a blue-eyed child is now overdue.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`This is the same trap as the dice in **P41** -- genes have no memory!
 
