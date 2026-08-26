@@ -33,6 +33,9 @@ import { B42RecoveryLab } from './B42RecoveryLab';
 import { P43ImpactLab } from './P43ImpactLab';
 import { C43FoamLab } from './C43FoamLab';
 import { B43AccessLab } from './B43AccessLab';
+import { P44MaterialTestLab } from './P44MaterialTestLab';
+import { C44ArrangementLab } from './C44ArrangementLab';
+import { B44LayeredLab } from './B44LayeredLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -77,4 +80,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     p43: P43ImpactLab,
     c43: C43FoamLab,
     b43: B43AccessLab,
+    p44: P44MaterialTestLab,
+    c44: C44ArrangementLab,
+    b44: B44LayeredLab,
 };

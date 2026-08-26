@@ -150,6 +150,7 @@ const LESSONS_WITH_NATIVE_CONTROLS = new Set([
     'p41', 'c41', 'b41',
     'p42', 'c42', 'b42',
     'p43', 'c43', 'b43',
+    'p44', 'c44', 'b44',
 ]);
 
 interface WalkthroughGuide {
