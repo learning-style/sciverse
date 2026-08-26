@@ -132,6 +132,9 @@ import { getB41Script } from './b41-genetics-probability';
 import { getP42Script } from './p42-force-momentum';
 import { getC42Script } from './c42-hydration-electrolytes';
 import { getB42Script } from './b42-muscle-recovery';
+import { getP43Script } from './p43-impact-reduction';
+import { getC43Script } from './c43-protective-materials';
+import { getB43Script } from './b43-human-factors';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1028,6 +1031,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'p42': getP42Script,
     'c42': getC42Script,
     'b42': getB42Script,
+    'p43': getP43Script,
+    'c43': getC43Script,
+    'b43': getB43Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1356,5 +1362,10 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'p42', title: 'Follow Through', subtitle: 'Why a longer push sends the ball faster', discipline: 'physics', bigIdea: 42, bigIdeaTitle: 'How Does Sports Science Improve Performance?', icon: '⚽', accentColor: 'indigo', crossLinks: ['c42', 'b42'] },
     { id: 'c42', title: 'Sweat and Salt', subtitle: 'Why water alone does not rehydrate you', discipline: 'chemistry', bigIdea: 42, bigIdeaTitle: 'How Does Sports Science Improve Performance?', icon: '💧', accentColor: 'emerald', crossLinks: ['p42', 'b42'] },
     { id: 'b42', title: 'Rest and Rebuild', subtitle: 'Muscles grow on the days you rest', discipline: 'biology', bigIdea: 42, bigIdeaTitle: 'How Does Sports Science Improve Performance?', icon: '💪', accentColor: 'rose', crossLinks: ['p42', 'c42'] },
+
+    // Big Idea 43: "How Do We Design for Safety and Accessibility?"
+    { id: 'p43', title: 'Softening the Blow', subtitle: 'A longer stop means a gentler force', discipline: 'physics', bigIdea: 43, bigIdeaTitle: 'How Do We Design for Safety and Accessibility?', icon: '🛡️', accentColor: 'indigo', crossLinks: ['c43', 'b43'] },
+    { id: 'c43', title: 'Materials That Protect', subtitle: 'Why helmet foam works by being crushed', discipline: 'chemistry', bigIdea: 43, bigIdeaTitle: 'How Do We Design for Safety and Accessibility?', icon: '⛑️', accentColor: 'emerald', crossLinks: ['p43', 'b43'] },
+    { id: 'b43', title: 'Designed for Everyone', subtitle: 'Why the average person does not exist', discipline: 'biology', bigIdea: 43, bigIdeaTitle: 'How Do We Design for Safety and Accessibility?', icon: '♿', accentColor: 'rose', crossLinks: ['p43', 'c43'] },
 ];
 

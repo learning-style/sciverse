@@ -30,6 +30,9 @@ import { B41InheritanceLab } from './B41InheritanceLab';
 import { P42FollowThroughLab } from './P42FollowThroughLab';
 import { C42HydrationLab } from './C42HydrationLab';
 import { B42RecoveryLab } from './B42RecoveryLab';
+import { P43ImpactLab } from './P43ImpactLab';
+import { C43FoamLab } from './C43FoamLab';
+import { B43AccessLab } from './B43AccessLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -71,4 +74,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     p42: P42FollowThroughLab,
     c42: C42HydrationLab,
     b42: B42RecoveryLab,
+    p43: P43ImpactLab,
+    c43: C43FoamLab,
+    b43: B43AccessLab,
 };
