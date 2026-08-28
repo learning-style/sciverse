@@ -7770,14 +7770,22 @@ What do you think goes wrong when you design for the average?`,onEnterAction:{ty
 
 Then someone checked how many pilots were close to average on **all ten**.
 
-The answer was **zero**. Not one single pilot. Plenty were average in height, or average in arm length -- but nobody was average in everything at once. The cockpit fitted nobody, and pilots were crashing because of it.
+The answer was **zero**. Not one single pilot. Plenty were average in height, or average in arm length -- but nobody was average in everything at once.
 
-The fix was not a better average. It was **adjustable seats** -- which is why every car has one today.`,options:[{id:"cont",label:"So nobody is actually average in everything?",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! Good design plans for the **range** of real people, not a made-up middle:
+That is not bad luck. It is **biology**, and the next screen explains why.`,options:[{id:"cont",label:"So nobody is actually average in everything?",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly -- and the reason is biological.
 
-1. Bodies vary in **height**, reach, grip strength, eyesight and hearing
-2. Nobody sits in the middle of all of them at once
-3. So designs need to **adjust**, or work across a wide range
-4. A design that works for the widest range is called **accessible**
+Your body traits are **not tied to each other**:
+
+1. Different traits are built by **different genes** -- the inherited instructions you met in **B41**
+2. Growing, ageing and how much you use a muscle change them further
+3. So being tall does **not** mean your arms are long to match, or your hands are large
+4. Each trait varies **on its own**. Scientists say the traits vary **independently**
+
+That is the real reason zero pilots fitted. Being average in **one** trait is common -- roughly one person in three. But you have to be average in the first **and** the second **and** the third, all the way to ten. Each extra measurement throws most of the remaining people out, and after ten there is nobody left.
+
+Your body does not even hold still. A child grows for years, adults lose a little **grip strength** and **hearing** as they age, and an injury can change reach overnight. One person is not one fixed set of measurements.
+
+So designs must cover a **range**, or **adjust**. A design that works for the widest range of bodies is called **accessible**.
 
 The surprise is how often accessible design helps everyone. Ramps were built for wheelchairs -- and are now used by anyone with a pram, a suitcase or a delivery trolley. Subtitles were built for deaf viewers, and are used by half the people watching on a noisy bus.
 
@@ -7793,19 +7801,21 @@ Guidelines usually ask for about **1 metre of ramp for every 12 centimetres of h
 
 The cheap ramp saves money and delivers nothing.`,options:[{id:"retry",label:"Oh -- a ramp nobody can climb is not access at all!",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct! **Access means usable, not merely present.**
 
+Pushing up a slope uses **arm and shoulder muscles**, and muscle strength is one of the traits that varies most between people -- with age, with training, and with different conditions. A slope one person manages easily is impossible for another.
+
 All three lessons of Big Idea 43 are the same habit of mind:
 - **P43** -- do not resist the force, take **longer to stop** it
 - **C43** -- do not make it hard, make it **crushable** in the right way
 - **B43** -- do not design for the average, design for the **range**
 
-Each one replaces an obvious-sounding answer -- be stronger, be harder, be average -- with a better one that comes from actually studying what people and materials do.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Design for the range, not the average!",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**You discovered how design serves real people!**
+Each one replaces an obvious-sounding answer -- be stronger, be harder, be average -- with a better one that comes from actually studying what people and materials do.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Design for the range, not the average!",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**You discovered how human variation shapes design!**
 
-- Designing for **the average** fits almost nobody
-- Air force cockpits built this way fitted **zero** pilots
-- Real bodies vary in height, reach, strength and senses
-- Good design **adjusts** or covers a wide **range**
-- Design that works for the widest range is **accessible**
-- Accessible features usually help everyone, not just a few
+- Body traits are built by **different genes** and change as you grow and age
+- So traits vary **independently** -- tall does not mean long-armed
+- Being average in one trait is common; in ten at once, almost impossible
+- That is why air force cockpits built for the average fitted **zero** pilots
+- **Grip strength**, **hearing** and reach all vary between people and over a lifetime
+- So design must **adjust** or cover a **range** -- that is what **accessible** means
 
 P43 softened the blow, C43 chose the material, and B43 made sure it fits real people!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"discovery"}},options:[{id:"done",label:"Design for real people, not made-up averages!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`**Big Idea 43 -- B43 Complete!**
 
@@ -7816,8 +7826,9 @@ Safety and accessibility both come from studying what really happens, not from w
 **Summary Table:**
 | What You Learned | Key Idea | Why It Matters |
 | --- | --- | --- |
-| The average person does not exist | Zero pilots fitted the average | Famous design failure |
-| Bodies vary in many ways at once | Design for the **range** | Adjustable seats everywhere |
+| Traits vary **independently** | Different genes build each one | Tall does not mean long-armed |
+| The average person does not exist | Zero pilots fitted the average | Ten traits at once is impossible |
+| Bodies change over a lifetime | Growth, ageing, injury | One person is not one fixed size |
 | Usable beats merely present | A steep ramp is not access | Guidelines exist for a reason |
 | Accessible design helps everyone | Ramps, subtitles, big buttons | Not just for a few |
 
