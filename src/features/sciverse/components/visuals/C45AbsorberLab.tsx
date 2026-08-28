@@ -30,7 +30,7 @@ export const C45AbsorberLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#047857';
         ctx.lineWidth = 2;
         ctx.strokeRect(wallX - panelPx, stageTop + 30, panelPx, stageBottom - stageTop - 90);
-        outlineText(ctx, 'soft panel', wallX - panelPx - 12, midY - 60, 'bold 14px monospace', '#047857', 'right');
+        outlineText(ctx, 'soft foam panel', wallX - panelPx - 12, midY - 60, 'bold 14px monospace', '#047857', 'right');
 
         // Air pockets inside the panel.
         for (let i = 0; i < Math.round(v * 26); i++) {
