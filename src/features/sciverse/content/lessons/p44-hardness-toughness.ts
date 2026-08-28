@@ -41,7 +41,7 @@ export function getP44Script(): Record<string, DialogNode> {
         checkpoint_wrong: {
             id: 'checkpoint_wrong',
             speaker: 'AI',
-            content: "This is a genuine engineering headache, not a hypothetical one!\n\nFor most materials, pushing **hardness** up tends to push **toughness** down. Very hard glass resists scratches beautifully and then shatters when it meets a pavement.\n\nSo phone makers face a real **trade-off**. A screen that never scratches will crack more easily; a screen that survives drops will pick up scratches. Every phone you have ever seen is a compromise between the two.\n\nThe way out is usually clever **structure** rather than a magic material -- layers, coatings, or a plastic film. You will see exactly that idea in B44.",
+            content: "This is a genuine engineering headache, not a hypothetical one!\n\nFor most materials, pushing **hardness** up tends to push **toughness** down. Very hard glass resists scratches beautifully and then shatters when it meets a pavement.\n\nSo phone makers face a real **trade-off** -- that means you cannot have everything at once, so you give up a little of one thing to gain another. A screen that never scratches will crack more easily; a screen that survives drops will pick up scratches. Every phone you have ever seen is a compromise between the two.\n\nThe way out is usually clever **structure** rather than a magic material -- layers, coatings, or a plastic film. You will see exactly that idea in B44.",
             options: [
                 { id: 'retry', label: "Oh -- harder usually means more brittle!", nextNodeId: 'checkpoint_correct' }
             ]

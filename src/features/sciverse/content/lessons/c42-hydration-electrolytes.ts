@@ -15,7 +15,7 @@ export function getC42Script(): Record<string, DialogNode> {
         misconception: {
             id: 'misconception',
             speaker: 'AI',
-            content: "Drinking more plain water can actually make it **worse**!\n\nTaste your sweat -- it is salty. That is because sweat carries dissolved salts out of your body, not just water. Scientists call these dissolved salts **electrolytes**, and your muscles and nerves cannot work properly without them.\n\nIf you replace only the water, you top the liquid back up while the salts stay low. Your body ends up **more watered down than before**, which is why you can feel weak, dizzy or crampy even with a full stomach of water.",
+            content: "Drinking more plain water can actually make it **worse**!\n\nTaste your sweat -- it is salty. That is because sweat carries dissolved salts out of your body, not just water. Scientists call these dissolved salts **electrolytes**, and your muscles and nerves cannot work properly without them.\n\nIf you replace only the water, you top the liquid back up while the salts stay low. Your body ends up **more watered down than before** -- scientists call that being **diluted**. It is why you can feel weak, dizzy or crampy even with a full stomach of water.",
             options: [
                 { id: 'cont', label: "So drinking only water can dilute me even further?", nextNodeId: 'correct' }
             ]
