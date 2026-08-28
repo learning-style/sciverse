@@ -10,16 +10,19 @@ interface Props {
 export const B43AccessLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, safeRight, v, stageTop, stageBottom }: LabScene) => {
+    const drawScene = ({ ctx, safeRight, t, v, stageTop, stageBottom }: LabScene) => {
         // v = 0 is the gentlest ramp (1 in 20), v = 1 the steepest (1 in 4).
         const ratio = Math.round(4 + (1 - v) * 16);
         // Guidelines ask for about 1 in 12; gentler serves more people.
         const served = Math.max(0.05, Math.min(1, (ratio - 3) / 11));
+        // Steeper slope means more force per push, so the heart works harder.
+        const pushForce = Math.max(0.08, Math.min(1, 12 / ratio));
+        const heartRate = Math.round(70 + pushForce * 90);
 
-        const groundY = stageBottom - 54;
-        const runW = safeRight * 0.52;
-        const riseH = Math.min(runW / ratio * 4, (stageBottom - stageTop) * 0.42);
-        const x0 = safeRight * 0.22;
+        const groundY = stageBottom - 92;
+        const runW = safeRight * 0.44;
+        const riseH = Math.min(runW / ratio * 4, (stageBottom - stageTop) * 0.30);
+        const x0 = safeRight * 0.06;
 
         // Ramp
         ctx.fillStyle = '#cbd5e1';
@@ -32,29 +35,57 @@ export const B43AccessLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#0f172a';
         ctx.lineWidth = 3;
         ctx.stroke();
-        outlineText(ctx, `ramp slope 1 in ${ratio}`, x0 + runW / 2, groundY + 28, 'bold 15px monospace');
+        outlineText(ctx, `ramp slope 1 in ${ratio}`, x0 + runW / 2, groundY + 26, 'bold 15px monospace');
 
         ctx.fillStyle = '#94a3b8';
         ctx.fillRect(0, groundY, safeRight, stageBottom - groundY);
 
-        // Wheelchair user partway up, positioned along the slope.
+        // Wheelchair user partway up
         const p = 0.55;
-        const px = x0 + runW * p;
-        const py = groundY - riseH * p;
         ctx.font = '30px serif';
         ctx.textAlign = 'center';
-        ctx.fillText('♿', px, py - 8);
+        ctx.fillText('♿', x0 + runW * p, groundY - riseH * p - 8);
 
-        // People served bar, named in the lesson.
-        const bx = 60, bw = safeRight - 120, by = stageTop + 24;
+        // ── the body panel: what this slope costs ──
+        const px = safeRight * 0.58;
+        const pw = safeRight * 0.36;
+        const py = stageTop + 30;
+
+        // Muscle effort (push force)
+        outlineText(ctx, 'push force from muscles', px, py, 'bold 14px monospace', '#0f172a', 'left');
         ctx.fillStyle = '#e2e8f0';
-        ctx.fillRect(bx, by, bw, 20);
-        ctx.fillStyle = served > 0.7 ? '#16a34a' : served > 0.4 ? '#f59e0b' : '#dc2626';
-        ctx.fillRect(bx, by, bw * served, 20);
+        ctx.fillRect(px, py + 10, pw, 18);
+        ctx.fillStyle = pushForce > 0.7 ? '#dc2626' : pushForce > 0.45 ? '#f59e0b' : '#16a34a';
+        ctx.fillRect(px, py + 10, pw * pushForce, 18);
         ctx.strokeStyle = '#0f172a';
         ctx.lineWidth = 2;
-        ctx.strokeRect(bx, by, bw, 20);
-        outlineText(ctx, 'people served bar', safeRight / 2, by + 42, 'bold 14px monospace');
+        ctx.strokeRect(px, py + 10, pw, 18);
+
+        // Heart, beating faster on steeper slopes
+        const beat = 1 + Math.abs(Math.sin(t * (heartRate / 60) * Math.PI)) * 0.22;
+        ctx.font = `${Math.round(30 * beat)}px serif`;
+        ctx.fillText('❤️', px + 22, py + 82);
+        outlineText(ctx, `heart rate ${heartRate} beats per minute`, px + 46, py + 78, 'bold 14px monospace', '#0f172a', 'left');
+
+        // Breathing rate follows the same demand
+        const breaths = Math.round(14 + pushForce * 22);
+        outlineText(ctx, `breathing ${breaths} breaths per minute`, px, py + 112, 'bold 14px monospace', '#0f172a', 'left');
+
+        // Fatigue warning once the effort is high
+        if (pushForce > 0.7) {
+            outlineText(ctx, 'muscles will fatigue quickly', px, py + 142, 'bold 14px monospace', '#b91c1c', 'left');
+        }
+
+        // People served bar, named in the lesson
+        const bx = 60, bw = safeRight - 120, by = stageBottom - 46;
+        ctx.fillStyle = '#e2e8f0';
+        ctx.fillRect(bx, by, bw, 18);
+        ctx.fillStyle = served > 0.7 ? '#16a34a' : served > 0.4 ? '#f59e0b' : '#dc2626';
+        ctx.fillRect(bx, by, bw * served, 18);
+        ctx.strokeStyle = '#0f172a';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(bx, by, bw, 18);
+        outlineText(ctx, 'people served bar', safeRight / 2, by - 8, 'bold 14px monospace');
 
         outlineText(ctx, ratio >= 12
             ? 'Gentle enough to meet the usual guideline of 1 in 12'
@@ -64,10 +95,10 @@ export const B43AccessLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, 118, 'bold 13px monospace');
 
         const msg = ratio < 8
-            ? 'Very steep. Cheap and short, but many people cannot get up it alone.'
+            ? 'Very steep. Each push needs a lot of force, and the heart and lungs work hard.'
             : ratio < 12
-                ? 'Still steeper than the guideline -- some people are left out.'
-                : 'Gentle enough for almost everyone, though it needs more space.';
+                ? 'Still steeper than the guideline -- tiring, and some people are left out.'
+                : 'Gentle enough for almost everyone, and the effort stays comfortable.';
         return { meter: { fraction: served, caption: 'How Many People This Ramp Can Serve', low: 'Very few', high: 'Almost everyone' }, note: msg };
     };
 
