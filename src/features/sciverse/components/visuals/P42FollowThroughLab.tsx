@@ -18,16 +18,26 @@ export const P42FollowThroughLab = ({ state, onStateChange }: Props) => {
         ctx.fillStyle = '#86efac';
         ctx.fillRect(0, groundY, safeRight, stageBottom - groundY);
 
-        // Boot swinging through the ball; swing arc grows with contact time.
-        const bootX = 90;
+        // Bat swinging through the ball; the swing arc grows with contact time.
+        const batX = 96;
         const swing = Math.sin(t * 2) * (10 + v * 26);
-        ctx.fillStyle = '#334155';
-        ctx.fillRect(bootX - 16, groundY - 44 + swing * 0.3, 34, 20);
-        outlineText(ctx, 'boot', bootX, groundY - 56 + swing * 0.3, 'bold 14px monospace');
+        const batY = groundY - 62 + swing * 0.3;
+        ctx.save();
+        ctx.translate(batX, batY);
+        ctx.rotate(-0.5 + swing * 0.012);
+        ctx.fillStyle = '#b45309';
+        ctx.fillRect(-8, -6, 64, 15);            // barrel
+        ctx.fillStyle = '#78350f';
+        ctx.fillRect(-38, -3, 32, 9);            // handle
+        ctx.strokeStyle = '#451a03';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(-8, -6, 64, 15);
+        ctx.restore();
+        outlineText(ctx, 'bat', batX, batY - 22, 'bold 14px monospace');
 
         // Ball travelling away, faster with a longer contact time.
         const travel = ((t * (40 + speed * 260)) % (safeRight - 210));
-        const ballX = bootX + 46 + travel;
+        const ballX = batX + 62 + travel;
         const ballY = groundY - 22 - Math.abs(Math.sin(travel / 90)) * (18 + speed * 44);
         ctx.fillStyle = '#ffffff';
         ctx.beginPath();
@@ -57,7 +67,7 @@ export const P42FollowThroughLab = ({ state, onStateChange }: Props) => {
         const msg = ms < 4
             ? 'Stabbed at the ball -- the push is cut short and the ball is slow.'
             : ms < 10
-                ? 'A better swing. The boot stays on the ball for longer.'
+                ? 'A better swing. The bat stays on the ball for longer.'
                 : 'Full follow through -- the longest push and the fastest ball.';
         return { meter: { fraction: speed, caption: 'Ball Speed', low: 'Slow', high: 'Fast' }, note: msg };
     };
