@@ -141,6 +141,9 @@ import { getB44Script } from './b44-natural-materials';
 import { getP45Script } from './p45-sound-intensity';
 import { getC45Script } from './c45-acoustic-materials';
 import { getB45Script } from './b45-hearing-health';
+import { getP46Script } from './p46-light-mixing';
+import { getC46Script } from './c46-pigment-fading';
+import { getB46Script } from './b46-colour-vision';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1046,6 +1049,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'p45': getP45Script,
     'c45': getC45Script,
     'b45': getB45Script,
+    'p46': getP46Script,
+    'c46': getC46Script,
+    'b46': getB46Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1389,5 +1395,10 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'p45', title: 'Turning Down the Volume', subtitle: 'Why doubling your distance quarters the sound', discipline: 'physics', bigIdea: 45, bigIdeaTitle: 'How Do We Manage Noise and Protect Hearing?', icon: '🔉', accentColor: 'indigo', crossLinks: ['c45', 'b45'] },
     { id: 'c45', title: 'Sound-Soaking Materials', subtitle: 'Why soft panels beat solid walls for echoes', discipline: 'chemistry', bigIdea: 45, bigIdeaTitle: 'How Do We Manage Noise and Protect Hearing?', icon: '🧽', accentColor: 'emerald', crossLinks: ['p45', 'b45'] },
     { id: 'b45', title: 'Inside Your Ear', subtitle: 'The tiny hair cells that never grow back', discipline: 'biology', bigIdea: 45, bigIdeaTitle: 'How Do We Manage Noise and Protect Hearing?', icon: '👂', accentColor: 'rose', crossLinks: ['p45', 'c45'] },
+
+    // Big Idea 46: "How Do Color and Perception Work in Design?"
+    { id: 'p46', title: 'Mixing Light', subtitle: 'Why red and green light make yellow', discipline: 'physics', bigIdea: 46, bigIdeaTitle: 'How Do Color and Perception Work in Design?', icon: '🔦', accentColor: 'indigo', crossLinks: ['c46', 'b46'] },
+    { id: 'c46', title: 'Why Colours Fade', subtitle: 'What sunlight does to a poster', discipline: 'chemistry', bigIdea: 46, bigIdeaTitle: 'How Do Color and Perception Work in Design?', icon: '🖼️', accentColor: 'emerald', crossLinks: ['p46', 'b46'] },
+    { id: 'b46', title: 'How Your Eyes See Colour', subtitle: 'Why three colours are enough', discipline: 'biology', bigIdea: 46, bigIdeaTitle: 'How Do Color and Perception Work in Design?', icon: '👁️', accentColor: 'rose', crossLinks: ['p46', 'c46'] },
 ];
 
