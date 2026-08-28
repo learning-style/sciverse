@@ -30,7 +30,7 @@ export const C46FadingLab = ({ state, onStateChange }: Props) => {
         ctx.strokeRect(px, py, pw, ph);
 
         // Red band fades fast, blue band slowly.
-        const mix = (a, b, f) => Math.round(a + (b - a) * f);
+        const mix = (a: number, b: number, f: number) => Math.round(a + (b - a) * f);
         ctx.fillStyle = `rgb(${mix(220,246,fadeRed)},${mix(38,232,fadeRed)},${mix(38,232,fadeRed)})`;
         ctx.fillRect(px + 16, py + 20, pw - 32, ph * 0.3);
         ctx.fillStyle = `rgb(${mix(37,226,fadeBlue)},${mix(99,232,fadeBlue)},${mix(235,240,fadeBlue)})`;
