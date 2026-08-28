@@ -7467,19 +7467,21 @@ The same rule runs through dice, chemistry and families: unpredictable one at a 
 **Big Idea 41 connections:**
 - P41 (Rolling the Dice) showed how many random tries create a reliable pattern
 - C41 (Lucky Collisions) showed how billions of chancy bumps give a steady reaction rate
-- B41 (Chance and Inheritance) showed how the very same rule decides which traits appear in a family!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function B6(){return{root:{id:"root",speaker:"AI",content:`Coaches always shout the same thing: **follow through**. Do not stop your swing at the ball -- keep going past it.
+- B41 (Chance and Inheritance) showed how the very same rule decides which traits appear in a family!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function B6(){return{root:{id:"root",speaker:"AI",content:`Coaches always shout the same thing: **follow through**. Do not stop your kick at the ball -- swing your foot right through it.
 
-But the ball has already left by then. How can what your arm does *afterwards* possibly matter?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Following through keeps your bat or foot pushing on the ball for longer, and a longer push means a faster ball.",nextNodeId:"correct",sentiment:"positive"},{id:"bad",label:"It does not really matter -- coaches just say it to make the swing look good.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`It looks like the ball leaves instantly, but it does not! A bat stays in contact with a ball for around **1 millisecond** -- and a foot with a football for about **10 milliseconds**.
+But the ball has already gone by then. How can what your foot does *afterwards* possibly matter?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Following through keeps your foot pushing on the ball for longer, and a longer push means a faster ball.",nextNodeId:"correct",sentiment:"positive"},{id:"bad",label:"It does not really matter -- coaches just say it to make the swing look good.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`It looks like the ball leaves instantly, but it does not! Your foot stays in contact with a football for about **10 milliseconds**. (A baseball bat is even quicker -- only about **1 millisecond**.)
 
 That sounds like nothing, but during that tiny window the ball is being pushed. **Follow through** keeps the push going for the whole contact instead of cutting it short.
 
-If you stop your swing at the ball, you start slowing down *before* contact ends. The ball gets a shorter, weaker push.`,options:[{id:"cont",label:"So the contact lasts longer than I thought?",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! Speed does not come from force alone -- it comes from **force multiplied by contact time**:
+If you stop your kick at the ball, your foot starts slowing down *before* contact ends. The ball gets a shorter, weaker push.`,options:[{id:"cont",label:"So the contact lasts longer than I thought?",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! Speed does not come from force alone -- it comes from **force multiplied by contact time**:
 
 1. A **big force** for a **very short time** gives a small push
 2. The **same force** for **longer** gives a much bigger push
 3. Scientists call this total push the **impulse**
 
-That is why a golfer follows through, why a boxer is told to punch *through* the target, and why a tennis player sweeps the racket well past the ball.
+That is why a footballer follows through, why a golfer sweeps the club well past the ball, and why a tennis player carries the racket beyond it.
+
+In the picture you will see a **boot** swinging through a football.
 
 In the picture you will see the **contact time** in **milliseconds** -- thousandths of a second -- and a speed bar showing how fast the ball leaves.
 
@@ -7502,7 +7504,7 @@ You will meet that exact idea again in **P43 Softening the Blow**.
 
 In C42 you will find out what your body loses while you play -- and why water alone does not replace it!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Longer contact means a bigger push!",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**You discovered the physics of technique!**
 
-- A bat touches a ball for only about **1 millisecond**
+- Your foot touches a football for only about **10 milliseconds**
 - The push a ball gets is **force multiplied by contact time**
 - Scientists call that total push the **impulse**
 - **Follow through** protects the contact time instead of cutting it short
