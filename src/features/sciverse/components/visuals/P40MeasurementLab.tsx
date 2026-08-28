@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -75,9 +75,8 @@ export const P40MeasurementLab = ({ state, onStateChange }: Props) => {
         ctx.closePath();
         ctx.fill();
 
-        outlineText(ctx, `${n} measurement${n === 1 ? '' : 's'}`, safeRight / 2, 84, 'bold 15px monospace');
-        outlineText(ctx, `Average: ${mean.toFixed(2)} cm  ±  ${uncertainty.toFixed(2)} cm`,
-            safeRight / 2, 106, 'bold 15px monospace', '#b91c1c');
+        fitText(ctx, `${n} measurement${n === 1 ? '' : 's'}`, safeRight / 2, 84, safeRight - 24, 15);
+        fitText(ctx, `Average: ${mean.toFixed(2)} cm  ±  ${uncertainty.toFixed(2)} cm`, safeRight / 2, 106, safeRight - 24, 15, '#b91c1c');
 
 
         const msg = n <= 2

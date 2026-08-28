@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -59,10 +59,8 @@ export const P42FollowThroughLab = ({ state, onStateChange }: Props) => {
         ctx.strokeRect(barX, barY, barW, 20);
         outlineText(ctx, `contact time: ${ms.toFixed(1)} milliseconds`, safeRight / 2, barY + 42, 'bold 14px monospace');
 
-        outlineText(ctx, `Ball leaves at ${Math.round(speed * 100)} out of 100 speed`,
-            safeRight / 2, 96, 'bold 15px monospace');
-        outlineText(ctx, 'Same force every time -- only the contact time is different',
-            safeRight / 2, 118, 'bold 13px monospace');
+        fitText(ctx, `Ball leaves at ${Math.round(speed * 100)} out of 100 speed`, safeRight / 2, 96, safeRight - 24, 15);
+        fitText(ctx, 'Same force every time -- only the contact time is different', safeRight / 2, 118, safeRight - 24, 13);
 
         const msg = ms < 4
             ? 'Stabbed at the ball -- the push is cut short and the ball is slow.'

@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -68,10 +68,8 @@ export const B35CompostCrewLab = ({ state, onStateChange }: Props) => {
         ctx.strokeRect(thX, binY, 18, binH);
         outlineText(ctx, `${tempC}°C`, thX + 9, binY - 10, 'bold 14px monospace');
 
-        outlineText(ctx, soggy ? 'Waterlogged -- no air for the fast crew!' : `Microbes working at ${Math.round(activity * 100)}%`,
-            safeRight / 2, 84, 'bold 15px monospace');
-        outlineText(ctx, tempC > 45 ? 'Hot enough to kill weed seeds and germs!' : 'Pile is cool -- breakdown is slow.',
-            safeRight / 2, 106, 'bold 14px monospace');
+        fitText(ctx, soggy ? 'Waterlogged -- no air for the fast crew!' : `Microbes working at ${Math.round(activity * 100)}%`, safeRight / 2, 84, safeRight - 24, 15);
+        fitText(ctx, tempC > 45 ? 'Hot enough to kill weed seeds and germs!' : 'Pile is cool -- breakdown is slow.', safeRight / 2, 106, safeRight - 24, 14);
 
 
         const msg = v < 0.28

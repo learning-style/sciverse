@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -58,12 +58,10 @@ export const B42RecoveryLab = ({ state, onStateChange }: Props) => {
             outlineText(ctx, 'repair bar', rbX + rbW + 12, rbY + 12, 'bold 13px monospace', '#0f172a', 'left');
         }
 
-        outlineText(ctx, repaired >= 1
+        fitText(ctx, repaired >= 1
             ? 'Muscle fully repaired before the next session'
-            : 'Next session starts before the repair has finished',
-            safeRight / 2, 96, 'bold 15px monospace');
-        outlineText(ctx, `Strength after six sessions: ${Math.round(strength * 100)} out of 100`,
-            safeRight / 2, 118, 'bold 13px monospace');
+            : 'Next session starts before the repair has finished', safeRight / 2, 96, safeRight - 24, 15);
+        fitText(ctx, `Strength after six sessions: ${Math.round(strength * 100)} out of 100`, safeRight / 2, 118, safeRight - 24, 13);
 
         const msg = rest < 2
             ? 'Too little rest -- damage stacks up and strength falls. This is overtraining.'

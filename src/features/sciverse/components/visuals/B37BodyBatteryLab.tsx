@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -62,10 +62,9 @@ export const B37BodyBatteryLab = ({ state, onStateChange }: Props) => {
         }
         outlineText(ctx, 'glucose', 40, topY + 56, 'bold 13px monospace');
 
-        outlineText(ctx, glycogen < 1
+        fitText(ctx, glycogen < 1
             ? 'Filling the fast store first'
-            : 'Fast store full -- extra energy is being packed away as fat',
-            safeRight / 2, 88, 'bold 14px monospace');
+            : 'Fast store full -- extra energy is being packed away as fat', safeRight / 2, 88, safeRight - 24, 14);
 
 
         const msg = v < 0.2

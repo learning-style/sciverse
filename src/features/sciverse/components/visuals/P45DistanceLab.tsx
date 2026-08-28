@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -57,9 +57,8 @@ export const P45DistanceLab = ({ state, onStateChange }: Props) => {
         ctx.strokeRect(bx, by, bw, 20);
         outlineText(ctx, 'sound level reaching the ear', safeRight / 2, by + 42, 'bold 14px monospace');
 
-        outlineText(ctx, `${Math.round(dB)} decibels at your ear`, safeRight / 2, 96, 'bold 16px monospace');
-        outlineText(ctx, danger ? 'Above 85 dB -- this is where damage starts' : 'Below the 85 dB danger line',
-            safeRight / 2, 118, 'bold 13px monospace', danger ? '#b91c1c' : '#15803d');
+        fitText(ctx, `${Math.round(dB)} decibels at your ear`, safeRight / 2, 96, safeRight - 24, 16);
+        fitText(ctx, danger ? 'Above 85 dB -- this is where damage starts' : 'Below the 85 dB danger line', safeRight / 2, 118, safeRight - 24, 13, danger ? '#b91c1c' : '#15803d');
 
         const msg = metres < 1.5
             ? 'Right beside the speaker -- above the danger line already.'

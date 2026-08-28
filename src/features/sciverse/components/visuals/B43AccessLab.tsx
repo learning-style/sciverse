@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -87,12 +87,10 @@ export const B43AccessLab = ({ state, onStateChange }: Props) => {
         ctx.strokeRect(bx, by, bw, 18);
         outlineText(ctx, 'people served bar', safeRight / 2, by - 8, 'bold 14px monospace');
 
-        outlineText(ctx, ratio >= 12
+        fitText(ctx, ratio >= 12
             ? 'Gentle enough to meet the usual guideline of 1 in 12'
-            : 'Steeper than the usual guideline of 1 in 12',
-            safeRight / 2, 96, 'bold 15px monospace');
-        outlineText(ctx, `About ${Math.round(served * 100)} out of every 100 people could use this alone`,
-            safeRight / 2, 118, 'bold 13px monospace');
+            : 'Steeper than the usual guideline of 1 in 12', safeRight / 2, 96, safeRight - 24, 15);
+        fitText(ctx, `About ${Math.round(served * 100)} out of every 100 people could use this alone`, safeRight / 2, 118, safeRight - 24, 13);
 
         const msg = ratio < 8
             ? 'Very steep. Each push needs a lot of force, and the heart and lungs work hard.'

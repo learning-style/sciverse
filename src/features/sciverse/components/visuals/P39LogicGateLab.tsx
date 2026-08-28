@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -74,10 +74,8 @@ export const P39LogicGateLab = ({ state, onStateChange }: Props) => {
         drawGate('AND', andOut, safeRight * 0.28, 'both must be on');
         drawGate('OR', orOut, safeRight * 0.62, 'either one works');
 
-        outlineText(ctx, `Inputs: A=${a ? 1 : 0}  B=${b ? 1 : 0}`, safeRight / 2, 84, 'bold 15px monospace');
-        outlineText(ctx, `AND says ${andOut ? '1' : '0'}   |   OR says ${orOut ? '1' : '0'}`,
-            safeRight / 2, 106, 'bold 15px monospace',
-            andOut === orOut ? '#15803d' : '#b91c1c');
+        fitText(ctx, `Inputs: A=${a ? 1 : 0}  B=${b ? 1 : 0}`, safeRight / 2, 84, safeRight - 24, 15);
+        fitText(ctx, `AND says ${andOut ? '1' : '0'}   |   OR says ${orOut ? '1' : '0'}`, safeRight / 2, 106, safeRight - 24, 15, andOut === orOut ? '#15803d' : '#b91c1c');
 
         const msg = andOut === orOut
             ? 'Here AND and OR agree -- both inputs are the same.'

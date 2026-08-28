@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -46,8 +46,7 @@ export const C41CollisionLab = ({ state, onStateChange }: Props) => {
             ctx.stroke();
         }
 
-        outlineText(ctx, `${shownSuccess} of ${n} collisions have enough energy to react`,
-            safeRight / 2, 96, 'bold 15px monospace');
+        fitText(ctx, `${shownSuccess} of ${n} collisions have enough energy to react`, safeRight / 2, 96, safeRight - 24, 15);
         outlineText(ctx, 'grey = bounced off unchanged     red = reacted',
             safeRight / 2, stageBottom - 24, 'bold 13px monospace');
 

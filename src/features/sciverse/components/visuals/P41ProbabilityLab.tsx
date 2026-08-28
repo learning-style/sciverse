@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -73,14 +73,12 @@ export const P41ProbabilityLab = ({ state, onStateChange }: Props) => {
         const worst = Math.max(...counts.map(c => Math.abs(c - expected)));
         const evenness = expected > 0 ? Math.max(0, 1 - worst / expected) : 0;
 
-        outlineText(ctx, rolls < 20
+        fitText(ctx, rolls < 20
             ? 'Very few rolls -- the bars are all over the place.'
             : rolls < 120
                 ? 'The bars are starting to even out.'
-                : 'Lots of rolls -- every face is close to an equal share.',
-            safeRight / 2, 94, 'bold 15px monospace');
-        outlineText(ctx, `${rolls} roll${rolls === 1 ? '' : 's'} shared between 6 numbers = about ${Math.round(expected)} each`,
-            safeRight / 2, 116, 'bold 13px monospace');
+                : 'Lots of rolls -- every face is close to an equal share.', safeRight / 2, 94, safeRight - 24, 15);
+        fitText(ctx, `${rolls} roll${rolls === 1 ? '' : 's'} shared between 6 numbers = about ${Math.round(expected)} each`, safeRight / 2, 116, safeRight - 24, 13);
 
         const msg = rolls < 20
             ? 'With so few rolls, luck decides everything you see.'

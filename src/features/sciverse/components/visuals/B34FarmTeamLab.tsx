@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -57,8 +57,7 @@ export const B34FarmTeamLab = ({ state, onStateChange }: Props) => {
             ctx.fillText('🐝', x, y);
         }
 
-        outlineText(ctx, `${bees} pollinators working   |   ${Math.round(pollinated * 100)}% of flowers became fruit`,
-            safeRight / 2, 82, 'bold 14px monospace');
+        fitText(ctx, `${bees} pollinators working   |   ${Math.round(pollinated * 100)}% of flowers became fruit`, safeRight / 2, 82, safeRight - 24, 14);
 
         // Legend for the blossom colours.
         ctx.fillStyle = '#fbcfe8';

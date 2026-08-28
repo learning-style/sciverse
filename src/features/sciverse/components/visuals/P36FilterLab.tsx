@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -66,8 +66,7 @@ export const P36FilterLab = ({ state, onStateChange }: Props) => {
 
         // Flow rate drops as holes shrink.
         const flow = Math.max(0.05, 1 - v * 0.92);
-        outlineText(ctx, `Blocked ${blocked} of 4 particle types   |   Flow speed ${Math.round(flow * 100)}%`,
-            safeRight / 2, 84, 'bold 14px monospace');
+        fitText(ctx, `Blocked ${blocked} of 4 particle types   |   Flow speed ${Math.round(flow * 100)}%`, safeRight / 2, 84, safeRight - 24, 14);
 
 
         const msg = holeUm > 50

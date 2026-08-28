@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -64,7 +64,7 @@ export const P35SortingMachineLab = ({ state, onStateChange }: Props) => {
         lg('plastic', '#0ea5e9', safeRight * 0.38);
         lg('paper', '#f59e0b', safeRight * 0.72);
 
-        outlineText(ctx, `Magnet catches ${Math.round(accuracy * 100)}% of the steel`, safeRight / 2, 82, 'bold 15px monospace');
+        fitText(ctx, `Magnet catches ${Math.round(accuracy * 100)}% of the steel`, safeRight / 2, 82, safeRight - 24, 15);
 
 
         const msg = v < 0.2

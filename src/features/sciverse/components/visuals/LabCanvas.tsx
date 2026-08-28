@@ -192,13 +192,14 @@ export const chip = (
  * then wraps onto a second line. Without this, a long line silently runs off
  * the edge of the canvas.
  */
-const fitCaption = (
+export const fitText = (
     ctx: CanvasRenderingContext2D,
     text: string,
     cx: number,
     baseline: number,
     maxWidth: number,
-    startSize = 13
+    startSize = 13,
+    color = '#000000'
 ) => {
     let size = startSize;
     ctx.font = `bold ${size}px monospace`;
@@ -207,7 +208,7 @@ const fitCaption = (
         ctx.font = `bold ${size}px monospace`;
     }
     if (ctx.measureText(text).width <= maxWidth) {
-        outlineText(ctx, text, cx, baseline, `bold ${size}px monospace`);
+        outlineText(ctx, text, cx, baseline, `bold ${size}px monospace`, color);
         return;
     }
     // Still too wide: split at the space nearest the middle.
@@ -218,8 +219,8 @@ const fitCaption = (
     }
     const l1 = words.slice(0, best).join(' ');
     const l2 = words.slice(best).join(' ');
-    outlineText(ctx, l1, cx, baseline - 15, `bold ${size}px monospace`);
-    outlineText(ctx, l2, cx, baseline, `bold ${size}px monospace`);
+    outlineText(ctx, l1, cx, baseline - 15, `bold ${size}px monospace`, color);
+    outlineText(ctx, l2, cx, baseline, `bold ${size}px monospace`, color);
 };
 
 export const LabCanvas = ({
@@ -292,8 +293,8 @@ export const LabCanvas = ({
         // a scene that draws high can no longer obscure the title or readout.
         ctx.fillStyle = 'rgba(255,255,255,0.90)';
         ctx.fillRect(0, 0, W, HEADER_H);
-        fitCaption(ctx, title, safeRight / 2, 30, safeRight - 24, 22);
-        fitCaption(ctx, readout({ v, raw }), safeRight / 2, 56, safeRight - 24, 16);
+        fitText(ctx, title, safeRight / 2, 30, safeRight - 24, 22);
+        fitText(ctx, readout({ v, raw }), safeRight / 2, 56, safeRight - 24, 16);
 
         // Footer band, painted over whatever the scene drew.
         ctx.fillStyle = 'rgba(255,255,255,0.94)';
@@ -315,7 +316,7 @@ export const LabCanvas = ({
                 m.fraction, m.caption, m.low, m.high);
         }
         if (footer.note) {
-            fitCaption(ctx, footer.note, footCx, H - 12, W - 32);
+            fitText(ctx, footer.note, footCx, H - 12, W - 32);
         }
 
         if (phase === 'complete') {

@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -62,8 +62,7 @@ export const C40FairTestLab = ({ state, onStateChange }: Props) => {
             : changed === 1
                 ? 'FAIR TEST -- any difference must be caused by the additive.'
                 : `CONFOUNDED -- ${changed} things changed, so the cause is unknown.`;
-        outlineText(ctx, verdict, safeRight / 2, 88, 'bold 15px monospace',
-            changed === 1 ? '#15803d' : changed === 0 ? '#64748b' : '#b91c1c');
+        fitText(ctx, verdict, safeRight / 2, 88, safeRight - 24, 15, changed === 1 ? '#15803d' : changed === 0 ? '#64748b' : '#b91c1c');
 
 
         const msg = changed === 0

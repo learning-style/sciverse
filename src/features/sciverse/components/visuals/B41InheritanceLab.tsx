@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -43,9 +43,8 @@ export const B41InheritanceLab = ({ state, onStateChange }: Props) => {
                 safeRight / 2, stageBottom - 20, 'bold 13px monospace');
         }
 
-        outlineText(ctx, `${brown} brown-eyed   |   ${blue} blue-eyed`, safeRight / 2, 92, 'bold 16px monospace');
-        outlineText(ctx, `That is ${Math.round(share * 100)}% blue -- the expected share is 25%`,
-            safeRight / 2, 116, 'bold 14px monospace');
+        fitText(ctx, `${brown} brown-eyed   |   ${blue} blue-eyed`, safeRight / 2, 92, safeRight - 24, 16);
+        fitText(ctx, `That is ${Math.round(share * 100)}% blue -- the expected share is 25%`, safeRight / 2, 116, safeRight - 24, 14);
 
         const closeness = Math.max(0, 1 - Math.abs(share - 0.25) / 0.25);
         const msg = kids < 8

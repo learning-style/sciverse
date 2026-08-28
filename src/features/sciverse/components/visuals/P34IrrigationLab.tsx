@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -71,12 +71,8 @@ export const P34IrrigationLab = ({ state, onStateChange }: Props) => {
             outlineText(ctx, 'runoff!', safeRight - w / 2 - 10, soilY - 16, 'bold 13px monospace', '#b91c1c');
         }
 
-        outlineText(ctx, `Soaked into roots: ${Math.round(absorbed * 100)}%`, safeRight / 2, 82, 'bold 15px monospace');
-        outlineText(
-            ctx,
-            `Lost to evaporation: ${Math.round(evaporation * 100)}%   Lost to runoff: ${Math.round(runoff * 100)}%`,
-            safeRight / 2, 104, 'bold 14px monospace'
-        );
+        fitText(ctx, `Soaked into roots: ${Math.round(absorbed * 100)}%`, safeRight / 2, 82, safeRight - 24, 15);
+        fitText(ctx, `Lost to evaporation: ${Math.round(evaporation * 100)}%   Lost to runoff: ${Math.round(runoff * 100)}%`, safeRight / 2, 104, safeRight - 24, 14);
 
 
         const msg = v < 0.3

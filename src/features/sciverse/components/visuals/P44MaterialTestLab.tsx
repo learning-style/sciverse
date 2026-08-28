@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -61,9 +61,8 @@ export const P44MaterialTestLab = ({ state, onStateChange }: Props) => {
         ctx.lineCap = 'butt';
         outlineText(ctx, plasticBend > 0.55 ? 'bent, not broken' : 'bending', px0 + barW / 2, midY + 78, 'bold 14px monospace');
 
-        outlineText(ctx, `Force: ${newtons} newtons on both bars`, safeRight / 2, 96, 'bold 15px monospace');
-        outlineText(ctx, 'Glass is hard but brittle. Plastic is soft but tough.',
-            safeRight / 2, 118, 'bold 13px monospace');
+        fitText(ctx, `Force: ${newtons} newtons on both bars`, safeRight / 2, 96, safeRight - 24, 15);
+        fitText(ctx, 'Glass is hard but brittle. Plastic is soft but tough.', safeRight / 2, 118, safeRight - 24, 13);
 
         const msg = newtons < 30
             ? 'Light push. Both bars are coping easily.'

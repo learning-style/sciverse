@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -64,7 +64,7 @@ export const C36ChlorineLab = ({ state, onStateChange }: Props) => {
             ctx.fill();
         }
 
-        outlineText(ctx, `Germs destroyed: ${Math.round(killed * 100)}%`, safeRight / 2, 84, 'bold 15px monospace');
+        fitText(ctx, `Germs destroyed: ${Math.round(killed * 100)}%`, safeRight / 2, 84, safeRight - 24, 15);
 
         // Verdict banner.
         const verdict = killed < 0.97 ? 'UNSAFE -- germs still alive' : tasteBad > 0.35 ? 'Safe, but tastes like a pool' : 'SAFE TO DRINK';

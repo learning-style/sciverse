@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -73,9 +73,8 @@ export const P37PumpedHydroLab = ({ state, onStateChange }: Props) => {
         const stored = v;
         const returned = stored * 0.8;
 
-        outlineText(ctx, `Energy stored: ${Math.round(stored * 100)} units`, safeRight / 2, 84, 'bold 15px monospace');
-        outlineText(ctx, `Energy you get back: ${Math.round(returned * 100)} units (20% lost as heat)`,
-            safeRight / 2, 106, 'bold 14px monospace');
+        fitText(ctx, `Energy stored: ${Math.round(stored * 100)} units`, safeRight / 2, 84, safeRight - 24, 15);
+        fitText(ctx, `Energy you get back: ${Math.round(returned * 100)} units (20% lost as heat)`, safeRight / 2, 106, safeRight - 24, 14);
 
 
         const msg = v < 0.25

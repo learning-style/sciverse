@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -68,8 +68,8 @@ export const C42HydrationLab = ({ state, onStateChange }: Props) => {
         ctx.closePath();
         ctx.fill();
 
-        outlineText(ctx, `${gPerL.toFixed(1)} grams of salt in every litre`, safeRight / 2, 96, 'bold 15px monospace');
-        outlineText(ctx, 'green band = the healthy zone', safeRight / 2, 118, 'bold 13px monospace');
+        fitText(ctx, `${gPerL.toFixed(1)} grams of salt in every litre`, safeRight / 2, 96, safeRight - 24, 15);
+        fitText(ctx, 'green band = the healthy zone', safeRight / 2, 118, safeRight - 24, 13);
 
         const msg = gPerL < 0.4
             ? 'Almost plain water -- your salts get watered down even further.'

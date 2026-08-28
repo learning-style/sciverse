@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -46,9 +46,8 @@ export const B40EvidenceLab = ({ state, onStateChange }: Props) => {
         const margin = 30 / Math.sqrt(n);           // uncertainty shrinks with sample size
         const conclusive = margin < trueEffect;     // effect is bigger than the wobble
 
-        outlineText(ctx, `Sample size: ${n} per group`, safeRight / 2, 84, 'bold 15px monospace');
-        outlineText(ctx, `Measured difference: ${measured.toFixed(1)}%  ±  ${margin.toFixed(1)}%`,
-            safeRight / 2, 106, 'bold 15px monospace', conclusive ? '#15803d' : '#b91c1c');
+        fitText(ctx, `Sample size: ${n} per group`, safeRight / 2, 84, safeRight - 24, 15);
+        fitText(ctx, `Measured difference: ${measured.toFixed(1)}%  ±  ${margin.toFixed(1)}%`, safeRight / 2, 106, safeRight - 24, 15, conclusive ? '#15803d' : '#b91c1c');
 
         outlineText(
             ctx,

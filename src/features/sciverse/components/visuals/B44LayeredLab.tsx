@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -56,10 +56,8 @@ export const B44LayeredLab = ({ state, onStateChange }: Props) => {
         ctx.stroke();
         outlineText(ctx, 'crack', crackX + 30, top - 12, 'bold 14px monospace', '#0f172a', 'left');
 
-        outlineText(ctx, `The crack got through ${Math.min(layers, reached)} of ${layers} layers`,
-            safeRight / 2, 96, 'bold 15px monospace');
-        outlineText(ctx, 'Each soft glue line absorbs energy and stops the crack',
-            safeRight / 2, 118, 'bold 13px monospace');
+        fitText(ctx, `The crack got through ${Math.min(layers, reached)} of ${layers} layers`, safeRight / 2, 96, safeRight - 24, 15);
+        fitText(ctx, 'Each soft glue line absorbs energy and stops the crack', safeRight / 2, 118, safeRight - 24, 13);
 
         const msg = layers <= 2
             ? 'Almost solid mineral -- the crack runs straight through, like plain chalk.'

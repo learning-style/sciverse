@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -62,10 +62,8 @@ export const C45AbsorberLab = ({ state, onStateChange }: Props) => {
             outlineText(ctx, 'echo', backX, midY + 44, 'bold 14px monospace', '#b91c1c');
         }
 
-        outlineText(ctx, `High sounds absorbed: ${Math.round(highAbsorbed * 100)}%   Low sounds absorbed: ${Math.round(lowAbsorbed * 100)}%`,
-            safeRight / 2, 96, 'bold 14px monospace');
-        outlineText(ctx, 'Thin panels catch high sounds; low sounds need thick ones',
-            safeRight / 2, 118, 'bold 13px monospace');
+        fitText(ctx, `High sounds absorbed: ${Math.round(highAbsorbed * 100)}%   Low sounds absorbed: ${Math.round(lowAbsorbed * 100)}%`, safeRight / 2, 96, safeRight - 24, 14);
+        fitText(ctx, 'Thin panels catch high sounds; low sounds need thick ones', safeRight / 2, 118, safeRight - 24, 13);
 
         const msg = cm < 4
             ? 'A thin panel. High voices are softened, but low sounds bounce straight back.'

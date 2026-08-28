@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -30,7 +30,7 @@ export const B33EcosystemServicesLab = ({ state, onStateChange }: Props) => {
             ctx.fillText(CREATURES[i], x, groundY - 18 - row * 46 + bob);
         }
 
-        outlineText(ctx, `${count} different species living here`, safeRight / 2, 82, 'bold 15px monospace');
+        fitText(ctx, `${count} different species living here`, safeRight / 2, 82, safeRight - 24, 15);
 
         // Services scale with variety, but with diminishing returns.
         const health = Math.pow(v, 0.7);

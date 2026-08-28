@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -51,11 +51,10 @@ export const B45HairCellLab = ({ state, onStateChange }: Props) => {
         ctx.lineCap = 'butt';
         outlineText(ctx, 'hair cells', startX, baseY - 70, 'bold 14px monospace', '#be123c', 'left');
 
-        outlineText(ctx, `${dB} decibels`, safeRight / 2, 92, 'bold 16px monospace');
-        outlineText(ctx, dB <= 85
+        fitText(ctx, `${dB} decibels`, safeRight / 2, 92, safeRight - 24, 16);
+        fitText(ctx, dB <= 85
             ? 'Safe level -- the hair cells bend and recover'
-            : `${snapped} of ${n} hair cells snapped, and they never grow back`,
-            safeRight / 2, 116, 'bold 14px monospace', dB <= 85 ? '#15803d' : '#b91c1c');
+            : `${snapped} of ${n} hair cells snapped, and they never grow back`, safeRight / 2, 116, safeRight - 24, 14, dB <= 85 ? '#15803d' : '#b91c1c');
 
         const msg = dB <= 70
             ? 'Gentle sound. The hair cells bend a little and are completely fine.'

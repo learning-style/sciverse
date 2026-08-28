@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -80,8 +80,7 @@ export const C37BatteryLab = ({ state, onStateChange }: Props) => {
             outlineText(ctx, '-', x, wireY + 4, 'bold 13px monospace', '#ffffff');
         }
 
-        outlineText(ctx, 'Electrons must go the long way -- that is what powers the device',
-            safeRight / 2, 90, 'bold 14px monospace');
+        fitText(ctx, 'Electrons must go the long way -- that is what powers the device', safeRight / 2, 90, safeRight - 24, 14);
 
 
         const msg = v < 0.15

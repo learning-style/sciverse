@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -51,9 +51,8 @@ export const P43ImpactLab = ({ state, onStateChange }: Props) => {
         ctx.strokeRect(fbX, fbY, fbW, 22);
         outlineText(ctx, 'force bar: how hard the landing hits', safeRight / 2, fbY + 44, 'bold 14px monospace');
 
-        outlineText(ctx, `Crumple distance ${cm.toFixed(1)} cm`, safeRight / 2, 96, 'bold 15px monospace');
-        outlineText(ctx, 'Same landing speed every time -- only the stopping distance changes',
-            safeRight / 2, 118, 'bold 13px monospace');
+        fitText(ctx, `Crumple distance ${cm.toFixed(1)} cm`, safeRight / 2, 96, safeRight - 24, 15);
+        fitText(ctx, 'Same landing speed every time -- only the stopping distance changes', safeRight / 2, 118, safeRight - 24, 13);
 
         const msg = cm < 3
             ? 'Almost no crumple -- like landing on concrete. The force is huge.'

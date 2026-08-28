@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -70,10 +70,8 @@ export const C39SemiconductorLab = ({ state, onStateChange }: Props) => {
                 row.flows ? '#a16207' : '#64748b');
         });
 
-        outlineText(ctx,
-            siliconOn ? 'Signal is strong enough -- silicon lets electricity through!'
-                : 'Signal too weak -- silicon is blocking, like rubber.',
-            safeRight / 2, 96, 'bold 15px monospace');
+        fitText(ctx, siliconOn ? 'Signal is strong enough -- silicon lets electricity through!'
+                : 'Signal too weak -- silicon is blocking, like rubber.', safeRight / 2, 96, safeRight - 24, 15);
 
         const msg = !siliconOn
             ? 'Copper is stuck ON and rubber is stuck OFF. Only silicon can change.'

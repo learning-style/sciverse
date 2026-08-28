@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, outlineText, fitText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -76,8 +76,7 @@ export const C34FertilizerLab = ({ state, onStateChange }: Props) => {
             ctx.fillText(i / 3 < fishAlive ? '🐟' : '💀', riverX + (safeRight - riverX) / 2 + drift, y);
         }
 
-        outlineText(ctx, `Crop health: ${Math.round(health * 100)}%   River health: ${Math.round(fishAlive * 100)}%`,
-            safeRight / 2, 82, 'bold 15px monospace');
+        fitText(ctx, `Crop health: ${Math.round(health * 100)}%   River health: ${Math.round(fishAlive * 100)}%`, safeRight / 2, 82, safeRight - 24, 15);
 
 
         const msg = v < 0.2
