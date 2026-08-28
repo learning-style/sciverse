@@ -68,7 +68,7 @@ export const B43AccessLab = ({ state, onStateChange }: Props) => {
             : ratio < 12
                 ? 'Still steeper than the guideline -- some people are left out.'
                 : 'Gentle enough for almost everyone, though it needs more space.';
-        return { meter: { fraction: served, caption: 'How Many People This Ramp Serves', low: 'Very few', high: 'Almost everyone' }, note: msg };
+        return { meter: { fraction: served, caption: 'How Many People This Ramp Can Serve', low: 'Very few', high: 'Almost everyone' }, note: msg };
     };
 
     return (
