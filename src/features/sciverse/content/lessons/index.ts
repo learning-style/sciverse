@@ -138,6 +138,9 @@ import { getB43Script } from './b43-human-factors';
 import { getP44Script } from './p44-hardness-toughness';
 import { getC44Script } from './c44-structure-properties';
 import { getB44Script } from './b44-natural-materials';
+import { getP45Script } from './p45-sound-intensity';
+import { getC45Script } from './c45-acoustic-materials';
+import { getB45Script } from './b45-hearing-health';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1040,6 +1043,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'p44': getP44Script,
     'c44': getC44Script,
     'b44': getB44Script,
+    'p45': getP45Script,
+    'c45': getC45Script,
+    'b45': getB45Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1378,5 +1384,10 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'p44', title: 'Bend, Scratch, Break', subtitle: 'Why hard is not the same as tough', discipline: 'physics', bigIdea: 44, bigIdeaTitle: 'How Do Everyday Materials Get Their Properties?', icon: '🔨', accentColor: 'indigo', crossLinks: ['c44', 'b44'] },
     { id: 'c44', title: 'Same Atoms, Different Material', subtitle: 'How carbon makes both pencil lead and diamond', discipline: 'chemistry', bigIdea: 44, bigIdeaTitle: 'How Do Everyday Materials Get Their Properties?', icon: '💎', accentColor: 'emerald', crossLinks: ['p44', 'b44'] },
     { id: 'b44', title: "Nature's Layered Armour", subtitle: 'How a shell beats a solid block of the same mineral', discipline: 'biology', bigIdea: 44, bigIdeaTitle: 'How Do Everyday Materials Get Their Properties?', icon: '🐚', accentColor: 'rose', crossLinks: ['p44', 'c44'] },
+
+    // Big Idea 45: "How Do We Manage Noise and Protect Hearing?"
+    { id: 'p45', title: 'Turning Down the Volume', subtitle: 'Why doubling your distance quarters the sound', discipline: 'physics', bigIdea: 45, bigIdeaTitle: 'How Do We Manage Noise and Protect Hearing?', icon: '🔉', accentColor: 'indigo', crossLinks: ['c45', 'b45'] },
+    { id: 'c45', title: 'Sound-Soaking Materials', subtitle: 'Why soft panels beat solid walls for echoes', discipline: 'chemistry', bigIdea: 45, bigIdeaTitle: 'How Do We Manage Noise and Protect Hearing?', icon: '🧽', accentColor: 'emerald', crossLinks: ['p45', 'b45'] },
+    { id: 'b45', title: 'Inside Your Ear', subtitle: 'The tiny hair cells that never grow back', discipline: 'biology', bigIdea: 45, bigIdeaTitle: 'How Do We Manage Noise and Protect Hearing?', icon: '👂', accentColor: 'rose', crossLinks: ['p45', 'c45'] },
 ];
 
