@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, fitText, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
