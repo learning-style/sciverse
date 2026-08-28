@@ -7529,7 +7529,7 @@ You replaced the water. So why does your body still feel wrong?`,onEnterAction:{
 
 Taste your sweat -- it is salty. That is because sweat carries dissolved salts out of your body, not just water. Scientists call these dissolved salts **electrolytes**, and your muscles and nerves cannot work properly without them.
 
-If you replace only the water, you top the liquid back up while the salts stay low. Your body ends up **more watered down than before**, which is why you can feel weak, dizzy or crampy even with a full stomach of water.`,options:[{id:"cont",label:"So drinking only water can dilute me even further?",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! Your body needs the right **balance** of water and **electrolytes**:
+If you replace only the water, you top the liquid back up while the salts stay low. Your body ends up **more watered down than before** -- scientists call that being **diluted**. It is why you can feel weak, dizzy or crampy even with a full stomach of water.`,options:[{id:"cont",label:"So drinking only water can dilute me even further?",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! Your body needs the right **balance** of water and **electrolytes**:
 
 1. **Sweat** carries out water **and** salts
 2. **Electrolytes** are the dissolved salts your nerves and muscles rely on
@@ -7655,14 +7655,18 @@ This is exactly **P42 Follow Through** turned around. There you wanted a **long*
 1. To make something **go fast**, push it for a **long** time (that was P42)
 2. To **stop** something gently, take a **long** time to do it
 
-Every safety design you have ever seen uses this. They all add **stopping distance** so the stop takes longer:
+Every safety design you have ever seen uses this. They all add **stopping distance** so the stop takes longer.
+
+First, one word you will need. To **crumple** something means to squash it and fold it up -- exactly what you do to a sheet of paper when you scrunch it into a ball.
+
+So the **crumple distance** is simply **how far something squashes while it is stopping you**. A bigger crumple distance means a longer, gentler stop.
 
 - A car **crumple zone** folds up over about half a metre
-- A bike **helmet** squashes a few centimetres
-- A **crash mat** compresses under a gymnast
-- **Airbags** inflate so your head slows over a longer distance
+- A bike **helmet** squashes down a few centimetres
+- A **crash mat** squashes under a gymnast
+- **Airbags** puff up so your head slows over a longer distance
 
-In the picture you will see the **crumple distance** in **centimetres**, and a **force bar** showing how hard the landing hits.
+In the picture you will see the **crumple distance** measured in **centimetres**, and a **force bar** showing how hard the landing hits.
 
 Slide **Crumple Distance** and watch the force drop!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"cp",label:"Let me see how crumple distance changes the force!",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:`**Checkpoint:** Car designers deliberately build the front of a car so it **folds up** in a crash, instead of making it as stiff and strong as possible.
 
@@ -7735,7 +7739,7 @@ Protective materials are designed to be **used once**.`,options:[{id:"retry",lab
 - **Elastic** materials give energy back, which is the wrong behaviour here
 - Once crushed, the foam is finished -- replace the helmet
 
-Thicker foam gives more stopping distance -- but the helmet also has to be **wearable**. Too thick and it becomes heavy and **bulkier** than anyone wants on their head, and a helmet left at home protects nobody. Real designs are always a **trade-off** between protection and wearability.
+Thicker foam gives more stopping distance -- but the helmet also has to be **wearable**. Too thick and it becomes heavy and **bulkier** than anyone wants on their head, and a helmet left at home protects nobody. Real designs are always a **trade-off** -- that means you cannot have everything at once, so you give up a little of one thing to gain another. Here it is protection traded against wearability.
 
 In B43 you will see the same trade-off thinking applied to the whole human body!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Crushable beats hard, and it only works once!",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**You discovered what makes a material protective!**
 
@@ -7855,7 +7859,7 @@ What problem should they expect?`,options:[{id:"right",label:"The harder the gla
 
 For most materials, pushing **hardness** up tends to push **toughness** down. Very hard glass resists scratches beautifully and then shatters when it meets a pavement.
 
-So phone makers face a real **trade-off**. A screen that never scratches will crack more easily; a screen that survives drops will pick up scratches. Every phone you have ever seen is a compromise between the two.
+So phone makers face a real **trade-off** -- that means you cannot have everything at once, so you give up a little of one thing to gain another. A screen that never scratches will crack more easily; a screen that survives drops will pick up scratches. Every phone you have ever seen is a compromise between the two.
 
 The way out is usually clever **structure** rather than a magic material -- layers, coatings, or a plastic film. You will see exactly that idea in B44.`,options:[{id:"retry",label:"Oh -- harder usually means more brittle!",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct! **There is no best material, only the best material for a job.**
 
