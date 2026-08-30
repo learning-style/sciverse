@@ -8395,7 +8395,7 @@ All three lessons of Big Idea 46 join up here:
 
 Screens use red, green and blue because that is the shape of the eye reading them. Colour is not really out in the world -- it is what your brain makes of three signals.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Colour is what my brain does with three signals!",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**You discovered how your eye makes colour!**
 
-- The **retina** holds two kinds of detector
+- The **back of your eye** holds two kinds of light-catching cell
 - **Cones** see **colour** but need decent light
 - **Rods** work in the dark but report only brightness -- hence grey at night
 - You have **three cone types**: red, green and blue sensitive
