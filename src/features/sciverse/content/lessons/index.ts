@@ -144,6 +144,9 @@ import { getB45Script } from './b45-hearing-health';
 import { getP46Script } from './p46-light-mixing';
 import { getC46Script } from './c46-pigment-fading';
 import { getB46Script } from './b46-colour-vision';
+import { getP47Script } from './p47-territory-space';
+import { getC47Script } from './c47-chemical-cues';
+import { getB47Script } from './b47-niches-coexistence';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1052,6 +1055,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'p46': getP46Script,
     'c46': getC46Script,
     'b46': getB46Script,
+    'p47': getP47Script,
+    'c47': getC47Script,
+    'b47': getB47Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1400,5 +1406,10 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'p46', title: 'Mixing Light', subtitle: 'Why red and green light make yellow', discipline: 'physics', bigIdea: 46, bigIdeaTitle: 'How Do Color and Perception Work in Design?', icon: '🔦', accentColor: 'indigo', crossLinks: ['c46', 'b46'] },
     { id: 'c46', title: 'Why Colours Fade', subtitle: 'What sunlight does to a poster', discipline: 'chemistry', bigIdea: 46, bigIdeaTitle: 'How Do Color and Perception Work in Design?', icon: '🖼️', accentColor: 'emerald', crossLinks: ['p46', 'b46'] },
     { id: 'b46', title: 'How Your Eyes See Colour', subtitle: 'Why three colours are enough', discipline: 'biology', bigIdea: 46, bigIdeaTitle: 'How Do Color and Perception Work in Design?', icon: '👁️', accentColor: 'rose', crossLinks: ['p46', 'c46'] },
+
+    // Big Idea 47: "How Do Species Share Habitats?"
+    { id: 'p47', title: 'Room to Live', subtitle: 'Why territory size decides how many fit', discipline: 'physics', bigIdea: 47, bigIdeaTitle: 'How Do Species Share Habitats?', icon: '🌳', accentColor: 'indigo', crossLinks: ['c47', 'b47'] },
+    { id: 'c47', title: 'Smell Messages', subtitle: 'How a scent mark works while you sleep', discipline: 'chemistry', bigIdea: 47, bigIdeaTitle: 'How Do Species Share Habitats?', icon: '🦊', accentColor: 'emerald', crossLinks: ['p47', 'b47'] },
+    { id: 'b47', title: 'Sharing Without Fighting', subtitle: 'How five bird species share one tree', discipline: 'biology', bigIdea: 47, bigIdeaTitle: 'How Do Species Share Habitats?', icon: '🐦', accentColor: 'rose', crossLinks: ['p47', 'c47'] },
 ];
 
