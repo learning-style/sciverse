@@ -150,6 +150,9 @@ import { getB47Script } from './b47-niches-coexistence';
 import { getP48Script } from './p48-sampling-cameras';
 import { getC48Script } from './c48-water-traces';
 import { getB48Script } from './b48-trends-over-time';
+import { getP49Script } from './p49-cost-of-digging';
+import { getC49Script } from './c49-rock-to-metal';
+import { getB49Script } from './b49-healing-the-land';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1064,6 +1067,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'p48': getP48Script,
     'c48': getC48Script,
     'b48': getB48Script,
+    'p49': getP49Script,
+    'c49': getC49Script,
+    'b49': getB49Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1422,5 +1428,10 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'p48', title: 'Where to Put the Camera', subtitle: 'Why one camera never finds the whole wood', discipline: 'physics', bigIdea: 48, bigIdeaTitle: 'How Do We Keep Track of Wildlife?', icon: '📷', accentColor: 'indigo', crossLinks: ['c48', 'b48'] },
     { id: 'c48', title: 'Traces in the Water', subtitle: 'Finding an animal you have never seen', discipline: 'chemistry', bigIdea: 48, bigIdeaTitle: 'How Do We Keep Track of Wildlife?', icon: '💧', accentColor: 'emerald', crossLinks: ['p48', 'b48'] },
     { id: 'b48', title: 'Counting What You Cannot See', subtitle: 'Why one count tells you almost nothing', discipline: 'biology', bigIdea: 48, bigIdeaTitle: 'How Do We Keep Track of Wildlife?', icon: '🦋', accentColor: 'rose', crossLinks: ['p48', 'c48'] },
+
+    // Big Idea 49: "How Do We Use Earth Resources Responsibly?"
+    { id: 'p49', title: 'The Cost of Digging', subtitle: 'Why the same mine costs more every year', discipline: 'physics', bigIdea: 49, bigIdeaTitle: 'How Do We Use Earth Resources Responsibly?', icon: '⛏️', accentColor: 'indigo', crossLinks: ['c49', 'b49'] },
+    { id: 'c49', title: 'From Rock to Metal', subtitle: 'Getting the metal out of a bucket of rock', discipline: 'chemistry', bigIdea: 49, bigIdeaTitle: 'How Do We Use Earth Resources Responsibly?', icon: '🔥', accentColor: 'emerald', crossLinks: ['p49', 'b49'] },
+    { id: 'b49', title: 'Healing the Land', subtitle: 'Why putting it back takes decades', discipline: 'biology', bigIdea: 49, bigIdeaTitle: 'How Do We Use Earth Resources Responsibly?', icon: '🌱', accentColor: 'rose', crossLinks: ['p49', 'c49'] },
 ];
 
