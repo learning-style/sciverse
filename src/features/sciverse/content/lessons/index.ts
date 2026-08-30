@@ -147,6 +147,9 @@ import { getB46Script } from './b46-colour-vision';
 import { getP47Script } from './p47-territory-space';
 import { getC47Script } from './c47-chemical-cues';
 import { getB47Script } from './b47-niches-coexistence';
+import { getP48Script } from './p48-sampling-cameras';
+import { getC48Script } from './c48-water-traces';
+import { getB48Script } from './b48-trends-over-time';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1058,6 +1061,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'p47': getP47Script,
     'c47': getC47Script,
     'b47': getB47Script,
+    'p48': getP48Script,
+    'c48': getC48Script,
+    'b48': getB48Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1411,5 +1417,10 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'p47', title: 'Room to Live', subtitle: 'Why territory size decides how many fit', discipline: 'physics', bigIdea: 47, bigIdeaTitle: 'How Do Species Share Habitats?', icon: '🌳', accentColor: 'indigo', crossLinks: ['c47', 'b47'] },
     { id: 'c47', title: 'Smell Messages', subtitle: 'How a scent mark works while you sleep', discipline: 'chemistry', bigIdea: 47, bigIdeaTitle: 'How Do Species Share Habitats?', icon: '🦊', accentColor: 'emerald', crossLinks: ['p47', 'b47'] },
     { id: 'b47', title: 'Sharing Without Fighting', subtitle: 'How five bird species share one tree', discipline: 'biology', bigIdea: 47, bigIdeaTitle: 'How Do Species Share Habitats?', icon: '🐦', accentColor: 'rose', crossLinks: ['p47', 'c47'] },
+
+    // Big Idea 48: "How Do We Keep Track of Wildlife?"
+    { id: 'p48', title: 'Where to Put the Camera', subtitle: 'Why one camera never finds the whole wood', discipline: 'physics', bigIdea: 48, bigIdeaTitle: 'How Do We Keep Track of Wildlife?', icon: '📷', accentColor: 'indigo', crossLinks: ['c48', 'b48'] },
+    { id: 'c48', title: 'Traces in the Water', subtitle: 'Finding an animal you have never seen', discipline: 'chemistry', bigIdea: 48, bigIdeaTitle: 'How Do We Keep Track of Wildlife?', icon: '💧', accentColor: 'emerald', crossLinks: ['p48', 'b48'] },
+    { id: 'b48', title: 'Counting What You Cannot See', subtitle: 'Why one count tells you almost nothing', discipline: 'biology', bigIdea: 48, bigIdeaTitle: 'How Do We Keep Track of Wildlife?', icon: '🦋', accentColor: 'rose', crossLinks: ['p48', 'c48'] },
 ];
 

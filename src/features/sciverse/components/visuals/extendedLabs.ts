@@ -45,6 +45,9 @@ import { B46ConeCellLab } from './B46ConeCellLab';
 import { P47TerritoryLab } from './P47TerritoryLab';
 import { C47ScentLab } from './C47ScentLab';
 import { B47NicheLab } from './B47NicheLab';
+import { P48CameraLab } from './P48CameraLab';
+import { C48TraceLab } from './C48TraceLab';
+import { B48TrendLab } from './B48TrendLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -101,4 +104,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     p47: P47TerritoryLab,
     c47: C47ScentLab,
     b47: B47NicheLab,
+    p48: P48CameraLab,
+    c48: C48TraceLab,
+    b48: B48TrendLab,
 };
