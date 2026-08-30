@@ -48,17 +48,6 @@ export const C46FadingLab = ({ state, onStateChange }: Props) => {
         ctx.stroke();
         outlineText(ctx, 'UV', px - 46, py + 46, 'bold 14px monospace', '#a16207');
 
-        // Fading bar, named in the lesson
-        const bx = 60, bw = safeRight - 120, by = stageBottom - 44;
-        ctx.fillStyle = '#e2e8f0';
-        ctx.fillRect(bx, by, bw, 18);
-        ctx.fillStyle = colourLeft > 0.6 ? '#16a34a' : colourLeft > 0.3 ? '#f59e0b' : '#dc2626';
-        ctx.fillRect(bx, by, bw * colourLeft, 18);
-        ctx.strokeStyle = '#0f172a';
-        ctx.lineWidth = 2;
-        ctx.strokeRect(bx, by, bw, 18);
-        outlineText(ctx, 'fading bar', safeRight / 2, by - 8, 'bold 14px monospace');
-
         fitText(ctx, `${Math.round(fadeRed * 100)}% of the red is gone, ${Math.round(fadeBlue * 100)}% of the blue`,
             safeRight / 2, 96, safeRight - 24, 15);
         fitText(ctx, 'Fragile reds break first; tougher blues last much longer',

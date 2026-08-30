@@ -11,9 +11,8 @@ export const B46ConeCellLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
     const drawScene = ({ ctx, safeRight, t, v, stageTop, stageBottom }: LabScene) => {
-        const lux = Math.round(Math.pow(10, v * 4));
-        // Cones need roughly 3 lux to start, and are fully active by about 100.
-        const cone = Math.max(0, Math.min(1, (Math.log10(Math.max(1, lux)) - 0.5) / 1.6));
+        // Cones need a fair amount of light before they start working.
+        const cone = Math.max(0, Math.min(1, (v - 0.2) / 0.55));
         const rod = 1 - cone * 0.7;
 
         const cy = stageTop + 96;
@@ -68,27 +67,27 @@ export const B46ConeCellLab = ({ state, onStateChange }: Props) => {
         });
         outlineText(ctx, 'what you see', safeRight / 2, sy - 10, 'bold 14px monospace');
 
-        fitText(ctx, lux < 5 ? 'Too dark for cones -- rods take over and everything looks grey'
-            : lux < 60 ? 'Cones are starting to fire, so a little colour returns'
-                : 'Plenty of light -- all three cone types are firing and colour is full',
+        fitText(ctx, v < 0.25 ? 'Too dark for cones -- rods take over and everything looks grey'
+            : v < 0.6 ? 'Cones are waking up, so a little colour comes back'
+                : 'Plenty of light -- all three cone types are working and colour is full',
             safeRight / 2, 96, safeRight - 24, 15);
 
-        const msg = lux < 5
+        const msg = v < 0.25
             ? 'Rods only. You can see shapes clearly but not colours.'
-            : lux < 60
+            : v < 0.6
                 ? 'Dim. Cones are waking up and colour is creeping back.'
-                : 'Bright enough for full colour vision from all three cone types.';
+                : 'Bright enough for full colour from all three cone types.';
         return { meter: { fraction: cone, caption: 'How Much Colour You Can See', low: 'All grey', high: 'Full colour' }, note: msg };
     };
 
     return (
         <LabCanvas
             title="How Your Eyes See Colour"
-            readout={({ v }) => `Light level: ${Math.round(Math.pow(10, v * 4))} lux`}
+            readout={({ v }) => `Light: ${v < 0.25 ? 'moonlight' : v < 0.5 ? 'dusk' : v < 0.75 ? 'indoor lamp' : 'bright daylight'}`}
             controlLabel="Light Level"
             controlKey="lightLevel"
             controlInitial={70}
-            controlDisplay={(_raw, v) => `${Math.round(Math.pow(10, v * 4))} lux`}
+            controlDisplay={(_raw, v) => v < 0.25 ? 'moonlight' : v < 0.5 ? 'dusk' : v < 0.75 ? 'indoor lamp' : 'bright daylight'}
             accent="rose"
             sky={['#fdf4ff', '#f8fafc']}
             completeTitle="B46 Complete!"
