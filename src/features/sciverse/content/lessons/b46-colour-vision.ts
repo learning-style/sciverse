@@ -58,7 +58,7 @@ export function getB46Script(): Record<string, DialogNode> {
         discovery: {
             id: 'discovery',
             speaker: 'AI',
-            content: "**You discovered how your eye makes colour!**\n\n- The **retina** holds two kinds of detector\n- **Cones** see **colour** but need decent light\n- **Rods** work in the dark but report only brightness -- hence grey at night\n- You have **three cone types**: red, green and blue sensitive\n- Every colour is your brain checking which cones shout loudest\n- Screens use three colours because your eye has three cone types\n- Colour blindness means two colours fire nearly the same pattern\n\nP46 mixed the light, C46 broke the pigment, and B46 showed the eye that reads them both!",
+            content: "**You discovered how your eye makes colour!**\n\n- The **back of your eye** holds two kinds of light-catching cell\n- **Cones** see **colour** but need decent light\n- **Rods** work in the dark but report only brightness -- hence grey at night\n- You have **three cone types**: red, green and blue sensitive\n- Every colour is your brain checking which cones shout loudest\n- Screens use three colours because your eye has three cone types\n- Colour blindness means two colours fire nearly the same pattern\n\nP46 mixed the light, C46 broke the pigment, and B46 showed the eye that reads them both!",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery' } },
             options: [
                 { id: 'done', label: "Three cones is why screens need three colours!", nextNodeId: 'complete' }
