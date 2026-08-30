@@ -153,6 +153,9 @@ import { getB48Script } from './b48-trends-over-time';
 import { getP49Script } from './p49-cost-of-digging';
 import { getC49Script } from './c49-rock-to-metal';
 import { getB49Script } from './b49-healing-the-land';
+import { getP50Script } from './p50-orbit-height';
+import { getC50Script } from './c50-built-for-space';
+import { getB50Script } from './b50-life-from-space';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1070,6 +1073,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'p49': getP49Script,
     'c49': getC49Script,
     'b49': getB49Script,
+    'p50': getP50Script,
+    'c50': getC50Script,
+    'b50': getB50Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1433,5 +1439,10 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'p49', title: 'The Cost of Digging', subtitle: 'Why the same mine costs more every year', discipline: 'physics', bigIdea: 49, bigIdeaTitle: 'How Do We Use Earth Resources Responsibly?', icon: '⛏️', accentColor: 'indigo', crossLinks: ['c49', 'b49'] },
     { id: 'c49', title: 'From Rock to Metal', subtitle: 'Getting the metal out of a bucket of rock', discipline: 'chemistry', bigIdea: 49, bigIdeaTitle: 'How Do We Use Earth Resources Responsibly?', icon: '🔥', accentColor: 'emerald', crossLinks: ['p49', 'b49'] },
     { id: 'b49', title: 'Healing the Land', subtitle: 'Why putting it back takes decades', discipline: 'biology', bigIdea: 49, bigIdeaTitle: 'How Do We Use Earth Resources Responsibly?', icon: '🌱', accentColor: 'rose', crossLinks: ['p49', 'c49'] },
+
+    // Big Idea 50: "How Do Satellites Help Life on Earth?"
+    { id: 'p50', title: 'Eyes in the Sky', subtitle: 'Why no satellite can do everything', discipline: 'physics', bigIdea: 50, bigIdeaTitle: 'How Do Satellites Help Life on Earth?', icon: '🛰️', accentColor: 'indigo', crossLinks: ['c50', 'b50'] },
+    { id: 'c50', title: 'Built for Space', subtitle: 'Surviving twenty years with nobody to fix you', discipline: 'chemistry', bigIdea: 50, bigIdeaTitle: 'How Do Satellites Help Life on Earth?', icon: '✨', accentColor: 'emerald', crossLinks: ['p50', 'b50'] },
+    { id: 'b50', title: 'Watching Life from Space', subtitle: 'Measuring the home, not the animals', discipline: 'biology', bigIdea: 50, bigIdeaTitle: 'How Do Satellites Help Life on Earth?', icon: '🌍', accentColor: 'rose', crossLinks: ['p50', 'c50'] },
 ];
 

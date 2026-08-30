@@ -51,6 +51,9 @@ import { B48TrendLab } from './B48TrendLab';
 import { P49DiggingLab } from './P49DiggingLab';
 import { C49SmeltLab } from './C49SmeltLab';
 import { B49HealingLab } from './B49HealingLab';
+import { P50OrbitLab } from './P50OrbitLab';
+import { C50SpaceMaterialsLab } from './C50SpaceMaterialsLab';
+import { B50DetailLab } from './B50DetailLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -113,4 +116,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     p49: P49DiggingLab,
     c49: C49SmeltLab,
     b49: B49HealingLab,
+    p50: P50OrbitLab,
+    c50: C50SpaceMaterialsLab,
+    b50: B50DetailLab,
 };

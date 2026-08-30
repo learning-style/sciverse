@@ -48,6 +48,7 @@ import { bigIdea46Assessment } from './bigIdea46';
 import { bigIdea47Assessment } from './bigIdea47';
 import { bigIdea48Assessment } from './bigIdea48';
 import { bigIdea49Assessment } from './bigIdea49';
+import { bigIdea50Assessment } from './bigIdea50';
 
 export const ASSESSMENTS: Record<number, AssessmentData> = {
     1: bigIdea1Assessment,
@@ -99,6 +100,7 @@ export const ASSESSMENTS: Record<number, AssessmentData> = {
     47: bigIdea47Assessment,
     48: bigIdea48Assessment,
     49: bigIdea49Assessment,
+    50: bigIdea50Assessment,
 };
 
 export const getAssessment = (bigIdea: number): AssessmentData | undefined =>
