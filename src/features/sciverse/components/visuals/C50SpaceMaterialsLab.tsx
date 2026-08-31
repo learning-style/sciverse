@@ -62,10 +62,10 @@ export const C50SpaceMaterialsLab = ({ state, onStateChange }: Props) => {
         // A speck arriving
         const sx = ((t * 90) % (safeRight + 60)) - 30;
         ctx.fillStyle = '#e2e8f0';
-        ctx.fillRect(sx, cy - 46, 3, 2);
+        ctx.fillRect(sx, cy - 64, 3, 2);
 
-        outlineText(ctx, 'heat blanket -- shiny plastic, not gold', cx, cy + 44, 'bold 12px monospace', '#fde68a', 'center', safeRight - 40);
-        outlineText(ctx, 'solar panels', cx - 71, cy + 28, 'bold 12px monospace', '#bfdbfe');
+        outlineText(ctx, 'heat blanket over the metal box', cx, cy - 38, 'bold 12px monospace', '#fde68a', 'center', safeRight - 40);
+        outlineText(ctx, 'solar panels under special glass', cx, cy + 46, 'bold 12px monospace', '#bfdbfe', 'center', safeRight - 40);
 
         fitText(ctx, `${years} year${years === 1 ? '' : 's'} in space: panels make ${Math.round(power)}% of what they made when new`,
             cx, 94, safeRight - 24, 16, '#f8fafc');
