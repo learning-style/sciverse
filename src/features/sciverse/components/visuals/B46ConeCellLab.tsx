@@ -33,9 +33,9 @@ export const B46ConeCellLab = ({ state, onStateChange }: Props) => {
             ctx.strokeStyle = '#0f172a';
             ctx.lineWidth = 2;
             ctx.stroke();
-            outlineText(ctx, names[i], x, cy + cellR + 20, 'bold 14px monospace');
+            outlineText(ctx, names[i], x, cy + cellR + 20, 'bold 14px monospace', '#000000', 'center', Math.max(48, rx - safeRight * 0.37 - 8));
         }
-        outlineText(ctx, 'cone cells', safeRight * 0.37, cy - cellR - 16, 'bold 15px monospace');
+        outlineText(ctx, 'cone cells', safeRight * 0.37, cy - cellR - 16, 'bold 15px monospace', '#000000', 'center', Math.max(48, rx - safeRight * 0.37 - 8));
 
         // Rods, brightest when light is low.
         const rx = safeRight * 0.72;
@@ -47,8 +47,8 @@ export const B46ConeCellLab = ({ state, onStateChange }: Props) => {
             ctx.fill();
         }
         ctx.globalAlpha = 1;
-        outlineText(ctx, 'rod cells', rx, cy - cellR - 16, 'bold 15px monospace');
-        outlineText(ctx, 'brightness only', rx, cy + cellR + 20, 'bold 13px monospace');
+        outlineText(ctx, 'rod cells', rx, cy - cellR - 16, 'bold 15px monospace', '#000000', 'center', Math.max(48, rx - safeRight * 0.37 - 8));
+        outlineText(ctx, 'brightness only', rx, cy + cellR + 20, 'bold 13px monospace', '#000000', 'center', Math.max(48, rx - safeRight * 0.37 - 8));
 
         // What you actually see: a colour patch that desaturates as cones fade.
         const sw = Math.min(safeRight * 0.5, 300);

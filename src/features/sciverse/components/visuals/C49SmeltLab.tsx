@@ -18,29 +18,34 @@ export const C49SmeltLab = ({ state, onStateChange }: Props) => {
         const spoonfuls = Math.max(1, Math.round(raw));
         const buckets = Math.ceil(WANTED / spoonfuls);
 
-        const baseY = stageBottom - 46;
+        // Three equal columns, so no label can ever wander into its neighbour.
         const colW = safeRight / 3;
+        const c1 = colW * 0.5;
+        const c2 = colW * 1.5;
+        const c3 = colW * 2.5;
+        const labelW = colW - 16;
+        const rowBase = stageTop + Math.min(160, (stageBottom - stageTop) * 0.42);
 
-        // Left: the buckets of rock that have to be dug and crushed
-        const perRow = 6;
-        const shown = Math.min(buckets, 30);
+        // Left: the buckets of rock that have to be dug, crushed and heated
         const bw = 17;
         const bh = 14;
+        const perRow = Math.max(3, Math.floor(labelW / (bw + 5)));
+        const shown = Math.min(buckets, 30);
+        const gridW = Math.min(shown, perRow) * (bw + 5) - 5;
+        const startX = c1 - gridW / 2;
         for (let i = 0; i < shown; i++) {
-            const bx = 30 + (i % perRow) * (bw + 5);
-            const by = baseY - 30 - Math.floor(i / perRow) * (bh + 5);
+            const bx = startX + (i % perRow) * (bw + 5);
+            const by = rowBase - 26 - Math.floor(i / perRow) * (bh + 5);
             ctx.fillStyle = '#a8a29e';
             ctx.fillRect(bx, by, bw, bh);
             ctx.strokeStyle = '#57534e';
             ctx.lineWidth = 1.5;
             ctx.strokeRect(bx, by, bw, bh);
         }
-        outlineText(ctx, `${buckets} buckets of rock`, 30 + (perRow * (bw + 5)) / 2, baseY - 6,
-            'bold 13px monospace');
 
         // Middle: the smelter, with charcoal burning underneath
-        const sx = colW + colW / 2 - 34;
-        const sy = baseY - 96;
+        const sx = c2 - 34;
+        const sy = rowBase - 100;
         ctx.fillStyle = '#78350f';
         ctx.fillRect(sx, sy, 68, 74);
         ctx.strokeStyle = '#451a03';
@@ -50,34 +55,38 @@ export const C49SmeltLab = ({ state, onStateChange }: Props) => {
         ctx.fillRect(sx + 10, sy + 44, 48, 22);
         ctx.font = '20px serif';
         ctx.textAlign = 'center';
-        ctx.fillText('🔥', sx + 34, sy + 62);
-        outlineText(ctx, 'smelter', sx + 34, sy - 10, 'bold 13px monospace');
-        outlineText(ctx, 'charcoal grabs the oxygen', sx + 34, baseY - 6, 'bold 12px monospace');
+        ctx.fillText('🔥', c2, sy + 62);
+        outlineText(ctx, 'smelter', c2, sy - 10, 'bold 13px monospace');
 
         // Right: the copper that comes out, always the same amount
-        const mx = colW * 2 + colW / 2;
         ctx.fillStyle = '#c2410c';
         ctx.beginPath();
-        ctx.ellipse(mx, baseY - 34, 30, 15, 0, 0, Math.PI * 2);
+        ctx.ellipse(c3, rowBase - 40, 30, 15, 0, 0, Math.PI * 2);
         ctx.fill();
         ctx.strokeStyle = '#7c2d12';
         ctx.lineWidth = 2;
         ctx.stroke();
-        outlineText(ctx, 'the same copper', mx, baseY - 6, 'bold 13px monospace');
 
-        // The waste pile, growing with every extra bucket handled
-        const wasteH = Math.min(stageBottom - stageTop - 70, 8 + buckets * 4.4);
+        // One label per column, each bounded to its own column so they cannot collide.
+        fitText(ctx, `${buckets} bucket${buckets === 1 ? '' : 's'} of rock`, c1, rowBase, labelW, 13);
+        fitText(ctx, 'charcoal grabs the oxygen', c2, rowBase, labelW, 13);
+        fitText(ctx, 'the same copper', c3, rowBase, labelW, 13);
+
+        // The waste pile, centred along the bottom and kept inside the stage
+        const pileFloor = stageBottom - 32;
+        const wasteH = Math.min(pileFloor - (rowBase + 22), 8 + buckets * 6);
+        const halfBase = Math.min(safeRight * 0.3, wasteH * 0.62 + 14);
         ctx.fillStyle = '#d6d3d1';
         ctx.beginPath();
-        ctx.moveTo(mx + 46, baseY + 22);
-        ctx.lineTo(mx + 46 + wasteH * 0.7, baseY + 22);
-        ctx.lineTo(mx + 46 + wasteH * 0.35, baseY + 22 - wasteH);
+        ctx.moveTo(safeRight / 2 - halfBase, pileFloor);
+        ctx.lineTo(safeRight / 2 + halfBase, pileFloor);
+        ctx.lineTo(safeRight / 2, pileFloor - wasteH);
         ctx.closePath();
         ctx.fill();
         ctx.strokeStyle = '#78716c';
         ctx.lineWidth = 2;
         ctx.stroke();
-        outlineText(ctx, 'waste', mx + 46 + wasteH * 0.35, baseY + 38, 'bold 12px monospace');
+        fitText(ctx, 'waste left behind', safeRight / 2, stageBottom - 12, safeRight - 24, 13);
 
         fitText(ctx, `${buckets} bucket${buckets === 1 ? '' : 's'} of rock for the same spoonfuls of copper`,
             safeRight / 2, 94, safeRight - 24, 16);

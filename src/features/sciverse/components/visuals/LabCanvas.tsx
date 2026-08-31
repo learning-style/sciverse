@@ -112,13 +112,24 @@ export const outlineText = (
     y: number,
     font: string,
     color = '#000000',
-    align: CanvasTextAlign = 'center'
+    align: CanvasTextAlign = 'center',
+    maxWidth?: number
 ) => {
     ctx.font = font;
+    // Shrink to fit when a bound is given. Two centred labels on one baseline
+    // will run into each other otherwise, which is what happened in C49.
+    if (maxWidth && maxWidth > 0) {
+        const m = /(\d+(?:\.\d+)?)px/.exec(font);
+        let size = Number(m?.[1] ?? 13);
+        while (size > 8 && ctx.measureText(text).width > maxWidth) {
+            size -= 1;
+            ctx.font = font.replace(/\d+(?:\.\d+)?px/, `${size}px`);
+        }
+    }
     ctx.textAlign = align;
     ctx.strokeStyle = isPale(color) ? '#0f172a' : '#ffffff';
     // Scale the halo to the type size: a fixed width swallows small glyphs.
-    const size = Number(/(\d+(?:\.\d+)?)px/.exec(font)?.[1] ?? 14);
+    const size = Number(/(\d+(?:\.\d+)?)px/.exec(ctx.font)?.[1] ?? 14);
     ctx.lineWidth = Math.max(2, Math.min(4, size * 0.25));
     // Round joins stop thin strokes throwing spikes off sharp corners.
     ctx.lineJoin = 'round';

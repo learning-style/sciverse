@@ -31,11 +31,11 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
         ctx.stroke();
 
         outlineText(ctx, tempC >= metalMelts ? 'ALUMINIUM - MELTED' : 'ALUMINIUM (solid)',
-            midX / 2, topY - 38, 'bold 15px monospace');
-        outlineText(ctx, `melts at ${metalMelts}\u00B0C`, midX / 2, topY - 20, 'bold 13px monospace');
+            midX / 2, topY - 38, 'bold 15px monospace', '#000000', 'center', midX - 10);
+        outlineText(ctx, `melts at ${metalMelts}\u00B0C`, midX / 2, topY - 20, 'bold 13px monospace', '#000000', 'center', midX - 10);
         outlineText(ctx, tempC >= plasticMelts ? 'PLASTIC - MELTED' : 'PLASTIC (solid)',
-            midX + midX / 2, topY - 38, 'bold 15px monospace');
-        outlineText(ctx, `melts at about ${plasticMelts}\u00B0C`, midX + midX / 2, topY - 20, 'bold 13px monospace');
+            midX + midX / 2, topY - 38, 'bold 15px monospace', '#000000', 'center', midX - 10);
+        outlineText(ctx, `melts at about ${plasticMelts}\u00B0C`, midX + midX / 2, topY - 20, 'bold 13px monospace', '#000000', 'center', midX - 10);
 
         // Left: metal atoms jiggle more with heat but stay whole.
         const jiggle = Math.min(1, tempC / metalMelts) * 6;
@@ -84,9 +84,10 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
         const plasticQuality = Math.max(0.1, 1 - chainDamage * 0.9);
 
         outlineText(ctx, `Metal quality after melting: ${Math.round(metalQuality * 100)}%`,
-            midX / 2, topY + panelH + 24, 'bold 13px monospace', '#15803d');
+            midX / 2, topY + panelH + 24, 'bold 13px monospace', '#15803d', 'center', midX - 10);
         outlineText(ctx, `Plastic quality after melting: ${Math.round(plasticQuality * 100)}%`,
-            midX + midX / 2, topY + panelH + 24, 'bold 13px monospace', plasticQuality > 0.6 ? '#15803d' : '#b91c1c');
+            midX + midX / 2, topY + panelH + 24, 'bold 13px monospace',
+            plasticQuality > 0.6 ? '#15803d' : '#b91c1c', 'center', midX - 10);
 
 
         const msg = tempC < plasticMelts

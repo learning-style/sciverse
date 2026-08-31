@@ -37,8 +37,8 @@ export const C43FoamLab = ({ state, onStateChange }: Props) => {
         ctx.beginPath();
         ctx.arc(cx, cy, headR + foamPx + 5, Math.PI, 0);
         ctx.stroke();
-        outlineText(ctx, 'shell', cx + headR + foamPx + 34, cy - 6, 'bold 14px monospace', '#0f172a', 'left');
-        outlineText(ctx, 'foam', cx - headR - foamPx - 34, cy - 6, 'bold 14px monospace', '#047857', 'right');
+        outlineText(ctx, 'shell', cx + headR + foamPx + 34, cy - 6, 'bold 14px monospace', '#0f172a', 'left', Math.max(30, safeRight - (cx + headR + foamPx + 34) - 6));
+        outlineText(ctx, 'foam', cx - headR - foamPx - 34, cy - 6, 'bold 14px monospace', '#047857', 'right', Math.max(30, cx - headR - foamPx - 40));
 
         // Head
         ctx.fillStyle = '#fcd34d';

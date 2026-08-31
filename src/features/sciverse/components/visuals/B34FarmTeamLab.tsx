@@ -62,10 +62,10 @@ export const B34FarmTeamLab = ({ state, onStateChange }: Props) => {
         // Legend for the blossom colours.
         ctx.fillStyle = '#fbcfe8';
         ctx.beginPath(); ctx.arc(40, 106, 5, 0, Math.PI * 2); ctx.fill();
-        outlineText(ctx, 'unpollinated flower', 130, 110, 'bold 13px monospace');
+        outlineText(ctx, 'unpollinated flower', 130, 110, 'bold 13px monospace', '#000000', 'center', safeRight - 268);
         ctx.fillStyle = '#dc2626';
         ctx.beginPath(); ctx.arc(safeRight - 170, 106, 6, 0, Math.PI * 2); ctx.fill();
-        outlineText(ctx, 'apple!', safeRight - 130, 110, 'bold 13px monospace');
+        outlineText(ctx, 'apple!', safeRight - 130, 110, 'bold 13px monospace', '#000000', 'center', safeRight - 268);
 
 
         const msg = v < 0.15

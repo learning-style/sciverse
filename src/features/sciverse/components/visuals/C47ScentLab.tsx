@@ -45,7 +45,7 @@ export const C47ScentLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, turnsAway ? 'visitor turns away' : 'visitor moves in',
             foxX, groundY - 60, 'bold 15px monospace', turnsAway ? '#b91c1c' : '#15803d');
 
-        fitText(ctx, days === 0 ? 'Marked today -- the message is at its strongest'
+        fitText(ctx, days === 0 ? 'Marked just now -- the smell is as strong as it gets'
             : days < 5 ? 'A few days old, and already fading'
                 : 'Old and faint -- this patch reads as empty',
             safeRight / 2, 94, safeRight - 24, 15);

@@ -50,8 +50,8 @@ export const B47NicheLab = ({ state, onStateChange }: Props) => {
         } else {
             outlineText(ctx, 'pushed out', cx + spread, treeTop + treeH * 0.3, 'bold 15px monospace', '#b91c1c');
         }
-        outlineText(ctx, 'blue bird feeding zone', cx - spread, treeTop + treeH * 0.3 + zoneR + 22, 'bold 13px monospace', '#1d4ed8');
-        outlineText(ctx, 'red bird feeding zone', cx + spread, treeTop + treeH * 0.3 - zoneR - 14, 'bold 13px monospace', '#b91c1c');
+        outlineText(ctx, 'blue bird hunts here', cx - spread, treeTop + treeH * 0.3 + zoneR + 22, 'bold 13px monospace', '#1d4ed8');
+        outlineText(ctx, 'red bird hunts here', cx + spread, treeTop + treeH * 0.3 - zoneR - 14, 'bold 13px monospace', '#b91c1c');
 
         fitText(ctx, bothSurvive
             ? 'Different enough niches -- both species can stay in the tree'

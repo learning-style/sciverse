@@ -26,8 +26,8 @@ export const C50SpaceMaterialsLab = ({ state, onStateChange }: Props) => {
         ctx.font = '26px serif';
         ctx.textAlign = 'center';
         ctx.fillText('☀️', 44, stageTop + 44);
-        outlineText(ctx, '120 °C in sunlight', safeRight * 0.25, stageBottom - 24, 'bold 13px monospace', '#fde68a');
-        outlineText(ctx, '-100 °C in shadow', safeRight * 0.75, stageBottom - 24, 'bold 13px monospace', '#bfdbfe');
+        outlineText(ctx, '120 °C in sunlight', safeRight * 0.25, stageBottom - 24, 'bold 13px monospace', '#fde68a', 'center', safeRight * 0.5 - 8);
+        outlineText(ctx, '-100 °C in shadow', safeRight * 0.75, stageBottom - 24, 'bold 13px monospace', '#bfdbfe', 'center', safeRight * 0.5 - 8);
 
         // The body, wrapped in its gold blanket, dulling as the years pass
         const gold = `rgb(${Math.round(212 - wear * 60)}, ${Math.round(175 - wear * 60)}, ${Math.round(55 + wear * 30)})`;

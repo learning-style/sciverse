@@ -55,8 +55,8 @@ export const C42HydrationLab = ({ state, onStateChange }: Props) => {
         ctx.lineWidth = 2;
         ctx.strokeRect(bx, by, bw, 32);
         outlineText(ctx, 'body balance bar', bx + bw / 2, by - 12, 'bold 14px monospace');
-        outlineText(ctx, 'watered down', bx + 4, by + 52, 'bold 13px monospace', '#b91c1c', 'left');
-        outlineText(ctx, 'too salty', bx + bw - 4, by + 52, 'bold 13px monospace', '#b91c1c', 'right');
+        outlineText(ctx, 'watered down', bx + 4, by + 52, 'bold 13px monospace', '#b91c1c', 'left', bw / 2 - 8);
+        outlineText(ctx, 'too salty', bx + bw - 4, by + 52, 'bold 13px monospace', '#b91c1c', 'right', bw / 2 - 8);
 
         // Marker showing where this drink puts the body.
         const mx = bx + Math.min(1, gPerL / 4) * bw;

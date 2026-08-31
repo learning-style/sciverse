@@ -28,8 +28,8 @@ export const C37BatteryLab = ({ state, onStateChange }: Props) => {
         ctx.lineWidth = 2;
         ctx.strokeRect(anodeX, cellY, 40, cellH);
         ctx.strokeRect(cathodeX, cellY, 40, cellH);
-        outlineText(ctx, '- ANODE', anodeX + 20, cellY + cellH + 22, 'bold 13px monospace');
-        outlineText(ctx, '+ CATHODE', cathodeX + 20, cellY + cellH + 22, 'bold 13px monospace');
+        outlineText(ctx, '- ANODE', anodeX + 20, cellY + cellH + 22, 'bold 13px monospace', '#000000', 'center', cathodeX - anodeX - 8);
+        outlineText(ctx, '+ CATHODE', cathodeX + 20, cellY + cellH + 22, 'bold 13px monospace', '#000000', 'center', cathodeX - anodeX - 8);
 
         // Electrolyte between them.
         ctx.fillStyle = 'rgba(56,189,248,0.28)';

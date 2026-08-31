@@ -27,7 +27,7 @@ export const C40FairTestLab = ({ state, onStateChange }: Props) => {
             ctx.strokeStyle = '#1e293b';
             ctx.lineWidth = 1.5;
             ctx.stroke();
-            outlineText(ctx, name, 120, y + 19, 'bold 14px monospace');
+            outlineText(ctx, name, 120, y + 19, 'bold 14px monospace', '#000000', 'center', safeRight - 258);
             outlineText(ctx, isChanged ? 'CHANGED' : 'held fixed', safeRight - 130, y + 19, 'bold 13px monospace',
                 isChanged ? '#b91c1c' : '#15803d');
         });
