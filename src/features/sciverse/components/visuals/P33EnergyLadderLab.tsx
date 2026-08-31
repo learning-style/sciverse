@@ -48,12 +48,12 @@ export const P33EnergyLadderLab = ({ state, onStateChange }: Props) => {
                 : energyPct >= 0.01 ? `${energyPct.toFixed(2)}%`
                 : `${energyPct.toExponential(0)}%`;
             const lx = Math.min(x + w + 12, safeRight - 96);
-            outlineText(ctx, `${label} left`, lx, y + bandH / 2 + 5, 'bold 15px monospace', '#0f172a', 'left', (hx - lx) / 2 - 6);
+            outlineText(ctx, `${label} left`, lx, y + bandH / 2 + 5, 'bold 15px monospace', '#0f172a', 'left', Math.max(40, safeRight - lx - 6));
 
             // Heat escaping, on the opposite side so the two never collide.
             if (i < steps - 1) {
                 const hx = Math.max(x - 12, 84);
-                outlineText(ctx, '90% lost as heat', hx, y + bandH / 2 + 5, 'bold 14px monospace', '#c2410c', 'right', (hx - lx) / 2 - 6);
+                outlineText(ctx, '90% lost as heat', hx, y + bandH / 2 + 5, 'bold 14px monospace', '#c2410c', 'right', Math.max(40, hx - 6));
             }
         }
 

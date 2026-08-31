@@ -21,7 +21,7 @@ export const P44MaterialTestLab = ({ state, onStateChange }: Props) => {
 
         // ── glass bar: straight, then shattered ──
         const gx = safeRight * 0.09;
-        outlineText(ctx, 'glass bar', gx + barW / 2, midY - 74, 'bold 15px monospace', '#000000', 'center', px0 - gx - 8);
+        outlineText(ctx, 'glass bar', gx + barW / 2, midY - 74, 'bold 15px monospace', '#000000', 'center', safeRight * 0.47 - 8);
         if (!glassBroken) {
             ctx.fillStyle = '#bae6fd';
             ctx.fillRect(gx, midY - barH / 2, barW, barH);
@@ -50,7 +50,7 @@ export const P44MaterialTestLab = ({ state, onStateChange }: Props) => {
 
         // ── plastic bar: bends further and further, never shatters ──
         const px0 = safeRight * 0.56;
-        outlineText(ctx, 'plastic bar', px0 + barW / 2, midY - 74, 'bold 15px monospace', '#000000', 'center', px0 - gx - 8);
+        outlineText(ctx, 'plastic bar', px0 + barW / 2, midY - 74, 'bold 15px monospace', '#000000', 'center', safeRight * 0.47 - 8);
         ctx.strokeStyle = '#f59e0b';
         ctx.lineWidth = barH;
         ctx.lineCap = 'round';
