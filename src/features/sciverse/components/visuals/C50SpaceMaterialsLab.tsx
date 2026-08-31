@@ -29,9 +29,10 @@ export const C50SpaceMaterialsLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, '120 °C in sunlight', safeRight * 0.25, stageBottom - 24, 'bold 13px monospace', '#fde68a', 'center', safeRight * 0.5 - 8);
         outlineText(ctx, '-100 °C in shadow', safeRight * 0.75, stageBottom - 24, 'bold 13px monospace', '#bfdbfe', 'center', safeRight * 0.5 - 8);
 
-        // The body, wrapped in its gold blanket, dulling as the years pass
-        const gold = `rgb(${Math.round(212 - wear * 60)}, ${Math.round(175 - wear * 60)}, ${Math.round(55 + wear * 30)})`;
-        ctx.fillStyle = gold;
+        // The body in its heat blanket. It looks golden because the plastic
+        // film is faintly orange, not because there is any gold in it.
+        const blanket = `rgb(${Math.round(212 - wear * 60)}, ${Math.round(175 - wear * 60)}, ${Math.round(55 + wear * 30)})`;
+        ctx.fillStyle = blanket;
         ctx.fillRect(cx - 30, cy - 26, 60, 52);
         ctx.strokeStyle = '#78350f';
         ctx.lineWidth = 2;
@@ -63,7 +64,7 @@ export const C50SpaceMaterialsLab = ({ state, onStateChange }: Props) => {
         ctx.fillStyle = '#e2e8f0';
         ctx.fillRect(sx, cy - 46, 3, 2);
 
-        outlineText(ctx, 'gold blanket', cx, cy + 44, 'bold 12px monospace', '#fde68a');
+        outlineText(ctx, 'heat blanket -- shiny plastic, not gold', cx, cy + 44, 'bold 12px monospace', '#fde68a', 'center', safeRight - 40);
         outlineText(ctx, 'solar panels', cx - 71, cy + 28, 'bold 12px monospace', '#bfdbfe');
 
         fitText(ctx, `${years} year${years === 1 ? '' : 's'} in space: panels make ${Math.round(power)}% of what they made when new`,

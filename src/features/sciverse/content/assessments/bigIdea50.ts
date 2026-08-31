@@ -67,11 +67,11 @@ export const bigIdea50Assessment: AssessmentData = {
             id: 6,
             difficulty: 'medium',
             discipline: 'chemistry',
-            question: 'Why is a satellite wrapped in shiny gold blankets?',
-            options: ['They bounce sunlight away when hot and hold warmth in when cold', 'Gold is very strong', 'To make it look expensive', 'Gold blocks flying specks'],
+            question: 'A satellite is wrapped in a shiny heat blanket. What is it actually made of?',
+            options: ['Thin sheets of plastic film with a shiny metal coating', 'Solid gold foil', 'Thick woollen cloth', 'Painted metal plates'],
             correctIndex: 0,
-            hint: 'Think about 120 °C then -100 °C.',
-            explanation: 'The blankets manage the enormous heat swing.'
+            hint: 'It only looks golden.',
+            explanation: 'The golden colour is the tint of the plastic film, not gold. The shiny layers bounce heat away in sunlight and hold warmth in when in shadow.'
         },
         {
             id: 7,
