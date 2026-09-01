@@ -133,6 +133,11 @@ export const LessonHub = () => {
                                                         <span className={`flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border ${badge.bg} ${badge.text}`}>
                                                             <BadgeIcon size={10} /> {lesson.id.toUpperCase()}
                                                         </span>
+                                                        {lesson.level === 2 && (
+                                                            <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border border-amber-300 bg-amber-50 text-amber-700">
+                                                                Level 2 · Grades 6-8
+                                                            </span>
+                                                        )}
                                                     </div>
                                                     <h3 className="text-sm font-bold text-slate-900 group-hover:text-indigo-700 transition-colors">{lesson.title}</h3>
                                                     <p className="text-xs text-slate-600 mt-1">{lesson.subtitle}</p>

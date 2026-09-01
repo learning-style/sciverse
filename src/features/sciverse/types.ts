@@ -93,6 +93,8 @@ export interface LessonMeta {
     icon: string;
     accentColor: string;
     crossLinks: string[];
+    /** Grade band. Absent or 1 = grades 3-5. 2 = grades 6-8. */
+    level?: 1 | 2;
 }
 
 export type SimTrigger = {

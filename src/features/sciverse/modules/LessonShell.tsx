@@ -157,6 +157,7 @@ const LESSONS_WITH_NATIVE_CONTROLS = new Set([
     'p48', 'c48', 'b48',
     'p49', 'c49', 'b49',
     'p50', 'c50', 'b50',
+    'l2p33',
 ]);
 
 interface WalkthroughGuide {
@@ -564,8 +565,11 @@ export const LessonShell = () => {
 
     const lesson = useMemo(() => LESSON_REGISTRY.find(l => l.id === lessonId), [lessonId]);
     const nextLesson = useMemo(() => {
-        const idx = LESSON_REGISTRY.findIndex(l => l.id === lessonId);
-        return idx >= 0 && idx < LESSON_REGISTRY.length - 1 ? LESSON_REGISTRY[idx + 1] : undefined;
+        // Level 2 lessons sit outside the Level 1 running order, so finishing
+        // b50 does not spill into them and l2p33 has no onward link of its own.
+        const flow = LESSON_REGISTRY.filter(l => (l.level ?? 1) === 1);
+        const idx = flow.findIndex(l => l.id === lessonId);
+        return idx >= 0 && idx < flow.length - 1 ? flow[idx + 1] : undefined;
     }, [lessonId]);
     const scriptFactory = lessonId ? LESSON_SCRIPTS[lessonId] : undefined;
 

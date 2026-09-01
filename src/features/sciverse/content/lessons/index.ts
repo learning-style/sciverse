@@ -156,6 +156,7 @@ import { getB49Script } from './b49-healing-the-land';
 import { getP50Script } from './p50-orbit-height';
 import { getC50Script } from './c50-built-for-space';
 import { getB50Script } from './b50-life-from-space';
+import { getL2P33Script } from './l2p33-energy-pyramid';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1076,6 +1077,13 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'p50': getP50Script,
     'c50': getC50Script,
     'b50': getB50Script,
+
+    // --- Level 2 (grades 6-8) ---
+    // The id deliberately starts with a digit after the leading letter, so
+    // Number.parseInt(id.slice(1)) is 2, not 33. That keeps it outside the
+    // `bigIdea >= 21` Level 1 normalisation, which would otherwise flatten its
+    // multi-branch maths questions into single-option steps.
+    'l2p33': getL2P33Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1444,5 +1452,10 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'p50', title: 'Eyes in the Sky', subtitle: 'Why no satellite can do everything', discipline: 'physics', bigIdea: 50, bigIdeaTitle: 'How Do Satellites Help Life on Earth?', icon: '🛰️', accentColor: 'indigo', crossLinks: ['c50', 'b50'] },
     { id: 'c50', title: 'Built for Space', subtitle: 'Surviving twenty years with nobody to fix you', discipline: 'chemistry', bigIdea: 50, bigIdeaTitle: 'How Do Satellites Help Life on Earth?', icon: '✨', accentColor: 'emerald', crossLinks: ['p50', 'b50'] },
     { id: 'b50', title: 'Watching Life from Space', subtitle: 'Measuring the home, not the animals', discipline: 'biology', bigIdea: 50, bigIdeaTitle: 'How Do Satellites Help Life on Earth?', icon: '🌍', accentColor: 'rose', crossLinks: ['p50', 'c50'] },
+
+    // --- Level 2 (grades 6-8) ---
+    // Appended after every Level 1 lesson so the Level 1 running order is
+    // untouched; the hub groups by bigIdea, so it still appears under Big Idea 33.
+    { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
 ];
 

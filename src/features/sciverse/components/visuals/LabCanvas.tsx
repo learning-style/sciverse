@@ -21,6 +21,10 @@ export interface LabScene {
     v: number;
     /** Raw slider value (min..max). */
     raw: number;
+    /** Second slider, normalized to 0..1. Zero when the lab declares only one. */
+    v2: number;
+    /** Second slider's raw value. Zero when the lab declares only one. */
+    raw2: number;
     /** Top of the drawing stage. Everything above is reserved for headings. */
     stageTop: number;
     /** Bottom of the drawing stage. Everything below is the footer band -- art
@@ -56,6 +60,16 @@ interface LabCanvasProps {
      *  control can show its real unit (°C, metres, seconds) instead of a percentage. */
     controlDisplay?: (raw: number, v: number) => string;
     accent?: Accent;
+    /** Optional second slider. Level 2 labs use this to let a learner vary two
+     *  quantities at once and see which one actually dominates the result. */
+    control2?: {
+        label: string;
+        key: string;
+        min: number;
+        max: number;
+        initial: number;
+        display?: (raw: number, v: number) => string;
+    };
     /** Overlay text shown when the lesson reaches its complete phase. */
     completeTitle: string;
     completeSubtitle: string;
@@ -243,6 +257,7 @@ export const LabCanvas = ({
     controlMax = 100,
     controlInitial = 50,
     controlDisplay,
+    control2,
     accent = 'indigo',
     completeTitle,
     completeSubtitle,
@@ -258,6 +273,7 @@ export const LabCanvas = ({
     const tRef = useRef(0);
 
     const [raw, setRaw] = useState(controlInitial);
+    const [raw2, setRaw2] = useState(control2?.initial ?? 0);
 
     const draw = useCallback(() => {
         const canvas = canvasRef.current;
@@ -281,6 +297,7 @@ export const LabCanvas = ({
         const t = tRef.current;
         const safeRight = Math.max(240, W - 285);
         const v = (raw - controlMin) / (controlMax - controlMin || 1);
+        const v2 = control2 ? (raw2 - control2.min) / (control2.max - control2.min || 1) : 0;
 
         const grad = ctx.createLinearGradient(0, 0, 0, H);
         grad.addColorStop(0, sky[0]);
@@ -297,7 +314,7 @@ export const LabCanvas = ({
         ctx.beginPath();
         ctx.rect(0, 0, W, stageBottom);
         ctx.clip();
-        const footer = drawScene({ ctx, W, H, safeRight, t, v, raw, stageTop, stageBottom }) || {};
+        const footer = drawScene({ ctx, W, H, safeRight, t, v, raw, v2, raw2, stageTop, stageBottom }) || {};
         ctx.restore();
 
         // Heading band, painted over the scene for the same reason as the footer:
@@ -347,8 +364,8 @@ export const LabCanvas = ({
 
         animRef.current = requestAnimationFrame(draw);
     }, [
-        raw, phase, title, readout, drawScene, completeTitle, completeSubtitle,
-        completeNote, controlMin, controlMax, sky,
+        raw, raw2, control2, phase, title, readout, drawScene, completeTitle,
+        completeSubtitle, completeNote, controlMin, controlMax, sky,
     ]);
 
     useEffect(() => {
@@ -398,6 +415,28 @@ export const LabCanvas = ({
                         onStateChange(controlKey, next);
                     }}
                 />
+                {control2 && (
+                    <div className="mt-3 pt-3 border-t border-slate-200">
+                        <label className={`block mb-1 text-[13px] font-bold leading-snug ${ACCENT_TEXT[accent]}`}>
+                            {control2.label}:{' '}
+                            {control2.display
+                                ? control2.display(raw2, (raw2 - control2.min) / (control2.max - control2.min || 1))
+                                : `${raw2}`}
+                        </label>
+                        <input
+                            className={`w-full ${ACCENT_RANGE[accent]}`}
+                            type="range"
+                            min={control2.min}
+                            max={control2.max}
+                            value={raw2}
+                            onChange={e => {
+                                const next = Number(e.target.value);
+                                setRaw2(next);
+                                onStateChange(control2.key, next);
+                            }}
+                        />
+                    </div>
+                )}
             </div>
         </div>
     );
