@@ -157,6 +157,9 @@ import { getP50Script } from './p50-orbit-height';
 import { getC50Script } from './c50-built-for-space';
 import { getB50Script } from './b50-life-from-space';
 import { getL2P33Script } from './l2p33-energy-pyramid';
+import { getL2C33Script } from './l2c33-carbon-budget';
+import { getL2B33Script } from './l2b33-backup-maths';
+import { getL2P49Script } from './l2p49-energy-cost-of-metal';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1084,6 +1087,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     // `bigIdea >= 21` Level 1 normalisation, which would otherwise flatten its
     // multi-branch maths questions into single-option steps.
     'l2p33': getL2P33Script,
+    'l2c33': getL2C33Script,
+    'l2b33': getL2B33Script,
+    'l2p49': getL2P49Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1457,5 +1463,8 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     // Appended after every Level 1 lesson so the Level 1 running order is
     // untouched; the hub groups by bigIdea, so it still appears under Big Idea 33.
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
+    { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
+    { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
+    { id: 'l2p49', title: 'The Energy Cost of Metal', subtitle: 'Why grade beats depth', discipline: 'physics', bigIdea: 49, bigIdeaTitle: 'How Do We Use Earth Resources Responsibly?', icon: '⚙️', accentColor: 'indigo', crossLinks: ['p49'], level: 2 },
 ];
 
