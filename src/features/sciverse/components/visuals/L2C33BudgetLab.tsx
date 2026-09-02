@@ -37,7 +37,8 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#15803d';
         ctx.lineWidth = 2;
         ctx.strokeRect(boxX, groundY, boxW, boxH);
-        outlineText(ctx, 'plants and soil', safeRight / 2, groundY + 28, 'bold 15px monospace', '#14532d', 'center', boxW - 12);
+        outlineText(ctx, 'plants and soil', safeRight / 2, groundY + 20, 'bold 15px monospace', '#14532d', 'center', boxW - 12);
+        outlineText(ctx, 'the reservoir we are tracking', safeRight / 2, groundY + 36, 'bold 11px monospace', '#14532d', 'center', boxW - 12);
 
         // The two fluxes, drawn as arrows whose width is the size of the flux
         const arrowTop = airY + boxH;
@@ -67,19 +68,19 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
         // flow, which is exactly the confusion the lesson is trying to remove.
         const labelW = boxW * 0.46;
         outlineText(ctx, 'photosynthesis', downX, midY - 22, 'bold 12px monospace', '#14532d', 'center', labelW);
-        outlineText(ctx, `${photo.toFixed(1)} kg/m² per year`, downX, midY - 6, 'bold 12px monospace', '#14532d', 'center', labelW);
-        outlineText(ctx, 'flux in: air to plants', downX, midY + 10, 'bold 11px monospace', '#14532d', 'center', labelW);
+        outlineText(ctx, `${photo.toFixed(1)} kg carbon per m² per year`, downX, midY - 6, 'bold 12px monospace', '#14532d', 'center', labelW);
+        outlineText(ctx, 'INTO plants and soil', downX, midY + 10, 'bold 11px monospace', '#14532d', 'center', labelW);
         outlineText(ctx, 'respiration + decay', upX, midY - 22, 'bold 12px monospace', '#7c2d12', 'center', labelW);
-        outlineText(ctx, `${decomp.toFixed(1)} kg/m² per year`, upX, midY - 6, 'bold 12px monospace', '#7c2d12', 'center', labelW);
-        outlineText(ctx, 'flux out: plants to air', upX, midY + 10, 'bold 11px monospace', '#7c2d12', 'center', labelW);
+        outlineText(ctx, `${decomp.toFixed(1)} kg carbon per m² per year`, upX, midY - 6, 'bold 12px monospace', '#7c2d12', 'center', labelW);
+        outlineText(ctx, 'OUT OF plants and soil', upX, midY + 10, 'bold 11px monospace', '#7c2d12', 'center', labelW);
 
         const status = net > 0.05 ? 'carbon sink' : net < -0.05 ? 'carbon source' : 'steady state';
         outlineText(ctx, 'a flux is a flow per year, not an amount stored',
             safeRight / 2, stageBottom - 42, 'bold 11px monospace', '#334155', 'center', safeRight - 30);
-        outlineText(ctx, `net change = ${photo.toFixed(1)} - ${decomp.toFixed(1)} = ${net > 0 ? '+' : ''}${net.toFixed(1)} kg per year -- ${status}`,
+        outlineText(ctx, `net change in plants and soil = ${photo.toFixed(1)} - ${decomp.toFixed(1)} = ${net > 0 ? '+' : ''}${net.toFixed(1)} kg carbon per year -- ${status}`,
             safeRight / 2, stageBottom - 22, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
 
-        fitText(ctx, `After 50 years: ${stored > 0 ? '+' : ''}${stored.toFixed(0)} kg of carbon per square metre`,
+        fitText(ctx, `After 50 years: ${stored > 0 ? '+' : ''}${stored.toFixed(0)} kg of carbon per square metre stored`,
             safeRight / 2, 94, safeRight - 24, 16);
         fitText(ctx, 'net change = flux in - flux out, and the total just adds up',
             safeRight / 2, 118, safeRight - 24, 13);
@@ -109,14 +110,14 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
             controlMin={2}
             controlMax={20}
             controlInitial={12}
-            controlDisplay={raw => `${(Math.round(raw) / 10).toFixed(1)} kg/m² per year in`}
+            controlDisplay={raw => `${(Math.round(raw) / 10).toFixed(1)} kg of carbon INTO plants and soil, per m² per year`}
             control2={{
                 label: 'Decomposition',
                 key: 'decomposition',
                 min: 2,
                 max: 20,
                 initial: 12,
-                display: raw => `${(Math.round(raw) / 10).toFixed(1)} kg/m² per year out`,
+                display: raw => `${(Math.round(raw) / 10).toFixed(1)} kg of carbon OUT OF plants and soil, per m² per year`,
             }}
             accent="emerald"
             sky={['#f0f9ff', '#f8fafc']}
