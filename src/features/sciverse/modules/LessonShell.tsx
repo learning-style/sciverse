@@ -569,7 +569,15 @@ export const LessonShell = () => {
     // Level 2 track, and a Level 2 lesson still gets a Next within its own.
     const flow = useMemo(() => {
         const currentLevel = LESSON_REGISTRY.find(l => l.id === lessonId)?.level ?? 1;
-        return LESSON_REGISTRY.filter(l => (l.level ?? 1) === currentLevel);
+        const list = LESSON_REGISTRY.filter(l => (l.level ?? 1) === currentLevel);
+        // Level 1's registry order is curated, so leave it alone. Level 2 is
+        // sorted by Big Idea and then physics -> chemistry -> biology, so the
+        // track reads in order no matter when an entry happened to be added.
+        if (currentLevel === 1) return list;
+        const rank: Record<string, number> = { physics: 0, chemistry: 1, biology: 2 };
+        return [...list].sort(
+            (a, b) => a.bigIdea - b.bigIdea || (rank[a.discipline] ?? 0) - (rank[b.discipline] ?? 0)
+        );
     }, [lessonId]);
     const nextLesson = useMemo(() => {
         const idx = flow.findIndex(l => l.id === lessonId);

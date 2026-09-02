@@ -1,4 +1,5 @@
-﻿import { Link } from 'react-router-dom';
+﻿import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowLeft, Atom, Beaker, Dna } from 'lucide-react';
 import { LESSON_REGISTRY } from '../content/lessons';
 import { Discipline } from '../types';
@@ -62,8 +63,24 @@ const BIG_IDEA_COLORS = [
     'from-violet-700/20 to-violet-900/10',
 ];
 
+const LEVELS: { level: 1 | 2; label: string; grades: string; blurb: string }[] = [
+    { level: 1, label: 'Level 1', grades: 'Grades 3-5', blurb: 'Big Ideas explored in plain language, one idea and one control at a time.' },
+    { level: 2, label: 'Level 2', grades: 'Grades 6-8', blurb: 'The same Big Ideas with the arithmetic put in: real units, two controls, and a calculation to work through.' },
+];
+
 export const LessonHub = () => {
-    const bigIdeas = Array.from({ length: 50 }, (_, i) => i + 1);
+    const [level, setLevel] = useState<1 | 2>(1);
+
+    const lessonsAtLevel = useMemo(
+        () => LESSON_REGISTRY.filter(l => (l.level ?? 1) === level),
+        [level]
+    );
+    // Only Big Ideas that actually have lessons at this level, in order.
+    const bigIdeas = useMemo(
+        () => Array.from(new Set(lessonsAtLevel.map(l => l.bigIdea))).sort((a, b) => a - b),
+        [lessonsAtLevel]
+    );
+    const active = LEVELS.find(l => l.level === level) ?? LEVELS[0];
 
     return (
         <div className="min-h-screen bg-white text-slate-900 font-mono">
@@ -75,7 +92,7 @@ export const LessonHub = () => {
                     </Link>
                     <span className="font-bold text-lg tracking-tight">SCI<span className="text-indigo-600">VERSE</span></span>
                 </div>
-                <span className="text-xs text-slate-600 tracking-widest uppercase">150 Interactive Lessons</span>
+                <span className="text-xs text-slate-600 tracking-widest uppercase">{lessonsAtLevel.length} Interactive Lessons</span>
             </div>
 
             {/* Hero */}
@@ -84,8 +101,27 @@ export const LessonHub = () => {
                     Explore Science Across <span className="text-indigo-600">Disciplines</span>
                 </h1>
                 <p className="text-slate-600 text-sm max-w-xl mx-auto">
-                    50 Big Ideas. 3 Disciplines. 150 Lessons connecting Physics, Chemistry, and Biology.
+                    {bigIdeas.length} Big Idea{bigIdeas.length === 1 ? '' : 's'}. 3 Disciplines. {lessonsAtLevel.length} Lessons connecting Physics, Chemistry, and Biology.
                 </p>
+
+                {/* Level selector */}
+                <div className="flex justify-center gap-2 mt-6">
+                    {LEVELS.map(l => (
+                        <button
+                            key={l.level}
+                            type="button"
+                            onClick={() => setLevel(l.level)}
+                            className={`px-4 py-2 rounded-lg border text-xs font-bold transition-colors ${
+                                l.level === level
+                                    ? 'border-indigo-400 bg-indigo-50 text-indigo-700'
+                                    : 'border-slate-200 bg-white text-slate-500 hover:border-slate-400 hover:text-slate-700'
+                            }`}
+                        >
+                            {l.label} <span className="font-medium opacity-80">· {l.grades}</span>
+                        </button>
+                    ))}
+                </div>
+                <p className="text-slate-500 text-xs max-w-xl mx-auto mt-3">{active.blurb}</p>
                 <div className="flex justify-center gap-6 mt-6">
                     {Object.entries(DISCIPLINE_BADGE).map(([key, d]) => {
                         const Icon = d.icon;
@@ -101,7 +137,7 @@ export const LessonHub = () => {
             {/* Big Ideas */}
             <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
                 {bigIdeas.map(bigIdeaNum => {
-                    const lessons = LESSON_REGISTRY.filter(l => l.bigIdea === bigIdeaNum);
+                    const lessons = lessonsAtLevel.filter(l => l.bigIdea === bigIdeaNum);
                     const title = lessons[0]?.bigIdeaTitle || '';
 
                     return (
@@ -133,11 +169,6 @@ export const LessonHub = () => {
                                                         <span className={`flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border ${badge.bg} ${badge.text}`}>
                                                             <BadgeIcon size={10} /> {lesson.id.toUpperCase()}
                                                         </span>
-                                                        {lesson.level === 2 && (
-                                                            <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border border-amber-300 bg-amber-50 text-amber-700">
-                                                                Level 2 · Grades 6-8
-                                                            </span>
-                                                        )}
                                                     </div>
                                                     <h3 className="text-sm font-bold text-slate-900 group-hover:text-indigo-700 transition-colors">{lesson.title}</h3>
                                                     <p className="text-xs text-slate-600 mt-1">{lesson.subtitle}</p>
