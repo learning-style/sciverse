@@ -157,6 +157,7 @@ const LESSONS_WITH_NATIVE_CONTROLS = new Set([
     'p48', 'c48', 'b48',
     'p49', 'c49', 'b49',
     'p50', 'c50', 'b50',
+    'l2p1', 'l2c1', 'l2b1',
     'l2p33', 'l2c33', 'l2b33', 'l2p49',
 ]);
 

@@ -156,6 +156,9 @@ import { getB49Script } from './b49-healing-the-land';
 import { getP50Script } from './p50-orbit-height';
 import { getC50Script } from './c50-built-for-space';
 import { getB50Script } from './b50-life-from-space';
+import { getL2P1Script } from './l2p1-force-mass-acceleration';
+import { getL2C1Script } from './l2c1-specific-heat';
+import { getL2B1Script } from './l2b1-lever-in-your-arm';
 import { getL2P33Script } from './l2p33-energy-pyramid';
 import { getL2C33Script } from './l2c33-carbon-budget';
 import { getL2B33Script } from './l2b33-backup-maths';
@@ -1086,6 +1089,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     // Number.parseInt(id.slice(1)) is 2, not 33. That keeps it outside the
     // `bigIdea >= 21` Level 1 normalisation, which would otherwise flatten its
     // multi-branch maths questions into single-option steps.
+    'l2p1': getL2P1Script,
+    'l2c1': getL2C1Script,
+    'l2b1': getL2B1Script,
     'l2p33': getL2P33Script,
     'l2c33': getL2C33Script,
     'l2b33': getL2B33Script,
@@ -1462,6 +1468,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     // --- Level 2 (grades 6-8) ---
     // Appended after every Level 1 lesson so the Level 1 running order is
     // untouched; the hub groups by bigIdea, so it still appears under Big Idea 33.
+    { id: 'l2p1', title: 'Force, Mass and Acceleration', subtitle: 'Net force first, then divide', discipline: 'physics', bigIdea: 1, bigIdeaTitle: 'Why Do Things Move?', icon: '🧮', accentColor: 'indigo', crossLinks: ['p1'], level: 2 },
+    { id: 'l2c1', title: 'How Much Heat?', subtitle: 'Why water is so stubborn', discipline: 'chemistry', bigIdea: 1, bigIdeaTitle: 'Why Do Things Move?', icon: '🔥', accentColor: 'emerald', crossLinks: ['c1', 'l2p1'], level: 2 },
+    { id: 'l2b1', title: 'The Lever in Your Arm', subtitle: 'Why your bicep pulls eight times the load', discipline: 'biology', bigIdea: 1, bigIdeaTitle: 'Why Do Things Move?', icon: '💪', accentColor: 'rose', crossLinks: ['b1', 'l2p1'], level: 2 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },

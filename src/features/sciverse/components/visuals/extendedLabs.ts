@@ -54,6 +54,9 @@ import { B49HealingLab } from './B49HealingLab';
 import { P50OrbitLab } from './P50OrbitLab';
 import { C50SpaceMaterialsLab } from './C50SpaceMaterialsLab';
 import { B50DetailLab } from './B50DetailLab';
+import { L2P1ForceLab } from './L2P1ForceLab';
+import { L2C1HeatLab } from './L2C1HeatLab';
+import { L2B1LeverLab } from './L2B1LeverLab';
 import { L2P33PyramidLab } from './L2P33PyramidLab';
 import { L2C33BudgetLab } from './L2C33BudgetLab';
 import { L2B33BackupLab } from './L2B33BackupLab';
@@ -123,6 +126,9 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     p50: P50OrbitLab,
     c50: C50SpaceMaterialsLab,
     b50: B50DetailLab,
+    l2p1: L2P1ForceLab,
+    l2c1: L2C1HeatLab,
+    l2b1: L2B1LeverLab,
     l2p33: L2P33PyramidLab,
     l2c33: L2C33BudgetLab,
     l2b33: L2B33BackupLab,
