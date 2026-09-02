@@ -62,15 +62,21 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
         drawFlux(upX, decomp, true, '#b45309');
 
         const midY = (arrowTop + arrowBottom) / 2;
-        outlineText(ctx, `photosynthesis ${photo.toFixed(1)}`, downX, midY - 6,
-            'bold 12px monospace', '#14532d', 'center', boxW * 0.44);
-        outlineText(ctx, `decomposition ${decomp.toFixed(1)}`, upX, midY - 6,
-            'bold 12px monospace', '#7c2d12', 'center', boxW * 0.44);
-        outlineText(ctx, 'flux in', downX, midY + 10, 'bold 11px monospace', '#14532d', 'center', boxW * 0.44);
-        outlineText(ctx, 'flux out', upX, midY + 10, 'bold 11px monospace', '#7c2d12', 'center', boxW * 0.44);
+        // Each flux is labelled with what it is, how big it is, and which way it
+        // goes. A bare number here reads as an amount of carbon rather than a
+        // flow, which is exactly the confusion the lesson is trying to remove.
+        const labelW = boxW * 0.46;
+        outlineText(ctx, 'photosynthesis', downX, midY - 22, 'bold 12px monospace', '#14532d', 'center', labelW);
+        outlineText(ctx, `${photo.toFixed(1)} kg/m² per year`, downX, midY - 6, 'bold 12px monospace', '#14532d', 'center', labelW);
+        outlineText(ctx, 'flux in: air to plants', downX, midY + 10, 'bold 11px monospace', '#14532d', 'center', labelW);
+        outlineText(ctx, 'respiration + decay', upX, midY - 22, 'bold 12px monospace', '#7c2d12', 'center', labelW);
+        outlineText(ctx, `${decomp.toFixed(1)} kg/m² per year`, upX, midY - 6, 'bold 12px monospace', '#7c2d12', 'center', labelW);
+        outlineText(ctx, 'flux out: plants to air', upX, midY + 10, 'bold 11px monospace', '#7c2d12', 'center', labelW);
 
         const status = net > 0.05 ? 'carbon sink' : net < -0.05 ? 'carbon source' : 'steady state';
-        outlineText(ctx, `net change = ${photo.toFixed(1)} - ${decomp.toFixed(1)} = ${net > 0 ? '+' : ''}${net.toFixed(1)} kg -- ${status}`,
+        outlineText(ctx, 'a flux is a flow per year, not an amount stored',
+            safeRight / 2, stageBottom - 42, 'bold 11px monospace', '#334155', 'center', safeRight - 30);
+        outlineText(ctx, `net change = ${photo.toFixed(1)} - ${decomp.toFixed(1)} = ${net > 0 ? '+' : ''}${net.toFixed(1)} kg per year -- ${status}`,
             safeRight / 2, stageBottom - 22, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
 
         fitText(ctx, `After 50 years: ${stored > 0 ? '+' : ''}${stored.toFixed(0)} kg of carbon per square metre`,

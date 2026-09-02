@@ -19,7 +19,9 @@ export const SocraticChat = ({ currentNode, history, onOptionSelect, onRewindTo,
 
     // Biology is the third and final lesson of every Big Idea, so finishing it
     // means the whole topic is done and the assessment is due.
-    const finishedBigIdea = lesson?.discipline === 'biology';
+    // Level 1 biology lessons close a Big Idea and offer its assessment.
+    // Level 2 has no assessments yet, so it keeps a normal Next instead.
+    const finishedBigIdea = lesson?.discipline === 'biology' && (lesson?.level ?? 1) === 1;
 
     // Auto-scroll to bottom
     useEffect(() => {

@@ -564,13 +564,17 @@ export const LessonShell = () => {
     }, [lessonId]);
 
     const lesson = useMemo(() => LESSON_REGISTRY.find(l => l.id === lessonId), [lessonId]);
+    // Each level is its own running order: Level 1 chains through Level 1, and
+    // Level 2 through Level 2. Finishing b50 therefore does not spill into the
+    // Level 2 track, and a Level 2 lesson still gets a Next within its own.
+    const flow = useMemo(() => {
+        const currentLevel = LESSON_REGISTRY.find(l => l.id === lessonId)?.level ?? 1;
+        return LESSON_REGISTRY.filter(l => (l.level ?? 1) === currentLevel);
+    }, [lessonId]);
     const nextLesson = useMemo(() => {
-        // Level 2 lessons sit outside the Level 1 running order, so finishing
-        // b50 does not spill into them and l2p33 has no onward link of its own.
-        const flow = LESSON_REGISTRY.filter(l => (l.level ?? 1) === 1);
         const idx = flow.findIndex(l => l.id === lessonId);
         return idx >= 0 && idx < flow.length - 1 ? flow[idx + 1] : undefined;
-    }, [lessonId]);
+    }, [flow, lessonId]);
     const scriptFactory = lessonId ? LESSON_SCRIPTS[lessonId] : undefined;
 
     const script = useMemo(() => {
@@ -683,9 +687,9 @@ export const LessonShell = () => {
     }, [lesson, lessonId, visualState.phase, showCanvasControls, currentNode?.id]);
 
     const prevLesson = useMemo(() => {
-        const idx = LESSON_REGISTRY.findIndex(l => l.id === lessonId);
-        return idx > 0 ? LESSON_REGISTRY[idx - 1] : undefined;
-    }, [lessonId]);
+        const idx = flow.findIndex(l => l.id === lessonId);
+        return idx > 0 ? flow[idx - 1] : undefined;
+    }, [flow, lessonId]);
 
     if (!lesson || !scriptFactory) {
         return (
