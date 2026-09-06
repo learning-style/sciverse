@@ -14,8 +14,9 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
     const drawScene = ({ ctx, safeRight, raw, raw2, stageTop, stageBottom }: LabScene) => {
         const photo = Math.round(raw) / 10;
         const decomp = Math.round(raw2) / 10;
-        const net = photo - decomp;
-        const stored = net * 50;
+        // Tracking the air: in = respiration and decay, out = photosynthesis.
+        const net = decomp - photo;
+        const overFifty = net * 50;
 
         const boxW = Math.min(300, safeRight - 80);
         const boxX = safeRight / 2 - boxW / 2;
@@ -29,7 +30,8 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#0369a1';
         ctx.lineWidth = 2;
         ctx.strokeRect(boxX, airY, boxW, boxH);
-        outlineText(ctx, 'the air', safeRight / 2, airY + 28, 'bold 15px monospace', '#0c4a6e', 'center', boxW - 12);
+        outlineText(ctx, 'the air', safeRight / 2, airY + 20, 'bold 15px monospace', '#0c4a6e', 'center', boxW - 12);
+        outlineText(ctx, 'the reservoir we are tracking', safeRight / 2, airY + 36, 'bold 11px monospace', '#0c4a6e', 'center', boxW - 12);
 
         // The plants-and-soil reservoir
         ctx.fillStyle = '#bbf7d0';
@@ -37,8 +39,7 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#15803d';
         ctx.lineWidth = 2;
         ctx.strokeRect(boxX, groundY, boxW, boxH);
-        outlineText(ctx, 'plants and soil', safeRight / 2, groundY + 20, 'bold 15px monospace', '#14532d', 'center', boxW - 12);
-        outlineText(ctx, 'the reservoir we are tracking', safeRight / 2, groundY + 36, 'bold 11px monospace', '#14532d', 'center', boxW - 12);
+        outlineText(ctx, 'plants and soil', safeRight / 2, groundY + 28, 'bold 15px monospace', '#14532d', 'center', boxW - 12);
 
         // The two fluxes, drawn as arrows whose width is the size of the flux
         const arrowTop = airY + boxH;
@@ -69,39 +70,39 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
         const labelW = boxW * 0.46;
         outlineText(ctx, 'photosynthesis', downX, midY - 22, 'bold 12px monospace', '#14532d', 'center', labelW);
         outlineText(ctx, `${photo.toFixed(1)} kg carbon per m² per year`, downX, midY - 6, 'bold 12px monospace', '#14532d', 'center', labelW);
-        outlineText(ctx, 'INTO plants and soil', downX, midY + 10, 'bold 11px monospace', '#14532d', 'center', labelW);
+        outlineText(ctx, 'OUT OF the air', downX, midY + 10, 'bold 11px monospace', '#14532d', 'center', labelW);
         outlineText(ctx, 'respiration + decay', upX, midY - 22, 'bold 12px monospace', '#7c2d12', 'center', labelW);
         outlineText(ctx, `${decomp.toFixed(1)} kg carbon per m² per year`, upX, midY - 6, 'bold 12px monospace', '#7c2d12', 'center', labelW);
-        outlineText(ctx, 'OUT OF plants and soil', upX, midY + 10, 'bold 11px monospace', '#7c2d12', 'center', labelW);
+        outlineText(ctx, 'INTO the air', upX, midY + 10, 'bold 11px monospace', '#7c2d12', 'center', labelW);
 
-        const statusLine = net > 0.05
+        const statusLine = net < -0.05
             ? 'carbon sink -- the air is losing carbon'
-            : net < -0.05
+            : net > 0.05
                 ? 'carbon source -- the air is gaining carbon'
                 : 'steady state -- the air is neither losing nor gaining';
         outlineText(ctx, 'a flux is a flow per year, not an amount stored',
             safeRight / 2, stageBottom - 46, 'bold 11px monospace', '#334155', 'center', safeRight - 30);
-        outlineText(ctx, `net change in plants and soil = ${photo.toFixed(1)} - ${decomp.toFixed(1)} = ${net > 0 ? '+' : ''}${net.toFixed(1)} kg carbon per year`,
+        outlineText(ctx, `net change in the air = ${decomp.toFixed(1)} - ${photo.toFixed(1)} = ${net > 0 ? '+' : ''}${net.toFixed(1)} kg carbon per year`,
             safeRight / 2, stageBottom - 28, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
         // The status is always shown with what it means for the AIR, because
         // "sink" reads backwards when you are watching the land fill up.
         outlineText(ctx, statusLine, safeRight / 2, stageBottom - 10,
-            'bold 12px monospace', net > 0.05 ? '#166534' : net < -0.05 ? '#b91c1c' : '#334155',
+            'bold 12px monospace', net < -0.05 ? '#166534' : net > 0.05 ? '#b91c1c' : '#334155',
             'center', safeRight - 30);
 
-        fitText(ctx, `After 50 years: ${stored > 0 ? '+' : ''}${stored.toFixed(0)} kg of carbon per square metre stored`,
+        fitText(ctx, `After 50 years: the air ${net < -0.005 ? 'loses' : net > 0.005 ? 'gains' : 'neither loses nor gains'} ${Math.abs(overFifty) < 0.5 ? '' : Math.abs(overFifty).toFixed(0) + ' kg'} of carbon per square metre`,
             safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'net change = flux in - flux out, and the total just adds up',
+        fitText(ctx, 'net change = into the air - out of the air; whatever the air loses, the land gains',
             safeRight / 2, 118, safeRight - 24, 13);
 
-        const note = net > 0.05
-            ? 'Flux in is bigger, so carbon piles up in the land. It is a carbon sink: the air is losing carbon.'
-            : net < -0.05
-                ? 'Flux out is bigger, so stored carbon is leaving the land. It is a carbon source: the air is gaining carbon.'
-                : 'In equals out. Nothing accumulates -- this is steady state.';
+        const note = net < -0.05
+            ? 'Photosynthesis pulls out more than decay puts back, so the air is losing carbon. This land is a carbon sink.'
+            : net > 0.05
+                ? 'Decay puts back more than photosynthesis pulls out, so the air is gaining carbon. This land is a carbon source.'
+                : 'In equals out. The air neither loses nor gains -- this is steady state.';
         return {
             meter: {
-                fraction: Math.max(0, Math.min(1, (net + 1.8) / 3.6)),
+                fraction: Math.max(0, Math.min(1, (-net + 1.8) / 3.6)),
                 caption: 'Carbon Source or Carbon Sink',
                 low: 'Source: air gaining',
                 high: 'Sink: air losing',
@@ -113,20 +114,20 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
     return (
         <LabCanvas
             title="The Carbon Budget"
-            readout={({ raw }) => `Photosynthesis captures ${(Math.round(raw) / 10).toFixed(1)} kg of carbon per square metre each year`}
+            readout={({ raw }) => `Photosynthesis pulls ${(Math.round(raw) / 10).toFixed(1)} kg of carbon out of the air, per square metre each year`}
             controlLabel="Photosynthesis"
             controlKey="photosynthesis"
             controlMin={2}
             controlMax={20}
             controlInitial={12}
-            controlDisplay={raw => `${(Math.round(raw) / 10).toFixed(1)} kg of carbon INTO plants and soil, per m² per year`}
+            controlDisplay={raw => `${(Math.round(raw) / 10).toFixed(1)} kg of carbon OUT OF the air, per m² per year`}
             control2={{
                 label: 'Decomposition',
                 key: 'decomposition',
                 min: 2,
                 max: 20,
                 initial: 12,
-                display: raw => `${(Math.round(raw) / 10).toFixed(1)} kg of carbon OUT OF plants and soil, per m² per year`,
+                display: raw => `${(Math.round(raw) / 10).toFixed(1)} kg of carbon INTO the air, per m² per year`,
             }}
             accent="emerald"
             sky={['#f0f9ff', '#f8fafc']}
