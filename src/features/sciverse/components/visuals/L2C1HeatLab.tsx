@@ -21,10 +21,17 @@ export const L2C1HeatLab = ({ state, onStateChange }: Props) => {
         const energies = SUBSTANCES.map(s => grams * s.c * rise);
         const biggest = Math.max(...energies, 1);
 
-        const baseY = stageBottom - 66;
-        const top = stageTop + 44;
-        const maxH = Math.max(70, baseY - top);
+        // Fixed bands, so nothing can collide. The value label sits above its
+        // bar, and barTop is set low enough that even a full-height bar leaves
+        // clear air under the formula line.
+        const formulaY = stageTop + 20;
+        const barTop = stageTop + 56;
+        const baseY = stageBottom - 82;
+        const maxH = Math.max(60, baseY - barTop);
         const barW = Math.min(96, (safeRight - 120) / 2);
+
+        outlineText(ctx, `Q = ${grams} g x c x ${rise} °C`, safeRight / 2, formulaY,
+            'bold 14px monospace', '#0f172a', 'center', safeRight - 40);
 
         SUBSTANCES.forEach((s, i) => {
             const q = energies[i];
@@ -35,16 +42,16 @@ export const L2C1HeatLab = ({ state, onStateChange }: Props) => {
             ctx.strokeStyle = '#0f172a';
             ctx.lineWidth = 2;
             ctx.strokeRect(bx, baseY - h, barW, h);
-            outlineText(ctx, s.name, bx + barW / 2, baseY + 18, 'bold 14px monospace', '#0f172a', 'center', barW + 20);
-            outlineText(ctx, `c = ${s.c}`, bx + barW / 2, baseY + 34, 'bold 11px monospace', '#334155', 'center', barW + 20);
-            outlineText(ctx, `${Math.round(q).toLocaleString()} J`, bx + barW / 2, baseY - h - 8,
+            outlineText(ctx, `${Math.round(q).toLocaleString()} J`, bx + barW / 2, baseY - h - 10,
                 'bold 13px monospace', '#0f172a', 'center', barW + 20);
+            outlineText(ctx, s.name, bx + barW / 2, baseY + 18,
+                'bold 14px monospace', '#0f172a', 'center', barW + 20);
+            outlineText(ctx, `c = ${s.c} J/g/°C`, bx + barW / 2, baseY + 36,
+                'bold 11px monospace', '#334155', 'center', barW + 22);
         });
 
-        outlineText(ctx, `Q = ${grams} x c x ${rise}`, safeRight / 2, top - 12,
-            'bold 14px monospace', '#0f172a', 'center', safeRight - 40);
         outlineText(ctx, 'same mass, same temperature rise -- only c differs',
-            safeRight / 2, stageBottom - 18, 'bold 12px monospace', '#334155', 'center', safeRight - 30);
+            safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#334155', 'center', safeRight - 30);
 
         const ratio = energies[0] / Math.max(1, energies[1]);
         fitText(ctx, `Water needs ${ratio.toFixed(1)} times the energy iron does`,
@@ -59,14 +66,14 @@ export const L2C1HeatLab = ({ state, onStateChange }: Props) => {
                 low: 'A little',
                 high: 'A great deal',
             },
-            note: `Heating ${grams} g of water by ${rise} °C takes ${Math.round(energies[0]).toLocaleString()} joules. The same job on iron takes ${Math.round(energies[1]).toLocaleString()}.`,
+            note: `Heating ${grams} g of water by ${rise} °C takes ${Math.round(energies[0]).toLocaleString()} J. The same job on iron takes ${Math.round(energies[1]).toLocaleString()} J.`,
         };
     };
 
     return (
         <LabCanvas
             title="How Much Heat?"
-            readout={({ raw }) => `Heating ${Math.round(raw)} grams of each substance`}
+            readout={({ raw }) => `Heating ${Math.round(raw)} g of water and ${Math.round(raw)} g of iron`}
             controlLabel="Mass"
             controlKey="heatMass"
             controlMin={50}
@@ -85,7 +92,7 @@ export const L2C1HeatLab = ({ state, onStateChange }: Props) => {
             sky={['#f0fdfa', '#f8fafc']}
             completeTitle="Level 2 Complete!"
             completeSubtitle="How Much Heat?"
-            completeNote="Q = m x c x dT!"
+            completeNote="Q = m x c x dT -- within one state!"
             phase={phase}
             onStateChange={onStateChange}
             drawScene={drawScene}
