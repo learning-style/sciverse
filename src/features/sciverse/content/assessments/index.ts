@@ -49,6 +49,7 @@ import { bigIdea47Assessment } from './bigIdea47';
 import { bigIdea48Assessment } from './bigIdea48';
 import { bigIdea49Assessment } from './bigIdea49';
 import { bigIdea50Assessment } from './bigIdea50';
+import { bigIdea1Level2Assessment } from './bigIdea1Level2';
 
 export const ASSESSMENTS: Record<number, AssessmentData> = {
     1: bigIdea1Assessment,
@@ -103,5 +104,20 @@ export const ASSESSMENTS: Record<number, AssessmentData> = {
     50: bigIdea50Assessment,
 };
 
-export const getAssessment = (bigIdea: number): AssessmentData | undefined =>
-    ASSESSMENTS[bigIdea];
+/** Level 2 papers, keyed by Big Idea. Separate from ASSESSMENTS so the Level 1
+ *  map stays exactly as it was. */
+export const ASSESSMENTS_LEVEL2: Record<number, AssessmentData> = {
+    1: bigIdea1Level2Assessment,
+};
+
+const BY_LEVEL: Record<number, Record<number, AssessmentData>> = {
+    1: ASSESSMENTS,
+    2: ASSESSMENTS_LEVEL2,
+};
+
+export const getAssessment = (bigIdea: number, level = 1): AssessmentData | undefined =>
+    (BY_LEVEL[level] ?? {})[bigIdea];
+
+/** Whether a paper exists, so a lesson only offers one when there is one. */
+export const hasAssessment = (bigIdea: number, level = 1): boolean =>
+    Boolean(getAssessment(bigIdea, level));

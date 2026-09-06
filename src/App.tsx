@@ -37,6 +37,7 @@ function App() {
 
         {/* Assessment Route */}
         <Route path="/projects/science-lab/assessment/:bigIdeaId" element={<AssessmentShell />} />
+        <Route path="/projects/science-lab/assessment/:bigIdeaId/:level" element={<AssessmentShell />} />
 
         {/* Original Kinematics Lab (with physics engine) */}
         <Route path="/projects/science-lab/kinematics" element={<ScienceLab />} />

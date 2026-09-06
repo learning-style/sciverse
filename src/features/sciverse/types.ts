@@ -121,6 +121,8 @@ export interface AssessmentQuestion {
 
 export interface AssessmentData {
     bigIdea: number;
+    /** Absent means Level 1, so existing assessments need no change. */
+    level?: number;
     title: string;
     subtitle: string;
     icon: string;

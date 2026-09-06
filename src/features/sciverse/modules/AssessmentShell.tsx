@@ -45,9 +45,10 @@ function shuffleOptions(questions: AssessmentQuestion[]): ShuffledQ[] {
 }
 
 export const AssessmentShell = () => {
-    const { bigIdeaId } = useParams<{ bigIdeaId: string }>();
+    const { bigIdeaId, level: levelParam } = useParams<{ bigIdeaId: string; level?: string }>();
     const bigIdea = Number(bigIdeaId);
-    const assessment = getAssessment(bigIdea);
+    const level = Number(levelParam) || 1;
+    const assessment = getAssessment(bigIdea, level);
 
     const [currentQ, setCurrentQ] = useState(0);
     const [selected, setSelected] = useState<number | null>(null);

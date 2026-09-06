@@ -1,6 +1,7 @@
 ﻿import { useEffect, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { DialogNode, DialogOption, LessonMeta } from '../types';
+import { hasAssessment } from '../content/assessments';
 import { User, Cpu, ArrowRight, ArrowLeft, RotateCcw } from 'lucide-react';
 
 interface SocraticChatProps {
@@ -19,9 +20,13 @@ export const SocraticChat = ({ currentNode, history, onOptionSelect, onRewindTo,
 
     // Biology is the third and final lesson of every Big Idea, so finishing it
     // means the whole topic is done and the assessment is due.
-    // Level 1 biology lessons close a Big Idea and offer its assessment.
-    // Level 2 has no assessments yet, so it keeps a normal Next instead.
-    const finishedBigIdea = lesson?.discipline === 'biology' && (lesson?.level ?? 1) === 1;
+    // Biology is the last lesson of a Big Idea at any level, so finishing it
+    // closes the topic. Offer the paper for THIS level, and only when one has
+    // actually been written -- otherwise the lesson keeps a normal Next.
+    const lessonLevel = lesson?.level ?? 1;
+    const finishedBigIdea = Boolean(
+        lesson && lesson.discipline === 'biology' && hasAssessment(lesson.bigIdea, lessonLevel)
+    );
 
     // Auto-scroll to bottom
     useEffect(() => {
@@ -86,14 +91,14 @@ export const SocraticChat = ({ currentNode, history, onOptionSelect, onRewindTo,
                                         🎉 That completes Big Idea {lesson.bigIdea}!
                                     </p>
                                     <p className="text-xs text-amber-800 text-center leading-relaxed">
-                                        You have finished all three lessons. Let&apos;s test your understanding
-                                        with 12 questions across physics, chemistry and biology.
+                                        You have finished all three lessons at Level {lessonLevel}. Let&apos;s test your
+                                        understanding with 12 questions across physics, chemistry and biology.
                                     </p>
                                     <Link
-                                        to={`/projects/science-lab/assessment/${lesson.bigIdea}`}
+                                        to={`/projects/science-lab/assessment/${lesson.bigIdea}/${lessonLevel}`}
                                         className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-amber-500 border border-amber-600 text-white hover:bg-amber-600 transition-colors text-sm font-bold"
                                     >
-                                        📝 Take the Big Idea {lesson.bigIdea} Assessment
+                                        📝 Take the Big Idea {lesson.bigIdea} Level {lessonLevel} Assessment
                                     </Link>
                                     <p className="text-[11px] text-amber-700 text-center">
                                         Not ready? Skip it and come back any time from the lesson hub.
