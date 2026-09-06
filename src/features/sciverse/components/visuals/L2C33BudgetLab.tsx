@@ -60,20 +60,22 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
             ctx.closePath();
             ctx.fill();
         };
-        drawFlux(downX, photo, false, '#16a34a');
-        drawFlux(upX, decomp, true, '#b45309');
+        // Green adds to the air, red takes away from it, so colour always agrees
+        // with the sign of the net change printed below.
+        drawFlux(downX, photo, false, '#dc2626');
+        drawFlux(upX, decomp, true, '#16a34a');
 
         const midY = (arrowTop + arrowBottom) / 2;
         // Each flux is labelled with what it is, how big it is, and which way it
         // goes. A bare number here reads as an amount of carbon rather than a
         // flow, which is exactly the confusion the lesson is trying to remove.
         const labelW = boxW * 0.46;
-        outlineText(ctx, 'photosynthesis', downX, midY - 22, 'bold 12px monospace', '#14532d', 'center', labelW);
-        outlineText(ctx, `${photo.toFixed(1)} kg carbon per m² per year`, downX, midY - 6, 'bold 12px monospace', '#14532d', 'center', labelW);
-        outlineText(ctx, 'OUT OF the air', downX, midY + 10, 'bold 11px monospace', '#14532d', 'center', labelW);
-        outlineText(ctx, 'respiration + decay', upX, midY - 22, 'bold 12px monospace', '#7c2d12', 'center', labelW);
-        outlineText(ctx, `${decomp.toFixed(1)} kg carbon per m² per year`, upX, midY - 6, 'bold 12px monospace', '#7c2d12', 'center', labelW);
-        outlineText(ctx, 'INTO the air', upX, midY + 10, 'bold 11px monospace', '#7c2d12', 'center', labelW);
+        outlineText(ctx, 'photosynthesis', downX, midY - 22, 'bold 12px monospace', '#b91c1c', 'center', labelW);
+        outlineText(ctx, `${photo.toFixed(1)} kg carbon per m² per year`, downX, midY - 6, 'bold 12px monospace', '#b91c1c', 'center', labelW);
+        outlineText(ctx, 'OUT OF the air', downX, midY + 10, 'bold 11px monospace', '#b91c1c', 'center', labelW);
+        outlineText(ctx, 'respiration + decay', upX, midY - 22, 'bold 12px monospace', '#166534', 'center', labelW);
+        outlineText(ctx, `${decomp.toFixed(1)} kg carbon per m² per year`, upX, midY - 6, 'bold 12px monospace', '#166534', 'center', labelW);
+        outlineText(ctx, 'INTO the air', upX, midY + 10, 'bold 11px monospace', '#166534', 'center', labelW);
 
         const statusLine = net < -0.05
             ? 'carbon sink -- the air is losing carbon'
@@ -87,12 +89,12 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
         // The status is always shown with what it means for the AIR, because
         // "sink" reads backwards when you are watching the land fill up.
         outlineText(ctx, statusLine, safeRight / 2, stageBottom - 10,
-            'bold 12px monospace', net < -0.05 ? '#166534' : net > 0.05 ? '#b91c1c' : '#334155',
+            'bold 12px monospace', net > 0.05 ? '#166534' : net < -0.05 ? '#b91c1c' : '#334155',
             'center', safeRight - 30);
 
         fitText(ctx, `After 50 years: the air ${net < -0.005 ? 'loses' : net > 0.005 ? 'gains' : 'neither loses nor gains'} ${Math.abs(overFifty) < 0.5 ? '' : Math.abs(overFifty).toFixed(0) + ' kg'} of carbon per square metre`,
             safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'net change = into the air - out of the air; whatever the air loses, the land gains',
+        fitText(ctx, 'green adds carbon to the air, red takes it away -- colour agrees with the sign',
             safeRight / 2, 118, safeRight - 24, 13);
 
         const note = net < -0.05
@@ -102,10 +104,11 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
                 : 'In equals out. The air neither loses nor gains -- this is steady state.';
         return {
             meter: {
-                fraction: Math.max(0, Math.min(1, (-net + 1.8) / 3.6)),
+                fraction: Math.max(0, Math.min(1, (net + 1.8) / 3.6)),
                 caption: 'Carbon Source or Carbon Sink',
-                low: 'Source: air gaining',
-                high: 'Sink: air losing',
+                low: 'Sink: air losing',
+                high: 'Source: air gaining',
+                stops: ['#dc2626', '#e2e8f0', '#16a34a'],
             },
             note,
         };

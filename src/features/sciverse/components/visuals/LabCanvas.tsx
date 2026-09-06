@@ -37,7 +37,16 @@ export interface LabScene {
  * on a reserved band, so a meter or caption can never be buried by the drawing.
  */
 export interface LabFooter {
-    meter?: { fraction: number; caption: string; low: string; high: string };
+    meter?: {
+        fraction: number;
+        caption: string;
+        low: string;
+        high: string;
+        /** Gradient stops left-to-right. Defaults to red -> yellow -> green.
+         *  Override where neither end is "good" and that palette would imply
+         *  a judgement the quantity does not carry. */
+        stops?: [string, string, string];
+    };
     note?: string;
 }
 
@@ -341,7 +350,7 @@ export const LabCanvas = ({
         if (footer.meter) {
             const m = footer.meter;
             meterBar(ctx, footCx - footW / 2, stageBottom + 18, footW,
-                m.fraction, m.caption, m.low, m.high);
+                m.fraction, m.caption, m.low, m.high, m.stops);
         }
         if (footer.note) {
             fitText(ctx, footer.note, footCx, H - 12, W - 32);
