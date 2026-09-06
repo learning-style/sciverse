@@ -94,7 +94,7 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
 
         fitText(ctx, `After 50 years: the air ${net < -0.005 ? 'loses' : net > 0.005 ? 'gains' : 'neither loses nor gains'} ${Math.abs(overFifty) < 0.5 ? '' : Math.abs(overFifty).toFixed(0) + ' kg'} of carbon per square metre`,
             safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'green adds carbon to the air, red takes it away -- colour agrees with the sign',
+        fitText(ctx, 'net change = into the air - out of the air; whatever the air loses, the land gains',
             safeRight / 2, 118, safeRight - 24, 13);
 
         const note = net < -0.05
