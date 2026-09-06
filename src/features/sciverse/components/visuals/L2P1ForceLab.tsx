@@ -59,13 +59,13 @@ export const L2P1ForceLab = ({ state, onStateChange }: Props) => {
 
         fitText(ctx, `Acceleration: ${accel.toFixed(2)} metres per second per second`,
             safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'Force is on top, so it is direct. Mass is underneath, so it is inverse.',
+        fitText(ctx, 'Force is the numerator (direct). Mass is the denominator (inverse).',
             safeRight / 2, 118, safeRight - 24, 13);
 
         const note = force === 0
             ? 'Zero net force means zero acceleration, whatever the mass.'
             : mass >= 40
-                ? 'Heavy. Mass is underneath the line, so it drags the acceleration down.'
+                ? 'Heavy. Mass is the denominator, so it drags the acceleration down.'
                 : accel >= 8
                     ? 'Large net force on a small mass -- it speeds up very quickly.'
                     : 'Double the net force to double this. Double the mass to halve it.';
@@ -102,7 +102,7 @@ export const L2P1ForceLab = ({ state, onStateChange }: Props) => {
             sky={['#eef2ff', '#f8fafc']}
             completeTitle="Level 2 Complete!"
             completeSubtitle="Force, Mass and Acceleration"
-            completeNote="Net force on top, mass underneath!"
+            completeNote="Net force in the numerator, mass in the denominator!"
             phase={phase}
             onStateChange={onStateChange}
             drawScene={drawScene}
