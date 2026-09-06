@@ -67,6 +67,9 @@ import { L3B1EngineLab } from './L3B1EngineLab';
 import { L2P2DensityLab } from './L2P2DensityLab';
 import { L2C2FormulaMassLab } from './L2C2FormulaMassLab';
 import { L2B2CellSizeLab } from './L2B2CellSizeLab';
+import { L3P2GasLab } from './L3P2GasLab';
+import { L3C2MoleLab } from './L3C2MoleLab';
+import { L3B2DiffusionLab } from './L3B2DiffusionLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -145,4 +148,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2p2: L2P2DensityLab,
     l2c2: L2C2FormulaMassLab,
     l2b2: L2B2CellSizeLab,
+    l3p2: L3P2GasLab,
+    l3c2: L3C2MoleLab,
+    l3b2: L3B2DiffusionLab,
 };
