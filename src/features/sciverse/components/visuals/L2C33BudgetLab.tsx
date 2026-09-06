@@ -20,7 +20,7 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
         const boxW = Math.min(300, safeRight - 80);
         const boxX = safeRight / 2 - boxW / 2;
         const airY = stageTop + 26;
-        const groundY = stageBottom - 96;
+        const groundY = stageBottom - 104;
         const boxH = 46;
 
         // The air reservoir
@@ -74,11 +74,20 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, `${decomp.toFixed(1)} kg carbon per m² per year`, upX, midY - 6, 'bold 12px monospace', '#7c2d12', 'center', labelW);
         outlineText(ctx, 'OUT OF plants and soil', upX, midY + 10, 'bold 11px monospace', '#7c2d12', 'center', labelW);
 
-        const status = net > 0.05 ? 'carbon sink' : net < -0.05 ? 'carbon source' : 'steady state';
+        const statusLine = net > 0.05
+            ? 'carbon sink -- the air is losing carbon'
+            : net < -0.05
+                ? 'carbon source -- the air is gaining carbon'
+                : 'steady state -- the air is neither losing nor gaining';
         outlineText(ctx, 'a flux is a flow per year, not an amount stored',
-            safeRight / 2, stageBottom - 42, 'bold 11px monospace', '#334155', 'center', safeRight - 30);
-        outlineText(ctx, `net change in plants and soil = ${photo.toFixed(1)} - ${decomp.toFixed(1)} = ${net > 0 ? '+' : ''}${net.toFixed(1)} kg carbon per year -- ${status}`,
-            safeRight / 2, stageBottom - 22, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
+            safeRight / 2, stageBottom - 46, 'bold 11px monospace', '#334155', 'center', safeRight - 30);
+        outlineText(ctx, `net change in plants and soil = ${photo.toFixed(1)} - ${decomp.toFixed(1)} = ${net > 0 ? '+' : ''}${net.toFixed(1)} kg carbon per year`,
+            safeRight / 2, stageBottom - 28, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
+        // The status is always shown with what it means for the AIR, because
+        // "sink" reads backwards when you are watching the land fill up.
+        outlineText(ctx, statusLine, safeRight / 2, stageBottom - 10,
+            'bold 12px monospace', net > 0.05 ? '#166534' : net < -0.05 ? '#b91c1c' : '#334155',
+            'center', safeRight - 30);
 
         fitText(ctx, `After 50 years: ${stored > 0 ? '+' : ''}${stored.toFixed(0)} kg of carbon per square metre stored`,
             safeRight / 2, 94, safeRight - 24, 16);
@@ -86,16 +95,16 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, 118, safeRight - 24, 13);
 
         const note = net > 0.05
-            ? 'Flux in is bigger, so carbon piles up. This land is a carbon sink.'
+            ? 'Flux in is bigger, so carbon piles up in the land. It is a carbon sink: the air is losing carbon.'
             : net < -0.05
-                ? 'Flux out is bigger, so stored carbon is leaving. This land is a carbon source.'
+                ? 'Flux out is bigger, so stored carbon is leaving the land. It is a carbon source: the air is gaining carbon.'
                 : 'In equals out. Nothing accumulates -- this is steady state.';
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, (net + 1.8) / 3.6)),
                 caption: 'Carbon Source or Carbon Sink',
-                low: 'Source',
-                high: 'Sink',
+                low: 'Source: air gaining',
+                high: 'Sink: air losing',
             },
             note,
         };
