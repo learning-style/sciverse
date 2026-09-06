@@ -54,9 +54,9 @@ export const L2C1HeatLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#334155', 'center', safeRight - 30);
 
         const ratio = energies[0] / Math.max(1, energies[1]);
-        fitText(ctx, `Water needs ${ratio.toFixed(1)} times the energy iron does`,
+        fitText(ctx, `Same order, but water costs ${ratio.toFixed(1)} times as much as iron`,
             safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'Q = m x c x dT -- all three multiplied, so all three behave the same way',
+        fitText(ctx, 'Q = m x c x dT -- the size of the order, times the price',
             safeRight / 2, 118, safeRight - 24, 13);
 
         return {
