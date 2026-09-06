@@ -84,7 +84,7 @@ export const L3B2DiffusionLab = ({ state, onStateChange }: Props) => {
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, 1 - arriveNow / (survive * 3))),
-                caption: 'How Well Supplied the Middle Is',
+                caption: 'Can Oxygen Arrive in Time?',
                 low: 'Arrives too late',
                 high: 'Arrives in good time',
             },
