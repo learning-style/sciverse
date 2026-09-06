@@ -61,6 +61,9 @@ import { L2P33PyramidLab } from './L2P33PyramidLab';
 import { L2C33BudgetLab } from './L2C33BudgetLab';
 import { L2B33BackupLab } from './L2B33BackupLab';
 import { L2P49MetalCostLab } from './L2P49MetalCostLab';
+import { L3P1SlopeLab } from './L3P1SlopeLab';
+import { L3C1HeatingCurveLab } from './L3C1HeatingCurveLab';
+import { L3B1EngineLab } from './L3B1EngineLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -133,4 +136,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2c33: L2C33BudgetLab,
     l2b33: L2B33BackupLab,
     l2p49: L2P49MetalCostLab,
+    l3p1: L3P1SlopeLab,
+    l3c1: L3C1HeatingCurveLab,
+    l3b1: L3B1EngineLab,
 };

@@ -63,13 +63,14 @@ const BIG_IDEA_COLORS = [
     'from-violet-700/20 to-violet-900/10',
 ];
 
-const LEVELS: { level: 1 | 2; label: string; grades: string; blurb: string }[] = [
+const LEVELS: { level: 1 | 2 | 3; label: string; grades: string; blurb: string }[] = [
     { level: 1, label: 'Level 1', grades: 'Grades 3-5', blurb: 'Big Ideas explored in plain language, one idea and one control at a time.' },
     { level: 2, label: 'Level 2', grades: 'Grades 6-8', blurb: 'The same Big Ideas with the arithmetic put in: real units, two controls, and a calculation to work through.' },
+    { level: 3, label: 'Level 3', grades: 'Grades 9-12', blurb: 'The same Big Ideas again, with the simplifications removed: vectors, derivations, and the conditions each formula depends on.' },
 ];
 
 export const LessonHub = () => {
-    const [level, setLevel] = useState<1 | 2>(1);
+    const [level, setLevel] = useState<1 | 2 | 3>(1);
 
     const lessonsAtLevel = useMemo(
         () => LESSON_REGISTRY.filter(l => (l.level ?? 1) === level),

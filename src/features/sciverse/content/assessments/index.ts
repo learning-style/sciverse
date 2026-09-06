@@ -50,6 +50,7 @@ import { bigIdea48Assessment } from './bigIdea48';
 import { bigIdea49Assessment } from './bigIdea49';
 import { bigIdea50Assessment } from './bigIdea50';
 import { bigIdea1Level2Assessment } from './bigIdea1Level2';
+import { bigIdea1Level3Assessment } from './bigIdea1Level3';
 
 export const ASSESSMENTS: Record<number, AssessmentData> = {
     1: bigIdea1Assessment,
@@ -110,9 +111,14 @@ export const ASSESSMENTS_LEVEL2: Record<number, AssessmentData> = {
     1: bigIdea1Level2Assessment,
 };
 
+export const ASSESSMENTS_LEVEL3: Record<number, AssessmentData> = {
+    1: bigIdea1Level3Assessment,
+};
+
 const BY_LEVEL: Record<number, Record<number, AssessmentData>> = {
     1: ASSESSMENTS,
     2: ASSESSMENTS_LEVEL2,
+    3: ASSESSMENTS_LEVEL3,
 };
 
 export const getAssessment = (bigIdea: number, level = 1): AssessmentData | undefined =>

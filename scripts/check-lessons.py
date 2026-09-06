@@ -159,9 +159,14 @@ def check(lesson_id, lab_file):
     else:
         got = {x.strip() for x in m.group(1).split(',') if x.strip()}
         body = brace_body(lab, lab.rindex('{', m.start(), m.end()))
+        # An identifier inside a string or comment is not a use of a variable.
+        # "W = mgh" printed on the canvas is text, not a reference to scene.W.
+        body = re.sub(r'//[^\n]*', '', re.sub(r'/\*.*?\*/', '', body, flags=re.S))
+        body = re.sub(r"'[^'\n]*'|\"[^\"\n]*\"|`(?:[^`\\]|\\.)*`", "''", body, flags=re.S)
         for field in sorted(SCENE - got):
             if re.search(r'(?<![\w.])' + field + r'(?![\w])', body):
-                errs.append(f'"{field}" used but NOT destructured (build error)')
+                errs.append(f'"{field}" used but NOT destructured, or shadowed by a local '
+                            f'of the same name -- rename the local (LabScene fields are reserved)')
         unused = sorted(f for f in got if not re.search(r'(?<![\w.])' + f + r'(?![\w])', body))
         for f in unused:
             errs.append(f'"{f}" destructured but unused (fails noUnusedLocals)')
