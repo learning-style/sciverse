@@ -9970,7 +9970,21 @@ Energy makes one **one-way** trip. It arrives from the Sun, and every level it p
 
 Matter goes in a **circle**. The same atoms return, so what matters is not how much is lost per step but whether more is arriving in a reservoir than leaving it. That is a subtraction, and it never ends.
 
-**Energy flows through and compounds. Matter cycles round and balances.**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Energy compounds. Matter balances.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**You turned the carbon cycle into a budget.**
+**Energy flows through and compounds. Matter cycles round and balances.**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Energy compounds. Matter balances.",nextNodeId:"why_it_matters"}]},why_it_matters:{id:"why_it_matters",speaker:"AI",content:`One last question, and it is the one everybody asks: **is more carbon in the air a good thing or a bad thing?**
+
+The honest answer is that it depends entirely on **how much** and **how fast** -- and it is worth being precise, because carbon dioxide is not a villain.
+
+**Some is essential.** Carbon dioxide is not a poison. Plants need it, and every gram of van Helmont's willow came out of it. It also traps heat near the surface, and that trapping is what makes the planet liveable: without it, Earth's average temperature would be about **-18 °C** instead of the roughly **15 °C** we actually get. A world with no carbon dioxide in the air would be frozen solid.
+
+**The trouble is the amount changing quickly.** Before people began burning coal and oil in large quantities, the air held about **280 molecules of carbon dioxide in every million**. That is written **280 parts per million**, or **280 ppm**. Today it is about **420 ppm** -- roughly **50% more**, in about two hundred years.
+
+More carbon dioxide traps more heat. More trapped heat means warmer air and oceans, ice melting, seas rising, and rainfall patterns shifting away from the places farms and cities were built for.
+
+So: a little is essential, and the present rise is a serious problem -- not because the gas is bad, but because **moving a planet's thermostat quickly is very expensive to live with**.
+
+And this is exactly why the arithmetic you just did matters. People currently add roughly **10 billion tonnes of carbon** to the air each year. The world's sinks -- forests, soils, bogs and above all the ocean -- pull a little over **half** of it back out. The rest stays, which is why that ppm number keeps climbing.
+
+Every bog drained and every forest cleared flips a **sink** into a **source**, and pushes that balance the wrong way.`,options:[{id:"disc",label:"A little is essential; the fast rise is the problem.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**You turned the carbon cycle into a budget.**
 
 - **Conservation of mass**: atoms are never made or destroyed, only moved
 - Van Helmont's willow gained 74.4 kg while the soil lost 57 g -- a tree is made mostly of **air**
@@ -9986,6 +10000,9 @@ Matter goes in a **circle**. The same atoms return, so what matters is not how m
 - Equal is **steady state**
 - **change in the air's carbon after n years = net change x n**
 - Whatever the air loses, the **land gains** -- exactly, because atoms are never destroyed
+- Some carbon dioxide is **essential** -- without it Earth would average about **-18 °C**
+- The air has gone from about **280 ppm** to about **420 ppm** in roughly 200 years
+- People add about **10 billion tonnes of carbon** a year; sinks remove a little over half
 - Cold, wet ground stores carbon by **rotting slowly**, not by growing fast
 
 Check a ratio's direction before you use it -- should the answer be bigger or smaller?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"discovery"}},options:[{id:"done",label:"net change = flux in - flux out!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`**Level 2 Complete -- The Carbon Budget!**
@@ -10002,6 +10019,7 @@ Level 1 told you matter goes round in a circle. The arithmetic tells you **where
 | One flux is not the change | tap alone tells you nothing | You need the drain too |
 | Net change | in - out | A subtraction, not a product |
 | Everything tracks the **air** | in = decay, out = photosynthesis | One frame of reference throughout |
+| Is more carbon bad? | 280 ppm -> 420 ppm | Some is essential; the **speed** is the problem |
 | Sink or source | negative or positive | Minus means the air is **losing** |
 | Storing over time | net x n | Adds up; it does not compound |
 
