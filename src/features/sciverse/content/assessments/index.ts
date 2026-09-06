@@ -51,6 +51,7 @@ import { bigIdea49Assessment } from './bigIdea49';
 import { bigIdea50Assessment } from './bigIdea50';
 import { bigIdea1Level2Assessment } from './bigIdea1Level2';
 import { bigIdea1Level3Assessment } from './bigIdea1Level3';
+import { bigIdea2Level2Assessment } from './bigIdea2Level2';
 
 export const ASSESSMENTS: Record<number, AssessmentData> = {
     1: bigIdea1Assessment,
@@ -109,6 +110,7 @@ export const ASSESSMENTS: Record<number, AssessmentData> = {
  *  map stays exactly as it was. */
 export const ASSESSMENTS_LEVEL2: Record<number, AssessmentData> = {
     1: bigIdea1Level2Assessment,
+    2: bigIdea2Level2Assessment,
 };
 
 export const ASSESSMENTS_LEVEL3: Record<number, AssessmentData> = {

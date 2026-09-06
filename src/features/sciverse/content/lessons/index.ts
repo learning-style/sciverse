@@ -166,6 +166,9 @@ import { getL2P49Script } from './l2p49-energy-cost-of-metal';
 import { getL3P1Script } from './l3p1-forces-on-a-slope';
 import { getL3C1Script } from './l3c1-latent-heat';
 import { getL3B1Script } from './l3b1-body-as-engine';
+import { getL2P2Script } from './l2p2-density-identity';
+import { getL2C2Script } from './l2c2-formula-mass';
+import { getL2B2Script } from './l2b2-surface-area-volume';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1102,6 +1105,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p1': getL3P1Script,
     'l3c1': getL3C1Script,
     'l3b1': getL3B1Script,
+    'l2p2': getL2P2Script,
+    'l2c2': getL2C2Script,
+    'l2b2': getL2B2Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1482,6 +1488,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p1', title: 'Forces on a Slope', subtitle: 'Vectors, components, and why mass cancels', discipline: 'physics', bigIdea: 1, bigIdeaTitle: 'Why Do Things Move?', icon: '📐', accentColor: 'indigo', crossLinks: ['l2p1'], level: 3 },
     { id: 'l3c1', title: 'The Energy a Thermometer Cannot See', subtitle: 'Latent heat and the heating curve', discipline: 'chemistry', bigIdea: 1, bigIdeaTitle: 'Why Do Things Move?', icon: '🌡️', accentColor: 'emerald', crossLinks: ['l2c1', 'l3p1'], level: 3 },
     { id: 'l3b1', title: 'The Body as an Engine', subtitle: 'Work, efficiency, and how sweat carries heat away', discipline: 'biology', bigIdea: 1, bigIdeaTitle: 'Why Do Things Move?', icon: '🏃', accentColor: 'rose', crossLinks: ['l2b1', 'l3c1'], level: 3 },
+
+    // Big Idea 2 -- Level 2 (grades 6-8)
+    { id: 'l2p2', title: 'What Is It Made Of?', subtitle: 'Density as a fingerprint', discipline: 'physics', bigIdea: 2, bigIdeaTitle: 'What Is Everything Made Of?', icon: '⚖️', accentColor: 'indigo', crossLinks: ['p2'], level: 2 },
+    { id: 'l2c2', title: 'What Does an Atom Weigh?', subtitle: 'Relative masses and formula mass', discipline: 'chemistry', bigIdea: 2, bigIdeaTitle: 'What Is Everything Made Of?', icon: '🧮', accentColor: 'emerald', crossLinks: ['c2', 'l2p2'], level: 2 },
+    { id: 'l2b2', title: 'Why Cells Are Small', subtitle: 'Surface area against volume', discipline: 'biology', bigIdea: 2, bigIdeaTitle: 'What Is Everything Made Of?', icon: '🔬', accentColor: 'rose', crossLinks: ['b2', 'l2c2'], level: 2 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
