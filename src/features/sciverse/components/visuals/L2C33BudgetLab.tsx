@@ -108,7 +108,10 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
                 caption: 'Carbon Source or Carbon Sink',
                 low: 'Sink: air losing',
                 high: 'Source: air gaining',
-                stops: ['#dc2626', '#e2e8f0', '#16a34a'],
+                // Asserted as a tuple: drawScene is a standalone const, so the
+                // contextual type from LabFooter never reaches this literal and it
+                // would otherwise infer as string[].
+                stops: ['#dc2626', '#e2e8f0', '#16a34a'] as [string, string, string],
             },
             note,
         };
