@@ -25,7 +25,7 @@ export const L3B2DiffusionLab = ({ state, onStateChange }: Props) => {
         // Curve: arrival time against size, with the survival line across it
         const plotX = 66;
         const plotTop = stageTop + 44;
-        const plotBottom = stageBottom - 54;
+        const plotBottom = stageBottom - 80;
         const plotH = Math.max(90, plotBottom - plotTop);
         const plotW = safeRight - plotX - 30;
         const maxLen = 1000;
@@ -69,10 +69,10 @@ export const L3B2DiffusionLab = ({ state, onStateChange }: Props) => {
         ctx.arc(px(size), py(arriveNow), 6, 0, Math.PI * 2);
         ctx.fill();
 
-        outlineText(ctx, 'cell size across the bottom', plotX + plotW / 2, plotBottom + 20,
+        outlineText(ctx, 'cell size across the bottom', plotX + plotW / 2, plotBottom + 18,
             'bold 11px monospace', '#0f172a', 'center', plotW);
         outlineText(ctx, `oxygen arrives at the middle in ${arriveNow < 1 ? arriveNow.toFixed(3) + ' s' : arriveNow < 120 ? arriveNow.toFixed(1) + ' s' : (arriveNow / 60).toFixed(0) + ' minutes'}`,
-            safeRight / 2, stageBottom - 32, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
+            safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
         outlineText(ctx, starving ? 'oxygen cannot arrive in time' : 'oxygen arrives in time to supply everything inside',
             safeRight / 2, stageBottom - 12, 'bold 13px monospace',
             starving ? '#b91c1c' : '#166534', 'center', safeRight - 30);

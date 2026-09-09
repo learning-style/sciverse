@@ -74,6 +74,8 @@ export const L3P2GasLab = ({ state, onStateChange }: Props) => {
         ctx.textAlign = 'center';
         outlineText(ctx, 'this combination does not move', tx + 60, cylTop + 22 + 3 * 30 + 18,
             'bold 11px monospace', '#4338ca', 'center', safeRight - tx - 10);
+        outlineText(ctx, 'exactly true for an ideal gas', tx + 60, cylTop + 22 + 3 * 30 + 36,
+            'bold 11px monospace', '#475569', 'center', safeRight - tx - 10);
 
         fitText(ctx, `${density.toFixed(4)} g/cm³ -- the density of this gas right now`,
             safeRight / 2, 94, safeRight - 24, 16);

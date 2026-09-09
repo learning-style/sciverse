@@ -63,11 +63,11 @@ export const bigIdea2Level3Assessment: AssessmentData = {
             id: 5,
             difficulty: 'medium',
             discipline: 'physics',
-            question: 'A sealed rigid container of gas at 27 °C and 100 kPa is heated to 327 °C. The new pressure is:',
+            question: 'A sealed rigid container of gas at 27 °C and 100 kPa is heated to 327 °C. Treating it as an ideal gas, the new pressure is:',
             options: ['200 kPa', '1,211 kPa', '400 kPa', '100 kPa, since the volume did not change'],
             correctIndex: 0,
             hint: 'Convert both temperatures to kelvin first.',
-            explanation: '300 K to 600 K is a genuine doubling, so the pressure doubles. Using Celsius suggests a twelvefold rise, which is wrong.'
+            explanation: '300 K to 600 K is a genuine doubling, so the pressure doubles. Using Celsius suggests a twelvefold rise, which is wrong. The ideal gas assumption is what lets pV/T be used at all.'
         },
         {
             id: 6,
