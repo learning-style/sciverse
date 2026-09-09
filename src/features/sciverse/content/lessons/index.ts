@@ -172,6 +172,9 @@ import { getL2B2Script } from './l2b2-surface-area-volume';
 import { getL3P2Script } from './l3p2-gas-laws';
 import { getL3C2Script } from './l3c2-the-mole';
 import { getL3B2Script } from './l3b2-diffusion-limit';
+import { getL2P3Script } from './l2p3-energy-conservation';
+import { getL2C3Script } from './l2c3-measuring-reaction-energy';
+import { getL2B3Script } from './l2b3-sunlight-captured';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1114,6 +1117,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p2': getL3P2Script,
     'l3c2': getL3C2Script,
     'l3b2': getL3B2Script,
+    'l2p3': getL2P3Script,
+    'l2c3': getL2C3Script,
+    'l2b3': getL2B3Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1504,6 +1510,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p2', title: 'When Density Stops Working', subtitle: 'Gas laws, kelvin, and pV/T', discipline: 'physics', bigIdea: 2, bigIdeaTitle: 'What Is Everything Made Of?', icon: '🎈', accentColor: 'indigo', crossLinks: ['l2p2'], level: 3 },
     { id: 'l3c2', title: 'Counting the Uncountable', subtitle: 'The mole, and weighing out atoms', discipline: 'chemistry', bigIdea: 2, bigIdeaTitle: 'What Is Everything Made Of?', icon: '🔢', accentColor: 'emerald', crossLinks: ['l2c2', 'l3p2'], level: 3 },
     { id: 'l3b2', title: 'Why 6/L Was Not the Whole Story', subtitle: 'Diffusion time, and why bodies need pumps', discipline: 'biology', bigIdea: 2, bigIdeaTitle: 'What Is Everything Made Of?', icon: '🫁', accentColor: 'rose', crossLinks: ['l2b2', 'l3c2'], level: 3 },
+
+    // Big Idea 3 -- Level 2 (grades 6-8)
+    { id: 'l2p3', title: 'Balancing the Energy Books', subtitle: 'PE, KE, and the column you forgot', discipline: 'physics', bigIdea: 3, bigIdeaTitle: 'Where Does Energy Come From?', icon: '🎢', accentColor: 'indigo', crossLinks: ['p3'], level: 2 },
+    { id: 'l2c3', title: "Measuring a Reaction's Energy", subtitle: 'Calorimetry, and why it always reads low', discipline: 'chemistry', bigIdea: 3, bigIdeaTitle: 'Where Does Energy Come From?', icon: '🔥', accentColor: 'emerald', crossLinks: ['c3', 'l2p3'], level: 2 },
+    { id: 'l2b3', title: 'How Much Sunlight a Leaf Keeps', subtitle: 'The one per cent that feeds everything', discipline: 'biology', bigIdea: 3, bigIdeaTitle: 'Where Does Energy Come From?', icon: '🍃', accentColor: 'rose', crossLinks: ['b3', 'l2c3'], level: 2 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },

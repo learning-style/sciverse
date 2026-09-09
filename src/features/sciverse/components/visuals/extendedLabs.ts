@@ -70,6 +70,9 @@ import { L2B2CellSizeLab } from './L2B2CellSizeLab';
 import { L3P2GasLab } from './L3P2GasLab';
 import { L3C2MoleLab } from './L3C2MoleLab';
 import { L3B2DiffusionLab } from './L3B2DiffusionLab';
+import { L2P3RampLab } from './L2P3RampLab';
+import { L2C3CalorimeterLab } from './L2C3CalorimeterLab';
+import { L2B3LeafLab } from './L2B3LeafLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -151,4 +154,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p2: L3P2GasLab,
     l3c2: L3C2MoleLab,
     l3b2: L3B2DiffusionLab,
+    l2p3: L2P3RampLab,
+    l2c3: L2C3CalorimeterLab,
+    l2b3: L2B3LeafLab,
 };
