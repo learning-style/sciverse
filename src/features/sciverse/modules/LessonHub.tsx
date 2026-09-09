@@ -1,6 +1,6 @@
 ﻿import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Atom, Beaker, Dna } from 'lucide-react';
+import { Atom, Beaker, Dna } from 'lucide-react';
 import { LESSON_REGISTRY } from '../content/lessons';
 import { Discipline } from '../types';
 
@@ -88,9 +88,6 @@ export const LessonHub = () => {
             {/* Header */}
             <div className="h-16 border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-20 flex items-center justify-between px-6">
                 <div className="flex items-center gap-4">
-                    <Link to="/showcase" className="p-2 hover:bg-slate-100 rounded-full text-slate-500 transition-colors">
-                        <ArrowLeft size={20} />
-                    </Link>
                     <span className="font-bold text-lg tracking-tight">SCI<span className="text-indigo-600">VERSE</span></span>
                 </div>
                 <span className="text-xs text-slate-600 tracking-widest uppercase">{lessonsAtLevel.length} Interactive Lessons</span>
