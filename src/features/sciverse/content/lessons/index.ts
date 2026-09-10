@@ -175,6 +175,9 @@ import { getL3B2Script } from './l3b2-diffusion-limit';
 import { getL2P3Script } from './l2p3-energy-conservation';
 import { getL2C3Script } from './l2c3-measuring-reaction-energy';
 import { getL2B3Script } from './l2b3-sunlight-captured';
+import { getL3P3Script } from './l3p3-heat-engine-ceiling';
+import { getL3C3Script } from './l3c3-bond-energies';
+import { getL3B3Script } from './l3b3-atp-small-change';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1120,6 +1123,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p3': getL2P3Script,
     'l2c3': getL2C3Script,
     'l2b3': getL2B3Script,
+    'l3p3': getL3P3Script,
+    'l3c3': getL3C3Script,
+    'l3b3': getL3B3Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1515,6 +1521,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p3', title: 'Balancing the Energy Books', subtitle: 'PE, KE, and the column you forgot', discipline: 'physics', bigIdea: 3, bigIdeaTitle: 'Where Does Energy Come From?', icon: '🎢', accentColor: 'indigo', crossLinks: ['p3'], level: 2 },
     { id: 'l2c3', title: "Measuring a Reaction's Energy", subtitle: 'Calorimetry, and why it always reads low', discipline: 'chemistry', bigIdea: 3, bigIdeaTitle: 'Where Does Energy Come From?', icon: '🔥', accentColor: 'emerald', crossLinks: ['c3', 'l2p3'], level: 2 },
     { id: 'l2b3', title: 'How Much Sunlight a Leaf Keeps', subtitle: 'The one per cent that feeds everything', discipline: 'biology', bigIdea: 3, bigIdeaTitle: 'Where Does Energy Come From?', icon: '🍃', accentColor: 'rose', crossLinks: ['b3', 'l2c3'], level: 2 },
+
+    // Big Idea 3 -- Level 3 (grades 9-12)
+    { id: 'l3p3', title: 'The Ceiling on Every Heat Engine', subtitle: 'Entropy, and the limit 1 − Tc/Th', discipline: 'physics', bigIdea: 3, bigIdeaTitle: 'Where Does Energy Come From?', icon: '🌡️', accentColor: 'indigo', crossLinks: ['l2p3'], level: 3 },
+    { id: 'l3c3', title: "Where a Fuel's Energy Really Is", subtitle: 'Bond energies, and why breaking costs', discipline: 'chemistry', bigIdea: 3, bigIdeaTitle: 'Where Does Energy Come From?', icon: '🔗', accentColor: 'emerald', crossLinks: ['l2c3', 'l3p3'], level: 3 },
+    { id: 'l3b3', title: 'Why Life Pays in Small Change', subtitle: 'ATP, and why muscle is not a heat engine', discipline: 'biology', bigIdea: 3, bigIdeaTitle: 'Where Does Energy Come From?', icon: '🪙', accentColor: 'rose', crossLinks: ['l2b3', 'l3c3'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
