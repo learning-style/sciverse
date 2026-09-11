@@ -12029,7 +12029,15 @@ But burning plainly releases energy. So where does it come from, if every bond b
 
 **Step 2 -- make.** The loose atoms join up in a new arrangement. That **releases** energy.
 
-The overall change is the difference. It is written **ΔH** (said "delta H"), and it is measured **from the chemicals' point of view** -- the chemicals are the reservoir being tracked:
+The overall change is the difference, and it has a proper name.
+
+The total energy stored in a set of chemicals -- in how their atoms are joined together, and in the jiggling of their particles -- is called their **enthalpy**, written **H**. Nobody can measure H on its own, any more than you could count every joule in a bathful of water. What can be measured is how much it **changes**.
+
+The Greek letter **Δ**, said "delta", means **"change in"** -- the same idea as the d in L2C1's dT. So **ΔH**, said "delta H", is the **enthalpy change**: how much energy the chemicals gain or lose in the reaction.
+
+It comes with a condition. For a reaction in an open container, where the pressure stays the same, **ΔH is exactly the heat that flows out of the chemicals or into them** -- which is why a calorimeter can measure it.
+
+It is measured **from the chemicals' point of view** -- the chemicals are the reservoir being tracked:
 
 **ΔH = energy to break bonds − energy released making bonds**
 
@@ -12111,6 +12119,9 @@ And the simplification still standing, because every Level 3 lesson names one: *
 - **Breaking a bond always costs energy; making one always releases it**
 - "Energy stored in bonds, let out when they break" is backwards
 - A reaction is **break**, then **make**, even when it looks like one step
+- **Enthalpy (H)** is the energy stored in a set of chemicals; it cannot be measured on its own
+- **Δ** means "change in", so **ΔH** is the **enthalpy change**
+- At constant pressure, ΔH is exactly the heat flowing out of or into the chemicals
 - **ΔH = bonds broken − bonds formed**, measured from the **chemicals'** point of view
 - **Negative ΔH** is **exothermic**; **positive ΔH** is **endothermic**
 - **Bond energies** are in **kJ/mol**, the energy to break one mole of that bond
@@ -12130,7 +12141,8 @@ L2C3 measured a fuel's energy. Level 3 finds that the energy was never in the fu
 | --- | --- | --- |
 | Breaking costs, making releases | no exceptions | "Stored in bonds" is backwards |
 | Two steps | break, then make | Even when it looks like one |
-| The energy change | **ΔH = broken − formed** | From the chemicals' point of view |
+| **Enthalpy** | **H**, energy stored in the chemicals | Only its change can be measured |
+| **Enthalpy change** | **ΔH = broken − formed** | Δ means "change in"; chemicals' point of view |
 | The sign | negative **exo**, positive **endo** | C3's thermometer, explained |
 | Hydrogen | 1,370 − 1,856 = **−486 kJ** | About **122 kJ/g** |
 | Why hydrogen wins | lightest atoms, no oxygen yet | Wood is partly burnt already |
