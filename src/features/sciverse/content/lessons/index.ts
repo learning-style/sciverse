@@ -178,6 +178,9 @@ import { getL2B3Script } from './l2b3-sunlight-captured';
 import { getL3P3Script } from './l3p3-heat-engine-ceiling';
 import { getL3C3Script } from './l3c3-bond-energies';
 import { getL3B3Script } from './l3b3-atp-small-change';
+import { getL2P4Script } from './l2p4-wave-equation';
+import { getL2C4Script } from './l2c4-light-frequency';
+import { getL2B4Script } from './l2b4-weber-fraction';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1126,6 +1129,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p3': getL3P3Script,
     'l3c3': getL3C3Script,
     'l3b3': getL3B3Script,
+    'l2p4': getL2P4Script,
+    'l2c4': getL2C4Script,
+    'l2b4': getL2B4Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1526,6 +1532,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p3', title: 'The Ceiling on Every Heat Engine', subtitle: 'Entropy, and the limit 1 − Tc/Th', discipline: 'physics', bigIdea: 3, bigIdeaTitle: 'Where Does Energy Come From?', icon: '🌡️', accentColor: 'indigo', crossLinks: ['l2p3'], level: 3 },
     { id: 'l3c3', title: "Where a Fuel's Energy Really Is", subtitle: 'Bond energies, and why breaking costs', discipline: 'chemistry', bigIdea: 3, bigIdeaTitle: 'Where Does Energy Come From?', icon: '🔗', accentColor: 'emerald', crossLinks: ['l2c3', 'l3p3'], level: 3 },
     { id: 'l3b3', title: 'Why Life Pays in Small Change', subtitle: 'ATP, and why muscle is not a heat engine', discipline: 'biology', bigIdea: 3, bigIdeaTitle: 'Where Does Energy Come From?', icon: '🪙', accentColor: 'rose', crossLinks: ['l2b3', 'l3c3'], level: 3 },
+
+    // Big Idea 4 -- Level 2 (grades 6-8)
+    { id: 'l2p4', title: 'Why Bats Squeak So High', subtitle: 'The wave equation, and waves the size of prey', discipline: 'physics', bigIdea: 4, bigIdeaTitle: 'How Do We Sense the World?', icon: '🦇', accentColor: 'indigo', crossLinks: ['p4'], level: 2 },
+    { id: 'l2c4', title: 'The Numbers Behind the Rainbow', subtitle: 'Wavelength to frequency, and how little we see', discipline: 'chemistry', bigIdea: 4, bigIdeaTitle: 'How Do We Sense the World?', icon: '🌈', accentColor: 'emerald', crossLinks: ['c4', 'l2p4'], level: 2 },
+    { id: 'l2b4', title: 'We Notice Ratios, Not Amounts', subtitle: "Weber's rule and the just noticeable difference", discipline: 'biology', bigIdea: 4, bigIdeaTitle: 'How Do We Sense the World?', icon: '🧠', accentColor: 'rose', crossLinks: ['b4', 'l2c4'], level: 2 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
