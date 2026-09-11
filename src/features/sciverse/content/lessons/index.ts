@@ -187,6 +187,9 @@ import { getL3B4Script } from './l3b4-log-senses';
 import { getL2P5Script } from './l2p5-lever-work';
 import { getL2C5Script } from './l2c5-henry-law';
 import { getL2B5Script } from './l2b5-sweat-budget';
+import { getL3P5Script } from './l3p5-self-locking-jack';
+import { getL3C5Script } from './l3c5-heat-of-dissolving';
+import { getL3B5Script } from './l3b5-sweat-limit';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1144,6 +1147,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p5': getL2P5Script,
     'l2c5': getL2C5Script,
     'l2b5': getL2B5Script,
+    'l3p5': getL3P5Script,
+    'l3c5': getL3C5Script,
+    'l3b5': getL3B5Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1559,6 +1565,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p5', title: "The Lever's Bargain", subtitle: 'Work in = work out: trading force for distance', discipline: 'physics', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🔧', accentColor: 'indigo', crossLinks: ['p5'], level: 2 },
     { id: 'l2c5', title: 'How Much Gas a Drink Can Hold', subtitle: "Henry's law: dissolved gas = k x pressure", discipline: 'chemistry', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🫧', accentColor: 'emerald', crossLinks: ['c5', 'l2p5'], level: 2 },
     { id: 'l2b5', title: 'Why Sweat Works', subtitle: 'A heat budget in joules and grams', discipline: 'biology', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '💧', accentColor: 'rose', crossLinks: ['b5', 'l2c5'], level: 2 },
+
+    // Big Idea 5 -- Level 3 (grades 9-12)
+    { id: 'l3p5', title: 'Why a Jack Holds Its Load', subtitle: 'Friction, efficiency and self-locking', discipline: 'physics', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🔩', accentColor: 'indigo', crossLinks: ['l2p5'], level: 3 },
+    { id: 'l3c5', title: 'Why Warm Drinks Lose Their Fizz', subtitle: "van 't Hoff: the heat of dissolving sets the slope", discipline: 'chemistry', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🌡️', accentColor: 'emerald', crossLinks: ['l2c5', 'l3p5'], level: 3 },
+    { id: 'l3b5', title: 'The Limit of Sweat', subtitle: 'Vapour pressure, humidity and the wet-bulb limit', discipline: 'biology', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🥵', accentColor: 'rose', crossLinks: ['l2b5', 'l3c5'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
