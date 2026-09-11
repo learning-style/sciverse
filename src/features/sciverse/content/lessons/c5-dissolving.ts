@@ -130,7 +130,7 @@ export const getC5Script = (): Record<string, DialogNode> => ({
     'discovery': {
         id: 'discovery',
         speaker: 'AI',
-        content: "🎉 **Big Discovery!**\n\n**Dissolving** is limited by the **saturation point**, which depends on:\n- **Pressure** — more pressure forces more stuff to dissolve\n- **Temperature** — cold liquids hold more dissolved gas\n\nThese same rules explain:\n- Why deep-sea divers get \"the bends\" 🤿\n- Why hot springs have fewer dissolved minerals\n- Why shaking soda makes it explode!",
+        content: "🎉 **Big Discovery!**\n\n**Dissolving** is limited by the **saturation point**, which depends on:\n- **Pressure** — more pressure forces more stuff to dissolve\n- **Temperature** — cold liquids hold more dissolved gas\n\nThese same rules explain:\n- Why deep-sea divers get \"the bends\" 🤿\n- Why a warm pond holds less oxygen than a cold one\n- Why shaking soda makes it explode!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery', co2Level: 50, pressure: 3, temperature: 20 } },
         options: [
             { id: 'complete', label: "Saturation is nature's limit!", nextNodeId: 'complete' }
@@ -140,7 +140,7 @@ export const getC5Script = (): Record<string, DialogNode> => ({
     'complete': {
         id: 'complete',
         speaker: 'AI',
-        content: "🔗 **Big Idea 5 Across Disciplines!**\n\n- Physics (P5): Levers multiply force — distance is the secret ingredient\n- Chemistry (C5): Dissolving has a limit (saturation), but pressure & temperature can shift it\n- Biology (B5): Enzymes multiply reaction speed — tiny molecules, massive effect\n\nNature loves amplification — small inputs, big outputs! 🚀\n\n✅ **Lesson C5 Complete!**",
+        content: "🔗 **Big Idea 5 Across Disciplines!**\n\n- Physics (P5): Levers multiply force — distance is the secret ingredient\n- Chemistry (C5): Dissolving has a limit (saturation), but pressure & temperature can shift it\n- Biology (B5): Tiny changes in body temperature switch on sweating or shivering, keeping you near 37°C (homeostasis)\n\nNature loves amplification — small inputs, big outputs! 🚀\n\n✅ **Lesson C5 Complete!**",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }

@@ -8,7 +8,8 @@ interface Props {
 
 const G = 9.8;
 const EFFICIENCY = 0.25;
-const L_VAP = 2260;
+/** Latent heat of vaporisation at skin temperature, J/g (2,260 J/g applies at boiling). */
+const L_VAP = 2400;
 
 export const L3B1EngineLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
@@ -66,7 +67,7 @@ export const L3B1EngineLab = ({ state, onStateChange }: Props) => {
             ctx.quadraticCurveTo(dx - 7, dy + 1, dx, dy - 9);
             ctx.fill();
         }
-        outlineText(ctx, `${sweat.toFixed(1)} g of sweat must evaporate at 2,260 J per gram`,
+        outlineText(ctx, `${sweat.toFixed(1)} g of sweat must evaporate at 2,400 J per gram`,
             safeRight / 2, dropY + 52, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
         outlineText(ctx, `W = mgh = ${kg} x 9.8 x ${metres} = ${Math.round(work).toLocaleString()} J`,
             safeRight / 2, stageBottom - 16, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);

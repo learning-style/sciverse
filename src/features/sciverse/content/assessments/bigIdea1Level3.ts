@@ -127,7 +127,7 @@ export const bigIdea1Level3Assessment: AssessmentData = {
             question: 'You sweat heavily in a hot, saturated room but overheat anyway. Why?',
             options: ['Cooling comes from evaporation, and saturated air cannot accept more vapour, so the sweat drips off having carried almost nothing away', 'Humid air holds more heat, so the room is effectively hotter', 'Sweat glands stop working in humid conditions', 'Sweating only cools you if the air is moving'],
             correctIndex: 0,
-            hint: 'Where exactly is the 2,260 J per gram paid?',
+            hint: 'Where exactly is the 2,400 J per gram paid?',
             explanation: 'The energy is paid at the moment of evaporation. Sweat that runs off leaves as warm liquid, not as vapour, and takes almost no energy with it.'
         },
         {

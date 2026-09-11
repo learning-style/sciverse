@@ -131,7 +131,7 @@ export const getP5Script = (): Record<string, DialogNode> => ({
     'complete': {
         id: 'complete',
         speaker: 'AI',
-        content: "🔗 **Big Idea 5 Complete — How a Small Force Does a Big Job!**\n\n- Physics (P5) showed how levers multiply force using torque\n- Chemistry (C5) shows how small amounts of solvent dissolve mountains of material\n- Biology (B5) reveals how tiny enzymes amplify chemical reactions in your body\n\nForce multiplication is everywhere! ⚖️\n\n✅ **Lesson P5 Complete!**",
+        content: "🔗 **Big Idea 5 Complete — How a Small Force Does a Big Job!**\n\n- Physics (P5) showed how levers multiply force using torque\n- Chemistry (C5) shows how pressure packs extra gas into a drink, up to a limit\n- Biology (B5) shows how tiny changes in body temperature switch on sweating or shivering (homeostasis)\n\nSmall inputs doing big jobs are everywhere! ⚖️\n\n✅ **Lesson P5 Complete!**",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }
