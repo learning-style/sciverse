@@ -79,6 +79,9 @@ import { L3B3AtpLab } from './L3B3AtpLab';
 import { L2P4WaveLab } from './L2P4WaveLab';
 import { L2C4SpectrumLab } from './L2C4SpectrumLab';
 import { L2B4WeberLab } from './L2B4WeberLab';
+import { L3P4SoundSpeedLab } from './L3P4SoundSpeedLab';
+import { L3C4ScatteringLab } from './L3C4ScatteringLab';
+import { L3B4LogSensesLab } from './L3B4LogSensesLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -169,4 +172,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2p4: L2P4WaveLab,
     l2c4: L2C4SpectrumLab,
     l2b4: L2B4WeberLab,
+    l3p4: L3P4SoundSpeedLab,
+    l3c4: L3C4ScatteringLab,
+    l3b4: L3B4LogSensesLab,
 };

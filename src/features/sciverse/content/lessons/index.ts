@@ -181,6 +181,9 @@ import { getL3B3Script } from './l3b3-atp-small-change';
 import { getL2P4Script } from './l2p4-wave-equation';
 import { getL2C4Script } from './l2c4-light-frequency';
 import { getL2B4Script } from './l2b4-weber-fraction';
+import { getL3P4Script } from './l3p4-speed-of-sound';
+import { getL3C4Script } from './l3c4-sky-scattering';
+import { getL3B4Script } from './l3b4-log-senses';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1132,6 +1135,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p4': getL2P4Script,
     'l2c4': getL2C4Script,
     'l2b4': getL2B4Script,
+    'l3p4': getL3P4Script,
+    'l3c4': getL3C4Script,
+    'l3b4': getL3B4Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1537,6 +1543,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p4', title: 'Why Bats Squeak So High', subtitle: 'The wave equation, and waves the size of prey', discipline: 'physics', bigIdea: 4, bigIdeaTitle: 'How Do We Sense the World?', icon: '🦇', accentColor: 'indigo', crossLinks: ['p4'], level: 2 },
     { id: 'l2c4', title: 'The Numbers Behind the Rainbow', subtitle: 'Wavelength to frequency, and how little we see', discipline: 'chemistry', bigIdea: 4, bigIdeaTitle: 'How Do We Sense the World?', icon: '🌈', accentColor: 'emerald', crossLinks: ['c4', 'l2p4'], level: 2 },
     { id: 'l2b4', title: 'We Notice Ratios, Not Amounts', subtitle: "Weber's rule and the just noticeable difference", discipline: 'biology', bigIdea: 4, bigIdeaTitle: 'How Do We Sense the World?', icon: '🧠', accentColor: 'rose', crossLinks: ['b4', 'l2c4'], level: 2 },
+
+    // Big Idea 4 -- Level 3 (grades 9-12)
+    { id: 'l3p4', title: 'Why Sound Races Through Steel', subtitle: 'v = √(B / ρ): stiffness compared with density', discipline: 'physics', bigIdea: 4, bigIdeaTitle: 'How Do We Sense the World?', icon: '🔔', accentColor: 'indigo', crossLinks: ['l2p4'], level: 3 },
+    { id: 'l3c4', title: 'The Fourth Power That Colours the Sky', subtitle: 'Rayleigh scattering and the setting Sun', discipline: 'chemistry', bigIdea: 4, bigIdeaTitle: 'How Do We Sense the World?', icon: '🌅', accentColor: 'emerald', crossLinks: ['l2c4', 'l3p4'], level: 3 },
+    { id: 'l3b4', title: 'Senses That Count in Powers of Ten', subtitle: 'Stacking Weber steps into a logarithm', discipline: 'biology', bigIdea: 4, bigIdeaTitle: 'How Do We Sense the World?', icon: '🎚️', accentColor: 'rose', crossLinks: ['l2b4', 'l3c4'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
