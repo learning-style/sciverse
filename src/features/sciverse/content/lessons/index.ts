@@ -184,6 +184,9 @@ import { getL2B4Script } from './l2b4-weber-fraction';
 import { getL3P4Script } from './l3p4-speed-of-sound';
 import { getL3C4Script } from './l3c4-sky-scattering';
 import { getL3B4Script } from './l3b4-log-senses';
+import { getL2P5Script } from './l2p5-lever-work';
+import { getL2C5Script } from './l2c5-henry-law';
+import { getL2B5Script } from './l2b5-sweat-budget';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1138,6 +1141,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p4': getL3P4Script,
     'l3c4': getL3C4Script,
     'l3b4': getL3B4Script,
+    'l2p5': getL2P5Script,
+    'l2c5': getL2C5Script,
+    'l2b5': getL2B5Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1548,6 +1554,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p4', title: 'Why Sound Races Through Steel', subtitle: 'v = √(B / ρ): stiffness compared with density', discipline: 'physics', bigIdea: 4, bigIdeaTitle: 'How Do We Sense the World?', icon: '🔔', accentColor: 'indigo', crossLinks: ['l2p4'], level: 3 },
     { id: 'l3c4', title: 'The Fourth Power That Colours the Sky', subtitle: 'Rayleigh scattering and the setting Sun', discipline: 'chemistry', bigIdea: 4, bigIdeaTitle: 'How Do We Sense the World?', icon: '🌅', accentColor: 'emerald', crossLinks: ['l2c4', 'l3p4'], level: 3 },
     { id: 'l3b4', title: 'Senses That Count in Powers of Ten', subtitle: 'Stacking Weber steps into a logarithm', discipline: 'biology', bigIdea: 4, bigIdeaTitle: 'How Do We Sense the World?', icon: '🎚️', accentColor: 'rose', crossLinks: ['l2b4', 'l3c4'], level: 3 },
+
+    // Big Idea 5 -- Level 2 (grades 6-8)
+    { id: 'l2p5', title: "The Lever's Bargain", subtitle: 'Work in = work out: trading force for distance', discipline: 'physics', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🔧', accentColor: 'indigo', crossLinks: ['p5'], level: 2 },
+    { id: 'l2c5', title: 'How Much Gas a Drink Can Hold', subtitle: "Henry's law: dissolved gas = k x pressure", discipline: 'chemistry', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🫧', accentColor: 'emerald', crossLinks: ['c5', 'l2p5'], level: 2 },
+    { id: 'l2b5', title: 'Why Sweat Works', subtitle: 'A heat budget in joules and grams', discipline: 'biology', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '💧', accentColor: 'rose', crossLinks: ['b5', 'l2c5'], level: 2 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
