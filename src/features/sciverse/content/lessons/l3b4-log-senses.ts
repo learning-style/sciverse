@@ -24,7 +24,7 @@ export function getL3B4Script(): Record<string, DialogNode> {
             content: "L2B4 found that you notice a change only when it is a big enough **share** of what was already there -- about **10%** for loudness.\n\nNow think about the range your ears cope with. Sound carries energy, and its **intensity** is the power arriving on each square metre, in **watts per square metre (W/m²)**.\n\n- The faintest sound a young person can hear: about **10⁻¹² W/m²**\n- A sound loud enough to hurt: about **1 W/m²**\n\nThat is a range of **10¹²** -- a trillion times.\n\nYour ears handle all of it. How many **different** loudnesses can you actually tell apart, from the faintest to the painful?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
-                { id: 'good', label: "Only a few hundred. Each noticeable step is a 10% increase, and it takes surprisingly few 10% steps to multiply by a trillion.", nextNodeId: 'stacking', sentiment: 'positive' },
+                { id: 'good', label: "Only a few hundred. Each noticeable step is a 10% increase, and it takes surprisingly few 10% steps to multiply by a trillion.", nextNodeId: 'recap', sentiment: 'positive' },
                 { id: 'bad', label: "Billions. A trillion-fold range must be sliced into an enormous number of loudness levels.", nextNodeId: 'misconception' }
             ]
         },
@@ -33,15 +33,31 @@ export function getL3B4Script(): Record<string, DialogNode> {
             speaker: 'AI',
             content: "It would take billions of levels if each noticeable step were a fixed **amount**. A step near the painful end would be the same size as a step near the faintest sound, and a trillion-fold range would be cut into a vast number of thin slices.\n\nBut L2B4 showed that each step is a fixed **share**. Near the faint end, 10% is a tiny amount. Near the loud end, the same 10% is an enormous amount. Steps that grow as you climb cover ground far faster than steps that stay the same size.\n\nThink of savings that grow by **10% every year**. One dollar does not take a trillion years to become a trillion dollars. It takes about **290 years**, because each year's growth is bigger than the year before.\n\nThe same 290 turns up in your ears. Here is where it comes from.",
             options: [
-                { id: 'cont', label: "Show me where 290 comes from.", nextNodeId: 'stacking' }
+                { id: 'cont', label: "Show me where 290 comes from.", nextNodeId: 'recap' }
+            ]
+        },
+        recap: {
+            id: 'recap',
+            speaker: 'AI',
+            content: "First, the two names from L2B4, because this whole lesson is built on them.\n\n**Weber's rule** is the pattern: you notice a change only when it is at least a fixed **share** of what was already there.\n\n**The Weber fraction, k,** is the number in that rule: how big the share must be, for one sense. For loudness, **k = 0.1**, which is 10%.\n\nThey are one idea, not two. The rule says *a fixed share*; the fraction says *how big a share*.\n\nIn L2B4 you used them once. Take a sound of **100 units** of intensity:\n\njust noticeable difference = 0.1 x 100 = **10 units**\n\nso the next loudness you can tell apart is **110 units**.\n\nL2B4 stopped there. This lesson asks what happens if you **keep going**. From 110 units, the next noticeable step is 10% of 110, which is 11, taking you to **121**. From 121, the next is 10% of 121, taking you to about **133**.\n\nEvery step is Weber's rule used again -- on the new, bigger starting amount. So every step is a little bigger than the one before.",
+            options: [
+                { id: 'cont', label: "So each step is bigger than the last. Where does that lead?", nextNodeId: 'stacking' }
             ]
         },
         stacking: {
             id: 'stacking',
             speaker: 'AI',
-            content: "Start at the faintest sound you can hear, and call its intensity **I₀** (say \"I-nought\").\n\nThe first noticeable step up adds a share **k**, L2B4's **Weber fraction**:\n\nafter 1 step: I₀ x (1 + k)\n\nThe next step adds the same share of **that**:\n\nafter 2 steps: I₀ x (1 + k) x (1 + k) = I₀ x (1 + k)²\n\nand after **n** steps:\n\n**I = I₀ x (1 + k)ⁿ**\n\nThe condition belongs here, and it is a big one. **This assumes k stays the same at every level**, from the faintest sound to the loudest. L2B4 warned that Weber's rule works best in the middle of a sense's range. This model stretches it across the whole range, and the end of the lesson comes back to that.\n\nThe question is **how many steps n** it takes to reach a given intensity. n is stuck up in the power. To bring it down, you need a **logarithm**.",
+            content: "Start at the faintest sound you can hear, and call its intensity **I₀** (say \"I-nought\").\n\nThe first noticeable step up adds a share **k**, L2B4's **Weber fraction**:\n\nafter 1 step: I₀ x (1 + k)\n\nAdding a share k is the same as multiplying by **(1 + k)**. Adding 10% multiplies by 1.1: 100 x 1.1 = 110, just as before.\n\nThe next step adds the same share of **that**:\n\nafter 2 steps: I₀ x (1 + k) x (1 + k) = I₀ x (1 + k)²\n\nand after **n** steps:\n\n**I = I₀ x (1 + k)ⁿ**\n\nThe condition belongs here, and it is a big one. **This assumes k stays the same at every level**, from the faintest sound to the loudest. L2B4 warned that Weber's rule works best in the middle of a sense's range. This model stretches it across the whole range, and the end of the lesson comes back to that.\n\nThe question is **how many steps n** it takes to reach a given intensity. Before any new maths, count them by hand.",
             options: [
-                { id: 'cont', label: "What is a logarithm?", nextNodeId: 'logarithm' }
+                { id: 'cont', label: "Count the steps by hand.", nextNodeId: 'counting' }
+            ]
+        },
+        counting: {
+            id: 'counting',
+            speaker: 'AI',
+            content: "Take loudness, where k = 0.1, so every noticeable step multiplies the intensity by **1.1**. Start at 1 unit and keep multiplying:\n\n| Steps | Intensity |\n| --- | --- |\n| 0 | 1 |\n| 1 | 1.1 |\n| 2 | 1.21 |\n| 3 | 1.33 |\n| 7 | 1.95 -- nearly **double** |\n| 14 | 3.80 |\n| 24 | 9.85 -- nearly **ten times** |\n\nSo it takes about **24** noticeable steps to make a sound ten times as intense.\n\nNow the whole range. A trillion, 10¹², is **ten times bigger, twelve times over**. Every ten-fold jump takes about 24 steps, so:\n\n12 x 24 = **about 290 steps**\n\nThat answers the opening question, and it needed nothing but multiplying by 1.1.\n\nCounting by hand has a cost, though. For brightness, where k = 0.08, you would need a whole new table. For a different range, a longer one. A **logarithm** does this counting in a single line.",
+            options: [
+                { id: 'cont', label: "Show me the one-line way.", nextNodeId: 'logarithm' }
             ]
         },
         logarithm: {
@@ -55,7 +71,7 @@ export function getL3B4Script(): Record<string, DialogNode> {
         worked: {
             id: 'worked',
             speaker: 'AI',
-            content: "**Hearing**, from the faintest sound to the painful: I / I₀ = 10¹², and k = 0.1.\n\nlog 10¹² = 12\nlog 1.1 = 0.0414\nn = 12 / 0.0414 = **290 steps**\n\nA trillion-fold range, and only about **290** loudness steps you can tell apart.\n\nNow a striking consequence. How many steps does it take to make a sound **ten times** as intense?\n\nn = log 10 / log 1.1 = 1 / 0.0414 = **24 steps**\n\n**Every ten-fold increase adds the same 24 steps**, wherever it happens. Going from 10 units of intensity to 100 is the same climb as going from 1,000,000 to 10,000,000.\n\nA sense that turns equal **ratios** into equal **steps** is called **logarithmic**. That is exactly why sound engineers measure loudness on a logarithmic scale to match: the **decibel**, which appears in P45. Every **10 decibels** is ten times the intensity.",
+            content: "Now check the hand count with the formula.\n\n**Hearing**, from the faintest sound to the painful: I / I₀ = 10¹², and k = 0.1.\n\nlog 10¹² = 12\nlog 1.1 = 0.0414\nn = 12 / 0.0414 = **290 steps**\n\nThe same **290** you counted. A trillion-fold range, and only about 290 loudness steps you can tell apart.\n\nAnd the ten-fold count from your table:\n\nn = log 10 / log 1.1 = 1 / 0.0414 = **24 steps**\n\n**Every ten-fold increase adds the same 24 steps**, wherever it happens. Going from 10 units of intensity to 100 is the same climb as going from 1,000,000 to 10,000,000.\n\nA sense that turns equal **ratios** into equal **steps** is called **logarithmic**. That is exactly why sound engineers measure loudness on a logarithmic scale to match: the **decibel**, which appears in P45. Every **10 decibels** is ten times the intensity.",
             options: [
                 { id: 'try', label: "Let me work one out.", nextNodeId: 'math_check' }
             ]
@@ -116,7 +132,7 @@ export function getL3B4Script(): Record<string, DialogNode> {
         discovery: {
             id: 'discovery',
             speaker: 'AI',
-            content: "**You found the shape of a whole sense.**\n\n- Sound **intensity** is power per square metre, in **W/m²**\n- Hearing spans about **10¹²**: from 10⁻¹² W/m² to about 1 W/m²\n- Stacking Weber steps: **I = I₀ x (1 + k)ⁿ**, if k is the same at every level\n- A **logarithm** answers: ten to what power gives this number?\n- **log (xⁿ) = n x log x** brings the power down\n- **n = log (I / I₀) / log (1 + k)** counts the just noticeable steps\n- Hearing: 12 / 0.0414 = **about 290 steps** across a trillion-fold range\n- Every ten-fold increase adds the same **24 steps**\n- A sense that turns equal ratios into equal steps is **logarithmic**\n- The **decibel** scale is logarithmic to match: every 10 decibels is ten times the intensity\n- Still standing: **Stevens** found loudness grows about as intensity to the power **0.3**\n\nBig Idea 4 is complete at Level 3.",
+            content: "**You found the shape of a whole sense.**\n\n- **Weber's rule** is the pattern, a fixed share; the **Weber fraction k** is how big that share is for one sense\n- Adding a share k is the same as multiplying by **(1 + k)**\n- Counting by hand: 24 steps of x 1.1 make nearly x 10, and 12 x 24 = about 290\n- Sound **intensity** is power per square metre, in **W/m²**\n- Hearing spans about **10¹²**: from 10⁻¹² W/m² to about 1 W/m²\n- Stacking Weber steps: **I = I₀ x (1 + k)ⁿ**, if k is the same at every level\n- A **logarithm** answers: ten to what power gives this number?\n- **log (xⁿ) = n x log x** brings the power down\n- **n = log (I / I₀) / log (1 + k)** counts the just noticeable steps\n- Hearing: 12 / 0.0414 = **about 290 steps** across a trillion-fold range\n- Every ten-fold increase adds the same **24 steps**\n- A sense that turns equal ratios into equal steps is **logarithmic**\n- The **decibel** scale is logarithmic to match: every 10 decibels is ten times the intensity\n- Still standing: **Stevens** found loudness grows about as intensity to the power **0.3**\n\nBig Idea 4 is complete at Level 3.",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery' } },
             options: [
                 { id: 'done', label: "n = log (I / I₀) / log (1 + k)!", nextNodeId: 'complete' }
@@ -125,7 +141,7 @@ export function getL3B4Script(): Record<string, DialogNode> {
         complete: {
             id: 'complete',
             speaker: 'AI',
-            content: "**Level 3 Complete -- Senses That Count in Powers of Ten!**\n\nL2B4 found the rule for one noticeable change. Level 3 stacks those changes and finds the shape of a whole sense.\n\n**Summary Table:**\n| Idea | The Maths | What It Means |\n| --- | --- | --- |\n| Intensity | W/m² | Power on each square metre |\n| Stacked steps | **I = I₀ x (1 + k)ⁿ** | Each step a fixed share |\n| Logarithm | ten to what power? | log 1,000 = 3 |\n| Counting steps | **n = log (I / I₀) / log (1 + k)** | Assumes k is constant |\n| Hearing | 12 / 0.0414 = **290** | A trillion-fold range |\n| Ten-fold increase | 1 / 0.0414 = **24** | The same everywhere |\n| Logarithmic sense | equal ratios, equal steps | Why decibels exist |\n| Still standing | loudness ∝ intensity to the 0.3 | Stevens' power law |\n| Big Idea 4 at Level 3 | root, fourth power, logarithm | The power decides the response |\n\n**The one line to remember:** a sense that notices shares climbs in equal steps for equal ratios -- which is how a few hundred steps can cover a trillion-fold range.\n\n**Big Idea 4 is complete at Level 3.**"
+            content: "**Level 3 Complete -- Senses That Count in Powers of Ten!**\n\nL2B4 found the rule for one noticeable change. Level 3 stacks those changes and finds the shape of a whole sense.\n\n**Summary Table:**\n| Idea | The Maths | What It Means |\n| --- | --- | --- |\n| Weber's rule and k | rule: a fixed share; k: how big | k = 0.1 for loudness |\n| Intensity | W/m² | Power on each square metre |\n| Stacked steps | **I = I₀ x (1 + k)ⁿ** | Each step a fixed share |\n| Logarithm | ten to what power? | log 1,000 = 3 |\n| Counting steps | **n = log (I / I₀) / log (1 + k)** | Assumes k is constant |\n| Hearing | 12 / 0.0414 = **290** | A trillion-fold range |\n| Ten-fold increase | 1 / 0.0414 = **24** | The same everywhere |\n| Logarithmic sense | equal ratios, equal steps | Why decibels exist |\n| Still standing | loudness ∝ intensity to the 0.3 | Stevens' power law |\n| Big Idea 4 at Level 3 | root, fourth power, logarithm | The power decides the response |\n\n**The one line to remember:** a sense that notices shares climbs in equal steps for equal ratios -- which is how a few hundred steps can cover a trillion-fold range.\n\n**Big Idea 4 is complete at Level 3.**"
         }
     };
 }
