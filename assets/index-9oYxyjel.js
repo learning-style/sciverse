@@ -12519,13 +12519,24 @@ The explanation is that the brain does **not** judge the extra amount on its own
 
 The first is easy to feel. The second is lost completely.
 
-This is not a flaw. A sense that measured amounts would be useless across the huge range of things you meet -- a feather and a suitcase, a whisper and a shout. Judging changes as a **share** lets one sense work across all of them.`,options:[{id:"cont",label:"So what share does it take before I notice?",nextNodeId:"defining"}]},defining:{id:"defining",speaker:"AI",content:`That was measured in the 1830s by a scientist named **Ernst Weber**, and it has a name.
+This is not a flaw. A sense that measured amounts would be useless across the huge range of things you meet -- a feather and a suitcase, a whisper and a shout. Judging changes as a **share** lets one sense work across all of them.`,options:[{id:"cont",label:"So what share does it take before I notice?",nextNodeId:"defining"}]},defining:{id:"defining",speaker:"AI",content:`That was measured in the 1830s by a scientist named **Ernst Weber**.
 
 The **just noticeable difference** is the smallest change a person can reliably detect.
 
-Weber found that it is not a fixed amount. It is a **fixed fraction of the starting amount**. That fraction is called the **Weber fraction**, written **k**:
+Weber found that it is not a fixed amount. It is always the same **share** of the starting amount. That discovery is called **Weber's rule**:
 
 **just noticeable difference = k x starting amount**
+
+The number **k** in the rule is called the **Weber fraction**. It is the share itself, written as a decimal: k = 0.03 means **3%**.
+
+So there are two names, and they are two parts of one idea:
+
+| Name | What it is | Example |
+| --- | --- | --- |
+| **Weber's rule** | The pattern: a change is noticed only when it is a big enough share of what was already there | Works for weight, brightness and loudness |
+| **Weber fraction, k** | The number in the rule: how big that share must be, for one sense | 0.03 for weight |
+
+Think of a sale in two shops. In both shops the rule is the same: *every price is cut by the same share*. But one shop takes 10% off, and the other takes 25% off. Same rule, different fraction. Your senses work like that: **one rule, and a different k for each sense**.
 
 Because k is one amount divided by another of the same kind, it has **no units** -- like L2C2's relative atomic masses.
 
@@ -12595,9 +12606,9 @@ It is also why a whisper that is easy to hear in a silent room disappears at a b
 
 - The brain judges a change **compared with** what was already there
 - The **just noticeable difference** is the smallest change you can reliably detect
-- **Ernst Weber** found it is a fixed fraction of the starting amount
+- **Weber's rule**, found by **Ernst Weber**: the just noticeable difference is always the same share of the starting amount
 - **just noticeable difference = k x starting amount**
-- The **Weber fraction k** has **no units**
+- The number in the rule, **k**, is the **Weber fraction** -- how big the share is for one sense -- and it has **no units**
 - Weight **about 0.03**; brightness **about 0.08**; loudness **about 0.1**
 - 5 g is noticed on a 100 g envelope (3 g threshold) but not on a 5,000 g bag (150 g threshold)
 - A room lit by 50 candles needs **4** more before it looks brighter
@@ -12613,8 +12624,8 @@ B4 followed a signal to the brain. Level 2 finds the rule the brain uses to deci
 | --- | --- | --- |
 | The brain compares | share, not amount | 5 g feels different in an envelope and a bag |
 | Just noticeable difference | the smallest change you detect | It depends on the start |
-| Weber's rule | **k x starting amount** | A fixed fraction |
-| Weber fraction | **k**, no units | Weight 0.03, brightness 0.08, loudness 0.1 |
+| Weber's rule | **k x starting amount** | The pattern: a fixed share |
+| Weber fraction | **k**, no units | The number in the rule: weight 0.03, brightness 0.08, loudness 0.1 |
 | The envelope | 0.03 x 100 = **3 g** | A 5 g coin is noticed |
 | The bag | 0.03 x 5,000 = **150 g** | The same coin is not |
 | Its condition | the middle of the range | Breaks down when very faint or very strong |
@@ -12622,7 +12633,7 @@ B4 followed a signal to the brain. Level 2 finds the rule the brain uses to deci
 
 **The one line to remember:** you never sense how much something changed -- only what share of the original the change was.
 
-**Big Idea 4 is complete at Level 2.**`}}}function M0(){return{root:{id:"root",speaker:"AI",content:`L2P4 used the speed of sound as a number to look up: **343 m/s** in air, **1,480 m/s** in water. It said the speed changes with the material, but never why.
+**Big Idea 4 is complete at Level 2.** At Level 3, L3B4 uses Weber's rule again and again, one noticeable step after another, to find how many loudnesses you can tell apart.`}}}function M0(){return{root:{id:"root",speaker:"AI",content:`L2P4 used the speed of sound as a number to look up: **343 m/s** in air, **1,480 m/s** in water. It said the speed changes with the material, but never why.
 
 Here is a puzzle. **Steel is about 6,500 times as dense as air** -- a cubic metre of air has a mass of 1.2 kg, a cubic metre of steel 7,850 kg.
 
@@ -12897,17 +12908,35 @@ Now think about the range your ears cope with. Sound carries energy, and its **i
 
 That is a range of **10¹²** -- a trillion times.
 
-Your ears handle all of it. How many **different** loudnesses can you actually tell apart, from the faintest to the painful?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Only a few hundred. Each noticeable step is a 10% increase, and it takes surprisingly few 10% steps to multiply by a trillion.",nextNodeId:"stacking",sentiment:"positive"},{id:"bad",label:"Billions. A trillion-fold range must be sliced into an enormous number of loudness levels.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`It would take billions of levels if each noticeable step were a fixed **amount**. A step near the painful end would be the same size as a step near the faintest sound, and a trillion-fold range would be cut into a vast number of thin slices.
+Your ears handle all of it. How many **different** loudnesses can you actually tell apart, from the faintest to the painful?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Only a few hundred. Each noticeable step is a 10% increase, and it takes surprisingly few 10% steps to multiply by a trillion.",nextNodeId:"recap",sentiment:"positive"},{id:"bad",label:"Billions. A trillion-fold range must be sliced into an enormous number of loudness levels.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`It would take billions of levels if each noticeable step were a fixed **amount**. A step near the painful end would be the same size as a step near the faintest sound, and a trillion-fold range would be cut into a vast number of thin slices.
 
 But L2B4 showed that each step is a fixed **share**. Near the faint end, 10% is a tiny amount. Near the loud end, the same 10% is an enormous amount. Steps that grow as you climb cover ground far faster than steps that stay the same size.
 
 Think of savings that grow by **10% every year**. One dollar does not take a trillion years to become a trillion dollars. It takes about **290 years**, because each year's growth is bigger than the year before.
 
-The same 290 turns up in your ears. Here is where it comes from.`,options:[{id:"cont",label:"Show me where 290 comes from.",nextNodeId:"stacking"}]},stacking:{id:"stacking",speaker:"AI",content:`Start at the faintest sound you can hear, and call its intensity **I₀** (say "I-nought").
+The same 290 turns up in your ears. Here is where it comes from.`,options:[{id:"cont",label:"Show me where 290 comes from.",nextNodeId:"recap"}]},recap:{id:"recap",speaker:"AI",content:`First, the two names from L2B4, because this whole lesson is built on them.
+
+**Weber's rule** is the pattern: you notice a change only when it is at least a fixed **share** of what was already there.
+
+**The Weber fraction, k,** is the number in that rule: how big the share must be, for one sense. For loudness, **k = 0.1**, which is 10%.
+
+They are one idea, not two. The rule says *a fixed share*; the fraction says *how big a share*.
+
+In L2B4 you used them once. Take a sound of **100 units** of intensity:
+
+just noticeable difference = 0.1 x 100 = **10 units**
+
+so the next loudness you can tell apart is **110 units**.
+
+L2B4 stopped there. This lesson asks what happens if you **keep going**. From 110 units, the next noticeable step is 10% of 110, which is 11, taking you to **121**. From 121, the next is 10% of 121, taking you to about **133**.
+
+Every step is Weber's rule used again -- on the new, bigger starting amount. So every step is a little bigger than the one before.`,options:[{id:"cont",label:"So each step is bigger than the last. Where does that lead?",nextNodeId:"stacking"}]},stacking:{id:"stacking",speaker:"AI",content:`Start at the faintest sound you can hear, and call its intensity **I₀** (say "I-nought").
 
 The first noticeable step up adds a share **k**, L2B4's **Weber fraction**:
 
 after 1 step: I₀ x (1 + k)
+
+Adding a share k is the same as multiplying by **(1 + k)**. Adding 10% multiplies by 1.1: 100 x 1.1 = 110, just as before.
 
 The next step adds the same share of **that**:
 
@@ -12919,7 +12948,27 @@ and after **n** steps:
 
 The condition belongs here, and it is a big one. **This assumes k stays the same at every level**, from the faintest sound to the loudest. L2B4 warned that Weber's rule works best in the middle of a sense's range. This model stretches it across the whole range, and the end of the lesson comes back to that.
 
-The question is **how many steps n** it takes to reach a given intensity. n is stuck up in the power. To bring it down, you need a **logarithm**.`,options:[{id:"cont",label:"What is a logarithm?",nextNodeId:"logarithm"}]},logarithm:{id:"logarithm",speaker:"AI",content:`The **logarithm** of a number, written **log**, answers one question: **ten to what power gives this number?**
+The question is **how many steps n** it takes to reach a given intensity. Before any new maths, count them by hand.`,options:[{id:"cont",label:"Count the steps by hand.",nextNodeId:"counting"}]},counting:{id:"counting",speaker:"AI",content:`Take loudness, where k = 0.1, so every noticeable step multiplies the intensity by **1.1**. Start at 1 unit and keep multiplying:
+
+| Steps | Intensity |
+| --- | --- |
+| 0 | 1 |
+| 1 | 1.1 |
+| 2 | 1.21 |
+| 3 | 1.33 |
+| 7 | 1.95 -- nearly **double** |
+| 14 | 3.80 |
+| 24 | 9.85 -- nearly **ten times** |
+
+So it takes about **24** noticeable steps to make a sound ten times as intense.
+
+Now the whole range. A trillion, 10¹², is **ten times bigger, twelve times over**. Every ten-fold jump takes about 24 steps, so:
+
+12 x 24 = **about 290 steps**
+
+That answers the opening question, and it needed nothing but multiplying by 1.1.
+
+Counting by hand has a cost, though. For brightness, where k = 0.08, you would need a whole new table. For a different range, a longer one. A **logarithm** does this counting in a single line.`,options:[{id:"cont",label:"Show me the one-line way.",nextNodeId:"logarithm"}]},logarithm:{id:"logarithm",speaker:"AI",content:`The **logarithm** of a number, written **log**, answers one question: **ten to what power gives this number?**
 
 - log 1,000 = **3**, because 10³ = 1,000
 - log 10¹² = **12**
@@ -12941,15 +12990,17 @@ and divide:
 
 **n = log (I / I₀) / log (1 + k)**
 
-That is **the number of just noticeable steps** between the faintest sound and a sound of intensity I.`,options:[{id:"cont",label:"Now use it on hearing.",nextNodeId:"worked"}]},worked:{id:"worked",speaker:"AI",content:`**Hearing**, from the faintest sound to the painful: I / I₀ = 10¹², and k = 0.1.
+That is **the number of just noticeable steps** between the faintest sound and a sound of intensity I.`,options:[{id:"cont",label:"Now use it on hearing.",nextNodeId:"worked"}]},worked:{id:"worked",speaker:"AI",content:`Now check the hand count with the formula.
+
+**Hearing**, from the faintest sound to the painful: I / I₀ = 10¹², and k = 0.1.
 
 log 10¹² = 12
 log 1.1 = 0.0414
 n = 12 / 0.0414 = **290 steps**
 
-A trillion-fold range, and only about **290** loudness steps you can tell apart.
+The same **290** you counted. A trillion-fold range, and only about 290 loudness steps you can tell apart.
 
-Now a striking consequence. How many steps does it take to make a sound **ten times** as intense?
+And the ten-fold count from your table:
 
 n = log 10 / log 1.1 = 1 / 0.0414 = **24 steps**
 
@@ -12998,6 +13049,9 @@ That completes Big Idea 4 at Level 3. Level 2 found that senses work in **ratios
 
 And the simplification still standing. **This model assumes k is the same everywhere, and it is not.** In the 1950s the psychologist **S. S. Stevens** asked people to judge directly how loud sounds seemed. He found loudness grows roughly as intensity to the power **0.3**. By that measure, ten times the intensity sounds about **twice** as loud, because 10 to the power 0.3 is 2.0. Whether perception is truly logarithmic or follows a power law is still argued about -- but both agree that the ear squeezes a trillion-fold range into something the brain can use.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Equal ratios, equal steps!",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**You found the shape of a whole sense.**
 
+- **Weber's rule** is the pattern, a fixed share; the **Weber fraction k** is how big that share is for one sense
+- Adding a share k is the same as multiplying by **(1 + k)**
+- Counting by hand: 24 steps of x 1.1 make nearly x 10, and 12 x 24 = about 290
 - Sound **intensity** is power per square metre, in **W/m²**
 - Hearing spans about **10¹²**: from 10⁻¹² W/m² to about 1 W/m²
 - Stacking Weber steps: **I = I₀ x (1 + k)ⁿ**, if k is the same at every level
@@ -13017,6 +13071,7 @@ L2B4 found the rule for one noticeable change. Level 3 stacks those changes and 
 **Summary Table:**
 | Idea | The Maths | What It Means |
 | --- | --- | --- |
+| Weber's rule and k | rule: a fixed share; k: how big | k = 0.1 for loudness |
 | Intensity | W/m² | Power on each square metre |
 | Stacked steps | **I = I₀ x (1 + k)ⁿ** | Each step a fixed share |
 | Logarithm | ten to what power? | log 1,000 = 3 |
