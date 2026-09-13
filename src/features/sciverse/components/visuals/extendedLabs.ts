@@ -91,6 +91,9 @@ import { L3B5HumidityLab } from './L3B5HumidityLab';
 import { L2P6FloatLab } from './L2P6FloatLab';
 import { L2C6SortingLab } from './L2C6SortingLab';
 import { L2B6HoverLab } from './L2B6HoverLab';
+import { L3P6PressureLab } from './L3P6PressureLab';
+import { L3C6SeawaterLab } from './L3C6SeawaterLab';
+import { L3B6DepthLab } from './L3B6DepthLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -193,4 +196,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2p6: L2P6FloatLab,
     l2c6: L2C6SortingLab,
     l2b6: L2B6HoverLab,
+    l3p6: L3P6PressureLab,
+    l3c6: L3C6SeawaterLab,
+    l3b6: L3B6DepthLab,
 };

@@ -193,6 +193,9 @@ import { getL3B5Script } from './l3b5-sweat-limit';
 import { getL2P6Script } from './l2p6-fraction-submerged';
 import { getL2C6Script } from './l2c6-float-sink-sorting';
 import { getL2B6Script } from './l2b6-swim-bladder';
+import { getL3P6Script } from './l3p6-buoyancy-from-pressure';
+import { getL3C6Script } from './l3c6-seawater-layers';
+import { getL3B6Script } from './l3b6-swim-bladder-depth';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1156,6 +1159,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p6': getL2P6Script,
     'l2c6': getL2C6Script,
     'l2b6': getL2B6Script,
+    'l3p6': getL3P6Script,
+    'l3c6': getL3C6Script,
+    'l3b6': getL3B6Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1581,6 +1587,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p6', title: 'How Much of an Iceberg Is Hidden?', subtitle: 'Fraction under water = object density / liquid density', discipline: 'physics', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '🧊', accentColor: 'indigo', crossLinks: ['p6'], level: 2 },
     { id: 'l2c6', title: 'Sorting Plastic by Floating It', subtitle: 'Total mass over measured volume, up to saturation', discipline: 'chemistry', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '♻️', accentColor: 'emerald', crossLinks: ['c6', 'l2p6'], level: 2 },
     { id: 'l2b6', title: 'How a Fish Hovers', subtitle: 'Average density and the swim bladder', discipline: 'biology', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '🐟', accentColor: 'rose', crossLinks: ['b6', 'l2c6'], level: 2 },
+
+    // Big Idea 6 -- Level 3 (grades 9-12)
+    { id: 'l3p6', title: 'Where the Buoyant Force Comes From', subtitle: 'Pressure grows with depth; the difference is ρ x g x V', discipline: 'physics', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '🎈', accentColor: 'indigo', crossLinks: ['l2p6'], level: 3 },
+    { id: 'l3c6', title: 'Why Cold, Salty Water Sinks', subtitle: 'Temperature and salt compete to layer the ocean', discipline: 'chemistry', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '🌊', accentColor: 'emerald', crossLinks: ['l2c6', 'l3p6'], level: 3 },
+    { id: 'l3b6', title: "The Swim Bladder's Unstable Balance", subtitle: "Boyle's law and a balance that runs away", discipline: 'biology', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '🐠', accentColor: 'rose', crossLinks: ['l2b6', 'l3c6'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
