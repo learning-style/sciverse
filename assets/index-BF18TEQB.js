@@ -12663,12 +12663,31 @@ To get a feel for it, squeeze each of these by **1%**:
 - **Air**, squeezed as quickly as a sound wave does it: about **1,420 Pa** extra
 - **Water**: about **22,000,000 Pa** extra -- over two hundred times the pressure of the atmosphere
 
-Water is about **15,000 times** stiffer than air. That is why you can push in the plunger of a bicycle pump with your thumb over the outlet, but not the plunger of a syringe full of water.`,options:[{id:"cont",label:"How do stiffness and density combine into a speed?",nextNodeId:"derive"}]},derive:{id:"derive",speaker:"AI",content:`Picture a line of **carts joined by springs**. Shove the first cart: its spring squeezes and pushes the second cart, whose spring pushes the third, and the squeeze runs down the line. That running squeeze is a sound wave.
+Water is about **15,000 times** stiffer than air. That is why you can push in the plunger of a bicycle pump with your thumb over the outlet, but not the plunger of a syringe full of water.`,options:[{id:"cont",label:"How do stiffness and density combine into a speed?",nextNodeId:"guess"}]},guess:{id:"guess",speaker:"AI",content:`Before any algebra, test some guesses against a speed you already know.
+
+L2P4 said sound crosses water at about **1,480 m/s**. Water's numbers are **B = 2.2 x 10⁹ Pa** and **ρ = 1,000 kg/m³**.
+
+Stiffness should make sound faster and density should make it slower, so B belongs in the numerator and ρ in the denominator. Try the simplest candidates:
+
+| Guess | Worked out for water | Close to 1,480? |
+| --- | --- | --- |
+| B + ρ | cannot be worked out | Pascals and kg/m³ are different kinds of quantity |
+| B x ρ | 2,200,000,000,000 | No -- and more density should not make sound faster |
+| B / ρ | 2,200,000 | No -- about 1,500 times too big |
+| √(B / ρ) | √2,200,000 = **1,483** | **Yes** |
+
+One match could be luck, so test the winner on a completely different material. **Air**: B = 142,000 Pa, ρ = 1.20 kg/m³.
+
+√(142,000 / 1.20) = √118,000 = **344 m/s**
+
+L2P4's figure for air was **343 m/s**.
+
+Two materials, their stiffnesses more than ten thousand times apart, and one guess fits both. The next step shows it is no accident: the units themselves demand the square root.`,options:[{id:"cont",label:"Why a square root? Show me with the units.",nextNodeId:"derive"}]},derive:{id:"derive",speaker:"AI",content:`Picture a line of **carts joined by springs**. Shove the first cart: its spring squeezes and pushes the second cart, whose spring pushes the third, and the squeeze runs down the line. That running squeeze is a sound wave.
 
 - **Stiffer springs** push the next cart sooner, so the squeeze travels **faster**
 - **Heavier carts** take longer to get moving, so it travels **slower**
 
-So speed grows with B and falls with ρ. The simplest combination to try is **B / ρ**. Check its units:
+So speed grows with B and falls with ρ, which is why every guess put B in the numerator. Now check the units of **B / ρ**:
 
 B / ρ is Pa ÷ kg/m³
 = (N/m²) ÷ (kg/m³)
@@ -12755,6 +12774,7 @@ And the simplification still standing: **v = √(B / ρ) is for gentle squeezes.
 - A sound wave is a squeeze passed from particle to particle
 - **Density ρ** (kg/m³) slows it; **stiffness** speeds it up
 - The **bulk modulus B** = pressure change / fraction of volume lost, in **pascals (Pa)**
+- Tested on water and air, only **√(B / ρ)** matches the measured speeds
 - The units of B / ρ are **m²/s²**, which forces a square root
 - **v = √(B / ρ)**, for a gentle squeeze in a gas or liquid
 - Air **344 m/s**, helium **1,009 m/s**, water **1,483 m/s**, a steel rod **5,050 m/s**
@@ -12807,7 +12827,23 @@ scattered power ∝ (acceleration)² ∝ (f²)² = **f⁴**
 
 Since f = c / λ, that is the same as **1 / λ⁴**. This is **Rayleigh scattering**, after Lord Rayleigh, who worked it out in 1871.
 
-The condition belongs here, and it has two parts. **The particle must be much smaller than the wavelength**, so all its electrons are shaken together. And **the light must be well below the frequencies the molecule absorbs**, so the electrons swing the same width at every frequency, as your hand did. An air molecule is about **0.3 nm** across, over a thousand times smaller than visible light's waves, and air absorbs only far into the ultraviolet. For air, both parts hold.`,options:[{id:"cont",label:"So how much more is blue scattered?",nextNodeId:"worked"}]},worked:{id:"worked",speaker:"AI",content:`Compare **blue, 450 nm**, with **red, 700 nm**. Scattering goes as 1 / λ⁴, so the shorter wave wins by the ratio of the wavelengths to the fourth power -- with the longer wavelength in the numerator:
+The condition belongs here, and it has two parts. **The particle must be much smaller than the wavelength**, so all its electrons are shaken together. And **the light must be well below the frequencies the molecule absorbs**, so the electrons swing the same width at every frequency, as your hand did. An air molecule is about **0.3 nm** across, over a thousand times smaller than visible light's waves, and air absorbs only far into the ultraviolet. For air, both parts hold.`,options:[{id:"cont",label:"Put numbers on those steps first.",nextNodeId:"by_hand"}]},by_hand:{id:"by_hand",speaker:"AI",content:`Steps 3 and 4 are the steep part, so put numbers on them. Picture a hand swinging side to side across the **same 20 cm** every time.
+
+The number of **swings per second** is the frequency. Doubling it means every swing must be done in half the time.
+
+| Swings per second | Speed across | Time to stop and reverse | Acceleration | Power sent out |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | 1 | 1 | **1** |
+| 2 | 2 | ½ | 2 ÷ ½ = 4 | 4² = **16** |
+| 3 | 3 | ⅓ | 3 ÷ ⅓ = 9 | 9² = **81** |
+
+Every number is compared with the first row, so no units are needed.
+
+Read along a row. **Acceleration** is a change of speed divided by the time it takes. Twice the speed, reversed in half the time, gives **4 times** the acceleration. Step 2 said power goes as acceleration **squared**, so 4 becomes **16**. Three times the frequency gives 3 x 3 x 3 x 3 = **81** times the power.
+
+That is the fourth power, built by hand: **f⁴**.
+
+Light works the same way. Frequency goes as 1 / λ, so blue light (450 nm) has 700 / 450 = **1.56 times** the frequency of red light (700 nm). Blue shakes the electrons 1.56 times as often.`,options:[{id:"cont",label:"Now finish blue against red.",nextNodeId:"worked"}]},worked:{id:"worked",speaker:"AI",content:`Compare **blue, 450 nm**, with **red, 700 nm**. Scattering goes as 1 / λ⁴, so the shorter wave wins by the ratio of the wavelengths to the fourth power -- with the longer wavelength in the numerator:
 
 (700 / 450)⁴ = 1.556⁴
 
@@ -12873,6 +12909,7 @@ Because 1 / λ⁴ describes only what the **air** does to light. It says nothing
 - To **scatter** light is to send it off in a new direction, not destroy it
 - Light's electric field shakes a molecule's **electrons** at the light's frequency
 - A shaken electron sends out power in proportion to its **acceleration squared**
+- By hand: twice the frequency gives **4 times** the acceleration and **16 times** the power
 - Acceleration grows as **f²**, so scattered power ∝ **f⁴** ∝ **1 / λ⁴**: **Rayleigh scattering**
 - Condition: particles **much smaller than the wavelength**, light below the absorbed frequencies
 - Blue (450 nm) is scattered **5.9 times** as strongly as red (700 nm); violet **9.4 times**
@@ -13607,7 +13644,26 @@ We will call the enthalpy change when one mole of gas dissolves its **heat of di
 
 Now C15's rule for a balance that runs both ways: **raising the temperature shifts the balance towards the direction that takes in heat.** Dissolving CO₂ gives out heat, so escaping takes it in. Warming favours escaping -- and k falls.
 
-For sugar, dissolving takes in heat, so warming favours dissolving. Same rule, opposite sign.`,options:[{id:"cont",label:"Can the heat of dissolving predict k?",nextNodeId:"rule"}]},rule:{id:"rule",speaker:"AI",content:`Yes. The more heat dissolving releases, the more steeply k should change with temperature. **Jacobus van 't Hoff** turned that into a rule in 1884:
+For sugar, dissolving takes in heat, so warming favours dissolving. Same rule, opposite sign.`,options:[{id:"cont",label:"Can the heat of dissolving predict k?",nextNodeId:"by_hand"}]},by_hand:{id:"by_hand",speaker:"AI",content:`Before any formula, look for a pattern in L2C5's table -- the way L3B4 counted steps by hand.
+
+Divide each k by the one before it. That gives the **share of k kept** for each 10 °C of warming:
+
+| Warming | k before | k after | Share kept |
+| --- | --- | --- | --- |
+| 0 °C to 10 °C | 3.4 | 2.3 | 2.3 / 3.4 = **0.68** |
+| 10 °C to 20 °C | 2.3 | 1.7 | 1.7 / 2.3 = **0.74** |
+| 20 °C to 30 °C | 1.7 | 1.3 | 1.3 / 1.7 = **0.76** |
+| 30 °C to 40 °C | 1.3 | 1.0 | 1.0 / 1.3 = **0.77** |
+
+The shares are all close to **three quarters**. That gives a rough rule you can use by hand: **every 10 °C of warming keeps about 0.75 of k**. And, like L3B4's steps, the shares multiply:
+
+20 °C to 40 °C is two 10 °C steps: 1.7 x 0.75 x 0.75 = **0.96** -- close to the table's **1.0**.
+
+But look again: the share **creeps up**, from 0.68 in cold water to 0.77 in warm. The same 10 °C matters less as the water gets warmer. Why?
+
+Because what matters is how big 10 °C is **compared with the temperature measured from absolute zero** -- the kelvin temperature of L3P3. From 273 K to 283 K is a **3.7%** rise. From 303 K to 313 K it is only **3.3%**. A smaller share of a step keeps more of k.
+
+So a precise rule has to do two things the hand rule cannot: work in **kelvin**, and say how the share kept depends on the **heat of dissolving**.`,options:[{id:"cont",label:"Show me the precise rule.",nextNodeId:"rule"}]},rule:{id:"rule",speaker:"AI",content:`It can. The more heat dissolving releases, the more steeply k changes with temperature -- the smaller the share kept for each 10 °C. **Jacobus van 't Hoff** turned that into a precise rule in 1884:
 
 **log (k₂ / k₁) = B x (1/T₂ − 1/T₁)**
 
@@ -13684,6 +13740,7 @@ And the simplification still standing, which the lab already showed: **the rule 
 - Dissolving a gas forms weak attractions with little to break: ΔH **negative**
 - The **heat of dissolving** of CO₂ is about **−20 kJ/mol**
 - C15: warming shifts a balance towards the direction that takes in heat
+- By hand: each 10 °C of warming keeps about **three quarters** of k, and the share creeps up in warmer water
 - **van 't Hoff**: **log (k₂ / k₁) = B x (1/T₂ − 1/T₁)**, **B = −ΔH / (2.303 x R)**
 - T in **kelvin**; **R = 8.314 J/mol/K**, the **gas constant**
 - For CO₂, B = **1,045 K**; 20 °C to 40 °C predicts k = **1.0** -- the table's value
