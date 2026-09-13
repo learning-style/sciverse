@@ -190,6 +190,9 @@ import { getL2B5Script } from './l2b5-sweat-budget';
 import { getL3P5Script } from './l3p5-self-locking-jack';
 import { getL3C5Script } from './l3c5-heat-of-dissolving';
 import { getL3B5Script } from './l3b5-sweat-limit';
+import { getL2P6Script } from './l2p6-fraction-submerged';
+import { getL2C6Script } from './l2c6-float-sink-sorting';
+import { getL2B6Script } from './l2b6-swim-bladder';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1150,6 +1153,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p5': getL3P5Script,
     'l3c5': getL3C5Script,
     'l3b5': getL3B5Script,
+    'l2p6': getL2P6Script,
+    'l2c6': getL2C6Script,
+    'l2b6': getL2B6Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1570,6 +1576,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p5', title: 'Why a Jack Holds Its Load', subtitle: 'Friction, efficiency and self-locking', discipline: 'physics', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🔩', accentColor: 'indigo', crossLinks: ['l2p5'], level: 3 },
     { id: 'l3c5', title: 'Why Warm Drinks Lose Their Fizz', subtitle: "van 't Hoff: the heat of dissolving sets the slope", discipline: 'chemistry', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🌡️', accentColor: 'emerald', crossLinks: ['l2c5', 'l3p5'], level: 3 },
     { id: 'l3b5', title: 'The Limit of Sweat', subtitle: 'Vapour pressure, humidity and the wet-bulb limit', discipline: 'biology', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🥵', accentColor: 'rose', crossLinks: ['l2b5', 'l3c5'], level: 3 },
+
+    // Big Idea 6 -- Level 2 (grades 6-8)
+    { id: 'l2p6', title: 'How Much of an Iceberg Is Hidden?', subtitle: 'Fraction under water = object density / liquid density', discipline: 'physics', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '🧊', accentColor: 'indigo', crossLinks: ['p6'], level: 2 },
+    { id: 'l2c6', title: 'Sorting Plastic by Floating It', subtitle: 'Total mass over measured volume, up to saturation', discipline: 'chemistry', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '♻️', accentColor: 'emerald', crossLinks: ['c6', 'l2p6'], level: 2 },
+    { id: 'l2b6', title: 'How a Fish Hovers', subtitle: 'Average density and the swim bladder', discipline: 'biology', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '🐟', accentColor: 'rose', crossLinks: ['b6', 'l2c6'], level: 2 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },

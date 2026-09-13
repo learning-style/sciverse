@@ -88,6 +88,9 @@ import { L2B5SweatLab } from './L2B5SweatLab';
 import { L3P5JackLab } from './L3P5JackLab';
 import { L3C5SolubilityCurveLab } from './L3C5SolubilityCurveLab';
 import { L3B5HumidityLab } from './L3B5HumidityLab';
+import { L2P6FloatLab } from './L2P6FloatLab';
+import { L2C6SortingLab } from './L2C6SortingLab';
+import { L2B6HoverLab } from './L2B6HoverLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -187,4 +190,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p5: L3P5JackLab,
     l3c5: L3C5SolubilityCurveLab,
     l3b5: L3B5HumidityLab,
+    l2p6: L2P6FloatLab,
+    l2c6: L2C6SortingLab,
+    l2b6: L2B6HoverLab,
 };
