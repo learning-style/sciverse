@@ -100,6 +100,9 @@ import { L2B7EelLab } from './L2B7EelLab';
 import { L3P7InternalLab } from './L3P7InternalLab';
 import { L3C7NernstLab } from './L3C7NernstLab';
 import { L3B7NernstLab } from './L3B7NernstLab';
+import { L2P8ConductionLab } from './L2P8ConductionLab';
+import { L2C8DewPointLab } from './L2C8DewPointLab';
+import { L2B8FoxLab } from './L2B8FoxLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -211,4 +214,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p7: L3P7InternalLab,
     l3c7: L3C7NernstLab,
     l3b7: L3B7NernstLab,
+    l2p8: L2P8ConductionLab,
+    l2c8: L2C8DewPointLab,
+    l2b8: L2B8FoxLab,
 };
