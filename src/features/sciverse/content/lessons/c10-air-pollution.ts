@@ -41,7 +41,7 @@ export const getC10Script = (): Record<string, DialogNode> => ({
     'greenhouse': {
         id: 'greenhouse',
         speaker: 'AI',
-        content: "🌡️ **The Greenhouse Effect**\n\nHere's how Earth's blanket works:\n\n1. ☀️ **Sunlight** passes through the atmosphere and warms the ground\n2. 🌍 The warm ground releases **heat** (infrared radiation) back up\n3. 🔴 **CO₂ molecules** catch some of that heat and bounce it BACK down\n4. 🔥 The heat gets **trapped** between the ground and the CO₂ layer\n\nWith a NORMAL amount of CO₂, this keeps Earth at a comfortable temperature. But watch what happens when we add MORE CO₂ — the blanket gets thicker and traps MORE heat!",
+        content: "🌡️ **The Greenhouse Effect**\n\nHere's how Earth's blanket works:\n\n1. ☀️ **Sunlight** passes through the atmosphere and warms the ground\n2. 🌍 The warm ground releases **heat** (infrared radiation) back up\n3. 🔴 **CO₂ molecules**, mixed all through the air, catch some of that heat and send part of it BACK down\n4. 🔥 So some of the heat is **kept** near the ground instead of escaping to space\n\nWith a NORMAL amount of CO₂, this keeps Earth at a comfortable temperature. But watch what happens when we add MORE CO₂ — the blanket gets thicker and traps MORE heat!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'greenhouse' } },
         options: [
             { id: 'to_warming', label: "What happens when too much heat is trapped?", nextNodeId: 'warming' }
@@ -51,7 +51,7 @@ export const getC10Script = (): Record<string, DialogNode> => ({
     'warming': {
         id: 'warming',
         speaker: 'AI',
-        content: "🌡️📈 **Global Warming**\n\nWhen too much CO₂ traps too much heat, the whole planet gets warmer. Even a few degrees makes a HUGE difference:\n\n- 🧊 Ice caps and glaciers **melt** → sea levels rise\n- 🌊 Coastal cities risk **flooding**\n- 🌪️ More extreme **storms**, droughts, and heatwaves\n- 🐾 Animals lose their habitats\n\nSee the thermometer climbing? Earth's average temperature has risen about **1.1°C** since 1900. That might sound small, but it's enough to cause ice sheets to collapse!\n\n🔗 **Link to P10:** Switching from fossil fuels to **renewable energy** (solar, wind) means we burn less coal and oil → LESS CO₂ → the blanket stops getting thicker!",
+        content: "🌡️📈 **Global Warming**\n\nWhen too much CO₂ traps too much heat, the whole planet gets warmer. Even a few degrees makes a HUGE difference:\n\n- 🧊 Ice caps and glaciers **melt** → sea levels rise\n- 🌊 Coastal cities risk **flooding**\n- 🌪️ More extreme **storms**, droughts, and heatwaves\n- 🐾 Animals lose their habitats\n\nSee the thermometer climbing? Earth's average temperature has risen by **more than 1 °C** since the late 1800s. That might sound small, but it is enough to shrink glaciers and sea ice all around the world!\n\n🔗 **Link to P10:** Switching from fossil fuels to **renewable energy** (solar, wind) means we burn less coal and oil → LESS CO₂ → the blanket stops getting thicker!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'warming' } },
         options: [
             { id: 'to_acid', label: "Is CO₂ the only pollutant?", nextNodeId: 'acid_rain' }
@@ -91,7 +91,7 @@ export const getC10Script = (): Record<string, DialogNode> => ({
     'checkpoint': {
         id: 'checkpoint',
         speaker: 'AI',
-        content: "⏸️ **Checkpoint!**\n\nWhy does MORE CO₂ in the atmosphere make Earth warmer?\n\nThink about the blanket analogy — what exactly is CO₂ doing to the heat?\n\n🔗 **Link to P10:** Remember, fossil fuel power plants are the #1 source of CO₂. Renewable energy produces electricity WITHOUT burning fuel!",
+        content: "⏸️ **Checkpoint!**\n\nWhy does MORE CO₂ in the atmosphere make Earth warmer?\n\nThink about the blanket analogy — what exactly is CO₂ doing to the heat?\n\n🔗 **Link to P10:** Remember, fossil fuel power plants are one of the biggest sources of CO₂. Renewable energy produces electricity WITHOUT burning fuel!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint' } },
         options: [
             { id: 'correct', label: "CO₂ traps heat that's trying to escape — like extra blankets!", nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
@@ -141,7 +141,7 @@ export const getC10Script = (): Record<string, DialogNode> => ({
     'complete': {
         id: 'complete',
         speaker: 'AI',
-        content: "🔗 **Cross-Links:**\n- **P10 (Renewable Energy):** Every solar panel and wind turbine replaces a fossil fuel plant — that means LESS CO₂, LESS acid rain, and cleaner air. Switching to renewables is the single biggest thing we can do! ⚡🌱\n- **B10 (Ecosystems & Biodiversity):** Air pollution doesn't just affect the sky — acid rain destroys forests, the ozone hole harms ocean plankton, and global warming changes habitats so fast that animals can't adapt. Protecting the air means protecting ALL life on Earth! 🦋🌲\n\n✅ **Lesson C10 Complete!** Now you know why the invisible blanket matters — and what we can do about it!",
+        content: "🔗 **Cross-Links:**\n- **P10 (Renewable Energy):** Every solar panel and wind turbine replaces a fossil fuel plant — that means LESS CO₂, LESS acid rain, and cleaner air. Switching to renewables is one of the biggest things we can do! ⚡🌱\n- **B10 (Ecosystems & Biodiversity):** Air pollution doesn't just affect the sky — acid rain destroys forests, the ozone hole harms ocean plankton, and global warming changes habitats so fast that many animals can't adapt. Protecting the air means protecting ALL life on Earth! 🦋🌲\n\n✅ **Lesson C10 Complete!** Now you know why the invisible blanket matters — and what we can do about it!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }

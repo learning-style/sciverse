@@ -117,7 +117,7 @@ export const bigIdea10Assessment: AssessmentData = {
             options: ['Keystone species — removing them causes the ecosystem to change dramatically', 'Endangered species', 'Invasive species', 'Parasitic species'],
             correctIndex: 0,
             hint: 'Like a keystone in an arch, remove this species and the whole structure collapses...',
-            explanation: 'A keystone species has an outsized effect on its ecosystem. Wolves controlled elk populations, which allowed vegetation to recover, stabilised riverbanks, and benefited dozens of other species. This chain reaction — where a top predator\'s effect cascades through trophic levels — is called a trophic cascade.',
+            explanation: 'A keystone species has an outsized effect on its ecosystem. Wolves reduced elk numbers and kept the herds moving, which let willows and aspen regrow along some rivers — although scientists still debate how much of that change was due to the wolves. This chain reaction — where a top predator\'s effect cascades through trophic levels — is called a trophic cascade.',
             optionExplanations: [
                 'Correct! Like the keystone in an arch, a keystone species holds the ecosystem together — remove it and the whole structure changes dramatically.',
                 'Endangered species are at risk of extinction due to low numbers. While wolves were endangered, the term describing their outsized ecological impact is "keystone species," not "endangered."',
@@ -150,7 +150,7 @@ export const bigIdea10Assessment: AssessmentData = {
             options: ['200 W', '2,000 W', '1,000 W', '400 W — calculated as 1,000 × 2 × 0.20'],
             correctIndex: 3,
             hint: 'Power input = intensity × area. Then multiply by efficiency...',
-            explanation: 'Power input = 1,000 W/m² × 2 m² = 2,000 W. At 20% efficiency, electrical output = 2,000 × 0.20 = 400 W. The remaining 80% is lost as heat. Improving panel efficiency is a major goal of renewable energy research — current commercial panels range from 15–22%.',
+            explanation: 'Power input = 1,000 W/m² × 2 m² = 2,000 W. At 20% efficiency, electrical output = 2,000 × 0.20 = 400 W. The remaining 80% is lost as heat. Improving panel efficiency is a major goal of renewable energy research — most panels sold today convert about 18–23% of the sunlight.',
             optionExplanations: [
                 '200 W only accounts for 1 m² of panel (1,000 × 1 × 0.20). But the panel is 2 m², so the total input is 2,000 W, and 20% of that is 400 W.',
                 '2,000 W is the total solar power hitting the panel (1,000 × 2), but you haven\'t applied the 20% efficiency. Only 20% of input becomes electricity: 2,000 × 0.20 = 400 W.',
@@ -162,15 +162,15 @@ export const bigIdea10Assessment: AssessmentData = {
             id: 10,
             difficulty: 'hard',
             discipline: 'chemistry',
-            question: 'CO₂ is a greenhouse gas, but so is methane (CH₄). Per molecule, methane traps about 80 times more heat than CO₂ over 20 years. Why is CO₂ still considered the bigger climate problem?',
-            options: ['CO₂ is actually more potent per molecule than methane', 'Methane doesn\'t really affect the climate', 'Humans emit far more CO₂ than methane, and CO₂ persists in the atmosphere for centuries — so its cumulative effect is greater', 'CO₂ blocks visible light while methane doesn\'t'],
+            question: 'CO₂ is a greenhouse gas, but so is methane (CH₄). Tonne for tonne, methane traps about 80 times more heat than CO₂ over 20 years. Why is CO₂ still considered the bigger climate problem?',
+            options: ['CO₂ is actually more potent than methane, tonne for tonne', 'Methane doesn\'t really affect the climate', 'Humans emit far more CO₂ than methane, and CO₂ persists in the atmosphere for centuries — so its cumulative effect is greater', 'CO₂ blocks visible light while methane doesn\'t'],
             correctIndex: 2,
-            hint: 'Total warming = potency per molecule × amount emitted × how long it stays...',
-            explanation: 'Although methane is more potent per molecule, CO₂ is emitted in vastly larger quantities (from fossil fuels, industry, deforestation) and remains in the atmosphere for 300–1,000 years, whereas methane breaks down in about 12 years. The sheer volume and persistence of CO₂ make it the dominant driver of long-term climate change.',
+            hint: 'Total warming = potency per tonne × amount emitted × how long it stays...',
+            explanation: 'Although methane is more potent tonne for tonne, CO₂ is emitted in vastly larger quantities (from fossil fuels, industry, deforestation) and a large part of it stays in the atmosphere for centuries, whereas methane breaks down in about 12 years. The sheer volume and persistence of CO₂ make it the dominant driver of long-term climate change.',
             optionExplanations: [
-                'The question itself states methane traps ~80× more heat per molecule than CO₂. CO₂ is LESS potent per molecule — but the total impact depends on quantity and persistence too.',
+                'The question itself states methane traps ~80× more heat than CO₂, tonne for tonne. CO₂ is LESS potent per tonne — but the total impact depends on quantity and persistence too.',
                 'Methane absolutely affects the climate — it\'s a powerful greenhouse gas! But its atmospheric lifetime is only ~12 years, while CO₂ persists for centuries. Volume and persistence matter.',
-                'Correct! CO₂ is emitted in much larger quantities and stays in the atmosphere for 300–1,000 years, making its total cumulative warming effect greater despite lower per-molecule potency.',
+                'Correct! CO₂ is emitted in much larger quantities and a large part of it stays in the atmosphere for centuries, making its total cumulative warming effect greater despite lower per-molecule potency.',
                 'Neither CO₂ nor methane blocks visible light. Both absorb infrared (heat) radiation. The difference is in how much is emitted and how long each persists.'
             ]
         },

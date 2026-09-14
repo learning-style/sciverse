@@ -10,7 +10,7 @@ export const getB10Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "Welcome to **The Missing Wolves!** 🐺🌲\n\nImagine a beautiful forest — tall trees, flowing rivers, deer grazing in meadows, birds singing everywhere. Everything looks perfect and peaceful.\n\nBut something is about to change. In 1926, the last wolves in Yellowstone National Park were removed. People thought: \"No more wolves? No problem!\"\n\nThey were VERY wrong. Let's find out why.",
+        content: "Welcome to **The Missing Wolves!** 🐺🌲\n\nImagine a beautiful forest — tall trees, flowing rivers, deer called **elk** grazing in meadows, birds singing everywhere. Everything looks perfect and peaceful.\n\nBut something is about to change. In 1926, the last wolves in Yellowstone National Park were removed. People thought: \"No more wolves? No problem!\"\n\nThey were VERY wrong. Let's find out why.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
         options: [
             { id: 'no_big_deal', label: "Losing one animal can't matter that much, right?", nextNodeId: 'misconception', sentiment: 'negative' },
@@ -51,7 +51,7 @@ export const getB10Script = (): Record<string, DialogNode> => ({
     'cascade': {
         id: 'cascade',
         speaker: 'AI',
-        content: "🌊 **The Cascade — One Change Wrecks Everything!**\n\nWithout trees and plants holding the soil:\n\n1. 🦌 Deer eat all the riverside willows and shrubs\n2. 🏔️ Without roots, the **riverbanks erode** — soil washes away\n3. 🌊 Rivers get wider and shallower — fish lose their deep pools\n4. 🐦 **Birds leave** — no trees for nesting\n5. 🐻 **Bears** lose berry bushes the deer ate\n6. 🐛 Fewer plants = fewer insects = less food for everyone\n\nOne missing species → the WHOLE ecosystem collapses! This is called a **trophic cascade**.\n\n*In 1995, wolves were brought BACK to Yellowstone — and the forests began to recover!* 🎉",
+        content: "🌊 **The Cascade — One Change Spreads Everywhere!**\n\nWithout trees and plants holding the soil:\n\n1. 🦌 Deer eat all the riverside willows and shrubs\n2. 🏔️ Without roots, the **riverbanks erode** — soil washes away\n3. 🌊 Rivers get wider and shallower — fish lose their deep pools\n4. 🐦 **Birds leave** — no trees for nesting\n5. 🐻 **Bears** lose berry bushes the deer ate\n6. 🐛 Fewer plants = fewer insects = less food for everyone\n\nOne missing species → changes spread through the WHOLE ecosystem! This is called a **trophic cascade**.\n\n*In 1995, wolves were brought BACK to Yellowstone — and willows and aspen trees along some rivers began to grow back!* 🎉\n\nScientists still argue about how much of that was the wolves' doing. Bears, hunters and dry years also cut elk numbers. But most agree the wolves played a part.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'cascade' } },
         options: [
             { id: 'food_web', label: "How are all these species connected?", nextNodeId: 'food_web' }
@@ -71,7 +71,7 @@ export const getB10Script = (): Record<string, DialogNode> => ({
     'biodiversity': {
         id: 'biodiversity',
         speaker: 'AI',
-        content: "🌈 **Biodiversity — Strength in Numbers!**\n\n**Biodiversity** means having MANY different species in an ecosystem. More species = more connections = stronger ecosystem!\n\nThink of it like a **rope net**:\n- 🟢 **High biodiversity** = net with 100 ropes → cut one rope and the net still holds! Strong!\n- 🔴 **Low biodiversity** = net with only 5 ropes → cut one and it falls apart! Weak!\n\nThat's why removing wolves was so dangerous — Yellowstone lost a KEY rope in the net.\n\n**Threats** to biodiversity:\n- 🏗️ Habitat destruction (building over forests)\n- 🏭 Pollution (poisons water and air)\n- 🌡️ Climate change (habitats change too fast)\n- 🦤 Over-hunting (like what happened to the dodo!)\n\n🔗 **Link to C10:** Air pollution is a major threat — acid rain and smog destroy the habitats that species depend on!",
+        content: "🌈 **Biodiversity — Strength in Numbers!**\n\n**Biodiversity** means having MANY different species in an ecosystem. More species = more connections = stronger ecosystem!\n\nThink of it like a **rope net**:\n- 🟢 **High biodiversity** = net with 100 ropes → cut one rope and the net still holds! Strong!\n- 🔴 **Low biodiversity** = net with only 5 ropes → cut one and it falls apart! Weak!\n\nThat's why removing wolves was so dangerous — Yellowstone lost a KEY rope in the net.\n\n**Threats** to biodiversity:\n- 🏗️ Habitat destruction (building over forests)\n- 🏭 Pollution (poisons water and air)\n- 🌡️ Climate change (habitats change too fast)\n- 🦤 Species brought from elsewhere (rats and pigs carried on ships helped wipe out the dodo!)\n\n🔗 **Link to C10:** Air pollution is a major threat — acid rain and smog destroy the habitats that species depend on!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'biodiversity' } },
         options: [
             { id: 'checkpoint', label: "Let me test what I've learned!", nextNodeId: 'checkpoint' }
@@ -81,10 +81,10 @@ export const getB10Script = (): Record<string, DialogNode> => ({
     'checkpoint': {
         id: 'checkpoint',
         speaker: 'AI',
-        content: "⏸️ **Checkpoint!**\n\n🐝 Imagine ALL the bees suddenly disappeared from a meadow ecosystem.\n\n**What would happen to the flowering plants?**\n\nThink about what bees DO in the food web — they don't just make honey!\n\n🔗 **Link to P10:** Renewable energy means fewer power plants, less habitat destruction, and safer homes for pollinators like bees!",
+        content: "⏸️ **Checkpoint!**\n\n🐝 Imagine ALL the bees suddenly disappeared from a meadow ecosystem.\n\n**What would happen to the flowering plants?**\n\nThink about what bees DO in the food web — they don't just make honey!\n\n🔗 **Link to P10:** Cleaner energy means less acid rain and slower warming — safer homes for pollinators like bees!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint' } },
         options: [
-            { id: 'correct', label: "Flowers wouldn't get pollinated — they'd stop reproducing and die out!", nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'correct', label: "Flowers that need bees wouldn't get pollinated — they'd make few seeds and start to die out!", nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
             { id: 'wrong_honey', label: "We'd just lose honey, but plants would be fine.", nextNodeId: 'checkpoint_wrong_honey', sentiment: 'negative' },
             { id: 'wrong_other', label: "Other insects would just take over immediately.", nextNodeId: 'checkpoint_wrong_other', sentiment: 'negative' }
         ]
@@ -93,7 +93,7 @@ export const getB10Script = (): Record<string, DialogNode> => ({
     'checkpoint_correct': {
         id: 'checkpoint_correct',
         speaker: 'AI',
-        content: "✅ **Brilliant!** 🎯\n\nBees are **pollinators** — they carry pollen from flower to flower, which is how most flowering plants **reproduce**. No bees = no pollination = no seeds = no new plants!\n\nAnd it cascades further:\n- 🌸 Fewer flowers → less food for butterflies and hummingbirds\n- 🐇 Fewer plants → less food for herbivores\n- 🦊 Fewer herbivores → less food for predators\n\nJust like the wolves — one missing species can collapse the WHOLE web!",
+        content: "✅ **Brilliant!** 🎯\n\nBees are **pollinators** — they carry pollen from flower to flower, which is how many flowering plants **make seeds**. No bees = no pollination = few seeds = fewer new plants!\n\nAnd it cascades further:\n- 🌸 Fewer flowers → less food for butterflies and hummingbirds\n- 🐇 Fewer plants → less food for herbivores\n- 🦊 Fewer herbivores → less food for predators\n\nJust like the wolves — one missing species can shake the WHOLE web!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', correct: true } },
         options: [
             { id: 'to_discovery', label: "Everything really IS connected!", nextNodeId: 'discovery' }
@@ -103,7 +103,7 @@ export const getB10Script = (): Record<string, DialogNode> => ({
     'checkpoint_wrong_honey': {
         id: 'checkpoint_wrong_honey',
         speaker: 'AI',
-        content: "Not quite! Honey is delicious, but bees do something even MORE important. 🐝\n\nBees are **pollinators**. When they visit flowers for nectar, pollen sticks to their fuzzy bodies and gets carried to the next flower. This is how most flowering plants **make seeds** and reproduce!\n\nNo bees → no pollination → no seeds → flowering plants **can't reproduce** and slowly die out. About **75% of food crops** depend on bee pollination!\n\nIt's another cascade — just like the wolves!",
+        content: "Not quite! Honey is delicious, but bees do something even MORE important. 🐝\n\nBees are **pollinators**. When they visit flowers for nectar, pollen sticks to their fuzzy bodies and gets carried to the next flower. This is how many flowering plants **make seeds** and reproduce!\n\nNo bees → no pollination → no seeds → flowering plants that need bees **can't reproduce** and slowly die out. About **3 out of 4 kinds of food crop** grow better when animals such as bees pollinate them!\n\nIt's another cascade — just like the wolves!",
         options: [
             { id: 'got_it', label: "Wow — bees are way more important than I thought!", nextNodeId: 'discovery' }
         ]
@@ -112,7 +112,7 @@ export const getB10Script = (): Record<string, DialogNode> => ({
     'checkpoint_wrong_other': {
         id: 'checkpoint_wrong_other',
         speaker: 'AI',
-        content: "Good thinking, but it's not that simple! 🤔\n\nWhile other insects DO pollinate some flowers, bees are the **champion pollinators**. They visit far more flowers and carry much more pollen than any other insect. Many plants have evolved to work SPECIFICALLY with bees.\n\nIf bees vanished, other insects couldn't fill the gap fast enough. Most flowering plants would **fail to reproduce**, which cascades through the entire food web — fewer plants, fewer herbivores, fewer predators.\n\nThat's why **biodiversity** matters — we can't just swap one species for another!",
+        content: "Good thinking, but it's not that simple! 🤔\n\nWhile other insects DO pollinate some flowers, bees are the **champion pollinators**. They visit far more flowers and carry much more pollen than most other insects. Many plants have evolved to work SPECIFICALLY with bees.\n\nIf bees vanished, other insects couldn't fill the gap fast enough. Many flowering plants would **fail to reproduce**, which cascades through the entire food web — fewer plants, fewer herbivores, fewer predators.\n\nThat's why **biodiversity** matters — we can't just swap one species for another!",
         options: [
             { id: 'got_it', label: "So each species has a unique role!", nextNodeId: 'discovery' }
         ]
@@ -121,7 +121,7 @@ export const getB10Script = (): Record<string, DialogNode> => ({
     'discovery': {
         id: 'discovery',
         speaker: 'AI',
-        content: "🎉 **Discovery: Ecosystems & Biodiversity!**\n\n| Concept | What it means |\n|---------|---------------|\n| 🕸️ **Ecosystem** | All living things in an area + their environment, connected together |\n| 🔗 **Food web** | Network of who-eats-who (producers → consumers → decomposers) |\n| 🌊 **Trophic cascade** | Removing one species triggers a chain reaction through the whole web |\n| 🌈 **Biodiversity** | More species = more connections = stronger, more stable ecosystem |\n| 🐺 **Keystone species** | One species whose removal causes the biggest cascade (like wolves!) |\n\n**Key Insight:** Every species matters! Even 'small' species like bees or worms play HUGE roles in keeping ecosystems stable.",
+        content: "🎉 **Discovery: Ecosystems & Biodiversity!**\n\n| Concept | What it means |\n|---------|---------------|\n| 🕸️ **Ecosystem** | All living things in an area + their environment, connected together |\n| 🔗 **Food web** | Network of who-eats-who (producers → consumers → decomposers) |\n| 🌊 **Trophic cascade** | Removing one species triggers a chain reaction through the whole web |\n| 🌈 **Biodiversity** | More species = more connections = stronger, more stable ecosystem |\n| 🐺 **Keystone species** | A species with a much bigger effect on its ecosystem than its numbers suggest (like wolves!) |\n\n**Key Insight:** Every species matters! Even 'small' species like bees or worms play HUGE roles in keeping ecosystems stable.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery' } },
         options: [
             { id: 'finish', label: "Every species is a thread in the web!", nextNodeId: 'complete' }

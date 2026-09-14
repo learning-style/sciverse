@@ -32,7 +32,7 @@ export const getP10Script = (): Record<string, DialogNode> => ({
     'fossil_intro': {
         id: 'fossil_intro',
         speaker: 'AI',
-        content: "Let's start with what most of the world has used for over 100 years: **fossil fuels**! 🏭\n\nCoal and oil are dug up from deep underground. They formed over **millions of years** from ancient dead plants and animals — that's why they're called \"fossil\" fuels.\n\nWhen we burn them, the chemical energy stored inside is released as **heat**, which boils water into steam, which spins a **turbine** connected to a **generator** that makes electricity.\n\nWatch the factory power up the town!",
+        content: "Let's start with what most of the world has used for over 100 years: **fossil fuels**! 🏭\n\nCoal and oil are dug up from deep underground. They formed over **millions of years** from the remains of living things — coal from ancient plants, and oil mostly from tiny sea creatures — that's why they're called \"fossil\" fuels.\n\nWhen we burn them, the chemical energy stored inside is released as **heat**, which boils water into steam, which spins a **turbine** connected to a **generator** that makes electricity.\n\nWatch the factory power up the town!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'fossil' } },
         options: [
             { id: 'fossil_problem', label: "The town lit up! But what's that smoke?", nextNodeId: 'fossil_problem' }
@@ -42,7 +42,7 @@ export const getP10Script = (): Record<string, DialogNode> => ({
     'fossil_problem': {
         id: 'fossil_problem',
         speaker: 'AI',
-        content: "Good eye! 👀 That grey cloud is **CO₂ — carbon dioxide** — a greenhouse gas.\n\nBurning fossil fuels releases CO₂ into the air. This is a HUGE problem:\n\n🌡️ CO₂ traps heat in the atmosphere → **global warming**\n🌧️ It mixes with rain → **acid rain** that damages forests\n💨 Other pollutants cause **smog** that makes it hard to breathe\n\n🔗 *Chemistry (C10) will explore these pollutants in detail!*\n🔗 *Biology (B10) will show how pollution harms ecosystems!*\n\nCan we power the town WITHOUT all this pollution? Let's try **solar energy**! ☀️",
+        content: "Good eye! 👀 That grey cloud is smoke: soot and tiny specks. Mixed in with it is a gas you **cannot see** at all: **CO₂ — carbon dioxide** — a greenhouse gas.\n\nBurning fossil fuels releases CO₂ into the air, along with other pollution. This is a HUGE problem:\n\n🌡️ CO₂ traps heat in the atmosphere → **global warming**\n🌧️ Other gases from burning mix with rain → **acid rain** that damages forests\n💨 Exhaust fumes and sunlight make **smog** that makes it hard to breathe\n\n🔗 *Chemistry (C10) will explore these pollutants in detail!*\n🔗 *Biology (B10) will show how pollution harms ecosystems!*\n\nCan we power the town WITHOUT all this pollution? Let's try **solar energy**! ☀️",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'fossil', showPollution: true } },
         options: [
             { id: 'solar', label: "Show me solar power! ☀️", nextNodeId: 'solar_intro' }
@@ -94,7 +94,7 @@ export const getP10Script = (): Record<string, DialogNode> => ({
     'hydro_intro': {
         id: 'hydro_intro',
         speaker: 'AI',
-        content: "Water to the rescue! 🌊🏔️\n\n**Hydroelectric dams** use falling water to generate electricity:\n\n1. A dam holds back a huge reservoir of water up high — that's **potential energy**\n2. When gates open, water **falls** down through pipes — potential → **kinetic energy**\n3. The rushing water spins a **turbine** connected to a **generator**\n4. Generator turns motion into **electricity** ⚡\n\nEnergy chain: **Gravitational PE → Kinetic → Electrical**\n\nHydro is powerful AND reliable — water flows 24/7! Watch the dam in action!",
+        content: "Water to the rescue! 🌊🏔️\n\n**Hydroelectric dams** use falling water to generate electricity:\n\n1. A dam holds back a huge reservoir of water up high — that's **potential energy**\n2. When gates open, water **falls** down through pipes — potential → **kinetic energy**\n3. The rushing water spins a **turbine** connected to a **generator**\n4. Generator turns motion into **electricity** ⚡\n\nEnergy chain: **Gravitational PE → Kinetic → Electrical**\n\nHydro is powerful AND reliable — the stored water is ready day and night, as long as rain and rivers keep the reservoir filled! Watch the dam in action!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'hydro' } },
         options: [
             { id: 'compare', label: "Let's compare all the options!", nextNodeId: 'compare' }
@@ -104,7 +104,7 @@ export const getP10Script = (): Record<string, DialogNode> => ({
     'compare': {
         id: 'compare',
         speaker: 'AI',
-        content: "Time for the big comparison! 📊\n\n| Source | Power | Pollution | Works All The Time? | Cost |\n|--------|-------|-----------|---------------------|------|\n| 🏭 Coal/Oil | High | ❌ Lots of CO₂ | ✅ Yes | 💰💰 |\n| ☀️ Solar | Medium | ✅ None | ❌ No (needs batteries) | 💰 |\n| 💨 Wind | Medium | ✅ None | ⚠️ Needs wind | 💰 |\n| 🌊 Hydro | High | ✅ None | ✅ Yes | 💰💰 (dam) |\n\nLook — **renewables CAN match fossil fuels** in power! And when you combine solar + wind + hydro together, they cover each other's weaknesses!\n\nReady for a challenge? 🧠",
+        content: "Time for the big comparison! 📊\n\n| Source | Power | Pollution | Works All The Time? | Cost |\n|--------|-------|-----------|---------------------|------|\n| 🏭 Coal/Oil | High | ❌ Lots of CO₂ | ✅ Yes | 💰💰 |\n| ☀️ Solar | Medium | ✅ None | ❌ No (needs batteries) | 💰 |\n| 💨 Wind | Medium | ✅ None | ⚠️ Needs wind | 💰 |\n| 🌊 Hydro | High | ✅ None | ✅ Yes, while the reservoir has water | 💰💰 (dam) |\n\nLook — **renewables CAN match fossil fuels** in power! And when you combine solar + wind + hydro together, they cover each other's weaknesses!\n\nReady for a challenge? 🧠",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'compare' } },
         options: [
             { id: 'checkpoint', label: "Bring on the challenge!", nextNodeId: 'checkpoint' }

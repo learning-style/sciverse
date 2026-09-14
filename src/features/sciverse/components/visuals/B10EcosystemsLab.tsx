@@ -604,7 +604,7 @@ export const B10EcosystemsLab = ({ state, onStateChange }: B10EcosystemsLabProps
         ctx.stroke();
         drawLabel(ctx, '🌊 TROPHIC CASCADE', W * 0.5, H * 0.72 + 16, '#7f1d1d', 12);
         drawLabel(ctx, '🌳❌ Trees bare → 🏔️ Rivers erode → 🐦 Birds leave', W * 0.5, H * 0.72 + 36, '#1e293b', 9);
-        drawLabel(ctx, 'One missing species wrecked EVERYTHING!', W * 0.5, H * 0.72 + 55, '#78350f', 10);
+        drawLabel(ctx, 'One missing species → changes spread everywhere!', W * 0.5, H * 0.72 + 55, '#78350f', 10);
     };
 
     const drawCheckpoint = (ctx: CanvasRenderingContext2D, W: number, H: number, t: number) => {
@@ -656,7 +656,7 @@ export const B10EcosystemsLab = ({ state, onStateChange }: B10EcosystemsLabProps
         if (correct) {
             ctx.fillStyle = 'rgba(34,197,94,0.15)';
             ctx.fillRect(0, 0, W, H);
-            drawLabel(ctx, '✅ No bees → No pollination → Plants can\'t reproduce!', W * 0.5, H * 0.78, '#22c55e', 12);
+            drawLabel(ctx, '✅ No bees → No pollination → Fewer seeds!', W * 0.5, H * 0.78, '#22c55e', 12);
         }
     };
 
