@@ -271,7 +271,7 @@ When it rolls down, that stored energy will convert into **movement energy** —
 Watch the energy bars as it rolls!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"ready",showEnergyBars:!0}},options:[{id:"release",label:"Release the ball!",nextNodeId:"rolling",simAction:{type:"SET_VISUAL",payload:{ballPosition:"rolling"}}}]},rolling:{id:"rolling",speaker:"AI",content:`Watch the energy bars! 📊
 
 🔵 **Potential Energy** (blue) is SHRINKING as the ball drops.
-🐟  **Kinetic Energy** (orange) is GROWING as the ball speeds up.
+🟠 **Kinetic Energy** (orange) is GROWING as the ball speeds up.
 
 At the bottom, KE is maximum and PE is almost zero!
 
