@@ -434,8 +434,8 @@ export const C9NutrientsLab = ({ state }: C9NutrientsLabProps) => {
         // cycle nodes
         const nodes = [
             { angle: -Math.PI / 2, label: '🌱 Plant', color: '#16a34a' },
-            { angle: 0, label: '🐄 Animal', color: '#92400e' },
-            { angle: Math.PI / 2, label: '🐦  Decompose', color: '#78716c' },
+            { angle: 0, label: '🐇 Animal', color: '#92400e' },
+            { angle: Math.PI / 2, label: '🍄 Decompose', color: '#78716c' },
             { angle: Math.PI, label: '🪨 Soil', color: '#a16207' }
         ];
         for (let i = 0; i < nodes.length; i++) {
