@@ -211,6 +211,9 @@ import { getL3B8Script } from './l3b8-countercurrent-paws';
 import { getL2P9Script } from './l2p9-percentage-growth';
 import { getL2C9Script } from './l2c9-fertiliser-label';
 import { getL2B9Script } from './l2b9-cell-doublings';
+import { getL3P9Script } from './l3p9-s-curve';
+import { getL3C9Script } from './l3c9-oxide-numbers';
+import { getL3B9Script } from './l3b9-cell-cycle-timing';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1192,6 +1195,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p9': getL2P9Script,
     'l2c9': getL2C9Script,
     'l2b9': getL2B9Script,
+    'l3p9': getL3P9Script,
+    'l3c9': getL3C9Script,
+    'l3b9': getL3B9Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1647,6 +1653,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p9', title: 'Two Ways to Measure Growth', subtitle: 'Change, and percentage change', discipline: 'physics', bigIdea: 9, bigIdeaTitle: 'How Do Things Grow?', icon: '📈', accentColor: 'indigo', crossLinks: ['p9'], level: 2 },
     { id: 'l2c9', title: 'Reading a Bag of Plant Food', subtitle: 'Percentages by mass on a fertiliser label', discipline: 'chemistry', bigIdea: 9, bigIdeaTitle: 'How Do Things Grow?', icon: '🧪', accentColor: 'emerald', crossLinks: ['c9', 'l2p9'], level: 2 },
     { id: 'l2b9', title: 'How Many Doublings Make a Body?', subtitle: 'Cells = start x 2ⁿ', discipline: 'biology', bigIdea: 9, bigIdeaTitle: 'How Do Things Grow?', icon: '🧬', accentColor: 'rose', crossLinks: ['b9', 'l2c9'], level: 2 },
+
+    // Big Idea 9 -- Level 3 (grades 9-12)
+    { id: 'l3p9', title: 'Why Growth Slows Down', subtitle: 'The S-curve: r x N x (1 − N/K)', discipline: 'physics', bigIdea: 9, bigIdeaTitle: 'How Do Things Grow?', icon: '🌻', accentColor: 'indigo', crossLinks: ['l2p9', 'l2b9'], level: 3 },
+    { id: 'l3c9', title: 'What the P and K Numbers Really Mean', subtitle: 'Oxides, formula masses and the law of the minimum', discipline: 'chemistry', bigIdea: 9, bigIdeaTitle: 'How Do Things Grow?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c9', 'l3p9'], level: 3 },
+    { id: 'l3b9', title: 'Timing the Cell Cycle', subtitle: 'Mitotic index and the hours a cell spends dividing', discipline: 'biology', bigIdea: 9, bigIdeaTitle: 'How Do Things Grow?', icon: '🔬', accentColor: 'rose', crossLinks: ['l2b9', 'l3c9'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
