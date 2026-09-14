@@ -205,6 +205,9 @@ import { getL3B7Script } from './l3b7-nerve-battery';
 import { getL2P8Script } from './l2p8-heat-flow';
 import { getL2C8Script } from './l2c8-dew-point';
 import { getL2B8Script } from './l2b8-fox-heat-budget';
+import { getL3P8Script } from './l3p8-double-glazing';
+import { getL3C8Script } from './l3c8-cloud-base';
+import { getL3B8Script } from './l3b8-countercurrent-paws';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1180,6 +1183,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p8': getL2P8Script,
     'l2c8': getL2C8Script,
     'l2b8': getL2B8Script,
+    'l3p8': getL3P8Script,
+    'l3c8': getL3C8Script,
+    'l3b8': getL3B8Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1625,6 +1631,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p8', title: 'How Fast Heat Leaks', subtitle: 'Heat flow = k x A x ΔT / d', discipline: 'physics', bigIdea: 8, bigIdeaTitle: 'Why Does Weather Change?', icon: '🧱', accentColor: 'indigo', crossLinks: ['p8'], level: 2 },
     { id: 'l2c8', title: 'Why Cold Things Get Wet', subtitle: 'Relative humidity and the dew point', discipline: 'chemistry', bigIdea: 8, bigIdeaTitle: 'Why Does Weather Change?', icon: '💧', accentColor: 'emerald', crossLinks: ['c8', 'l2p8'], level: 2 },
     { id: 'l2b8', title: 'How Cold Can a Fox Get?', subtitle: 'A heat budget and the lower critical temperature', discipline: 'biology', bigIdea: 8, bigIdeaTitle: 'Why Does Weather Change?', icon: '🦊', accentColor: 'rose', crossLinks: ['b8', 'l2c8'], level: 2 },
+
+    // Big Idea 8 -- Level 3 (grades 9-12)
+    { id: 'l3p8', title: 'Why Double Glazing Works', subtitle: 'Resistances in series and the U-value', discipline: 'physics', bigIdea: 8, bigIdeaTitle: 'Why Does Weather Change?', icon: '🪟', accentColor: 'indigo', crossLinks: ['l2p8'], level: 3 },
+    { id: 'l3c8', title: 'Why Clouds Have Flat Bottoms', subtitle: 'The lapse rate and the cloud base', discipline: 'chemistry', bigIdea: 8, bigIdeaTitle: 'Why Does Weather Change?', icon: '☁️', accentColor: 'emerald', crossLinks: ['l2c8', 'l3p8'], level: 3 },
+    { id: 'l3b8', title: 'How a Fox Keeps Its Feet Cold', subtitle: 'Countercurrent heat exchange', discipline: 'biology', bigIdea: 8, bigIdeaTitle: 'Why Does Weather Change?', icon: '🐾', accentColor: 'rose', crossLinks: ['l2b8', 'l3c8'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
