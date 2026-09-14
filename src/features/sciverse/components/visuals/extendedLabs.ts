@@ -94,6 +94,12 @@ import { L2B6HoverLab } from './L2B6HoverLab';
 import { L3P6PressureLab } from './L3P6PressureLab';
 import { L3C6SeawaterLab } from './L3C6SeawaterLab';
 import { L3B6DepthLab } from './L3B6DepthLab';
+import { L2P7SeriesLab } from './L2P7SeriesLab';
+import { L2C7MetalsLab } from './L2C7MetalsLab';
+import { L2B7EelLab } from './L2B7EelLab';
+import { L3P7InternalLab } from './L3P7InternalLab';
+import { L3C7NernstLab } from './L3C7NernstLab';
+import { L3B7NernstLab } from './L3B7NernstLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -199,4 +205,10 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p6: L3P6PressureLab,
     l3c6: L3C6SeawaterLab,
     l3b6: L3B6DepthLab,
+    l2p7: L2P7SeriesLab,
+    l2c7: L2C7MetalsLab,
+    l2b7: L2B7EelLab,
+    l3p7: L3P7InternalLab,
+    l3c7: L3C7NernstLab,
+    l3b7: L3B7NernstLab,
 };

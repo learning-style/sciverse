@@ -196,6 +196,12 @@ import { getL2B6Script } from './l2b6-swim-bladder';
 import { getL3P6Script } from './l3p6-buoyancy-from-pressure';
 import { getL3C6Script } from './l3c6-seawater-layers';
 import { getL3B6Script } from './l3b6-swim-bladder-depth';
+import { getL2P7Script } from './l2p7-ohms-law';
+import { getL2C7Script } from './l2c7-electrode-potentials';
+import { getL2B7Script } from './l2b7-electric-eel';
+import { getL3P7Script } from './l3p7-internal-resistance';
+import { getL3C7Script } from './l3c7-nernst-battery';
+import { getL3B7Script } from './l3b7-nerve-battery';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1162,6 +1168,12 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p6': getL3P6Script,
     'l3c6': getL3C6Script,
     'l3b6': getL3B6Script,
+    'l2p7': getL2P7Script,
+    'l2c7': getL2C7Script,
+    'l2b7': getL2B7Script,
+    'l3p7': getL3P7Script,
+    'l3c7': getL3C7Script,
+    'l3b7': getL3B7Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1592,6 +1604,16 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p6', title: 'Where the Buoyant Force Comes From', subtitle: 'Pressure grows with depth; the difference is ρ x g x V', discipline: 'physics', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '🎈', accentColor: 'indigo', crossLinks: ['l2p6'], level: 3 },
     { id: 'l3c6', title: 'Why Cold, Salty Water Sinks', subtitle: 'Temperature and salt compete to layer the ocean', discipline: 'chemistry', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '🌊', accentColor: 'emerald', crossLinks: ['l2c6', 'l3p6'], level: 3 },
     { id: 'l3b6', title: "The Swim Bladder's Unstable Balance", subtitle: "Boyle's law and a balance that runs away", discipline: 'biology', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '🐠', accentColor: 'rose', crossLinks: ['l2b6', 'l3c6'], level: 3 },
+
+    // Big Idea 7 -- Level 2 (grades 6-8)
+    { id: 'l2p7', title: 'Why Series Bulbs Glow at a Quarter', subtitle: 'Current = voltage / resistance, and energy each second = volts x amps', discipline: 'physics', bigIdea: 7, bigIdeaTitle: 'How Does Electricity Work?', icon: '💡', accentColor: 'indigo', crossLinks: ['p7'], level: 2 },
+    { id: 'l2c7', title: 'Choosing Metals for a Battery', subtitle: 'Cell voltage from electrode potentials', discipline: 'chemistry', bigIdea: 7, bigIdeaTitle: 'How Does Electricity Work?', icon: '🍋', accentColor: 'emerald', crossLinks: ['c7', 'l2p7'], level: 2 },
+    { id: 'l2b7', title: 'How an Electric Eel Makes 600 Volts', subtitle: 'Living cells stacked in series', discipline: 'biology', bigIdea: 7, bigIdeaTitle: 'How Does Electricity Work?', icon: '⚡', accentColor: 'rose', crossLinks: ['b7', 'l2c7'], level: 2 },
+
+    // Big Idea 7 -- Level 3 (grades 9-12)
+    { id: 'l3p7', title: 'Why a Battery Sags Under Load', subtitle: 'emf, internal resistance and V = ε − I x r', discipline: 'physics', bigIdea: 7, bigIdeaTitle: 'How Does Electricity Work?', icon: '🔋', accentColor: 'indigo', crossLinks: ['l2p7'], level: 3 },
+    { id: 'l3c7', title: "Why a Battery's Voltage Fades", subtitle: 'The Nernst equation and the ion ratio Q', discipline: 'chemistry', bigIdea: 7, bigIdeaTitle: 'How Does Electricity Work?', icon: '📉', accentColor: 'emerald', crossLinks: ['l2c7', 'l3p7'], level: 3 },
+    { id: 'l3b7', title: 'The Battery in Every Nerve Cell', subtitle: 'Equilibrium potentials from ion ratios', discipline: 'biology', bigIdea: 7, bigIdeaTitle: 'How Does Electricity Work?', icon: '🧠', accentColor: 'rose', crossLinks: ['l2b7', 'l3c7'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
