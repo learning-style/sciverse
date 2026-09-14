@@ -10,7 +10,7 @@ export const getB7Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "Welcome to **The Lightning Reflex!** ⚡🖐️\n\nImagine you accidentally touch a hot pan on the stove. OUCH! You pull your hand away *instantly*.\n\nBut how did your brain know your finger was in danger? **How fast did that signal travel from your fingertip to your brain?**",
+        content: "Welcome to **The Lightning Reflex!** ⚡🖐️\n\nImagine you accidentally touch a hot pan on the stove. OUCH! You pull your hand away *instantly*.\n\nBut how did your hand know to move so fast? **How fast does a signal travel along your nerves?**",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
         options: [
             { id: 'wire', label: "Nerves are like electrical wires, right?", nextNodeId: 'misconception_wire', sentiment: 'negative' },
@@ -22,7 +22,7 @@ export const getB7Script = (): Record<string, DialogNode> => ({
     'misconception_wire': {
         id: 'misconception_wire',
         speaker: 'AI',
-        content: "That's what most people think — but it's not quite right! 🤔\n\nIn copper wires (like in P7 Circuits), **free electrons** zoom through metal. But your body isn't made of metal!\n\nNerves seem similar to wires — signals flow along a path — but the way they work is completely different. Let's touch that hot pan and find out!",
+        content: "That's what most people think — but it's not quite right! 🤔\n\nIn copper wires (like in P7 Circuits), **free electrons** move through the metal. But your body isn't made of metal!\n\nNerves seem similar to wires — signals flow along a path — but the way they work is completely different. Let's touch that hot pan and find out!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'touch_hot' } },
         options: [
             { id: 'how', label: "So what carries the signal if not electrons?", nextNodeId: 'neuron_anatomy' }
@@ -32,7 +32,7 @@ export const getB7Script = (): Record<string, DialogNode> => ({
     'speed_guess': {
         id: 'speed_guess',
         speaker: 'AI',
-        content: "Good guess, but nerve signals are actually WAY slower than light or electricity in wires! 🐌⚡\n\nElectricity in a copper wire: ~**300,000 km/s**\nNerve signal in your body: ~**100 m/s** (about 360 km/h)\n\nThat's millions of times slower! Still fast enough to pull your hand away — but it shows nerves DON'T work like wires. Something different is happening...",
+        content: "Good guess, but nerve signals are actually WAY slower than light, or than a signal in a wire! 🐌⚡\n\nA signal along a copper wire: about **200,000 km per second** — close to the speed of light. (The electrons themselves only shuffle along slowly, but their push passes down the wire almost instantly.)\nNerve signal in your body: up to about **100 m/s** (about 360 km/h)\n\nThat's about two million times slower! Still fast enough to pull your hand away — but it shows nerves DON'T work like wires. Something different is happening...",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'touch_hot', showSpeed: true } },
         options: [
             { id: 'why', label: "Why is it so much slower?", nextNodeId: 'why_slower' },
@@ -43,7 +43,7 @@ export const getB7Script = (): Record<string, DialogNode> => ({
     'why_slower': {
         id: 'why_slower',
         speaker: 'AI',
-        content: "Nerves are slower because they use **chemistry**, not pure electricity! ⚗️⚡\n\nIn a copper wire, electrons zoom freely through metal. But in your body, the signal works by **ions** (charged atoms like sodium and potassium) flowing in and out of the nerve cell through tiny gates.\n\nOpening and closing these gates takes TIME — like passing a baton in a relay race instead of throwing it directly.\n\nLet's look at the nerve cell to see how this works!",
+        content: "Nerves are slower because they use **chemistry**, not pure electricity! ⚗️⚡\n\nIn a copper wire, electrons are free to move through the metal, and their push passes along almost instantly. But in your body, the signal works by **ions** (charged atoms like sodium and potassium) flowing in and out of the nerve cell through tiny gates.\n\nOpening and closing these gates takes TIME — like passing a baton in a relay race instead of throwing it directly.\n\nLet's look at the nerve cell to see how this works!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'neuron_anatomy' } },
         options: [
             { id: 'see_neuron', label: "Show me the neuron!", nextNodeId: 'neuron_anatomy' }
@@ -53,7 +53,7 @@ export const getB7Script = (): Record<string, DialogNode> => ({
     'touch_hot': {
         id: 'touch_hot',
         speaker: 'AI',
-        content: "You touch the hot pan! 🔥🖐️\n\nWatch the signal race from your fingertip, up your arm, to your brain — then a \"PULL AWAY!\" signal races back down.\n\nThis all takes about **0.02 seconds** (20 milliseconds). But instead of electricity flowing through metal, the signal is carried by special cells called **neurons**.",
+        content: "You touch the hot pan! 🔥🖐️\n\nWatch the signal race from your fingertip, up your arm, to your **spinal cord** — the thick bundle of nerves inside your backbone. Your spinal cord sends a \"PULL AWAY!\" signal straight back to your arm muscles, without waiting for your brain. This shortcut is called a **reflex**.\n\nA moment later the signal reaches your brain too — and that's when you feel the \"OUCH!\" It all happens in a fraction of a second. But instead of electricity flowing through metal, the signal is carried by special cells called **neurons**.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'touch_hot' } },
         options: [
             { id: 'neuron', label: "What's a neuron?", nextNodeId: 'neuron_anatomy' },
@@ -85,7 +85,7 @@ export const getB7Script = (): Record<string, DialogNode> => ({
     'myelin_intro': {
         id: 'myelin_intro',
         speaker: 'AI',
-        content: "Great question! The **myelin sheath** is like insulation on an electrical wire! 🟡\n\nIt's a fatty coating wrapped around the **axon** in sausage-shaped segments. Here's what it does:\n\n1. **Speeds up the signal** — without myelin, signals travel ~2 m/s. With myelin, they zoom at **120 m/s!** That's 60× faster! 🏎️\n2. **Saves energy** — the signal \"jumps\" between gaps in the myelin (called **Nodes of Ranvier**) instead of activating every single ion channel\n3. **Protects the axon** — like the rubber coating on a wire\n\nThis jumping is called **saltatory conduction** — like skipping stones across a pond instead of swimming!\n\nBut HOW does the signal itself work? That's where chemistry meets electricity...",
+        content: "Great question! The **myelin sheath** is like insulation on an electrical wire! 🟡\n\nIt's a fatty coating wrapped around the **axon** in sausage-shaped segments. Here's what it does:\n\n1. **Speeds up the signal** — the slowest nerves, with no myelin, carry signals at about **1 m/s**. The fastest nerves, wrapped in myelin, reach about **120 m/s!** That's more than 100× faster! 🏎️\n2. **Saves energy** — the signal \"jumps\" between gaps in the myelin (called **Nodes of Ranvier**) instead of activating every single ion channel\n3. **Protects the axon** — like the rubber coating on a wire\n\nThis jumping is called **saltatory conduction** — like skipping stones across a pond instead of swimming!\n\nBut HOW does the signal itself work? That's where chemistry meets electricity...",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'neuron_anatomy' } },
         options: [
             { id: 'how', label: "How does the signal work?", nextNodeId: 'action_potential' },
@@ -107,7 +107,7 @@ export const getB7Script = (): Record<string, DialogNode> => ({
     'action_potential': {
         id: 'action_potential',
         speaker: 'AI',
-        content: "Here's where it gets amazing — and where **chemistry meets electricity!** ⚡🧪\n\nThe signal is called an **action potential**. Here's how it works:\n\n1. Tiny gates called **ion channels** open in the axon wall\n2. **Na⁺ (sodium)** ions rush IN → this creates a tiny electrical pulse!\n3. Then **K⁺ (potassium)** ions rush OUT → resetting the cell\n4. This triggers the NEXT set of channels to open... like a wave of dominos!\n\nRemember batteries from C7? Ions create chemical energy there too! Your neurons are like **tiny biological batteries** firing in sequence!",
+        content: "Here's where it gets amazing — and where **chemistry meets electricity!** ⚡🧪\n\nThe signal is called an **action potential**. Here's how it works:\n\n1. Tiny gates called **ion channels** open in the axon wall\n2. **Na⁺ (sodium)** ions rush IN → this creates a tiny electrical pulse!\n3. Then **K⁺ (potassium)** ions rush OUT → resetting the cell\n4. This triggers the NEXT set of channels to open... like a wave of dominos!\n\nRemember batteries from C7? They use ions too! Your neurons are like **tiny biological batteries** firing in sequence!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'action_potential' } },
         options: [
             { id: 'speed', label: "Why does myelin make it faster?", nextNodeId: 'signal_speed' },
@@ -118,7 +118,7 @@ export const getB7Script = (): Record<string, DialogNode> => ({
     'signal_speed': {
         id: 'signal_speed',
         speaker: 'AI',
-        content: "Great connection to P7! 🔗 Neurons ARE like a circuit:\n- Signal follows a **pathway** (like current in a circuit)\n- It only goes in **one direction** (like a diode!)\n- Many neurons chain together to form the full path\n\nNow, the **myelin sheath** is the speed booster! 🏎️\n\nWithout myelin, the signal has to activate EVERY ion channel — slow!\nWith myelin, the signal **jumps** between gaps in the sheath (called Nodes of Ranvier). It's like skipping stones across a pond instead of swimming!\n\nThis makes signals travel **10× faster!**",
+        content: "Great connection to P7! 🔗 Neurons ARE like a circuit:\n- Signal follows a **pathway** (like current in a circuit)\n- It only goes in **one direction** (like a one-way street!)\n- Many neurons chain together to form the full path\n\nNow, the **myelin sheath** is the speed booster! 🏎️\n\nWithout myelin, the signal has to activate EVERY ion channel — slow!\nWith myelin, the signal **jumps** between gaps in the sheath (called Nodes of Ranvier). It's like skipping stones across a pond instead of swimming!\n\nThat's how the fastest myelin-wrapped nerves carry signals more than **100× faster** than the slowest nerves without it!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'signal_speed' } },
         options: [
             { id: 'synapse', label: "What happens when the signal reaches the end?", nextNodeId: 'synapse' },
@@ -140,7 +140,7 @@ export const getB7Script = (): Record<string, DialogNode> => ({
     'chemistry_link': {
         id: 'chemistry_link',
         speaker: 'AI',
-        content: "Exactly! The C7 connection is powerful: 🔋🧪\n\n**Batteries (C7):** Chemical reactions move ions → electrical energy\n**Neurons (B7):** Ion channels move Na⁺/K⁺ → electrical signal\n\nBoth convert **chemical energy into electrical energy!** Your brain runs on chemistry, not plugged-in electricity.\n\nYou eat food → cells break it down → ions get pumped → neurons fire. It's a biological battery!",
+        content: "Exactly! The C7 connection is powerful: 🔋🧪\n\n**Batteries (C7):** Chemical reactions move ions → electrical energy\n**Neurons (B7):** Pumps build up differences in Na⁺ and K⁺ ions; opening ion channels lets them flow → electrical signal\n\nBoth convert **chemical energy into electrical energy!** Your brain runs on chemistry, not plugged-in electricity.\n\nYou eat food → cells break it down → ions get pumped → neurons fire. It's a biological battery!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'synapse', showC7Link: true } },
         options: [
             { id: 'checkpoint', label: "Ready for the checkpoint!", nextNodeId: 'checkpoint' }
@@ -190,7 +190,7 @@ export const getB7Script = (): Record<string, DialogNode> => ({
     'discovery': {
         id: 'discovery',
         speaker: 'AI',
-        content: "🎉 **Big Discovery!**\n\n⚡ **How Nerve Signals Work:**\n1. Neurons are biological \"wires\" but use **ions**, not electrons\n2. Na⁺ rushes in, K⁺ rushes out → **action potential** (electrical pulse)\n3. **Myelin** insulation lets signals jump fast along the axon\n4. At the **synapse**, neurotransmitter molecules carry the signal across a gap\n5. It takes only **0.02 seconds** for a signal to go from finger to brain!\n\n**Misconception busted:** Nerves DON'T carry electricity like metal wires — they use ion chemistry to create electrical pulses!",
+        content: "🎉 **Big Discovery!**\n\n⚡ **How Nerve Signals Work:**\n1. Neurons are biological \"wires\" but use **ions**, not electrons\n2. Na⁺ rushes in, K⁺ rushes out → **action potential** (electrical pulse)\n3. **Myelin** insulation lets signals jump fast along the axon\n4. At the **synapse**, neurotransmitter molecules carry the signal across a gap\n5. A **reflex** through your spinal cord can pull your hand away before your brain even feels the pain!\n\n**Misconception busted:** Nerves DON'T carry electricity like metal wires — they use ion chemistry to create electrical pulses!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery' } },
         options: [
             { id: 'complete', label: "My brain is electric! ⚡🧠", nextNodeId: 'complete' }

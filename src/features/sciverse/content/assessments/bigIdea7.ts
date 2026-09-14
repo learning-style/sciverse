@@ -154,7 +154,7 @@ export const bigIdea7Assessment: AssessmentData = {
             optionExplanations: [
                 'Correct! Series batteries add voltages — two 1.5 V batteries give 3 V, pushing current harder.',
                 'Current actually increases with more voltage (I = V/R). Halving current would require increasing resistance, not adding batteries in series.',
-                'Extra batteries definitely make a difference! Two in series double the voltage. That\'s why devices like TV remotes have a battery compartment that stacks them end-to-end.',
+                'Extra batteries definitely make a difference! Two in series double the voltage. That\'s why devices like TV remotes connect their batteries in series, the + end of one joined to the − end of the next.',
                 'Adding batteries doesn\'t change the circuit\'s resistance — that depends on the wires, bulbs, and other components. Batteries add voltage (push), not resistance.'
             ]
         },
@@ -194,7 +194,7 @@ export const bigIdea7Assessment: AssessmentData = {
             id: 12,
             difficulty: 'hard',
             discipline: 'cross',
-            question: 'A lemon battery lights a small LED. What roles do the lemon juice, zinc nail, and copper coin play?',
+            question: 'A battery made of three lemons in a row lights a small LED. What roles do the lemon juice, zinc nail, and copper coin play?',
             options: ['All three are electrodes', 'Lemon juice = electrolyte, zinc = anode (gives up electrons), copper = cathode (receives electrons)', 'Lemon = insulator, zinc = cathode, copper = anode', 'The lemon provides the energy; the metals are just connectors'],
             correctIndex: 1,
             hint: 'The lemon\'s acid is the electrolyte. Which metal is more reactive — zinc or copper?',

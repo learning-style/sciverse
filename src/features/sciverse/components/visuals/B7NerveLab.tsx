@@ -294,7 +294,7 @@ export const B7NerveLab = ({ state }: B7NerveLabProps) => {
         ctx.fillText('⚡ The Lightning Reflex', W / 2, 26);
         ctx.font = '18px monospace';
         ctx.fillStyle = 'rgba(255,255,255,0.55)';
-        ctx.fillText('How does your brain know you touched something hot?', W / 2, 44);
+        ctx.fillText('How fast does a signal travel along your nerves?', W / 2, 44);
     };
 
     const drawTouchHot = (ctx: CanvasRenderingContext2D, W: number, H: number, t: number) => {
@@ -308,17 +308,35 @@ export const B7NerveLab = ({ state }: B7NerveLabProps) => {
         ctx.textAlign = 'center';
         ctx.fillText('🧠', W * 0.5, H * 0.12);
 
-        // Animated signal path: finger → brain
+        // Animated signal path: finger → spinal cord (up), then straight back to the arm muscles (the reflex)
         const signalProgress = (t * 0.6) % 2; // 0-1 up, 1-2 back
 
-        // Nerve path points (finger → arm → brain)
+        // Nerve path points (finger → arm → spinal cord)
         const pathUp = [
             { x: W * 0.42, y: H * 0.45 },
             { x: W * 0.35, y: H * 0.35 },
-            { x: W * 0.32, y: H * 0.25 },
-            { x: W * 0.4, y: H * 0.15 },
-            { x: W * 0.5, y: H * 0.12 },
+            { x: W * 0.3, y: H * 0.25 },
         ];
+
+        // Spinal cord, with a faint line on to the brain, which the signal reaches a moment later
+        ctx.strokeStyle = 'rgba(250,204,21,0.45)';
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        ctx.moveTo(W * 0.3, H * 0.16);
+        ctx.lineTo(W * 0.3, H * 0.46);
+        ctx.stroke();
+        ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([4, 5]);
+        ctx.beginPath();
+        ctx.moveTo(W * 0.3, H * 0.16);
+        ctx.lineTo(W * 0.47, H * 0.12);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = 'rgba(250,204,21,0.8)';
+        ctx.font = '15px monospace';
+        ctx.textAlign = 'right';
+        ctx.fillText('spinal cord', W * 0.3 - 10, H * 0.32);
 
         // Draw nerve pathway
         ctx.strokeStyle = 'rgba(139,92,246,0.4)';
@@ -348,9 +366,9 @@ export const B7NerveLab = ({ state }: B7NerveLabProps) => {
         ctx.font = '17px monospace';
         ctx.textAlign = 'center';
         if (signalProgress <= 1) {
-            ctx.fillText('⬆ Pain signal → Brain', W * 0.5, H * 0.08);
+            ctx.fillText('⬆ Signal → spinal cord', W * 0.5, H * 0.08);
         } else {
-            ctx.fillText('⬇ "PULL AWAY!" → Muscles', W * 0.5, H * 0.08);
+            ctx.fillText('⬇ Reflex: "PULL AWAY!" → Muscles', W * 0.5, H * 0.08);
         }
 
         // Speed comparison (if showing)
@@ -360,19 +378,19 @@ export const B7NerveLab = ({ state }: B7NerveLabProps) => {
             ctx.fillStyle = '#facc15';
             ctx.font = 'bold 17px monospace';
             ctx.textAlign = 'left';
-            ctx.fillText('⚡ Copper wire:  ~300,000,000 m/s', W * 0.1, H * 0.85);
+            ctx.fillText('⚡ Signal in a wire: ~200,000,000 m/s', W * 0.1, H * 0.85);
             ctx.fillStyle = '#a78bfa';
-            ctx.fillText('🧠 Nerve signal: ~100 m/s', W * 0.1, H * 0.93);
+            ctx.fillText('🧠 Nerve signal: up to ~100 m/s', W * 0.1, H * 0.93);
             ctx.fillStyle = 'rgba(255,255,255,0.5)';
             ctx.font = '16px monospace';
             ctx.textAlign = 'right';
-            ctx.fillText('3 million × slower!', W * 0.9, H * 0.89);
+            ctx.fillText('2 million × slower!', W * 0.9, H * 0.89);
         }
 
         ctx.fillStyle = 'rgba(255,255,255,0.85)';
         ctx.font = 'bold 19px monospace';
         ctx.textAlign = 'center';
-        ctx.fillText('🔥 Ouch! Signal Racing to Brain', W / 2, 26);
+        ctx.fillText('🔥 Ouch! A Reflex Through the Spinal Cord', W / 2, 26);
     };
 
     const drawNeuronAnatomy = (ctx: CanvasRenderingContext2D, W: number, H: number, t: number) => {

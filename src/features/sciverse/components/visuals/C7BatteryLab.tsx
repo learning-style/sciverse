@@ -432,6 +432,17 @@ function drawElectronFlow(ctx: CanvasRenderingContext2D, _W: number, _H: number,
     ctx.font = '16px monospace';
     ctx.fillText('e⁻ flow →', cx, wireTop - 25);
 
+    // One lemon gives about 0.9 V; an LED needs about 2 V, so the lesson joins three
+    if (ledOn) {
+        ctx.fillStyle = '#b45309';
+        ctx.font = '15px monospace';
+        if (wireTop - 45 >= 52) {
+            ctx.fillText('(3 lemons in a row light the LED)', cx, wireTop - 45);
+        } else {
+            ctx.fillText('(3 lemons in a row light the LED)', cx, lemonY + 90);
+        }
+    }
+
     ctx.fillStyle = '#22c55e';
     ctx.fillText('← ions inside', cx, lemonY + 70);
 }
@@ -466,7 +477,7 @@ function drawRealBattery(ctx: CanvasRenderingContext2D, W: number, H: number, cx
     ctx.fillRect(batX + 3, batY + 3, batW - 6, batH * 0.35);
     ctx.fillStyle = '#1e293b';
     ctx.font = 'bold 17px monospace';
-    ctx.fillText('Carbon Cathode (+)', cx, batY + batH * 0.2);
+    ctx.fillText('Cathode (+)', cx, batY + batH * 0.2);
 
     // Electrolyte zone (middle)
     ctx.fillStyle = 'rgba(139, 92, 246, 0.15)';
