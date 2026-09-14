@@ -208,6 +208,9 @@ import { getL2B8Script } from './l2b8-fox-heat-budget';
 import { getL3P8Script } from './l3p8-double-glazing';
 import { getL3C8Script } from './l3c8-cloud-base';
 import { getL3B8Script } from './l3b8-countercurrent-paws';
+import { getL2P9Script } from './l2p9-percentage-growth';
+import { getL2C9Script } from './l2c9-fertiliser-label';
+import { getL2B9Script } from './l2b9-cell-doublings';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1186,6 +1189,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p8': getL3P8Script,
     'l3c8': getL3C8Script,
     'l3b8': getL3B8Script,
+    'l2p9': getL2P9Script,
+    'l2c9': getL2C9Script,
+    'l2b9': getL2B9Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1636,6 +1642,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p8', title: 'Why Double Glazing Works', subtitle: 'Resistances in series and the U-value', discipline: 'physics', bigIdea: 8, bigIdeaTitle: 'Why Does Weather Change?', icon: '🪟', accentColor: 'indigo', crossLinks: ['l2p8'], level: 3 },
     { id: 'l3c8', title: 'Why Clouds Have Flat Bottoms', subtitle: 'The lapse rate and the cloud base', discipline: 'chemistry', bigIdea: 8, bigIdeaTitle: 'Why Does Weather Change?', icon: '☁️', accentColor: 'emerald', crossLinks: ['l2c8', 'l3p8'], level: 3 },
     { id: 'l3b8', title: 'How a Fox Keeps Its Feet Cold', subtitle: 'Countercurrent heat exchange', discipline: 'biology', bigIdea: 8, bigIdeaTitle: 'Why Does Weather Change?', icon: '🐾', accentColor: 'rose', crossLinks: ['l2b8', 'l3c8'], level: 3 },
+
+    // Big Idea 9 -- Level 2 (grades 6-8)
+    { id: 'l2p9', title: 'Two Ways to Measure Growth', subtitle: 'Change, and percentage change', discipline: 'physics', bigIdea: 9, bigIdeaTitle: 'How Do Things Grow?', icon: '📈', accentColor: 'indigo', crossLinks: ['p9'], level: 2 },
+    { id: 'l2c9', title: 'Reading a Bag of Plant Food', subtitle: 'Percentages by mass on a fertiliser label', discipline: 'chemistry', bigIdea: 9, bigIdeaTitle: 'How Do Things Grow?', icon: '🧪', accentColor: 'emerald', crossLinks: ['c9', 'l2p9'], level: 2 },
+    { id: 'l2b9', title: 'How Many Doublings Make a Body?', subtitle: 'Cells = start x 2ⁿ', discipline: 'biology', bigIdea: 9, bigIdeaTitle: 'How Do Things Grow?', icon: '🧬', accentColor: 'rose', crossLinks: ['b9', 'l2c9'], level: 2 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },

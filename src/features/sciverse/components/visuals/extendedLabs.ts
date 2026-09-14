@@ -106,6 +106,9 @@ import { L2B8FoxLab } from './L2B8FoxLab';
 import { L3P8GlazingLab } from './L3P8GlazingLab';
 import { L3C8CloudLab } from './L3C8CloudLab';
 import { L3B8PawLab } from './L3B8PawLab';
+import { L2P9GrowthLab } from './L2P9GrowthLab';
+import { L2C9FertiliserLab } from './L2C9FertiliserLab';
+import { L2B9DoublingLab } from './L2B9DoublingLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -223,4 +226,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p8: L3P8GlazingLab,
     l3c8: L3C8CloudLab,
     l3b8: L3B8PawLab,
+    l2p9: L2P9GrowthLab,
+    l2c9: L2C9FertiliserLab,
+    l2b9: L2B9DoublingLab,
 };
