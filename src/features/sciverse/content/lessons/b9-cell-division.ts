@@ -83,7 +83,7 @@ export const getB9Script = (): Record<string, DialogNode> => ({
     'cell_split': {
         id: 'cell_split',
         speaker: 'AI',
-        content: "**Step 3: The cell SPLITS in two!** ✂️➡️🟢🟢\n\nWatch carefully! The cell membrane **pinches inward** in the middle — like squeezing a balloon until it separates into two!\n\nEach half gets:\n- ✅ One complete set of DNA\n- ✅ Half of the cell's contents\n- ✅ Its own membrane\n\nAnd just like that — **one cell has become two identical cells!** This whole process takes about **24 hours** in human skin cells.",
+        content: "**Step 3: The cell SPLITS in two!** ✂️➡️🟢🟢\n\nWatch carefully! The cell membrane **pinches inward** in the middle — like squeezing a balloon until it separates into two!\n\nEach half gets:\n- ✅ One complete set of DNA\n- ✅ Half of the cell's contents\n- ✅ Its own membrane\n\nAnd just like that — **one cell has become two identical cells!** In human cells growing in a lab dish, one full round of growing, copying and splitting takes about **a day**.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'cell_split' } },
         options: [
             { id: 'healing', label: "So THAT'S how the wound heals!", nextNodeId: 'healing' }
@@ -93,7 +93,7 @@ export const getB9Script = (): Record<string, DialogNode> => ({
     'healing': {
         id: 'healing',
         speaker: 'AI',
-        content: "Exactly! Now watch the **healing timeline**! 🩹⏱️\n\nThe cells at the wound edge divide: 1 → 2 → 4 → 8 → 16... Each new cell divides again, slowly **filling the gap** with fresh skin.\n\n🔗 *P9 Connection:* We can **measure** this healing! Skin cells divide roughly once per day. In a small scrape:\n- Day 1: ~100 new cells\n- Day 3: ~1,000 new cells  \n- Day 7: wound mostly closed!\n\nThat's the power of **exponential growth** — the same measuring-change idea from P9!",
+        content: "Exactly! Now watch the **healing timeline**! 🩹⏱️\n\nCells at the wound edge **crawl** into the gap, and the cells behind them **divide** to make more: 1 → 2 → 4 → 8... slowly **filling the gap** with fresh skin.\n\n🔗 *P9 Connection:* We can **measure** this healing! Photograph a small scrape every day and measure how wide the gap is. A small scrape is usually mostly closed within about a week.\n\nAnd here's the clever part: once the gap is filled and the new cells are touching neighbours on every side, they **stop dividing**. Your skin doesn't keep growing forever -- it knows when the job is done!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'healing' } },
         options: [
             { id: 'growth', label: "Is this how kids grow taller too?", nextNodeId: 'growth_vs_repair' }
@@ -103,7 +103,7 @@ export const getB9Script = (): Record<string, DialogNode> => ({
     'growth_vs_repair': {
         id: 'growth_vs_repair',
         speaker: 'AI',
-        content: "**Great question!** Yes — growth and healing use the SAME process! 📏\n\nA baby starts as just **one single cell**. That cell divides into 2, then 4, then 8... and keeps going until there are **37 TRILLION cells** in an adult body!\n\nBig surprise: **you don't grow because cells get bigger** — you grow because you get **MORE cells!** A baby's cells and an adult's cells are roughly the same size.\n\nWatch the comparison: same-size cells, but WAY more of them in the adult!",
+        content: "**Great question!** Yes — growth and healing use the SAME process! 📏\n\nA baby starts as just **one single cell**. That cell divides into 2, then 4, then 8... and keeps going until there are **about 30 TRILLION cells** in an adult body!\n\nBig surprise: **you mostly don't grow because your cells get bigger** — you grow because you get **MORE cells!** Most of a baby's cells are roughly the same size as an adult's. (A few kinds, like muscle cells, do grow bigger as well.)\n\nWatch the comparison: same-size cells, but WAY more of them in the adult!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'growth_vs_repair' } },
         options: [
             { id: 'checkpoint', label: "I'm ready for a quiz!", nextNodeId: 'checkpoint' }
@@ -125,7 +125,7 @@ export const getB9Script = (): Record<string, DialogNode> => ({
     'checkpoint_correct': {
         id: 'checkpoint_correct',
         speaker: 'AI',
-        content: "✅ **Spot on!** 🎯\n\nYounger bodies have cells that divide **faster and more reliably**. A child's skin cells might divide every 20 hours, while an older adult's might take 30+ hours.\n\nMore divisions per day = faster gap-filling = quicker healing!\n\n🔗 *C9 Connection:* Good nutrition helps too — young, growing bodies are constantly building new cells, so they already have the nutrient-delivery systems running at full speed!",
+        content: "✅ **Spot on!** 🎯\n\nYounger bodies have cells that divide **more quickly and readily**. In older people, cell division slows down, and less blood reaches the skin to bring nutrients.\n\nFaster division = faster gap-filling = quicker healing!\n\n🔗 *C9 Connection:* Good nutrition helps too — young, growing bodies are constantly building new cells, so they already have the nutrient-delivery systems running at full speed!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', correct: true } },
         options: [
             { id: 'discovery', label: "Let's see everything we learned!", nextNodeId: 'discovery' }
@@ -153,7 +153,7 @@ export const getB9Script = (): Record<string, DialogNode> => ({
     'discovery': {
         id: 'discovery',
         speaker: 'AI',
-        content: "🎉 **Big Discovery!**\n\n🔬 **How Your Body Heals and Grows:**\n1. **Mitosis** — one cell divides into two identical cells\n2. **The process:** cell grows → DNA copies → cell splits\n3. **Healing** = cells dividing to fill gaps in damaged tissue\n4. **Growth** = more cells, not bigger cells (a baby → 37 trillion cells!)\n5. Each new cell needs **nutrients** (C9) as raw building materials\n\n**Misconception busted:** Your body doesn't fill wounds with goo — it builds **real new cells**, one division at a time!",
+        content: "🎉 **Big Discovery!**\n\n🔬 **How Your Body Heals and Grows:**\n1. **Mitosis** — one cell divides into two identical cells\n2. **The process:** cell grows → DNA copies → cell splits\n3. **Healing** = cells dividing to fill gaps in damaged tissue\n4. **Growth** = mostly more cells, not bigger cells (a baby → about 30 trillion cells!)\n5. Each new cell needs **nutrients** (C9) as raw building materials\n\n**Misconception busted:** Your body doesn't fill wounds with goo — it builds **real new cells**, one division at a time!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery' } },
         options: [
             { id: 'complete', label: "The human body is incredible! 🧬", nextNodeId: 'complete' }

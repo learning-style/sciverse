@@ -71,7 +71,7 @@ export const getP9Script = (): Record<string, DialogNode> => ({
     'rate_compare': {
         id: 'rate_compare',
         speaker: 'AI',
-        content: "Now both curves are on the same graph! 🔍\n\n🟢 **Sunflower** (green): Slow → Fast → Slow (S-curve)\n🔵 **Puppy** (blue): Fast → Slower → Nearly stopped (decelerating)\n\nThey have completely different growth patterns! The **rate of change** — how FAST something grows per week — is the real story here.\n\n**Rate = How much height changes in one week**\n\nLet's look at the rates side by side.",
+        content: "Now both curves are on the same graph! 🔍\n\n🟢 **Sunflower** (green): Slow → Fast → Slow (S-curve)\n🔵 **Puppy** (blue): Fast → Slower → Slower still (decelerating)\n\nThey have completely different growth patterns! The **rate of change** — how FAST something grows per week — is the real story here.\n\n**Rate = How much height changes in one week**\n\nLet's look at the rates side by side.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'rate_compare' } },
         options: [
             { id: 'rates', label: "Show me the rates!", nextNodeId: 'slope_intro' }
@@ -105,7 +105,7 @@ export const getP9Script = (): Record<string, DialogNode> => ({
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint' } },
         options: [
             { id: 'week2', label: "Week 2", nextNodeId: 'checkpoint_wrong_early' },
-            { id: 'week5', label: "Week 5", nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'week6', label: "Week 6", nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
             { id: 'week9', label: "Week 9", nextNodeId: 'checkpoint_wrong_late' }
         ]
     },
@@ -113,18 +113,18 @@ export const getP9Script = (): Record<string, DialogNode> => ({
     'checkpoint_wrong_early': {
         id: 'checkpoint_wrong_early',
         speaker: 'AI',
-        content: "Not quite! In week 2, the sunflower only grew from 2 to 3 cm — that's just 1 cm.\n\nLook at week 5: it grew from 12 to 25 cm — that's **13 cm in one week!** That's the steepest part of the curve. 📈\n\nThe plant was slow at the start because it was building roots first!",
-        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', highlight: 5 } },
+        content: "Not quite! In week 2, the sunflower only grew from 2 to 3 cm — that's just 1 cm.\n\nLook at week 6: it grew from 25 to 42 cm — that's **17 cm in one week!** That's the steepest part of the curve. 📈\n\nThe plant was slow at the start because it was building roots first!",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', highlight: 6 } },
         options: [
-            { id: 'discovery', label: "Week 5 was the growth explosion!", nextNodeId: 'crosslink' }
+            { id: 'discovery', label: "Week 6 was the growth explosion!", nextNodeId: 'crosslink' }
         ]
     },
 
     'checkpoint_correct': {
         id: 'checkpoint_correct',
         speaker: 'AI',
-        content: "Nailed it! ✅ \n\nWeek 5: the sunflower shot from 12 cm to 25 cm — a growth of **13 cm in one week!** That's the steepest slope on the graph.\n\nYou read that graph like a pro! 📊",
-        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', highlight: 5 } },
+        content: "Nailed it! ✅ \n\nWeek 6: the sunflower shot from 25 cm to 42 cm — a growth of **17 cm in one week!** That's the steepest slope on the graph. (Week 5 was close behind, with 13 cm.)\n\nYou read that graph like a pro! 📊",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', highlight: 6 } },
         options: [
             { id: 'crosslink', label: "But WHY does growth speed change?", nextNodeId: 'crosslink' }
         ]
@@ -133,8 +133,8 @@ export const getP9Script = (): Record<string, DialogNode> => ({
     'checkpoint_wrong_late': {
         id: 'checkpoint_wrong_late',
         speaker: 'AI',
-        content: "By week 9, growth had almost stopped — only 2 cm that week! The curve is nearly flat there.\n\nThe fastest week was **week 5**: from 12 cm to 25 cm — **13 cm of growth!** That's where the graph is steepest. 📈",
-        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', highlight: 5 } },
+        content: "By week 9, growth had almost stopped — only 2 cm that week! The curve is nearly flat there.\n\nThe fastest week was **week 6**: from 25 cm to 42 cm — **17 cm of growth!** That's where the graph is steepest. 📈",
+        onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', highlight: 6 } },
         options: [
             { id: 'discovery', label: "The middle had the biggest jump!", nextNodeId: 'crosslink' }
         ]

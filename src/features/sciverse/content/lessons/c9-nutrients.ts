@@ -89,7 +89,7 @@ export const getC9Script = (): Record<string, DialogNode> => ({
     'human_compare': {
         id: 'human_compare',
         speaker: 'AI',
-        content: "🧬 **Same Elements, Different Bodies!**\n\nHere's something amazing: the elements plants need are the SAME elements in YOUR body!\n\n| Element | Plants use it for... | Humans use it for... |\n|---------|---------------------|---------------------|\n| Carbon (C) | Sugar, cellulose | Muscles, bones, DNA |\n| Hydrogen (H) | Water in cells | Water in cells |\n| Oxygen (O) | Breathing, sugars | Breathing, energy |\n| Nitrogen (N) | Chlorophyll | Proteins, DNA |\n\nWe're made of the same atoms as plants! 🌿 = 🧑 at the atomic level. We get OUR elements from the food we eat — and a lot of that food IS plants!",
+        content: "🧬 **Same Elements, Different Bodies!**\n\nHere's something amazing: the elements plants need are the SAME elements in YOUR body!\n\n| Element | Plants use it for... | Humans use it for... |\n|---------|---------------------|---------------------|\n| Carbon (C) | Sugar, cellulose | Muscles, bones, DNA |\n| Hydrogen (H) | Water in cells | Water in cells |\n| Oxygen (O) | Breathing, sugars | Breathing, energy |\n| Nitrogen (N) | Chlorophyll, proteins, DNA | Proteins, DNA |\n\nWe're made of the same atoms as plants! 🌿 = 🧑 at the atomic level. We get OUR elements from the food we eat — and a lot of that food IS plants!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'human_compare' } },
         options: [
             { id: 'to_recycling', label: "So where do these atoms come from originally?", nextNodeId: 'recycling' }
@@ -99,7 +99,7 @@ export const getC9Script = (): Record<string, DialogNode> => ({
     'recycling': {
         id: 'recycling',
         speaker: 'AI',
-        content: "♻️ **Nature's Recycling — The Nutrient Cycle!**\n\nHere's the mind-blowing part: atoms get **recycled** over and over!\n\n🔄 **The Cycle:**\n1. Plants absorb nitrogen & carbon from soil and air\n2. Animals eat the plants → atoms move into animal bodies\n3. Animals produce waste (and eventually decompose)\n4. Bacteria in soil break waste down → nutrients return to soil\n5. Plants absorb those nutrients again!\n\nThe nitrogen atom in your lunch might have been in a dinosaur millions of years ago! 🦕 Nothing is wasted — nature recycles EVERYTHING.\n\n🔗 **Link to B9:** Cells need these nutrient atoms as building blocks to **divide and grow**. No nutrients → no cell division → no growth!",
+        content: "♻️ **Nature's Recycling — The Nutrient Cycle!**\n\nHere's the mind-blowing part: atoms get **recycled** over and over!\n\n🔄 **The Cycle:**\n1. Plants take in nitrogen from the soil, and carbon from the air (as carbon dioxide)\n2. Animals eat the plants → atoms move into animal bodies\n3. Animals produce waste (and eventually decompose)\n4. Bacteria in soil break waste down → nutrients return to soil\n5. Plants absorb those nutrients again!\n\nThe nitrogen atom in your lunch might have been in a dinosaur millions of years ago! 🦕 Nothing is wasted — nature recycles EVERYTHING.\n\n🔗 **Link to B9:** Cells need these nutrient atoms as building blocks to **divide and grow**. No nutrients → no cell division → no growth!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'recycling' } },
         options: [
             { id: 'to_checkpoint', label: "I think I understand — let's test it!", nextNodeId: 'checkpoint' }

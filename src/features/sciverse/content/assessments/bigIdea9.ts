@@ -120,7 +120,7 @@ export const bigIdea9Assessment: AssessmentData = {
             explanation: 'Before mitosis, every chromosome is duplicated during DNA replication (S phase). This ensures that when the cell divides, each daughter cell receives an identical, full set of genetic information. Without replication, cells would lose half their DNA each time they divided!',
             optionExplanations: [
                 'Destroying DNA would kill the cell! DNA carries all the genetic instructions — it must be carefully copied, not destroyed, before cell division.',
-                'Cutting DNA in half would give each cell incomplete instructions. That\'s what happens in meiosis (for sex cells), not mitosis. In mitosis, both cells need a FULL copy.',
+                'Cutting DNA in half would give each cell incomplete instructions, and that never happens. Even meiosis, which makes sex cells, passes on whole chromosomes: one of each pair. In mitosis, both cells need a FULL copy.',
                 'Correct! DNA is replicated before division, ensuring both daughter cells receive a complete, identical copy of all genetic information.',
                 'DNA doesn\'t dissolve — it\'s carefully organized into chromosomes. The nuclear envelope does break down during mitosis, but the DNA condenses into visible chromosomes rather than dissolving.'
             ]
