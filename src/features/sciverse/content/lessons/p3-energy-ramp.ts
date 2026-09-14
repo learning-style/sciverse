@@ -41,7 +41,7 @@ export const getP3Script = (): Record<string, DialogNode> => ({
     'rolling': {
         id: 'rolling',
         speaker: 'AI',
-        content: "Watch the energy bars! 📊\n\n🔵 **Potential Energy** (blue) is SHRINKING as the ball drops.\n🐟  **Kinetic Energy** (orange) is GROWING as the ball speeds up.\n\nAt the bottom, KE is maximum and PE is almost zero!\n\nBut look — the TOTAL stays the same! Energy isn't appearing or disappearing — it's **transforming**!",
+        content: "Watch the energy bars! 📊\n\n🔵 **Potential Energy** (blue) is SHRINKING as the ball drops.\n🟠 **Kinetic Energy** (orange) is GROWING as the ball speeds up.\n\nAt the bottom, KE is maximum and PE is almost zero!\n\nBut look — the TOTAL stays the same! Energy isn't appearing or disappearing — it's **transforming**!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'rolling', ballPosition: 'bottom', pe: 5, ke: 95 } },
         options: [
             { id: 'checkpoint', label: "The total stayed the same!", nextNodeId: 'checkpoint_height' }
