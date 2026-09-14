@@ -63,7 +63,7 @@ export const getP8Script = (): Record<string, DialogNode> => ({
     'conduction_why_metal': {
         id: 'conduction_why_metal',
         speaker: 'AI',
-        content: "Great question! Metal atoms are packed **very close together** and share free-moving electrons. Those electrons carry energy quickly from atom to atom — like an express delivery service! 🚀\n\nWood, plastic, and air have particles spread further apart, so they conduct heat much slower. That's why a wooden spoon doesn't burn your hand as fast as a metal one!\n\nNow let's look up — see that shimmer above the fire?",
+        content: "Great question! Metals have **free-moving electrons** that aren't stuck to any one atom. Those electrons carry energy quickly through the metal — like an express delivery service! 🚀\n\nWood and plastic don't have free electrons, so energy has to pass slowly from one jiggling particle to the next. Air is slower still, because its particles are spread far apart. That's why a wooden spoon doesn't burn your hand as fast as a metal one!\n\nNow let's look up — see that shimmer above the fire?",
         options: [
             { id: 'look_up', label: "I see the wavy air above the fire!", nextNodeId: 'convection_intro' }
         ]
@@ -72,7 +72,7 @@ export const getP8Script = (): Record<string, DialogNode> => ({
     'convection_intro': {
         id: 'convection_intro',
         speaker: 'AI',
-        content: "👆 Look above the campfire — the air is **shimmering and rising**!\n\nThis is **CONVECTION** — heat transfer through **moving fluid** (liquid or gas).\n\nHere's what happens:\n1. Fire heats the air near it → air **expands** and gets lighter\n2. Hot light air **rises** up ⬆️\n3. Cool heavy air rushes in from the sides to replace it ⬇️\n4. This creates a **loop** — a convection current!\n\nThat's why you feel a warm breeze near the fire and smoke always goes UP.",
+        content: "👆 Look above the campfire — the air is **shimmering and rising**!\n\nThis is **CONVECTION** — heat transfer through **moving fluid** (liquid or gas).\n\nHere's what happens:\n1. Fire heats the air near it → the air **expands**, so it becomes **less dense**\n2. The warm, less dense air **rises** up ⬆️ — like the less dense objects that float in P6\n3. Cooler, denser air rushes in from the sides to replace it ⬇️\n4. This creates a **loop** — a convection current!\n\nThat's why you feel a warm breeze near the fire and smoke always goes UP.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'convection', showConvection: true } },
         options: [
             { id: 'hand_above', label: "So holding my hand above the fire would be hottest?", nextNodeId: 'convection_above', sentiment: 'positive' },
@@ -92,7 +92,7 @@ export const getP8Script = (): Record<string, DialogNode> => ({
     'radiation_intro': {
         id: 'radiation_intro',
         speaker: 'AI',
-        content: "🌊 You feel warmth on your face from metres away — no touching, no wind. How?\n\n**RADIATION** — heat carried by invisible **infrared rays**. These are a type of light your eyes can't see!\n\nThe amazing part: radiation needs **NO material at all**. It can even travel through empty space! That's how the Sun heats the Earth across 150 million kilometres of vacuum! ☀️\n\nWatch the wavy lines coming from the fire — those represent infrared radiation spreading out in all directions.",
+        content: "🌊 You feel warmth on your face from metres away — no touching, no wind. How?\n\n**RADIATION** — heat carried by invisible **infrared rays**. These are a type of light your eyes can't see!\n\nThe amazing part: radiation needs **NO material at all**. It can even travel through empty space! That's how sunlight — visible light and infrared together — heats the Earth across 150 million kilometres of empty space! ☀️\n\nWatch the wavy lines coming from the fire — those represent infrared radiation spreading out in all directions.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'radiation', showRadiation: true } },
         options: [
             { id: 'all_directions', label: "So radiation goes sideways too, not just up?", nextNodeId: 'radiation_directions', sentiment: 'positive' },
@@ -112,7 +112,7 @@ export const getP8Script = (): Record<string, DialogNode> => ({
     'all_three': {
         id: 'all_three',
         speaker: 'AI',
-        content: "🔥 Look at the campfire now — all THREE types of heat transfer happening simultaneously!\n\n1. 🐟  **CONDUCTION** → through the metal rod (particle-to-particle contact)\n2. 🔵 **CONVECTION** → hot air rising above the fire (moving fluid loop)\n3. 🔴 **RADIATION** → infrared rays spreading outward (no material needed!)\n\nEvery hot object does all three, but one type usually dominates. The campfire's warmth on your face? Mostly **radiation**.",
+        content: "🔥 Look at the campfire now — all THREE types of heat transfer happening simultaneously!\n\n1. 🟠 **CONDUCTION** → through the metal rod (particle-to-particle contact)\n2. 🔵 **CONVECTION** → hot air rising above the fire (moving fluid loop)\n3. 🔴 **RADIATION** → infrared rays spreading outward (no material needed!)\n\nEvery hot object does all three, but one type usually dominates. The campfire's warmth on your face? Mostly **radiation**.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'all_three', showConduction: true, showConvection: true, showRadiation: true } },
         options: [
             { id: 'checkpoint', label: "I think I've got it — test me!", nextNodeId: 'checkpoint' }
@@ -161,7 +161,7 @@ export const getP8Script = (): Record<string, DialogNode> => ({
     'discovery': {
         id: 'discovery',
         speaker: 'AI',
-        content: "🎉 **You discovered the three ways heat travels!**\n\n🐟  **CONDUCTION** — through direct contact (particle bumps particle)\n🔵 **CONVECTION** — through moving fluid (hot rises, cool sinks)\n🔴 **RADIATION** — through invisible infrared rays (no material needed!)\n\n🔗 **Cross-Links:**\n\n🧪 **Chemistry C8 — The Water Cycle:** The Sun's **radiation** heats ocean water → water **evaporates** → rises by **convection** → cools and **condenses** into clouds → falls as rain. Heat transfer drives the entire water cycle!\n\n🧬 **Biology B8 — Animal Adaptations:** Animals manage heat! Arctic foxes have thick fur to reduce **conduction**. Elephants flap big ears to boost **convection**. Dark-skinned lizards absorb more **radiation** to warm up faster. 🦊🐘🦎",
+        content: "🎉 **You discovered the three ways heat travels!**\n\n🟠 **CONDUCTION** — through direct contact (particle bumps particle)\n🔵 **CONVECTION** — through moving fluid (hot rises, cool sinks)\n🔴 **RADIATION** — through invisible infrared rays (no material needed!)\n\n🔗 **Cross-Links:**\n\n🧪 **Chemistry C8 — The Water Cycle:** The Sun's **radiation** heats ocean water → water **evaporates** → rises by **convection** → cools and **condenses** into clouds → falls as rain. Heat transfer drives the entire water cycle!\n\n🧬 **Biology B8 — Animal Adaptations:** Animals manage heat! Arctic foxes have thick fur to reduce **conduction**. Elephants flap big ears to boost **convection**. Dark-skinned lizards absorb more **radiation** to warm up faster. 🦊🐘🦎",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery' } },
         options: [
             { id: 'finish', label: "Heat transfer is everywhere!", nextNodeId: 'complete' }

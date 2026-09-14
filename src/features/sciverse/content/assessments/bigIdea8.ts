@@ -101,7 +101,7 @@ export const bigIdea8Assessment: AssessmentData = {
             options: ['Evaporation', 'Melting', 'Condensation — water vapour cools and turns back into tiny liquid droplets', 'Freezing'],
             correctIndex: 2,
             hint: 'Going from gas → liquid is called...',
-            explanation: 'As warm moist air rises, it cools. Cooler air can hold less water vapour, so the excess vapour condenses — changes from gas back to tiny liquid water droplets. Billions of these droplets clinging to dust particles form visible clouds!',
+            explanation: 'As warm moist air rises, it cools. At a cooler temperature, less water can stay as vapour, so the extra vapour condenses — changes from gas back to tiny liquid water droplets. Billions of these droplets clinging to dust particles form visible clouds!',
             optionExplanations: [
                 'Evaporation is liquid → gas (the opposite direction). Here, water vapour (gas) is turning back INTO liquid droplets to form clouds.',
                 'Melting is solid → liquid (e.g. ice turning to water). The water vapour in the air is a gas, not a solid — it\'s turning into liquid droplets.',
@@ -179,15 +179,15 @@ export const bigIdea8Assessment: AssessmentData = {
             difficulty: 'hard',
             discipline: 'biology',
             question: 'Desert foxes have large ears while Arctic foxes have small ears. How does ear size help each survive?',
-            options: ['Large ears hear prey better in the desert; small ears hear better in snow', 'It\'s random — ear size has no survival value', 'Ear size affects balance in different terrains', 'Large ears radiate excess body heat in the desert; small ears reduce heat loss in the cold'],
+            options: ['Large ears hear prey better in the desert; small ears hear better in snow', 'It\'s random — ear size has no survival value', 'Ear size affects balance in different terrains', 'Large ears lose excess body heat in the desert; small ears reduce heat loss in the cold'],
             correctIndex: 3,
             hint: 'Ears are full of blood vessels close to the surface. What does surface area do for heat exchange?',
-            explanation: 'Large ears = large surface area with blood vessels near the surface → efficient radiating of excess body heat (critical in hot deserts). Small ears = less surface area → less heat escapes to the frigid air. This is an example of Allen\'s Rule — extremities are shorter in cold climates to conserve heat.',
+            explanation: 'Large ears = large surface area with blood vessels near the surface → efficient loss of excess body heat to the air (critical in hot deserts). Small ears = less surface area → less heat escapes to the frigid air. This is an example of Allen\'s Rule — extremities are shorter in cold climates to conserve heat.',
             optionExplanations: [
                 'Both foxes have excellent hearing regardless of ear size. The main advantage of ear size is thermoregulation — controlling body temperature — not hearing ability.',
                 'Ear size is definitely not random! It\'s a clear example of natural selection: desert foxes with larger ears survived better (stayed cooler), and Arctic foxes with smaller ears survived better (conserved heat).',
                 'Balance depends on the inner ear (vestibular system), not the outer ear size. The outer ear\'s surface area is crucial for heat exchange with the environment.',
-                'Correct! Large ears radiate heat in hot deserts; small ears conserve heat in cold Arctic conditions — this is Allen\'s Rule in action.'
+                'Correct! Large ears shed heat in hot deserts; small ears conserve heat in cold Arctic conditions — this is Allen\'s Rule in action.'
             ]
         },
         {

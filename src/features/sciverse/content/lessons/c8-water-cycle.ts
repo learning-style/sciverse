@@ -40,7 +40,7 @@ export const getC8Script = (): Record<string, DialogNode> => ({
     'partial_ground': {
         id: 'partial_ground',
         speaker: 'AI',
-        content: "Some water does soak into the ground — that's called **absorption**. But a LOT of it goes UP, not down!\n\nThe sun heats the puddle, and water molecules get so energized they fly off the surface and become an invisible gas. That's **evaporation**.\n\nLet's follow one molecule — Droplet — and see the whole cycle!",
+        content: "Some water does soak into the ground — that's called **infiltration**. But a LOT of it goes UP, not down!\n\nThe sun heats the puddle, and water molecules get so energized they fly off the surface and become an invisible gas. That's **evaporation**.\n\nLet's follow one molecule — Droplet — and see the whole cycle!",
         options: [
             { id: 'lets_see', label: "Show me what happens!", nextNodeId: 'puddle' }
         ]
@@ -89,7 +89,7 @@ export const getC8Script = (): Record<string, DialogNode> => ({
     'condensation': {
         id: 'condensation',
         speaker: 'AI',
-        content: "💨 **Stage 4: Condensation!**\n\nDroplet has cooled down enough to **change back into a tiny liquid droplet**. This is called **condensation** — the opposite of evaporation!\n\n| Process | What happens |\n|---------|-------------|\n| Evaporation | Liquid → Gas (add heat) |\n| Condensation | Gas → Liquid (remove heat) |\n\nDroplet clings to a tiny dust particle in the air. Billions of other water droplets do the same. Together they form... a **cloud!** ☁️",
+        content: "💨 **Stage 4: Condensation!**\n\nDroplet has cooled down enough to **join other water molecules in a tiny liquid droplet**. This is called **condensation** — the opposite of evaporation!\n\n| Process | What happens |\n|---------|-------------|\n| Evaporation | Liquid → Gas (add heat) |\n| Condensation | Gas → Liquid (remove heat) |\n\nThat droplet forms on a tiny speck of dust in the air. Billions of other droplets do the same. Together they form... a **cloud!** ☁️",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'condensation' } },
         options: [
             { id: 'cloud', label: "Clouds are made of tiny water droplets?!", nextNodeId: 'cloud' }
@@ -99,7 +99,7 @@ export const getC8Script = (): Record<string, DialogNode> => ({
     'cloud': {
         id: 'cloud',
         speaker: 'AI',
-        content: "☁️ **Stage 5: Cloud Formation**\n\nYes! Clouds are billions of tiny water droplets (or ice crystals) floating together. Each droplet is clinging to a microscopic dust or pollen particle.\n\nDroplet is inside the cloud now, bumping into other droplets. They merge and grow. The droplets get **heavier and heavier**...\n\nWhen they get too heavy for the air to hold up — what happens next?",
+        content: "☁️ **Stage 5: Cloud Formation**\n\nYes! Clouds are billions of tiny water droplets (or ice crystals) floating together. Each droplet formed around a microscopic speck of dust, sea salt or smoke.\n\nDroplet is inside the cloud now, bumping into other droplets. They merge and grow. The droplets get **heavier and heavier**...\n\nWhen they get too heavy for the air to hold up — what happens next?",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'cloud' } },
         options: [
             { id: 'rain', label: "They fall as rain!", nextNodeId: 'precipitation', sentiment: 'positive' },
@@ -119,7 +119,7 @@ export const getC8Script = (): Record<string, DialogNode> => ({
     'precipitation': {
         id: 'precipitation',
         speaker: 'AI',
-        content: "🌧️ **Stage 6: Precipitation!**\n\nDroplet has merged with many other droplets and grown too heavy. She falls from the cloud as a **raindrop**!\n\nPrecipitation can be:\n- ☔ **Rain** (liquid, warm air)\n- ❄️ **Snow** (frozen, cold air)\n- 🧊 **Hail** (ice balls, strong storms)\n\nDroplet splashes down onto the ground, runs into a stream, and eventually reaches a puddle or lake.\n\n🔗 **Link to B8:** Animals depend on this rain! Without the water cycle, rivers would dry up and animals would have no water to drink. 🦌💧",
+        content: "🌧️ **Stage 6: Precipitation!**\n\nDroplet has merged with many other droplets and grown too heavy. She falls from the cloud as a **raindrop**!\n\nPrecipitation can be:\n- ☔ **Rain** (liquid drops, when the air near the ground is above freezing)\n- ❄️ **Snow** (frozen, cold air)\n- 🧊 **Hail** (ice balls, strong storms)\n\nDroplet splashes down onto the ground, runs into a stream, and eventually reaches a puddle or lake.\n\n🔗 **Link to B8:** Animals depend on this rain! Without the water cycle, rivers would dry up and animals would have no water to drink. 🦌💧",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'precipitation' } },
         options: [
             { id: 'to_checkpoint', label: "And then the cycle starts again?", nextNodeId: 'checkpoint' }

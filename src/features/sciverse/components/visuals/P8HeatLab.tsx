@@ -73,7 +73,7 @@ export const P8HeatLab = ({ state }: P8HeatLabProps) => {
         const phaseLabels: Record<string, string> = {
             'intro': '🔥 How does heat from a campfire reach you?',
             'campfire': '🔥 Three ways heat can travel…',
-            'conduction': '🐟  Conduction — heat through touch',
+            'conduction': '🟠 Conduction — heat through touch',
             'convection': '🔵 Convection — hot fluid rises',
             'radiation': '🔴 Radiation — invisible infrared rays',
             'all_three': '🔥 All three at once!',
@@ -359,7 +359,7 @@ export const P8HeatLab = ({ state }: P8HeatLabProps) => {
         ctx.fillStyle = '#ea580c';
         ctx.font = 'bold 18px monospace';
         ctx.textAlign = 'center';
-        ctx.fillText('🐟  CONDUCTION: particle → particle', cx + W * 0.18, cy + 44);
+        ctx.fillText('🟠 CONDUCTION: particle → particle', cx + W * 0.18, cy + 44);
 
         // Hand icon at cold end
         ctx.font = '24px serif';
@@ -487,7 +487,7 @@ export const P8HeatLab = ({ state }: P8HeatLabProps) => {
         ctx.fillStyle = '#92400e';
         ctx.font = 'bold 17px monospace';
         ctx.textAlign = 'center';
-        ctx.fillText('🐟  Conduction (rod)   🔵 Convection (air)   🔴 Radiation (rays)', cx, boxY + 18);
+        ctx.fillText('🟠 Conduction (rod)   🔵 Convection (air)   🔴 Radiation (rays)', cx, boxY + 18);
         ctx.font = '17px monospace';
         ctx.fillStyle = '#78350f';
         ctx.fillText('All three happen simultaneously around any hot object!', cx, boxY + 34);
@@ -563,7 +563,7 @@ export const P8HeatLab = ({ state }: P8HeatLabProps) => {
         ctx.fillText('Hot mug + hands touching = ?', cx, cy + mugH / 2 + 60);
 
         // Hint options drawn as boxes
-        const opts = ['🐟  Conduction', '🔵 Convection', '🔴 Radiation'];
+        const opts = ['🟠 Conduction', '🔵 Convection', '🔴 Radiation'];
         const optW = W * 0.22;
         for (let i = 0; i < opts.length; i++) {
             const ox = cx - (opts.length - 1) * optW / 2 + i * optW;
@@ -591,7 +591,7 @@ export const P8HeatLab = ({ state }: P8HeatLabProps) => {
         const cards = [
             {
                 title: 'Conduction',
-                emoji: '🐟 ',
+                emoji: '🟠',
                 color: '#ea580c',
                 bgColor: 'rgba(234,88,12,0.06)',
                 desc: ['Through direct', 'CONTACT', '', 'Particle bumps', 'particle like', 'dominoes'],

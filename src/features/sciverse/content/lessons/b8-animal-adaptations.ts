@@ -44,7 +44,7 @@ export const getB8Script = (): Record<string, DialogNode> => ({
     'migration_intro': {
         id: 'migration_intro',
         speaker: 'AI',
-        content: "**Strategy 1: Migration** 🪿✈️\n\nThose Canada geese are flying in a beautiful **V-formation** — and they're heading SOUTH!\n\nEvery autumn, they travel up to **5,000 km** to reach warmer lands where food is plentiful. In spring, they fly back north.\n\nThe V-shape isn't just pretty — each bird flies in the **updraft** from the bird in front, saving about 20% energy. They take turns leading!\n\n🔗 *Remember C8 (Water Cycle)?* When drought changes rainfall patterns, animals may be forced to **migrate to find water** — the water cycle directly affects where animals can survive!",
+        content: "**Strategy 1: Migration** 🪿✈️\n\nThose Canada geese are flying in a beautiful **V-formation** — and they're heading SOUTH!\n\nEvery autumn, they travel up to **5,000 km** to reach warmer lands where food is plentiful. In spring, they fly back north.\n\nThe V-shape isn't just pretty — each bird flies in the rising air that swirls off the wingtips of the bird in front, which saves it energy. They take turns leading!\n\n🔗 *Remember C8 (Water Cycle)?* When drought changes rainfall patterns, animals may be forced to **migrate to find water** — the water cycle directly affects where animals can survive!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'migration' } },
         options: [
             { id: 'why', label: "Why don't all animals just migrate?", nextNodeId: 'migration_limits' },
@@ -86,7 +86,7 @@ export const getB8Script = (): Record<string, DialogNode> => ({
     'insulation_intro': {
         id: 'insulation_intro',
         speaker: 'AI',
-        content: "**Strategy 3: Insulation** 🦊🧥\n\nThe arctic fox doesn't migrate OR hibernate — it stays active all winter at **-40°C!** How?!\n\nLook at its adaptations:\n- **Thick double-layered fur** — the densest fur of any land mammal!\n- **Small, rounded ears** — less surface area = less heat escaping\n- **Short legs and muzzle** — compact body shape holds heat in\n- **Furry paw pads** — like built-in snow boots!\n\n🔗 *P8 Connection:* Thick fur reduces **conduction** (heat can't pass through easily). Small ears reduce **radiation** (less surface to radiate heat away). These are exactly the heat transfer principles from P8!",
+        content: "**Strategy 3: Insulation** 🦊🧥\n\nThe arctic fox doesn't migrate OR hibernate — it stays active all winter at **-40°C!** How?!\n\nLook at its adaptations:\n- **Thick double-layered fur** — one of the warmest coats of any mammal!\n- **Small, rounded ears** — less surface area = less heat escaping\n- **Short legs and muzzle** — compact body shape holds heat in\n- **Furry paw pads** — like built-in snow boots!\n\n🔗 *P8 Connection:* Thick fur reduces **conduction** (heat can't pass through easily). Small ears mean **less surface** for heat to escape from. These are exactly the heat transfer principles from P8!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'insulation' } },
         options: [
             { id: 'desert', label: "What about animals in hot weather?", nextNodeId: 'desert_intro' },
@@ -97,7 +97,7 @@ export const getB8Script = (): Record<string, DialogNode> => ({
     'desert_intro': {
         id: 'desert_intro',
         speaker: 'AI',
-        content: "Surviving extreme HEAT is a whole different challenge! 🏜️☀️\n\nLook at this desert scene: during the **day** it hits 50°C — scorching! But at **night** it drops to 15°C.\n\nMany desert animals like lizards and rodents are **nocturnal** — they hide underground during the blazing day and come out at cool night.\n\nThe desert lizard burrows into sand at noon (avoiding the sun's radiation) and hunts actively at night when it's safe.\n\n🔗 *C8 Connection:* Deserts get so little rain because of the water cycle — moisture evaporates before reaching the ground. Animals must adapt to survive with almost **no water**, getting moisture from their food!",
+        content: "Surviving extreme HEAT is a whole different challenge! 🏜️☀️\n\nLook at this desert scene: during the **day** it hits 50°C — scorching! But at **night** it drops to 15°C.\n\nMany desert animals, like **jerboas** (small desert rodents) and **geckos**, are **nocturnal** — they hide underground during the blazing day and come out at cool night. (Not every lizard does this: many need the Sun's warmth and are busiest in the morning.)\n\nA desert gecko shelters in a cool burrow at noon (avoiding the sun's radiation) and comes out to feed at night.\n\n🔗 *C8 Connection:* Deserts get very little rain mostly because the air above them is dry and sinking — and C8 showed that clouds need air that rises and cools. Animals must adapt to survive with almost **no water**, getting moisture from their food!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'desert' } },
         options: [
             { id: 'test', label: "Fascinating! I'm ready for the checkpoint!", nextNodeId: 'checkpoint' }
@@ -107,7 +107,7 @@ export const getB8Script = (): Record<string, DialogNode> => ({
     'checkpoint': {
         id: 'checkpoint',
         speaker: 'AI',
-        content: "⏸️ **Checkpoint Question!**\n\nMany desert animals — like lizards, scorpions, and mice — are active **only at night**.\n\n**Why do some desert animals come out only at night?**",
+        content: "⏸️ **Checkpoint Question!**\n\nMany desert animals — like geckos, scorpions, and desert mice — are active **only at night**.\n\n**Why do some desert animals come out only at night?**",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint' } },
         options: [
             { id: 'correct', label: "The desert is dangerously hot during the day — by being nocturnal, they avoid overheating and losing water!", nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
