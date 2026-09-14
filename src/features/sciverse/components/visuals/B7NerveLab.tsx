@@ -896,7 +896,7 @@ export const B7NerveLab = ({ state }: B7NerveLabProps) => {
             '2. Na⁺ in, K⁺ out → action potential pulse',
             '3. Myelin insulation → signal jumps fast',
             '4. Synapse: neurotransmitters cross the gap',
-            '5. Finger → Brain in ~0.02 seconds!',
+            '5. Reflex: spinal cord pulls hand away',
             '',
             '🔗 P7: Neurons are like circuits (pathway)',
             '🔗 C7: Ions power the signal (like batteries)',
