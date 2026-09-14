@@ -68,7 +68,7 @@ export const bigIdea6Assessment: AssessmentData = {
             options: ['Evaporation — boil off the water and the salt crystals remain', 'Filtering with a coffee filter', 'Using a magnet', 'Freezing the mixture'],
             correctIndex: 0,
             hint: 'The salt is dissolved — it passes right through a filter. What if you removed the water itself?',
-            explanation: 'Since salt is fully dissolved, it passes through filters. But if you evaporate the water (by heating), the water turns to steam and leaves the salt crystals behind. This is how sea salt is harvested from ocean water!',
+            explanation: 'Since salt is fully dissolved, it passes through filters. But if you evaporate the water, it turns into a gas and leaves the salt crystals behind. Heating makes it faster, but it is not needed: sea salt farms simply let the sun evaporate shallow ponds of seawater!',
             optionExplanations: [
                 'Correct! Evaporation removes the water as steam, leaving solid salt crystals behind.',
                 'Dissolved salt particles are far too small to be caught by a filter — they pass right through with the water. Filtering only works for undissolved solids.',

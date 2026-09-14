@@ -33,7 +33,7 @@ export const getB6Script = (): Record<string, DialogNode> => ({
     'misconception_air': {
         id: 'misconception_air',
         speaker: 'AI',
-        content: "That's a creative idea! But there aren't air pockets waiting for fish underwater. 🌊\n\nHere's the amazing truth: **oxygen actually dissolves into water** — like sugar dissolves in tea!\n\nRemember from Chemistry (C6) how substances can dissolve and mix? Oxygen does the same thing with water.",
+        content: "That's a creative idea! But there aren't air pockets waiting for fish underwater. 🌊\n\nHere's the amazing truth: **oxygen actually dissolves into water** — like sugar dissolves in tea!\n\nRemember from Chemistry (C5) how things dissolve in water? Oxygen does the same thing!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'fish_swimming' } },
         options: [
             { id: 'dissolved', label: "Dissolved oxygen? Tell me more!", nextNodeId: 'dissolved_oxygen' }
@@ -43,7 +43,7 @@ export const getB6Script = (): Record<string, DialogNode> => ({
     'gills_intro': {
         id: 'gills_intro',
         speaker: 'AI',
-        content: "Yes! Gills are the key! 🎯\n\nBut gills don't breathe air — they extract **dissolved oxygen** from water.\n\nJust like in Chemistry (C6), where salt dissolves in water and you can't see it anymore, oxygen gas dissolves in water too! Fish \"smell\" that dissolved oxygen with their gills.",
+        content: "Yes! Gills are the key! 🎯\n\nBut gills don't breathe air — they extract **dissolved oxygen** from water.\n\nJust like in Chemistry (C6), where salt dissolves in water and you can't see it anymore, oxygen gas dissolves in water too! Fish take in that dissolved oxygen with their gills.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'fish_swimming', showO2Dots: true } },
         options: [
             { id: 'how_dissolve', label: "How does oxygen get into water?", nextNodeId: 'dissolved_oxygen' },
@@ -75,7 +75,7 @@ export const getB6Script = (): Record<string, DialogNode> => ({
     'thin_walls': {
         id: 'thin_walls',
         speaker: 'AI',
-        content: "Great question! The walls must be thin because oxygen moves by **diffusion** — it drifts from where there's MORE of it to where there's LESS.\n\nThick walls would slow diffusion to a crawl. Thin walls = fast gas exchange! This is just like how a thin paper towel soaks up water faster than a thick sponge.\n\nThe filaments also have a HUGE surface area — like unfolding a crumpled piece of paper. More surface = more oxygen captured!",
+        content: "Great question! The walls must be thin because oxygen moves by **diffusion** — it drifts from where there's MORE of it to where there's LESS.\n\nThick walls would slow diffusion to a crawl. Thin walls = fast gas exchange! It's like how cold gets through a thin jacket much faster than through a thick coat.\n\nThe filaments also have a HUGE surface area — like unfolding a crumpled piece of paper. More surface = more oxygen captured!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'gills_closeup', highlightWalls: true } },
         options: [
             { id: 'exchange', label: "Does CO₂ go the other way?", nextNodeId: 'oxygen_exchange' }
@@ -96,7 +96,7 @@ export const getB6Script = (): Record<string, DialogNode> => ({
     'warm_vs_cold': {
         id: 'warm_vs_cold',
         speaker: 'AI',
-        content: "YES — temperature is a big deal! 🌡️\n\nRemember from Physics (P6) how density changes with temperature? Here's the connection:\n\n❄️ **Cold water** holds MORE dissolved oxygen (molecules move slowly, stay packed in)\n🔥 **Warm water** holds LESS dissolved oxygen (molecules move fast, escape to the air)\n\nLook at the comparison — the cold side has way more blue O₂ dots!\n\nThis is why fish in warm ponds sometimes gasp at the surface — they're running low on oxygen!",
+        content: "YES — temperature is a big deal! 🌡️\n\nYou know how a fizzy drink goes flat faster when it's warm? Oxygen in water works the same way:\n\n❄️ **Cold water** holds MORE dissolved oxygen\n🔥 **Warm water** holds LESS dissolved oxygen — the oxygen escapes into the air more easily\n\nLook at the comparison — the cold side has way more blue O₂ dots!\n\nThis is why fish in warm ponds sometimes gasp at the surface — they're running low on oxygen!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'warm_vs_cold' } },
         options: [
             { id: 'checkpoint', label: "So warm water is dangerous for fish!", nextNodeId: 'checkpoint' }
@@ -146,7 +146,7 @@ export const getB6Script = (): Record<string, DialogNode> => ({
     'discovery': {
         id: 'discovery',
         speaker: 'AI',
-        content: "🎉 **Big Discovery!**\n\n🐟 **How Fish Breathe:**\n1. Oxygen dissolves in water (like salt in C6!)\n2. Fish gulp water and push it over their gills\n3. Gills have thin-walled filaments packed with blood vessels\n4. O₂ diffuses from water → blood; CO₂ goes blood → water\n5. Cold water holds more O₂ than warm water (density link to P6!)\n\n**Misconception busted:** Fish DON'T breathe air — they extract dissolved oxygen using gills!",
+        content: "🎉 **Big Discovery!**\n\n🐟 **How Fish Breathe:**\n1. Oxygen dissolves in water (like salt in C6!)\n2. Fish gulp water and push it over their gills\n3. Gills have thin-walled filaments packed with blood vessels\n4. O₂ diffuses from water → blood; CO₂ goes blood → water\n5. Cold water holds more O₂ than warm water — in warm water it escapes more easily\n\n**Misconception busted:** Fish DON'T breathe air — they extract dissolved oxygen using gills!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery' } },
         options: [
             { id: 'complete', label: "Fish are amazing! 🐟", nextNodeId: 'complete' }
@@ -156,7 +156,7 @@ export const getB6Script = (): Record<string, DialogNode> => ({
     'complete': {
         id: 'complete',
         speaker: 'AI',
-        content: "🔗 **Big Idea 6 Complete — Why Do Things Float or Sink?**\n\n- Physics (P6): Density determines if objects float or sink (buoyancy)\n- Chemistry (C6): Mixtures can be separated using density differences (filtration, evaporation)\n- Biology (B6): Fish breathe by extracting dissolved oxygen through gills — and water temperature (density!) controls how much O₂ is available\n\nIn all three: **density** connects floating, mixing, and breathing! 🌊\n\n✅ **Lesson B6 Complete!**",
+        content: "🔗 **Big Idea 6 Complete — Why Do Things Float or Sink?**\n\n- Physics (P6): Density determines if objects float or sink (buoyancy)\n- Chemistry (C6): Mixtures can be separated because each part keeps its own properties (skimming, filtering, evaporating)\n- Biology (B6): Fish breathe by taking dissolved oxygen in through their gills — and warm water holds less O₂ than cold water\n\nIn all three: **water** and what's in it — floating objects, dissolved salt, dissolved oxygen! 🌊\n\n✅ **Lesson B6 Complete!**",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }

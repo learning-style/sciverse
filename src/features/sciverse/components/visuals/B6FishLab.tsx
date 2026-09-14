@@ -599,7 +599,7 @@ export const B6FishLab = ({ state }: B6FishLabProps) => {
         ctx.fillText('C6: Mixtures & Separation', W / 2, H * 0.55 + 65);
         ctx.fillText('B6: How Fish Breathe', W / 2, H * 0.55 + 82);
         ctx.fillStyle = 'rgba(255,255,255,0.5)';
-        ctx.fillText('Density connects floating, mixing & breathing! 🌊', W / 2, H * 0.55 + 105);
+        ctx.fillText('Water connects floating, mixing & breathing! 🌊', W / 2, H * 0.55 + 105);
     };
 
     // ── Main animation loop ──────────────────────────────────────

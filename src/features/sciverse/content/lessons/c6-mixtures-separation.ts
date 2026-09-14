@@ -82,7 +82,7 @@ export const getC6Script = (): Record<string, DialogNode> => ({
     'evaporate_wrong': {
         id: 'evaporate_wrong',
         speaker: 'AI',
-        content: "Interesting idea! But freezing actually traps salt IN the ice. Sea ice is slightly salty because of this.\n\nThe trick is to use the different **boiling points**: water boils at 100°C, but salt doesn't boil until over 1400°C! So if we heat the water...",
+        content: "Interesting idea! But freezing actually traps salt IN the ice. Sea ice is slightly salty because of this.\n\nThe trick is that water can **evaporate** — turn into a gas and float away into the air — but salt can't. So if we let the water evaporate...",
         options: [
             { id: 'heat_it', label: "The water turns to steam and the salt stays behind!", nextNodeId: 'evaporate_correct' }
         ]
@@ -91,7 +91,7 @@ export const getC6Script = (): Record<string, DialogNode> => ({
     'evaporate_wrong2': {
         id: 'evaporate_wrong2',
         speaker: 'AI',
-        content: "Salt is dissolved at the molecular level — even the finest filter can't catch individual ions. They're smaller than the holes in ANY filter.\n\nWe need to use a different property: **boiling point**. Water evaporates at 100°C, but salt stays solid until over 1400°C!",
+        content: "Salt is dissolved at the molecular level — even the finest filter can't catch individual ions. They're smaller than the holes in ANY filter.\n\nWe need to use a different property: water can **evaporate** into the air, but salt can't. Water even evaporates from a puddle on a cool day — while salt just stays behind as a solid!",
         options: [
             { id: 'boil_it', label: "So boil the water away!", nextNodeId: 'evaporate_correct' }
         ]
@@ -100,7 +100,7 @@ export const getC6Script = (): Record<string, DialogNode> => ({
     'evaporate_correct': {
         id: 'evaporate_correct',
         speaker: 'AI',
-        content: "✅ Perfect! Heating the water turns it into steam (gas), and the salt crystals are left behind in the dish.\n\nThis is **evaporation** — separating by **boiling point**. It's how salt farms work in warm countries — they let the sun evaporate seawater! ☀️",
+        content: "✅ Perfect! Heating the water turns it into steam (gas), and the salt crystals are left behind in the dish.\n\nThis is **evaporation** — the water turns into a gas and escapes, but the salt can't. Heating makes it faster, but boiling isn't needed: salt farms in warm countries just let the sun slowly evaporate shallow ponds of seawater! ☀️",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'evaporating', showSalt: false, separated: 3 } },
         options: [
             { id: 'summary', label: "We separated everything!", nextNodeId: 'discovery' }
@@ -110,7 +110,7 @@ export const getC6Script = (): Record<string, DialogNode> => ({
     'discovery': {
         id: 'discovery',
         speaker: 'AI',
-        content: "🎉 **You separated a mixture using 3 techniques!**\n\n| Technique | Property Used | What's Separated |\n|-----------|--------------|------------------|\n| Skimming | Density | Oil |\n| Filtration | Particle size | Sand |\n| Evaporation | Boiling point | Dissolved salt |\n\nKey insight: **Mixtures can always be separated** because the substances keep their own physical properties!",
+        content: "🎉 **You separated a mixture using 3 techniques!**\n\n| Technique | Property Used | What's Separated |\n|-----------|--------------|------------------|\n| Skimming | Density | Oil |\n| Filtration | Particle size | Sand |\n| Evaporation | Water evaporates, salt doesn't | Dissolved salt |\n\nKey insight: **Mixtures can always be separated** because the substances keep their own physical properties!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery', showSummary: true } },
         options: [
             { id: 'next', label: "That's so cool!", nextNodeId: 'complete' }
@@ -120,7 +120,7 @@ export const getC6Script = (): Record<string, DialogNode> => ({
     'complete': {
         id: 'complete',
         speaker: 'AI',
-        content: "🔗 **Cross-Link:** Remember how oil floated in our mixture? That's DENSITY from P6! And in Biology, fish gills separate dissolved oxygen from water — a natural filtration system!\n\nHead to **B6: How Fish Breathe** to see separation in living things! 🐟\n\n✅ **Lesson C6 Complete!**",
+        content: "🔗 **Cross-Link:** Remember how oil floated in our mixture? That's DENSITY from P6! And in Biology, fish gills take dissolved oxygen out of water — not by filtering it, but by letting it pass through very thin walls!\n\nHead to **B6: How Fish Breathe** to see how it works! 🐟\n\n✅ **Lesson C6 Complete!**",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }

@@ -121,7 +121,7 @@ export const getP6Script = (): Record<string, DialogNode> => ({
     'checkpoint_correct': {
         id: 'checkpoint_correct',
         speaker: 'AI',
-        content: "✅ Correct! 0.83 < 1.0, so it FLOATS!\n\nNow I'm unlocking the **Density Slider**. You can change the liquid's density too! Try salt water (1.03 g/cm³) — objects float MORE in salt water. That's why you float easily in the Dead Sea! 🌊",
+        content: "✅ Correct! 0.83 < 1.0, so it FLOATS!\n\nNow I'm unlocking the **Density Slider**. You can change the liquid's density too! Try salt water (seawater is about 1.03 g/cm³) — objects float HIGHER in salt water. The Dead Sea is so salty (about 1.24 g/cm³) that people float high in it without even trying! 🌊",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'explore', densitySliderUnlocked: true, liquidDensity: 1.0 } },
         options: [
             { id: 'explore', label: "Let me try different densities!", nextNodeId: 'discovery' }
@@ -141,7 +141,7 @@ export const getP6Script = (): Record<string, DialogNode> => ({
     'complete': {
         id: 'complete',
         speaker: 'AI',
-        content: "🔗 **Cross-Link:** Speaking of liquids — you can SEPARATE mixtures based on density! Oil floats on water because it's less dense. Head over to **Chemistry Lesson C6: Mixtures & Separation** to see how density helps us take things apart!\n\nAnd in Biology, fish USE water density to breathe — dissolved oxygen sits in water, and gills extract it!\n\n✅ **Lesson P6 Complete!**",
+        content: "🔗 **Cross-Link:** Speaking of liquids — you can SEPARATE mixtures based on density! Oil floats on water because it's less dense. Head over to **Chemistry Lesson C6: Mixtures & Separation** to see how density helps us take things apart!\n\nAnd in Biology, find out how fish breathe the oxygen that is dissolved in water, using their gills!\n\n✅ **Lesson P6 Complete!**",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }

@@ -178,7 +178,7 @@ export const C6MixturesLab = ({ state }: C6MixturesLabProps) => {
             ctx.fillStyle = '#065f46';
             ctx.font = 'bold 18px monospace';
             ctx.textAlign = 'center';
-            ctx.fillText('Skim (density) → Filter (size) → Evaporate (boiling point)', W / 2, tY + 20);
+            ctx.fillText('Skim (density) → Filter (size) → Evaporate (salt stays)', W / 2, tY + 20);
             ctx.font = '17px monospace';
             ctx.fillText('Mixtures keep their properties → always separable!', W / 2, tY + 38);
         }
