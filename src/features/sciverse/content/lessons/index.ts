@@ -223,6 +223,9 @@ import { getL3B10Script } from './l3b10-species-area';
 import { getL2P11Script } from './l2p11-pressure-column';
 import { getL2C11Script } from './l2c11-ph-tens';
 import { getL2B11Script } from './l2b11-vaccine-effectiveness';
+import { getL3P11Script } from './l3p11-flow-resistance';
+import { getL3C11Script } from './l3c11-blood-buffer';
+import { getL3B11Script } from './l3b11-memory-race';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1216,6 +1219,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p11': getL2P11Script,
     'l2c11': getL2C11Script,
     'l2b11': getL2B11Script,
+    'l3p11': getL3P11Script,
+    'l3c11': getL3C11Script,
+    'l3b11': getL3B11Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1691,6 +1697,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p11', title: 'What the Blood Pressure Numbers Mean', subtitle: 'Pressure = ρ x g x h, and mmHg', discipline: 'physics', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '🩺', accentColor: 'indigo', crossLinks: ['p11'], level: 2 },
     { id: 'l2c11', title: 'Ten Times for Every Step', subtitle: 'Hydrogen ions, pH and dilution', discipline: 'chemistry', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '🍋', accentColor: 'emerald', crossLinks: ['c11', 'l2p11'], level: 2 },
     { id: 'l2b11', title: 'How Well Does a Vaccine Work?', subtitle: 'Risk and vaccine effectiveness', discipline: 'biology', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '💉', accentColor: 'rose', crossLinks: ['b11', 'l2c11'], level: 2 },
+
+    // Big Idea 11 -- Level 3 (grades 9-12)
+    { id: 'l3p11', title: 'Why Narrow Arteries Matter So Much', subtitle: 'Pressure drop = flow x resistance, and radius⁴', discipline: 'physics', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '🫀', accentColor: 'indigo', crossLinks: ['l2p11', 'l2p7'], level: 3 },
+    { id: 'l3c11', title: 'How Blood Holds Its pH', subtitle: 'The bicarbonate buffer', discipline: 'chemistry', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '🫁', accentColor: 'emerald', crossLinks: ['l2c11', 'l3c2'], level: 3 },
+    { id: 'l3b11', title: 'Racing the Germ', subtitle: 'Memory cells and a head start of doublings', discipline: 'biology', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '🧫', accentColor: 'rose', crossLinks: ['l2b11', 'l2b9'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
