@@ -112,6 +112,9 @@ import { L2B9DoublingLab } from './L2B9DoublingLab';
 import { L3P9SCurveLab } from './L3P9SCurveLab';
 import { L3C9OxideLab } from './L3C9OxideLab';
 import { L3B9CycleLab } from './L3B9CycleLab';
+import { L2P10SolarLab } from './L2P10SolarLab';
+import { L2C10CarbonLab } from './L2C10CarbonLab';
+import { L2B10DiversityLab } from './L2B10DiversityLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -235,4 +238,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p9: L3P9SCurveLab,
     l3c9: L3C9OxideLab,
     l3b9: L3B9CycleLab,
+    l2p10: L2P10SolarLab,
+    l2c10: L2C10CarbonLab,
+    l2b10: L2B10DiversityLab,
 };

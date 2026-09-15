@@ -214,6 +214,9 @@ import { getL2B9Script } from './l2b9-cell-doublings';
 import { getL3P9Script } from './l3p9-s-curve';
 import { getL3C9Script } from './l3c9-oxide-numbers';
 import { getL3B9Script } from './l3b9-cell-cycle-timing';
+import { getL2P10Script } from './l2p10-solar-panels';
+import { getL2C10Script } from './l2c10-carbon-dioxide-mass';
+import { getL2B10Script } from './l2b10-diversity-index';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1198,6 +1201,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p9': getL3P9Script,
     'l3c9': getL3C9Script,
     'l3b9': getL3B9Script,
+    'l2p10': getL2P10Script,
+    'l2c10': getL2C10Script,
+    'l2b10': getL2B10Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1658,6 +1664,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p9', title: 'Why Growth Slows Down', subtitle: 'The S-curve: r x N x (1 − N/K)', discipline: 'physics', bigIdea: 9, bigIdeaTitle: 'How Do Things Grow?', icon: '🌻', accentColor: 'indigo', crossLinks: ['l2p9', 'l2b9'], level: 3 },
     { id: 'l3c9', title: 'What the P and K Numbers Really Mean', subtitle: 'Oxides, formula masses and the law of the minimum', discipline: 'chemistry', bigIdea: 9, bigIdeaTitle: 'How Do Things Grow?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c9', 'l3p9'], level: 3 },
     { id: 'l3b9', title: 'Timing the Cell Cycle', subtitle: 'Mitotic index and the hours a cell spends dividing', discipline: 'biology', bigIdea: 9, bigIdeaTitle: 'How Do Things Grow?', icon: '🔬', accentColor: 'rose', crossLinks: ['l2b9', 'l3c9'], level: 3 },
+
+    // Big Idea 10 -- Level 2 (grades 6-8)
+    { id: 'l2p10', title: 'How Many Solar Panels Power a Home?', subtitle: 'Efficiency, power and kilowatt-hours', discipline: 'physics', bigIdea: 10, bigIdeaTitle: 'How Do We Protect Our Planet?', icon: '🔆', accentColor: 'indigo', crossLinks: ['p10'], level: 2 },
+    { id: 'l2c10', title: 'More Carbon Dioxide Than Fuel', subtitle: 'Mass of CO₂ = mass of carbon x 44 / 12', discipline: 'chemistry', bigIdea: 10, bigIdeaTitle: 'How Do We Protect Our Planet?', icon: '🏭', accentColor: 'emerald', crossLinks: ['c10', 'l2p10'], level: 2 },
+    { id: 'l2b10', title: 'Which Meadow Is More Diverse?', subtitle: "Species richness and Simpson's diversity index", discipline: 'biology', bigIdea: 10, bigIdeaTitle: 'How Do We Protect Our Planet?', icon: '🌼', accentColor: 'rose', crossLinks: ['b10', 'l2c10'], level: 2 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
