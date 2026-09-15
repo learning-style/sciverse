@@ -217,6 +217,9 @@ import { getL3B9Script } from './l3b9-cell-cycle-timing';
 import { getL2P10Script } from './l2p10-solar-panels';
 import { getL2C10Script } from './l2c10-carbon-dioxide-mass';
 import { getL2B10Script } from './l2b10-diversity-index';
+import { getL3P10Script } from './l3p10-wind-power';
+import { getL3C10Script } from './l3c10-airborne-fraction';
+import { getL3B10Script } from './l3b10-species-area';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1204,6 +1207,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p10': getL2P10Script,
     'l2c10': getL2C10Script,
     'l2b10': getL2B10Script,
+    'l3p10': getL3P10Script,
+    'l3c10': getL3C10Script,
+    'l3b10': getL3B10Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1669,6 +1675,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p10', title: 'How Many Solar Panels Power a Home?', subtitle: 'Efficiency, power and kilowatt-hours', discipline: 'physics', bigIdea: 10, bigIdeaTitle: 'How Do We Protect Our Planet?', icon: '🔆', accentColor: 'indigo', crossLinks: ['p10'], level: 2 },
     { id: 'l2c10', title: 'More Carbon Dioxide Than Fuel', subtitle: 'Mass of CO₂ = mass of carbon x 44 / 12', discipline: 'chemistry', bigIdea: 10, bigIdeaTitle: 'How Do We Protect Our Planet?', icon: '🏭', accentColor: 'emerald', crossLinks: ['c10', 'l2p10'], level: 2 },
     { id: 'l2b10', title: 'Which Meadow Is More Diverse?', subtitle: "Species richness and Simpson's diversity index", discipline: 'biology', bigIdea: 10, bigIdeaTitle: 'How Do We Protect Our Planet?', icon: '🌼', accentColor: 'rose', crossLinks: ['b10', 'l2c10'], level: 2 },
+
+    // Big Idea 10 -- Level 3 (grades 9-12)
+    { id: 'l3p10', title: 'Why Wind Speed Matters So Much', subtitle: 'Power in the wind = ½ x ρ x A x v³', discipline: 'physics', bigIdea: 10, bigIdeaTitle: 'How Do We Protect Our Planet?', icon: '💨', accentColor: 'indigo', crossLinks: ['l2p10', 'l2p3'], level: 3 },
+    { id: 'l3c10', title: 'Where Does the CO₂ Go?', subtitle: 'ppm, the mole and the airborne fraction', discipline: 'chemistry', bigIdea: 10, bigIdeaTitle: 'How Do We Protect Our Planet?', icon: '🌊', accentColor: 'emerald', crossLinks: ['l2c10', 'l3c2'], level: 3 },
+    { id: 'l3b10', title: 'How Much Habitat, How Many Species?', subtitle: 'The species-area relationship, S = c x A^z', discipline: 'biology', bigIdea: 10, bigIdeaTitle: 'How Do We Protect Our Planet?', icon: '🌲', accentColor: 'rose', crossLinks: ['l2b10', 'l3c10'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },

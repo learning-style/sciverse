@@ -115,6 +115,9 @@ import { L3B9CycleLab } from './L3B9CycleLab';
 import { L2P10SolarLab } from './L2P10SolarLab';
 import { L2C10CarbonLab } from './L2C10CarbonLab';
 import { L2B10DiversityLab } from './L2B10DiversityLab';
+import { L3P10WindLab } from './L3P10WindLab';
+import { L3C10SinkLab } from './L3C10SinkLab';
+import { L3B10HabitatLab } from './L3B10HabitatLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -241,4 +244,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2p10: L2P10SolarLab,
     l2c10: L2C10CarbonLab,
     l2b10: L2B10DiversityLab,
+    l3p10: L3P10WindLab,
+    l3c10: L3C10SinkLab,
+    l3b10: L3B10HabitatLab,
 };
