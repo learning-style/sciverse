@@ -17,10 +17,10 @@ export const bigIdea11Assessment: AssessmentData = {
             difficulty: 'easy',
             discipline: 'physics',
             question: 'What does blood pressure measure?',
-            options: ['How fast blood moves', 'Force blood exerts on artery walls', 'How much blood is in the body', 'How stressed you feel'],
+            options: ['How fast blood moves', 'The push of blood on each bit of artery wall (force per area)', 'How much blood is in the body', 'How stressed you feel'],
             correctIndex: 1,
             hint: 'Think force per area in arteries.',
-            explanation: 'Blood pressure is the force blood exerts on artery walls.'
+            explanation: 'Blood pressure is the force blood exerts on each bit of artery wall, measured in mmHg.'
         },
         {
             id: 2,
@@ -118,7 +118,7 @@ export const bigIdea11Assessment: AssessmentData = {
             id: 11,
             difficulty: 'hard',
             discipline: 'physics',
-            question: 'Blood pressure is commonly written 120/80. The top value is:',
+            question: 'Blood pressure is commonly written like 115/75 mmHg. The top value is:',
             options: ['Diastolic pressure', 'Pulse oxygen', 'Systolic pressure during heart contraction', 'Average capillary pressure'],
             correctIndex: 2,
             hint: 'Think heart squeeze phase.',
@@ -131,7 +131,7 @@ export const bigIdea11Assessment: AssessmentData = {
             question: 'Why does a narrowed artery force the heart to work harder?',
             options: ['A smaller opening needs more pressure to push the same blood through', 'Narrow arteries hold more blood', 'The blood becomes more acidic', 'The immune system blocks the flow'],
             correctIndex: 0,
-            hint: 'Pressure = force ÷ area.',
+            hint: 'A narrower pipe resists the flow more.',
             explanation: 'Squeezing the same flow through a smaller area demands higher pressure, which strains the heart over time.'
         }
     ]

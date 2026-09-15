@@ -22,7 +22,7 @@ export const getB11Script = (): Record<string, DialogNode> => ({
     'misconception_sterile': {
         id: 'misconception_sterile',
         speaker: 'AI',
-        content: "This is actually a common misconception called the **hygiene hypothesis**! 🤔\n\nStudies show children who grow up with pets, play in dirt, and have regular germ exposure develop **stronger immune systems** and fewer allergies.\n\nYour immune system is like a muscle — it needs practice fighting small threats to be ready for big ones. Without training, it can overreact by attacking harmless things (that's what allergies are!).",
+        content: "That's a common idea — but scientists have found a twist, sometimes called the **hygiene hypothesis**. 🤔\n\nStudies find that children who grow up around pets, farms and plenty of everyday, harmless microbes tend to have **fewer allergies**.\n\nYour immune system is like a muscle — it needs practice fighting small threats to be ready for big ones. Without training, it can overreact by attacking harmless things (that's what allergies are!).\n\nThis does **not** mean skipping handwashing! Washing your hands still stops dangerous germs from spreading. The helpful practice comes from harmless, everyday microbes.",
         options: [
             { id: 'makes_sense', label: "So some germ exposure is actually good?", nextNodeId: 'correct_exposure' }
         ]
@@ -31,7 +31,7 @@ export const getB11Script = (): Record<string, DialogNode> => ({
     'hint_exposure': {
         id: 'hint_exposure',
         speaker: 'AI',
-        content: "Your gut feeling is right! 😊\n\nYou have about **38 trillion bacteria** living inside your gut right now — that's more cells than your own body! They help digest food, make vitamins, and train your immune system.\n\nThe goal isn't zero germs — it's a well-trained immune system that can tell friends from foes.",
+        content: "Your gut feeling is right! 😊\n\nYou have about **38 trillion bacteria** living in and on your body right now, mostly in your gut — a little more than the number of your own body's cells, about 30 trillion! They help digest food, make vitamins, and train your immune system.\n\nThe goal isn't zero germs — it's a well-trained immune system that can tell friends from foes.",
         options: [
             { id: 'understood', label: "The immune system needs practice to learn!", nextNodeId: 'correct_exposure' }
         ]
@@ -40,7 +40,7 @@ export const getB11Script = (): Record<string, DialogNode> => ({
     'correct_exposure': {
         id: 'correct_exposure',
         speaker: 'AI',
-        content: "Exactly! The immune system is a **learning system**. 🎓\n\nIt learns to recognize pathogens through exposure — either from real infection or from **vaccines** (weakened/dead pathogens).\n\nWatch the sim: when bacteria invade, the first defenders that rush in are called **neutrophils** (white blood cells). Let's trigger the immune response!",
+        content: "Exactly! The immune system is a **learning system**. 🎓\n\nIt learns to recognize **pathogens** — germs that cause disease — through exposure — either from real infection or from **vaccines** (weakened or killed germs, or harmless pieces of them).\n\nWatch the sim: when bacteria invade, the first defenders that rush in are called **neutrophils** (a kind of white blood cell). Let's trigger the immune response!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'invasion', immuneActive: true, showNeutrophils: true } },
         options: [
             { id: 'saw_response', label: "I see white cells are swarming the bacteria!", nextNodeId: 'two_layers' }
@@ -70,17 +70,17 @@ export const getB11Script = (): Record<string, DialogNode> => ({
     'antibodies': {
         id: 'antibodies',
         speaker: 'AI',
-        content: "Exactly! Here's the magic: after fighting off a pathogen (or getting a vaccine), **memory B-cells** stick around for *years*. 🧠\n\nNext time the same virus shows up, these memory cells recognize it instantly and flood your blood with antibodies before you even feel sick. That's **immunity**!\n\nTry the **Second Exposure** button — watch how much faster the response is!",
+        content: "Exactly! Here's the magic: after fighting off a pathogen (or getting a vaccine), **memory B-cells** stick around for *years*. 🧠\n\nNext time the same virus shows up, these memory cells recognize it instantly and flood your blood with antibodies often before you even feel sick. That's **immunity**!\n\nTry the **Second Exposure** button — watch how much faster the response is!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'memory_cells', showMemoryCells: true } },
         options: [
-            { id: 'tested', label: "The second response was 10x faster!", nextNodeId: 'summary' }
+            { id: 'tested', label: "The second response was much faster and stronger!", nextNodeId: 'summary' }
         ]
     },
 
     'summary': {
         id: 'summary',
         speaker: 'AI',
-        content: "🌟 **Immune System Mastery:**\n\n✅ Exposure trains the immune system (not all germs are harmful)\n✅ Innate immunity = fast, general defense\n✅ Adaptive immunity = slow but specific, creates memory cells\n✅ Vaccines use this memory system for protection without illness\n✅ Antibodies are custom-shaped proteins that lock onto specific pathogens\n\n**Fun fact:** The cells in this sim are drawn at roughly 1,000,000× magnification! 🔬",
+        content: "🌟 **Immune System Mastery:**\n\n✅ Exposure trains the immune system (not all germs are harmful)\n✅ Innate immunity = fast, general defense\n✅ Adaptive immunity = slow but specific, creates memory cells\n✅ Vaccines use this memory system for protection without illness\n✅ Antibodies are custom-shaped proteins that lock onto specific pathogens\n\n**Fun fact:** Real white blood cells are about ten times wider than most bacteria — the sim draws them closer in size so you can see both! 🔬",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: [
             { id: 'done', label: "I understand the immune system! Let's keep exploring.", nextNodeId: 'done' }

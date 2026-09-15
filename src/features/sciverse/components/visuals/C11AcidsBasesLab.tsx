@@ -15,7 +15,7 @@ const SUBSTANCES = [
     { name: 'Pure Water',    pH: 7.0,  color: '#3b82f6' },
     { name: 'Blood',         pH: 7.4,  color: '#a855f7' },
     { name: 'Baking Soda',   pH: 9.0,  color: '#22d3ee' },
-    { name: 'Milk of Mag',   pH: 10.5, color: '#34d399' },
+    { name: 'Milk of Magnesia', pH: 10.5, color: '#34d399' },
     { name: 'Bleach',        pH: 12.5, color: '#86efac' },
     { name: 'Drain Cleaner', pH: 14.0, color: '#f0fdf4' },
 ];
@@ -153,7 +153,7 @@ export const C11AcidsBasesLab = ({ state, onStateChange }: C11AcidsBasesLabProps
                 const row = Math.floor(i / cols);
                 const sx = startX + col * (W / cols);
                 const sy = startY + row * itemH;
-                ctx.fillStyle = s.name === selectedSubstance ? '#f1f5f9' : '#64748b';
+                ctx.fillStyle = s.name === selectedSubstance ? '#0f172a' : '#64748b';
                 ctx.textAlign = 'left';
                 ctx.fillText(`${s.name} (pH ${s.pH})`, sx, sy);
             });
@@ -171,7 +171,7 @@ export const C11AcidsBasesLab = ({ state, onStateChange }: C11AcidsBasesLabProps
             ctx.fillStyle = '#c084fc';
             ctx.font = 'bold 9px monospace';
             ctx.textAlign = 'center';
-            ctx.fillText('Blood', (safeX1 + safeX2) / 2, barY - 6);
+            ctx.fillText('Blood', (safeX1 + safeX2) / 2, barY + barH + 24);
         }
 
         animRef.current = requestAnimationFrame(animate);

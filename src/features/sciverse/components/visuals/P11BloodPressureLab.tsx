@@ -17,10 +17,18 @@ export const P11BloodPressureLab = ({ state, onStateChange }: P11BloodPressureLa
     const [arteryWidth, setArteryWidth] = useState(100);
 
     // Derived blood pressure
-    const systolic = Math.round(80 + (heartRate / 70) * 40 * (100 / arteryWidth));
-    const diastolic = Math.round(40 + (heartRate / 70) * 20 * (100 / arteryWidth));
-    const bpCategory = systolic < 120 ? 'Normal' : systolic < 130 ? 'Elevated' : systolic < 140 ? 'High' : 'Danger';
-    const bpColor = systolic < 120 ? '#22c55e' : systolic < 130 ? '#eab308' : systolic < 140 ? '#f97316' : '#ef4444';
+    // At 70 BPM with open arteries this reads 115/75, the lesson's example.
+    const systolic = Math.round(75 + (heartRate / 70) * 40 * (100 / arteryWidth));
+    const diastolic = Math.round(45 + (heartRate / 70) * 30 * (100 / arteryWidth));
+    // Categories use both numbers; whichever lands in the higher row counts.
+    const bpCategory = systolic > 180 || diastolic > 120 ? 'Crisis'
+        : systolic >= 140 || diastolic >= 90 ? 'High (Stage 2)'
+        : systolic >= 130 || diastolic >= 80 ? 'High (Stage 1)'
+        : systolic >= 120 ? 'Elevated' : 'Normal';
+    const bpColor = bpCategory === 'Crisis' ? '#b91c1c'
+        : bpCategory === 'High (Stage 2)' ? '#ef4444'
+        : bpCategory === 'High (Stage 1)' ? '#f97316'
+        : bpCategory === 'Elevated' ? '#eab308' : '#22c55e';
 
     const draw = useCallback(() => {
         const canvas = canvasRef.current;
@@ -249,11 +257,11 @@ export const P11BloodPressureLab = ({ state, onStateChange }: P11BloodPressureLa
         ctx.font = 'bold 14px monospace';
         ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = 3;
-        const explainText = systolic >= 140
-            ? 'Danger! Very high blood pressure!'
-            : systolic >= 130
+        const explainText = bpCategory === 'Crisis'
+            ? 'Crisis! Dangerously high blood pressure!'
+            : bpCategory === 'High (Stage 2)' || bpCategory === 'High (Stage 1)'
             ? 'High blood pressure -- heart working too hard.'
-            : systolic >= 120
+            : bpCategory === 'Elevated'
             ? 'Slightly elevated -- keep an eye on it.'
             : 'Nice and healthy blood pressure!';
         ctx.strokeText(explainText, safeRight / 2, explainY);
@@ -263,9 +271,9 @@ export const P11BloodPressureLab = ({ state, onStateChange }: P11BloodPressureLa
         ctx.font = 'bold 12px monospace';
         ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = 3;
-        ctx.strokeText('Blood pressure = force on artery walls', safeRight / 2, explainY + 22);
+        ctx.strokeText('Blood pressure = force on each bit of artery wall', safeRight / 2, explainY + 22);
         ctx.fillStyle = '#1e3a8a';
-        ctx.fillText('Blood pressure = force on artery walls', safeRight / 2, explainY + 22);
+        ctx.fillText('Blood pressure = force on each bit of artery wall', safeRight / 2, explainY + 22);
 
         // ---- Complete overlay ----
         if (phase === 'complete') {

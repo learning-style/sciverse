@@ -183,7 +183,7 @@ export const B11ImmuneLab = ({ state }: B11ImmuneLabProps) => {
             ctx.fillStyle = '#a78bfa';
             ctx.font = 'bold 12px monospace';
             ctx.textAlign = 'center';
-            ctx.fillText('🧠 Memory B-Cells Active — 2nd Exposure 10× Faster!', W / 2, ly + 22);
+            ctx.fillText('🧠 Memory B-Cells Active — 2nd Exposure Faster & Stronger!', W / 2, ly + 22);
         } else if (immuneActive && bacteriaLeft === 0) {
             ctx.fillStyle = '#22c55e';
             ctx.font = 'bold 12px monospace';
@@ -193,7 +193,7 @@ export const B11ImmuneLab = ({ state }: B11ImmuneLabProps) => {
             ctx.fillStyle = '#ef4444';
             ctx.font = 'bold 12px monospace';
             ctx.textAlign = 'center';
-            ctx.fillText('⚠ Bacteria multiplying — no immune response!', W / 2, ly + 22);
+            ctx.fillText('⚠ Bacteria spreading — no immune response yet!', W / 2, ly + 22);
         }
 
         // Big Idea 11 Complete banner
