@@ -124,6 +124,9 @@ import { L2B11TownLab } from './L2B11TownLab';
 import { L3P11ArteryLab } from './L3P11ArteryLab';
 import { L3C11BufferLab } from './L3C11BufferLab';
 import { L3B11RaceLab } from './L3B11RaceLab';
+import { L2P12ScaleLab } from './L2P12ScaleLab';
+import { L2C12PredictLab } from './L2C12PredictLab';
+import { L2B12SpreadLab } from './L2B12SpreadLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -259,4 +262,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p11: L3P11ArteryLab,
     l3c11: L3C11BufferLab,
     l3b11: L3B11RaceLab,
+    l2p12: L2P12ScaleLab,
+    l2c12: L2C12PredictLab,
+    l2b12: L2B12SpreadLab,
 };

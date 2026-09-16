@@ -226,6 +226,9 @@ import { getL2B11Script } from './l2b11-vaccine-effectiveness';
 import { getL3P11Script } from './l3p11-flow-resistance';
 import { getL3C11Script } from './l3c11-blood-buffer';
 import { getL3B11Script } from './l3b11-memory-race';
+import { getL2P12Script } from './l2p12-inverse-square';
+import { getL2C12Script } from './l2c12-missing-element';
+import { getL2B12Script } from './l2b12-trait-spread';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1222,6 +1225,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p11': getL3P11Script,
     'l3c11': getL3C11Script,
     'l3b11': getL3B11Script,
+    'l2p12': getL2P12Script,
+    'l2c12': getL2C12Script,
+    'l2b12': getL2B12Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1702,6 +1708,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p11', title: 'Why Narrow Arteries Matter So Much', subtitle: 'Pressure drop = flow x resistance, and radius⁴', discipline: 'physics', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '🫀', accentColor: 'indigo', crossLinks: ['l2p11', 'l2p7'], level: 3 },
     { id: 'l3c11', title: 'How Blood Holds Its pH', subtitle: 'The bicarbonate buffer', discipline: 'chemistry', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '🫁', accentColor: 'emerald', crossLinks: ['l2c11', 'l3c2'], level: 3 },
     { id: 'l3b11', title: 'Racing the Germ', subtitle: 'Memory cells and a head start of doublings', discipline: 'biology', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '🧫', accentColor: 'rose', crossLinks: ['l2b11', 'l2b9'], level: 3 },
+
+    // Big Idea 12 -- Level 2 (grades 6-8)
+    { id: 'l2p12', title: 'Gravity by Distance', subtitle: 'The inverse-square law, from the centre out', discipline: 'physics', bigIdea: 12, bigIdeaTitle: 'How Do Hidden Rules Shape Big Patterns?', icon: '🚀', accentColor: 'indigo', crossLinks: ['p12'], level: 2 },
+    { id: 'l2c12', title: 'Predicting a Missing Element', subtitle: 'Averaging the neighbours around a gap', discipline: 'chemistry', bigIdea: 12, bigIdeaTitle: 'How Do Hidden Rules Shape Big Patterns?', icon: '🔎', accentColor: 'emerald', crossLinks: ['c12', 'l2p12'], level: 2 },
+    { id: 'l2b12', title: 'How Fast Can a Trait Spread?', subtitle: 'Survival rates, generation by generation', discipline: 'biology', bigIdea: 12, bigIdeaTitle: 'How Do Hidden Rules Shape Big Patterns?', icon: '🦋', accentColor: 'rose', crossLinks: ['b12', 'l2c12'], level: 2 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
