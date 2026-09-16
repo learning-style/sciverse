@@ -136,6 +136,9 @@ import { L2B13LeafLab } from './L2B13LeafLab';
 import { L3P13TrainLab } from './L3P13TrainLab';
 import { L3C13DensityLab } from './L3C13DensityLab';
 import { L3B13StomataLab } from './L3B13StomataLab';
+import { L2P14BitsLab } from './L2P14BitsLab';
+import { L2C14BondLab } from './L2C14BondLab';
+import { L2B14CodeLab } from './L2B14CodeLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -283,4 +286,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p13: L3P13TrainLab,
     l3c13: L3C13DensityLab,
     l3b13: L3B13StomataLab,
+    l2p14: L2P14BitsLab,
+    l2c14: L2C14BondLab,
+    l2b14: L2B14CodeLab,
 };
