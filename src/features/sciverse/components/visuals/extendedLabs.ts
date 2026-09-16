@@ -127,6 +127,9 @@ import { L3B11RaceLab } from './L3B11RaceLab';
 import { L2P12ScaleLab } from './L2P12ScaleLab';
 import { L2C12PredictLab } from './L2C12PredictLab';
 import { L2B12SpreadLab } from './L2B12SpreadLab';
+import { L3P12OrbitLab } from './L3P12OrbitLab';
+import { L3C12ShellLab } from './L3C12ShellLab';
+import { L3B12OddsLab } from './L3B12OddsLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -265,4 +268,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2p12: L2P12ScaleLab,
     l2c12: L2C12PredictLab,
     l2b12: L2B12SpreadLab,
+    l3p12: L3P12OrbitLab,
+    l3c12: L3C12ShellLab,
+    l3b12: L3B12OddsLab,
 };
