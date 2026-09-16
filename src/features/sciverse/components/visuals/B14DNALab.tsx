@@ -140,7 +140,7 @@ export const B14DNALab = ({ state, onStateChange }: B14DNALabProps) => {
             ctx.beginPath();
             ctx.arc(x, y, 6, 0, Math.PI * 2);
             ctx.fill();
-            ctx.fillStyle = '#1e293b';
+            ctx.fillStyle = '#e2e8f0';
             ctx.font = '10px monospace';
             ctx.textAlign = 'left';
             ctx.fillText(`${base} = ${name}`, x + 10, y + 3);
@@ -160,7 +160,7 @@ export const B14DNALab = ({ state, onStateChange }: B14DNALabProps) => {
         ctx.strokeStyle = '#334155';
         ctx.strokeRect(dx, dy, dw, dh);
 
-        ctx.fillStyle = '#1e293b';
+        ctx.fillStyle = '#e2e8f0';
         ctx.font = 'bold 12px monospace';
         ctx.textAlign = 'center';
         ctx.fillText('Protein Decoder', dx + dw / 2, dy + 16);

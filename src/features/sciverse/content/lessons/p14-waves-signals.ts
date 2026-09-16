@@ -40,7 +40,7 @@ export const getP14Script = (): Record<string, DialogNode> => ({
     'correct_light': {
         id: 'correct_light',
         speaker: 'AI',
-        content: "Exactly! Light travels at ~300,000 km/s — the absolute speed limit of the universe.\n\nNow let's look at wave properties on the oscilloscope:\n\n📏 **Amplitude** = wave height (loudness for sound, brightness for light)\n⏱️ **Frequency** = waves per second in Hz🔄 **Wavelength** = distance between peaks\n\nTry the **Frequency slider** — notice how wavelength and frequency are inversely related!",
+        content: "Exactly! Light travels at about **300,000 km/s** in a vacuum — the speed limit of the universe.\n\nNow let's look at wave properties on the oscilloscope:\n\n📏 **Amplitude** = wave height (loudness for sound, brightness for light)\n⏱️ **Frequency** = waves per second, in **hertz (Hz)**\n🔄 **Wavelength** = distance between peaks\n\nTry the **Frequency slider** — notice how wavelength and frequency are inversely related!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'wave_properties', showLabels: true, showFreqSlider: true } },
         options: [
             { id: 'higher_freq', label: "Higher frequency = shorter wavelength — more squished together!", nextNodeId: 'amplitude_demo' }
@@ -60,7 +60,7 @@ export const getP14Script = (): Record<string, DialogNode> => ({
     'digital_intro': {
         id: 'digital_intro',
         speaker: 'AI',
-        content: "Right! Amplitude = energy/intensity. Now here's where it gets modern:\n\nYour phone uses **digital signals** — 1s and 0s. But here's the thing a lot of people miss: those 1s and 0s are still transmitted as **physical waves**. The wave just switches between two amplitudes (high = 1, low = 0).\n\nSwitch the oscilloscope to **Digital mode** in the sim — see the square wave!",
+        content: "Right! A bigger amplitude carries more energy. Now here's where it gets modern:\n\nYour phone uses **digital signals** — 1s and 0s. But here's the thing a lot of people miss: those 1s and 0s are still transmitted as **physical waves**. The wave just switches between two amplitudes (high = 1, low = 0).\n\nSwitch the oscilloscope to **Digital mode** in the sim — see the square wave!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'digital', waveType: 'square', showDigitalMode: true } },
         options: [
             { id: 'saw_digital', label: "It's a square wave — ON/OFF pattern = 1s and 0s!", nextNodeId: 'encoding' }
@@ -80,7 +80,7 @@ export const getP14Script = (): Record<string, DialogNode> => ({
     'summary': {
         id: 'summary',
         speaker: 'AI',
-        content: "🌟 **Waves & Signals Mastered:**\n\n✅ Light (300,000 km/s) >> Sound (0.34 km/s)\n✅ Wave speed = frequency × wavelength\n✅ Amplitude = energy/intensity; frequency = pitch/color\n✅ Digital signals are still physical waves — just two-state (square waves)\n✅ Binary encoding: every letter, image, and video is waves\n✅ All information transmission = waves!\n\n**Scale:** 5G waves are 1-10mm wavelength; gamma rays are 0.000001mm!",
+        content: "🌟 **Waves & Signals Mastered:**\n\n✅ Light (300,000 km/s) >> Sound (0.34 km/s)\n✅ Wave speed = frequency × wavelength\n✅ Bigger amplitude = more energy; frequency sets pitch or colour\n✅ Digital signals are still physical waves — just two-state (square waves)\n✅ Binary encoding: every letter, image, and video is waves\n✅ All information transmission = waves!\n\n**Scale:** the fastest 5G bands have wavelengths of about 5-10 mm, and most 5G is nearer 100 mm; gamma rays are smaller than 0.00000001 mm!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: [{ id: 'done', label: "Waves are everywhere! Let me learn more.", nextNodeId: 'done' }]
     },
@@ -88,7 +88,7 @@ export const getP14Script = (): Record<string, DialogNode> => ({
     'done': {
         id: 'done',
         speaker: 'AI',
-        content: "Signal master! 📡\n\nConnect to **C14 (Chemical Bonding)** to see how molecular bonds are waves too, or **B14 (DNA & Genetics)** to learn how DNA encodes information at the molecular level!",
+        content: "Signal master! 📡\n\nConnect to **C14 (Chemical Bonding)** to see how atoms carry information in the way they bond, or **B14 (DNA & Genetics)** to learn how DNA encodes information at the molecular level!",
         options: []
     }
 });

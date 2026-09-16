@@ -70,7 +70,7 @@ export const getB14Script = (): Record<string, DialogNode> => ({
     'summary': {
         id: 'summary',
         speaker: 'AI',
-        content: "🌟 **DNA & Genetics Mastered:**\n\n✅ DNA = A, T, G, C bases; A-T pairs, G-C pairs\n✅ Complementary pairing enables perfect replication\n✅ Codons (3 bases) encode amino acids → proteins\n✅ DNA ≠ destiny: gene expression depends on environment (epigenetics)\n✅ Every cell has 3 billion base pairs of DNA — if uncoiled, it's ~2 meters long!\n\n**Information scale:** Human genome = ~3 billion base pairs = ~750 MB of data. 💾",
+        content: "🌟 **DNA & Genetics Mastered:**\n\n✅ DNA = A, T, G, C bases; A-T pairs, G-C pairs\n✅ Complementary pairing enables perfect replication\n✅ Codons (3 bases) encode amino acids → proteins\n✅ DNA ≠ destiny: gene expression depends on environment (epigenetics)\n✅ Each cell carries two sets of about 3 billion base pairs — around 2 metres of DNA in all\n\n**Information scale:** Human genome = ~3 billion base pairs = ~750 MB of data. 💾",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: [{ id: 'done', label: "DNA decoded! What an incredible code system.", nextNodeId: 'done' }]
     },

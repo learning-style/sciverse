@@ -36,11 +36,12 @@ export const C14BondingLab = ({ state, onStateChange }: C14BondingLabProps) => {
 
     const atoms = renderAtoms();
 
-    const energy = Math.max(0, 100 - distance);
+    // Most stable at a middle distance: too far and there is no bond, too close and the atoms repel
+    const energy = Math.max(0, 100 - Math.abs(distance - 50) * 2.5);
 
     return (
         <div className="relative w-full h-full bg-white p-3 flex flex-col overflow-hidden">
-            <div className="text-center text-slate-100 font-bold text-base mb-2">Chemical Bonding Lab ⚛️</div>
+            <div className="text-center text-slate-800 font-bold text-base mb-2">Chemical Bonding Lab ⚛️</div>
 
             <div className="flex-1 bg-white border border-slate-200 rounded-lg relative overflow-hidden">
                 {/* Bond scene */}
@@ -55,7 +56,7 @@ export const C14BondingLab = ({ state, onStateChange }: C14BondingLabProps) => {
                     <rect x="0" y="0" width="100" height="100" fill="url(#well)" />
 
                     {/* Potential well curve */}
-                    <path d="M 10 80 Q 50 25 90 80" fill="none" stroke="#334155" strokeWidth="0.7" />
+                    <path d="M 10 30 Q 50 95 90 40" fill="none" stroke="#334155" strokeWidth="0.7" />
 
                     {/* Atoms */}
                     <g>
