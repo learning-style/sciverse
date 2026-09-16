@@ -51,11 +51,11 @@ export const getP13Script = (): Record<string, DialogNode> => ({
     'pulleys': {
         id: 'pulleys',
         speaker: 'AI',
-        content: "Now switch to the **Pulley** system in the sim. You have a 100 kg block hanging from a rope over a pulley.\n\nWith a **single fixed pulley**, how much force do you need to lift the 100 kg block?",
+        content: "Now switch to the **Pulley** system in the sim. A **100 kg** block hangs from a rope over a pulley. Its **weight** -- the force gravity pulls it down with -- is about **1,000 N**.\n\nWith a **single fixed pulley**, how much force do you need to lift it?",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'pulley_intro', pulleyType: 'single', blockMass: 100 } },
         options: [
-            { id: 'same_100', label: "100 kg worth of force — it just changes direction.", nextNodeId: 'single_pulley_correct' },
-            { id: 'half', label: "50 kg — the pulley halves the force needed.", nextNodeId: 'single_pulley_hint' },
+            { id: 'same_100', label: "About 1,000 N — it just changes the direction of the pull.", nextNodeId: 'single_pulley_correct' },
+            { id: 'half', label: "About 500 N — the pulley halves the force needed.", nextNodeId: 'single_pulley_hint' },
             { id: 'any', label: "Almost nothing — pulleys eliminate the weight.", nextNodeId: 'misconception_pulley' }
         ]
     },
@@ -63,7 +63,7 @@ export const getP13Script = (): Record<string, DialogNode> => ({
     'misconception_pulley': {
         id: 'misconception_pulley',
         speaker: 'AI',
-        content: "A single fixed pulley only changes the *direction* of your force, not its size — you still pull with 100 kg of force! 💪\n\nMachines don't eliminate effort — they redirect or trade force/distance. Think of it as: Work = Force × Distance. Less force always means more distance traveled.",
+        content: "A single fixed pulley only changes the *direction* of your force, not its size — you still pull with about **1,000 N**! 💪\n\nMachines don't eliminate effort — they redirect or trade force/distance. Think of it as: Work = Force × Distance. Less force always means more distance traveled.",
         options: [
             { id: 'understood_energy', label: "Same work, just different force and distance!", nextNodeId: 'single_pulley_correct' }
         ]
@@ -72,9 +72,9 @@ export const getP13Script = (): Record<string, DialogNode> => ({
     'single_pulley_hint': {
         id: 'single_pulley_hint',
         speaker: 'AI',
-        content: "The block half part is for a **movable pulley** (compound pulley). A single fixed pulley only changes direction, not force magnitude!",
+        content: "Halving the force is what a **movable pulley** does, where the load hangs on a wheel that moves with it. A single fixed pulley changes only the **direction** of your pull, not its size!",
         options: [
-            { id: 'ok', label: "So single fixed pulley still needs 100 kg of pull?", nextNodeId: 'single_pulley_correct' }
+            { id: 'ok', label: "So a single fixed pulley still needs about 1,000 N of pull?", nextNodeId: 'single_pulley_correct' }
         ]
     },
 
@@ -84,7 +84,7 @@ export const getP13Script = (): Record<string, DialogNode> => ({
         content: "Exactly! A single fixed pulley = 1:1 force but changed direction (you pull down instead of up — much easier for humans).\n\nNow switch to the **compound pulley** (3 ropes supporting the load) — how much force do you predict you'll need now?",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'compound_pulley', pulleyType: 'compound', ropesCount: 3 } },
         options: [
-            { id: 'third', label: "About 33 kg — the load is shared across 3 ropes!", nextNodeId: 'summary' },
+            { id: 'third', label: "About 330 N — the load is shared across 3 rope segments!", nextNodeId: 'summary' },
             { id: 'same2', label: "Still 100 kg — more ropes don't help.", nextNodeId: 'confirm_compound' }
         ]
     },
@@ -92,7 +92,7 @@ export const getP13Script = (): Record<string, DialogNode> => ({
     'confirm_compound': {
         id: 'confirm_compound',
         speaker: 'AI',
-        content: "Actually, with 3 supporting rope segments, each takes 1/3 of the load! You'd only need ~33 kg of force — but you'd pull the rope 3 times as far. Energy conserved! ✅",
+        content: "Actually, with 3 supporting rope segments, each takes 1/3 of the load! You'd only need about **330 N** — but you'd pull the rope 3 times as far. Energy conserved! ✅",
         options: [
             { id: 'understood_compound', label: "More ropes = less force needed, more rope to pull!", nextNodeId: 'summary' }
         ]
@@ -101,7 +101,7 @@ export const getP13Script = (): Record<string, DialogNode> => ({
     'summary': {
         id: 'summary',
         speaker: 'AI',
-        content: "🌟 **Mechanical Advantage Mastered:**\n\n✅ Machines trade force ↔ speed or force ↔ distance\n✅ Energy is never created or destroyed (Work = F × d always conserved)\n✅ Gear ratio = tooth ratio (large/small)\n✅ More support ropes in a pulley = less force × more distance\n✅ Fixed pulley = direction change only; movable pulley = force multiplication\n\n**Examples:** Bicycle gears, car engines, construction cranes — all use these principles!",
+        content: "🌟 **Mechanical Advantage Mastered:**\n\n✅ Machines trade force ↔ speed or force ↔ distance\n✅ Energy is never created: in an ideal machine work out = work in, and friction always takes a share\n✅ Gear ratio = tooth ratio (large/small)\n✅ More support ropes in a pulley = less force × more distance\n✅ Fixed pulley = direction change only; movable pulley = force multiplication\n\n**Examples:** Bicycle gears, car engines, construction cranes — all use these principles!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: [{ id: 'done', label: "Machines make sense now!", nextNodeId: 'done' }]
     },

@@ -69,7 +69,7 @@ export const C13PolymersLab = ({ state, onStateChange }: C13PolymersLabProps) =>
 
     return (
         <div className="relative w-full h-full bg-white p-3 flex flex-col overflow-hidden">
-            <div className="text-center text-slate-100 font-bold text-base mb-2">Polymer Builder Lab 🧵</div>
+            <div className="text-center text-slate-800 font-bold text-base mb-2">Polymer Builder Lab 🧵</div>
 
             <div className="flex-1 bg-white rounded-lg border border-slate-200 relative overflow-hidden">
                 {/* Render polymer chain in SVG */}

@@ -50,7 +50,7 @@ export const getB13Script = (): Record<string, DialogNode> => ({
     'chlorophyll': {
         id: 'chlorophyll',
         speaker: 'AI',
-        content: "Great! The green-glowing structures are **chloroplasts** — each packed with **chlorophyll** molecules.\n\nChlorophyll is green because it **absorbs** red and blue light but **reflects** green light back to your eyes. 🟢\n\nHere's a fascinating fact: green light is reflected = wasted! Plants are actually *inefficient* at using the color they appear to be. They could theoretically use black pigment to absorb all light.",
+        content: "Great! The green-glowing structures are **chloroplasts** — each packed with **chlorophyll** molecules.\n\nChlorophyll is green because it **absorbs** red and blue light but **reflects** green light back to your eyes. 🟢\n\nHere's the catch: the green light a leaf bounces back is light it never uses. A leaf does still absorb a fair share of the green that lands on it -- but red and blue are the colours chlorophyll grabs best.",
         options: [
             { id: 'why_green', label: "So why ARE plants green if they waste green light?", nextNodeId: 'reasons_green' },
             { id: 'try_light', label: "Let me adjust the CO₂ level too!", nextNodeId: 'co2_effect' }
@@ -60,7 +60,7 @@ export const getB13Script = (): Record<string, DialogNode> => ({
     'reasons_green': {
         id: 'reasons_green',
         speaker: 'AI',
-        content: "Scientists debate this! 🌍 One hypothesis: early life evolved in deep oceans where red/blue wavelengths penetrate better. Another: green was 'available' — the pigment niche that evolved first stuck around.\n\nEither way, plants that absorb red and blue outcompeted alternatives. Evolution didn't optimize for perfect efficiency — just 'good enough to survive!' 🧬\n\nNow adjust the CO₂ slider — see how it affects glucose production!",
+        content: "Scientists debate this! 🌍 One idea: the first light-catching microbes already used green light, so later plants had to live on the red and blue left over. Another: a pigment that soaked up every colour would leave a leaf harder to protect in fierce midday sun. Nobody is sure yet.\n\nEither way, plants that absorb red and blue outcompeted alternatives. Evolution didn't optimize for perfect efficiency — just 'good enough to survive!' 🧬\n\nNow adjust the CO₂ slider — see how it affects glucose production!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'co2_explore', showCO2Slider: true } },
         options: [
             { id: 'co2_tested', label: "More CO₂ = more glucose — CO₂ is plant food!", nextNodeId: 'summary' }
@@ -80,7 +80,7 @@ export const getB13Script = (): Record<string, DialogNode> => ({
     'summary': {
         id: 'summary',
         speaker: 'AI',
-        content: "🌟 **Photosynthesis Mastered:**\n\n✅ Plants build mass from CO₂ (air) + H₂O (water) + light\n✅ Glucose formula: C₆H₁₂O₆\n✅ Byproduct: O₂ (the oxygen we breathe!)\n✅ Chlorophyll absorbs red & blue, reflects green\n✅ More light or more CO₂ = more photosynthesis\n✅ All food energy on Earth traces back to photosynthesis\n\n**Mind-blower:** Every carbon atom in your body was once CO₂ in the atmosphere. You literally ate sunlight! ☀️",
+        content: "🌟 **Photosynthesis Mastered:**\n\n✅ Plants build mass from CO₂ (air) + H₂O (water) + light\n✅ Glucose formula: C₆H₁₂O₆\n✅ Byproduct: O₂ (the oxygen we breathe!)\n✅ Chlorophyll absorbs red & blue, reflects green\n✅ More light or more CO₂ = more photosynthesis, until something else runs short\n✅ All food energy on Earth traces back to photosynthesis\n\n**Mind-blower:** Every carbon atom in your body was once CO₂ in the atmosphere. You literally ate sunlight! ☀️",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: [{ id: 'done', label: "Photosynthesis is amazing! Let's keep going.", nextNodeId: 'done' }]
     },

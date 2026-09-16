@@ -42,7 +42,7 @@ export const getC13Script = (): Record<string, DialogNode> => ({
     'chain_properties': {
         id: 'chain_properties',
         speaker: 'AI',
-        content: "Great! Notice how the polymer's properties depend on chain **length** and **structure**:\n\n📏 **Short chains** → runny liquid (like oil or wax)\n🧴 **Medium chains** → thick gel\n🧱 **Very long chains** → solid plastic\n\nAlso, the chains can be **straight** (strong, rigid) or **branched** (flexible, softer).\n\nWhich do you think is stronger — a straight chain or a branched one?",
+        content: "Great! Notice how the polymer's properties depend on chain **length** and **structure**:\n\n📏 **Short chains** → runny liquid (like oil)\n🧴 **Medium chains** → thick gel\n🧱 **Very long chains** → solid plastic\n\nAlso, the chains can be **straight** (strong, rigid) or **branched** (flexible, softer).\n\nWhich do you think is stronger — a straight chain or a branched one?",
         options: [
             { id: 'straight', label: "Straight chains — they pack tightly together.", nextNodeId: 'chain_correct' },
             { id: 'branched', label: "Branched — more connections = more strength.", nextNodeId: 'chain_hint' }

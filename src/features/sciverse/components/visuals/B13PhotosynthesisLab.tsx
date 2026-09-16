@@ -15,8 +15,10 @@ export const B13PhotosynthesisLab = ({ state, onStateChange }: B13Photosynthesis
 
     const phase = (state.phase as string) || 'intro';
 
-    const output = Math.round((lightLevel / 100) * (co2Level / 100) * 100);
-    const oxygen = Math.round(output * 0.9);
+    // Whichever of light and CO2 runs short sets the rate, as the lesson says
+    const output = Math.min(lightLevel, co2Level);
+    // Six O2 come out for every six CO2 that go in, so the two bars match
+    const oxygen = output;
 
     const animate = useCallback(() => {
         const canvas = canvasRef.current;
@@ -34,7 +36,7 @@ export const B13PhotosynthesisLab = ({ state, onStateChange }: B13Photosynthesis
         ctx.fillStyle = sky;
         ctx.fillRect(0, 0, W, H);
 
-        ctx.fillStyle = '#f1f5f9';
+        ctx.fillStyle = '#0f172a';
         ctx.font = 'bold 18px monospace';
         ctx.textAlign = 'center';
         ctx.fillText('Photosynthesis Lab', W / 2, 26);
@@ -44,15 +46,15 @@ export const B13PhotosynthesisLab = ({ state, onStateChange }: B13Photosynthesis
         const sunY = H * 0.18;
         const sunR = 24 + lightLevel * 0.08;
         const sunGrad = ctx.createRadialGradient(sunX, sunY, 0, sunX, sunY, sunR);
-        sunGrad.addColorStop(0, '#fca5a5');
-        sunGrad.addColorStop(1, '#dc2626');
+        sunGrad.addColorStop(0, '#fef08a');
+        sunGrad.addColorStop(1, '#f59e0b');
         ctx.fillStyle = sunGrad;
         ctx.beginPath();
         ctx.arc(sunX, sunY, sunR, 0, Math.PI * 2);
         ctx.fill();
 
         // Sun rays
-        ctx.strokeStyle = `rgba(220,38,38,${0.3 + lightLevel / 200})`;
+        ctx.strokeStyle = `rgba(245,158,11,${0.3 + lightLevel / 200})`;
         ctx.lineWidth = 2;
         for (let i = 0; i < 10; i++) {
             const a = (i / 10) * Math.PI * 2;
@@ -104,7 +106,7 @@ export const B13PhotosynthesisLab = ({ state, onStateChange }: B13Photosynthesis
         for (let i = 0; i < chloroplastCount; i++) {
             const cx = W * 0.43 + (i % 6) * 24 + Math.sin(i) * 4;
             const cy = H * 0.39 + Math.floor(i / 6) * 18 + Math.cos(i * 1.4) * 3;
-            ctx.fillStyle = `rgba(220,38,38,${0.45 + lightLevel / 250})`;
+            ctx.fillStyle = `rgba(22,163,74,${0.45 + lightLevel / 250})`;
             ctx.beginPath();
             ctx.ellipse(cx, cy, 7, 4, 0, 0, Math.PI * 2);
             ctx.fill();

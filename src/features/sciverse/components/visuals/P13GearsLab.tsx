@@ -138,7 +138,8 @@ export const P13GearsLab = ({ state, onStateChange }: P13GearsLabProps) => {
             // ─── Interactive Pulley Mode ───
             const pull = pullRef.current; // 0..1
             const ropeSegs = pulleyType;
-            const forcePull = blockMass / ropeSegs;
+            const loadWeight = blockMass * 9.8; // newtons, not kilograms
+            const forcePull = loadWeight / ropeSegs;
             const liftDist = pull; // block rises by pull / ropeSegs
             const pullDist = pull * ropeSegs; // you pull ropeSegs× farther
 
@@ -406,7 +407,7 @@ export const P13GearsLab = ({ state, onStateChange }: P13GearsLabProps) => {
 
             ctx.fillStyle = '#b91c1c';
             ctx.font = 'bold 14px monospace';
-            ctx.fillText(`Force needed: ${forcePull.toFixed(0)} kg  (${blockMass}÷${ropeSegs})`, W / 2, infoY + 30);
+            ctx.fillText(`Force needed: ${forcePull.toFixed(0)} N  (${loadWeight.toFixed(0)} N ÷ ${ropeSegs})`, W / 2, infoY + 30);
 
             ctx.fillStyle = '#334155';
             ctx.font = '11px monospace';
@@ -505,7 +506,7 @@ export const P13GearsLab = ({ state, onStateChange }: P13GearsLabProps) => {
                         </div>
                         <label className="text-slate-300 text-xs">Mass: <span className="text-amber-400">{blockMass} kg</span></label>
                         <input type="range" min={20} max={500} step={10} value={blockMass} onChange={e => setBlockMass(Number(e.target.value))} className="w-full accent-amber-500" />
-                        <div className="text-red-400 text-xs text-center font-bold">Force: {(blockMass / pulleyType).toFixed(0)} kg</div>
+                        <div className="text-red-400 text-xs text-center font-bold">Force: {(blockMass * 9.8 / pulleyType).toFixed(0)} N</div>
                         <button onClick={() => { pullRef.current = 0; }} className="text-[10px] bg-slate-700 hover:bg-slate-600 text-slate-300 rounded py-1">↺ Reset</button>
                     </>
                 )}
