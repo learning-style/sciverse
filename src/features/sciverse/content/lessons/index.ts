@@ -232,6 +232,9 @@ import { getL2B12Script } from './l2b12-trait-spread';
 import { getL3P12Script } from './l3p12-orbit-speed';
 import { getL3C12Script } from './l3c12-shell-rule';
 import { getL3B12Script } from './l3b12-selection-odds';
+import { getL2P13Script } from './l2p13-gear-ratio';
+import { getL2C13Script } from './l2c13-chain-length';
+import { getL2B13Script } from './l2b13-stomata-tradeoff';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1234,6 +1237,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p12': getL3P12Script,
     'l3c12': getL3C12Script,
     'l3b12': getL3B12Script,
+    'l2p13': getL2P13Script,
+    'l2c13': getL2C13Script,
+    'l2b13': getL2B13Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1724,6 +1730,11 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p12', title: 'How Fast Must It Orbit?', subtitle: 'v = √(g x r), and Kepler\'s third law', discipline: 'physics', bigIdea: 12, bigIdeaTitle: 'How Do Hidden Rules Shape Big Patterns?', icon: '🔭', accentColor: 'indigo', crossLinks: ['l2p12', 'p12'], level: 3 },
     { id: 'l3c12', title: 'Why the Rows Are 2, 8, 8, 18', subtitle: 'Shell capacity 2n², filled in energy order', discipline: 'chemistry', bigIdea: 12, bigIdeaTitle: 'How Do Hidden Rules Shape Big Patterns?', icon: '🧮', accentColor: 'emerald', crossLinks: ['l2c12', 'c12'], level: 3 },
     { id: 'l3b12', title: 'How Long Does a Trait Take?', subtitle: 'Odds, survival ratios and real moth counts', discipline: 'biology', bigIdea: 12, bigIdeaTitle: 'How Do Hidden Rules Shape Big Patterns?', icon: '📈', accentColor: 'rose', crossLinks: ['l2b12', 'l3b4'], level: 3 },
+
+    // Big Idea 13 -- Level 2 (grades 6-8)
+    { id: 'l2p13', title: 'Gears and Pulleys: The Same Bargain', subtitle: 'Gear ratios, rope segments and the books', discipline: 'physics', bigIdea: 13, bigIdeaTitle: 'How Does Structure Shape Function?', icon: '🔧', accentColor: 'indigo', crossLinks: ['p13', 'l2p5'], level: 2 },
+    { id: 'l2c13', title: 'How Long Is a Polymer Chain?', subtitle: 'Counting units: n = chain mass / monomer mass', discipline: 'chemistry', bigIdea: 13, bigIdeaTitle: 'How Does Structure Shape Function?', icon: '🧵', accentColor: 'emerald', crossLinks: ['c13', 'l2c2'], level: 2 },
+    { id: 'l2b13', title: "The Leaf's Bargain", subtitle: 'CO₂ in and water out, through the same holes', discipline: 'biology', bigIdea: 13, bigIdeaTitle: 'How Does Structure Shape Function?', icon: '🌿', accentColor: 'rose', crossLinks: ['b13', 'l2b3'], level: 2 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
