@@ -28,6 +28,12 @@ const ELEMENTS = [
     { sym: 'Ca', name: 'Calcium',    Z: 20, group: 2,  period: 4, valence: 2,  type: 'alkali-e', color: '#fb923c' },
 ];
 
+/** Neutrons in the most common form of each atom -- not always equal to the protons. */
+const NEUTRONS: Record<string, number> = {
+    H: 0, He: 2, Li: 4, Be: 5, B: 6, C: 6, N: 7, O: 8, F: 10, Ne: 10,
+    Na: 12, Mg: 12, Al: 14, Si: 14, P: 16, S: 16, Cl: 18, Ar: 22, K: 20, Ca: 20,
+};
+
 export const C12PeriodicTableLab = ({ state, onStateChange }: C12PeriodicTableLabProps) => {
     void state;
     const [selected, setSelected] = useState<typeof ELEMENTS[0] | null>(null);
@@ -98,7 +104,7 @@ export const C12PeriodicTableLab = ({ state, onStateChange }: C12PeriodicTableLa
         ctx.textBaseline = 'middle';
         ctx.fillText(`${selected.Z}p`, cx, cy - 2);
         ctx.font = '9px monospace';
-        ctx.fillText(`${selected.Z}n`, cx, cy + 11);
+        ctx.fillText(`${NEUTRONS[selected.sym] ?? selected.Z}n`, cx, cy + 11);
 
         // Shell orbits & electrons
         const shellColors = ['#60a5fa', '#34d399', '#f472b6', '#fbbf24', '#a78bfa', '#fb923c', '#22d3ee'];
@@ -186,7 +192,7 @@ export const C12PeriodicTableLab = ({ state, onStateChange }: C12PeriodicTableLa
 
     return (
         <div className="relative w-full h-full bg-white flex flex-col p-3 overflow-hidden">
-            <div className="text-slate-100 font-bold text-base monospace text-center mb-2">Periodic Table Explorer ⚛️</div>
+            <div className="text-slate-800 font-bold text-base monospace text-center mb-2">Periodic Table Explorer ⚛️</div>
 
             {/* Periodic Table Grid */}
             <div className="flex flex-col gap-0.5 flex-shrink-0">
@@ -216,6 +222,9 @@ export const C12PeriodicTableLab = ({ state, onStateChange }: C12PeriodicTableLa
                     { type: 'nonmetal', label: 'Nonmetal', color: '#60a5fa' },
                     { type: 'noble', label: 'Noble Gas', color: '#a78bfa' },
                     { type: 'halogen', label: 'Halogen', color: '#34d399' },
+                    { type: 'alkali-e', label: 'Alkaline Earth Metal', color: '#fb923c' },
+                    { type: 'metalloid', label: 'Metalloid', color: '#a3e635' },
+                    { type: 'metal', label: 'Other Metal', color: '#94a3b8' },
                 ].map(l => (
                     <div key={l.type} className="flex items-center gap-1">
                         <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: l.color }} />
@@ -237,13 +246,13 @@ export const C12PeriodicTableLab = ({ state, onStateChange }: C12PeriodicTableLa
                         <div>
                             <div className="text-slate-100 font-bold">{selected.name}</div>
                             <div className="text-slate-400 text-xs mt-1">Period {selected.period} · Group {selected.group}</div>
-                            <div className="text-slate-400 text-xs">Valence electrons: <span className="text-yellow-300 font-bold">{selected.valence}</span></div>
-                            <div className="text-slate-400 text-xs">Needs to bond: <span className="text-emerald-300 font-bold">{selected.valence <= 4 ? 8 - selected.valence : 0} more electrons</span></div>
+                            <div className="text-slate-400 text-xs">Valence electrons: <span className="text-yellow-300 font-bold">{selected.type === 'noble' ? `${selected.Z === 2 ? 2 : 8} (full)` : selected.valence}</span></div>
+                            <div className="text-slate-400 text-xs">To fill its outer shell: <span className="text-emerald-300 font-bold">{selected.type === 'noble' ? 'already full' : selected.sym === 'H' ? 'shares 1 more electron' : selected.valence <= 3 ? `loses ${selected.valence}` : `gains or shares ${8 - selected.valence}`}</span></div>
                             <div className="text-slate-300 text-xs mt-1">
                                 {selected.type === 'noble'
                                     ? '✨ Full outer shell — very unreactive!'
                                     : selected.type === 'alkali'
-                                    ? '⚡ 1 outer electron — very reactive! Reacts violently with water.'
+                                    ? '⚡ 1 outer electron — very reactive! Reacts strongly with water.'
                                     : selected.type === 'halogen'
                                     ? '🧪 7 outer electrons — needs 1 more, very eager to bond!'
                                     : selected.sym === 'C'

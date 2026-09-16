@@ -205,8 +205,8 @@ export const P12GravityLab = ({ state, onStateChange }: P12GravityLabProps) => {
                 <input type="range" min={0.1} max={3} step={0.1} value={orbitSpeed}
                     onChange={e => { setOrbitSpeed(Number(e.target.value)); onStateChange('orbitSpeed', Number(e.target.value)); }}
                     className="w-full accent-blue-500" />
-                {orbitSpeed < 0.4 && <div className="text-red-400 text-xs">⚠ Too slow — spiraling in!</div>}
-                {orbitSpeed > 2.5 && <div className="text-yellow-400 text-xs">⚠ Too fast — escaping!</div>}
+                {orbitSpeed < 0.4 && <div className="text-red-400 text-xs">⚠ Too slow — would fall closer in!</div>}
+                {orbitSpeed > 2.5 && <div className="text-yellow-400 text-xs">⚠ Too fast — would swing out!</div>}
 
                 <button
                     onClick={() => setShowSecondMass(v => !v)}

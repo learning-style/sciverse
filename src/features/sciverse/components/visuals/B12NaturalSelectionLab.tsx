@@ -113,7 +113,7 @@ export const B12NaturalSelectionLab = ({ state, onStateChange }: B12NaturalSelec
         ctx.strokeStyle = '#475569';
         ctx.strokeRect(bx, by2, bw, bh);
 
-        ctx.fillStyle = env === 'dark' ? '#f1f5f9' : '#1e293b';
+        ctx.fillStyle = '#f1f5f9';
         ctx.font = '11px monospace';
         ctx.textAlign = 'left';
         ctx.fillText(`Light: ${lightPct}%`, bx, by2 + bh + 14);

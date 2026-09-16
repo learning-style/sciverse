@@ -43,15 +43,15 @@ export const getP12Script = (): Record<string, DialogNode> => ({
         content: "Exactly! An orbit is just **falling sideways so fast you keep missing the ground**. 💫\n\nNewton imagined firing a cannonball from a mountain. Faster → lands further away → eventually so fast it curves around Earth → it's orbiting!\n\nTry adjusting the **orbital speed** slider — what happens if the planet moves too slowly?",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'interactive', showGravityArrow: true, showSpeedControl: true } },
         options: [
-            { id: 'too_slow', label: "Too slow — it spirals inward toward the star!", nextNodeId: 'speed_effects' },
-            { id: 'too_fast', label: "Too fast — it flies off into space!", nextNodeId: 'speed_effects' }
+            { id: 'too_slow', label: "Too slow — it falls inward toward the star!", nextNodeId: 'speed_effects' },
+            { id: 'too_fast', label: "Too fast — it swings out, and may escape!", nextNodeId: 'speed_effects' }
         ]
     },
 
     'speed_effects': {
         id: 'speed_effects',
         speaker: 'AI',
-        content: "Perfect observations! There's a **Goldilocks orbital speed** — just right for a stable circular orbit:\n\n🐌 Too slow → gravity wins → falls inward\n🚀 Too fast → escapes gravity → flies away\n✅ Just right → perfect circular orbit\n\nFor Earth, that speed is about **7.9 km/s** (28,000 km/h)! Now predict: does a more massive planet orbit faster or slower?",
+        content: "Perfect observations! There's a **Goldilocks orbital speed** — just right for a stable circular orbit:\n\n🐌 Too slow → gravity pulls it into an oval path that dips closer in (far too slow, and it hits the star)\n🚀 Too fast → an oval path that swings further out (about 1.4 times too fast, and it escapes for good)\n✅ Just right → a circular orbit\n\nFor a satellite skimming just above Earth, that speed is about **7.9 km/s** (28,000 km/h); the ISS, 400 km up, goes about 7.7 km/s! Now predict: does a more massive planet orbit faster or slower?",
         options: [
             { id: 'faster', label: "Faster — more mass needs more speed to resist gravity.", nextNodeId: 'mass_orbit' },
             { id: 'slower', label: "Slower — it's harder for gravity to pull it in.", nextNodeId: 'mass_orbit' },
@@ -62,7 +62,7 @@ export const getP12Script = (): Record<string, DialogNode> => ({
     'mass_orbit': {
         id: 'mass_orbit',
         speaker: 'AI',
-        content: "Counterintuitive answer: **the planet's mass doesn't matter!** 🤯\n\nOrbital speed depends ONLY on the mass of the object being orbited (the star) and the orbital radius. This is exactly why Galileo found that a heavy ball and a light ball fall at the same rate — gravity accelerates everything equally.\n\nThis means a 1kg satellite and a 1000kg satellite at the same altitude orbit at identical speeds!",
+        content: "Counterintuitive answer: **the planet's mass doesn't matter!** 🤯\n\nOrbital speed depends ONLY on the mass of the object being orbited (the star) and the orbital radius. It's the same reason Galileo found that a heavy ball and a light ball fall at the same rate — gravity accelerates everything equally.\n\nThis means a 1kg satellite and a 1000kg satellite at the same altitude orbit at identical speeds!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'mass_demo', showTwoMasses: true } },
         options: [
             { id: 'saw_it', label: "Both masses orbit at the same speed — incredible!", nextNodeId: 'summary' }
@@ -72,7 +72,7 @@ export const getP12Script = (): Record<string, DialogNode> => ({
     'summary': {
         id: 'summary',
         speaker: 'AI',
-        content: "🌟 **Orbital Mechanics Mastered:**\n\n✅ Gravity in space is nearly as strong as on Earth's surface\n✅ Orbiting = falling sideways fast enough to miss the ground\n✅ Weightlessness = free fall (not zero gravity!)\n✅ Orbital speed depends on the star's mass and distance — not the satellite's mass\n✅ Too slow → falls in; too fast → escapes\n\n**Scale check:** The Sun's gravity reaches 100 billion km away — beyond all known planets! 🌌",
+        content: "🌟 **Orbital Mechanics Mastered:**\n\n✅ Where the ISS orbits, gravity is nearly as strong as on Earth's surface\n✅ Orbiting = falling sideways fast enough to miss the ground\n✅ Weightlessness = free fall (not zero gravity!)\n✅ Orbital speed depends on the star's mass and distance — not the satellite's mass\n✅ Too slow → falls closer in; much too fast → escapes\n\n**Scale check:** The Sun's gravity is thought to hold on to icy comets more than a light-year away — thousands of times further out than Neptune! 🌌",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: [
             { id: 'done', label: "I get orbits now! The Universe makes sense.", nextNodeId: 'done' }
@@ -82,7 +82,7 @@ export const getP12Script = (): Record<string, DialogNode> => ({
     'done': {
         id: 'done',
         speaker: 'AI',
-        content: "Stellar work — literally! 🌟\n\nConnect to **C12 (Periodic Table)** to see how stars forge elements, or **B12 (Natural Selection)** to understand how life adapts across cosmic timescales!",
+        content: "Stellar work — literally! 🌟\n\nConnect to **C12 (Periodic Table)** to find the hidden rule behind the elements, or **B12 (Natural Selection)** to see how a simple rule changes life over many generations!",
         options: []
     }
 });

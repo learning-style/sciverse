@@ -22,7 +22,7 @@ export const getB12Script = (): Record<string, DialogNode> => ({
     'misconception_choice': {
         id: 'misconception_choice',
         speaker: 'AI',
-        content: "This is the #1 evolution misconception! 🐛\n\nOrganisms **do not choose** to evolve. Mutations happen randomly during DNA copying — no moth decided to turn dark.\n\nEvolution is the *filter*, not the *inventor*. Variation exists randomly → the environment selects which variants survive → survivors pass genes to offspring.",
+        content: "This is the #1 evolution misconception! 🐛\n\nOrganisms **do not choose** to evolve. Mutations happen randomly during DNA copying — no moth decided to turn dark.\n\nNatural selection is the *filter*, not the *inventor*. Variation exists randomly → the environment selects which variants survive → survivors pass genes to offspring.",
         options: [
             { id: 'got_it', label: "So random mutation + selection pressure = evolution!", nextNodeId: 'correct_variation' }
         ]
@@ -31,7 +31,7 @@ export const getB12Script = (): Record<string, DialogNode> => ({
     'hint_variation': {
         id: 'hint_variation',
         speaker: 'AI',
-        content: "Good thinking, but color variation isn't about sex differences here! It's because every individual is genetically unique — random mutations during reproduction create slightly different versions of genes, including pigmentation genes. 🧬",
+        content: "Good thinking, but color variation isn't about sex differences here! It's because individuals differ genetically — random mutations create new versions of genes, including genes for colour, and reproduction mixes genes from two parents. 🧬",
         options: [
             { id: 'understood', label: "Genetic mutations cause the color variation!", nextNodeId: 'correct_variation' }
         ]
@@ -40,7 +40,7 @@ export const getB12Script = (): Record<string, DialogNode> => ({
     'correct_variation': {
         id: 'correct_variation',
         speaker: 'AI',
-        content: "Exactly right! Natural selection has three requirements:\n\n1️⃣ **Variation** — individuals differ (light vs dark moths)\n2️⃣ **Heritability** — offspring resemble parents\n3️⃣ **Selection pressure** — environment favors some variants\n\nRight now the trees are light-colored. Watch what happens when birds hunt — which moths survive to reproduce?",
+        content: "Exactly right! Natural selection has three requirements:\n\n1️⃣ **Variation** — individuals differ (light vs dark moths)\n2️⃣ **Heritability** — the differences are passed from parents to offspring\n3️⃣ **Selection pressure** — environment favors some variants\n\nRight now the trees are light-colored, and birds catch the moths they can spot. Which moths are more likely to survive and reproduce?",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'selection', showBirds: true, activePredation: true } },
         options: [
             { id: 'light_survive', label: "Light moths survive — they blend into light bark.", nextNodeId: 'first_selection' }
@@ -50,7 +50,7 @@ export const getB12Script = (): Record<string, DialogNode> => ({
     'first_selection': {
         id: 'first_selection',
         speaker: 'AI',
-        content: "Perfect! After a few generations, notice the ratio changed — more light moths, fewer dark ones. Now press **Next Generation** several times and watch the trend. 🔄",
+        content: "Perfect! Now press **Next Generation** several times in the sim and watch the ratio change — more light moths, fewer dark ones, each generation. 🔄",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'generations', showGenerationControl: true } },
         options: [
             { id: 'saw_change', label: "Light moths dominate after 5+ generations!", nextNodeId: 'environment_change' }
@@ -72,7 +72,7 @@ export const getB12Script = (): Record<string, DialogNode> => ({
     'misconception_adapt': {
         id: 'misconception_adapt',
         speaker: 'AI',
-        content: "Remember: individual organisms don't change their genetics! 🧬\n\nThe light moths that couldn't hide got eaten. The dark moths that already existed (from random past mutations) survived better and passed on their dark genes. Over many generations, the dark color gene spread through the population.",
+        content: "Remember: individual organisms don't change their genetics! 🧬\n\nThe light moths that couldn't hide were caught by birds more often. The dark moths that already existed (from random past mutations) survived better and passed on their dark genes. Over many generations, the dark color gene spread through the population.",
         options: [
             { id: 'understood2', label: "Selection acts on existing variation — it doesn't create new traits!", nextNodeId: 'industrial_correct' }
         ]
@@ -90,17 +90,17 @@ export const getB12Script = (): Record<string, DialogNode> => ({
     'industrial_correct': {
         id: 'industrial_correct',
         speaker: 'AI',
-        content: "Exactly! This is the famous **Peppered Moth** experiment — one of the best documented cases of evolution in action. 🦋\n\nSwitch the environment to 'dark bark' in the sim and run more generations to see the reversal!",
+        content: "Exactly! This is the famous **peppered moth** — one of the best-studied examples of natural selection. 🦋\n\nSwitch the environment to 'dark bark' in the sim and run more generations to see the reversal!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'industrial', environment: 'dark', showEnvironmentControl: true } },
         options: [
-            { id: 'confirmed', label: "Dark moths dominate on dark bark — evolution reversed!", nextNodeId: 'summary' }
+            { id: 'confirmed', label: "Dark moths dominate on dark bark — the ratio flipped!", nextNodeId: 'summary' }
         ]
     },
 
     'summary': {
         id: 'summary',
         speaker: 'AI',
-        content: "🌟 **Evolution Mastered:**\n\n✅ Evolution = change in gene frequencies over generations\n✅ Organisms don't choose to evolve — mutations are random\n✅ Selection acts on existing variation (it's a filter, not a creator)\n✅ Environment determines which traits are advantageous\n✅ Evolution can go backwards if environment reverses\n\n**Timescale:** Peppered moths showed visible evolution in ~50 years. Dinosaur-to-bird evolution took ~50 million years! ⏳",
+        content: "🌟 **Evolution Mastered:**\n\n✅ Evolution = change in how common different gene versions are, over generations\n✅ Organisms don't choose to evolve — mutations are random\n✅ Selection acts on existing variation (it's a filter, not a creator)\n✅ Environment determines which traits are advantageous\n✅ If the environment changes back, selection can shift the population back — after the air became cleaner in the late 1900s, light moths became common again\n\n**Timescale:** Peppered moths showed visible evolution in ~50 years. Birds evolving from dinosaurs took tens of millions of years! ⏳",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: [
             { id: 'done', label: "Evolution makes sense now!", nextNodeId: 'done' }
