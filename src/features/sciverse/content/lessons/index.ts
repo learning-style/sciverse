@@ -241,6 +241,9 @@ import { getL3B13Script } from './l3b13-stomatal-optimum';
 import { getL2P14Script } from './l2p14-bits-and-rate';
 import { getL2C14Script } from './l2c14-electronegativity';
 import { getL2B14Script } from './l2b14-genetic-code-size';
+import { getL3P14Script } from './l3p14-sampling';
+import { getL3C14Script } from './l3c14-molecular-polarity';
+import { getL3B14Script } from './l3b14-copying-mistakes';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1252,6 +1255,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p14': getL2P14Script,
     'l2c14': getL2C14Script,
     'l2b14': getL2B14Script,
+    'l3p14': getL3P14Script,
+    'l3c14': getL3C14Script,
+    'l3b14': getL3B14Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1756,6 +1762,10 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p14', title: 'How Many Bits?', subtitle: 'Patterns = 2 to the power n, and bits into seconds', discipline: 'physics', bigIdea: 14, bigIdeaTitle: 'How Is Information Coded and Transmitted?', icon: '📶', accentColor: 'indigo', crossLinks: ['p14', 'l2p4'], level: 2 },
     { id: 'l2c14', title: 'Which Bond Will It Be?', subtitle: 'The electronegativity difference decides', discipline: 'chemistry', bigIdea: 14, bigIdeaTitle: 'How Is Information Coded and Transmitted?', icon: '🧪', accentColor: 'emerald', crossLinks: ['c14', 'l2c2'], level: 2 },
     { id: 'l2b14', title: 'Why Three Letters?', subtitle: '4³ = 64 codons for 21 signals, at 2 bits a base', discipline: 'biology', bigIdea: 14, bigIdeaTitle: 'How Is Information Coded and Transmitted?', icon: '🧬', accentColor: 'rose', crossLinks: ['b14', 'l2p14'], level: 2 },
+
+    { id: 'l3p14', title: 'Turning a Wave into Numbers', subtitle: 'Sampling rate, bit depth, and the tone nobody played', discipline: 'physics', bigIdea: 14, bigIdeaTitle: 'How Is Information Coded and Transmitted?', icon: '🎚️', accentColor: 'indigo', crossLinks: ['l2p14', 'p14'], level: 3 },
+    { id: 'l3c14', title: 'Polar Bonds, Nonpolar Molecule', subtitle: 'Bond dipoles add as vectors: 2 x dipole x cos(A/2)', discipline: 'chemistry', bigIdea: 14, bigIdeaTitle: 'How Is Information Coded and Transmitted?', icon: '🧭', accentColor: 'emerald', crossLinks: ['l2c14', 'c14'], level: 3 },
+    { id: 'l3b14', title: 'Which Mistakes Matter?', subtitle: '138 of 576 swaps are silent; a frameshift is not', discipline: 'biology', bigIdea: 14, bigIdeaTitle: 'How Is Information Coded and Transmitted?', icon: '🩸', accentColor: 'rose', crossLinks: ['l2b14', 'b14'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
