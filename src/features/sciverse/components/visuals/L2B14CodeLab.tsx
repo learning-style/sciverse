@@ -110,6 +110,12 @@ export const L2B14CodeLab = ({ state, onStateChange }: Props) => {
         fitText(ctx, `${fmt(words)} words for 21 signals`, safeRight / 2, 94, safeRight - 24, 16);
         fitText(ctx, 'Letters to the power of positions', safeRight / 2, 118, safeRight - 24, 13);
 
+        // Built outside the note: a template literal nested inside a ${...}
+        // defeats the checker's scan of what the canvas prints
+        const verdict = ok
+            ? `which is ${fmt(spare)} more than the 21 signals life must label`
+            : `which is ${-spare} short of the 21 signals life must label`;
+
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, words / SIGNALS)),
@@ -118,14 +124,14 @@ export const L2B14CodeLab = ({ state, onStateChange }: Props) => {
                 high: '21',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
-            note: `${letters} letters in words of ${places} makes ${fmt(words)} words, ${ok ? `which is ${fmt(spare)} more than the 21 signals life must label` : `which is ${-spare} short of the 21 signals life must label`}. Each letter carries ${bits.toFixed(1)} bits.`,
+            note: `${letters} letters in words of ${places} makes ${fmt(words)} words, ${verdict}. Each letter carries ${bits.toFixed(1)} bits.`,
         };
     };
 
     return (
         <LabCanvas
             title="Why Three Letters?"
-            readout={({ raw, raw2 }) => `${lettersOf(raw)} letters in words of ${placesOf(raw2)}`}
+            readout={({ raw }) => `An alphabet of ${lettersOf(raw)} letters`}
             controlLabel="Letters in the Alphabet"
             controlKey="alphabet"
             controlMin={2}

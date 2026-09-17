@@ -127,7 +127,7 @@ export const L2C14BondLab = ({ state, onStateChange }: Props) => {
     return (
         <LabCanvas
             title="Which Bond Will It Be?"
-            readout={({ raw, raw2 }) => `A bond between ${enOf(raw).toFixed(1)} and ${enOf(raw2).toFixed(1)}`}
+            readout={({ raw }) => `A bond whose First Atom is ${enOf(raw).toFixed(1)}`}
             controlLabel="First Atom"
             controlKey="firstAtom"
             controlMin={0.8}

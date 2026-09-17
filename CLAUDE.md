@@ -80,6 +80,12 @@ of the rules above came from a defect found on screen.
 **`Accent` is a closed union: `indigo | emerald | rose`** (physics/chemistry/
 biology). Anything else is a type error, not a fallback.
 
+**`readout` receives only `v` and `raw`** — its parameter is
+`Pick<LabScene, 'v' | 'raw'>`, so a second slider's `raw2` is not available
+there. Put anything that depends on both controls in `drawScene` or the meter
+note instead. Destructuring `raw2` in a readout compiles nowhere and reached CI
+twice in Big Idea 14.
+
 **Never name a local after a `LabScene` field** (`t`, `v`, `W`, `H`, `raw`).
 Legal, but it has produced real bugs and the checker treats it as a fault.
 
