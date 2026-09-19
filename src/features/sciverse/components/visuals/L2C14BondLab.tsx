@@ -65,6 +65,9 @@ export const L2C14BondLab = ({ state, onStateChange }: Props) => {
         };
         atom(ax, first, 'First Atom');
         atom(bxx, second, 'Second Atom');
+        // The bare numbers mean nothing without the quantity named
+        outlineText(ctx, 'electronegativity: how strongly each atom pulls', safeRight / 2, cy - r - 24,
+            '11px monospace', '#475569', 'center', safeRight - 30);
 
         // The shared pair
         ctx.fillStyle = band.colour;
@@ -109,7 +112,7 @@ export const L2C14BondLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, band.line,
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', band.colour, 'center', safeRight - 30);
 
-        fitText(ctx, `${diff.toFixed(1)}: ${band.name}`, safeRight / 2, 94, safeRight - 24, 16);
+        fitText(ctx, `difference ${diff.toFixed(1)}: ${band.name}`, safeRight / 2, 94, safeRight - 24, 16);
         fitText(ctx, 'The gap, not either value', safeRight / 2, 118, safeRight - 24, 13);
 
         return {

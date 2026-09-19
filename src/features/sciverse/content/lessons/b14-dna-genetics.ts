@@ -10,7 +10,7 @@ export const getB14Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "Welcome to the Genetics Lab! 🧬\n\nThe double helix spinning in the simulation is DNA — your body's instruction manual. It's stored in every single cell.\n\nHere's a big question: if identical twins have the same DNA, does that mean they'll be identical in every way?",
+        content: "Welcome to the Genetics Lab! 🧬\n\nThe double helix spinning in the simulation is **DNA** (short for **deoxyribonucleic acid**) — your body's instruction manual. It's stored in every single cell.\n\nHere's a big question: if identical twins have the same DNA, does that mean they'll be identical in every way?",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', showHelix: true, rotationSpeed: 1 } },
         options: [
             { id: 'yes_identical', label: "Yes — same DNA means same person, same health, same traits.", nextNodeId: 'misconception_determinism', sentiment: 'negative' },
@@ -70,7 +70,7 @@ export const getB14Script = (): Record<string, DialogNode> => ({
     'summary': {
         id: 'summary',
         speaker: 'AI',
-        content: "🌟 **DNA & Genetics Mastered:**\n\n✅ DNA = A, T, G, C bases; A-T pairs, G-C pairs\n✅ Complementary pairing enables perfect replication\n✅ Codons (3 bases) encode amino acids → proteins\n✅ DNA ≠ destiny: gene expression depends on environment (epigenetics)\n✅ Each cell carries two sets of about 3 billion base pairs — around 2 metres of DNA in all\n\n**Information scale:** Human genome = ~3 billion base pairs = ~750 MB of data. 💾",
+        content: "🌟 **DNA & Genetics Mastered:**\n\n✅ DNA = A, T, G, C bases; A-T pairs, G-C pairs\n✅ Complementary pairing enables perfect replication\n✅ Codons (3 bases) encode amino acids → proteins\n✅ DNA ≠ destiny: gene expression depends on environment (epigenetics)\n✅ Each cell carries two sets of about 3 billion base pairs — around 2 metres of DNA in all\n\n**Information scale:** Human genome = ~3 billion base pairs = ~750 MB (megabytes) of data. 💾",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: [{ id: 'done', label: "DNA decoded! What an incredible code system.", nextNodeId: 'done' }]
     },

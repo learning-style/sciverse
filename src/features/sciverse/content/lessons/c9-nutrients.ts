@@ -89,7 +89,7 @@ export const getC9Script = (): Record<string, DialogNode> => ({
     'human_compare': {
         id: 'human_compare',
         speaker: 'AI',
-        content: "🧬 **Same Elements, Different Bodies!**\n\nHere's something amazing: the elements plants need are the SAME elements in YOUR body!\n\n| Element | Plants use it for... | Humans use it for... |\n|---------|---------------------|---------------------|\n| Carbon (C) | Sugar, cellulose | Muscles, bones, DNA |\n| Hydrogen (H) | Water in cells | Water in cells |\n| Oxygen (O) | Breathing, sugars | Breathing, energy |\n| Nitrogen (N) | Chlorophyll, proteins, DNA | Proteins, DNA |\n\nWe're made of the same atoms as plants! 🌿 = 🧑 at the atomic level. We get OUR elements from the food we eat — and a lot of that food IS plants!",
+        content: "🧬 **Same Elements, Different Bodies!**\n\nHere's something amazing: the elements plants need are the SAME elements in YOUR body!\n\n| Element | Plants use it for... | Humans use it for... |\n|---------|---------------------|---------------------|\n| Carbon (C) | Sugar, cellulose | Muscles, bones, DNA (**deoxyribonucleic acid**) |\n| Hydrogen (H) | Water in cells | Water in cells |\n| Oxygen (O) | Breathing, sugars | Breathing, energy |\n| Nitrogen (N) | Chlorophyll, proteins, DNA | Proteins, DNA |\n\nWe're made of the same atoms as plants! 🌿 = 🧑 at the atomic level. We get OUR elements from the food we eat — and a lot of that food IS plants!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'human_compare' } },
         options: [
             { id: 'to_recycling', label: "So where do these atoms come from originally?", nextNodeId: 'recycling' }

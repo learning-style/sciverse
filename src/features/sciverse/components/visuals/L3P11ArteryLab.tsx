@@ -63,7 +63,7 @@ export const L3P11ArteryLab = ({ state, onStateChange }: Props) => {
 
         const px = safeRight * 0.62;
         const pw = safeRight - 16 - px;
-        outlineText(ctx, `${ratio.toFixed(2)}² = ${squared.toFixed(2)}`, px, stageTop + 18, '12px monospace', '#334155', 'left', pw);
+        outlineText(ctx, `radius ratio ${ratio.toFixed(2)}² = ${squared.toFixed(2)}`, px, stageTop + 18, '12px monospace', '#334155', 'left', pw);
         outlineText(ctx, `squared again = ${fourth.toFixed(2)}`, px, stageTop + 40, '12px monospace', '#334155', 'left', pw);
         outlineText(ctx, `resistance = 20 / ${fourth.toFixed(2)}`, px, stageTop + 66, '12px monospace', '#334155', 'left', pw);
         outlineText(ctx, `= ${resistance.toFixed(1)} mmHg for each L/min`, px, stageTop + 86, 'bold 12px monospace', '#4f46e5', 'left', pw);

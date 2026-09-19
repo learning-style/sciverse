@@ -47,7 +47,7 @@ export const L3P13TrainLab = ({ state, onStateChange }: Props) => {
             ctx.moveTo(cx, y);
             ctx.lineTo(cx + Math.cos(spin) * r * 0.8, y + Math.sin(spin) * r * 0.8);
             ctx.stroke();
-            outlineText(ctx, `${i + 1}`, cx, y + r + 14, '11px monospace', '#475569', 'center', step);
+            outlineText(ctx, `stage ${i + 1}`, cx, y + r + 14, '11px monospace', '#475569', 'center', step);
         }
 
         // Power surviving after each stage

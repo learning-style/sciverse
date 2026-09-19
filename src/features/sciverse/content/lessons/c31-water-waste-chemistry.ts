@@ -50,7 +50,7 @@ export function getC31Script(): Record<string, DialogNode> {
         checkpoint_wrong: {
             id: 'checkpoint_wrong',
             speaker: 'AI',
-            content: "Dangerous mistake! Water can look crystal clear and still be full of invisible **bacteria** and **viruses**. You can't see germs -- they're thousands of times smaller than a grain of sand.\n\nFilters catch particles, but germs slip right through the tiny gaps. Only **chemical treatment** (chlorine, UV light, or ozone) can destroy them. That's why \"clear\" doesn't mean \"clean\" -- chemistry makes the difference!",
+            content: "Dangerous mistake! Water can look crystal clear and still be full of invisible **bacteria** and **viruses**. You can't see germs -- they're thousands of times smaller than a grain of sand.\n\nFilters catch particles, but germs slip right through the tiny gaps. Only **chemical treatment** (chlorine, **UV** -- ultraviolet -- light, or ozone) can destroy them. That's why \"clear\" doesn't mean \"clean\" -- chemistry makes the difference!",
             options: [
                 { id: 'retry', label: "Oh -- clear water can still have invisible germs in it!", nextNodeId: 'checkpoint_correct' }
             ]

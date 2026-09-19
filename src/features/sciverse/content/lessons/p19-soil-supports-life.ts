@@ -63,7 +63,7 @@ export const getP19Script = (): Record<string, DialogNode> => ({
     'checkpoint_correct': {
         id: 'checkpoint_correct',
         speaker: 'AI',
-        content: "\u2705 **Perfect!** Soil **permeability** is the key factor controlling field drainage.\n\nSoil scientists classify soils into **textural classes** (sand, sandy loam, silt loam, clay loam, clay) based on their mix of particle sizes. Each class has predictable permeability \u2014 and therefore predictable drainage behavior.\n\n**Fun fact:** NASA uses satellite radar to measure soil moisture from SPACE! The SMAP satellite maps global soil water content every 2-3 days to help predict droughts and floods! \ud83d\udef0\ufe0f\ud83c\udf0d",
+        content: "\u2705 **Perfect!** Soil **permeability** is the key factor controlling field drainage.\n\nSoil scientists classify soils into **textural classes** (sand, sandy loam, silt loam, clay loam, clay) based on their mix of particle sizes. Each class has predictable permeability \u2014 and therefore predictable drainage behavior.\n\n**Fun fact:** **NASA** (the National Aeronautics and Space Administration) uses satellite radar to measure soil moisture from SPACE! The SMAP satellite maps global soil water content every 2-3 days to help predict droughts and floods! \ud83d\udef0\ufe0f\ud83c\udf0d",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', showDrainage: true } },
         options: [
             { id: 'discovery', label: "Show me the big discovery!", nextNodeId: 'discovery' },

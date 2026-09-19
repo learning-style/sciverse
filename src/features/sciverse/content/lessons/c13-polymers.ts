@@ -22,7 +22,7 @@ export const getC13Script = (): Record<string, DialogNode> => ({
     'misconception_synthetic': {
         id: 'misconception_synthetic',
         speaker: 'AI',
-        content: "Surprise! Natural polymers are everywhere! 🌿\n\n- **Cellulose** (wood, cotton, paper) = glucose monomers linked together\n- **Starch** (potatoes, bread) = glucose chains\n- **Proteins** = amino acid chains\n- **DNA** = nucleotide chains\n- **Rubber** = isoprene chains (from rubber trees!)\n\nSynthetic plastics are just humans *copying* what nature does with different monomers!",
+        content: "Surprise! Natural polymers are everywhere! 🌿\n\n- **Cellulose** (wood, cotton, paper) = glucose monomers linked together\n- **Starch** (potatoes, bread) = glucose chains\n- **Proteins** = amino acid chains\n- **DNA** (**deoxyribonucleic acid**) = nucleotide chains\n- **Rubber** = isoprene chains (from rubber trees!)\n\nSynthetic plastics are just humans *copying* what nature does with different monomers!",
         options: [
             { id: 'mindblown', label: "Even my hair (keratin) is a polymer!", nextNodeId: 'correct_natural' }
         ]

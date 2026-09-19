@@ -20,7 +20,7 @@ export function getL3P12Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "L2P12 worked out gravity's pull at any distance -- and named what it held fixed: **the pull only, with nothing moving**.\n\nA pull on its own brings things down. At the ISS, 400 km up, gravity is **8.7 N/kg**, so an astronaut dropped there with no sideways speed would fall to Earth in about five minutes.\n\nThe ISS does not. As P12 said, it is **falling sideways fast enough to keep missing**.\n\nSo is any high speed good enough?",
+            content: "L2P12 worked out gravity's pull at any distance -- and named what it held fixed: **the pull only, with nothing moving**.\n\nA pull on its own brings things down. At the **ISS** -- the International Space Station -- 400 km up, gravity is **8.7 N/kg**, so an astronaut dropped there with no sideways speed would fall to Earth in about five minutes.\n\nThe ISS does not. As P12 said, it is **falling sideways fast enough to keep missing**.\n\nSo is any high speed good enough?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "No. At each height there is one particular speed that bends the fall into a circle: too slow and the path dips inwards, too fast and it swings out.", nextNodeId: 'circle', sentiment: 'positive' },

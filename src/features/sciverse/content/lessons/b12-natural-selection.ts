@@ -22,7 +22,7 @@ export const getB12Script = (): Record<string, DialogNode> => ({
     'misconception_choice': {
         id: 'misconception_choice',
         speaker: 'AI',
-        content: "This is the #1 evolution misconception! 🐛\n\nOrganisms **do not choose** to evolve. Mutations happen randomly during DNA copying — no moth decided to turn dark.\n\nNatural selection is the *filter*, not the *inventor*. Variation exists randomly → the environment selects which variants survive → survivors pass genes to offspring.",
+        content: "This is the #1 evolution misconception! 🐛\n\nOrganisms **do not choose** to evolve. Mutations happen randomly when **DNA** (**deoxyribonucleic acid**, the instruction book inside every cell) is copied — no moth decided to turn dark.\n\nNatural selection is the *filter*, not the *inventor*. Variation exists randomly → the environment selects which variants survive → survivors pass genes to offspring.",
         options: [
             { id: 'got_it', label: "So random mutation + selection pressure = evolution!", nextNodeId: 'correct_variation' }
         ]

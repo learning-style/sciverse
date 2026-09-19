@@ -66,9 +66,9 @@ export const L2P13GearLab = ({ state, onStateChange }: Props) => {
         const pw = safeRight - 16 - px;
         outlineText(ctx, `gear ratio ${drivenTeeth} / ${driverTeeth} = ${ratio.toFixed(2)}`, px, stageTop + 18, 'bold 12px monospace', '#0f172a', 'left', pw);
         outlineText(ctx, `driver: ${INPUT_TURNS} turns a minute`, px, stageTop + 44, '12px monospace', DRIVER, 'left', pw);
-        outlineText(ctx, `${INPUT_TORQUE} N m`, px, stageTop + 62, '12px monospace', DRIVER, 'left', pw);
+        outlineText(ctx, `torque ${INPUT_TORQUE} N m`, px, stageTop + 62, '12px monospace', DRIVER, 'left', pw);
         outlineText(ctx, `driven: ${turnsOut.toFixed(1)} turns a minute`, px, stageTop + 88, 'bold 12px monospace', DRIVEN, 'left', pw);
-        outlineText(ctx, `${torqueOut.toFixed(1)} N m`, px, stageTop + 106, 'bold 12px monospace', DRIVEN, 'left', pw);
+        outlineText(ctx, `torque ${torqueOut.toFixed(1)} N m`, px, stageTop + 106, 'bold 12px monospace', DRIVEN, 'left', pw);
 
         outlineText(ctx, `turns ${INPUT_TURNS} / ${ratio.toFixed(2)} = ${turnsOut.toFixed(1)}, torque ${INPUT_TORQUE} x ${ratio.toFixed(2)} = ${torqueOut.toFixed(1)} N m`,
             safeRight / 2, stageBottom - 34, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);

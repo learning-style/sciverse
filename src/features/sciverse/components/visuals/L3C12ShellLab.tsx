@@ -63,7 +63,7 @@ export const L3C12ShellLab = ({ state, onStateChange }: Props) => {
             ctx.stroke();
             outlineText(ctx, `${count}`, cx, cy - rr + 4, 'bold 11px monospace', i === shells.length - 1 ? SHELL : '#64748b', 'center', 30);
         });
-        outlineText(ctx, `${SYMBOLS[z - 1]}: ${shells.join(', ')}`, cx, cy + maxR + 20, 'bold 12px monospace', '#0f172a', 'center', safeRight * 0.4);
+        outlineText(ctx, `${SYMBOLS[z - 1]}: ${shells.join(', ')} electrons in each shell`, cx, cy + maxR + 20, 'bold 12px monospace', '#0f172a', 'center', safeRight * 0.42);
 
         // The measured first ionisation energies, with this element marked
         const bx0 = safeRight * 0.44;

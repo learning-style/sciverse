@@ -10,7 +10,7 @@ export const getP12Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "Welcome to the Orbital Mechanics Lab! 🌍\n\nWatch Earth orbiting the Sun in the simulation. Astronauts on the ISS also appear to float weightlessly in space.\n\nDo you think there is gravity in space where the ISS orbits?",
+        content: "Welcome to the Orbital Mechanics Lab! 🌍\n\nWatch Earth orbiting the Sun in the simulation. Astronauts on the **ISS** -- the International Space Station -- also appear to float weightlessly in space.\n\nDo you think there is gravity in space where the ISS orbits?",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', showOrbit: true, orbitSpeed: 1 } },
         options: [
             { id: 'no_gravity', label: "No — astronauts float because there's no gravity up there.", nextNodeId: 'misconception_no_gravity', sentiment: 'negative' },

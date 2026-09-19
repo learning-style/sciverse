@@ -110,7 +110,7 @@ export const getB17Script = (): Record<string, DialogNode> => ({
     'reflection_questions': {
         id: 'reflection_questions',
         speaker: 'AI',
-        content: "\ud83e\udde0 **Think Like A Biomechanics Scientist**\n\n1. Why can BOTH too little loading (bed rest) and too much loading (overtraining) be harmful to bones? \ud83c\udfcb\ufe0f\n2. Why do doctors recommend calcium AND exercise together, not just one?\n3. Why is **fracture prevention** a systems problem involving nutrition, activity, hormones, and age \u2014 not just one number?\n\n**Real-world connection:** NASA spends millions studying bone loss in microgravity. Their research helps treat osteoporosis on Earth too! \ud83d\ude80",
+        content: "\ud83e\udde0 **Think Like A Biomechanics Scientist**\n\n1. Why can BOTH too little loading (bed rest) and too much loading (overtraining) be harmful to bones? \ud83c\udfcb\ufe0f\n2. Why do doctors recommend calcium AND exercise together, not just one?\n3. Why is **fracture prevention** a systems problem involving nutrition, activity, hormones, and age \u2014 not just one number?\n\n**Real-world connection:** **NASA** (the National Aeronautics and Space Administration) spends millions studying bone loss in microgravity. Their research helps treat osteoporosis on Earth too! \ud83d\ude80",
         options: [
             { id: 'reflect_good', label: "Bone health requires balanced loading, nutrition, and remodeling \u2014 it\u2019s a whole system!", nextNodeId: 'reflection_feedback', sentiment: 'positive' },
             { id: 'reflect_bad', label: "Only calcium matters \u2014 just take supplements and ignore everything else.", nextNodeId: 'reflection_retry' }

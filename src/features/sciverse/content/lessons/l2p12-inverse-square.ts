@@ -20,7 +20,7 @@ export function getL2P12Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "P12 found that where the ISS orbits, **400 km** up, gravity is still about **90%** as strong as at the ground.\n\nNow go much further out. Earth's radius is about **6,400 km**, so climbing 6,400 km above the surface puts you **twice as far from Earth's centre** as someone standing on the ground.\n\nIs gravity there **half** as strong?",
+            content: "P12 found that where the **ISS** -- the International Space Station -- orbits, **400 km** up, gravity is still about **90%** as strong as at the ground.\n\nNow go much further out. Earth's radius is about **6,400 km**, so climbing 6,400 km above the surface puts you **twice as far from Earth's centre** as someone standing on the ground.\n\nIs gravity there **half** as strong?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "No -- weaker than that. A quarter as strong, because the pull spreads out over a sphere, and twice as far means four times the area to spread over.", nextNodeId: 'defining', sentiment: 'positive' },

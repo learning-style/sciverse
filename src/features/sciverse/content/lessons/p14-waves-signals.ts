@@ -70,7 +70,7 @@ export const getP14Script = (): Record<string, DialogNode> => ({
     'encoding': {
         id: 'encoding',
         speaker: 'AI',
-        content: "Exactly! Let's encode a letter:\n\nThe letter **'A'** in ASCII is the number 65, which in binary is **01000001**. That's 8 ON/OFF pulses transmitted as 8 wave peaks/valleys.\n\nTry the **Text Encoder** at the bottom of the sim — type a letter and watch it become a wave pattern! 📱",
+        content: "Exactly! Let's encode a letter:\n\nThe letter **'A'** has the number **65** in **ASCII** -- a list everyone agreed on that gives each letter, digit and mark its own number, so any two machines choose the same pattern for the same letter. (The name is short for **American Standard Code for Information Interchange**.) In binary, 65 is **01000001**. That's 8 ON/OFF pulses transmitted as 8 wave peaks/valleys.\n\nTry the **Text Encoder** at the bottom of the sim — type a letter and watch it become a wave pattern! 📱",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'encoder', showTextEncoder: true } },
         options: [
             { id: 'encoded', label: "I see my letter turned into a wave pattern on the oscilloscope!", nextNodeId: 'summary' }
@@ -88,7 +88,7 @@ export const getP14Script = (): Record<string, DialogNode> => ({
     'done': {
         id: 'done',
         speaker: 'AI',
-        content: "Signal master! 📡\n\nConnect to **C14 (Chemical Bonding)** to see how atoms carry information in the way they bond, or **B14 (DNA & Genetics)** to learn how DNA encodes information at the molecular level!",
+        content: "Signal master! 📡\n\nConnect to **C14 (Chemical Bonding)** to see how atoms carry information in the way they bond, or **B14 (DNA & Genetics)** to learn how DNA -- **deoxyribonucleic acid** -- encodes information at the molecular level!",
         options: []
     }
 });

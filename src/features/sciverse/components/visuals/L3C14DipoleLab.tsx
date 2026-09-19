@@ -76,7 +76,7 @@ export const L3C14DipoleLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#0f172a';
         ctx.lineWidth = 1.2;
         ctx.stroke();
-        outlineText(ctx, `${angle.toFixed(1)}°`, cx, cy + 34, 'bold 12px monospace', '#475569', 'center', 80);
+        outlineText(ctx, `bond angle ${angle.toFixed(1)}°`, cx, cy + 34, 'bold 12px monospace', '#475569', 'center', 150);
 
         // The vector sum, down the line of symmetry
         if (!cancels) {
@@ -92,7 +92,7 @@ export const L3C14DipoleLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, cancels ? 'the arrows cancel: nonpolar' : 'the arrows add: polar',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', cancels ? EMERALD : SUM, 'center', safeRight - 30);
 
-        fitText(ctx, `${total.toFixed(2)} D: ${cancels ? 'nonpolar' : 'polar'}`, safeRight / 2, 94, safeRight - 24, 16);
+        fitText(ctx, `molecule dipole ${total.toFixed(2)} D: ${cancels ? 'nonpolar' : 'polar'}`, safeRight / 2, 94, safeRight - 24, 16);
         fitText(ctx, 'Add the arrows, not the bonds', safeRight / 2, 118, safeRight - 24, 13);
 
         return {

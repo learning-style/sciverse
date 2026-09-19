@@ -80,7 +80,7 @@ export const getC14Script = (): Record<string, DialogNode> => ({
     'summary': {
         id: 'summary',
         speaker: 'AI',
-        content: "🌟 **Chemical Bonding Mastered:**\n\n✅ Bonds form because lower energy = more stable — no 'wanting' involved\n✅ Ionic bonds: full electron transfer → oppositely charged ions attract\n✅ Covalent bonds: shared electron cloud\n✅ **Nonpolar covalent**: roughly equal sharing (like H-H)\n✅ **Polar covalent**: unequal sharing (like water O-H)\n✅ Water's polarity = why it dissolves salts and supports life\n✅ Bond type largely determines a material's properties\n\n**Information angle:** DNA encodes genetic information using hydrogen bonds between base pairs — chemistry stores biological code! 🧬",
+        content: "🌟 **Chemical Bonding Mastered:**\n\n✅ Bonds form because lower energy = more stable — no 'wanting' involved\n✅ Ionic bonds: full electron transfer → oppositely charged ions attract\n✅ Covalent bonds: shared electron cloud\n✅ **Nonpolar covalent**: roughly equal sharing (like H-H)\n✅ **Polar covalent**: unequal sharing (like water O-H)\n✅ Water's polarity = why it dissolves salts and supports life\n✅ Bond type largely determines a material's properties\n\n**Information angle:** **DNA** (**deoxyribonucleic acid**) encodes genetic information using hydrogen bonds between base pairs — chemistry stores biological code! 🧬",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: [{ id: 'done', label: "Bonding unlocked!", nextNodeId: 'done' }]
     },

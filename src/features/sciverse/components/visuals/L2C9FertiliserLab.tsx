@@ -39,7 +39,7 @@ export const L2C9FertiliserLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#334155';
         ctx.lineWidth = 2;
         ctx.strokeRect(bx, bTop, bw, bh);
-        outlineText(ctx, `N ${pct}%`, bx + bw / 2, bTop + 22, 'bold 14px monospace', '#065f46', 'center', bw - 6);
+        outlineText(ctx, `nitrogen ${pct}%`, bx + bw / 2, bTop + 22, 'bold 14px monospace', '#065f46', 'center', bw - 6);
         outlineText(ctx, '20 kg bag', bx + bw / 2, bBottom + 16, '11px monospace', '#475569', 'center', bw + 30);
 
         // The lawn, drawn with an area in proportion

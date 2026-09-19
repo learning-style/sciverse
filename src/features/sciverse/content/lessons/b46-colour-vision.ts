@@ -49,7 +49,7 @@ export function getB46Script(): Record<string, DialogNode> {
         checkpoint_correct: {
             id: 'checkpoint_correct',
             speaker: 'AI',
-            content: "Correct! **Colour is a comparison your brain makes, not a property it receives.**\n\nAll three lessons of Big Idea 46 join up here:\n- **P46** -- light **adds**, and three colours of light can build all the rest\n- **C46** -- on paper, colour is a **pigment** molecule that **UV** can break\n- **B46** -- you see colour by comparing **three cone types**, which is why three is the magic number\n\nScreens use red, green and blue because that is the shape of the eye reading them. Colour is not really out in the world -- it is what your brain makes of three signals.",
+            content: "Correct! **Colour is a comparison your brain makes, not a property it receives.**\n\nAll three lessons of Big Idea 46 join up here:\n- **P46** -- light **adds**, and three colours of light can build all the rest\n- **C46** -- on paper, colour is a **pigment** molecule that **UV** (ultraviolet light) can break\n- **B46** -- you see colour by comparing **three cone types**, which is why three is the magic number\n\nScreens use red, green and blue because that is the shape of the eye reading them. Colour is not really out in the world -- it is what your brain makes of three signals.",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint' } },
             options: [
                 { id: 'disc', label: "Colour is what my brain does with three signals!", nextNodeId: 'discovery' }

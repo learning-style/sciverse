@@ -81,9 +81,9 @@ export const L3B8PawLab = ({ state, onStateChange }: Props) => {
 
         outlineText(ctx, 'artery', legX - 2, top - 8, 'bold 11px monospace', '#991b1b', 'right', 60);
         outlineText(ctx, 'vein', legX + gapX + 2, top - 8, 'bold 11px monospace', '#1e40af', 'left', 60);
-        outlineText(ctx, `${BODY_C} °C`, legX - 14, top + 10, '11px monospace', '#334155', 'right', 50);
-        outlineText(ctx, `${arrival} °C`, legX - 14, bottom - 2, 'bold 11px monospace', '#334155', 'right', 50);
-        outlineText(ctx, `${veinTop} °C`, legX + gapX + 14, top + 10, '11px monospace', '#334155', 'left', 50);
+        outlineText(ctx, `body ${BODY_C} °C`, legX - 14, top + 10, '11px monospace', '#334155', 'right', 90);
+        outlineText(ctx, `arrives ${arrival} °C`, legX - 14, bottom - 2, 'bold 11px monospace', '#334155', 'right', 90);
+        outlineText(ctx, `back up ${veinTop} °C`, legX + gapX + 14, top + 10, '11px monospace', '#334155', 'left', 90);
         outlineText(ctx, `paw ${PAW_C} °C`, legX + gapX + 14, bottom - 2, 'bold 11px monospace', '#334155', 'left', 70);
 
         // Heat lost through the paws against the fox's resting heat

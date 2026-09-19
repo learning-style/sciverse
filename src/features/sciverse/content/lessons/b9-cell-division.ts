@@ -42,7 +42,7 @@ export const getB9Script = (): Record<string, DialogNode> => ({
     'cell_intro': {
         id: 'cell_intro',
         speaker: 'AI',
-        content: "Let's look at **one single cell** near the wound edge. 🟢\n\nSee that round shape? That's the **cell membrane** — like a flexible bag holding everything inside. And that darker circle in the middle? That's the **nucleus** — the cell's brain!\n\nInside the nucleus, those squiggly lines are **DNA** — the instruction manual for building an entire copy of this cell.\n\nThis cell is about to go through a process called **mitosis** — it's going to make a perfect copy of itself!",
+        content: "Let's look at **one single cell** near the wound edge. 🟢\n\nSee that round shape? That's the **cell membrane** — like a flexible bag holding everything inside. And that darker circle in the middle? That's the **nucleus** — the cell's brain!\n\nInside the nucleus, those squiggly lines are **DNA** (short for **deoxyribonucleic acid**) — the instruction manual for building an entire copy of this cell.\n\nThis cell is about to go through a process called **mitosis** — it's going to make a perfect copy of itself!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'cell_grow' } },
         options: [
             { id: 'how', label: "How does one cell become two?", nextNodeId: 'cell_grow' },

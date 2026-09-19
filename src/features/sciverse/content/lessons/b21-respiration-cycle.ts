@@ -68,7 +68,7 @@ export const getB21Script = (): Record<string, DialogNode> => ({
     complete: {
         id: 'complete',
         speaker: 'AI',
-        content: "🔗 **Big Idea 21 Complete — How Do Cycles Keep Systems Alive?**\n\n- Physics (P21): Tidal Cycles — orbital forcing creates repeating sea-level rhythms\n- Chemistry (C21): Carbon Cycle Chemistry — reservoir exchange and chemical flux maintain atmospheric balance\n- Biology (B21): Respiration Cycles — regulated ATP production and metabolic turnover keep cells alive\n\nIn all three: **repeating cycles with feedback control sustain stability in every system!** 🌙♻️🫁\n\n✅ **Lesson B21 Complete!**",
+        content: "🔗 **Big Idea 21 Complete — How Do Cycles Keep Systems Alive?**\n\n- Physics (P21): Tidal Cycles — orbital forcing creates repeating sea-level rhythms\n- Chemistry (C21): Carbon Cycle Chemistry — reservoir exchange and chemical flux maintain atmospheric balance\n- Biology (B21): Respiration Cycles — regulated **ATP** (adenosine triphosphate) production and metabolic turnover keep cells alive\n\nIn all three: **repeating cycles with feedback control sustain stability in every system!** 🌙♻️🫁\n\n✅ **Lesson B21 Complete!**",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }

@@ -50,7 +50,7 @@ export function getC32Script(): Record<string, DialogNode> {
         checkpoint_wrong: {
             id: 'checkpoint_wrong',
             speaker: 'AI',
-            content: "Same cars, but very different smog! The **chemistry** depends on conditions:\n\n- City A (sunny + still): Intense UV light drives rapid ozone formation, and no wind means pollutants stay concentrated. The smog builds up day after day\n- City B (cloudy + breezy): Less sunlight means fewer chemical reactions, and wind disperses the pollutants before they react\n\nThis is why Los Angeles (sunny, still) has worse smog than Seattle (cloudy, breezy), even though both have millions of cars!",
+            content: "Same cars, but very different smog! The **chemistry** depends on conditions:\n\n- City A (sunny + still): Intense **UV** (ultraviolet) light drives rapid ozone formation, and no wind means pollutants stay concentrated. The smog builds up day after day\n- City B (cloudy + breezy): Less sunlight means fewer chemical reactions, and wind disperses the pollutants before they react\n\nThis is why Los Angeles (sunny, still) has worse smog than Seattle (cloudy, breezy), even though both have millions of cars!",
             options: [
                 { id: 'retry', label: "Oh -- weather controls the chemistry even when the cars are the same!", nextNodeId: 'checkpoint_correct' }
             ]
@@ -58,7 +58,7 @@ export function getC32Script(): Record<string, DialogNode> {
         checkpoint_correct: {
             id: 'checkpoint_correct',
             speaker: 'AI',
-            content: "Correct! Weather controls the chemistry of smog:\n\n- **Sunlight** provides energy for reactions (more sun = more smog)\n- **Wind** disperses pollutants (no wind = smog gets trapped)\n- **Temperature** affects reaction speed (hotter = faster reactions)\n\nThis connects to **P32 Particle Drift** -- the tiny particles created by these reactions float for days because they're PM2.5 size. Physics and chemistry work together to create the air quality problem!\n\nIn B32 you'll see what these pollutants do to your lungs when you breathe them in.",
+            content: "Correct! Weather controls the chemistry of smog:\n\n- **Sunlight** provides energy for reactions (more sun = more smog)\n- **Wind** disperses pollutants (no wind = smog gets trapped)\n- **Temperature** affects reaction speed (hotter = faster reactions)\n\nThis connects to **P32 Particle Drift** -- the tiny particles created by these reactions float for days because they're **PM2.5** size -- particulate matter smaller than 2.5 micrometres. Physics and chemistry work together to create the air quality problem!\n\nIn B32 you'll see what these pollutants do to your lungs when you breathe them in.",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint' } },
             options: [
                 { id: 'disc', label: "Sunlight plus exhaust equals dangerous smog chemistry!", nextNodeId: 'discovery' }

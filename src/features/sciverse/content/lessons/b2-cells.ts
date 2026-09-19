@@ -50,7 +50,7 @@ export const getB2Script = (): Record<string, DialogNode> => ({
     'organelles': {
         id: 'organelles',
         speaker: 'AI',
-        content: "Each part has a special name — **organelles** (little organs). Here are the big three:\n\n🧠 **Nucleus** — \"The Brain\" — holds the instructions (DNA)\n⚡ **Mitochondria** — \"The Power Plant\" — turns food into energy\n🚪 **Cell Membrane** — \"The Security Gate\" — controls what enters and exits\n\nEvery cell is a miniature factory with its own brain, power plant, and security!",
+        content: "Each part has a special name — **organelles** (little organs). Here are the big three:\n\n🧠 **Nucleus** — \"The Brain\" — holds the instructions (**DNA**, short for **deoxyribonucleic acid**)\n⚡ **Mitochondria** — \"The Power Plant\" — turns food into energy\n🚪 **Cell Membrane** — \"The Security Gate\" — controls what enters and exits\n\nEvery cell is a miniature factory with its own brain, power plant, and security!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'organelles', highlightOrganelle: 'all' } },
         options: [
             { id: 'quiz', label: "That's a lot going on in something so tiny!", nextNodeId: 'checkpoint_energy' }

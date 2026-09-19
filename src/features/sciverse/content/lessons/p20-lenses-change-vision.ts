@@ -94,7 +94,7 @@ export const getP20Script = (): Record<string, DialogNode> => ({
     'reflection_questions': {
         id: 'reflection_questions',
         speaker: 'AI',
-        content: "\ud83e\udde0 **Think Like An Optical Engineer**\n\n1. Why do cameras with BIGGER lenses take better photos in low light? \ud83d\udcf7\n2. Why do nearsighted people need **concave** lenses (thinner in the middle) instead of convex?\n3. How does a **projector** use a lens to create a huge image on a wall from a tiny LCD screen?\n\n**Real-world connection:** The James Webb Space Telescope uses a 6.5-meter mirror (21 feet!) to collect light from galaxies that are 13.5 BILLION light-years away. Its optics can detect the heat signature of a bumblebee on the Moon! \ud83d\udc1d\ud83c\udf19",
+        content: "\ud83e\udde0 **Think Like An Optical Engineer**\n\n1. Why do cameras with BIGGER lenses take better photos in low light? \ud83d\udcf7\n2. Why do nearsighted people need **concave** lenses (thinner in the middle) instead of convex?\n3. How does a **projector** use a lens to create a huge image on a wall from a tiny **LCD** (liquid crystal display) screen?\n\n**Real-world connection:** The James Webb Space Telescope uses a 6.5-meter mirror (21 feet!) to collect light from galaxies that are 13.5 BILLION light-years away. Its optics can detect the heat signature of a bumblebee on the Moon! \ud83d\udc1d\ud83c\udf19",
         options: [
             { id: 'reflect_good', label: "Bigger lenses collect more light photons over a larger area, so they can capture dimmer scenes!", nextNodeId: 'reflection_feedback', sentiment: 'positive' },
             { id: 'reflect_bad', label: "Bigger lenses just zoom in more.", nextNodeId: 'reflection_retry' }

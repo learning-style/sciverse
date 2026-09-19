@@ -79,7 +79,7 @@ export const getC12Script = (): Record<string, DialogNode> => ({
     'carbon_special': {
         id: 'carbon_special',
         speaker: 'AI',
-        content: "YES! Carbon is the **miracle element**: it has 4 valence electrons and can form 4 bonds, including long chains and rings with itself. This creates the incredible complexity of organic chemistry — proteins, DNA, carbohydrates, fuels... all carbon chains! 🧬\n\nIn the sim, click carbon and count the electrons in its outer shell!",
+        content: "YES! Carbon is the **miracle element**: it has 4 valence electrons and can form 4 bonds, including long chains and rings with itself. This creates the incredible complexity of organic chemistry — proteins, DNA (**deoxyribonucleic acid**), carbohydrates, fuels... all carbon chains! 🧬\n\nIn the sim, click carbon and count the electrons in its outer shell!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'molecule_builder', showMoleculeMode: true } },
         options: [
             { id: 'built_one', label: "Carbon has 4 outer electrons — room for 4 bonds!", nextNodeId: 'summary' }
