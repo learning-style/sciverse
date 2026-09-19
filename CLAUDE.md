@@ -53,6 +53,13 @@ single most common defect found in review — a flux with no reservoir named, a
 "sink" defined against a different reservoir than its own fluxes, "in" and "out"
 with no referent. The science was right every time; the frame was unstated.
 
+**Every acronym is expanded at its first use in each lesson** — in the prose a
+learner reads, not in a file comment, and per lesson rather than once per
+curriculum, because a lesson has to stand on its own. *ASCII* appeared in L2P14
+with no expansion; *DNA* was unexpanded in all 14 lessons that used it. A
+lesson that leans on an earlier lesson's expansion still restates it: L3C13
+used *HDPE* because C13 had spelled it out.
+
 **Every formula must state its condition.** `Q = mcΔT` holds within one state of
 matter. `pV/T` describes an ideal gas. `1 − (1−p)ⁿ` assumes independence. Say so
 where the formula is introduced, not only at the end.
@@ -76,6 +83,13 @@ drawing their own footer; label type 13–16px.
 `LabCanvas` owns sizing, the animation loop, the control panel and the heading
 and footer bands. Its three-zone layout exists to make overlap impossible — most
 of the rules above came from a defect found on screen.
+
+**Every number the canvas prints must be named by a word beside it.** A unit is
+not a name: `0.9` and `3.0` on two atoms were electronegativities with nothing
+on screen saying so, and `104.5°` was a bond angle. Either name the quantity in
+the same string (`bond angle 104.5°`, `torque 12.5 N m`) or in a caption that
+clearly governs it. Formula lines (`Q = 300 g x c x 20 °C`) already name
+themselves through their symbols.
 
 **`Accent` is a closed union: `indigo | emerald | rose`** (physics/chemistry/
 biology). Anything else is a type error, not a fallback.
