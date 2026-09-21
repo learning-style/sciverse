@@ -80,6 +80,25 @@ Canvas scenes anchor to `stageTop`/`stageBottom`, never canvas height. Nothing
 above y=70; text may sit at y 74–122; scenes `return { meter, note }` rather than
 drawing their own footer; label type 13–16px.
 
+**`stageTop` is the constant 124, and a scene's own two text lines sit *above*
+it** at y 94 and 118, in the band between the header and the stage. Artwork
+belongs below `stageTop` — not alongside that text.
+
+**Scale artwork to the height available, and centre it in the stage.** Pinning a
+scene near `stageTop` at a fixed pixel size crowds the writing above it and
+leaves the lower half of the stage empty: L3C14 drew a 58px molecule at
+`stageTop + 52` with ~200px unused beneath it. Derive sizes from
+`stageBottom - stageTop`, and where a size depends on a control, measure the
+composition at its largest setting so it holds place instead of drifting as the
+dial moves. Attach a label to the thing it describes rather than to a fixed
+offset.
+
+**A layout cannot be checked by reading it, and there is no browser here.**
+Verify one by replicating the geometry in Python across several canvas widths
+and heights with both controls at their extremes, asserting that nothing reaches
+the text band above or the footer lines below. That is how the relayout above
+was confirmed.
+
 `LabCanvas` owns sizing, the animation loop, the control panel and the heading
 and footer bands. Its three-zone layout exists to make overlap impossible — most
 of the rules above came from a defect found on screen.
