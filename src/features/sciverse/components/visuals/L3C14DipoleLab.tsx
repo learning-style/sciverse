@@ -24,10 +24,29 @@ export const L3C14DipoleLab = ({ state, onStateChange }: Props) => {
         const cancels = total < 0.05;
 
         // The molecule: a central atom with two bonds opening at the angle,
-        // drawn pointing down the page so the sum runs up the line of symmetry
+        // drawn pointing down the page so the sum runs up the line of symmetry.
+        //
+        // The stage runs from stageTop (124) to stageBottom, and this scene's own
+        // two text lines sit above stageTop at y 94 and 118. So the artwork starts
+        // clear of that band and is scaled to the height actually available,
+        // rather than pinned near the top at a fixed size with the stage left
+        // empty below it.
         const cx = safeRight / 2;
-        const cy = Math.min(stageTop + 52, stageBottom - 96);
-        const len = 58;
+        const artTop = stageTop + 18;
+        const artBottom = stageBottom - 52;
+        const avail = Math.max(110, artBottom - artTop);
+        // Room above the centre atom for the resultant arrow and its label
+        const sumRoom = Math.max(44, Math.min(130, avail * 0.4));
+        const tilt = (90 - half) * (Math.PI / 180);
+        // The bonds must fit the space below the centre atom at the widest opening
+        // (0.87 is sin 60°, the steepest this dial reaches) and must not run wider
+        // than the stage when the molecule goes linear
+        const len = Math.max(30, Math.min(120, (avail - sumRoom - 38) / 0.87, safeRight * 0.5 - 48));
+        // Centre the whole composition in the stage rather than hanging it from the
+        // top and leaving the slack below. Measured at the widest opening so the
+        // molecule holds its place instead of drifting as the dial moves.
+        const blockH = sumRoom + 0.87 * len + 38;
+        const cy = artTop + Math.max(0, (avail - blockH) / 2) + sumRoom;
         const arrow = (from: [number, number], to: [number, number], colour: string, width: number) => {
             ctx.strokeStyle = colour;
             ctx.lineWidth = width;
@@ -46,23 +65,28 @@ export const L3C14DipoleLab = ({ state, onStateChange }: Props) => {
         };
 
         // Each bond arrow points away from the centre, towards the stronger puller
-        const tilt = (90 - half) * (Math.PI / 180);
         const ends: [number, number][] = [
             [cx - Math.cos(tilt) * len, cy + Math.sin(tilt) * len],
             [cx + Math.cos(tilt) * len, cy + Math.sin(tilt) * len],
         ];
+        const lowest = cy + Math.sin(tilt) * len + 16;
+
+        // The line of symmetry, which is where halving the angle comes from
+        ctx.save();
+        ctx.setLineDash([4, 4]);
         ctx.strokeStyle = '#cbd5e1';
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(cx, cy - 40);
-        ctx.lineTo(cx, cy + len + 14);
+        ctx.moveTo(cx, cy - sumRoom + 6);
+        ctx.lineTo(cx, lowest + 6);
         ctx.stroke();
-        outlineText(ctx, 'line of symmetry', cx + 6, cy - 30, '10px monospace', '#94a3b8', 'left', 140);
+        ctx.restore();
+        outlineText(ctx, 'line of symmetry', cx + 8, cy - sumRoom + 16, '10px monospace', '#94a3b8', 'left', 130);
 
         for (const end of ends) {
-            arrow([cx, cy], end, EMERALD, 2.5);
+            arrow([cx, cy], end, EMERALD, 3);
             ctx.beginPath();
-            ctx.arc(end[0], end[1], 12, 0, Math.PI * 2);
+            ctx.arc(end[0], end[1], 14, 0, Math.PI * 2);
             ctx.fillStyle = '#d1fae5';
             ctx.fill();
             ctx.strokeStyle = '#0f172a';
@@ -70,21 +94,23 @@ export const L3C14DipoleLab = ({ state, onStateChange }: Props) => {
             ctx.stroke();
         }
         ctx.beginPath();
-        ctx.arc(cx, cy, 15, 0, Math.PI * 2);
+        ctx.arc(cx, cy, 17, 0, Math.PI * 2);
         ctx.fillStyle = '#f1f5f9';
         ctx.fill();
         ctx.strokeStyle = '#0f172a';
         ctx.lineWidth = 1.2;
         ctx.stroke();
-        outlineText(ctx, `bond angle ${angle.toFixed(1)}°`, cx, cy + 34, 'bold 12px monospace', '#475569', 'center', 150);
+        // Sits under the molecule it describes, never below the art area
+        outlineText(ctx, `bond angle ${angle.toFixed(1)}°`, cx, Math.min(lowest + 22, artBottom),
+            'bold 12px monospace', '#475569', 'center', safeRight - 60);
 
-        // The vector sum, down the line of symmetry
+        // The vector sum, up the line of symmetry
         if (!cancels) {
-            const sumLen = (total / (2 * 2)) * 84;
-            arrow([cx, cy], [cx, cy - Math.max(10, sumLen)], SUM, 3.5);
-            outlineText(ctx, 'vector sum', cx - 8, cy - Math.max(10, sumLen) - 8, '11px monospace', SUM, 'right', 120);
+            const sumLen = Math.max(14, (total / 4) * (sumRoom - 26));
+            arrow([cx, cy], [cx, cy - sumLen], SUM, 4);
+            outlineText(ctx, 'vector sum', cx - 12, cy - sumLen - 10, '11px monospace', SUM, 'right', 120);
         } else {
-            outlineText(ctx, 'the arrows cancel', cx, cy - 16, 'bold 12px monospace', SUM, 'center', safeRight - 60);
+            outlineText(ctx, 'the arrows cancel', cx, cy - sumRoom * 0.5, 'bold 12px monospace', SUM, 'center', safeRight - 60);
         }
 
         outlineText(ctx, `2 x ${mu.toFixed(2)} x cos(${half.toFixed(2)}°) = ${total.toFixed(2)} D`,

@@ -94,7 +94,7 @@ export const bigIdea14Level2Assessment: AssessmentData = {
             options: ['More bits make the link faster', 'Because text needs about 95 printable symbols once capitals, digits and punctuation are counted', 'Because 5 is an odd number', 'Because letters need more bits than digits do'],
             correctIndex: 1,
             hint: 'Count everything on a keyboard, not just the letters.',
-            explanation: '26 small letters + 26 capitals + 10 digits + about 33 punctuation marks and a space is roughly 95 symbols. 2⁵ = 32 and 2⁶ = 64 are both too few, so ASCII uses 7 bits (128), stored in a byte of 8. More bits make a message longer, not faster.'
+            explanation: '26 small letters + 26 capitals + 10 digits + about 33 punctuation marks and a space is roughly 95 symbols. 2⁵ = 32 and 2⁶ = 64 are both too few, so ASCII -- the American Standard Code for Information Interchange -- uses 7 bits (128), stored in a byte of 8. More bits make a message longer, not faster.'
         },
         // ── HARD ──
         {
