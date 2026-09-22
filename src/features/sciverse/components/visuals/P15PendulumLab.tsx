@@ -73,8 +73,8 @@ export const P15PendulumLab = ({ state, onStateChange }: P15PendulumLabProps) =>
         ctx.lineTo(pivotX + 120, pivotY);
         ctx.stroke();
 
-        // String
-        ctx.strokeStyle = '#e2e8f0';
+        // String: dark, because the canvas behind it is white
+        ctx.strokeStyle = '#475569';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(pivotX, pivotY);
@@ -109,7 +109,7 @@ export const P15PendulumLab = ({ state, onStateChange }: P15PendulumLabProps) =>
 
         // Resonance prompt
         if (resonanceMode) {
-            ctx.fillStyle = '#22d3ee';
+            ctx.fillStyle = '#0e7490';
             ctx.font = 'bold 11px monospace';
             ctx.fillText(`Driving @ ${pushFreq.toFixed(2)} Hz | Natural ${naturalFreq.toFixed(2)} Hz`, W / 2, H * 0.78);
             if (Math.abs(pushFreq - naturalFreq) < 0.15) {
@@ -127,7 +127,7 @@ export const P15PendulumLab = ({ state, onStateChange }: P15PendulumLabProps) =>
         ctx.fillRect(12, py, W - 24, H - py - 8);
         ctx.strokeStyle = '#334155';
         ctx.strokeRect(12, py, W - 24, H - py - 8);
-        ctx.fillStyle = '#475569';
+        ctx.fillStyle = '#e2e8f0';
         ctx.font = '10px monospace';
         ctx.textAlign = 'left';
         ctx.fillText(`Length: ${lengthCm} cm`, 18, py + 13);

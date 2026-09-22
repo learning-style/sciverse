@@ -60,7 +60,7 @@ export const getB15Script = (): Record<string, DialogNode> => ({
     'reintroduce': {
         id: 'reintroduce',
         speaker: 'AI',
-        content: "History recreated! Now try **reintroducing wolves** while deer are very high.\n\nThis is exactly what happened in Yellowstone in 1995 — the first wolf reintroduction in 70 years. Scientists expected it to only help deer—but wolves also changed where deer grazed, which:\n- Allowed riverside trees to regrow\n- Stabilized riverbanks (tree roots)\n- Changed river paths (**trophic cascade**)!\n\nThis is a **trophic cascade** — predators changing the whole landscape, not just prey numbers. 🏞️",
+        content: "History recreated! Now try **reintroducing wolves** while deer are very high.\n\nThis is exactly what happened in Yellowstone in 1995 — the first wolf reintroduction in 70 years. The big grazers there are **elk**, not deer. Scientists expected the wolves only to reduce elk numbers—but the elk also changed **where** they grazed, which:\n- Allowed riverside trees to regrow\n- Stabilized riverbanks (tree roots)\n- Has been linked to changes in river channels (**trophic cascade**)!\n\nThis is a **trophic cascade** — predators changing the whole landscape, not just prey numbers. 🏞️",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'reintroduce', showReintroduceButton: true } },
         options: [
             { id: 'reintroduced', label: "After reintroduction, both populations settled into stable cycles!", nextNodeId: 'summary' }
@@ -70,7 +70,7 @@ export const getB15Script = (): Record<string, DialogNode> => ({
     'summary': {
         id: 'summary',
         speaker: 'AI',
-        content: "🌟 **Predator-Prey Dynamics Mastered:**\n\n✅ Predators stabilize prey populations — preventing boom-bust\n✅ Lotka-Volterra: oscillating populations with time lag\n✅ Removing predators → prey overshoots → crashes below original level\n✅ Trophic cascades: predator effects ripple through entire ecosystems\n✅ Yellowstone wolves: changed rivers by changing deer behavior!\n\n**Big picture:** Balance in nature is dynamic (like chemical equilibrium!) — not static. Disruption causes oscillation, recovery takes time. 🌍",
+        content: "🌟 **Predator-Prey Dynamics Mastered:**\n\n✅ Predators stabilize prey populations — preventing boom-bust\n✅ Lotka-Volterra: oscillating populations with time lag\n✅ Removing predators → prey overshoots → crashes below original level\n✅ Trophic cascades: predator effects ripple through entire ecosystems\n✅ Yellowstone wolves: changed riverbanks by changing elk behavior!\n\n**Big picture:** Balance in nature is dynamic (like chemical equilibrium!) — not static. Disruption causes oscillation, recovery takes time. 🌍",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: [{ id: 'done', label: "Ecology makes sense! I'll never look at wolves the same way.", nextNodeId: 'done' }]
     },

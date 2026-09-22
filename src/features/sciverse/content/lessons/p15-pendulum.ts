@@ -10,7 +10,7 @@ export const getP15Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "Welcome to the Oscillation Lab! ⏱️\n\nA grandfather clock pendulum is swinging in the simulation. Each back-and-forth swing takes exactly **1 second**.\n\nHere's your first question: if you attach a **heavier bob** to the same pendulum length, does the swing time (period) change?",
+        content: "Welcome to the Oscillation Lab! ⏱️\n\nA pendulum is swinging in the simulation. It is **25 cm** long, and each back-and-forth swing takes about **1 second**.\n\nHere's your first question: if you attach a **heavier bob** to the same pendulum length, does the swing time (period) change?",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', length: 0.25, mass: 1, angle: 15 } },
         options: [
             { id: 'faster_heavy', label: "Yes — heavier means more gravitational pull, so it swings faster.", nextNodeId: 'misconception_heavy', sentiment: 'negative' },
@@ -40,7 +40,7 @@ export const getP15Script = (): Record<string, DialogNode> => ({
     'correct_mass': {
         id: 'correct_mass',
         speaker: 'AI',
-        content: "Yes! The period of a pendulum depends ONLY on **length** and **gravity** — not mass, not starting angle (for small swings).\n\nThe formula is: **T = 2π √(L/g)**\n\nWhere L = length in meters, g = 9.81 m/s² (Earth's gravity)\n\nFor a 25cm (0.25m) pendulum: T = 2π √(0.25/9.81) ≈ **1.0 second** — that's a grandfather clock!\n\nTry adjusting the **Length slider** — watch the period change!",
+        content: "Yes! The period of a pendulum depends ONLY on **length** and **gravity** — not mass, not starting angle (for small swings).\n\nThe formula is: **T = 2π √(L/g)**\n\nWhere L = length in meters, g = 9.81 m/s² (Earth's gravity)\n\nFor a 25cm (0.25m) pendulum: T = 2π √(0.25/9.81) ≈ **1.0 second**.\n\nA grandfather clock is bigger: its pendulum is about **1 metre** long and takes **2 seconds** for a full back-and-forth, ticking once on each half swing. Four times the length, twice the time — because of the square root.\n\nTry adjusting the **Length slider** — watch the period change!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'length_demo', showLengthSlider: true, showPeriodCounter: true } },
         options: [
             { id: 'longer_slower', label: "Longer pendulum = slower swing! Shorter = faster.", nextNodeId: 'resonance' }

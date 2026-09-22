@@ -19,8 +19,10 @@ export const C15EquilibriumLab = ({ state, onStateChange }: C15EquilibriumLabPro
     const animRef = useRef<number>(0);
     const moleculesRef = useRef<Molecule[]>([]);
 
-    const [reactants, setReactants] = useState(18);
-    const [products, setProducts] = useState(2);
+    // Only seed the molecule list; the live counts are rCount and pCount below,
+    // so these must not be React state rewritten on every animation frame
+    const reactants = 18;
+    const products = 2;
     const [running, setRunning] = useState(true);
     const [temperature, setTemperature] = useState(50);
 
@@ -101,9 +103,6 @@ export const C15EquilibriumLab = ({ state, onStateChange }: C15EquilibriumLabPro
 
         const rCount = moleculesRef.current.filter(m => m.type === 'reactant').length;
         const pCount = moleculesRef.current.length - rCount;
-        setReactants(rCount);
-        setProducts(pCount);
-
         historyRef.current.push({ r: rCount, p: pCount });
         if (historyRef.current.length > 120) historyRef.current.shift();
 
@@ -124,10 +123,10 @@ export const C15EquilibriumLab = ({ state, onStateChange }: C15EquilibriumLabPro
             }
         }
 
-        ctx.fillStyle = '#93c5fd';
+        ctx.fillStyle = '#1d4ed8';
         ctx.font = '12px monospace';
         ctx.fillText(`Reactants: ${rCount}`, rx + rw / 2, ry + rh + 16);
-        ctx.fillStyle = '#fca5a5';
+        ctx.fillStyle = '#b91c1c';
         ctx.fillText(`Products: ${pCount}`, px + pw / 2, py + ph + 16);
 
         // Graph panel

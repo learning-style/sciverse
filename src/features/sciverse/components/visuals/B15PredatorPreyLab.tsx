@@ -64,7 +64,8 @@ export const B15PredatorPreyLab = ({ state, onStateChange }: B15PredatorPreyLabP
         ctx.fillStyle = '#14532d';
         ctx.fillRect(0, 0, W, fieldH);
 
-        ctx.fillStyle = '#1e293b';
+        // Light, because this sits on the dark green field
+        ctx.fillStyle = '#f1f5f9';
         ctx.font = 'bold 17px monospace';
         ctx.textAlign = 'center';
         ctx.fillText('Predator-Prey Dynamics Lab', W / 2, 24);
@@ -139,12 +140,12 @@ export const B15PredatorPreyLab = ({ state, onStateChange }: B15PredatorPreyLabP
         ctx.fillStyle = '#fbbf24';
         ctx.font = '11px monospace';
         ctx.fillText(`Deer: ${Math.round(deer)}`, gx + 8, gy + gh - 10);
-        ctx.fillStyle = '#64748b';
+        ctx.fillStyle = '#cbd5e1';
         ctx.textAlign = 'right';
         ctx.fillText(`Wolves: ${Math.round(wolves)}`, gx + gw - 8, gy + gh - 10);
 
-        // Key insight
-        ctx.fillStyle = '#86efac';
+        // Key insight, drawn on the white band below the field
+        ctx.fillStyle = '#15803d';
         ctx.font = '10px monospace';
         ctx.textAlign = 'center';
         if (wolves < 2) {
