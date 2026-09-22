@@ -244,6 +244,12 @@ import { getL2B14Script } from './l2b14-genetic-code-size';
 import { getL3P14Script } from './l3p14-sampling';
 import { getL3C14Script } from './l3c14-molecular-polarity';
 import { getL3B14Script } from './l3b14-copying-mistakes';
+import { getL2P15Script } from './l2p15-pendulum-period';
+import { getL2C15Script } from './l2c15-which-way-shifts';
+import { getL2B15Script } from './l2b15-balance-point';
+import { getL3P15Script } from './l3p15-swing-size';
+import { getL3C15Script } from './l3c15-powers-and-ice';
+import { getL3B15Script } from './l3b15-cycle-length';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1258,6 +1264,12 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p14': getL3P14Script,
     'l3c14': getL3C14Script,
     'l3b14': getL3B14Script,
+    'l2p15': getL2P15Script,
+    'l2c15': getL2C15Script,
+    'l2b15': getL2B15Script,
+    'l3p15': getL3P15Script,
+    'l3c15': getL3C15Script,
+    'l3b15': getL3B15Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1766,6 +1778,14 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p14', title: 'Turning a Wave into Numbers', subtitle: 'Sampling rate, bit depth, and the tone nobody played', discipline: 'physics', bigIdea: 14, bigIdeaTitle: 'How Is Information Coded and Transmitted?', icon: '🎚️', accentColor: 'indigo', crossLinks: ['l2p14', 'p14'], level: 3 },
     { id: 'l3c14', title: 'Polar Bonds, Nonpolar Molecule', subtitle: 'Bond dipoles add as vectors: 2 x dipole x cos(A/2)', discipline: 'chemistry', bigIdea: 14, bigIdeaTitle: 'How Is Information Coded and Transmitted?', icon: '🧭', accentColor: 'emerald', crossLinks: ['l2c14', 'c14'], level: 3 },
     { id: 'l3b14', title: 'Which Mistakes Matter?', subtitle: '138 of 576 swaps are silent; a frameshift is not', discipline: 'biology', bigIdea: 14, bigIdeaTitle: 'How Is Information Coded and Transmitted?', icon: '🩸', accentColor: 'rose', crossLinks: ['l2b14', 'b14'], level: 3 },
+
+    { id: 'l2p15', title: 'How Long Is the Swing?', subtitle: 'The period law worked both ways: T = 2π √(L/g)', discipline: 'physics', bigIdea: 15, bigIdeaTitle: 'How Do Systems Find Balance?', icon: '⏱️', accentColor: 'indigo', crossLinks: ['p15', 'l2p12'], level: 2 },
+    { id: 'l2c15', title: 'Which Way Will It Shift?', subtitle: 'Q against K predicts the direction', discipline: 'chemistry', bigIdea: 15, bigIdeaTitle: 'How Do Systems Find Balance?', icon: '⚗️', accentColor: 'emerald', crossLinks: ['c15', 'l2c5'], level: 2 },
+    { id: 'l2b15', title: 'When Do the Numbers Hold Steady?', subtitle: 'Births against losses, and the lag that makes a cycle', discipline: 'biology', bigIdea: 15, bigIdeaTitle: 'How Do Systems Find Balance?', icon: '🐾', accentColor: 'rose', crossLinks: ['b15', 'l2p15'], level: 2 },
+
+    { id: 'l3p15', title: 'How Big Is the Swing?', subtitle: 'The amplitude correction: T = T₀ (1 + θ²/16)', discipline: 'physics', bigIdea: 15, bigIdeaTitle: 'How Do Systems Find Balance?', icon: '📐', accentColor: 'indigo', crossLinks: ['l2p15', 'p15'], level: 3 },
+    { id: 'l3c15', title: 'Powers, Not Just Ratios', subtitle: 'Balancing numbers as exponents, solved with an ICE table', discipline: 'chemistry', bigIdea: 15, bigIdeaTitle: 'How Do Systems Find Balance?', icon: '🧊', accentColor: 'emerald', crossLinks: ['l2c15', 'c15'], level: 3 },
+    { id: 'l3b15', title: 'Why Ten Years?', subtitle: 'Lotka-Volterra equilibria and the length of one lap', discipline: 'biology', bigIdea: 15, bigIdeaTitle: 'How Do Systems Find Balance?', icon: '🔁', accentColor: 'rose', crossLinks: ['l2b15', 'b15'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },

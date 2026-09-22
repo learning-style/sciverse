@@ -142,6 +142,12 @@ import { L2B14CodeLab } from './L2B14CodeLab';
 import { L3P14SampleLab } from './L3P14SampleLab';
 import { L3C14DipoleLab } from './L3C14DipoleLab';
 import { L3B14MutationLab } from './L3B14MutationLab';
+import { L2P15PeriodLab } from './L2P15PeriodLab';
+import { L2C15ShiftLab } from './L2C15ShiftLab';
+import { L2B15BalanceLab } from './L2B15BalanceLab';
+import { L3P15SwingLab } from './L3P15SwingLab';
+import { L3C15IceLab } from './L3C15IceLab';
+import { L3B15CycleLab } from './L3B15CycleLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -295,4 +301,10 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p14: L3P14SampleLab,
     l3c14: L3C14DipoleLab,
     l3b14: L3B14MutationLab,
+    l2p15: L2P15PeriodLab,
+    l2c15: L2C15ShiftLab,
+    l2b15: L2B15BalanceLab,
+    l3p15: L3P15SwingLab,
+    l3c15: L3C15IceLab,
+    l3b15: L3B15CycleLab,
 };
