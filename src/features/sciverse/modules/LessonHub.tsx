@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Atom, Beaker, Dna } from 'lucide-react';
 import { LESSON_REGISTRY } from '../content/lessons';
 import { Discipline } from '../types';
+import { ALL_TAGS, BIG_IDEA_TAGS } from '../content/tags';
 
 const DISCIPLINE_BADGE: Record<Discipline, { icon: typeof Atom; label: string; bg: string; text: string }> = {
     physics: { icon: Atom, label: 'Physics', bg: 'bg-indigo-50 border-indigo-200', text: 'text-indigo-700' },
@@ -120,6 +121,22 @@ export const LessonHub = () => {
                     ))}
                 </div>
                 <p className="text-slate-500 text-xs max-w-xl mx-auto mt-3">{active.blurb}</p>
+
+                {/* Threads: the same lessons followed by subject matter instead */}
+                <div className="mt-6">
+                    <p className="text-[11px] tracking-widest text-slate-500 uppercase mb-2">Or follow a thread</p>
+                    <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
+                        {ALL_TAGS.map(t => (
+                            <Link
+                                key={t}
+                                to={`/projects/science-lab/tag/${t}`}
+                                className="px-2.5 py-1 rounded-full border border-slate-200 bg-white text-slate-600 text-xs hover:border-indigo-400 hover:text-indigo-700 transition-colors"
+                            >
+                                #{t}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
                 <div className="flex justify-center gap-6 mt-6">
                     {Object.entries(DISCIPLINE_BADGE).map(([key, d]) => {
                         const Icon = d.icon;
@@ -142,9 +159,20 @@ export const LessonHub = () => {
                         <section key={bigIdeaNum} className={`rounded-xl border border-slate-200 bg-gradient-to-br ${BIG_IDEA_COLORS[bigIdeaNum - 1]} overflow-hidden`}>
                             {/* Big Idea Header */}
                             <div className="px-6 py-4 border-b border-slate-200">
-                                <div className="flex items-baseline gap-3">
+                                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                                     <span className="text-xs font-bold tracking-widest text-slate-600 uppercase">Big Idea {bigIdeaNum}</span>
                                     <h2 className="text-lg font-bold text-slate-900">{title}</h2>
+                                    <span className="flex flex-wrap gap-2 ml-auto">
+                                        {(BIG_IDEA_TAGS[bigIdeaNum] ?? []).map(t => (
+                                            <Link
+                                                key={t}
+                                                to={`/projects/science-lab/tag/${t}`}
+                                                className="text-[11px] text-slate-500 hover:text-indigo-700 hover:underline"
+                                            >
+                                                #{t}
+                                            </Link>
+                                        ))}
+                                    </span>
                                 </div>
                             </div>
 

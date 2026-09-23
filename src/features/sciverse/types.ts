@@ -81,6 +81,8 @@ export type SimAction =
 
 // --- Lesson Metadata Types ---
 
+import type { Tag } from './content/tags';
+
 export type Discipline = 'physics' | 'chemistry' | 'biology';
 
 export interface LessonMeta {
@@ -93,6 +95,8 @@ export interface LessonMeta {
     icon: string;
     accentColor: string;
     crossLinks: string[];
+    /** Threads, when a lesson's differ from its Big Idea's. Otherwise inherited. */
+    tags?: Tag[];
     /** Grade band. Absent or 1 = grades 3-5. 2 = grades 6-8. 3 = grades 9-12. */
     level?: 1 | 2 | 3;
 }
