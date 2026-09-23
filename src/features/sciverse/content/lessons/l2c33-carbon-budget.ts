@@ -13,7 +13,7 @@ export function getL2C33Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "In the 1640s a scientist called Jan van Helmont tried an experiment that took him five years.\n\nHe planted a small willow tree in a pot, and he weighed everything first. The tree: **2.3 kg**. The dry soil: **90.7 kg**.\n\nFive years later he weighed it all again. The tree now weighed **76.7 kg** -- it had gained **74.4 kg** of new wood, bark and leaves.\n\nAnd the soil had lost **57 grams**. Not 57 kilograms. Fifty-seven **grams**.\n\nSo where did the other 74.3 kg come from?",
+            content: "In the 1640s a scientist called Jan van Helmont tried an experiment that took him five years.\n\nHe planted a small willow tree in a pot, and he weighed everything first. The tree: **2.3 kg**. The dry soil: **90.7 kg**.\n\nFive years later he weighed it all again. The tree now weighed **76.7 kg** -- it had gained **74.4 kg** of new wood, bark and leaves.\n\nAnd the soil had lost **57 grams**. Not 57 kilograms. Fifty-seven **grams**.\n\nThe two dials under the picture name two processes. **Photosynthesis** is the process a plant uses to build its own material rather than taking it in ready made. **Decomposition** is the rotting of dead material once it dies.\n\nSo where did the other 74.3 kg come from?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "Out of the air and the water. A gas has mass too, and the tree was pulling carbon dioxide out of the atmosphere the whole five years.", nextNodeId: 'correct', sentiment: 'positive' },

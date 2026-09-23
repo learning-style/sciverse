@@ -18,7 +18,7 @@ export function getL2C1Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "In Level 1 you learned that heating something makes its particles move faster. Now we can work out **exactly how much energy** that takes.\n\nHere is an experiment you could actually run. Take **100 g of water** and **100 g of iron**. Heat each with the same heater for the same length of time, so each receives the **same amount of energy**.\n\nSuppose the water warms by **10 °C**. The iron warms by about **93 °C** -- roughly nine times as much.\n\nSame mass. Same energy in. Why does one get so much hotter than the other?",
+            content: "In Level 1 you learned that heating something makes its particles move faster. Now we can work out **exactly how much energy** that takes.\n\nHere is an experiment you could actually run. Take **100 g of water** and **100 g of iron**. Heat each with the same heater for the same length of time, so each receives the **same amount of energy**.\n\nSuppose the water warms by **10 °C**. The iron warms by about **93 °C** -- roughly nine times as much.\n\nOne dial under the picture is the **temperature rise**: not how hot something is, but how many degrees **warmer** it has become, in °C.\n\nSame mass. Same energy in. Why does one get so much hotter than the other?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "Iron must need less energy for each degree, so the same energy buys it many more degrees than it buys the water.", nextNodeId: 'defining', sentiment: 'positive' },

@@ -19,7 +19,7 @@ export function getL3B10Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "L2B10 counted 100 plants in one patch, and named what it held fixed: **the patch stood for the whole place**.\n\nEcologists who count bigger and bigger areas find that new species keep turning up -- but more and more slowly.\n\nA forest holds **400 species** of plants. A plan would clear **half** of the forest.\n\nDoes the forest lose **half** of its species?",
+            content: "L2B10 counted 100 plants in one patch, and named what it held fixed: **the patch stood for the whole place**.\n\nEcologists who count bigger and bigger areas find that new species keep turning up -- but more and more slowly.\n\nA forest holds **400 species** of plants. A plan would clear **half** of the forest.\n\nThe dial under the picture is labelled **power z**. It is the exponent in the species-area rule: the number of species rises as the area raised to the power z, so a small z means new species turn up only slowly as you search wider.\n\nDoes the forest lose **half** of its species?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "No -- far fewer than half. Most species live all over the forest, so the half that is left still holds most of them. Only the species found just in the cleared half disappear.", nextNodeId: 'species_area', sentiment: 'positive' },

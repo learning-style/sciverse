@@ -21,7 +21,7 @@ export function getL3C15Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "L2C15 gave you a ratio that predicts which way a reaction moves:\n\n**K = product / reactant**\n\nand it worked, because every reaction there turned one particle into one particle.\n\nReal equations are not so obliging. Hydrogen and iodine make hydrogen iodide:\n\n**H₂ + I₂ ⇌ 2HI**\n\nOne molecule of each goes in; **two** come out. So when you write the ratio for this reaction, what do you do with that 2?",
+            content: "L2C15 gave you a ratio that predicts which way a reaction moves:\n\n**K = product / reactant**\n\nand it worked, because every reaction there turned one particle into one particle.\n\nReal equations are not so obliging. Hydrogen and iodine make hydrogen iodide:\n\n**H₂ + I₂ ⇌ 2HI**\n\nThat ratio has a proper name, and it is the dial under the picture: the **equilibrium constant, Kc**. The c is there because it is worked out from **concentrations** -- how much of each substance sits in each litre.\n\nOne molecule of each goes in; **two** come out. So when you write the ratio for this reaction, what do you do with that 2?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "It becomes a power: the HI concentration is squared, because two molecules of it are involved. The balancing numbers turn into exponents.", nextNodeId: 'defining', sentiment: 'positive' },

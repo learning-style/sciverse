@@ -18,7 +18,7 @@ export function getL2C12Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "C12 told one of science's boldest stories. In **1869**, Mendeleev sorted the known elements and found gaps where no element was known. Rather than closing the gaps, he left them open -- and wrote down what the missing elements would be like.\n\nYears later they were found, and his predictions were close.\n\nHow could anyone describe an element that nobody had ever seen?",
+            content: "C12 told one of science's boldest stories. In **1869**, Mendeleev sorted the known elements and found gaps where no element was known. Rather than closing the gaps, he left them open -- and wrote down what the missing elements would be like.\n\nYears later they were found, and his predictions were close.\n\nTwo words for the dials under the picture.\n\nA **period** is one across-the-page row of the periodic table, so the **hidden element's period** is which row the gap sits in. **Neighbours used** is how many of the elements surrounding that gap you average together to predict it.\n\nHow could anyone describe an element that nobody had ever seen?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "From its neighbours. Properties change smoothly across the table, so an element in a gap should sit between the ones above, below and beside it -- roughly their average.", nextNodeId: 'defining', sentiment: 'positive' },

@@ -20,7 +20,7 @@ export function getL2P14Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "P14 sent the letter **A** down a wire as **01000001** -- eight on-off pulses. Each of those pulses is a **bit**: one switch that is either 1 or 0.\n\nEight bits seems a lot for one letter. The alphabet has only 26.\n\nHow many different patterns can you actually make with 8 bits?",
+            content: "P14 sent the letter **A** down a wire as **01000001** -- eight on-off pulses. Each of those pulses is a **bit**: one switch that is either 1 or 0.\n\nEight bits seems a lot for one letter. The alphabet has only 26.\n\nOne dial under the picture is **bits for each symbol**: how many of those on-off pulses you are willing to spend on a single letter.\n\nHow many different patterns can you actually make with 8 bits?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "Lots -- each bit doubles the count, so it is 2 multiplied by itself 8 times: 256 patterns.", nextNodeId: 'defining', sentiment: 'positive' },

@@ -5,7 +5,7 @@ export function getB47Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "Look up at a single oak tree and you might find **five** different kinds of small bird in it at once. They are all about the same size. They all eat insects.\n\nThey should be fighting over every caterpillar. Instead they sit there quite happily.\n\nHow can five bird species share one tree?",
+            content: "Look up at a single oak tree and you might find **five** different kinds of small bird in it at once. They are all about the same size. They all eat insects.\n\nThey should be fighting over every caterpillar. Instead they sit there quite happily.\n\nThe dial under the picture is **how much they overlap**: how far two of those birds want the very same food in the very same part of the tree.\n\nHow can five bird species share one tree?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "They feed in different parts of the tree, so they are not really after the same insects at all.", nextNodeId: 'correct', sentiment: 'positive' },

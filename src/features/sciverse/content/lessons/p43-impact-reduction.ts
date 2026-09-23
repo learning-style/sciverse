@@ -5,7 +5,7 @@ export function getP43Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "Jump off a chair onto concrete and it hurts. Jump the same height onto a thick crash mat and you barely feel it.\n\nYou fell the same distance and you were moving at the same speed when you landed. So why does one hurt and the other does not?",
+            content: "Jump off a chair onto concrete and it hurts. Jump the same height onto a thick crash mat and you barely feel it.\n\nYou fell the same distance and you were moving at the same speed when you landed.\n\nThe dial under the picture is the **crumple distance**: how far the thing you land on squashes down while it brings you to a stop.\n\nSo why does one hurt and the other does not?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "The mat takes longer to stop you, and a slower stop means a much smaller force on your body.", nextNodeId: 'correct', sentiment: 'positive' },

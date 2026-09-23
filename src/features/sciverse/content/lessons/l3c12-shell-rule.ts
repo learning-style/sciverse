@@ -18,7 +18,7 @@ export function getL3C12Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "L2C12 predicted germanium by averaging its neighbours -- and named what it held fixed: **the table was a pattern to copy, not a rule to explain**.\n\nSo look at the table's shape itself. Count the elements in each row:\n\n**2, 8, 8, 18, 18, 32**\n\nWhy those numbers? Why does hydrogen's row hold only two elements, and the next two rows exactly eight?",
+            content: "L2C12 predicted germanium by averaging its neighbours -- and named what it held fixed: **the table was a pattern to copy, not a rule to explain**.\n\nSo look at the table's shape itself. Count the elements in each row:\n\n**2, 8, 8, 18, 18, 32**\n\nThe dial under the picture is an element's **atomic number**: the number of protons in its nucleus, which is also how many electrons it holds when uncharged. It is the order the table is built in.\n\nWhy those numbers? Why does hydrogen's row hold only two elements, and the next two rows exactly eight?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "Because each row runs out when a set of electron places is full. The row lengths are counting how many electrons fit before the outer pattern starts again.", nextNodeId: 'shells', sentiment: 'positive' },

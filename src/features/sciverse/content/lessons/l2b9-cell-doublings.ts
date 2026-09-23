@@ -18,7 +18,7 @@ export function getL2B9Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "In B9, one cell became two by **mitosis**, and a body grew from a **single cell** to about **30 trillion cells**.\n\nImagine the simplest possible way to get there: every cell divides in two, all at the same time, again and again. Each round **doubles** the number of cells.\n\nHow many rounds of doubling would it take to get from **1 cell** to **30 trillion**?",
+            content: "In B9, one cell became two by **mitosis**, and a body grew from a **single cell** to about **30 trillion cells**.\n\nImagine the simplest possible way to get there: every cell divides in two, all at the same time, again and again. Each round **doubles** the number of cells.\n\nThe dial under the picture counts those rounds: it is labelled **doublings**, and one doubling is one round in which every cell divides in two.\n\nHow many rounds of doubling would it take to get from **1 cell** to **30 trillion**?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "Surprisingly few -- something like 45. Each round doubles everything that is already there, so the numbers climb faster and faster.", nextNodeId: 'defining', sentiment: 'positive' },

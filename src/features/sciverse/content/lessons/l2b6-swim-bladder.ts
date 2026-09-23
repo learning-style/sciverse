@@ -18,7 +18,7 @@ export function getL2B6Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "In B6 you found how fish breathe: their **gills** take the oxygen dissolved in water into their blood.\n\nNow a puzzle that P6 can help with. A fish's muscle and bone have a density of about **1.07 g/cm³**. Fresh water is **1.00 g/cm³**.\n\nBy P6's rule, a fish should sink. Yet many fish can hang perfectly still in the water, neither sinking nor rising, hardly moving a fin.\n\nHow?",
+            content: "In B6 you found how fish breathe: their **gills** take the oxygen dissolved in water into their blood.\n\nNow a puzzle that P6 can help with. A fish's muscle and bone have a density of about **1.07 g/cm³**. Fresh water is **1.00 g/cm³**.\n\nBy P6's rule, a fish should sink. Yet many fish can hang perfectly still in the water, neither sinking nor rising, hardly moving a fin.\n\nThe dial under the picture is **bladder volume**. Most fish carry a gas-filled bag inside them called a **swim bladder**, and the dial sets how many cubic centimetres of gas it holds.\n\nHow?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "They carry a pocket of gas inside them. Gas adds a lot of volume but almost no mass, which brings the whole fish's density down to match the water's.", nextNodeId: 'defining', sentiment: 'positive' },

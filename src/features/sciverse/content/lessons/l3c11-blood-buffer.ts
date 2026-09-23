@@ -20,7 +20,7 @@ export function getL3C11Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "L2C11 found that each pH step is ten times the hydrogen ions, and named what it held fixed: **nothing in the liquid fought back**.\n\nYour cells make acid all day, especially when you exercise hard. Suppose muscles release **12 mmol** of acid into each litre of blood. (A **millimole, mmol**, is one thousandth of L3C2's mole.)\n\nThat much strong acid in a litre of **pure water** would give a pH of about **1.9**.\n\nDoes a litre of **blood** fall to pH 1.9 too?",
+            content: "L2C11 found that each pH step is ten times the hydrogen ions, and named what it held fixed: **nothing in the liquid fought back**.\n\nYour cells make acid all day, especially when you exercise hard. Suppose muscles release **12 mmol** of acid into each litre of blood. (A **millimole, mmol**, is one thousandth of L3C2's mole.)\n\nThat much strong acid in a litre of **pure water** would give a pH of about **1.9**.\n\nA dial under the picture is labelled **bicarbonate**. It is a dissolved substance that can take up arriving acid, and the dial sets how much of it each litre of blood holds, in millimoles.\n\nDoes a litre of **blood** fall to pH 1.9 too?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "No. Blood contains something that soaks up the hydrogen ions -- a buffer -- so its pH falls only a little, and breathing can bring it back.", nextNodeId: 'buffer', sentiment: 'positive' },

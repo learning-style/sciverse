@@ -19,7 +19,7 @@ export function getL2C11Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "In C11, **black coffee** sat at about **pH 5**, and **stomach acid** at about **pH 2**.\n\nThat is a difference of 3 on the pH scale.\n\nHow many times more acidic is stomach acid than black coffee?",
+            content: "In C11, **black coffee** sat at about **pH 5**, and **stomach acid** at about **pH 2**.\n\nThat is a difference of 3 on the pH scale.\n\nOne dial under the picture counts **dilutions**. One dilution means taking one part of a liquid and adding nine parts of water, so the result is ten times weaker than what you started with.\n\nHow many times more acidic is stomach acid than black coffee?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "A thousand times. Each step on the pH scale is ten times, so three steps is 10 x 10 x 10 = 1,000.", nextNodeId: 'defining', sentiment: 'positive' },

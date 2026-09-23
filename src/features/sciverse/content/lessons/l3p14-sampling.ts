@@ -22,7 +22,7 @@ export function getL3P14Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "L2P14 counted the bits in a message and found that **n** bits make **2ⁿ** patterns. But it assumed something: **the message was already a list of symbols** -- letters, pixels, numbers.\n\nA microphone gives you no such thing. It gives you a **voltage** that rises and falls smoothly, exactly like the wave on P14's oscilloscope. There is no first symbol, no last symbol, and no gap between one value and the next.\n\nTo store that as bits you have to **measure** it. How often?",
+            content: "L2P14 counted the bits in a message and found that **n** bits make **2ⁿ** patterns. But it assumed something: **the message was already a list of symbols** -- letters, pixels, numbers.\n\nA microphone gives you no such thing. It gives you a **voltage** that rises and falls smoothly, exactly like the wave on P14's oscilloscope. There is no first symbol, no last symbol, and no gap between one value and the next.\n\nA **bit** is one yes-or-no answer, the smallest piece of information a machine stores.\n\nOne dial under the picture is **bits in a sample**: how many of those you spend on each single measurement.\n\nTo store that as bits you have to **measure** it. How often?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "Often enough to catch the fastest wiggle in the wave -- and the faster the sound, the more measurements each second it must take.", nextNodeId: 'defining', sentiment: 'positive' },

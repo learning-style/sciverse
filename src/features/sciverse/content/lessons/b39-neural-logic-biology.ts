@@ -5,7 +5,7 @@ export function getB39Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "Your brain holds about **86 billion** **neurons**, and it runs on roughly **20 watts** -- less power than a light bulb. A computer doing anything close to what your brain does would need a small power station.\n\nAnd here is the surprise: like the transistors in **C39**, a single neuron only ever gives one of two answers.\n\nWhat do you think a neuron does when it receives signals?",
+            content: "Your brain holds about **86 billion** **neurons**, and it runs on roughly **20 watts** -- less power than a light bulb. A computer doing anything close to what your brain does would need a small power station.\n\nAnd here is the surprise: like the transistors in **C39**, a single neuron only ever gives one of two answers.\n\nThe dial under the picture is the **signal strength**: how big a nudge the neuron is getting from the cells feeding into it.\n\nWhat do you think a neuron does when it receives signals?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'threshold', label: "It adds up everything coming in, and fires a signal only if the total crosses a certain level.", nextNodeId: 'correct', sentiment: 'positive' },

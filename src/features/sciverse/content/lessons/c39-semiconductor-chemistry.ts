@@ -5,7 +5,7 @@ export function getC39Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "In **P39** you built logic out of switches. A phone chip has about **15 billion** of them, and each one flips on and off billions of times every second.\n\nNo switch with moving parts could survive that. So these switches have **no moving parts at all** -- they are made from a special material instead.\n\nWhat kind of material would make a good switch?",
+            content: "In **P39** you built logic out of switches. A phone chip has about **15 billion** of them, and each one flips on and off billions of times every second.\n\nNo switch with moving parts could survive that. So these switches have **no moving parts at all** -- they are made from a special material instead.\n\nThe dial under the picture is the **control signal**: the small electrical push you send to a switch to tell it to open or close.\n\nWhat kind of material would make a good switch?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'middle', label: "One that can be told when to let electricity through and when to block it.", nextNodeId: 'correct', sentiment: 'positive' },

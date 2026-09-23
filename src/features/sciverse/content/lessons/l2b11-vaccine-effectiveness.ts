@@ -20,7 +20,7 @@ export function getL2B11Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "In B11, vaccines trained the immune system's memory, so it could fight a germ before you fell ill.\n\nScientists describe how well a vaccine works with one number. A vaccine might be **90% effective**.\n\nDoes a 90% effective vaccine mean that **10% of vaccinated people** still fall ill?",
+            content: "In B11, vaccines trained the immune system's memory, so it could fight a germ before you fell ill.\n\nScientists describe how well a vaccine works with one number. A vaccine might be **90% effective**.\n\nThat single number is the vaccine's **effectiveness**, and it is the dial under the picture.\n\nDoes a 90% effective vaccine mean that **10% of vaccinated people** still fall ill?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "No. It means vaccinated people fall ill 90% less often than unvaccinated people. If only a few unvaccinated people fall ill, far fewer than 10% of vaccinated people will.", nextNodeId: 'defining', sentiment: 'positive' },

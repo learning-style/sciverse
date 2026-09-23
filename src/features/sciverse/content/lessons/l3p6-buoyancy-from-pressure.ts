@@ -19,7 +19,7 @@ export function getL3P6Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "L2P6 used **Archimedes' principle** -- buoyant force = weight of the liquid pushed aside -- and built everything on it. It never asked **why** it is true.\n\nIt is a strange rule, when you think about it. Water is not alive. It cannot weigh you, or measure how much liquid you pushed aside. Yet it pushes up with exactly that force.\n\nAnd the water is all around an object -- above it as well as below. So where does an **upward** push come from?",
+            content: "L2P6 used **Archimedes' principle** -- buoyant force = weight of the liquid pushed aside -- and built everything on it. It never asked **why** it is true.\n\nIt is a strange rule, when you think about it. Water is not alive. It cannot weigh you, or measure how much liquid you pushed aside. Yet it pushes up with exactly that force.\n\nAnd the water is all around an object -- above it as well as below.\n\nA dial under the picture is the **fluid density**: the mass of each cubic metre of the liquid, in kilograms. Fresh water is about 1,000; seawater about 1,025.\n\nSo where does an **upward** push come from?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "Water presses harder the deeper you go. It pushes up on the bottom of an object harder than it pushes down on the top, and the difference is the buoyant force.", nextNodeId: 'pressure', sentiment: 'positive' },

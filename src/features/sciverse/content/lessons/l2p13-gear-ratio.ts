@@ -19,7 +19,7 @@ export function getL2P13Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "P13 showed a small gear turning a big one: the big one turns more slowly, but with more turning force. L2P5 costed a lever the same way, and left gears and pulleys to this Big Idea.\n\nSo here are the numbers. A **20-tooth** gear drives a **60-tooth** gear. The small one spins **30 times a minute**.\n\nHow fast does the big gear turn?",
+            content: "P13 showed a small gear turning a big one: the big one turns more slowly, but with more turning force. L2P5 costed a lever the same way, and left gears and pulleys to this Big Idea.\n\nSo here are the numbers. A **20-tooth** gear drives a **60-tooth** gear. The small one spins **30 times a minute**.\n\nThe two dials under the picture are tooth counts. The **driver** is the gear you turn yourself; the **driven** is the gear it turns in its place.\n\nHow fast does the big gear turn?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "10 times a minute. The big gear has three times as many teeth, so it takes three turns of the small gear to move it round once.", nextNodeId: 'defining', sentiment: 'positive' },

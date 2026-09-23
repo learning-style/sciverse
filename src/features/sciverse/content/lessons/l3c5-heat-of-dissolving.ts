@@ -17,7 +17,7 @@ export function getL3C5Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "L2C5 read **k** from a table: CO₂ holds **1.7 g/L per atm** at 20 °C, but only **1.0** at 40 °C. Warm water holds less gas.\n\nThe table never said **why** -- or how anyone could predict k at a temperature the table leaves out.\n\nAnd it is odd. Warming usually **helps** things dissolve: sugar dissolves far better in hot tea than in cold. Why is a gas the other way round?",
+            content: "L2C5 read **k** from a table: CO₂ holds **1.7 g/L per atm** at 20 °C, but only **1.0** at 40 °C. Warm water holds less gas.\n\nThe table never said **why** -- or how anyone could predict k at a temperature the table leaves out.\n\nAnd it is odd. Warming usually **helps** things dissolve: sugar dissolves far better in hot tea than in cold.\n\nA dial under the picture is the **heat of dissolving**: the energy given out or taken in when one mole of a substance dissolves, in kilojoules per mole.\n\nWhy is a gas the other way round?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "Because dissolving a gas releases heat. Adding heat pushes the balance the other way, back out of the water.", nextNodeId: 'energy', sentiment: 'positive' },

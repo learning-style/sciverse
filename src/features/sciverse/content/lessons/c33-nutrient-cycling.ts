@@ -5,7 +5,7 @@ export function getC33Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "Earth has never had a delivery of new **atoms**. Not one. Every atom of **carbon** in your body has been here for billions of years, and some of it was probably once part of a dinosaur, a tree, or the ocean.\n\nIn P33 you learned that energy runs out at every step. So how do the *materials* keep going?\n\nWhat do you think happens to the atoms in a fallen leaf?",
+            content: "Earth has never had a delivery of new **atoms**. Not one. Every atom of **carbon** in your body has been here for billions of years, and some of it was probably once part of a dinosaur, a tree, or the ocean.\n\nIn P33 you learned that energy runs out at every step. So how do the *materials* keep going?\n\nThe dial under the picture is **decomposer activity**. **Decomposers** are the small living things -- worms, woodlice, fungi and bacteria -- that break dead material back down into pieces, and the dial sets how busy they are.\n\nWhat do you think happens to the atoms in a fallen leaf?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'reused', label: "Tiny living things break the leaf apart and release its atoms so new plants can use them again.", nextNodeId: 'correct', sentiment: 'positive' },

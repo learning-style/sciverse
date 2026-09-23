@@ -5,7 +5,7 @@ export function getP36Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "Water can look perfectly clear and still be dangerous to drink. The things that make people sick -- **bacteria** and tiny particles -- are far too small for your eyes to catch.\n\nSo the first job in a water plant is to physically remove everything it can, using **filters**.\n\nWhat do you think decides how much a filter can catch?",
+            content: "Water can look perfectly clear and still be dangerous to drink. The things that make people sick -- **bacteria** and tiny particles -- are far too small for your eyes to catch.\n\nSo the first job in a water plant is to physically remove everything it can, using **filters**.\n\nThe picture lines up four things a filter has to catch, largest first: **grit**, which is tiny chips of stone; **sand**; **bacteria**; and **viruses**, which are smaller again.\n\nWhat do you think decides how much a filter can catch?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'holes', label: "The size of the holes -- anything bigger than a hole gets trapped, and anything smaller slips through.", nextNodeId: 'correct', sentiment: 'positive' },

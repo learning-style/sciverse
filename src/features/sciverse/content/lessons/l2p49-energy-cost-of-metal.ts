@@ -14,7 +14,7 @@ export function getL2P49Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "In Level 1 you learned that a mine's real cost is **lifting**, and that mines get deeper every year. Both true. Now here is a case where that instinct sends you the wrong way.\n\nTwo copper mines.\n\n**Mine A:** ore **1,000 metres** down. Every tonne of rock holds **10 kg** of copper.\n**Mine B:** ore only **100 metres** down. Every tonne of rock holds **1 kg** of copper.\n\nMine A is **ten times deeper**. Mine B's ore is **ten times poorer**.\n\nWhich one uses more energy for each kilogram of copper it produces?",
+            content: "In Level 1 you learned that a mine's real cost is **lifting**, and that mines get deeper every year. Both true. Now here is a case where that instinct sends you the wrong way.\n\nTwo copper mines.\n\n**Mine A:** ore **1,000 metres** down. Every tonne of rock holds **10 kg** of copper.\n**Mine B:** ore only **100 metres** down. Every tonne of rock holds **1 kg** of copper.\n\nMine A is **ten times deeper**. Mine B's ore is **ten times poorer**.\n\nThe bar under the picture splits the cost three ways, and those are its labels: **lifting** the rock up out of the mine, **crushing** it to powder, and **smelting** the powder in a furnace to free the metal from the rock.\n\nWhich one uses more energy for each kilogram of copper it produces?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "Mine B, and not by a little. Poor ore means far more rock to handle for the same copper, and every stage has to process all of it.", nextNodeId: 'correct', sentiment: 'positive' },

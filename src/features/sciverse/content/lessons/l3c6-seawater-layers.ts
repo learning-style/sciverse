@@ -19,7 +19,7 @@ export function getL3C6Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "L2C6's table was for water at **20 °C**, and it mentioned that warm water is slightly less dense.\n\nThe ocean is never one temperature, and never one saltiness. Near the poles its surface is about −2 °C; in the tropics, about 30 °C. Where the sun evaporates a lot of water, the sea gets **saltier**. Where rivers and rain pour in, it gets **fresher**.\n\nIn a warm, sunny sea, the surface water is often both **warmer** and **saltier** than the water below it. Warmth makes water less dense. Salt makes it denser.\n\nWhich wins?",
+            content: "L2C6's table was for water at **20 °C**, and it mentioned that warm water is slightly less dense.\n\nThe ocean is never one temperature, and never one saltiness. Near the poles its surface is about −2 °C; in the tropics, about 30 °C. Where the sun evaporates a lot of water, the sea gets **saltier**. Where rivers and rain pour in, it gets **fresher**.\n\nIn a warm, sunny sea, the surface water is often both **warmer** and **saltier** than the water below it. Warmth makes water less dense. Salt makes it denser.\n\nOne dial under the picture is **salinity**: how much salt the water holds, in grams of salt per kilogram of seawater. Open ocean is about 35.\n\nWhich wins?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "It depends on the sizes. Put a number on each effect and add them -- sometimes warmth wins, sometimes salt.", nextNodeId: 'defining', sentiment: 'positive' },

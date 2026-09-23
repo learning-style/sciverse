@@ -5,7 +5,7 @@ export function getP38Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "Try this: close your eyes and walk in a straight line across a room. Almost everyone drifts sideways.\n\nWith your eyes open you walk straight easily -- not because you never drift, but because you **see the drift and correct it**, dozens of times a second, without noticing.\n\nThat constant sense-and-correct pattern is called a **feedback loop**. What do you think a robot needs to follow a line?",
+            content: "Try this: close your eyes and walk in a straight line across a room. Almost everyone drifts sideways.\n\nWith your eyes open you walk straight easily -- not because you never drift, but because you **see the drift and correct it**, dozens of times a second, without noticing.\n\nThat constant sense-and-correct pattern is called a **feedback loop**.\n\nTwo things the picture shows you. The **correction strength** is how hard the robot swings its wheels once it notices it has drifted. The **tracking quality** underneath is how well it is managing to stay on the line.\n\nWhat do you think a robot needs to follow a line?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'loop', label: "It has to keep checking where it is, compare that to where it should be, and steer back -- over and over.", nextNodeId: 'correct', sentiment: 'positive' },
