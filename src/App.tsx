@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { LessonHub } from '@/features/sciverse/modules/LessonHub';
 import { TagView } from '@/features/sciverse/modules/TagView';
+import { SubjectView } from '@/features/sciverse/modules/SubjectView';
 import { LessonShell } from '@/features/sciverse/modules/LessonShell';
 import { AssessmentShell } from '@/features/sciverse/modules/AssessmentShell';
 
@@ -20,6 +21,7 @@ function App() {
 
         <Route path="/projects/science-lab/lesson/:lessonId" element={<LessonShell />} />
         <Route path="/projects/science-lab/tag/:tag" element={<TagView />} />
+        <Route path="/projects/science-lab/subject/:discipline" element={<SubjectView />} />
 
         <Route path="/projects/science-lab/assessment/:bigIdeaId" element={<AssessmentShell />} />
         <Route path="/projects/science-lab/assessment/:bigIdeaId/:level" element={<AssessmentShell />} />

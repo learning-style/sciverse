@@ -137,13 +137,17 @@ export const LessonHub = () => {
                         ))}
                     </div>
                 </div>
-                <div className="flex justify-center gap-6 mt-6">
+                <div className="flex flex-wrap justify-center gap-4 mt-6">
                     {Object.entries(DISCIPLINE_BADGE).map(([key, d]) => {
                         const Icon = d.icon;
                         return (
-                            <span key={key} className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium ${d.bg} ${d.text}`}>
+                            <Link
+                                key={key}
+                                to={`/projects/science-lab/subject/${key}`}
+                                className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium hover:brightness-95 transition-all ${d.bg} ${d.text}`}
+                            >
                                 <Icon size={14} /> {d.label}
-                            </span>
+                            </Link>
                         );
                     })}
                 </div>
@@ -193,7 +197,7 @@ export const LessonHub = () => {
                                                 <div className="flex-grow min-w-0">
                                                     <div className="flex items-center gap-2 mb-1">
                                                         <span className={`flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border ${badge.bg} ${badge.text}`}>
-                                                            <BadgeIcon size={10} /> {lesson.id.toUpperCase()}
+                                                            <BadgeIcon size={10} /> {badge.label} · {lesson.id.toUpperCase()}
                                                         </span>
                                                     </div>
                                                     <h3 className="text-sm font-bold text-slate-900 group-hover:text-indigo-700 transition-colors">{lesson.title}</h3>
