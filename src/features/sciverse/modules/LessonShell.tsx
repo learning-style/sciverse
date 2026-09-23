@@ -207,58 +207,58 @@ interface BigIdeaEnhancement {
 
 const BIG_IDEA_ENHANCEMENTS: Record<number, BigIdeaEnhancement> = {
     16: {
-        lens: 'Magnetic effects are invisible field interactions. The same field language explains orientation, material response, and biological sensing behavior.',
+        lens: 'A magnet's pull reaches across empty space, with nothing to see in between. That same invisible pull turns a compass needle, decides which metals stick, and helps a bird find its way.',
         experiment: 'Change one field-related control and predict the direction of alignment before observing the visual response.',
         vocab: ['magnetic field', 'domain alignment', 'magnetoreception'],
     },
     17: {
-        lens: 'Stable structures spread forces through geometry and material choice. Robust design appears when load paths are distributed and failure points are reduced.',
-        experiment: 'Increase load, then change one geometry or material parameter to test how stress redistribution affects stability.',
+        lens: 'A structure stands up by passing the weight it carries down through itself and into the ground. The shape matters as much as what it is made of.',
+        experiment: 'Add more weight, then change the shape or the material and watch where the strain moves to.',
         vocab: ['load path', 'compression', 'torsion'],
     },
     18: {
-        lens: 'Flowing water continuously reshapes land and habitats. Physical transport, chemical weathering, and ecological adaptation are coupled in one system.',
+        lens: 'Moving water picks land up, carries it along and drops it somewhere else. That changes the shape of the ground and the homes of everything living in it.',
         experiment: 'Adjust flow speed and slope, then compare deposition zones with habitat quality indicators.',
         vocab: ['erosion', 'sediment transport', 'riparian zone'],
     },
     19: {
-        lens: 'Soil is an active living interface between geology, chemistry, and ecosystems. Small changes in composition can cascade into major biological outcomes.',
+        lens: 'Soil is alive. It sits between bare rock and everything that grows, and a small change in it can change which plants and animals are able to live there.',
         experiment: 'Modify moisture or nutrient balance and watch how microbial activity and plant support indicators shift together.',
         vocab: ['soil profile', 'nutrient cycling', 'microbiome'],
     },
     20: {
-        lens: 'Vision emerges from precise control of light pathways and signal interpretation. Optical materials and biological focusing must coordinate to form clear images.',
+        lens: 'Seeing means bending light so it lands in exactly the right place. Glass does that in a camera, and the living lens in your eye does the same job by changing shape.',
         experiment: 'Shift one focusing or refractive variable and observe whether image quality improves or degrades first.',
         vocab: ['refraction', 'focal length', 'accommodation'],
     },
     21: {
-        lens: 'Natural cycles conserve matter while redistributing energy across scales. Tracking loop timing reveals how delayed feedback builds system-level patterns.',
+        lens: 'The same matter gets used over and over, going round a loop. Energy passes through and is spent, but the material comes back.',
         experiment: 'Speed up one cycle process and inspect where buildup or depletion begins to appear in the loop.',
         vocab: ['feedback loop', 'flux', 'reservoir'],
     },
     22: {
-        lens: 'Wave-based sensing translates hidden structures into measurable signals. Resolution depends on wavelength, medium properties, and interpretation models.',
+        lens: 'Waves can show you something you cannot see, by bouncing off it and coming back. How small a thing you can pick out depends on which wave you use.',
         experiment: 'Adjust wave frequency and medium properties, then compare how signal clarity changes across targets.',
         vocab: ['wavelength', 'resolution', 'attenuation'],
     },
     23: {
-        lens: 'Damage and repair are dynamic competitions between stress and recovery. The same logic governs fractures, corrosion pathways, and tissue healing.',
+        lens: 'Damage and repair are a race against each other. The same idea covers a bone that cracks, metal that rusts and a cut that heals.',
         experiment: 'Raise stress while changing protection or repair factors to identify the threshold where failure accelerates.',
         vocab: ['fatigue', 'oxidation', 'regeneration'],
     },
     24: {
-        lens: 'Networks route flow through connected pathways with capacity limits. Local bottlenecks create global effects in circulation, reactions, and transport systems.',
-        experiment: 'Constrict one pathway and trace how pressure, throughput, or concentration shifts redistribute system-wide.',
+        lens: 'A network carries things along joined-up paths, and each path can only take so much at once. One narrow spot slows down everything behind it.',
+        experiment: 'Squeeze one path shut and follow where the pressure, the flow or the substance goes instead.',
         vocab: ['throughput', 'bottleneck', 'homeodynamic balance'],
     },
     25: {
-        lens: 'Complex systems can appear stable until a small trigger amplifies. Nonlinear interactions make prediction hard, but pattern detection still guides control.',
+        lens: 'Some things hold steady for a long time and then change all at once, because a small nudge grows bigger as it travels. That makes them hard to predict, though patterns still help.',
         experiment: 'Apply a tiny initial perturbation and compare divergence after multiple simulation cycles.',
         vocab: ['nonlinearity', 'sensitivity', 'cascade'],
     },
 };
 
-function getInteractiveTask(lesson: LessonMeta, phase: string): string {
+function getInteractiveTask(phase: string): string {
     if (phase === 'intro') return `Move one slider under the picture and watch what changes, then read the question on the left.`;
     if (phase === 'checkpoint') return 'Say what you think will happen before you move anything, then move one slider and see.';
     if (phase === 'discovery') return 'Go back to one earlier step and say, in your own words, what caused what.';
@@ -272,48 +272,48 @@ function getWalkthroughGuide(lesson: LessonMeta, phase: string): WalkthroughGuid
     if (lesson.id === 'p10') {
         const p10Guides: Record<string, WalkthroughGuide> = {
             intro: {
-                title: 'Start The Energy Comparison',
-                instruction: 'Begin at Intro and then move through Fossil, Solar, Wind, Hydro, and Compare in sequence.',
-                next: 'Use Checkpoint after Compare to test reliability under night and low-wind conditions.'
+                title: 'Start Comparing Power Sources',
+                instruction: 'Work through the stages in order: Fossil, Solar, Wind, Hydro, then Compare.',
+                next: 'After Compare, use the Checkpoint to test a night with almost no wind.'
             },
             fossil: {
-                title: 'Observe The Fossil Baseline',
-                instruction: 'Use the Pollution toggle to see the tradeoff between immediate power and emissions.',
-                next: 'Switch to Solar to compare clean generation behavior.'
+                title: 'Start With Fossil Fuels',
+                instruction: 'Turn on Pollution to see what burning fuel puts into the air while it makes the power.',
+                next: 'Switch to Solar to see a source that makes no smoke at all.'
             },
             solar: {
-                title: 'Test Solar Constraints',
-                instruction: 'Observe output in normal conditions, then toggle Night to verify solar dependency on sunlight.',
-                next: 'Move to Wind to evaluate another renewable profile.'
+                title: 'See What Solar Needs',
+                instruction: 'Watch how much power it makes, then switch on Night to see what is left without sunlight.',
+                next: 'Move to Wind for another source that never runs out.'
             },
             wind: {
-                title: 'Test Wind Variability',
-                instruction: 'Watch turbine output, then toggle Calm Wind to test intermittent generation risk.',
-                next: 'Continue to Hydro to compare a steadier renewable source.'
+                title: 'See How Much Wind Changes',
+                instruction: 'Watch the turbine, then switch on Calm Wind to see what happens on a still day.',
+                next: 'Continue to Hydro to compare a source that is steadier still.'
             },
             hydro: {
-                title: 'Evaluate Baseline Reliability',
-                instruction: 'Observe hydro as a stable renewable source and compare its role in mixed generation.',
-                next: 'Use Compare for side-by-side source tradeoffs.'
+                title: 'Water Power, Steady All Day',
+                instruction: 'Hydro is water power, and it keeps going day and night. See how much that helps when the sun and wind stop.',
+                next: 'Use Compare to put all of them next to each other.'
             },
             compare: {
-                title: 'Read Side-By-Side Tradeoffs',
-                instruction: 'Compare power, pollution, and reliability together rather than evaluating each source in isolation.',
+                title: 'Compare Them Side By Side',
+                instruction: 'Look at the power, the pollution and how steady each one is all together, rather than one at a time.',
                 next: 'Proceed to Checkpoint and answer before using any reveal toggle.'
             },
             checkpoint: {
                 title: 'Answer Before Reveal',
-                instruction: 'Predict first; use Reveal Hydro only to verify your reasoning after selecting an answer.',
+                instruction: 'Say what you think will happen first. Use Reveal Hydro only after you have chosen an answer.',
                 next: 'Finish in Discovery and Complete for the Big Idea summary.'
             },
             discovery: {
                 title: 'Consolidate The Pattern',
-                instruction: 'Capture the key concept: mixed renewables can cover each others limitations.',
+                instruction: 'Capture the key idea: different clean sources can cover for each other\'s weak points.',
                 next: 'Use Complete for final cross-disciplinary wrap-up.'
             },
             complete: {
                 title: 'Wrap-Up',
-                instruction: 'Review how P10 links to C10 pollution pathways and B10 ecosystem impacts.',
+                instruction: 'See how this joins up with C10, which follows where the pollution goes, and B10, which follows the living things.',
                 next: 'Revisit any scenario from controls if you want to stress-test assumptions.'
             }
         };
@@ -325,25 +325,25 @@ function getWalkthroughGuide(lesson: LessonMeta, phase: string): WalkthroughGuid
             intro: {
                 title: 'Start The Air Pollution Story',
                 instruction: 'Begin with the Intro and then move to CO2 Sources to see where atmospheric pollution comes from.',
-                next: 'Switch to Greenhouse and then Warming to connect emissions to climate impact.'
+                next: 'Switch to Greenhouse, then Warming, to follow those gases to a hotter world.'
             },
             co2_sources: {
                 title: 'Track Pollution Sources',
-                instruction: 'Observe factories and transport contributors, then compare how emissions accumulate over time.',
+                instruction: 'Look at the factories and the traffic, then watch how what they give off builds up year after year.',
                 next: 'Move to Greenhouse to see how those gases trap heat.'
             },
             greenhouse: {
                 title: 'Understand Heat Trapping',
-                instruction: 'Watch incoming solar energy and outgoing heat behavior to see why greenhouse gases matter.',
+                instruction: 'Watch the sunlight coming in and the heat trying to get back out, and you will see why these gases matter.',
                 next: 'Go to Warming and then Acid Rain to see downstream effects.'
             },
             warming: {
                 title: 'Follow Global Effects',
-                instruction: 'Focus on temperature trends and ecosystem stress signs, then contrast with cleaner pathways.',
-                next: 'Continue to Acid Rain and Ozone for additional chemistry pathways.'
+                instruction: 'Watch the temperature climb and the living things begin to struggle, then try the cleaner choices instead.',
+                next: 'Carry on to Acid Rain and Ozone for two more things those gases do.'
             },
             acid_rain: {
-                title: 'Link Emissions To Ecosystems',
+                title: 'From Dirty Air To Living Things',
                 instruction: 'Observe how atmospheric chemistry changes precipitation and harms soils, water, and plants.',
                 next: 'Move to Ozone, then test yourself in Checkpoint.'
             },
@@ -354,7 +354,7 @@ function getWalkthroughGuide(lesson: LessonMeta, phase: string): WalkthroughGuid
             },
             checkpoint: {
                 title: 'Predict Before Revealing',
-                instruction: 'Answer the checkpoint first, then use the correct toggle only to verify and explain the result.',
+                instruction: 'Answer the checkpoint first. Only then use the switch, to check why your answer worked.',
                 next: 'Finish with Discovery or Complete for summary links to P10 and B10.'
             },
             discovery: {
@@ -364,7 +364,7 @@ function getWalkthroughGuide(lesson: LessonMeta, phase: string): WalkthroughGuid
             },
             complete: {
                 title: 'Wrap-Up',
-                instruction: 'You now have the chemistry side of climate and air-quality impact pathways.',
+                instruction: 'That is the chemistry side: which gases come out, and what they do to the air.',
                 next: 'Revisit any scenario from controls to reinforce cause-and-effect links.'
             }
         };
@@ -374,9 +374,9 @@ function getWalkthroughGuide(lesson: LessonMeta, phase: string): WalkthroughGuid
     if (lesson.id === 'b10') {
         const b10Guides: Record<string, WalkthroughGuide> = {
             intro: {
-                title: 'Start With The Ecosystem Baseline',
+                title: 'Start With The Food Web',
                 instruction: 'Begin at Intro and then Healthy Ecosystem to establish how balanced food webs function.',
-                next: 'Then step through Wolves Removed and Cascade to see chain reactions.'
+                next: 'Then step through Wolves Removed and Cascade, where one change sets off the next.'
             },
             healthy_ecosystem: {
                 title: 'Read The Balanced State',
@@ -385,22 +385,22 @@ function getWalkthroughGuide(lesson: LessonMeta, phase: string): WalkthroughGuid
             },
             wolves_removed: {
                 title: 'Observe First-Order Effects',
-                instruction: 'Track deer pressure and vegetation loss to understand the first trophic imbalance.',
-                next: 'Move to Cascade to observe second-order and habitat effects.'
+                instruction: 'Track how the deer multiply and eat the plants down -- that is the first link in the chain.',
+                next: 'Move to Cascade to see how one change sets off another, and then another.'
             },
             cascade: {
                 title: 'Follow The Chain Reaction',
                 instruction: 'Watch how one species shift propagates across plants, soils, water systems, and other species.',
-                next: 'Use Food Web and Biodiversity to generalize this pattern.'
+                next: 'Use Food Web and Biodiversity to see the same pattern somewhere else.'
             },
             food_web: {
                 title: 'Map Interdependence',
-                instruction: 'Use this view to connect feeding relationships and dependency pathways beyond one linear chain.',
+                instruction: 'Use this to see who eats whom, and how it spreads out in a web rather than running in one straight line.',
                 next: 'Continue to Biodiversity and then test with Checkpoint.'
             },
             biodiversity: {
                 title: 'Interpret Stability',
-                instruction: 'Relate species diversity to resilience and recovery capacity under stress.',
+                instruction: 'See how having many different kinds of living thing helps a place recover when something goes wrong.',
                 next: 'Go to Checkpoint and answer before toggling the correct state.'
             },
             checkpoint: {
@@ -415,8 +415,8 @@ function getWalkthroughGuide(lesson: LessonMeta, phase: string): WalkthroughGuid
             },
             complete: {
                 title: 'Wrap-Up',
-                instruction: 'You now have the biodiversity and ecosystem systems-thinking side of Big Idea 10.',
-                next: 'Revisit any scenario to reinforce trophic cascade logic.'
+                instruction: 'That is the living-things side of Big Idea 10: food webs, and why variety matters.',
+                next: 'Go back through any of them to see how one change ripples along the food chain.'
             }
         };
         return b10Guides[phase] || b10Guides.intro;
@@ -468,7 +468,7 @@ const LessonWalkthroughCard = ({
     onToggleControls: () => void;
 }) => {
     const guide = getWalkthroughGuide(lesson, phase);
-    const task = getInteractiveTask(lesson, phase);
+    const task = getInteractiveTask(phase);
 
     return (
         <div className="m-3 mb-2 rounded-lg p-3 shadow-md border bg-white border-slate-300 text-slate-900">

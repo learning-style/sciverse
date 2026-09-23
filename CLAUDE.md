@@ -141,6 +141,7 @@ would read as approval where it should not, say so in the lesson.
 python3 scripts/check-lessons.py            # every lesson
 python3 scripts/check-lessons.py l2p1 l3c2  # named ones
 python3 scripts/check-clarity.py            # is every visual term explained?
+python3 scripts/check-unused.py             # unused symbols in changed TypeScript
 ```
 
 It pairs lessons to labs through `extendedLabs.ts`, so it needs no argument
@@ -171,6 +172,13 @@ absent, so `tsc`, `vitest` and `vite build` cannot run locally. CI is the only
 type-check available, and six separate type errors have reached CI this way —
 `noUnusedLocals` twice, use-before-declaration, a closed union, tuple widening,
 and a narrow level union. Installing Node would remove that entire failure class.
+
+`check-unused.py` stands in for the type-check that cannot run here. It scans
+everything changed against `origin/main` for unused consts at any depth, unused
+function parameters, destructured scene fields that are never read, and unused
+imports -- export-aware, so `export const Component` is not reported. It is
+regression-tested against the two real failures: the `HARDEST` const and the
+`lesson` parameter left behind when the string using it was rewritten.
 
 **`noUnusedLocals` applies at every depth, including module level.** The second
 failure was a module-level `const HARDEST = 900000` in a lab, declared for the
