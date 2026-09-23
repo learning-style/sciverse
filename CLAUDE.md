@@ -35,6 +35,42 @@ itself.
 Level 1 is complete: 50 Big Ideas, 150 lessons, 50 assessments. Levels 2 and 3
 are being built in Big Idea order.
 
+**Depth comes in three kinds, and only one of them is arithmetic.**
+
+| | What it does | Example |
+|---|---|---|
+| **Mechanism** | why the level below's rule is *true* | L3P6 derives buoyancy from the pressure difference — no new machinery at all |
+| **Limit** | where the rule *breaks* | L3P3: no engine beats 1 − Tc/Th |
+| **Quantity** | puts a number on it | L3B16 |
+
+Mechanism lessons are at once the **simplest and the deepest**, because explaining
+why something is true needs no new apparatus. Prefer *"why is the Level 2 rule
+true?"* over *"here is a more accurate formula"*.
+
+**Three questions before writing a Level 2 or Level 3 lesson:**
+
+1. Does the learner already **feel** the simplification? Is there a tension they
+   would notice unprompted?
+2. Can they **reason** to the removal with maths they already own — or must they
+   accept a formula? Chain it to something they have: L3P8 adds thermal
+   resistances *"just as L2P7's resistors added"*; L3C3 makes fuel energy *"the
+   difference between the bonds broken and the bonds made"*.
+3. Does the number **change a decision**?
+
+A lesson that fails (2) is a recipe, however correct. L3B16 first handed over
+`weight = 1/error²`, which cannot be derived at this level — so a learner did
+arithmetic they could not justify. It now generalises L2B16's own rule (errors add
+through their squares) to any split of the vote, has the learner **try splits**,
+and lets them find the lowest point at 94% — which is 16 to 1, and (20/5)² = 16.
+Same figures, same conclusion, reached rather than received. What is still
+standing became honest too: *proving* 1/error² optimal needs statistics beyond
+this level.
+
+An asserted formula is acceptable where it is genuinely on the school syllabus —
+Nernst in L3C7, Henderson-Hasselbalch in L3C11 — or where the law is empirical and
+the lesson **says so**, as L3B10 does for S = cA^z. It is not acceptable when the
+formula belongs to no syllabus at this age.
+
 `docs/big-ideas.md` holds the Big Idea table. `docs/curriculum-roadmap.md` and
 `docs/cross-discipline-sprint.md` hold the planning behind it.
 

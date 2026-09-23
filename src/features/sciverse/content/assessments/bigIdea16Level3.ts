@@ -4,7 +4,7 @@ import { AssessmentData } from '../../types';
  * Big Idea 16 Assessment -- LEVEL 3 (grades 9-12).
  * Covers L3P16 (B = mu0 n I, and why an MRI cannot be wound in copper), L3C16
  * (hysteresis: remanence, coercivity, loop area as heat per cycle), L3B16
- * (weight = 1/error^2, and why a blind average loses to one good cue).
+ * (searching splits of the vote, and why a blind average loses to one good cue).
  * 12 questions: 4 easy -> 4 medium -> 4 hard
  */
 export const bigIdea16Level3Assessment: AssessmentData = {
@@ -44,11 +44,11 @@ export const bigIdea16Level3Assessment: AssessmentData = {
             id: 3,
             difficulty: 'easy',
             discipline: 'biology',
-            question: 'If weight = 1 / error², a cue twice as sharp as another carries how many times the vote?',
+            question: 'The vote divides in proportion to 1 / error². A cue twice as sharp as another carries how many times the vote?',
             options: ['Twice', 'Four times', 'The square root of two times', 'The same, since both are cues'],
             correctIndex: 1,
-            hint: 'The error is squared before it is inverted.',
-            explanation: 'Halving the error quarters the error squared, so it multiplies the weight by four. Sharpness pays off faster than it improves — which is why one good cue can outvote several poor ones.'
+            hint: 'The error is squared before it is turned upside down.',
+            explanation: 'Halving the error quarters the error squared, so it multiplies that cue\'s share of the vote by four. Sharpness pays off faster than it improves — which is why one good cue can outvote several poor ones.'
         },
         {
             id: 4,
@@ -76,11 +76,11 @@ export const bigIdea16Level3Assessment: AssessmentData = {
             id: 6,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'A bird has a star sense good to ±5° and a magnetic sense good to ±20°. Weighting them properly, what is its combined error?',
+            question: 'A bird has a star sense good to ±5° and a magnetic sense good to ±20°. Splitting the vote at its best point, what is the combined error?',
             options: ['±4.85°', '±5.00°', '±10.31°', '±12.50°'],
             correctIndex: 0,
-            hint: 'Weights of 1/25 and 1/400, then one over the root of their sum.',
-            explanation: 'The weights are 0.0400 and 0.0025, summing to 0.0425, so the combined error is 1/√0.0425 = ±4.85°. Note it beats the sharp cue used alone at ±5.00°: the vague cue still contributes a little.'
+            hint: 'The best split is (20/5)² = 16 to 1, so the sharp cue takes 94% of the vote.',
+            explanation: 'At a 94% / 6% split, √((0.94 x 5)² + (0.06 x 20)²) = √23.53 = ±4.85°. Searching the splits shows the lowest point sits there, not at either end: half the vote gives ±10.31° and ignoring the vague cue gives ±5.00°. So the vague cue still earns about 6% of the say.'
         },
         {
             id: 7,
@@ -113,16 +113,16 @@ export const bigIdea16Level3Assessment: AssessmentData = {
             id: 9,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'A young bird learns its weights backwards: its star sense really is ±5° and its magnetic sense ±20°, but it gives the magnetic cue sixteen times the vote. Its combined error comes out at ±18.83°. Is it better off than a bird that simply averages the two equally?',
+            question: 'A young bird learns the split backwards: its star sense really is ±5° and its magnetic sense ±20°, but it gives the magnetic cue 94% of the vote. Its combined error comes out at ±18.83°. Is it better off than a bird that simply splits the vote evenly?',
             options: [
-                'Yes, because any weighting beats no weighting',
-                'No — equal weighting gives ±10.31°, so the reversed weights are far worse',
+                'Yes, because any split beats an even one',
+                'No — an even split gives ±10.31°, so the reversed split is far worse',
                 'Yes, because ±18.83° is still better than the ±20° magnetic cue alone',
                 'They come out the same, since the same two cues are involved'
             ],
             correctIndex: 1,
-            hint: 'Compare 18.83 with the equal-weighting figure, not with the vague cue.',
-            explanation: 'Reversed weights give ±18.83°, against ±10.31° for a blind average — worse than not weighting at all, and close to the vague cue used alone. Weighting only helps when the weights are right, which is what cue-conflict experiments test: rotate the magnetic field and see which cue the bird follows.'
+            hint: 'Compare 18.83 with the even-split figure, not with the vague cue.',
+            explanation: 'The reversed split gives ±18.83° and a 341 km miss over 1,000 km, against ±10.31° and 182 km for an even split — worse than not bothering at all, and close to the vague cue used alone. The method only helps when the split is right, which is what cue-conflict experiments test: rotate the magnetic field and see which cue the bird follows.'
         },
         {
             id: 10,
@@ -158,7 +158,7 @@ export const bigIdea16Level3Assessment: AssessmentData = {
             id: 12,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'Weighting cues by 1/error² cuts the combined error below either cue alone. What does it do nothing about?',
+            question: 'Splitting the vote at its best point cuts the combined error below either cue alone. What does it do nothing about?',
             options: [
                 'Scatter in the individual readings',
                 'A bias — an error that leans the same way every time',
@@ -167,7 +167,7 @@ export const bigIdea16Level3Assessment: AssessmentData = {
             ],
             correctIndex: 1,
             hint: 'L2B16 made the same distinction with twenty readings of one cue.',
-            explanation: 'Weighting, like averaging, works on scatter — errors that fall on both sides and partly cancel. A bias survives untouched, however many cues you combine and however well you weight them. And the weights themselves must be known: get them backwards and you end up worse off than not weighting at all.'
+            explanation: 'Splitting the vote, like averaging, works on scatter — errors that fall on both sides and partly cancel. A bias survives untouched, however many cues you combine and however carefully you divide the say. And the split itself must be known: get it backwards and you end up worse off than not splitting at all.'
         }
     ]
 };
