@@ -103,6 +103,7 @@ import { P32AirQualityPhysicsLab } from '../components/visuals/P32AirQualityPhys
 import { C32AirQualityChemistryLab } from '../components/visuals/C32AirQualityChemistryLab';
 import { B32AirQualityBiologyLab } from '../components/visuals/B32AirQualityBiologyLab';
 import { EXTENDED_LAB_COMPONENTS } from '../components/visuals/extendedLabs';
+import { lessonCode } from '../lessonCode';
 
 const DISCIPLINE_CONFIG = {
     physics: { icon: Atom, color: 'text-indigo-600', bg: 'bg-indigo-500/10', border: 'border-indigo-500/30', accent: 'indigo' },
@@ -256,7 +257,7 @@ const BIG_IDEA_ENHANCEMENTS: Record<number, BigIdeaEnhancement> = {
 };
 
 function getInteractiveTask(lesson: LessonMeta, phase: string): string {
-    if (phase === 'intro') return `Try one ${lesson.id.toUpperCase()} control immediately and compare what you see with the mentor prompt.`;
+    if (phase === 'intro') return `Try one ${lessonCode(lesson)} control immediately and compare what you see with the mentor prompt.`;
     if (phase === 'checkpoint') return 'Make a prediction first, then use one control to test it.';
     if (phase === 'discovery') return 'Replay one earlier step and explain the cause-effect in your own words.';
     if (phase === 'complete') return 'Toggle controls and revisit one branch to reinforce the concept.';
@@ -421,7 +422,7 @@ function getWalkthroughGuide(lesson: LessonMeta, phase: string): WalkthroughGuid
 
     const base: Record<string, WalkthroughGuide> = {
         intro: {
-            title: `Start ${lesson.id.toUpperCase()} Clearly`,
+            title: `Start ${lessonCode(lesson)} Clearly`,
             instruction: 'You can begin from either side: interact with the visual controls immediately or follow the mentor prompt first.',
             next: 'Use one control now, then compare that visual change with the chat explanation in parallel.'
         },
@@ -447,7 +448,7 @@ function getWalkthroughGuide(lesson: LessonMeta, phase: string): WalkthroughGuid
     }
 
     return {
-        title: `Guide: ${lesson.id.toUpperCase()} (${phaseLabel})`,
+        title: `Guide: ${lessonCode(lesson)} (${phaseLabel})`,
         instruction: 'Follow the current scenario in the chat and watch how the visual state responds to each choice.',
         next: 'Continue through options until you reach checkpoint and discovery.'
     };
@@ -573,7 +574,7 @@ const VisualPanel = ({ state, lesson }: { state: Record<string, unknown>; lesson
 
             {/* Lesson title watermark */}
             <div className="absolute bottom-4 right-4 text-slate-500 text-xs font-mono">
-                {lesson.id.toUpperCase()} — {lesson.title}
+                {lessonCode(lesson)} — {lesson.title}
             </div>
         </div>
     );
@@ -668,7 +669,7 @@ export const LessonShell = () => {
 
                 infoPanel.replaceChildren(
                     makeLine(`Phase: ${phaseLabel} (starts at intro)`, 'mb-2 text-slate-600'),
-                    makeLine(`Level 1 focus for ${lesson.id.toUpperCase()}: understand one clear cause-and-effect pattern.`),
+                    makeLine(`Level 1 focus for ${lessonCode(lesson)}: understand one clear cause-and-effect pattern.`),
                     makeLine('Use simple observation: adjust one control, watch one visible change, then explain it in one sentence.', 'mt-2'),
                     makeLine('What To Do', 'mt-3 pt-3 border-t border-slate-200 text-[11px] uppercase tracking-wider font-semibold text-slate-500'),
                     makeLine('1. Move one control slowly and watch the visual response.'),
@@ -755,7 +756,7 @@ export const LessonShell = () => {
                 </Link>
                 <DisciplineIcon size={16} className={config.color} />
                 <span className={`text-xs font-bold tracking-widest uppercase ${config.color}`}>
-                    {lesson.id.toUpperCase()}
+                    {lessonCode(lesson)}
                 </span>
                 <div className="h-4 w-px bg-slate-300" />
                 <span className="text-sm text-slate-900 font-medium">{lesson.title}</span>

@@ -4,6 +4,7 @@ import { Atom, Beaker, Dna } from 'lucide-react';
 import { LESSON_REGISTRY } from '../content/lessons';
 import { Discipline } from '../types';
 import { ALL_TAGS, BIG_IDEA_TAGS } from '../content/tags';
+import { lessonCode } from '../lessonCode';
 
 const DISCIPLINE_BADGE: Record<Discipline, { icon: typeof Atom; label: string; bg: string; text: string }> = {
     physics: { icon: Atom, label: 'Physics', bg: 'bg-indigo-50 border-indigo-200', text: 'text-indigo-700' },
@@ -197,7 +198,7 @@ export const LessonHub = () => {
                                                 <div className="flex-grow min-w-0">
                                                     <div className="flex items-center gap-2 mb-1">
                                                         <span className={`flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border ${badge.bg} ${badge.text}`}>
-                                                            <BadgeIcon size={10} /> {badge.label} · {lesson.id.toUpperCase()}
+                                                            <BadgeIcon size={10} /> {badge.label} · {lessonCode(lesson)}
                                                         </span>
                                                     </div>
                                                     <h3 className="text-sm font-bold text-slate-900 group-hover:text-indigo-700 transition-colors">{lesson.title}</h3>

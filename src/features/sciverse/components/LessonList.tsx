@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Discipline, LessonMeta } from '../types';
 import { BIG_IDEA_TAGS, Tag } from '../content/tags';
+import { lessonCode } from '../lessonCode';
 
 /** Subject chip. Mirrors the hub's palette; the word is always shown, never
  *  left to colour alone. */
@@ -9,8 +10,6 @@ const SUBJECT: Record<Discipline, { label: string; chip: string }> = {
     chemistry: { label: 'Chemistry', chip: 'bg-emerald-50 border-emerald-200 text-emerald-700' },
     biology: { label: 'Biology', chip: 'bg-rose-50 border-rose-200 text-rose-700' },
 };
-
-const LEVEL_LABEL: Record<1 | 2 | 3, string> = { 1: 'L1', 2: 'L2', 3: 'L3' };
 
 interface LessonListProps {
     lessons: LessonMeta[];
@@ -70,7 +69,7 @@ export const LessonList = ({ lessons, exceptTag }: LessonListProps) => {
                                                     {subject.label}
                                                 </span>
                                                 <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 text-[10px] font-bold">
-                                                    {LEVEL_LABEL[lesson.level ?? 1]} · {lesson.id.toUpperCase()}
+                                                    {lessonCode(lesson)}
                                                 </span>
                                             </span>
                                             <span className="block text-sm font-bold text-slate-900 group-hover:text-indigo-700 transition-colors">
