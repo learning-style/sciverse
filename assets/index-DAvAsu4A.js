@@ -5980,6 +5980,8 @@ Every ecosystem runs on sunlight, and every step up the ladder loses most of it.
 
 In P33 you learned that energy runs out at every step. So how do the *materials* keep going?
 
+The dial under the picture is **decomposer activity**. **Decomposers** are the small living things -- worms, woodlice, fungi and bacteria -- that break dead material back down into pieces, and the dial sets how busy they are.
+
 What do you think happens to the atoms in a fallen leaf?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"reused",label:"Tiny living things break the leaf apart and release its atoms so new plants can use them again.",nextNodeId:"correct",sentiment:"positive"},{id:"vanish",label:"The leaf slowly disappears -- its atoms get used up and are gone for good.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`It really looks like the leaf vanishes! But atoms can never be destroyed -- they only get **rearranged**.
 
 When a leaf rots, **decomposers** (bacteria and fungi) take it apart molecule by molecule. The **carbon** floats away as carbon dioxide gas. The **nitrogen** soaks into the soil as a plant nutrient. Nothing disappears -- it just moves to a new address.
@@ -6415,6 +6417,8 @@ Waste is only waste when nobody has worked out what it is worth.
 
 So the first job in a water plant is to physically remove everything it can, using **filters**.
 
+The picture lines up four things a filter has to catch, largest first: **grit**, which is tiny chips of stone; **sand**; **bacteria**; and **viruses**, which are smaller again.
+
 What do you think decides how much a filter can catch?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"holes",label:"The size of the holes -- anything bigger than a hole gets trapped, and anything smaller slips through.",nextNodeId:"correct",sentiment:"positive"},{id:"thick",label:"How thick the filter is -- a thicker filter always catches more than a thin one.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Thickness helps a little, but it is the **hole size** that decides what gets through!
 
 Think of a kitchen sieve. It could be a metre thick and pasta sauce would still pour straight through, because the holes are far bigger than the sauce. Swap in a coffee filter with tiny holes and suddenly even the coffee grounds stay behind.
@@ -6758,7 +6762,11 @@ Every energy system solves the same puzzle: energy arrives in bursts but is spen
 
 With your eyes open you walk straight easily -- not because you never drift, but because you **see the drift and correct it**, dozens of times a second, without noticing.
 
-That constant sense-and-correct pattern is called a **feedback loop**. What do you think a robot needs to follow a line?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"loop",label:"It has to keep checking where it is, compare that to where it should be, and steer back -- over and over.",nextNodeId:"correct",sentiment:"positive"},{id:"program",label:"It needs perfect instructions at the start telling it exactly how to move the whole way.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Perfect instructions sound tidy, but they fail in the real world -- exactly like walking with your eyes closed.
+That constant sense-and-correct pattern is called a **feedback loop**.
+
+Two things the picture shows you. The **correction strength** is how hard the robot swings its wheels once it notices it has drifted. The **tracking quality** underneath is how well it is managing to stay on the line.
+
+What do you think a robot needs to follow a line?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"loop",label:"It has to keep checking where it is, compare that to where it should be, and steer back -- over and over.",nextNodeId:"correct",sentiment:"positive"},{id:"program",label:"It needs perfect instructions at the start telling it exactly how to move the whole way.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Perfect instructions sound tidy, but they fail in the real world -- exactly like walking with your eyes closed.
 
 Wheels slip a little. The floor is not perfectly flat. A tiny motor runs a hair faster than its twin. Each error is small, but errors **add up**, and a robot following blind instructions is lost within metres.
 
@@ -7000,6 +7008,8 @@ Every computer decision is built from switches and three simple rules.
 
 No switch with moving parts could survive that. So these switches have **no moving parts at all** -- they are made from a special material instead.
 
+The dial under the picture is the **control signal**: the small electrical push you send to a switch to tell it to open or close.
+
 What kind of material would make a good switch?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"middle",label:"One that can be told when to let electricity through and when to block it.",nextNodeId:"correct",sentiment:"positive"},{id:"metal",label:"Metal, because metal carries electricity really well.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Metal is a brilliant **conductor** -- but that is exactly the problem. Metal **always** lets electricity through. You can never switch it off.
 
 Rubber has the opposite problem. It is an **insulator**, so it **never** lets electricity through. You can never switch it on.
@@ -7056,6 +7066,8 @@ Computers exist because one material refused to be either a conductor or an insu
 **Up next:** B39 (Brain Circuits) -- decisions without a single transistor!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function cI(){return{root:{id:"root",speaker:"AI",content:`Your brain holds about **86 billion** **neurons**, and it runs on roughly **20 watts** -- less power than a light bulb. A computer doing anything close to what your brain does would need a small power station.
 
 And here is the surprise: like the transistors in **C39**, a single neuron only ever gives one of two answers.
+
+The dial under the picture is the **signal strength**: how big a nudge the neuron is getting from the cells feeding into it.
 
 What do you think a neuron does when it receives signals?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"threshold",label:"It adds up everything coming in, and fires a signal only if the total crosses a certain level.",nextNodeId:"correct",sentiment:"positive"},{id:"passes",label:"It passes every signal it receives straight along to the next neuron.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`If neurons just passed signals along, your brain would be a tangle of wire with no ability to decide anything!
 
@@ -7653,7 +7665,11 @@ Performance is built by what happens around the effort, not only by the effort.
 - C42 (Sweat and Salt) showed why replacing electrolytes matters as much as replacing water
 - B42 (Rest and Rebuild) showed that muscles are built during recovery, so rest days are part of the plan!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function wI(){return{root:{id:"root",speaker:"AI",content:`Jump off a chair onto concrete and it hurts. Jump the same height onto a thick crash mat and you barely feel it.
 
-You fell the same distance and you were moving at the same speed when you landed. So why does one hurt and the other does not?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"The mat takes longer to stop you, and a slower stop means a much smaller force on your body.",nextNodeId:"correct",sentiment:"positive"},{id:"bad",label:"The mat is softer, so you must be landing more gently and hitting it at a lower speed.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`You hit the mat at exactly the same speed -- gravity does not care what is underneath you!
+You fell the same distance and you were moving at the same speed when you landed.
+
+The dial under the picture is the **crumple distance**: how far the thing you land on squashes down while it brings you to a stop.
+
+So why does one hurt and the other does not?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"The mat takes longer to stop you, and a slower stop means a much smaller force on your body.",nextNodeId:"correct",sentiment:"positive"},{id:"bad",label:"The mat is softer, so you must be landing more gently and hitting it at a lower speed.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`You hit the mat at exactly the same speed -- gravity does not care what is underneath you!
 
 What changes is **how long the stop takes**. On concrete you go from full speed to nothing in about **2 milliseconds**. On a crash mat, the foam squashes and stretches that stop out to around **200 milliseconds**.
 
@@ -8566,6 +8582,8 @@ A scent mark is a message that works while you sleep, and fades so it stays hone
 
 They should be fighting over every caterpillar. Instead they sit there quite happily.
 
+The dial under the picture is **how much they overlap**: how far two of those birds want the very same food in the very same part of the tree.
+
 How can five bird species share one tree?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"They feed in different parts of the tree, so they are not really after the same insects at all.",nextNodeId:"correct",sentiment:"positive"},{id:"bad",label:"There must be so many insects in the tree that nobody ever runs short.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Insects do run short, especially in winter. If all five species really chased the same food in the same place, one of them would win and the rest would leave.
 
 Scientists watched these birds very carefully and found something neat. Each species works a **different part** of the tree:
@@ -9414,6 +9432,8 @@ Here is an experiment you could actually run. Take **100 g of water** and **100 
 
 Suppose the water warms by **10 °C**. The iron warms by about **93 °C** -- roughly nine times as much.
 
+One dial under the picture is the **temperature rise**: not how hot something is, but how many degrees **warmer** it has become, in °C.
+
 Same mass. Same energy in. Why does one get so much hotter than the other?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Iron must need less energy for each degree, so the same energy buys it many more degrees than it buys the water.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"Iron is a metal, and metals pull heat in faster than water does, so it soaks up more energy in the same time.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Metals really do carry heat quickly -- that is why a metal spoon left in soup burns your fingers and a wooden one does not. But that is about how fast energy **travels through** something, and it is not what is happening here.
 
 Read the experiment again: both received the **same amount of energy**. That was fixed on purpose. Neither one soaked up more than the other.
@@ -9726,6 +9746,8 @@ Now let us put real numbers on it, because the numbers say something the rule on
 
 One square metre of grassland captures about **20,000 kilojoules** of sunlight in a year. A kilojoule (**kJ**) is a unit of energy -- about what you would get from a single peanut.
 
+Two words for the dials under the picture. **Producer energy** is how much the plants at the bottom capture in a year -- plants are called **producers** because they make their own food rather than eating. **Transfer efficiency** is the share of one step's energy that reaches the step above it.
+
 Follow those 20,000 kJ up four steps, from grass to eagles. **How much arrives at the top?**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"About 2 kJ. Each step keeps a tenth, and a tenth of a tenth of a tenth of a tenth is one ten-thousandth of the start.",nextNodeId:"correct",sentiment:"positive"},{id:"bad",label:"About 5,000 kJ. Each step takes its share, so a decent fraction of the original should still be there at the top.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`That answer assumes the losses **add up**. They do not -- they **multiply**, and that changes everything.
 
 If each step simply subtracted a fixed amount, four steps might well leave you a quarter of what you started with. But each step keeps a **fraction** of whatever it is handed, and fractions multiply together.
@@ -9858,6 +9880,8 @@ He planted a small willow tree in a pot, and he weighed everything first. The tr
 Five years later he weighed it all again. The tree now weighed **76.7 kg** -- it had gained **74.4 kg** of new wood, bark and leaves.
 
 And the soil had lost **57 grams**. Not 57 kilograms. Fifty-seven **grams**.
+
+The two dials under the picture name two processes. **Photosynthesis** is the process a plant uses to build its own material rather than taking it in ready made. **Decomposition** is the rotting of dead material once it dies.
 
 So where did the other 74.3 kg come from?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Out of the air and the water. A gas has mass too, and the tree was pulling carbon dioxide out of the atmosphere the whole five years.",nextNodeId:"correct",sentiment:"positive"},{id:"bad",label:"Out of the soil. His scales must have been slightly off, because a tree obviously grows out of the ground it is standing in.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`The scales were fine. And look at the size of the gap -- this is not a small error.
 
@@ -10150,6 +10174,8 @@ Two copper mines.
 
 Mine A is **ten times deeper**. Mine B's ore is **ten times poorer**.
 
+The bar under the picture splits the cost three ways, and those are its labels: **lifting** the rock up out of the mine, **crushing** it to powder, and **smelting** the powder in a furnace to free the metal from the rock.
+
 Which one uses more energy for each kilogram of copper it produces?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Mine B, and not by a little. Poor ore means far more rock to handle for the same copper, and every stage has to process all of it.",nextNodeId:"correct",sentiment:"positive"},{id:"bad",label:"Mine A, because it is ten times deeper and Level 1 said lifting is what a mine spends its energy on.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Lifting *is* what Level 1 emphasised, and it is genuinely the reason mines get dearer as they deepen. But Level 1 never asked how big the lifting is **compared with everything else**. Once you can calculate it, the comparison changes the answer.
 
 Start with lifting, which you can work out from scratch. Raising **1 kg** by **1 metre** takes about **10 joules**. So raising **1 tonne** -- 1,000 kg -- by 1 metre takes about 10,000 joules, which is **0.01 megajoules**. A **megajoule (MJ)** is a million joules.
@@ -10271,6 +10297,8 @@ Tilt the ground and the method breaks.
 A **20 kg** box rests on a ramp tilted at **30°** to the horizontal. Its **weight** is the force gravity exerts on it: **W = mg = 20 x 9.8 = 196 N**, and that force points **straight down**.
 
 But the box cannot move straight down. The ramp is in the way. It can only slide **along the slope**.
+
+The other dial is the **friction coefficient**: a single number for a pair of surfaces, which you multiply by the force pressing them together to get the friction force. Rubber on dry road is about 0.9; steel on ice about 0.03. It has no units, because it is a force divided by a force.
 
 So how much of that 196 N actually drives it down the ramp?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Less than all of it. Only the part of the weight that points along the slope can drive it, and the rest presses into the ramp.",nextNodeId:"components",sentiment:"positive"},{id:"bad",label:"All 196 N. Gravity pulls with the object's full weight no matter what surface it is resting on.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Gravity does pull with the full 196 N -- that part is right. What is wrong is assuming all of it is available to **accelerate the box along the ramp**.
 
@@ -11002,6 +11030,8 @@ Here is something that zoom does not explain. An elephant is roughly ten million
 
 Across almost the whole of life, cells stay microscopic. Elephants simply have more of them.
 
+One dial under the picture is **membrane folds**. A cell's outer skin is its **membrane**, and it need not be smooth -- wrinkling it into folds adds skin without adding any more inside.
+
 Why has nothing evolved a cell you could see?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Something must go wrong as a cell gets bigger -- probably getting enough food and oxygen in through its surface to supply everything inside.",nextNodeId:"ratio",sentiment:"positive"},{id:"bad",label:"Big cells would simply be too heavy to hold themselves together, so they would collapse under their own weight.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Weight is not the obstacle. Cells are supported by water and by each other, and a few cells really are enormous -- an ostrich egg yolk is a single cell, and some nerve cells run a metre long. They do not collapse.
 
 But look at what those exceptions have in common. The egg yolk is a food store that does very little chemistry. The nerve cell is a **thread**, thin along its whole length. Neither is a large **compact** cell doing ordinary work, and that is the shape that never appears.
@@ -11399,6 +11429,8 @@ L2C2 could compare atoms. Level 3 lets you weigh out a chosen number of them.
 Halving sounds survivable. A cell with half the relative surface might simply work half as hard, or grow half as fast.
 
 But that is not what happens. Cells do not gradually struggle as they enlarge -- there is a size beyond which they essentially cannot function, and it arrives far sooner than "half as good" would suggest.
+
+A dial under the picture is labelled **oxygen demand**: how much oxygen the inside of the cell uses up each second, for every unit of its volume.
 
 So **6/L** is describing something real, but it is not the thing that actually stops a cell growing. What is?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Probably how long molecules take to travel to the middle. It is no use having enough surface if oxygen arrives too late to be any use.",nextNodeId:"diffusion",sentiment:"positive"},{id:"bad",label:"The membrane must become too weak to hold a larger volume together, so the cell bursts before supply becomes the problem.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Membranes are stronger than that, and L2B2's exceptions prove it -- an ostrich egg yolk is one enormous cell and holds together perfectly well.
 
@@ -12954,6 +12986,8 @@ Now think about the range your ears cope with. Sound carries energy, and its **i
 
 That is a range of **10¹²** -- a trillion times.
 
+A dial under the picture is the **Weber fraction**. L2B4 found that you notice a *share* of what is already there rather than a fixed amount; the Weber fraction is that share written as a decimal, so 0.03 means you can just notice a change of three per cent.
+
 Your ears handle all of it. How many **different** loudnesses can you actually tell apart, from the faintest to the painful?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Only a few hundred. Each noticeable step is a 10% increase, and it takes surprisingly few 10% steps to multiply by a trillion.",nextNodeId:"recap",sentiment:"positive"},{id:"bad",label:"Billions. A trillion-fold range must be sliced into an enormous number of loudness levels.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`It would take billions of levels if each noticeable step were a fixed **amount**. A step near the painful end would be the same size as a step near the faintest sound, and a trillion-fold range would be cut into a vast number of thin slices.
 
 But L2B4 showed that each step is a fixed **share**. Near the faint end, 10% is a tiny amount. Near the loud end, the same 10% is an enormous amount. Steps that grow as you climb cover ground far faster than steps that stay the same size.
@@ -13637,7 +13671,11 @@ L2P5 balanced a perfect lever's books. Level 3 added friction, and found it doin
 
 The table never said **why** -- or how anyone could predict k at a temperature the table leaves out.
 
-And it is odd. Warming usually **helps** things dissolve: sugar dissolves far better in hot tea than in cold. Why is a gas the other way round?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Because dissolving a gas releases heat. Adding heat pushes the balance the other way, back out of the water.",nextNodeId:"energy",sentiment:"positive"},{id:"bad",label:"Because warm water molecules are packed closer together, leaving less room between them for gas.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Warm water is actually packed slightly **less** closely -- water expands a little as it warms above 4 °C. So there is, if anything, a touch **more** room. Room cannot be the reason.
+And it is odd. Warming usually **helps** things dissolve: sugar dissolves far better in hot tea than in cold.
+
+A dial under the picture is the **heat of dissolving**: the energy given out or taken in when one mole of a substance dissolves, in kilojoules per mole.
+
+Why is a gas the other way round?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Because dissolving a gas releases heat. Adding heat pushes the balance the other way, back out of the water.",nextNodeId:"energy",sentiment:"positive"},{id:"bad",label:"Because warm water molecules are packed closer together, leaving less room between them for gas.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Warm water is actually packed slightly **less** closely -- water expands a little as it warms above 4 °C. So there is, if anything, a touch **more** room. Room cannot be the reason.
 
 And sugar shows that warming is not simply bad for dissolving. Something about **gases** in particular must be different.
 
@@ -14168,6 +14206,8 @@ Now a puzzle that P6 can help with. A fish's muscle and bone have a density of a
 
 By P6's rule, a fish should sink. Yet many fish can hang perfectly still in the water, neither sinking nor rising, hardly moving a fin.
 
+The dial under the picture is **bladder volume**. Most fish carry a gas-filled bag inside them called a **swim bladder**, and the dial sets how many cubic centimetres of gas it holds.
+
 How?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"They carry a pocket of gas inside them. Gas adds a lot of volume but almost no mass, which brings the whole fish's density down to match the water's.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"They swim all the time to stay up. A fish that stopped moving would sink to the bottom.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Some fish do work that way. Many **sharks** are a little denser than the water, and slowly sink if they stop swimming.
 
 But a goldfish in a tank can hang in one spot, fins barely stirring, for minutes on end. Swimming cannot be the whole answer.
@@ -14268,7 +14308,11 @@ B6 followed oxygen through a fish's gills. Level 2 asks this Big Idea's question
 
 It is a strange rule, when you think about it. Water is not alive. It cannot weigh you, or measure how much liquid you pushed aside. Yet it pushes up with exactly that force.
 
-And the water is all around an object -- above it as well as below. So where does an **upward** push come from?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Water presses harder the deeper you go. It pushes up on the bottom of an object harder than it pushes down on the top, and the difference is the buoyant force.",nextNodeId:"pressure",sentiment:"positive"},{id:"bad",label:"Water pushes objects out of itself, with a force that depends on what the object is made of.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`The force cannot depend on what the object is made of. By L2P6's rule, a steel block and a wooden block of the **same size**, both held completely under water, feel exactly the **same** buoyant force. The steel sinks only because its **weight** is bigger.
+And the water is all around an object -- above it as well as below.
+
+A dial under the picture is the **fluid density**: the mass of each cubic metre of the liquid, in kilograms. Fresh water is about 1,000; seawater about 1,025.
+
+So where does an **upward** push come from?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Water presses harder the deeper you go. It pushes up on the bottom of an object harder than it pushes down on the top, and the difference is the buoyant force.",nextNodeId:"pressure",sentiment:"positive"},{id:"bad",label:"Water pushes objects out of itself, with a force that depends on what the object is made of.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`The force cannot depend on what the object is made of. By L2P6's rule, a steel block and a wooden block of the **same size**, both held completely under water, feel exactly the **same** buoyant force. The steel sinks only because its **weight** is bigger.
 
 So the push comes from the water, and from the **space** the object takes up.
 
@@ -14410,6 +14454,8 @@ L2P6 used Archimedes' principle. Level 3 derives it from the weight of the fluid
 The ocean is never one temperature, and never one saltiness. Near the poles its surface is about −2 °C; in the tropics, about 30 °C. Where the sun evaporates a lot of water, the sea gets **saltier**. Where rivers and rain pour in, it gets **fresher**.
 
 In a warm, sunny sea, the surface water is often both **warmer** and **saltier** than the water below it. Warmth makes water less dense. Salt makes it denser.
+
+One dial under the picture is **salinity**: how much salt the water holds, in grams of salt per kilogram of seawater. Open ocean is about 35.
 
 Which wins?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"It depends on the sizes. Put a number on each effect and add them -- sometimes warmth wins, sometimes salt.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"Salt always wins. Saltier water is always denser, so it always sinks.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Salt is powerful, but not unbeatable. Real seas show both results.
 
@@ -14877,6 +14923,8 @@ Now meet the **electric eel**, a long fish from the rivers of South America. Whe
 
 But the eel is made of living cells, and the voltage across any one living cell is tiny: at most about **0.15 V**.
 
+One dial under the picture is the **water resistance**: how strongly the water around the eel holds the current back, measured in **ohms (Ω)**. River water resists far more than salty water does.
+
 How does the eel reach 600 V?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"It stacks thousands of cells one after another, in series, like batteries in a torch. Their small voltages add up: 600 / 0.15 = 4,000 cells.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"Each of its cells must be far more powerful than a nerve cell, so it needs only a few of them.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`An eel's electric cells are not more powerful than other cells. Each one works just like B7's nerve cell: channels open, ions rush through, and the voltage across the cell changes by a small amount -- never more than about 0.15 V.
 
 The secret is not stronger cells. It is **how they are arranged**.
@@ -14983,7 +15031,11 @@ B7 showed ions making a voltage across a nerve cell. Level 2 stacks those voltag
 
 Connect one bulb, and the meter across the battery reads about **2.86 V**. Add a second bulb in parallel, and it drops to about **2.73 V**. Connect a thick wire straight across the battery, and the meter reads almost **0 V** -- and the battery gets hot.
 
-The chemicals inside cannot have changed in those few seconds. So why does the battery's voltage fall the more current it has to drive?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Some of the battery's push is spent driving current through the battery itself. It has resistance inside it, and more current loses more volts in there.",nextNodeId:"emf",sentiment:"positive"},{id:"bad",label:"The bulbs drain voltage out of the battery, and more bulbs drain more, like emptying a tank faster.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Voltage is not a substance that bulbs drain. L2P7 defined it as the **energy given to each coulomb**, and the battery's chemistry gives each coulomb the same energy whatever it is connected to.
+The chemicals inside cannot have changed in those few seconds.
+
+The dial under the picture is labelled **internal resistance**: resistance inside the battery itself rather than out in the bulb, measured in **ohms (Ω)** like any other resistance.
+
+So why does the battery's voltage fall the more current it has to drive?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Some of the battery's push is spent driving current through the battery itself. It has resistance inside it, and more current loses more volts in there.",nextNodeId:"emf",sentiment:"positive"},{id:"bad",label:"The bulbs drain voltage out of the battery, and more bulbs drain more, like emptying a tank faster.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Voltage is not a substance that bulbs drain. L2P7 defined it as the **energy given to each coulomb**, and the battery's chemistry gives each coulomb the same energy whatever it is connected to.
 
 What changes is **where that energy is spent**. The current does not flow only through the bulbs. It also has to flow through the battery itself -- through its paste and electrodes, where L2C7's ions are moving. That path has resistance too.
 
@@ -16312,6 +16364,8 @@ C9 named the N-P-K numbers. Level 2 turns them into grams.
 
 Imagine the simplest possible way to get there: every cell divides in two, all at the same time, again and again. Each round **doubles** the number of cells.
 
+The dial under the picture counts those rounds: it is labelled **doublings**, and one doubling is one round in which every cell divides in two.
+
 How many rounds of doubling would it take to get from **1 cell** to **30 trillion**?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Surprisingly few -- something like 45. Each round doubles everything that is already there, so the numbers climb faster and faster.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"Trillions of rounds, because you need trillions of new cells.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Trillions of rounds would be right if each round added **one** cell: 1, 2, 3, 4, 5...
 
 But in a doubling, **every** cell divides. So each round adds as many new cells as there already are:
@@ -17426,6 +17480,8 @@ Ecologists who count bigger and bigger areas find that new species keep turning 
 
 A forest holds **400 species** of plants. A plan would clear **half** of the forest.
 
+The dial under the picture is labelled **power z**. It is the exponent in the species-area rule: the number of species rises as the area raised to the power z, so a small z means new species turn up only slowly as you search wider.
+
 Does the forest lose **half** of its species?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"No -- far fewer than half. Most species live all over the forest, so the half that is left still holds most of them. Only the species found just in the cleared half disappear.",nextNodeId:"species_area",sentiment:"positive"},{id:"bad",label:"Yes. Half the forest means half the species.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Half the forest, half the species, would be true if every species lived in just one small corner of it. Most do not. Most species are spread across many parts of the forest.
 
 Think of a big library with several copies of most books, and only one copy of a few rare ones, spread over all its shelves. Close half the shelves. You lose every copy of some of the rare books -- but most titles still have a copy somewhere on the shelves that are left.
@@ -17681,6 +17737,8 @@ P11 gave blood pressure in mmHg. Level 2 finds what that unit means, and why hei
 
 That is a difference of 3 on the pH scale.
 
+One dial under the picture counts **dilutions**. One dilution means taking one part of a liquid and adding nine parts of water, so the result is ten times weaker than what you started with.
+
 How many times more acidic is stomach acid than black coffee?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"A thousand times. Each step on the pH scale is ten times, so three steps is 10 x 10 x 10 = 1,000.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"About 2.5 times, because 5 / 2 = 2.5. Or maybe 3 times, because the difference is 3.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`On a ruler, each step is the same **amount** more: 3 cm is 1 cm more than 2 cm. The pH scale does not work like a ruler.
 
 Think of the floors in a strange tower where every floor holds **ten times** as many people as the floor above it. Go down one floor: ten times as many. Down two floors: a hundred times. Down three floors: a thousand times.
@@ -17792,6 +17850,8 @@ C11 placed things on the pH scale. Level 2 finds what the steps are worth.
 **Up next:** B11 -- how scientists measure how well a vaccine works.`}}}function tS(){return{root:{id:"root",speaker:"AI",content:`In B11, vaccines trained the immune system's memory, so it could fight a germ before you fell ill.
 
 Scientists describe how well a vaccine works with one number. A vaccine might be **90% effective**.
+
+That single number is the vaccine's **effectiveness**, and it is the dial under the picture.
 
 Does a 90% effective vaccine mean that **10% of vaccinated people** still fall ill?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"No. It means vaccinated people fall ill 90% less often than unvaccinated people. If only a few unvaccinated people fall ill, far fewer than 10% of vaccinated people will.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"Yes. 90% of vaccinated people are protected, and the other 10% fall ill.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`That reading misses something: **not everyone would fall ill anyway**.
 
@@ -18036,6 +18096,8 @@ Your cells make acid all day, especially when you exercise hard. Suppose muscles
 
 That much strong acid in a litre of **pure water** would give a pH of about **1.9**.
 
+A dial under the picture is labelled **bicarbonate**. It is a dissolved substance that can take up arriving acid, and the dial sets how much of it each litre of blood holds, in millimoles.
+
 Does a litre of **blood** fall to pH 1.9 too?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"No. Blood contains something that soaks up the hydrogen ions -- a buffer -- so its pH falls only a little, and breathing can bring it back.",nextNodeId:"buffer",sentiment:"positive"},{id:"bad",label:"Yes. The same acid in the same volume must give the same pH.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`It would -- if every hydrogen ion added stayed free. In blood, most of them do not.
 
 Think of spilling water on a table with a sponge on it. Without the sponge, the water spreads everywhere. With the sponge, most of the water is soaked up before it can spread.
@@ -18164,6 +18226,8 @@ L2C11 added acid to pure water. Level 3 adds it to blood.
 Start with what a vaccine leaves behind: **memory cells**. In this lesson's model, the first time a germ arrives, the body has about **100** immune cells that match it. After vaccination, it has about **5,000**: fifty times as many.
 
 The matching cells must multiply, by dividing, until there are about **100,000** of them.
+
+One dial is the germ's **doubling time**: how long the germs take to double in number, in minutes. A short doubling time means the infection grows fast.
 
 Does starting with fifty times as many cells make the response arrive **fifty times sooner**?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"No. The cells multiply by doubling, so a fifty-times head start only saves the doublings it takes to multiply by fifty -- fewer than six of them. It arrives sooner, but nowhere near fifty times sooner.",nextNodeId:"doublings",sentiment:"positive"},{id:"bad",label:"Yes. Fifty times as many cells do the job fifty times as fast.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`That would be true if the cells had to be **added** one at a time. But immune cells multiply the way L2B9's cells did: by **doubling**.
 
@@ -18308,6 +18372,8 @@ L2B11 measured protection as one share. Level 3 finds the race behind it.
 
 Now go much further out. Earth's radius is about **6,400 km**, so climbing 6,400 km above the surface puts you **twice as far from Earth's centre** as someone standing on the ground.
 
+The dial under the picture is your **height above surface**: how far you are above the ground, in kilometres. Keep it apart from your distance from Earth's **centre**, which is always another 6,400 km on top -- the difference between those two is most of this lesson.
+
 Is gravity there **half** as strong?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"No -- weaker than that. A quarter as strong, because the pull spreads out over a sphere, and twice as far means four times the area to spread over.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"Yes. Twice as far away, half as strong.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Halving sounds fair, but watch what happens to anything that spreads out from a point.
 
 Hold a spray can 1 metre from a wall, and the paint covers one square. Move back to 2 metres, and the same paint covers a square **twice as wide and twice as tall** -- **four** squares. Each square gets only a **quarter** as much paint.
@@ -18433,6 +18499,10 @@ P12 said gravity reaches into space. Level 2 works out how strong it is there.
 **Up next:** C12 -- predicting an element nobody had ever seen.`}}}function sS(){return{root:{id:"root",speaker:"AI",content:`C12 told one of science's boldest stories. In **1869**, Mendeleev sorted the known elements and found gaps where no element was known. Rather than closing the gaps, he left them open -- and wrote down what the missing elements would be like.
 
 Years later they were found, and his predictions were close.
+
+Two words for the dials under the picture.
+
+A **period** is one across-the-page row of the periodic table, so the **hidden element's period** is which row the gap sits in. **Neighbours used** is how many of the elements surrounding that gap you average together to predict it.
 
 How could anyone describe an element that nobody had ever seen?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"From its neighbours. Properties change smoothly across the table, so an element in a gap should sit between the ones above, below and beside it -- roughly their average.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"He couldn't. He must have guessed, and got lucky when something turned up.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`A lucky guess would not have named an element's mass, its density, and the formulas of its compounds -- all close to right.
 
@@ -18837,6 +18907,8 @@ So look at the table's shape itself. Count the elements in each row:
 
 **2, 8, 8, 18, 18, 32**
 
+The dial under the picture is an element's **atomic number**: the number of protons in its nucleus, which is also how many electrons it holds when uncharged. It is the order the table is built in.
+
 Why those numbers? Why does hydrogen's row hold only two elements, and the next two rows exactly eight?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Because each row runs out when a set of electron places is full. The row lengths are counting how many electrons fit before the outer pattern starts again.",nextNodeId:"shells",sentiment:"positive"},{id:"bad",label:"They are just how the elements happen to line up -- the lengths do not mean anything in themselves.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`If the lengths meant nothing, they would be untidy numbers. Instead they come in matching pairs -- 2, then 8, 8, then 18, 18, then 32 -- and every row **ends** on a noble gas and **starts** on a violently reactive metal.
 
 That is not how accidents look. That is a **count** of something.
@@ -19118,6 +19190,8 @@ L2B12 ran the generations forwards. Level 3 reads the rate out of real counts.
 **Big Idea 12 is complete at Level 3.**`}}}function dS(){return{root:{id:"root",speaker:"AI",content:`P13 showed a small gear turning a big one: the big one turns more slowly, but with more turning force. L2P5 costed a lever the same way, and left gears and pulleys to this Big Idea.
 
 So here are the numbers. A **20-tooth** gear drives a **60-tooth** gear. The small one spins **30 times a minute**.
+
+The two dials under the picture are tooth counts. The **driver** is the gear you turn yourself; the **driven** is the gear it turns in its place.
 
 How fast does the big gear turn?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"10 times a minute. The big gear has three times as many teeth, so it takes three turns of the small gear to move it round once.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"90 times a minute. The big gear is three times bigger, so it gets three times as many turns.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Follow the teeth. They are the only thing the two gears share: every tooth that leaves the small gear has to push exactly one tooth of the big gear.
 
@@ -19903,6 +19977,8 @@ L2B13 opened and shut the holes. Level 3 holds them part way and finds the best 
 
 Eight bits seems a lot for one letter. The alphabet has only 26.
 
+One dial under the picture is **bits for each symbol**: how many of those on-off pulses you are willing to spend on a single letter.
+
 How many different patterns can you actually make with 8 bits?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Lots -- each bit doubles the count, so it is 2 multiplied by itself 8 times: 256 patterns.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"Sixteen: 8 bits, and each one can be 1 or 0, so 8 x 2 = 16.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Count them for a small case and the pattern shows itself.
 
 **One bit:** 0, 1 -- **2** patterns.
@@ -20306,6 +20382,10 @@ B14 spelled out the four-letter code. Level 2 counts what it can say.
 **Big Idea 14 is complete at Level 2.**`}}}function vS(){return{root:{id:"root",speaker:"AI",content:`L2P14 counted the bits in a message and found that **n** bits make **2ⁿ** patterns. But it assumed something: **the message was already a list of symbols** -- letters, pixels, numbers.
 
 A microphone gives you no such thing. It gives you a **voltage** that rises and falls smoothly, exactly like the wave on P14's oscilloscope. There is no first symbol, no last symbol, and no gap between one value and the next.
+
+A **bit** is one yes-or-no answer, the smallest piece of information a machine stores.
+
+One dial under the picture is **bits in a sample**: how many of those you spend on each single measurement.
 
 To store that as bits you have to **measure** it. How often?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Often enough to catch the fastest wiggle in the wave -- and the faster the sound, the more measurements each second it must take.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"It cannot be done properly. A smooth wave has infinitely many values, so any list of measurements must lose the sound.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`That is the natural guess, and it is wrong in a way worth understanding -- it is why digital audio works at all.
 
@@ -21318,6 +21398,8 @@ Real equations are not so obliging. Hydrogen and iodine make hydrogen iodide:
 
 **H₂ + I₂ ⇌ 2HI**
 
+That ratio has a proper name, and it is the dial under the picture: the **equilibrium constant, Kc**. The c is there because it is worked out from **concentrations** -- how much of each substance sits in each litre.
+
 One molecule of each goes in; **two** come out. So when you write the ratio for this reaction, what do you do with that 2?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"It becomes a power: the HI concentration is squared, because two molecules of it are involved. The balancing numbers turn into exponents.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"Nothing -- you still divide the amount of product by the amount of reactant. The 2 only tells you how to balance the equation.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Try it and watch two things go wrong.
 
 A real flask of this reaction at 430 °C, at equilibrium, holds **1.573 mol/L of HI** and **0.2135 mol/L each of H₂ and I₂**.
@@ -21665,9 +21747,9 @@ L2B15 found the balance point. Level 3 times the lap around it.
 
 That is true, and it hides two problems P16 never counted.
 
-The first: Earth's field does not lie flat along the ground -- over most of the world it points steeply **into** the ground, and a needle pivoted flat cannot follow that part at all.
+The first: Earth's field does not lie flat along the ground -- over most of the world it points steeply **into** the ground, and a needle pivoted flat cannot follow that part at all. The angle the field tips down from flat is the **dip angle**, and it is the first dial under the picture.
 
-The second: the needle points at **magnetic north**, which is not the same place as the **North Pole** on your map.
+The second: the needle points at **magnetic north**, which is not the same place as the **North Pole** on your map. The angle between those two norths is the **declination**, and it is the second dial.
 
 So suppose you walk **10 km** on a compass bearing, trusting the needle completely. How far from your target could you finish?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"Possibly more than a kilometre. A small angle error opens into a large distance the further you walk.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"A few metres at most. A compass points north, so any error must be tiny.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`A compass is accurate about what it measures. The trouble is that what it measures is not quite what you want.
 
@@ -21944,6 +22026,10 @@ C16 disturbed the domains. Level 2 finds the temperature that ends them.
 
 **Up next:** B16 -- what a second navigation cue is worth.`}}}function _S(){return{root:{id:"root",speaker:"AI",content:`B16 showed that a migrating bird does not rely on one sense. It has a magnetic sense, it reads the Sun and the stars, it knows landmarks, and some species use smell. When cloud hides the sky, the magnetic sense carries more of the load.
 
+Each of those senses is a **cue**: one independent reading of which way north is.
+
+The two dials under the picture are the number of **cues** the bird combines, and the **error** of each cue -- how many degrees either side of true north a single cue can land.
+
 That is the principle. Here is the arithmetic nobody gave you.
 
 Suppose a bird's magnetic sense gives a bearing good to about **±12°**, and its star sense is also good to about **±12°**. It uses both, and averages them.
@@ -22090,7 +22176,11 @@ B16 said animals combine cues. Level 2 says what the combining is worth.
 
 Nothing in that lesson said where a magnetic field comes from, or whether you could make one to order.
 
-You can, and it has nothing to do with iron. What do you need?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"A moving electric charge. A current in a wire makes a magnetic field around it, and coiling the wire stacks those fields into a strong one along the axis.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"A magnet. Fields come from magnetised material, so you need iron, nickel or cobalt to start with.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`L2C16 already ruled that out, though it did not say so in these words.
+You can, and it has nothing to do with iron.
+
+Two words for the dials under the picture. **Turns per metre** is how many loops of wire a coil has for every metre of its length -- not how many loops altogether, which is a different thing. **Current** is how much electricity flows through the wire, in **amperes (A)**.
+
+What do you need?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"A moving electric charge. A current in a wire makes a magnetic field around it, and coiling the wire stacks those fields into a strong one along the axis.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"A magnet. Fields come from magnetised material, so you need iron, nickel or cobalt to start with.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`L2C16 already ruled that out, though it did not say so in these words.
 
 Earth's core sits at about **5,000 °C**, thousands of degrees above every Curie temperature there is. No domains can line up down there, so no magnetised material is storing Earth's field -- and yet the field exists, steady enough to navigate by for centuries.
 
@@ -22238,7 +22328,11 @@ A **fridge magnet** holds its alignment for years, through being knocked about a
 
 The **iron core of a transformer** must lose its alignment and rebuild it in the opposite direction **fifty times every second**, and will do so for decades without complaint.
 
-Same element, same domains, both far below the Curie temperature. What is different?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"How stubborn the alignment is. One material resists being changed and the other gives way easily -- so there must be a number for how hard it is to wipe a magnet, separate from how strong it is.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"How strong they are. The fridge magnet is a strong magnet and the transformer core is a weak one, so the weak one flips easily.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`It is the other way round, which is the surprise worth having.
+Same element, same domains, both far below the Curie temperature.
+
+Two words for the dials under the picture. A material's **coercivity** is how strong a reversed field has to be to wipe its alignment out, measured in **amperes per metre (A/m)**. **Cycles per second** is how many times each second an applied field is turned round, measured in **hertz (Hz)**.
+
+What is different?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"good",label:"How stubborn the alignment is. One material resists being changed and the other gives way easily -- so there must be a number for how hard it is to wipe a magnet, separate from how strong it is.",nextNodeId:"defining",sentiment:"positive"},{id:"bad",label:"How strong they are. The fridge magnet is a strong magnet and the transformer core is a weak one, so the weak one flips easily.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`It is the other way round, which is the surprise worth having.
 
 Put soft iron inside a coil and drive it hard, and it produces a field **stronger** than any fridge magnet -- iron saturates around **2 T**, while a ferrite fridge magnet manages perhaps **0.3 T**. Soft iron is the better magnet while the current flows.
 
