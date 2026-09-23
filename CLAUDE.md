@@ -151,9 +151,15 @@ is unreachable.
 
 **There is no Node runtime on this machine.** `node`, `npm` and `npx` are all
 absent, so `tsc`, `vitest` and `vite build` cannot run locally. CI is the only
-type-check available, and five separate type errors have reached CI this way —
-`noUnusedLocals`, use-before-declaration, a closed union, tuple widening, and a
-narrow level union. Installing Node would remove that entire failure class.
+type-check available, and six separate type errors have reached CI this way —
+`noUnusedLocals` twice, use-before-declaration, a closed union, tuple widening,
+and a narrow level union. Installing Node would remove that entire failure class.
+
+**`noUnusedLocals` applies at every depth, including module level.** The second
+failure was a module-level `const HARDEST = 900000` in a lab, declared for the
+top of a range and never read. A hand-written scan that only walks `drawScene`
+looks straight past it, so check declarations at every nesting depth — and make
+the scan **export-aware**, or every `export const Component` reports as unused.
 
 ## Deploying
 
