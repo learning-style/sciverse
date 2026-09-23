@@ -7,7 +7,6 @@ interface Props {
 }
 
 const SOFT = 80;
-const HARDEST = 900000;
 const EMERALD = '#047857';
 const HEAT = '#b45309';
 
