@@ -253,6 +253,9 @@ import { getL3B15Script } from './l3b15-cycle-length';
 import { getL2P16Script } from './l2p16-how-far-off-north';
 import { getL2C16Script } from './l2c16-curie-point';
 import { getL2B16Script } from './l2b16-two-cues';
+import { getL3P16Script } from './l3p16-making-a-field';
+import { getL3C16Script } from './l3c16-why-magnets-stay';
+import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1276,6 +1279,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p16': getL2P16Script,
     'l2c16': getL2C16Script,
     'l2b16': getL2B16Script,
+    'l3p16': getL3P16Script,
+    'l3c16': getL3C16Script,
+    'l3b16': getL3B16Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1796,6 +1802,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p16', title: 'How Far Off Is North?', subtitle: 'Cosine for field strength, tangent for distance', discipline: 'physics', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '🧭', accentColor: 'indigo', crossLinks: ['p16', 'l2p12'], level: 2 },
     { id: 'l2c16', title: 'How Hot Before It Stops?', subtitle: 'The Curie temperature: one number per material', discipline: 'chemistry', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '🔥', accentColor: 'emerald', crossLinks: ['c16', 'l2c1'], level: 2 },
     { id: 'l2b16', title: 'Two Cues Beat One', subtitle: 'Averaging cuts scatter by the root of the count', discipline: 'biology', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '🕊️', accentColor: 'rose', crossLinks: ['b16', 'l2p16'], level: 2 },
+    { id: 'l3p16', title: 'Making a Field', subtitle: 'B = μ₀ n I: turns per metre times amps', discipline: 'physics', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '🔌', accentColor: 'indigo', crossLinks: ['l2p16', 'p16'], level: 3 },
+    { id: 'l3c16', title: 'Why Some Magnets Stay', subtitle: 'Hysteresis: remanence, coercivity, and loop area as heat', discipline: 'chemistry', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '🧲', accentColor: 'emerald', crossLinks: ['l2c16', 'c16'], level: 3 },
+    { id: 'l3b16', title: 'Trusting the Sharper Cue', subtitle: 'weight = 1/error², and why a blind average loses', discipline: 'biology', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '⭐', accentColor: 'rose', crossLinks: ['l2b16', 'b16'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
