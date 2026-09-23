@@ -207,7 +207,7 @@ interface BigIdeaEnhancement {
 
 const BIG_IDEA_ENHANCEMENTS: Record<number, BigIdeaEnhancement> = {
     16: {
-        lens: 'A magnet's pull reaches across empty space, with nothing to see in between. That same invisible pull turns a compass needle, decides which metals stick, and helps a bird find its way.',
+        lens: 'A magnet\'s pull reaches across empty space, with nothing to see in between. That same invisible pull turns a compass needle, decides which metals stick, and helps a bird find its way.',
         experiment: 'Change one field-related control and predict the direction of alignment before observing the visual response.',
         vocab: ['magnetic field', 'domain alignment', 'magnetoreception'],
     },

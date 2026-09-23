@@ -142,6 +142,7 @@ python3 scripts/check-lessons.py            # every lesson
 python3 scripts/check-lessons.py l2p1 l3c2  # named ones
 python3 scripts/check-clarity.py            # is every visual term explained?
 python3 scripts/check-unused.py             # unused symbols in changed TypeScript
+python3 scripts/check-strings.py             # string literals that will not parse
 ```
 
 It pairs lessons to labs through `extendedLabs.ts`, so it needs no argument
@@ -172,6 +173,20 @@ absent, so `tsc`, `vitest` and `vite build` cannot run locally. CI is the only
 type-check available, and six separate type errors have reached CI this way —
 `noUnusedLocals` twice, use-before-declaration, a closed union, tuple widening,
 and a narrow level union. Installing Node would remove that entire failure class.
+
+**Rewriting the contents of a single-quoted string is how a build breaks.**
+`lens: 'A magnet's pull ...'` closes the string at the apostrophe, leaves the
+rest of the line as bare text, and tsc answers with twenty "',' expected" on one
+line. No lesson checker parses TypeScript, so all three passed a file that could
+not compile. `check-strings.py` looks for exactly this: a property whose
+single-quoted value holds an unescaped apostrophe, plus strings left open at a
+newline. It knows to ignore JSX text (`You've mastered`) and union types
+(`target: 'plant' | 'puppy'`), and both exclusions are regression-tested against
+the real failure so they cannot silently disarm it.
+
+Pass these scripts explicit paths when the work is already committed -- their
+no-argument default diffs against `origin/main`, which is empty once pushed, and
+an empty scan reads as a pass.
 
 `check-unused.py` stands in for the type-check that cannot run here. It scans
 everything changed against `origin/main` for unused consts at any depth, unused
