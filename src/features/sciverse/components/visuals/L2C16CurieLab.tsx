@@ -112,7 +112,7 @@ export const L2C16CurieLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, 94, safeRight - 24, 16);
         fitText(ctx, 'Every material has its own cliff', safeRight / 2, 118, safeRight - 24, 13);
 
-        const tail = ferro
+        const ending = ferro
             ? `so the domains are aligned and it is ferromagnetic, with ${margin} °C of margin in hand.`
             : `so the domains cannot line up and it is paramagnetic, ${margin} °C above its Curie temperature.`;
 
@@ -124,7 +124,7 @@ export const L2C16CurieLab = ({ state, onStateChange }: Props) => {
                 high: '1,200 °C',
                 stops: ['#ecfdf5', '#fcd34d', '#b45309'] as [string, string, string],
             },
-            note: `${pick.name} has a Curie temperature of ${pick.tc} °C and this sample is at ${temp} °C, ${tail}`,
+            note: `${pick.name} has a Curie temperature of ${pick.tc} °C and this sample is at ${temp} °C, ${ending}`,
         };
     };
 
