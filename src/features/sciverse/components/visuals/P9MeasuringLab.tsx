@@ -157,7 +157,7 @@ export const P9MeasuringLab = ({ state }: P9MeasuringLabProps) => {
         ctx.font = '17px monospace';
         ctx.textAlign = 'center';
         for (let w = 1; w <= 10; w++) {
-            ctx.fillText(`${w}`, toGraphX(w, g), g.bottom + 16);
+            ctx.fillText(`week ${w}`, toGraphX(w, g), g.bottom + 16);
         }
         ctx.font = 'bold 18px monospace';
         ctx.fillText('Week', g.left + g.w / 2, g.bottom + 36);
@@ -168,7 +168,7 @@ export const P9MeasuringLab = ({ state }: P9MeasuringLabProps) => {
         for (let i = 0; i <= ySteps; i++) {
             const val = Math.round((1 - i / ySteps) * maxY);
             const y = g.top + (i / ySteps) * g.h;
-            ctx.fillText(`${val}`, g.left - 8, y + 4);
+            ctx.fillText(`${val} cm`, g.left - 8, y + 4);
         }
         ctx.save();
         ctx.translate(18, g.top + g.h / 2);
@@ -391,7 +391,7 @@ export const P9MeasuringLab = ({ state }: P9MeasuringLabProps) => {
             ctx.lineWidth = 1;
             ctx.stroke();
             if (cm % 10 === 0) {
-                ctx.fillText(`${cm}`, rulerX - 4, y + 3);
+                ctx.fillText(`${cm} cm`, rulerX - 4, y + 3);
             }
         }
 
@@ -497,7 +497,7 @@ export const P9MeasuringLab = ({ state }: P9MeasuringLabProps) => {
         const showWeeks = Math.min(Math.floor(t * 1.5) + 1, 10);
         for (let i = 0; i < showWeeks; i++) {
             ctx.fillStyle = '#334155';
-            ctx.fillText(`  ${i + 1}      ${PLANT_DATA[i]}`, clipX + 10, clipY + 52 + i * 14);
+            ctx.fillText(`  week ${i + 1}      ${PLANT_DATA[i]} cm`, clipX + 10, clipY + 52 + i * 14);
         }
     }
 
@@ -602,13 +602,13 @@ export const P9MeasuringLab = ({ state }: P9MeasuringLabProps) => {
         ctx.fillRect(barAreaX + 20, barBase - ph, barW, ph);
         ctx.fillStyle = '#15803d';
         ctx.font = '16px monospace';
-        ctx.fillText(`${plantRate}`, barAreaX + 20 + barW / 2, barBase - ph - 4);
+        ctx.fillText(`${plantRate} cm/week`, barAreaX + 20 + barW / 2, barBase - ph - 4);
         ctx.fillText('🌻', barAreaX + 20 + barW / 2, barBase + 12);
 
         ctx.fillStyle = '#2563eb';
         ctx.fillRect(barAreaX + 70, barBase - ppy, barW, ppy);
         ctx.fillStyle = '#1d4ed8';
-        ctx.fillText(`${puppyRate}`, barAreaX + 70 + barW / 2, barBase - ppy - 4);
+        ctx.fillText(`${puppyRate} cm/week`, barAreaX + 70 + barW / 2, barBase - ppy - 4);
         ctx.fillText('🐕', barAreaX + 70 + barW / 2, barBase + 12);
     }
 

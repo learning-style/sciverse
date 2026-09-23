@@ -182,7 +182,7 @@ export const P6DensityLab = ({ state, onStateChange }: P6DensityLabProps) => {
                 const labelY = obj.density > liquidDensity ? tankBottom + 18 : cy - obj.size / 2 - 12;
                 ctx.fillStyle = '#1e293b';
                 ctx.font = 'bold 18px monospace';
-                ctx.fillText(`${obj.label} (${obj.density})`, cx, labelY);
+                ctx.fillText(`${obj.label} (${obj.density} g/cm³)`, cx, labelY);
             }
         });
 

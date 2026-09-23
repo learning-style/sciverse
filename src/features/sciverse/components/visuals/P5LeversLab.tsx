@@ -142,7 +142,7 @@ export const P5LeversLab = ({ state, onStateChange }: P5LeversLabProps) => {
             ctx.fillStyle = '#fff';
             ctx.font = 'bold 18px monospace';
             ctx.textAlign = 'center';
-            ctx.fillText(`${lw}`, leftX, -6 - wSize / 2 + 4);
+            ctx.fillText(`${lw} kg`, leftX, -6 - wSize / 2 + 4);
 
             // Right weight (at right end of beam)
             const rightX = halfLen + beamOffsetX - 15;
@@ -155,7 +155,7 @@ export const P5LeversLab = ({ state, onStateChange }: P5LeversLabProps) => {
             ctx.fillStyle = '#fff';
             ctx.font = 'bold 18px monospace';
             ctx.textAlign = 'center';
-            ctx.fillText(`${rw}`, rightX, -6 - rSize / 2 + 4);
+            ctx.fillText(`${rw} kg`, rightX, -6 - rSize / 2 + 4);
 
             // Distance labels on the beam (left arm / right arm in tick-mark units)
             const leftArmLen = pivotFraction * 10;

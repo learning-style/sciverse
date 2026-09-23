@@ -238,7 +238,7 @@ export const B1MuscleLab = ({ state, onStateChange }: B1MuscleLabProps) => {
                 ctx.lineTo(x, chartY + chartH);
                 ctx.stroke();
                 ctx.textAlign = 'center';
-                ctx.fillText(`${kg}`, x, chartY + chartH + 12);
+                ctx.fillText(`${kg} kg`, x, chartY + chartH + 12);
             }
             for (let force = 60; force <= 180; force += 60) {
                 const y = chartY + chartH - (force / maxForce) * chartH;
@@ -247,7 +247,7 @@ export const B1MuscleLab = ({ state, onStateChange }: B1MuscleLabProps) => {
                 ctx.lineTo(chartX + chartW, y);
                 ctx.stroke();
                 ctx.textAlign = 'right';
-                ctx.fillText(`${force}`, chartX - 6, y + 3);
+                ctx.fillText(`${force} N`, chartX - 6, y + 3);
             }
 
             // Model line: force scales with weight for fixed lever geometry

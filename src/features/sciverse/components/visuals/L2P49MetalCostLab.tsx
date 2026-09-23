@@ -45,7 +45,7 @@ export const L2P49MetalCostLab = ({ state, onStateChange }: Props) => {
                 if (w > 54) {
                     outlineText(ctx, part.label, x + w / 2, barY + barH / 2 - 2,
                         'bold 12px monospace', '#ffffff', 'center', w - 8);
-                    outlineText(ctx, `${part.value.toFixed(1)}`, x + w / 2, barY + barH / 2 + 14,
+                    outlineText(ctx, `${part.value.toFixed(1)} MJ`, x + w / 2, barY + barH / 2 + 14,
                         'bold 12px monospace', '#ffffff', 'center', w - 8);
                 }
             }
