@@ -24,12 +24,34 @@ export const L3B1EngineLab = ({ state, onStateChange }: Props) => {
         const sweat = heat / L_VAP;
 
         // One bar for the whole chemical energy, split into what became work
-        // and what became heat.
+        // and what became heat. Bands are shares of the real stage height, and
+        // this lab prints a single footer line, so the floor allows for one.
+        const artTop = stageTop + 18;
+        const artBottom = stageBottom - 38;
+        const usable = artBottom - artTop;
+
+        const above = 14;
+        const barH = Math.max(26, Math.min(62, usable * 0.3));
+        const dropsGap = Math.max(16, Math.min(54, usable * 0.18));
+        const tail = Math.max(20, Math.min(52, usable * 0.16));
+        const drops = Math.max(1, Math.min(24, Math.round(sweat / 2)));
+        const dropRows = Math.ceil(drops / 12);
+        const fixed = above + barH + dropsGap + tail;
+        const pitch = dropRows > 1
+            ? Math.max(14, Math.min(26, (usable - fixed) / (dropRows - 1)))
+            : 26;
+        // On a short stage the drops go first: the sentence below still says
+        // how much sweat has to evaporate.
+        const showDrops = usable - fixed >= (dropRows - 1) * 14 + 9;
+        const dropBand = showDrops ? (dropRows - 1) * pitch : 0;
+        const blockH = fixed + dropBand;
+        const top = artTop + Math.max(0, (usable - blockH) / 2);
+
         const barX = 54;
         const barW = safeRight - 110;
-        const barY = stageTop + 74;
-        const barH = 62;
+        const barY = top + above;
         const workW = barW * EFFICIENCY;
+        const roomy = barH > 40;
 
         ctx.fillStyle = '#4f46e5';
         ctx.fillRect(barX, barY, workW, barH);
@@ -43,32 +65,41 @@ export const L3B1EngineLab = ({ state, onStateChange }: Props) => {
         ctx.lineTo(barX + workW, barY + barH);
         ctx.stroke();
 
-        outlineText(ctx, 'useful work', barX + workW / 2, barY + barH / 2 - 3,
-            'bold 12px monospace', '#ffffff', 'center', workW - 6);
-        outlineText(ctx, `${Math.round(work).toLocaleString()} J`, barX + workW / 2, barY + barH / 2 + 14,
-            'bold 12px monospace', '#ffffff', 'center', workW - 6);
-        outlineText(ctx, 'heat', barX + workW + (barW - workW) / 2, barY + barH / 2 - 3,
-            'bold 12px monospace', '#ffffff', 'center', barW - workW - 6);
-        outlineText(ctx, `${Math.round(heat).toLocaleString()} J`, barX + workW + (barW - workW) / 2, barY + barH / 2 + 14,
-            'bold 12px monospace', '#ffffff', 'center', barW - workW - 6);
+        if (roomy) {
+            outlineText(ctx, 'useful work', barX + workW / 2, barY + barH / 2 - 3,
+                'bold 12px monospace', '#ffffff', 'center', workW - 6);
+            outlineText(ctx, `${Math.round(work).toLocaleString()} J`, barX + workW / 2, barY + barH / 2 + 14,
+                'bold 12px monospace', '#ffffff', 'center', workW - 6);
+            outlineText(ctx, 'heat', barX + workW + (barW - workW) / 2, barY + barH / 2 - 3,
+                'bold 12px monospace', '#ffffff', 'center', barW - workW - 6);
+            outlineText(ctx, `${Math.round(heat).toLocaleString()} J`, barX + workW + (barW - workW) / 2, barY + barH / 2 + 14,
+                'bold 12px monospace', '#ffffff', 'center', barW - workW - 6);
+        } else {
+            outlineText(ctx, 'useful work', barX + workW / 2, barY + barH / 2 + 4,
+                'bold 11px monospace', '#ffffff', 'center', workW - 6);
+            outlineText(ctx, 'heat', barX + workW + (barW - workW) / 2, barY + barH / 2 + 4,
+                'bold 11px monospace', '#ffffff', 'center', barW - workW - 6);
+        }
         outlineText(ctx, `total energy in = ${Math.round(total).toLocaleString()} J`,
             safeRight / 2, barY - 12, 'bold 12px monospace', '#0f172a', 'center', barW);
 
         // The sweat that has to evaporate to carry the heat away
-        const dropY = barY + barH + 54;
-        const drops = Math.max(1, Math.min(24, Math.round(sweat / 2)));
-        for (let i = 0; i < drops; i++) {
-            const dx = barX + 14 + (i % 12) * ((barW - 28) / 12);
-            const dy = dropY + Math.floor(i / 12) * 26;
-            ctx.fillStyle = '#0ea5e9';
-            ctx.beginPath();
-            ctx.moveTo(dx, dy - 9);
-            ctx.quadraticCurveTo(dx + 7, dy + 1, dx, dy + 7);
-            ctx.quadraticCurveTo(dx - 7, dy + 1, dx, dy - 9);
-            ctx.fill();
+        const dropY = barY + barH + dropsGap;
+        if (showDrops) {
+            for (let i = 0; i < drops; i++) {
+                const dx = barX + 14 + (i % 12) * ((barW - 28) / 12);
+                const dy = dropY + Math.floor(i / 12) * pitch;
+                ctx.fillStyle = '#0ea5e9';
+                ctx.beginPath();
+                ctx.moveTo(dx, dy - 9);
+                ctx.quadraticCurveTo(dx + 7, dy + 1, dx, dy + 7);
+                ctx.quadraticCurveTo(dx - 7, dy + 1, dx, dy - 9);
+                ctx.fill();
+            }
         }
         outlineText(ctx, `${sweat.toFixed(1)} g of sweat must evaporate at 2,400 J per gram`,
-            safeRight / 2, dropY + 52, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
+            safeRight / 2, Math.min(dropY + dropBand + tail, artBottom),
+            'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
         outlineText(ctx, `W = mgh = ${kg} x 9.8 x ${metres} = ${Math.round(work).toLocaleString()} J`,
             safeRight / 2, stageBottom - 16, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
 

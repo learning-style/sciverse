@@ -22,30 +22,46 @@ export const L2B3LeafLab = ({ state, onStateChange }: Props) => {
         const glucose = kept / 1000 / GLUCOSE_KJ_PER_G;
 
         // Two bars, one dwarfing the other -- that gap is the whole lesson.
+        // Every band below is a share of the real stage height, so the leaf and
+        // its label cannot walk into the footer on a short canvas.
+        const artTop = stageTop + 18;
+        const artBottom = stageBottom - 52;
+        const usable = artBottom - artTop;
+
         const barX = 62;
         const barW = safeRight - barX - 40;
-        const topY = stageTop + 66;
-        const barH = 34;
+        const barH = Math.max(14, Math.min(34, usable * 0.13));
+        const barGap = Math.max(6, Math.min(26, usable * 0.08));
+        const leafGap = Math.max(8, Math.min(58, usable * 0.12));
+        const fixed = barH * 2 + barGap + leafGap + 20;
+        const leafR = Math.max(12, Math.min(52, 14 + area * 4, (usable - fixed) / 2));
+        const blockH = fixed + leafR * 2;
+        const top = artTop + Math.max(0, (usable - blockH) / 2);
+
+        const barSize = Math.max(9, Math.min(13, Math.round(barH * 0.42)));
+        const barFont = `bold ${barSize}px monospace`;
+        const baseline = barH * 0.65;
+
+        const topY = top;
         ctx.fillStyle = '#fbbf24';
         ctx.fillRect(barX, topY, barW, barH);
         ctx.strokeStyle = '#0f172a';
         ctx.lineWidth = 2;
         ctx.strokeRect(barX, topY, barW, barH);
-        outlineText(ctx, `${(arriving / 1e6).toFixed(1)} MJ arriving`, barX + barW / 2, topY + 22,
-            'bold 13px monospace', '#0f172a', 'center', barW - 10);
+        outlineText(ctx, `${(arriving / 1e6).toFixed(1)} MJ arriving`, barX + barW / 2, topY + baseline,
+            barFont, '#0f172a', 'center', barW - 10);
 
-        const keptY = topY + barH + 26;
+        const keptY = topY + barH + barGap;
         const keptW = Math.max(3, barW * EFFICIENCY);
         ctx.fillStyle = '#16a34a';
         ctx.fillRect(barX, keptY, keptW, barH);
         ctx.strokeStyle = '#0f172a';
         ctx.strokeRect(barX, keptY, barW, barH);
-        outlineText(ctx, `${(kept / 1000).toFixed(0)} kJ kept -- one per cent`, barX + barW / 2, keptY + 22,
-            'bold 13px monospace', '#0f172a', 'center', barW - 10);
+        outlineText(ctx, `${(kept / 1000).toFixed(0)} kJ kept -- one per cent`, barX + barW / 2, keptY + baseline,
+            barFont, '#0f172a', 'center', barW - 10);
 
         // The leaf, sized by area, drawn green because that is the point
-        const leafY = keptY + barH + 58;
-        const leafR = Math.max(20, Math.min(52, 14 + area * 4));
+        const leafY = keptY + barH + leafGap + leafR;
         ctx.fillStyle = '#16a34a';
         ctx.beginPath();
         ctx.ellipse(safeRight * 0.3, leafY, leafR, leafR * 0.62, -0.4, 0, Math.PI * 2);
@@ -53,16 +69,18 @@ export const L2B3LeafLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#14532d';
         ctx.lineWidth = 2;
         ctx.stroke();
-        outlineText(ctx, `${area} m² of leaf, ${hours} h of sun`, safeRight * 0.3, leafY + leafR + 22,
+        outlineText(ctx, `${area} m² of leaf, ${hours} h of sun`, safeRight * 0.3,
+            Math.min(leafY + leafR + 20, artBottom),
             'bold 12px monospace', '#0f172a', 'center', 260);
 
         // What that makes
         const gx = safeRight * 0.68;
+        const gSize = Math.max(11, Math.min(17, Math.round(leafR * 0.34)));
         ctx.textAlign = 'left';
-        ctx.font = '13px monospace';
+        ctx.font = `${Math.max(9, gSize - 4)}px monospace`;
         ctx.fillStyle = '#334155';
         ctx.fillText(`${(kept / 1000).toFixed(0)} kJ ÷ 15.6 kJ/g`, gx - 40, leafY - 10);
-        ctx.font = 'bold 17px monospace';
+        ctx.font = `bold ${gSize}px monospace`;
         ctx.fillStyle = '#15803d';
         ctx.fillText(`${glucose.toFixed(1)} g of glucose`, gx - 40, leafY + 16);
         ctx.textAlign = 'center';

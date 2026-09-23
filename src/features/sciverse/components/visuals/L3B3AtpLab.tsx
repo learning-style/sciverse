@@ -18,11 +18,33 @@ export const L3B3AtpLab = ({ state, onStateChange }: Props) => {
         const heat = GLUCOSE_KJ - caught;
         const pct = (caught / GLUCOSE_KJ) * 100;
 
-        // One mole of glucose, split into what is caught and what is heat
+        // One mole of glucose, split into what is caught and what is heat.
+        // The bands are shares of the real stage height, and the coins' vertical
+        // pitch shrinks as they wrap, so more rows never push past the footer.
+        const artTop = stageTop + 18;
+        const artBottom = stageBottom - 52;
+        const usable = artBottom - artTop;
+
         const barX = 60;
         const barW = safeRight - barX - 40;
-        const barY = stageTop + 50;
-        const barH = 44;
+        const above = Math.max(12, Math.min(16, usable * 0.06));
+        const barH = Math.max(16, Math.min(44, usable * 0.17));
+        const captionGap = Math.max(10, Math.min(20, usable * 0.07));
+        const coinsGap = Math.max(8, Math.min(26, usable * 0.09));
+        const labelTail = Math.max(16, Math.min(30, usable * 0.1));
+        const perRow = Math.max(8, Math.floor((safeRight - 120) / 24));
+        const rows = Math.ceil(count / perRow);
+        const fixed = above + barH + captionGap + coinsGap + labelTail;
+        // On a short canvas the coins are the first thing to go: the bar and the
+        // label still say how many ATP there are and what each is worth.
+        const showCoins = usable - fixed >= (rows - 1) * 12;
+        const pitch = rows > 1
+            ? Math.max(12, Math.min(24, (usable - fixed) / (rows - 1)))
+            : 24;
+        const coinBand = showCoins ? (rows - 1) * pitch : 0;
+        const blockH = fixed + coinBand;
+        const top = artTop + Math.max(0, (usable - blockH) / 2);
+        const barY = top + above;
         const caughtW = barW * (caught / GLUCOSE_KJ);
         ctx.fillStyle = '#e11d48';
         ctx.fillRect(barX, barY, caughtW, barH);
@@ -36,37 +58,41 @@ export const L3B3AtpLab = ({ state, onStateChange }: Props) => {
             'bold 12px monospace', '#9f1239', 'left', barW / 2 - 8);
         outlineText(ctx, `${Math.round(heat)} kJ released as heat`, barX + barW, barY - 10,
             'bold 12px monospace', '#92400e', 'right', barW / 2 - 8);
+        const pctSize = Math.max(9, Math.min(14, Math.round(barH * 0.32)));
+        const pctFont = `bold ${pctSize}px monospace`;
         if (caughtW > 56) {
-            outlineText(ctx, `${pct.toFixed(0)}%`, barX + caughtW / 2, barY + barH / 2 + 5,
-                'bold 14px monospace', '#ffffff', 'center', caughtW - 8);
+            outlineText(ctx, `${pct.toFixed(0)}%`, barX + caughtW / 2, barY + barH / 2 + pctSize * 0.36,
+                pctFont, '#ffffff', 'center', caughtW - 8);
         }
         if (barW - caughtW > 56) {
-            outlineText(ctx, `${(100 - pct).toFixed(0)}%`, barX + caughtW + (barW - caughtW) / 2, barY + barH / 2 + 5,
-                'bold 14px monospace', '#0f172a', 'center', barW - caughtW - 8);
+            outlineText(ctx, `${(100 - pct).toFixed(0)}%`, barX + caughtW + (barW - caughtW) / 2, barY + barH / 2 + pctSize * 0.36,
+                pctFont, '#0f172a', 'center', barW - caughtW - 8);
         }
-        outlineText(ctx, 'one mole of glucose: 2,870 kJ', safeRight / 2, barY + barH + 20,
+        outlineText(ctx, 'one mole of glucose: 2,870 kJ', safeRight / 2, barY + barH + captionGap,
             'bold 12px monospace', '#334155', 'center', barW);
 
         // The coins themselves
-        const perRow = Math.max(8, Math.floor((safeRight - 120) / 24));
-        const rows = Math.ceil(count / perRow);
         const firstRow = Math.min(count, perRow);
-        const coinsTop = barY + barH + 46;
-        for (let i = 0; i < count; i++) {
-            const col = i % perRow;
-            const row = Math.floor(i / perRow);
-            const coinX = safeRight / 2 - (firstRow * 24) / 2 + 12 + col * 24;
-            const coinY = coinsTop + row * 24;
-            ctx.fillStyle = '#fb7185';
-            ctx.beginPath();
-            ctx.arc(coinX, coinY, 9, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.strokeStyle = '#9f1239';
-            ctx.lineWidth = 1.5;
-            ctx.stroke();
+        const coinsTop = barY + barH + captionGap + coinsGap;
+        const coinR = Math.max(4, Math.min(9, pitch * 0.375));
+        if (showCoins) {
+            for (let i = 0; i < count; i++) {
+                const col = i % perRow;
+                const row = Math.floor(i / perRow);
+                const coinX = safeRight / 2 - (firstRow * 24) / 2 + 12 + col * 24;
+                const coinY = coinsTop + row * pitch;
+                ctx.fillStyle = '#fb7185';
+                ctx.beginPath();
+                ctx.arc(coinX, coinY, coinR, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = '#9f1239';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+            }
         }
         outlineText(ctx, `${count} ATP, each worth ${perAtp.toFixed(1)} kJ/mol`, safeRight / 2,
-            coinsTop + (rows - 1) * 24 + 30, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
+            Math.min(coinsTop + coinBand + labelTail, artBottom),
+            'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
 
         outlineText(ctx, `${count} x ${perAtp.toFixed(1)} = ${Math.round(caught)} kJ, which is ${pct.toFixed(0)}% of 2,870 kJ`,
             safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);

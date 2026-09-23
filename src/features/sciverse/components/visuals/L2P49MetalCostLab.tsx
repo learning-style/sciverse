@@ -21,9 +21,23 @@ export const L2P49MetalCostLab = ({ state, onStateChange }: Props) => {
         const crushPerKg = CRUSH_PER_TONNE / grade;
         const total = liftPerKg + crushPerKg + SMELT_PER_KG;
 
-        // A stacked bar: where every megajoule of the total actually goes
-        const barY = stageTop + 70;
-        const barH = 54;
+        // A stacked bar: where every megajoule of the total actually goes.
+        // Bands are shares of the real stage height. This lab prints a single
+        // footer line at stageBottom - 18, so the art floor allows for that one
+        // rather than the usual pair.
+        const artTop = stageTop + 18;
+        const artBottom = stageBottom - 40;
+        const usable = artBottom - artTop;
+
+        const barH = Math.max(22, Math.min(54, usable * 0.26));
+        const capGap = Math.max(14, Math.min(22, usable * 0.1));
+        const sumGap = Math.max(18, Math.min(34, usable * 0.16));
+        const subGap = Math.max(14, Math.min(22, usable * 0.1));
+        const blockH = barH + capGap + sumGap + subGap;
+        const top = artTop + Math.max(0, (usable - blockH) / 2);
+        const roomy = barH > 34;
+
+        const barY = top;
         const barX = 50;
         const barW = safeRight - 100;
         const scale = barW / 80;
@@ -42,24 +56,28 @@ export const L2P49MetalCostLab = ({ state, onStateChange }: Props) => {
                 ctx.strokeStyle = '#0f172a';
                 ctx.lineWidth = 1.5;
                 ctx.strokeRect(x, barY, w, barH);
-                if (w > 54) {
+                if (w > 54 && roomy) {
                     outlineText(ctx, part.label, x + w / 2, barY + barH / 2 - 2,
                         'bold 12px monospace', '#ffffff', 'center', w - 8);
                     outlineText(ctx, `${part.value.toFixed(1)} MJ`, x + w / 2, barY + barH / 2 + 14,
                         'bold 12px monospace', '#ffffff', 'center', w - 8);
+                } else if (w > 54) {
+                    outlineText(ctx, `${part.value.toFixed(1)} MJ`, x + w / 2, barY + barH / 2 + 4,
+                        'bold 11px monospace', '#ffffff', 'center', w - 8);
                 }
             }
             x += w;
         });
-        outlineText(ctx, 'megajoules per kilogram of metal', safeRight / 2, barY + barH + 22,
+        outlineText(ctx, 'megajoules per kilogram of metal', safeRight / 2, barY + barH + capGap,
             'bold 12px monospace', '#0f172a', 'center', barW);
 
         // The sum, written out the way the lesson writes it
-        const sumY = barY + barH + 56;
+        const sumY = barY + barH + capGap + sumGap;
         outlineText(ctx, `(${liftPerTonne.toFixed(1)} + ${CRUSH_PER_TONNE}) / ${grade} + ${SMELT_PER_KG} = ${total.toFixed(1)}`,
             safeRight / 2, sumY, 'bold 15px monospace', '#0f172a', 'center', safeRight - 40);
         outlineText(ctx, 'lifting and crushing are per tonne of rock; smelting is per kilogram of metal',
-            safeRight / 2, sumY + 22, 'bold 11px monospace', '#334155', 'center', safeRight - 30);
+            safeRight / 2, Math.min(sumY + subGap, artBottom),
+            'bold 11px monospace', '#334155', 'center', safeRight - 30);
         outlineText(ctx, `ore grade ${grade} kg per tonne, ore depth ${depth} metres`,
             safeRight / 2, stageBottom - 18, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
 

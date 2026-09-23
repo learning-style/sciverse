@@ -29,14 +29,26 @@ export const L3P13TrainLab = ({ state, onStateChange }: Props) => {
         const powerOut = POWER_IN * efficiency;
         const lost = POWER_IN - powerOut;
 
-        // The train: one small gear for each stage, with the power bar shrinking along it
+        // The train: one small gear for each stage, with the power bar shrinking
+        // along it. The gear radius and every gap below are shares of the real
+        // stage height, so the row cannot walk into the footer.
+        const artTop = stageTop + 18;
+        const artBottom = stageBottom - 52;
+        const usable = artBottom - artTop;
+
         const gx0 = 40;
         const gx1 = safeRight - 24;
-        const y = stageTop + 46;
         const step = (gx1 - gx0) / stages;
+        const gearLabel = 14;
+        const barGap = Math.max(10, Math.min(32, usable * 0.12));
+        const barH = Math.max(12, Math.min(18, usable * 0.08));
+        const tail = Math.max(14, Math.min(16, usable * 0.07));
+        const r = Math.max(8, Math.min(22, step * 0.34, usable * 0.18));
+        const blockH = r * 2 + gearLabel + barGap + barH + tail;
+        const top = artTop + Math.max(0, (usable - blockH) / 2);
+        const y = top + r;
         for (let i = 0; i < stages; i++) {
             const cx = gx0 + step * (i + 0.5);
-            const r = Math.min(22, step * 0.34);
             ctx.strokeStyle = KEPT;
             ctx.lineWidth = 2;
             ctx.beginPath();
@@ -47,12 +59,12 @@ export const L3P13TrainLab = ({ state, onStateChange }: Props) => {
             ctx.moveTo(cx, y);
             ctx.lineTo(cx + Math.cos(spin) * r * 0.8, y + Math.sin(spin) * r * 0.8);
             ctx.stroke();
-            outlineText(ctx, `stage ${i + 1}`, cx, y + r + 14, '11px monospace', '#475569', 'center', step);
+            outlineText(ctx, `stage ${i + 1}`, cx, Math.min(y + r + gearLabel, artBottom),
+                '11px monospace', '#475569', 'center', step);
         }
 
         // Power surviving after each stage
-        const barY = stageTop + 96;
-        const barH = 18;
+        const barY = y + r + gearLabel + barGap;
         ctx.fillStyle = '#f1f5f9';
         ctx.fillRect(gx0, barY, gx1 - gx0, barH);
         for (let i = 0; i < stages; i++) {
@@ -63,8 +75,12 @@ export const L3P13TrainLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#0f172a';
         ctx.lineWidth = 1;
         ctx.strokeRect(gx0, barY, gx1 - gx0, barH);
-        outlineText(ctx, `power surviving ${(efficiency * 100).toFixed(0)}%`, gx0, barY + barH + 16, 'bold 12px monospace', KEPT, 'left', gx1 - gx0);
-        outlineText(ctx, `lost as heat ${lost.toFixed(0)} W`, gx1, barY + barH + 16, 'bold 12px monospace', HEAT, 'right', (gx1 - gx0) * 0.5);
+        outlineText(ctx, `power surviving ${(efficiency * 100).toFixed(0)}%`, gx0,
+            Math.min(barY + barH + tail, artBottom),
+            'bold 12px monospace', KEPT, 'left', gx1 - gx0);
+        outlineText(ctx, `lost as heat ${lost.toFixed(0)} W`, gx1,
+            Math.min(barY + barH + tail, artBottom),
+            'bold 12px monospace', HEAT, 'right', (gx1 - gx0) * 0.5);
 
         outlineText(ctx, `ratio = 4^${stages} = ${ratio.toLocaleString()}, so ${turnsOut.toFixed(1)} turns a minute at ${torqueOut.toFixed(0)} N m`,
             safeRight / 2, stageBottom - 34, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);

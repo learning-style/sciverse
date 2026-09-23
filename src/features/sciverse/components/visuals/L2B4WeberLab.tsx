@@ -18,11 +18,24 @@ export const L2B4WeberLab = ({ state, onStateChange }: Props) => {
         const noticed = added >= threshold;
         const share = (added / start) * 100;
 
-        // What you are holding, drawn bigger for heavier loads
+        // What you are holding, drawn bigger for heavier loads.
+        // Both columns are sized from the real stage height, so neither the bag
+        // nor the gauge can push its label into the footer on a short canvas.
+        const artTop = stageTop + 18;
+        const artBottom = stageBottom - 52;
+        const usable = artBottom - artTop;
+
+        const labelGap = Math.max(16, Math.min(32, usable * 0.1));
+        const gaugeGap = Math.max(16, Math.min(24, usable * 0.08));
+        const gh = Math.max(14, Math.min(26, usable * 0.1));
+        const bagCap = (usable - 14 - labelGap) / 1.1;
         const bagCx = safeRight * 0.24;
-        const bagTop = stageTop + 30;
-        const bagW = 40 + 22 * Math.log10(start / 50);
+        const bagW = Math.max(24, Math.min(84, 40 + 22 * Math.log10(start / 50), bagCap));
         const bagH = bagW * 1.1;
+        const blockH = Math.max(14 + bagH + labelGap, 14 + gh + gaugeGap, 60);
+        const top = artTop + Math.max(0, (usable - blockH) / 2);
+        const bagTop = top;
+
         ctx.fillStyle = '#fecdd3';
         ctx.fillRect(bagCx - bagW / 2, bagTop + 14, bagW, bagH);
         ctx.strokeStyle = '#9f1239';
@@ -31,7 +44,8 @@ export const L2B4WeberLab = ({ state, onStateChange }: Props) => {
         ctx.beginPath();
         ctx.arc(bagCx, bagTop + 14, bagW * 0.25, Math.PI, 0);
         ctx.stroke();
-        outlineText(ctx, `${start.toLocaleString()} g in your hand`, bagCx, bagTop + bagH + 32,
+        outlineText(ctx, `${start.toLocaleString()} g in your hand`, bagCx,
+            Math.min(bagTop + 14 + bagH + labelGap, artBottom),
             'bold 12px monospace', '#0f172a', 'center', safeRight * 0.4);
 
         const coinX = bagCx + bagW / 2 + 30;
@@ -43,13 +57,13 @@ export const L2B4WeberLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#92400e';
         ctx.lineWidth = 2;
         ctx.stroke();
-        outlineText(ctx, `+${added} g`, coinX, coinY + 30, 'bold 12px monospace', '#92400e', 'center', 70);
+        outlineText(ctx, `+${added} g`, coinX, Math.min(coinY + 30, artBottom),
+            'bold 12px monospace', '#92400e', 'center', 70);
 
         // The extra weight measured against the threshold
         const gx = safeRight * 0.5;
         const gw = safeRight * 0.44;
-        const gy = stageTop + 70;
-        const gh = 26;
+        const gy = top + 14;
         const scaleMax = Math.max(threshold, added) * 1.6;
         ctx.fillStyle = '#f1f5f9';
         ctx.fillRect(gx, gy, gw, gh);
@@ -70,7 +84,8 @@ export const L2B4WeberLab = ({ state, onStateChange }: Props) => {
         ctx.setLineDash([]);
 
         outlineText(ctx, 'extra weight', gx, gy - 14, 'bold 12px monospace', '#9f1239', 'left', gw / 2);
-        outlineText(ctx, `just noticeable: ${threshold.toFixed(1)} g`, gx + gw / 2, gy + gh + 24,
+        outlineText(ctx, `just noticeable: ${threshold.toFixed(1)} g`, gx + gw / 2,
+            Math.min(gy + gh + gaugeGap, artBottom),
             'bold 12px monospace', '#0f172a', 'center', gw);
 
         outlineText(ctx, `just noticeable difference = 0.03 x ${start.toLocaleString()} = ${threshold.toFixed(1)} g`,
