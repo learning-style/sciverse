@@ -259,11 +259,11 @@ const BIG_IDEA_ENHANCEMENTS: Record<number, BigIdeaEnhancement> = {
 };
 
 function getInteractiveTask(lesson: LessonMeta, phase: string): string {
-    if (phase === 'intro') return `Try one ${lessonCode(lesson)} control immediately and compare what you see with the mentor prompt.`;
-    if (phase === 'checkpoint') return 'Make a prediction first, then use one control to test it.';
-    if (phase === 'discovery') return 'Replay one earlier step and explain the cause-effect in your own words.';
-    if (phase === 'complete') return 'Toggle controls and revisit one branch to reinforce the concept.';
-    return 'Use one visible control, then observe and describe what changed in the visual.';
+    if (phase === 'intro') return `Move one slider under the picture and watch what changes, then read the question on the left.`;
+    if (phase === 'checkpoint') return 'Say what you think will happen before you move anything, then move one slider and see.';
+    if (phase === 'discovery') return 'Go back to one earlier step and say, in your own words, what caused what.';
+    if (phase === 'complete') return 'Move the sliders once more and check the summary table matches what you saw.';
+    return 'Move one slider, then describe what changed in the picture and why.';
 }
 
 function getWalkthroughGuide(lesson: LessonMeta, phase: string): WalkthroughGuide {
@@ -425,23 +425,23 @@ function getWalkthroughGuide(lesson: LessonMeta, phase: string): WalkthroughGuid
     const base: Record<string, WalkthroughGuide> = {
         intro: {
             title: `Start ${lessonCode(lesson)} Clearly`,
-            instruction: 'You can begin from either side: interact with the visual controls immediately or follow the mentor prompt first.',
-            next: 'Use one control now, then compare that visual change with the chat explanation in parallel.'
+            instruction: 'Start either way round: move the sliders under the picture first, or read the question on the left first.',
+            next: 'Move one slider, then read how the explanation on the left describes the same change.'
         },
         checkpoint: {
-            title: 'Do The Checkpoint Properly',
-            instruction: 'Make a prediction first, then check the visual state change to confirm or revise your mental model.',
-            next: 'Continue to discovery for the formal concept statement.'
+            title: 'Answer the Checkpoint',
+            instruction: 'Decide what you expect to happen first, then move a slider and see whether the picture agrees with you.',
+            next: 'Next comes the list of what you worked out.'
         },
         discovery: {
-            title: 'Lock In The Concept',
-            instruction: 'Use this stage to connect the pattern you observed to the scientific rule being taught.',
-            next: 'Proceed to complete, or rewind one step from chat history if you want to retest.'
+            title: 'What You Worked Out',
+            instruction: 'Match each thing you noticed in the picture to the rule written on the left.',
+            next: 'Then on to the summary, or step back to try the picture again.'
         },
         complete: {
-            title: 'Wrap-Up',
-            instruction: 'You have reached the lesson summary. Use the chat history to revisit difficult branches if needed.',
-            next: 'Move to the next lesson using the right panel navigation.'
+            title: 'Summary',
+            instruction: 'This is the summary table. Scroll back through the conversation to reread any part that was hard.',
+            next: 'Pick the next lesson from the panel on the right.'
         }
     };
 
@@ -451,8 +451,8 @@ function getWalkthroughGuide(lesson: LessonMeta, phase: string): WalkthroughGuid
 
     return {
         title: `Guide: ${lessonCode(lesson)} (${phaseLabel})`,
-        instruction: 'Follow the current scenario in the chat and watch how the visual state responds to each choice.',
-        next: 'Continue through options until you reach checkpoint and discovery.'
+        instruction: 'Follow the story on the left and watch how the picture answers each choice you make.',
+        next: 'Keep choosing until you reach the checkpoint and the summary.'
     };
 }
 

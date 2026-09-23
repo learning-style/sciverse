@@ -60,6 +60,15 @@ with no expansion; *DNA* was unexpanded in all 14 lessons that used it. A
 lesson that leans on an earlier lesson's expansion still restates it: L3C13
 used *HDPE* because C13 had spelled it out.
 
+**A dial's label must be explained by the time the learner reads it.** The
+visual appears as soon as the node that sets it is reached -- usually `root` --
+so a term first defined in `defining` has already been read off a slider. L2P16
+described both of its ideas in `root` ("points steeply **into** the ground",
+"**magnetic north** ... not the same place as the **North Pole**") and named
+neither, while the two dials named them and described neither: the learner met
+the idea and the label in different places. Name the term where the idea is
+introduced, and say which dial it is. `scripts/check-clarity.py` finds these.
+
 **Every formula must state its condition.** `Q = mcΔT` holds within one state of
 matter. `pV/T` describes an ideal gas. `1 − (1−p)ⁿ` assumes independence. Say so
 where the formula is introduced, not only at the end.
@@ -131,6 +140,7 @@ would read as approval where it should not, say so in the lesson.
 ```
 python3 scripts/check-lessons.py            # every lesson
 python3 scripts/check-lessons.py l2p1 l3c2  # named ones
+python3 scripts/check-clarity.py            # is every visual term explained?
 ```
 
 It pairs lessons to labs through `extendedLabs.ts`, so it needs no argument
@@ -139,6 +149,13 @@ and destructured-but-unused, helpers called-but-not-imported, implicit `any`,
 declaration order, the `Accent` union, required dialog nodes, the summary table,
 that each `controlLabel` is named in its lesson, and that **every word the canvas
 prints appears in the lesson first**.
+
+`check-clarity.py` asks the harder question `check-lessons.py` cannot: not
+whether a printed word *appears* in the lesson, but whether it is **defined**,
+and whether it is defined **before the learner sees it**. A control label passes
+the word-presence test just by being echoed once. Gauge end labels
+("Almost none", "Full") are qualitative by design and are exempt; a term counts
+as technical only where the lesson itself bolds it.
 
 It verifies **mechanics, not meaning**. Every genuine content problem found in
 review — a boot where a bat belonged, an undefined term, "in" with no
