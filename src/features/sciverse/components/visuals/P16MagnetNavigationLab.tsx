@@ -128,11 +128,12 @@ export const P16MagnetNavigationLab = ({ state, onStateChange }: P16MagnetNaviga
         ctx.fillRect(12, by, W - 24, H - by - 8);
         ctx.strokeStyle = '#334155';
         ctx.strokeRect(12, by, W - 24, H - by - 8);
-        ctx.fillStyle = '#94a3b8';
+        // Light, because this sits on the dark info bar
+        ctx.fillStyle = '#e2e8f0';
         ctx.font = '10px monospace';
         ctx.textAlign = 'left';
-        ctx.fillText(`Field Strength: ${fieldStrength}`, 20, by + 14);
-        ctx.fillText(`Disturbance: ${disturbance}`, 20, by + 26);
+        ctx.fillText(`Field Strength: ${fieldStrength}% of Earth's field`, 20, by + 14);
+        ctx.fillText(`Disturbance: ${disturbance}% of the local field`, 20, by + 26);
         ctx.textAlign = 'right';
         ctx.fillText('Stronger field → more reliable heading', W - 20, by + 14);
         ctx.fillText('More disturbance → greater needle drift', W - 20, by + 26);

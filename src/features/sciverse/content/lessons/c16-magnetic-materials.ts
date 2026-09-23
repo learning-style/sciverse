@@ -70,7 +70,7 @@ export const getC16Script = (): Record<string, DialogNode> => ({
     'checkpoint_wrong2': {
         id: 'checkpoint_wrong2',
         speaker: 'AI',
-        content: "Aluminum can show weak magnetic effects in special conditions, but not the strong domain alignment behavior you see in iron.",
+        content: "Aluminum is very weakly pulled toward a magnet at ordinary room temperature -- far too weakly to feel -- but it never shows the strong domain alignment you see in iron.",
         options: [{ id: 'retry2', label: 'Then iron is strongest here.', nextNodeId: 'checkpoint_correct' }]
     },
 

@@ -121,7 +121,8 @@ export const C16MagneticMaterialsLab = ({ state, onStateChange }: C16MagneticMat
         ctx.fillRect(12, infoY, W - 24, H - infoY - 8);
         ctx.strokeStyle = '#334155';
         ctx.strokeRect(12, infoY, W - 24, H - infoY - 8);
-        ctx.fillStyle = '#94a3b8';
+        // Light, because this sits on the dark info bar
+        ctx.fillStyle = '#e2e8f0';
         ctx.font = '10px monospace';
         ctx.textAlign = 'left';
         ctx.fillText(`Iron Fraction: ${ironFraction}%`, 20, infoY + 14);
