@@ -250,6 +250,9 @@ import { getL2B15Script } from './l2b15-balance-point';
 import { getL3P15Script } from './l3p15-swing-size';
 import { getL3C15Script } from './l3c15-powers-and-ice';
 import { getL3B15Script } from './l3b15-cycle-length';
+import { getL2P16Script } from './l2p16-how-far-off-north';
+import { getL2C16Script } from './l2c16-curie-point';
+import { getL2B16Script } from './l2b16-two-cues';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1270,6 +1273,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p15': getL3P15Script,
     'l3c15': getL3C15Script,
     'l3b15': getL3B15Script,
+    'l2p16': getL2P16Script,
+    'l2c16': getL2C16Script,
+    'l2b16': getL2B16Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1786,6 +1792,10 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p15', title: 'How Big Is the Swing?', subtitle: 'The amplitude correction: T = T₀ (1 + θ²/16)', discipline: 'physics', bigIdea: 15, bigIdeaTitle: 'How Do Systems Find Balance?', icon: '📐', accentColor: 'indigo', crossLinks: ['l2p15', 'p15'], level: 3 },
     { id: 'l3c15', title: 'Powers, Not Just Ratios', subtitle: 'Balancing numbers as exponents, solved with an ICE table', discipline: 'chemistry', bigIdea: 15, bigIdeaTitle: 'How Do Systems Find Balance?', icon: '🧊', accentColor: 'emerald', crossLinks: ['l2c15', 'c15'], level: 3 },
     { id: 'l3b15', title: 'Why Ten Years?', subtitle: 'Lotka-Volterra equilibria and the length of one lap', discipline: 'biology', bigIdea: 15, bigIdeaTitle: 'How Do Systems Find Balance?', icon: '🔁', accentColor: 'rose', crossLinks: ['l2b15', 'b15'], level: 3 },
+
+    { id: 'l2p16', title: 'How Far Off Is North?', subtitle: 'Cosine for field strength, tangent for distance', discipline: 'physics', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '🧭', accentColor: 'indigo', crossLinks: ['p16', 'l2p12'], level: 2 },
+    { id: 'l2c16', title: 'How Hot Before It Stops?', subtitle: 'The Curie temperature: one number per material', discipline: 'chemistry', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '🔥', accentColor: 'emerald', crossLinks: ['c16', 'l2c1'], level: 2 },
+    { id: 'l2b16', title: 'Two Cues Beat One', subtitle: 'Averaging cuts scatter by the root of the count', discipline: 'biology', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '🕊️', accentColor: 'rose', crossLinks: ['b16', 'l2p16'], level: 2 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
