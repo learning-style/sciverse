@@ -20,7 +20,7 @@ export function getL3P16Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "L2P16 worked carefully with Earth's field: **50 µT**, dipping **66°** in London, declination so many degrees east or west. Every one of those numbers was handed to you.\n\nNothing in that lesson said where a magnetic field comes from, or whether you could make one to order.\n\nYou can, and it has nothing to do with iron. What do you need?",
+            content: "L2P16 worked carefully with Earth's field: **50 µT**, dipping **66°** in London, declination so many degrees east or west. Every one of those numbers was handed to you.\n\nNothing in that lesson said where a magnetic field comes from, or whether you could make one to order.\n\nYou can, and it has nothing to do with iron.\n\nTwo words for the dials under the picture. **Turns per metre** is how many loops of wire a coil has for every metre of its length -- not how many loops altogether, which is a different thing. **Current** is how much electricity flows through the wire, in **amperes (A)**.\n\nWhat do you need?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "A moving electric charge. A current in a wire makes a magnetic field around it, and coiling the wire stacks those fields into a strong one along the axis.", nextNodeId: 'defining', sentiment: 'positive' },

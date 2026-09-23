@@ -22,7 +22,7 @@ export function getL2B16Script(): Record<string, DialogNode> {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "B16 showed that a migrating bird does not rely on one sense. It has a magnetic sense, it reads the Sun and the stars, it knows landmarks, and some species use smell. When cloud hides the sky, the magnetic sense carries more of the load.\n\nThat is the principle. Here is the arithmetic nobody gave you.\n\nSuppose a bird's magnetic sense gives a bearing good to about **±12°**, and its star sense is also good to about **±12°**. It uses both, and averages them.\n\nHow good is the answer?",
+            content: "B16 showed that a migrating bird does not rely on one sense. It has a magnetic sense, it reads the Sun and the stars, it knows landmarks, and some species use smell. When cloud hides the sky, the magnetic sense carries more of the load.\n\nEach of those senses is a **cue**: one independent reading of which way north is. The two dials under the picture are the number of **cues** the bird combines, and the **error** of each cue -- how many degrees either side of true north a single cue can land.\n\nThat is the principle. Here is the arithmetic nobody gave you.\n\nSuppose a bird's magnetic sense gives a bearing good to about **±12°**, and its star sense is also good to about **±12°**. It uses both, and averages them.\n\nHow good is the answer?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
                 { id: 'good', label: "Better than ±12°, but not twice as good. The two mistakes are unrelated, so they partly cancel -- sometimes one is high while the other is low.", nextNodeId: 'defining', sentiment: 'positive' },

@@ -43,6 +43,27 @@ steps stop stops sure tell tells things think three time times together top
 total try turn turns under until upon want wants watch way well went where
 whether whole why work works year years yet""".split())
 
+# Everyday words a grade-3 reader already owns. A label is exempt only when
+# EVERY content word is on this list, so "Drop Height" and "Number of Children"
+# are exempt while "Dip Angle" and "Number of Cues" are not.
+ORDINARY = set("""mass volume temperature material distance height length width
+thickness depth weight time speed area size number years days water salt air soil
+light heat energy pressure force load density humidity loudness level moisture
+children layers cameras sample samples second hot cold side full drop lift leaf
+starting added blade branches body climbed ground arrival furnace orbit satellite
+wave drink saltiness germs available picture detail sand virus healing watching
+space sunlight marking lynx conveyor made released cycle reaction contact
+territory stiffness efficiency plants animals food chain steps sky rain wind
+colour color sound smell taste touch grams litres metres seconds minutes hours
+amount rate count depth spread hole holes bulb wire battery spring ramp angle
+slope weightlifter runner swimmer bird tree plant seed root stem flower""".split())
+
+
+def ordinary_label(term):
+    words = [w for w in re.findall(r"[a-z]+", term.lower()) if w not in STOP and len(w) > 2]
+    return bool(words) and all(w in ORDINARY for w in words)
+
+
 def strip_comments(src):
     src = re.sub(r'/\*.*?\*/', '', src, flags=re.S)
     return re.sub(r'//[^\n]*', '', src)
@@ -182,6 +203,9 @@ def main():
                 continue
             # a gauge's end labels are qualitative by design ('Almost none', 'Full')
             if kind == 'endpoint':
+                continue
+            # everyday vocabulary needs no gloss before a learner reads it
+            if ordinary_label(term):
                 continue
             if not explains(whole, term):
                 # try the head noun alone, e.g. "Dip Angle" -> "dip"
