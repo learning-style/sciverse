@@ -109,7 +109,7 @@ export const L2C4SpectrumLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#475569', 'center', safeRight - 30);
 
         fitText(ctx, `${sci(fLow)} to ${sci(fHigh)} Hz`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'f = c / λ -- equal steps in wavelength, not in frequency', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'Equal steps in wavelength are not equal steps in frequency', safeRight / 2, 118, safeRight - 24, 13);
 
         const spanWords = doublings < 1 ? 'less than one doubling' : doublings.toFixed(2) + ' doublings';
 

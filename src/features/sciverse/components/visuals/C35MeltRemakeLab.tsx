@@ -1,4 +1,4 @@
-import { LabCanvas, outlineText } from './LabCanvas';
+import { LabCanvas, fitText, outlineText } from './LabCanvas';
 import type { LabScene } from './LabCanvas';
 
 interface Props {
@@ -89,6 +89,9 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
             midX + midX / 2, topY + panelH + 24, 'bold 13px monospace',
             plasticQuality > 0.6 ? '#15803d' : '#b91c1c', 'center', midX - 10);
 
+
+        fitText(ctx, `Furnace at ${tempC}\u00B0C`, safeRight / 2, 94, safeRight - 24, 16);
+        fitText(ctx, 'Metal will re-stack perfectly, plastic will not', safeRight / 2, 118, safeRight - 24, 13);
 
         const msg = tempC < plasticMelts
             ? `${tempC}\u00B0C -- not hot enough to melt either one yet.`

@@ -117,7 +117,7 @@ export const L3P4SoundSpeedLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#475569', 'center', safeRight - 30);
 
         fitText(ctx, `Speed of sound ${speedText(speed)} m/s`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'v = √(B / ρ) -- stiffness compared with density', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'Stiffness speeds sound up, density slows it down', safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {

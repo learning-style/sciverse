@@ -69,7 +69,7 @@ export const C42HydrationLab = ({ state, onStateChange }: Props) => {
         ctx.fill();
 
         fitText(ctx, `${gPerL.toFixed(1)} grams of salt in every litre`, safeRight / 2, 96, safeRight - 24, 15);
-        fitText(ctx, 'green band = the healthy zone', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'The green band is the healthy zone', safeRight / 2, 118, safeRight - 24, 13);
 
         const msg = gPerL < 0.4
             ? 'Almost plain water -- your salts get watered down even further.'

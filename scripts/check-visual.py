@@ -105,9 +105,13 @@ def check(path):
             probs.append('takeaway is a bare formula: ' + take[:60])
 
     # 3: the meter
-    for key in ('caption', 'low', 'high'):
-        if not re.search(key + r':\s*(?:`|\'|")', src):
-            probs.append('meter has no ' + key)
+    # Only judge the gauge when there is one. A logic gate and an energy ladder
+    # have no continuous quantity, and both legitimately return { note } alone.
+    if re.search(r'meter:\s*\{', src):
+        for key in ('caption', 'low', 'high'):
+            # the value may be a literal or an expression -- powerText(most) counts
+            if not re.search(key + r':\s*\S', src):
+                probs.append('meter has no ' + key)
 
     # 4: dial displays must carry a unit or a named thing
     for m in re.finditer(r'(?:controlDisplay=\{|display:\s*)raw\s*=>\s*(`[^`]*`|\'[^\']*\')', src):
