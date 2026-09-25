@@ -3,3 +3,7 @@ dist
 out
 .vscode/
 yarn.lock
+
+# stale lesson backups: 27 of these were tracked, and one was read as a
+# live lesson by a vocabulary check before anyone noticed
+*.bak
