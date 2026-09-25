@@ -107,6 +107,12 @@ export const C4LightColorLab = ({ state, onStateChange }: C4LightColorLabProps) 
             ctx.font = '17px monospace';
             ctx.textAlign = 'center';
             ctx.fillText('Light', srcX, cy + 35);
+            ctx.save();
+            ctx.font = '15px monospace';
+            ctx.fillStyle = '#475569';
+            ctx.textAlign = 'center';
+            ctx.fillText('Color is light, material and eyes together', W / 2, H - 12);
+            ctx.restore();
 
             // ─── Prism + rainbow section ───
             const prismX = W * 0.3;

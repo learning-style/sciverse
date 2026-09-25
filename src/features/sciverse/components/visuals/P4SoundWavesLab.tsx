@@ -196,6 +196,12 @@ export const P4SoundWavesLab = ({ state, onStateChange }: P4SoundWavesLabProps) 
             ctx.textAlign = 'left';
             ctx.fillText(`Frequency: ${freq} Hz`, 20, H - 50);
             ctx.fillText(`Amplitude: ${amp}%`, 20, H - 35);
+            ctx.save();
+            ctx.font = '15px monospace';
+            ctx.fillStyle = '#475569';
+            ctx.textAlign = 'center';
+            ctx.fillText('Sound is a wave of pressure in the air', W / 2, H - 12);
+            ctx.restore();
 
             animRef.current = requestAnimationFrame(animate);
         };

@@ -123,6 +123,12 @@ export const C3ReactionsLab = ({ state, onStateChange }: C3ReactionsLabProps) =>
         ctx.font = 'bold 21px monospace';
         ctx.textAlign = 'center';
         ctx.fillText('Chemical Reactions', W / 2, 28);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Bonds store energy, just like height', W / 2, 50);
+        ctx.restore();
 
         const chamberW = W * 0.38;
         const chamberH = H * 0.55;

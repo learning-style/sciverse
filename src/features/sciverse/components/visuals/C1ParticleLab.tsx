@@ -131,6 +131,12 @@ export const C1ParticleLab = ({ state, onSliderChange }: C1ParticleLabProps) => 
         ctx.fillStyle = '#64748b';
         ctx.font = '18px monospace';
         ctx.fillText(`Speed: ${speed.toFixed(1)} · Particles: ${particles.length}`, w / 2, 48);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Heat makes the particles move faster', w / 2, 70);
+        ctx.restore();
 
         // Update & draw particles
         for (let i = particles.length - 1; i >= 0; i--) {

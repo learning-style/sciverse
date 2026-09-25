@@ -249,6 +249,12 @@ export const P3EnergyRampLab = ({ state, onStateChange }: P3EnergyRampLabProps) 
         ctx.font = 'bold 21px monospace';
         ctx.textAlign = 'center';
         ctx.fillText('Energy Ramp', W / 2, 28);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Energy transforms, it never disappears', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(animate);
     }, []);

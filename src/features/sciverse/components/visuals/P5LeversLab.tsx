@@ -211,6 +211,12 @@ export const P5LeversLab = ({ state, onStateChange }: P5LeversLabProps) => {
             ctx.font = 'bold 19px monospace';
             ctx.textAlign = 'center';
             ctx.fillText(balanced ? '✅ BALANCED!' : '⚖️ Unbalanced...', W / 2, infoY + 25);
+            ctx.save();
+            ctx.font = '15px monospace';
+            ctx.fillStyle = '#475569';
+            ctx.textAlign = 'center';
+            ctx.fillText('A small force can do a big job', W / 2, H - 12);
+            ctx.restore();
 
             animRef.current = requestAnimationFrame(animate);
         };

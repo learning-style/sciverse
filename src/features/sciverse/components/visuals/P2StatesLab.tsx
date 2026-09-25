@@ -53,6 +53,12 @@ export const P2StatesLab = ({ state, onStateChange }: P2StatesLabProps) => {
         ctx.fillStyle = stateColors[matterState] || '#64748b';
         ctx.font = 'bold 19px monospace';
         ctx.fillText(`State: ${stateLabel}`, W / 2, 52);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Same stuff, different energy', W / 2, 74);
+        ctx.restore();
 
         // Container
         ctx.strokeStyle = '#94a3b8';
