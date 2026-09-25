@@ -82,7 +82,7 @@ export const C40FairTestLab = ({ state, onStateChange }: Props) => {
             controlMin={0}
             controlMax={4}
             controlInitial={1}
-            controlDisplay={raw => `${raw}`}
+            controlDisplay={raw => `${raw} variables`}
             accent="emerald"
             sky={['#ecfdf5', '#f8fafc']}
             completeTitle="C40 Complete!"

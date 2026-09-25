@@ -113,7 +113,7 @@ export const L2C11DilutionLab = ({ state, onStateChange }: Props) => {
                 min: 0,
                 max: 10,
                 initial: 3,
-                display: raw => `${dilutionsOf(raw)}`,
+                display: raw => `${dilutionsOf(raw)} dilutions`,
             }}
             accent="emerald"
             sky={['#f0fdf4', '#f8fafc']}

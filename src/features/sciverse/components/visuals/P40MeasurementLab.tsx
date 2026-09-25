@@ -96,7 +96,7 @@ export const P40MeasurementLab = ({ state, onStateChange }: Props) => {
             controlMin={1}
             controlMax={40}
             controlInitial={1}
-            controlDisplay={raw => `${raw}`}
+            controlDisplay={raw => `${raw} measurements`}
             accent="indigo"
             sky={['#eef2ff', '#f8fafc']}
             completeTitle="P40 Complete!"

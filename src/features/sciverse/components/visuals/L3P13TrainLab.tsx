@@ -111,7 +111,7 @@ export const L3P13TrainLab = ({ state, onStateChange }: Props) => {
             controlMin={1}
             controlMax={8}
             controlInitial={3}
-            controlDisplay={raw => `${stagesOf(raw)}`}
+            controlDisplay={raw => `${stagesOf(raw)} stages`}
             control2={{
                 label: 'Stage Efficiency',
                 key: 'stageEfficiency',

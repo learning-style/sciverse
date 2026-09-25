@@ -109,7 +109,7 @@ export const L2C12PredictLab = ({ state, onStateChange }: Props) => {
                 min: 2,
                 max: 4,
                 initial: 4,
-                display: raw => `${neighboursOf(raw)}`,
+                display: raw => `${neighboursOf(raw)} neighbours`,
             }}
             accent="emerald"
             sky={['#ecfdf5', '#f8fafc']}

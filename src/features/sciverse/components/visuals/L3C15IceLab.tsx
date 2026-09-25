@@ -150,7 +150,7 @@ export const L3C15IceLab = ({ state, onStateChange }: Props) => {
                 min: 10,
                 max: 100,
                 initial: 54,
-                display: raw => `${kcOf(raw)}`,
+                display: raw => `Kc = ${kcOf(raw)}`,
             }}
             accent="emerald"
             sky={['#ecfdf5', '#f8fafc']}

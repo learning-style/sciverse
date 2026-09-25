@@ -114,7 +114,7 @@ export const L3C9OxideLab = ({ state, onStateChange }: Props) => {
             controlMin={0}
             controlMax={60}
             controlInitial={5}
-            controlDisplay={raw => `${numberOf(raw)}`}
+            controlDisplay={raw => `label ${numberOf(raw)}`}
             control2={{
                 label: 'Bag Mass',
                 key: 'bagMass',

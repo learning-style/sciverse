@@ -75,7 +75,7 @@ export const B40EvidenceLab = ({ state, onStateChange }: Props) => {
             controlLabel="Sample Size"
             controlKey="sampleSize"
             controlInitial={0}
-            controlDisplay={raw => `${Math.max(1, Math.round(Math.pow(10, (raw / 100) * 3)))}`}
+            controlDisplay={raw => `sample of ${Math.max(1, Math.round(Math.pow(10, (raw / 100) * 3)))}`}
             accent="rose"
             sky={['#fdf2f8', '#f8fafc']}
             completeTitle="B40 Complete!"

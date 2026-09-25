@@ -88,7 +88,7 @@ export const L2C13ChainLab = ({ state, onStateChange }: Props) => {
             controlMin={500}
             controlMax={2000000}
             controlInitial={100000}
-            controlDisplay={raw => `${chainOf(raw).toLocaleString()}`}
+            controlDisplay={raw => `mass ${chainOf(raw).toLocaleString()}`}
             control2={{
                 label: 'Monomer Mass',
                 key: 'monomerMass',

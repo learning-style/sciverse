@@ -108,6 +108,7 @@ def check(path):
 
 def main():
     files = sys.argv[1:] or changed_files()
+    files = [f for f in files if f.endswith(('.ts', '.tsx'))]
     if not files:
         print('no changed TypeScript files to scan')
         return 0

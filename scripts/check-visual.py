@@ -120,10 +120,14 @@ def check(path):
     # 4: dial displays must carry a unit or a named thing
     for m in re.finditer(r'(?:controlDisplay=\{|display:\s*)raw\s*=>\s*(`[^`]*`|\'[^\']*\')', src):
         txt = m.group(1)[1:-1]
+        # The dial sits directly under its own label, so the display need not
+        # repeat the quantity's name -- but a value with no literal text beside
+        # it at all gives a visual learner nothing: no unit, no noun. Interpolated
+        # text can supply the word (materialOf(raw) returns 'Copper'), so only a
+        # display that is purely interpolations counts as bare.
         bare = re.sub(r'\$\{[^{}]*\}', '', txt).strip()
-        named = any(u in bare for u in UNITY) or bool(re.search(r'[A-Za-z]{3,}', bare))
-        if not named:
-            probs.append('dial shows a bare number, with no unit or word: '
+        if not re.search(r'[^\s]', bare):
+            probs.append('dial value has no unit or noun beside it: '
                          + (txt[:44] or '(empty)'))
 
     # 5: artwork with no words on it

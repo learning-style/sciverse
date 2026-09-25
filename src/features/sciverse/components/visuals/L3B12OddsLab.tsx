@@ -106,7 +106,7 @@ export const L3B12OddsLab = ({ state, onStateChange }: Props) => {
             controlMin={0.5}
             controlMax={2}
             controlInitial={1.2}
-            controlDisplay={raw => `${ratioOf(raw).toFixed(2)}`}
+            controlDisplay={raw => `${ratioOf(raw).toFixed(2)} times`}
             control2={{
                 label: 'Starting Dark Share',
                 key: 'startingDarkShare',

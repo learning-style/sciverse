@@ -117,7 +117,7 @@ export const L2B16CuesLab = ({ state, onStateChange }: Props) => {
             controlMin={1}
             controlMax={6}
             controlInitial={2}
-            controlDisplay={raw => `${cuesOf(raw)}`}
+            controlDisplay={raw => `${cuesOf(raw)} cues`}
             control2={{
                 label: 'Error of Each Cue',
                 key: 'cueError',

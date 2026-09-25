@@ -113,7 +113,7 @@ export const L2C15ShiftLab = ({ state, onStateChange }: Props) => {
             controlMin={0.25}
             controlMax={4}
             controlInitial={3}
-            controlDisplay={raw => `${kOf(raw).toFixed(2)}`}
+            controlDisplay={raw => `K = ${kOf(raw).toFixed(2)}`}
             control2={{
                 label: 'Product Particles',
                 key: 'productNow',

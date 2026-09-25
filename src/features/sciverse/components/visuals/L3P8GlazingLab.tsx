@@ -110,7 +110,7 @@ export const L3P8GlazingLab = ({ state, onStateChange }: Props) => {
             controlMin={1}
             controlMax={3}
             controlInitial={1}
-            controlDisplay={raw => `${panesOf(raw)}`}
+            controlDisplay={raw => `${panesOf(raw)} panes`}
             control2={{
                 label: 'Outside Wind',
                 key: 'outsideWind',

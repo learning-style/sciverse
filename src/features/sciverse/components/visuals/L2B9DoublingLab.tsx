@@ -110,14 +110,14 @@ export const L2B9DoublingLab = ({ state, onStateChange }: Props) => {
             controlMin={1}
             controlMax={1000}
             controlInitial={1}
-            controlDisplay={raw => `${startOf(raw).toLocaleString()}`}
+            controlDisplay={raw => `${startOf(raw).toLocaleString()} cells`}
             control2={{
                 label: 'Doublings',
                 key: 'doublings',
                 min: 0,
                 max: 50,
                 initial: 10,
-                display: raw => `${doublingsOf(raw)}`,
+                display: raw => `${doublingsOf(raw)} doublings`,
             }}
             accent="rose"
             sky={['#fff1f2', '#f8fafc']}

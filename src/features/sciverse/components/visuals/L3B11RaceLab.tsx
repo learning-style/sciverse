@@ -112,7 +112,7 @@ export const L3B11RaceLab = ({ state, onStateChange }: Props) => {
             controlMin={100}
             controlMax={20000}
             controlInitial={5000}
-            controlDisplay={raw => `${memoryOf(raw).toLocaleString()}`}
+            controlDisplay={raw => `${memoryOf(raw).toLocaleString()} cells`}
             control2={{
                 label: 'Germ Doubling Time',
                 key: 'germDoublingTime',

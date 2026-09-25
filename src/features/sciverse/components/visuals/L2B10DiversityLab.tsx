@@ -102,7 +102,7 @@ export const L2B10DiversityLab = ({ state, onStateChange }: Props) => {
             controlMin={1}
             controlMax={10}
             controlInitial={4}
-            controlDisplay={raw => `${speciesOf(raw)}`}
+            controlDisplay={raw => `${speciesOf(raw)} species`}
             control2={{
                 label: 'Commonest Kind',
                 key: 'commonestKind',

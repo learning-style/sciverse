@@ -121,7 +121,7 @@ export const L2P7SeriesLab = ({ state, onStateChange }: Props) => {
                 min: 1,
                 max: 5,
                 initial: 1,
-                display: raw => `${bulbsOf(raw)}`,
+                display: raw => `${bulbsOf(raw)} bulbs`,
             }}
             accent="indigo"
             sky={['#f8fafc', '#f8fafc']}

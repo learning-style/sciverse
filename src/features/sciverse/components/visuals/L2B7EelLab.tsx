@@ -107,7 +107,7 @@ export const L2B7EelLab = ({ state, onStateChange }: Props) => {
             controlMin={10}
             controlMax={MAX_CELLS}
             controlInitial={1000}
-            controlDisplay={raw => `${cellsOf(raw).toLocaleString()}`}
+            controlDisplay={raw => `${cellsOf(raw).toLocaleString()} cells`}
             control2={{
                 label: 'Water Resistance',
                 key: 'waterResistance',
