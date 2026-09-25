@@ -67,8 +67,8 @@ export const L2P3RampLab = ({ state, onStateChange }: Props) => {
         ctx.lineWidth = 1.5;
         ctx.strokeRect(barX, barBase - barMax, barW, barMax);
         ctx.strokeRect(barX + barW + 18, barBase - barMax, barW, barMax);
-        outlineText(ctx, 'PE', barX + barW / 2, barBase + 18, 'bold 12px monospace', '#1d4ed8', 'center', barW + 20);
-        outlineText(ctx, 'KE', barX + barW + 18 + barW / 2, barBase + 18, 'bold 12px monospace', '#c2410c', 'center', barW + 20);
+        outlineText(ctx, 'potential', barX + barW / 2, barBase + 18, 'bold 12px monospace', '#1d4ed8', 'center', barW + 20);
+        outlineText(ctx, 'kinetic', barX + barW + 18 + barW / 2, barBase + 18, 'bold 12px monospace', '#c2410c', 'center', barW + 20);
         outlineText(ctx, 'the total never changes', barX + barW + 9, barBase + 36,
             'bold 11px monospace', '#334155', 'center', barW * 2 + 40);
 

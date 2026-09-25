@@ -81,10 +81,14 @@ def canvas_lines(src):
 def drawn_labels(src):
     """Word labels attached to the artwork."""
     labels = []
-    for m in re.finditer(r'outlineText\(\s*ctx\s*,\s*(`[^`]*`|\'[^\']*\'|"[^"]*")', src, re.S):
-        txt = m.group(1)[1:-1]
-        if words_of(txt):
-            labels.append(txt)
+    for m in re.finditer(r'outlineText\(\s*ctx\s*,\s*([^,]+),', src, re.S):
+        arg = m.group(1).strip()
+        if arg[:1] in ('`', "'", '"'):
+            if words_of(arg[1:-1]):
+                labels.append(arg)
+        elif re.match(r'^[A-Za-z_]\w*$', arg):
+            # a variable holding text -- it renders words at run time
+            labels.append(arg)
     for m in re.finditer(r'fillText\(\s*(`[^`]*`|\'[^\']*\'|"[^"]*")', src, re.S):
         txt = m.group(1)[1:-1]
         if words_of(txt):
