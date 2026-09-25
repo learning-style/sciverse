@@ -118,6 +118,12 @@ export const P23StressFractureLab = ({ onStateChange }: P23StressFractureLabProp
         ctx.font = '10px monospace';
         ctx.fillStyle = failureRisk >= 60 ? '#dc2626' : '#15803d';
         ctx.fillText(failureRisk >= 60 ? 'status: high risk' : 'status: within margin', 14, 38);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Microcracks accumulate and reduce strength over time', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [load, notch, failureRisk]);

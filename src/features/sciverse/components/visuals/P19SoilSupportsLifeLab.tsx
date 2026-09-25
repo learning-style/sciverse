@@ -121,6 +121,12 @@ export const P19SoilSupportsLifeLab = ({ onStateChange }: P19SoilSupportsLifeLab
         ctx.font = 'bold 13px monospace';
         ctx.textAlign = 'left';
         ctx.fillText(`Root Support ${rootSupport}%`, 14, 18);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Bigger gaps let water flow through faster', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [compaction, moisture, organicMatter, rootSupport]);

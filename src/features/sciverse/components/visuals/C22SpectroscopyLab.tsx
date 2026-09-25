@@ -98,6 +98,12 @@ export const C22SpectroscopyLab = ({ onStateChange }: C22SpectroscopyLabProps) =
         ctx.font = 'bold 14px monospace';
         ctx.fillStyle = likelyMatch ? '#15803d' : '#dc2626';
         ctx.fillText(likelyMatch ? 'Likely match: YES' : 'Likely match: NOT YET', 14, H - 16);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Each element has a spectral fingerprint', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [matchLevel, identificationScore, likelyMatch]);

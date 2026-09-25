@@ -111,6 +111,12 @@ export const P14WavesLab = ({ state, onStateChange }: P14WavesLabProps) => {
         ctx.fillText(`Frequency: ${frequency.toFixed(1)} Hz`, sx + 8, statsY + 16);
         ctx.fillText(`Amplitude: ${amplitude}px`, sx + 8, statsY + 30);
         ctx.fillText(`Mode: ${digitalMode ? 'Digital' : 'Analog'}`, sx + 8, statsY + 44);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Light is the fastest signal there is', W / 2, H - 12);
+        ctx.restore();
 
         if (digitalMode) {
             ctx.fillStyle = '#67e8f9';

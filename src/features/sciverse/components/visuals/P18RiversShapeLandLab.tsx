@@ -350,6 +350,12 @@ export const P18RiversShapeLandLab = ({ onStateChange }: P18RiversShapeLandLabPr
         ctx.font = 'bold 9px sans-serif';
         ctx.textAlign = 'left';
         ctx.fillText('RIVER SUMMARY', tblX + 6, tblY + 12);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Fast water carries, slow water drops', W / 2, H - 12);
+        ctx.restore();
         // Rows
         ctx.font = '9px monospace';
         for (let i = 0; i < rows.length; i++) {

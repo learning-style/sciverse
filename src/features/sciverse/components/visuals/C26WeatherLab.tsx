@@ -364,6 +364,12 @@ export const C26WeatherLab = ({ state, onStateChange }: C26WeatherLabProps) => {
         ctx.fillStyle = '#1e293b';
         ctx.fillText('Rain', legX + 26, legY + 40);
         ctx.restore();
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Water is turning into invisible gas', W / 2, H - 12);
+        ctx.restore();
 
         // ---- Complete overlay ----
         if (phase === 'complete') {

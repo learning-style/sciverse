@@ -116,6 +116,12 @@ export const C18DissolvedMineralsLab = ({ onStateChange }: C18DissolvedMineralsL
         ctx.font = '10px monospace';
         ctx.fillStyle = '#64748b';
         ctx.fillText(`pH ${ph.toFixed(1)}`, 14, 34);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Dissolved ions carry electricity through the water', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [mineralLevel, ph, conductivity]);

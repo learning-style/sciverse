@@ -134,6 +134,12 @@ export const P22SeismicWavesLab = ({ onStateChange }: P22SeismicWavesLabProps) =
         ctx.font = '10px monospace';
         ctx.fillStyle = likelyMap ? '#15803d' : '#dc2626';
         ctx.fillText(likelyMap ? 'likely map: clear' : 'likely map: unclear', 14, H - 12);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Waves reveal the layers we cannot see', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [match, clarity, likelyMap]);

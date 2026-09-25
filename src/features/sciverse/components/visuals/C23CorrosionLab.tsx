@@ -105,6 +105,12 @@ export const C23CorrosionLab = ({ onStateChange }: C23CorrosionLabProps) => {
         ctx.font = '10px monospace';
         ctx.fillStyle = oxidationRate >= 60 ? '#dc2626' : '#15803d';
         ctx.fillText(oxidationRate >= 60 ? 'corrosion: active' : 'corrosion: low', 14, 38);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Salt and water speed up rust', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [humidity, salinity, oxidationRate]);

@@ -137,6 +137,12 @@ export const C17ConstructionMaterialsLab = ({ onStateChange }: C17ConstructionMa
         ctx.fillStyle = '#64748b';
         ctx.textAlign = 'center';
         ctx.fillText(material, barX + barW / 2, barBottom + 18);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Different materials handle different stress types', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [material, moisture, temperature, strength]);

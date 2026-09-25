@@ -108,6 +108,12 @@ export const P25ChaosMotionLab = ({ onStateChange }: P25ChaosMotionLabProps) => 
         ctx.fillStyle = '#64748b';
         const dist = Math.round(Math.hypot(ax - bx, ay - by));
         ctx.fillText(`current separation: ${dist}px`, 14, 38);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('A tiny change at the start grows large', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [initialOffset, nonlinearity, divergence]);

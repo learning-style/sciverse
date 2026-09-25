@@ -164,6 +164,12 @@ export const C12PeriodicTableLab = ({ state, onStateChange }: C12PeriodicTableLa
         ctx.font = '11px monospace';
         ctx.fillStyle = '#64748b';
         ctx.fillText(`${selected.Z} protons · ${selected.Z} electrons · ${shells.length} shell${shells.length > 1 ? 's' : ''}`, cx, 24);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Elements with similar properties are grouped', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(drawAtom);
     }, [selected]);

@@ -105,6 +105,12 @@ export const C20OpticalMaterialsLab = ({ onStateChange }: C20OpticalMaterialsLab
         ctx.textAlign = 'right';
         ctx.fillStyle = '#86efac';
         ctx.fillText(`Transmittance ${transmittance}%`, W - 12, 20);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Some materials bend light more than others', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [incidentAngle, material, refractedAngle, transmittance]);

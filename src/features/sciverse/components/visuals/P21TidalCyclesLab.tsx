@@ -123,6 +123,12 @@ export const P21TidalCyclesLab = ({ state, onStateChange }: P21TidalCyclesLabPro
         ctx.font = 'bold 13px monospace';
         ctx.textAlign = 'left';
         ctx.fillText(`Tidal Range ${tidalRange}%`, 14, 22);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('The Moon and Sun create repeating patterns', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [moonAlignment, rotationRate, tidalRange]);

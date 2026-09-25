@@ -175,6 +175,12 @@ export const P20LensesVisionLab = ({ onStateChange }: P20LensesVisionLabProps) =
         ctx.fillText(`${opticLabel} | ${orientation} ${imageType}`, 14, 22);
         ctx.font = 'bold 12px monospace';
         ctx.fillText(`Focus Quality ${Math.round(focusQuality)}%`, 14, 40);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Refraction bends light depending on lens shape', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [opticType, focalLengthCm, objectDistanceCm, imageDistance, magnification, imageType, orientation, opticLabel, focusQuality]);

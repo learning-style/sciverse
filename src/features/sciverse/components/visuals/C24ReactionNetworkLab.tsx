@@ -127,6 +127,12 @@ export const C24ReactionNetworkLab = ({ onStateChange }: C24ReactionNetworkLabPr
         ctx.font = 'bold 13px monospace';
         ctx.textAlign = 'left';
         ctx.fillText(`Yield Score ${yieldScore}%`, 14, 22);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Connected pathways control the timing', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [catalyst, bottleneck, yieldScore]);

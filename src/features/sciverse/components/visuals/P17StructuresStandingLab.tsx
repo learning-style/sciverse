@@ -176,6 +176,12 @@ export const P17StructuresStandingLab = ({ onStateChange }: P17StructuresStandin
         ctx.font = '10px monospace';
         ctx.fillStyle = stability >= 60 ? '#15803d' : '#dc2626';
         ctx.fillText(stability >= 60 ? 'structure: stable' : 'structure: at risk', 14, 38);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('What matters is how the force flows through', W / 2, H - 12);
+        ctx.restore();
 
         animRef.current = requestAnimationFrame(draw);
     }, [baseWidth, load, bracing, stability]);

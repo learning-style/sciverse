@@ -140,6 +140,12 @@ export const C11AcidsBasesLab = ({ state, onStateChange }: C11AcidsBasesLabProps
         ctx.font = '10px monospace';
         ctx.fillStyle = '#94a3b8';
         ctx.fillText(selectedSubstance, bx, by + bh / 2 + 28);
+        ctx.save();
+        ctx.font = '15px monospace';
+        ctx.fillStyle = '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText('Stomach acid can digest food', W / 2, H - 12);
+        ctx.restore();
 
         // ─── Substance list (when enabled) ───
         if (showSubstances) {
