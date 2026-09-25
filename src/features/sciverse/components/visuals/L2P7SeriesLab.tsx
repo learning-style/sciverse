@@ -91,7 +91,7 @@ export const L2P7SeriesLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#475569', 'center', safeRight - 30);
 
         fitText(ctx, `${bulbs} ${bulbs === 1 ? 'bulb' : 'bulbs'} in series: ${wattText(watts)} W each`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'Current = voltage / resistance', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'Half the push gives half the flow', safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {

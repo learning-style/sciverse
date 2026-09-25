@@ -71,7 +71,7 @@ export const C33NutrientCycleLab = ({ state, onStateChange }: Props) => {
             ctx.fill();
         }
         if (litter > 6) {
-            outlineText(ctx, 'Dead leaves piling up!', 88, H - 148, 'bold 13px monospace', '#b91c1c');
+            outlineText(ctx, 'Energy flows through, but matter cycles forever', 88, H - 148, 'bold 13px monospace', '#b91c1c');
         }
 
 

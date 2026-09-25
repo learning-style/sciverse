@@ -69,7 +69,7 @@ export const L2B15BalanceLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', colour, 'center', safeRight - 30);
 
         fitText(ctx, `change ${change >= 0 ? '+' : '-'}${Math.abs(change).toFixed(0)} hares a year`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'Births minus losses', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'Numbers grow only while births are more than losses', safeRight / 2, 118, safeRight - 24, 13);
 
         const tail = steady
             ? 'so births match losses and the numbers hold steady.'

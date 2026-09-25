@@ -69,7 +69,7 @@ export const L2C9FertiliserLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#475569', 'center', safeRight - 30);
 
         fitText(ctx, `${(fertiliser / 1000).toFixed(1)} kg of fertiliser for ${area} m²`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'Nutrient x 100 / percentage', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'Less nutrient in the bag means more bags', safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {

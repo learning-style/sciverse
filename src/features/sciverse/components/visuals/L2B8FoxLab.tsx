@@ -92,7 +92,7 @@ export const L2B8FoxLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, verdict, safeRight / 2, stageBottom - 14, 'bold 12px monospace', verdictColour, 'center', safeRight - 30);
 
         fitText(ctx, `Heat leaking out ${heatOut.toFixed(1)} W`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'Heat made = k x A x ΔT / d', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'Heat made must equal heat lost', safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {

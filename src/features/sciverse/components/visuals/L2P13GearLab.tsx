@@ -76,7 +76,7 @@ export const L2P13GearLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#b45309', 'center', safeRight - 30);
 
         fitText(ctx, `${turnsOut.toFixed(1)} turns a minute, ${torqueOut.toFixed(1)} N m`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'Turns down, torque up', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'Torque times turns stays the same', safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {

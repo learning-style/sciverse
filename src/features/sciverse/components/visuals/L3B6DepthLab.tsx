@@ -129,7 +129,7 @@ export const L3B6DepthLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, verdict, safeRight / 2, stageBottom - 14, 'bold 12px monospace', netColour, 'center', safeRight - 30);
 
         fitText(ctx, `Gas ${gas.toFixed(1)} cm³ at ${depth} m`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'Deeper, denser, deeper', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'The deeper it sinks, the more it is squeezed', safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {

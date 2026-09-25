@@ -98,7 +98,7 @@ export const L3C4ScatteringLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#475569', 'center', safeRight - 30);
 
         fitText(ctx, `${pctText(through)} of the ${nm} nm light gets through`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'Scattering grows as 1 / λ⁴', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'Blue fills the sky, red is left in the beam', safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {

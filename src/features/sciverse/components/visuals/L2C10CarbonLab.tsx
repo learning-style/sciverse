@@ -55,7 +55,7 @@ export const L2C10CarbonLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#0369a1', 'center', safeRight - 30);
 
         fitText(ctx, `${fuel} kg of fuel makes ${co2.toFixed(1)} kg of CO₂`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'Carbon x 44 / 12', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'Each kilogram of carbon makes nearly four of carbon dioxide', safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {

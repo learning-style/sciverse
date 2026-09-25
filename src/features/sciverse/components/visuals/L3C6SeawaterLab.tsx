@@ -84,7 +84,7 @@ export const L3C6SeawaterLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#475569', 'center', safeRight - 30);
 
         fitText(ctx, `Density ${density.toFixed(1)} kg/m³`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, '1 g/kg of salt is worth about 4 °C', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'Salt is worth more than warmth', safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {
