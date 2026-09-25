@@ -76,7 +76,7 @@ export const P40MeasurementLab = ({ state, onStateChange }: Props) => {
         ctx.fill();
 
         fitText(ctx, `${n} measurement${n === 1 ? '' : 's'}`, safeRight / 2, 84, safeRight - 24, 15);
-        fitText(ctx, `Average: ${mean.toFixed(2)} cm  ±  ${uncertainty.toFixed(2)} cm`, safeRight / 2, 106, safeRight - 24, 15, '#b91c1c');
+        fitText(ctx, 'Repeating fixes random error, but never bias', safeRight / 2, 106, safeRight - 24, 15, '#b91c1c');
 
 
         const msg = n <= 2

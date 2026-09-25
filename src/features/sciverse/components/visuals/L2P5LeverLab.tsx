@@ -106,7 +106,7 @@ export const L2P5LeverLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#475569', 'center', safeRight - 30);
 
         fitText(ctx, `Push ${forceText(push)} N -- your hands move ${handsMove.toFixed(2)} m`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, `mechanical advantage = ${effortArm.toFixed(2)} / ${loadArm.toFixed(2)} = ${advantage.toFixed(1)}`,
+        fitText(ctx, 'Less force, more distance: the work is the same',
             safeRight / 2, 118, safeRight - 24, 13);
 
         return {

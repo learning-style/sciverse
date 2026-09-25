@@ -86,13 +86,13 @@ export const P39LogicGateLab = ({ state, onStateChange }: Props) => {
     return (
         <LabCanvas
             title="On, Off, Answer"
-            readout={({ raw }) => `Switch pattern ${(raw & 2) !== 0 ? 1 : 0}${(raw & 1) !== 0 ? 1 : 0} of 4`}
+            readout={({ raw }) => `Switch pattern A=${(raw & 2) !== 0 ? 1 : 0} B=${(raw & 1) !== 0 ? 1 : 0} of 4`}
             controlLabel="Input Switches"
             controlKey="inputSwitches"
             controlMin={0}
             controlMax={3}
             controlInitial={0}
-            controlDisplay={raw => `${(raw & 2) !== 0 ? 1 : 0}${(raw & 1) !== 0 ? 1 : 0}`}
+            controlDisplay={raw => `A=${(raw & 2) !== 0 ? 1 : 0} B=${(raw & 1) !== 0 ? 1 : 0}`}
             accent="indigo"
             sky={['#e0e7ff', '#f8fafc']}
             completeTitle="P39 Complete!"

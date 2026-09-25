@@ -47,6 +47,23 @@ def headline_via_outline(src):
     return out
 
 
+def rows_in_band(src):
+    """Count text drawn in the headline band, literal or not.
+
+    outlineText(ctx, verdict, cx, 106, ...) is a headline row even though its
+    text is a variable. Counting only literals reported labs with two rows as
+    having one.
+    """
+    n = 0
+    for m in re.finditer(r'(?:fitText|outlineText)\(\s*ctx\s*,', src):
+        seg = src[m.end():m.end() + 260]
+        for ym in re.finditer(r',\s*(\d{2,3})\s*[,)]', seg):
+            if 80 <= int(ym.group(1)) <= 125:
+                n += 1
+                break
+    return n
+
+
 def words_of(text):
     """Word-ish tokens, ignoring interpolations and symbols."""
     bare = re.sub(r'\$\{[^{}]*\}', ' ', text)
@@ -92,21 +109,32 @@ def check(path):
     if not lines and not unreadable:
         probs.append('no headline row at all: the canvas names nothing')
     elif not unreadable:
+        # A unit is enough on the value row, and a word produced inside an
+        # interpolation counts too: '${pick.name} at ${temp} °C: ${ferro ?
+        # 'ferromagnetic' : ...}' names plenty, none of it literal.
         value_words = [w for w in words_of(lines[0]) if w.lower() not in STOP]
-        if not value_words:
+        inner = ' '.join(re.findall(r'\$\{([^{}]*)\}', lines[0]))
+        has_inner_word = bool(re.search(r"'[^']*[A-Za-z]{3,}", inner)) or '.name' in inner
+        has_unit = any(u in re.sub(r'\$\{[^{}]*\}', '', lines[0]) for u in UNITY)
+        if not value_words and not has_unit and not has_inner_word:
             probs.append('value line is bare numbers, naming nothing: ' + lines[0][:60])
         take = lines[1] if len(lines) > 1 else ''
         tw = words_of(take)
         # Count every fitText call, not only the ones with literal text. A row
         # built from a variable is still a row; reading only literals made twelve
         # labs that already had two rows look as though they had one.
-        rows = len(re.findall(r'fitText\(', src)) + len(headline_via_outline(src))
+        rows = max(len(re.findall(r'fitText\(', src)), rows_in_band(src))
         if rows < 2:
             probs.append('only one headline row: nothing says what the picture means')
-        elif take and len(tw) < 4:
-            probs.append('takeaway is not a sentence (' + str(len(tw)) + ' words): ' + take[:60])
-        elif '=' in take and len(tw) < 6:
-            probs.append('takeaway is a bare formula: ' + take[:60])
+        else:
+            # A labelled value row -- 'AND says 1 | OR says 0', 'Average: 3.2 cm'
+            # -- explains itself. What does not is a row of symbols with barely a
+            # word on it, which is what a formula in this slot looks like.
+            naming = [w for w in tw if w.lower() not in STOP]
+            if take and len(naming) < 2:
+                probs.append('second row is symbols with no naming word: ' + take[:60])
+            elif take and '=' in take and len(naming) < 3:
+                probs.append('second row is a bare formula: ' + take[:60])
 
     # 3: the meter
     # Only judge the gauge when there is one. A logic gate and an energy ladder

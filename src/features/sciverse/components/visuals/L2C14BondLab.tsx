@@ -136,14 +136,14 @@ export const L2C14BondLab = ({ state, onStateChange }: Props) => {
             controlMin={0.8}
             controlMax={4}
             controlInitial={0.9}
-            controlDisplay={raw => `${enOf(raw).toFixed(1)}`}
+            controlDisplay={raw => `pull ${enOf(raw).toFixed(1)}`}
             control2={{
                 label: 'Second Atom',
                 key: 'secondAtom',
                 min: 0.8,
                 max: 4,
                 initial: 3,
-                display: raw => `${enOf(raw).toFixed(1)}`,
+                display: raw => `pull ${enOf(raw).toFixed(1)}`,
             }}
             accent="emerald"
             sky={['#ecfdf5', '#f8fafc']}

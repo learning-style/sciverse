@@ -86,7 +86,7 @@ export const L3P5JackLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', verdictColour, 'center', safeRight - 30);
 
         fitText(ctx, `Push ${push.toFixed(0)} N lifts ${LOAD_N.toLocaleString()} N`, safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, `η = ${Math.round(eta * 100)}% -- self-locking at 50% or less`, safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'Below half efficiency it holds the load on its own', safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {

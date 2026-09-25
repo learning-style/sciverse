@@ -76,7 +76,7 @@ export const L2B33BackupLab = ({ state, onStateChange }: Props) => {
 
         fitText(ctx, `Chance the job still gets done: ${(survives * 100).toFixed(1)}%`,
             safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, `1 - (1 - ${p.toFixed(2)}) to the power of ${n} = ${survives.toFixed(3)}`,
+        fitText(ctx, 'Independent defences, not different names',
             safeRight / 2, 118, safeRight - 24, 13);
 
         const note = n === 1

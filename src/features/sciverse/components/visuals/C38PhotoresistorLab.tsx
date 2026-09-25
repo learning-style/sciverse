@@ -83,6 +83,8 @@ export const C38PhotoresistorLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx,
             `Resistance: ${resistance > 0.6 ? 'HIGH' : resistance > 0.25 ? 'MEDIUM' : 'LOW'}   |   Signal out: ${Math.round(signal * 100)}%`,
             cx, 92, 'bold 15px monospace');
+        outlineText(ctx, 'Sensors turn the world into electricity', cx, 114,
+            'bold 13px monospace', '#475569');
 
         if (saturated) {
             outlineText(ctx, 'SATURATED -- everything looks equally bright!',
