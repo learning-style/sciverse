@@ -77,7 +77,7 @@ export const P41ProbabilityLab = ({ state, onStateChange }: Props) => {
             ? 'Very few rolls -- the bars are all over the place.'
             : rolls < 120
                 ? 'The bars are starting to even out.'
-                : 'Lots of rolls -- every face is close to an equal share.', safeRight / 2, 94, safeRight - 24, 15);
+                : 'Many rolls -- every number has an equal share.', safeRight / 2, 94, safeRight - 24, 15);
         fitText(ctx, `${rolls} roll${rolls === 1 ? '' : 's'} shared between 6 numbers = about ${Math.round(expected)} each`, safeRight / 2, 116, safeRight - 24, 13);
 
         const msg = rolls < 20
@@ -85,7 +85,7 @@ export const P41ProbabilityLab = ({ state, onStateChange }: Props) => {
             : rolls < 120
                 ? 'A pattern is appearing, but it is still wobbly.'
                 : 'The pattern has settled -- this is the law of large numbers.';
-        return { meter: { fraction: evenness, caption: 'How Even the Six Faces Are', low: 'Very uneven', high: 'Almost equal' }, note: msg };
+        return { meter: { fraction: evenness, caption: 'How Even the Six Numbers Are', low: 'Very wobbly', high: 'Almost equal' }, note: msg };
     };
 
     return (

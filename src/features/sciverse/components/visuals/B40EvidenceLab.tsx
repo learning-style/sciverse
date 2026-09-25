@@ -47,11 +47,11 @@ export const B40EvidenceLab = ({ state, onStateChange }: Props) => {
         const conclusive = margin < trueEffect;     // effect is bigger than the wobble
 
         fitText(ctx, `Sample size: ${n} per group`, safeRight / 2, 84, safeRight - 24, 15);
-        fitText(ctx, `Measured difference: ${measured.toFixed(1)}%  ±  ${margin.toFixed(1)}%`, safeRight / 2, 106, safeRight - 24, 15, conclusive ? '#15803d' : '#b91c1c');
+        fitText(ctx, `Effect: ${measured.toFixed(1)}%  ±  ${margin.toFixed(1)}%`, safeRight / 2, 106, safeRight - 24, 15, conclusive ? '#15803d' : '#b91c1c');
 
         outlineText(
             ctx,
-            conclusive ? 'The effect is bigger than the wobble -- this is real evidence.'
+            conclusive ? 'The effect is bigger than the noise -- this is real evidence.'
                 : 'The wobble is bigger than the effect -- this could easily be luck.',
             safeRight / 2, stageBottom - 12, 'bold 14px monospace',
             conclusive ? '#15803d' : '#b91c1c'
@@ -65,7 +65,7 @@ export const B40EvidenceLab = ({ state, onStateChange }: Props) => {
                 : n < 300
                     ? 'The pattern is holding up as the sample grows.'
                     : 'Large sample! The real effect now stands clearly above the noise.';
-        return { meter: { fraction: conclusive ? Math.min(1, 1 - margin / trueEffect) : 0.05, caption: 'Strength of the Evidence', low: 'Just a story', high: 'Convincing' }, note: msg };
+        return { meter: { fraction: conclusive ? Math.min(1, 1 - margin / trueEffect) : 0.05, caption: 'How Strong the Evidence Is', low: 'Just a story', high: 'Convincing' }, note: msg };
     };
 
     return (

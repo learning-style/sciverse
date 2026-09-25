@@ -33,7 +33,7 @@ export const P40MeasurementLab = ({ state, onStateChange }: Props) => {
             ctx.stroke();
             outlineText(ctx, (81 + i * 0.5).toFixed(1), x, axisY + 26, 'bold 13px monospace');
         }
-        outlineText(ctx, 'measured length (cm)', safeRight / 2, axisY + 48, 'bold 13px monospace');
+        outlineText(ctx, 'length (cm)', safeRight / 2, axisY + 48, 'bold 13px monospace');
 
         // The true value, marked for reference.
         const trueX = axisX + ((TRUE_VALUE - 81) / 2) * axisW;
@@ -84,7 +84,7 @@ export const P40MeasurementLab = ({ state, onStateChange }: Props) => {
             : n < 15
                 ? 'The average is settling down as the high and low readings cancel out.'
                 : 'Many readings! The random wobble has mostly cancelled and the range is tight.';
-        return { meter: { fraction: 1 - uncertainty / 0.35, caption: 'Confidence in the Answer', low: 'Very unsure', high: 'Confident' }, note: msg };
+        return { meter: { fraction: 1 - uncertainty / 0.35, caption: 'Spread in the Answer', low: 'Wide spread', high: 'Confident' }, note: msg };
     };
 
     return (

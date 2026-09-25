@@ -39,12 +39,12 @@ export const B41InheritanceLab = ({ state, onStateChange }: Props) => {
             ctx.stroke();
         }
         if (kids > shown) {
-            outlineText(ctx, `showing the first ${shown} of ${kids}`,
+            outlineText(ctx, `the first ${shown} of ${kids}`,
                 safeRight / 2, stageBottom - 20, 'bold 13px monospace');
         }
 
         fitText(ctx, `${brown} brown-eyed   |   ${blue} blue-eyed`, safeRight / 2, 92, safeRight - 24, 16);
-        fitText(ctx, `That is ${Math.round(share * 100)}% blue -- the expected share is 25%`, safeRight / 2, 116, safeRight - 24, 14);
+        fitText(ctx, `That is ${Math.round(share * 100)}% blue -- 1 in 4 is 25%`, safeRight / 2, 116, safeRight - 24, 14);
 
         const closeness = Math.max(0, 1 - Math.abs(share - 0.25) / 0.25);
         const msg = kids < 8
@@ -52,7 +52,7 @@ export const B41InheritanceLab = ({ state, onStateChange }: Props) => {
             : kids < 50
                 ? 'The share is drifting toward one in four, but still wobbles.'
                 : 'With many children the 1-in-4 pattern is clear.';
-        return { meter: { fraction: closeness, caption: 'How Close to the Expected 1 in 4', low: 'Far off', high: 'Right on it' }, note: msg };
+        return { meter: { fraction: closeness, caption: 'How Close to 1 in 4', low: 'Far off', high: 'Right on it' }, note: msg };
     };
 
     return (

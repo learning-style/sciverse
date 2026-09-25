@@ -94,7 +94,7 @@ export const B39NeuronLab = ({ state, onStateChange }: Props) => {
         ctx.stroke();
         outlineText(ctx, 'THRESHOLD', gaugeX + gaugeW * THRESHOLD, gaugeY - 14, 'bold 13px monospace', '#b91c1c');
 
-        fitText(ctx, fires ? 'FIRING! Full strength signal sent.' : 'Silent -- total has not reached the threshold.', safeRight / 2, 88, safeRight - 24, 15, fires ? '#15803d' : '#64748b');
+        fitText(ctx, fires ? 'FIRING! Full strength signal.' : 'Silent -- total has not reached the threshold.', safeRight / 2, 88, safeRight - 24, 15, fires ? '#15803d' : '#64748b');
 
 
         const msg = v < THRESHOLD - 0.15

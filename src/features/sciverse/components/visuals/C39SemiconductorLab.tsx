@@ -53,7 +53,7 @@ export const C39SemiconductorLab = ({ state, onStateChange }: Props) => {
                     ctx.stroke();
                 }
             } else {
-                outlineText(ctx, 'BLOCKED', barX + barW / 2, cy + 5, 'bold 15px monospace', '#ffffff');
+                outlineText(ctx, 'OFF', barX + barW / 2, cy + 5, 'bold 15px monospace', '#ffffff');
             }
 
             // Bulb showing the result.
@@ -70,14 +70,14 @@ export const C39SemiconductorLab = ({ state, onStateChange }: Props) => {
                 row.flows ? '#a16207' : '#64748b');
         });
 
-        fitText(ctx, siliconOn ? 'Signal is strong enough -- silicon lets electricity through!'
-                : 'Signal too weak -- silicon is blocking, like rubber.', safeRight / 2, 96, safeRight - 24, 15);
+        fitText(ctx, siliconOn ? 'Silicon lets electricity through!'
+                : 'Signal too small -- silicon is like rubber.', safeRight / 2, 96, safeRight - 24, 15);
 
         const msg = !siliconOn
             ? 'Copper is stuck ON and rubber is stuck OFF. Only silicon can change.'
             : 'Silicon switched ON. Turn the signal down and it blocks again -- that is a switch!';
         return {
-            meter: { fraction: v, caption: 'Control Signal Sent to the Silicon', low: 'Off', high: 'On' },
+            meter: { fraction: v, caption: 'Control Signal to the Silicon', low: 'Off', high: 'On' },
             note: msg,
         };
     };

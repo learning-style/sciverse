@@ -48,7 +48,7 @@ export const C41CollisionLab = ({ state, onStateChange }: Props) => {
 
         fitText(ctx, `${shownSuccess} of ${n} collisions have enough energy to react`, safeRight / 2, 96, safeRight - 24, 15);
         fitText(ctx, 'Temperature changes the odds, not the rules', safeRight / 2, 118, safeRight - 24, 13);
-        outlineText(ctx, 'grey = bounced off unchanged     red = reacted',
+        outlineText(ctx, 'grey = bounced off unchanged     red = reaction',
             safeRight / 2, stageBottom - 24, 'bold 13px monospace');
 
         const msg = tempC < 20
