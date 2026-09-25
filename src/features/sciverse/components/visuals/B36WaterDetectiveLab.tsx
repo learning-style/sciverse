@@ -43,8 +43,8 @@ export const B36WaterDetectiveLab = ({ state, onStateChange }: Props) => {
             ctx.stroke();
         }
 
-        outlineText(ctx, 'Culture dish after 24 hours', cx, cy + r + 26, 'bold 14px monospace');
-        outlineText(ctx, `${colonies} colonies counted in a 100 mL sample`, cx, 84, 'bold 15px monospace');
+        outlineText(ctx, 'Dish after 24 hours', cx, cy + r + 26, 'bold 14px monospace');
+        outlineText(ctx, `${colonies} colonies in a 100 mL sample`, cx, 84, 'bold 15px monospace');
 
         // Verdict against the drinking-water limit of zero E. coli per 100 mL.
         const verdict = colonies === 0 ? 'SAFE -- zero E. coli found'
@@ -59,7 +59,7 @@ export const B36WaterDetectiveLab = ({ state, onStateChange }: Props) => {
             : colonies < 10
                 ? 'Even a few colonies mean sewage reached this water. Do not drink.'
                 : 'The dish is covered. This water is badly contaminated.';
-        return { meter: { fraction: 1 - v, caption: 'Water Safety Verdict', low: 'Contaminated', high: 'Safe to drink' }, note: msg };
+        return { meter: { fraction: 1 - v, caption: 'How Safe the Water Is', low: 'Contaminated', high: 'Safe to drink' }, note: msg };
     };
 
     return (

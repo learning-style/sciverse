@@ -60,13 +60,13 @@ export const P36FilterLab = ({ state, onStateChange }: Props) => {
             ctx.stroke();
 
             outlineText(ctx, p.label, laneX, 100, 'bold 13px monospace');
-            outlineText(ctx, passes ? 'passes' : 'BLOCKED', laneX, filterY + 40,
+            outlineText(ctx, passes ? 'through' : 'STOPPED', laneX, filterY + 40,
                 'bold 13px monospace', passes ? '#b91c1c' : '#15803d');
         });
 
         // Flow rate drops as holes shrink.
         const flow = Math.max(0.05, 1 - v * 0.92);
-        fitText(ctx, `Blocked ${blocked} of 4 particle types   |   Flow speed ${Math.round(flow * 100)}%`, safeRight / 2, 84, safeRight - 24, 14);
+        fitText(ctx, `Stopped ${blocked} of 4   |   Flow ${Math.round(flow * 100)}%`, safeRight / 2, 84, safeRight - 24, 14);
         fitText(ctx, 'Clear water is not the same as clean water', safeRight / 2, 118, safeRight - 24, 13);
 
 
@@ -77,7 +77,7 @@ export const P36FilterLab = ({ state, onStateChange }: Props) => {
                 : holeUm > 0.5
                     ? 'Bacteria are blocked! Water looks clean, but viruses still pass.'
                     : 'Tiny holes catch almost everything -- but the flow slows to a trickle.';
-        return { meter: { fraction: blocked / PARTICLES.length, caption: 'Cleaning Power', low: 'Catches nothing', high: 'Catches everything' }, note: msg };
+        return { meter: { fraction: blocked / PARTICLES.length, caption: 'How Clean the Water Is', low: 'Catches no dirt', high: 'Catches everything' }, note: msg };
     };
 
     return (

@@ -48,7 +48,7 @@ export const B37BodyBatteryLab = ({ state, onStateChange }: Props) => {
             ctx.moveTo(glyX + tankW + 6, y);
             ctx.lineTo(fatX - 8, y);
             ctx.stroke();
-            outlineText(ctx, 'overflow', (glyX + tankW + fatX) / 2, y - 10, 'bold 13px monospace', '#b91c1c');
+            outlineText(ctx, 'extra', (glyX + tankW + fatX) / 2, y - 10, 'bold 13px monospace', '#b91c1c');
         }
 
         // Glucose arriving from a meal.
@@ -63,8 +63,8 @@ export const B37BodyBatteryLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'glucose', 40, topY + 56, 'bold 13px monospace');
 
         fitText(ctx, glycogen < 1
-            ? 'Filling the fast store first'
-            : 'Fast store full -- extra energy is being packed away as fat', safeRight / 2, 88, safeRight - 24, 14);
+            ? 'Into the fast store first'
+            : 'Fast store full -- extra energy becomes fat', safeRight / 2, 88, safeRight - 24, 14);
 
 
         const msg = v < 0.2
@@ -74,7 +74,7 @@ export const B37BodyBatteryLab = ({ state, onStateChange }: Props) => {
                 : v < 0.75
                     ? 'Glycogen is full, so the extra is now being stored as fat.'
                     : 'Big surplus. Most of this meal goes into long-term fat storage.';
-        return { meter: { fraction: (glycogen * 0.2 + fat * 0.8), caption: 'Total Energy Stored', low: 'Empty', high: 'Loaded' }, note: msg };
+        return { meter: { fraction: (glycogen * 0.2 + fat * 0.8), caption: 'Energy Stored', low: 'Empty', high: 'Full' }, note: msg };
     };
 
     return (

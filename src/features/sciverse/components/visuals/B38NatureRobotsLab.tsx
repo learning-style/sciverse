@@ -44,7 +44,7 @@ export const B38NatureRobotsLab = ({ state, onStateChange }: Props) => {
         };
 
         station(handX, 'HAND', '#f97316', '✋');
-        station(cordX, 'SPINE', '#0ea5e9', '⚡');
+        station(cordX, 'SPINAL CORD', '#0ea5e9', '⚡');
         if (viaBrain) station(brainX, 'BRAIN', '#7c3aed', '🧠');
 
         // Signal pulse travelling out and back along the active path.
@@ -60,7 +60,7 @@ export const B38NatureRobotsLab = ({ state, onStateChange }: Props) => {
         ctx.lineWidth = 2;
         ctx.stroke();
 
-        fitText(ctx, viaBrain ? 'Signal travels all the way to the brain' : 'Reflex arc -- signal turns around at the spine', safeRight / 2, 84, safeRight - 24, 14);
+        fitText(ctx, viaBrain ? 'Signal all the way to the brain' : 'Reflex arc -- signal turns around at the spine', safeRight / 2, 84, safeRight - 24, 14);
         fitText(ctx, `Reaction time: ${reactionS.toFixed(2)} seconds`, safeRight / 2, 106, safeRight - 24, 15);
 
         // Burn damage grows with how long your hand stays on the hot surface.
@@ -71,7 +71,7 @@ export const B38NatureRobotsLab = ({ state, onStateChange }: Props) => {
             : v < 0.55
                 ? 'Getting slower -- more of the signal path is being used.'
                 : 'Slow loop through the brain. Your hand stays on the heat much longer.';
-        return { meter: { fraction: 1 - damage, caption: 'How Well You Avoid the Burn', low: 'Bad burn', high: 'Barely a mark' }, note: msg };
+        return { meter: { fraction: 1 - damage, caption: 'Hand Away From the Burn', low: 'Bad burn', high: 'Just a mark' }, note: msg };
     };
 
     return (

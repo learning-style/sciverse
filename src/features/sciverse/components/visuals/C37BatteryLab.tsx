@@ -89,7 +89,7 @@ export const C37BatteryLab = ({ state, onStateChange }: Props) => {
             : v < 0.6
                 ? 'Half charged. The reaction is still running steadily.'
                 : 'Fully charged! Plenty of stored chemical reaction ready to go.';
-        return { meter: { fraction: v, caption: 'Charge Remaining', low: 'Empty', high: 'Full' }, note: msg };
+        return { meter: { fraction: v, caption: 'Charge', low: 'Empty', high: 'Full' }, note: msg };
     };
 
     return (

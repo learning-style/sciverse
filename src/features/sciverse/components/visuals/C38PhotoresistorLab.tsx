@@ -49,7 +49,7 @@ export const C38PhotoresistorLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#a16207';
         ctx.lineWidth = 3;
         ctx.stroke();
-        if (showLampLabel) outlineText(ctx, 'LAMP', cx, lampLabelY, 'bold 15px monospace');
+        if (showLampLabel) outlineText(ctx, 'LIGHT', cx, lampLabelY, 'bold 15px monospace');
 
         // The sensor chip.
         ctx.fillStyle = '#334155';
@@ -73,7 +73,7 @@ export const C38PhotoresistorLab = ({ state, onStateChange }: Props) => {
             ctx.lineWidth = 1.5;
             ctx.stroke();
         }
-        outlineText(ctx, `${freed} free electrons carrying current`,
+        outlineText(ctx, `${freed} electrons moving as current`,
             cx, bottomLabelY, 'bold 15px monospace');
 
         const resistance = Math.max(0.04, 1 - v);
@@ -87,7 +87,7 @@ export const C38PhotoresistorLab = ({ state, onStateChange }: Props) => {
             'bold 13px monospace', '#475569');
 
         if (saturated) {
-            outlineText(ctx, 'SATURATED -- everything looks equally bright!',
+            outlineText(ctx, 'SATURATED -- everything looks the same!',
                 cx, stageBottom - 12, 'bold 15px monospace', '#b91c1c');
         }
 
@@ -112,7 +112,7 @@ export const C38PhotoresistorLab = ({ state, onStateChange }: Props) => {
             sky={['#e0e7ff', '#f8fafc']}
             completeTitle="C38 Complete!"
             completeSubtitle="How Do Robots Sense and Act?"
-            completeNote="Sensors turn the world into electricity -- within a limited range!"
+            completeNote="Sensors turn the world into electricity"
             phase={phase}
             onStateChange={onStateChange}
             drawScene={drawScene}

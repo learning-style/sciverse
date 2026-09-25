@@ -66,7 +66,7 @@ export const P38FeedbackLoopLab = ({ state, onStateChange }: Props) => {
         const error = Math.abs(ry - lineY);
         const tracking = Math.max(0, 1 - error / 90);
 
-        fitText(ctx, `Distance off the line: ${Math.round(error)} px`, safeRight / 2, 86, safeRight - 24, 15);
+        fitText(ctx, `How far off the line: ${Math.round(error)} px`, safeRight / 2, 86, safeRight - 24, 15);
 
         const state_ = gain < 0.3 ? 'DRIFTING' : gain > 0.68 ? 'OSCILLATING' : 'STABLE';
         fitText(ctx, state_, safeRight / 2, 108, safeRight - 24, 15, state_ === 'STABLE' ? '#15803d' : '#b91c1c');

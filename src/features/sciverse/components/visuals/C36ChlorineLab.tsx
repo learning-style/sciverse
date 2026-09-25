@@ -65,7 +65,7 @@ export const C36ChlorineLab = ({ state, onStateChange }: Props) => {
             ctx.fill();
         }
 
-        fitText(ctx, `Germs destroyed: ${Math.round(killed * 100)}%`, safeRight / 2, 84, safeRight - 24, 15);
+        fitText(ctx, `Germs left: ${Math.round((1 - killed) * 100)}%`, safeRight / 2, 84, safeRight - 24, 15);
         fitText(ctx, 'Chlorine destroys the germs filters cannot catch', safeRight / 2, 118, safeRight - 24, 13);
 
         // Verdict banner.
@@ -81,7 +81,7 @@ export const C36ChlorineLab = ({ state, onStateChange }: Props) => {
                 : v <= 0.7
                     ? 'Great dose! Germs destroyed and the water still tastes fine.'
                     : 'Too much. It is safe, but it smells and tastes like a swimming pool.';
-        return { meter: { fraction: safe ? 1 : killed < 0.97 ? killed * 0.6 : 0.62, caption: 'Water Safety Score', low: 'Dangerous', high: 'Perfect' }, note: msg };
+        return { meter: { fraction: safe ? 1 : killed < 0.97 ? killed * 0.6 : 0.62, caption: 'How Safe the Water Is', low: 'Dangerous', high: 'Safe' }, note: msg };
     };
 
     return (
