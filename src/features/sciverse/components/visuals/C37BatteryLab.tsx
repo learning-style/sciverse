@@ -81,6 +81,7 @@ export const C37BatteryLab = ({ state, onStateChange }: Props) => {
         }
 
         fitText(ctx, 'Electrons must go the long way -- that is what powers the device', safeRight / 2, 90, safeRight - 24, 14);
+        fitText(ctx, 'A battery stores a reaction, not electricity', safeRight / 2, 118, safeRight - 24, 13);
 
 
         const msg = v < 0.15

@@ -58,6 +58,7 @@ export const B34FarmTeamLab = ({ state, onStateChange }: Props) => {
         }
 
         fitText(ctx, `${bees} pollinators working   |   ${Math.round(pollinated * 100)}% of flowers became fruit`, safeRight / 2, 82, safeRight - 24, 14);
+        fitText(ctx, 'No bees, no apples: a farm is a living community', safeRight / 2, 118, safeRight - 24, 13);
 
         // Legend for the blossom colours.
         ctx.fillStyle = '#fbcfe8';

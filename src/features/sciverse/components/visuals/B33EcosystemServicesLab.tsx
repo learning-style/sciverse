@@ -31,6 +31,7 @@ export const B33EcosystemServicesLab = ({ state, onStateChange }: Props) => {
         }
 
         fitText(ctx, `${count} different species living here`, safeRight / 2, 82, safeRight - 24, 15);
+        fitText(ctx, "Biodiversity is nature's backup system", safeRight / 2, 118, safeRight - 24, 13);
 
         // Services scale with variety, but with diminishing returns.
         const health = Math.pow(v, 0.7);

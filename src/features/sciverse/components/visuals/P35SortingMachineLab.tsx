@@ -65,6 +65,7 @@ export const P35SortingMachineLab = ({ state, onStateChange }: Props) => {
         lg('paper', '#f59e0b', safeRight * 0.72);
 
         fitText(ctx, `Magnet catches ${Math.round(accuracy * 100)}% of the steel`, safeRight / 2, 82, safeRight - 24, 15);
+        fitText(ctx, 'Magnets, air and density sort trash, if it is clean', safeRight / 2, 118, safeRight - 24, 13);
 
 
         const msg = v < 0.2

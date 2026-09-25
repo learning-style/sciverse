@@ -97,9 +97,13 @@ def check(path):
             probs.append('value line is bare numbers, naming nothing: ' + lines[0][:60])
         take = lines[1] if len(lines) > 1 else ''
         tw = words_of(take)
-        if not take:
-            probs.append('no second line: nothing says what the picture means')
-        elif len(tw) < 4:
+        # Count every fitText call, not only the ones with literal text. A row
+        # built from a variable is still a row; reading only literals made twelve
+        # labs that already had two rows look as though they had one.
+        rows = len(re.findall(r'fitText\(', src)) + len(headline_via_outline(src))
+        if rows < 2:
+            probs.append('only one headline row: nothing says what the picture means')
+        elif take and len(tw) < 4:
             probs.append('takeaway is not a sentence (' + str(len(tw)) + ' words): ' + take[:60])
         elif '=' in take and len(tw) < 6:
             probs.append('takeaway is a bare formula: ' + take[:60])

@@ -77,6 +77,7 @@ export const C34FertilizerLab = ({ state, onStateChange }: Props) => {
         }
 
         fitText(ctx, `Crop health: ${Math.round(health * 100)}%   River health: ${Math.round(fishAlive * 100)}%`, safeRight / 2, 82, safeRight - 24, 15);
+        fitText(ctx, 'More fertilizer is not better fertilizer', safeRight / 2, 118, safeRight - 24, 13);
 
 
         const msg = v < 0.2
