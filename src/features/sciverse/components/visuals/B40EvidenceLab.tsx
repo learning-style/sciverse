@@ -47,12 +47,12 @@ export const B40EvidenceLab = ({ state, onStateChange }: Props) => {
         const conclusive = margin < trueEffect;     // effect is bigger than the wobble
 
         fitText(ctx, `Sample size: ${n} per group`, safeRight / 2, 84, safeRight - 24, 15);
-        fitText(ctx, `Effect: ${measured.toFixed(1)}%  ±  ${margin.toFixed(1)}%`, safeRight / 2, 106, safeRight - 24, 15, conclusive ? '#15803d' : '#b91c1c');
+        fitText(ctx, `Effect size: ${measured.toFixed(1)}%  ±  ${margin.toFixed(1)}%`, safeRight / 2, 106, safeRight - 24, 15, conclusive ? '#15803d' : '#b91c1c');
 
         outlineText(
             ctx,
             conclusive ? 'The effect is bigger than the noise -- this is real evidence.'
-                : 'The wobble is bigger than the effect -- this could easily be luck.',
+                : 'The noise is bigger than the effect -- this could easily be luck.',
             safeRight / 2, stageBottom - 12, 'bold 14px monospace',
             conclusive ? '#15803d' : '#b91c1c'
         );

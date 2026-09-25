@@ -44,7 +44,7 @@ export const B41InheritanceLab = ({ state, onStateChange }: Props) => {
         }
 
         fitText(ctx, `${brown} brown-eyed   |   ${blue} blue-eyed`, safeRight / 2, 92, safeRight - 24, 16);
-        fitText(ctx, `That is ${Math.round(share * 100)}% blue -- 1 in 4 is 25%`, safeRight / 2, 116, safeRight - 24, 14);
+        fitText(ctx, `Blue eyes in ${Math.round(share * 100)}% of children -- 1 in 4 is 25%`, safeRight / 2, 116, safeRight - 24, 14);
 
         const closeness = Math.max(0, 1 - Math.abs(share - 0.25) / 0.25);
         const msg = kids < 8

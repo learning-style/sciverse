@@ -84,7 +84,7 @@ export const P40MeasurementLab = ({ state, onStateChange }: Props) => {
             : n < 15
                 ? 'The average is settling down as the high and low readings cancel out.'
                 : 'Many readings! The random wobble has mostly cancelled and the range is tight.';
-        return { meter: { fraction: 1 - uncertainty / 0.35, caption: 'Spread in the Answer', low: 'Wide spread', high: 'Confident' }, note: msg };
+        return { meter: { fraction: 1 - uncertainty / 0.35, caption: 'Spread in the Answer', low: 'Spread out', high: 'Confident' }, note: msg };
     };
 
     return (

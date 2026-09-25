@@ -53,7 +53,7 @@ export const B45HairCellLab = ({ state, onStateChange }: Props) => {
 
         fitText(ctx, `${dB} decibels`, safeRight / 2, 92, safeRight - 24, 16);
         fitText(ctx, dB <= 85
-            ? 'Safe level -- the hair cells bend and recover'
+            ? 'Low loudness -- the hair cells bend and recover'
             : `${snapped} of ${n} hair cells snapped, and they never grow back`, safeRight / 2, 116, safeRight - 24, 14, dB <= 85 ? '#15803d' : '#b91c1c');
 
         const msg = dB <= 70
@@ -63,7 +63,7 @@ export const B45HairCellLab = ({ state, onStateChange }: Props) => {
                 : dB < 110
                     ? 'Above 85 dB -- hair cells are snapping, and they will not come back.'
                     : 'Concert loud. Damage happens within minutes at this level.';
-        return { meter: { fraction: 1 - lost, caption: 'Hair Cells Still Working', low: 'Many lost', high: 'All healthy' }, note: msg };
+        return { meter: { fraction: 1 - lost, caption: 'Hair Cells Still Working', low: 'Many lost', high: 'All fine' }, note: msg };
     };
 
     return (

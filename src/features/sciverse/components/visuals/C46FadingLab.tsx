@@ -48,7 +48,7 @@ export const C46FadingLab = ({ state, onStateChange }: Props) => {
         ctx.stroke();
         outlineText(ctx, 'UV', px - 46, py + 46, 'bold 14px monospace', '#a16207');
 
-        fitText(ctx, `${Math.round(fadeRed * 100)}% of the red is gone, ${Math.round(fadeBlue * 100)}% of the blue`,
+        fitText(ctx, `${Math.round(fadeRed * 100)}% of the red has faded, ${Math.round(fadeBlue * 100)}% of the blue`,
             safeRight / 2, 96, safeRight - 24, 15);
         fitText(ctx, 'Fragile reds break first; tougher blues last much longer',
             safeRight / 2, 118, safeRight - 24, 13);
@@ -58,7 +58,7 @@ export const C46FadingLab = ({ state, onStateChange }: Props) => {
             : days < 150
                 ? 'The red is going first -- its molecules are the most fragile.'
                 : 'Badly faded, and none of it can be undone. Only the blue is holding on.';
-        return { meter: { fraction: colourLeft, caption: 'How Much Colour Is Left', low: 'Faded away', high: 'Like new' }, note: msg };
+        return { meter: { fraction: colourLeft, caption: 'How Much Colour Is Left', low: 'Faded', high: 'Like new' }, note: msg };
     };
 
     return (

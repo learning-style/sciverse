@@ -88,7 +88,7 @@ export const B43AccessLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'people served bar', safeRight / 2, by - 8, 'bold 14px monospace');
 
         fitText(ctx, ratio >= 12
-            ? 'Gentle enough to meet the usual guideline of 1 in 12'
+            ? 'Gentle enough for the usual guideline of 1 in 12'
             : 'Steeper than the usual guideline of 1 in 12', safeRight / 2, 96, safeRight - 24, 15);
         fitText(ctx, `About ${Math.round(served * 100)} out of every 100 people could use this alone`, safeRight / 2, 118, safeRight - 24, 13);
 
@@ -97,7 +97,7 @@ export const B43AccessLab = ({ state, onStateChange }: Props) => {
             : ratio < 12
                 ? 'Still steeper than the guideline -- tiring, and some people are left out.'
                 : 'Gentle enough for almost everyone, and the effort stays comfortable.';
-        return { meter: { fraction: served, caption: 'How Many People This Ramp Can Serve', low: 'Very few', high: 'Almost everyone' }, note: msg };
+        return { meter: { fraction: served, caption: 'How Many People Can Use This Ramp', low: 'Very few', high: 'Almost everyone' }, note: msg };
     };
 
     return (
@@ -112,7 +112,7 @@ export const B43AccessLab = ({ state, onStateChange }: Props) => {
             sky={['#fff1f2', '#f8fafc']}
             completeTitle="B43 Complete!"
             completeSubtitle="How Do We Design for Safety and Accessibility?"
-            completeNote="Design for the range, not the average!"
+            completeNote="Design for the range of people, not one person!"
             phase={phase}
             onStateChange={onStateChange}
             drawScene={drawScene}

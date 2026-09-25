@@ -68,8 +68,8 @@ export const B46ConeCellLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'what you see', safeRight / 2, sy - 10, 'bold 14px monospace');
 
         fitText(ctx, v < 0.25 ? 'Too dark for cones -- rods take over and everything looks grey'
-            : v < 0.6 ? 'Cones are waking up, so a little colour comes back'
-                : 'Plenty of light -- all three cone types are working and colour is full',
+            : v < 0.6 ? 'Cones are working, so a little colour comes back'
+                : 'Enough light -- all three cone types are working and colour is bright',
             safeRight / 2, 96, safeRight - 24, 15);
 
         const msg = v < 0.25

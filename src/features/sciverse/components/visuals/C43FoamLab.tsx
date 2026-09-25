@@ -69,7 +69,7 @@ export const C43FoamLab = ({ state, onStateChange }: Props) => {
             : mm < 32
                 ? 'A sensible thickness. Good protection and still wearable.'
                 : 'Very thick foam protects best, but this helmet is heavy and bulky.';
-        return { meter: { fraction: wearability, caption: 'How Wearable the Helmet Is', low: 'Huge and heavy', high: 'Light and comfy' }, note: msg };
+        return { meter: { fraction: wearability, caption: 'How Wearable the Helmet Is', low: 'Thick and heavy', high: 'Light and soft' }, note: msg };
     };
 
     return (

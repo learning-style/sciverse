@@ -60,9 +60,9 @@ export const C44ArrangementLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'every dot is a carbon atom', safeRight / 2, gridTop + gridH + 34, 'bold 14px monospace');
 
         fitText(ctx, v < 0.33
-            ? 'Flat sheets, weakly joined -- they slide apart. This is pencil lead.'
+            ? 'Flat sheets with weak joins -- they slide apart. This is pencil lead.'
             : v < 0.7
-                ? 'Some joins between the sheets now. Sliding is getting harder.'
+                ? 'Some joins between the sheets now. Sliding is harder.'
                 : 'A full 3D network -- nothing can slide. This is diamond.', safeRight / 2, 96, safeRight - 24, 15);
         fitText(ctx, 'The atoms are identical the whole way -- only the joins change', safeRight / 2, 118, safeRight - 24, 13);
 

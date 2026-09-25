@@ -65,7 +65,7 @@ export const P45DistanceLab = ({ state, onStateChange }: Props) => {
             : metres < 5
                 ? 'A few steps back has already cut the sound a long way.'
                 : 'Far away and much quieter. Later steps back help less than the first ones.';
-        return { meter: { fraction: 1 - (dB - 30) / 60, caption: 'How Safe This Is for Your Ears', low: 'Dangerous', high: 'Safe' }, note: msg };
+        return { meter: { fraction: 1 - (dB - 30) / 60, caption: 'How Soft This Is for Your Ears', low: 'Loud', high: 'Soft' }, note: msg };
     };
 
     return (

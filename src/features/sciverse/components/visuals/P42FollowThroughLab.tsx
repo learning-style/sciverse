@@ -63,11 +63,11 @@ export const P42FollowThroughLab = ({ state, onStateChange }: Props) => {
         fitText(ctx, 'Same force every time -- only the contact time is different', safeRight / 2, 118, safeRight - 24, 13);
 
         const msg = ms < 4
-            ? 'Stabbed at the ball -- the push is cut short and the ball is slow.'
+            ? 'Stabbed at the ball -- the push is cut short and the ball is slower.'
             : ms < 10
                 ? 'A better swing. The bat stays on the ball for longer.'
                 : 'Full follow through -- the longest push and the fastest ball.';
-        return { meter: { fraction: speed, caption: 'Ball Speed', low: 'Slow', high: 'Fast' }, note: msg };
+        return { meter: { fraction: speed, caption: 'Ball Speed', low: 'Slower', high: 'Fast' }, note: msg };
     };
 
     return (

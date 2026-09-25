@@ -59,7 +59,7 @@ export const P44MaterialTestLab = ({ state, onStateChange }: Props) => {
         ctx.quadraticCurveTo(px0 + barW / 2, midY + plasticBend * 58, px0 + barW, midY);
         ctx.stroke();
         ctx.lineCap = 'butt';
-        outlineText(ctx, plasticBend > 0.55 ? 'bent, not broken' : 'bending', px0 + barW / 2, midY + 78, 'bold 14px monospace');
+        outlineText(ctx, plasticBend > 0.55 ? 'bends, does not break' : 'bending', px0 + barW / 2, midY + 78, 'bold 14px monospace');
 
         fitText(ctx, `Force: ${newtons} newtons on both bars`, safeRight / 2, 96, safeRight - 24, 15);
         fitText(ctx, 'Glass is hard but brittle. Plastic is soft but tough.', safeRight / 2, 118, safeRight - 24, 13);
@@ -70,7 +70,7 @@ export const P44MaterialTestLab = ({ state, onStateChange }: Props) => {
                 ? 'The plastic is bending. The glass shows no warning at all yet.'
                 : 'The glass shattered with no warning. The plastic just kept bending.';
         return { meter: { fraction: glassBroken ? 0.15 : 1 - plasticBend * 0.3,
-                 caption: 'How Well the Glass Can Survive', low: 'Shattered', high: 'Intact' }, note: msg };
+                 caption: 'How Well the Glass Can Survive', low: 'Shattered', high: 'Strong' }, note: msg };
     };
 
     return (

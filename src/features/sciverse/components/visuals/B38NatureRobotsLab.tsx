@@ -60,7 +60,7 @@ export const B38NatureRobotsLab = ({ state, onStateChange }: Props) => {
         ctx.lineWidth = 2;
         ctx.stroke();
 
-        fitText(ctx, viaBrain ? 'Signal all the way to the brain' : 'Reflex arc -- signal turns around at the spine', safeRight / 2, 84, safeRight - 24, 14);
+        fitText(ctx, viaBrain ? 'Signal all the way to the brain' : 'Reflex arc -- signal turns around at the spinal cord', safeRight / 2, 84, safeRight - 24, 14);
         fitText(ctx, `Reaction time: ${reactionS.toFixed(2)} seconds`, safeRight / 2, 106, safeRight - 24, 15);
 
         // Burn damage grows with how long your hand stays on the hot surface.

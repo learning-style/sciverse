@@ -58,8 +58,8 @@ export const P43ImpactLab = ({ state, onStateChange }: Props) => {
             ? 'Almost no crumple -- like landing on concrete. The force is huge.'
             : cm < 18
                 ? 'Some crumple. The stop takes longer and the force drops.'
-                : 'A deep crumple zone -- the stop is slow and the landing is gentle.';
-        return { meter: { fraction: 1 - force, caption: 'How Gentle the Landing Is', low: 'Brutal', high: 'Gentle' }, note: msg };
+                : 'A deep crumple zone -- the stop is slow and the landing is not hard.';
+        return { meter: { fraction: 1 - force, caption: 'How Safe the Landing Is', low: 'Hard', high: 'Safe' }, note: msg };
     };
 
     return (

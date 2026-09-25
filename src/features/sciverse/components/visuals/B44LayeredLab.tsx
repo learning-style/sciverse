@@ -62,9 +62,9 @@ export const B44LayeredLab = ({ state, onStateChange }: Props) => {
         const msg = layers <= 2
             ? 'Almost solid mineral -- the crack runs straight through, like plain chalk.'
             : layers < 8
-                ? 'Layers are slowing the crack down. It cannot reach the bottom easily.'
+                ? 'Layers are slowing the crack down.'
                 : 'Many thin layers -- the crack is stopped again and again. This is shell.';
-        return { meter: { fraction: toughness, caption: 'How Tough the Material Is', low: 'Shatters easily', high: 'Very tough' }, note: msg };
+        return { meter: { fraction: toughness, caption: 'How Tough the Material Is', low: 'Shatters', high: 'Very tough' }, note: msg };
     };
 
     return (

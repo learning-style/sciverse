@@ -59,7 +59,7 @@ export const B42RecoveryLab = ({ state, onStateChange }: Props) => {
         }
 
         fitText(ctx, repaired >= 1
-            ? 'Muscle fully repaired before the next session'
+            ? 'Muscle repaired before the next session'
             : 'Next session starts before the repair has finished', safeRight / 2, 96, safeRight - 24, 15);
         fitText(ctx, `Strength after six sessions: ${Math.round(strength * 100)} out of 100`, safeRight / 2, 118, safeRight - 24, 13);
 

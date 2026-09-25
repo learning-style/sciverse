@@ -57,6 +57,7 @@ territory stiffness efficiency plants animals food chain steps sky rain wind
 colour color sound smell taste touch grams litres metres seconds minutes hours
 amount rate count depth spread hole holes bulb wire battery spring ramp angle
 safe dangerous ears eyes nose skin expected close far near loud quiet
+soft hard rough smooth wet dry warm cool thick thin
 slope weightlifter runner swimmer bird tree plant seed root stem flower""".split())
 
 
