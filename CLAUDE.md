@@ -71,6 +71,25 @@ Nernst in L3C7, Henderson-Hasselbalch in L3C11 — or where the law is empirical
 the lesson **says so**, as L3B10 does for S = cA^z. It is not acceptable when the
 formula belongs to no syllabus at this age.
 
+**Where the curriculum actually stands** (audited September 2026, by reading each
+lesson's header *and* body — a header alone will mislead you):
+
+| | Mechanism | Mechanism + Limit | Limit | Quantity only |
+|---|---|---|---|---|
+| Level 2 (52) | 16 | — | 2 | 34 |
+| Level 3 (48) | 5 | 21 | 15 | 7 |
+
+Level 2 being Quantity-dominant is correct: its verb *is* Calculate. Level 3 is
+the one to watch, and **41 of its 48 lessons already carry Mechanism or Limit
+reasoning**. The 7 that are Quantity alone each pass the third test — L3C15's ICE
+tables, L3P14's sampling rate, L3B14's 138 silent swaps all change a decision.
+
+L3P15 was wrongly flagged as failing the test on the strength of its header,
+which reads as a bare correction formula. Its body is a Limit lesson: it states
+that θ²/16 is only the first term of an endless series, tabulates where that
+correction *itself* fails (2.6 points out by 90°), and costs a clock 123 s a day
+for a swing that widened five degrees. Judge a lesson by its body.
+
 `docs/big-ideas.md` holds the Big Idea table. `docs/curriculum-roadmap.md` and
 `docs/cross-discipline-sprint.md` hold the planning behind it.
 
