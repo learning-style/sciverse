@@ -64,7 +64,7 @@ export const P35SortingMachineLab = ({ state, onStateChange }: Props) => {
         lg('plastic', '#0ea5e9', safeRight * 0.38);
         lg('paper', '#f59e0b', safeRight * 0.72);
 
-        fitText(ctx, `Magnet catches ${Math.round(accuracy * 100)}% of the steel`, safeRight / 2, 82, safeRight - 24, 15);
+        fitText(ctx, `Magnet takes ${Math.round(accuracy * 100)}% of the steel`, safeRight / 2, 82, safeRight - 24, 15);
         fitText(ctx, 'Magnets, air and density sort trash, if it is clean', safeRight / 2, 118, safeRight - 24, 13);
 
 
@@ -75,7 +75,7 @@ export const P35SortingMachineLab = ({ state, onStateChange }: Props) => {
                 : v < 0.78
                     ? 'Getting too fast -- items are stacking up and some steel slips past.'
                     : 'Far too fast! Items pile on each other and most steel is missed.';
-        return { meter: { fraction: sorted, caption: 'Material Sorted Per Hour', low: 'Very little', high: 'Lots' }, note: msg };
+        return { meter: { fraction: sorted, caption: 'Material Sorted Per Hour', low: 'Very little', high: 'Most' }, note: msg };
     };
 
     return (

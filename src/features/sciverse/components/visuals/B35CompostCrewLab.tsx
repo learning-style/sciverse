@@ -54,7 +54,7 @@ export const B35CompostCrewLab = ({ state, onStateChange }: Props) => {
 
         // Stink lines when it goes anaerobic.
         if (soggy) {
-            outlineText(ctx, '~ ~ ~ PHEW! ~ ~ ~', safeRight / 2, binY - 62, 'bold 15px monospace', '#65a30d');
+            outlineText(ctx, '~ ~ ~ SMELLY ~ ~ ~', safeRight / 2, binY - 62, 'bold 15px monospace', '#65a30d');
         }
 
         // Thermometer.
@@ -69,18 +69,18 @@ export const B35CompostCrewLab = ({ state, onStateChange }: Props) => {
         ctx.strokeRect(thX, binY, 18, binH);
         outlineText(ctx, `${tempC}°C`, thX + 9, binY - 10, 'bold 14px monospace');
 
-        fitText(ctx, soggy ? 'Waterlogged -- no air for the fast crew!' : `Microbes working at ${Math.round(activity * 100)}%`, safeRight / 2, 84, safeRight - 24, 15);
-        fitText(ctx, tempC > 45 ? 'Hot enough to kill weed seeds and germs!' : 'Pile is cool -- breakdown is slow.', safeRight / 2, 106, safeRight - 24, 14);
+        fitText(ctx, soggy ? 'Too wet -- no air for the fast crew!' : `Microbes working at ${Math.round(activity * 100)}%`, safeRight / 2, 84, safeRight - 24, 15);
+        fitText(ctx, tempC > 45 ? 'Hot enough -- seeds and germs die!' : 'Pile is cold -- the crew is slow.', safeRight / 2, 106, safeRight - 24, 14);
 
 
         const msg = v < 0.28
             ? 'Too dry! Microbes need water to live and cannot work.'
             : v < 0.45
-                ? 'A bit dry. Add water or wet scraps to speed things up.'
+                ? 'A bit dry. Add water or wet scraps.'
                 : v <= 0.72
                     ? 'Just right -- damp like a wrung-out sponge. The pile is heating up!'
                     : 'Too wet and packed. Air is squeezed out and it turns smelly.';
-        return { meter: { fraction: activity, caption: 'Composting Speed', low: 'Stalled', high: 'Fast' }, note: msg };
+        return { meter: { fraction: activity, caption: 'How Fast the Crew Works', low: 'Slow', high: 'Fast' }, note: msg };
     };
 
     return (

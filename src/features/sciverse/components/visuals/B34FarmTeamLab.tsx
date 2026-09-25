@@ -57,13 +57,13 @@ export const B34FarmTeamLab = ({ state, onStateChange }: Props) => {
             ctx.fillText('🐝', x, y);
         }
 
-        fitText(ctx, `${bees} pollinators working   |   ${Math.round(pollinated * 100)}% of flowers became fruit`, safeRight / 2, 82, safeRight - 24, 14);
+        fitText(ctx, `${bees} pollinators   |   ${Math.round(pollinated * 100)}% of flowers make fruit`, safeRight / 2, 82, safeRight - 24, 14);
         fitText(ctx, 'No bees, no apples: a farm is a living community', safeRight / 2, 118, safeRight - 24, 13);
 
         // Legend for the blossom colours.
         ctx.fillStyle = '#fbcfe8';
         ctx.beginPath(); ctx.arc(40, 106, 5, 0, Math.PI * 2); ctx.fill();
-        outlineText(ctx, 'unpollinated flower', 130, 110, 'bold 13px monospace', '#000000', 'center', safeRight - 268);
+        outlineText(ctx, 'flower with no pollen', 130, 110, 'bold 13px monospace', '#000000', 'center', safeRight - 268);
         ctx.fillStyle = '#dc2626';
         ctx.beginPath(); ctx.arc(safeRight - 170, 106, 6, 0, Math.PI * 2); ctx.fill();
         outlineText(ctx, 'apple!', safeRight - 130, 110, 'bold 13px monospace', '#000000', 'center', safeRight - 268);
@@ -76,7 +76,7 @@ export const B34FarmTeamLab = ({ state, onStateChange }: Props) => {
                 : v < 0.85
                     ? 'Good pollinator numbers -- most flowers become fruit!'
                     : 'Plenty of bees. Every flower gets visited; extra bees add little more.';
-        return { meter: { fraction: pollinated, caption: 'Harvest Size', low: 'Almost none', high: 'Full crop' }, note: msg };
+        return { meter: { fraction: pollinated, caption: 'Harvest', low: 'Almost none', high: 'Full crop' }, note: msg };
     };
 
     return (

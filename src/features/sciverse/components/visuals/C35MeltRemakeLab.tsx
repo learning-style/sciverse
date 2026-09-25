@@ -30,10 +30,10 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
         ctx.lineTo(midX, topY + panelH);
         ctx.stroke();
 
-        outlineText(ctx, tempC >= metalMelts ? 'ALUMINIUM - MELTED' : 'ALUMINIUM (solid)',
+        outlineText(ctx, tempC >= metalMelts ? 'ALUMINIUM - MELTS' : 'ALUMINIUM (whole)',
             midX / 2, topY - 38, 'bold 15px monospace', '#000000', 'center', midX - 10);
         outlineText(ctx, `melts at ${metalMelts}\u00B0C`, midX / 2, topY - 20, 'bold 13px monospace', '#000000', 'center', midX - 10);
-        outlineText(ctx, tempC >= plasticMelts ? 'PLASTIC - MELTED' : 'PLASTIC (solid)',
+        outlineText(ctx, tempC >= plasticMelts ? 'PLASTIC - MELTS' : 'PLASTIC (whole)',
             midX + midX / 2, topY - 38, 'bold 15px monospace', '#000000', 'center', midX - 10);
         outlineText(ctx, `melts at about ${plasticMelts}\u00B0C`, midX + midX / 2, topY - 20, 'bold 13px monospace', '#000000', 'center', midX - 10);
 
@@ -98,7 +98,7 @@ export const C35MeltRemakeLab = ({ state, onStateChange }: Props) => {
             : tempC < metalMelts
                 ? `${tempC}\u00B0C -- plastic has melted and its chains are snapping.`
                 : `${tempC}\u00B0C -- both melted. Metal atoms will re-stack perfectly; plastic will not.`;
-        return { meter: { fraction: plasticQuality, caption: 'How Good the Recycled Plastic Is', low: 'Ruined', high: 'Like new' }, note: msg };
+        return { meter: { fraction: plasticQuality, caption: 'How Good the Recycled Plastic Is', low: 'Weak', high: 'Like new' }, note: msg };
     };
 
     return (

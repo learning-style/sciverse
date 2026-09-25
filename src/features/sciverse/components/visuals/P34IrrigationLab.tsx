@@ -18,7 +18,7 @@ export const P34IrrigationLab = ({ state, onStateChange }: Props) => {
         ctx.fillRect(0, soilY, safeRight, stageBottom - soilY);
         ctx.fillStyle = '#78350f';
         ctx.fillRect(0, soilY + 46, safeRight, stageBottom - soilY - 46);
-        outlineText(ctx, 'root zone', 60, soilY + 40, 'bold 13px monospace', '#ffffff');
+        outlineText(ctx, 'roots', 60, soilY + 40, 'bold 13px monospace', '#ffffff');
 
         // Plant.
         const px = safeRight / 2;
@@ -71,7 +71,7 @@ export const P34IrrigationLab = ({ state, onStateChange }: Props) => {
             outlineText(ctx, 'runoff!', safeRight - w / 2 - 10, soilY - 16, 'bold 13px monospace', '#b91c1c');
         }
 
-        fitText(ctx, `Soaked into roots: ${Math.round(absorbed * 100)}%`, safeRight / 2, 82, safeRight - 24, 15);
+        fitText(ctx, `Into the roots: ${Math.round(absorbed * 100)}%`, safeRight / 2, 82, safeRight - 24, 15);
         fitText(ctx, `Lost to evaporation: ${Math.round(evaporation * 100)}%   Lost to runoff: ${Math.round(runoff * 100)}%`, safeRight / 2, 104, safeRight - 24, 14);
 
 
@@ -80,7 +80,7 @@ export const P34IrrigationLab = ({ state, onStateChange }: Props) => {
             : v < 0.65
                 ? 'Medium flow. Some water soaks in, some slides away.'
                 : 'Too fast! The soil cannot drink it and most of it runs off.';
-        return { meter: { fraction: absorbed, caption: 'Watering Efficiency', low: 'Wasteful', high: 'Efficient' }, note: msg };
+        return { meter: { fraction: absorbed, caption: 'Water That Reaches the Roots', low: 'Wasted', high: 'Efficient' }, note: msg };
     };
 
     return (

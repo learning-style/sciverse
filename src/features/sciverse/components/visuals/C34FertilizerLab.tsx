@@ -87,7 +87,7 @@ export const C34FertilizerLab = ({ state, onStateChange }: Props) => {
                 : v < 0.85
                     ? 'Too much. The extra washes into the river and feeds algae.'
                     : 'Way too much! The crop is burning and the river is choking.';
-        return { meter: { fraction: Math.min(health, fishAlive), caption: 'Overall Farm Score (crop AND river)', low: 'Poor', high: 'Great' }, note: msg };
+        return { meter: { fraction: Math.min(health, fishAlive), caption: 'Farm and River (both)', low: 'Runoff', high: 'Great' }, note: msg };
     };
 
     return (
