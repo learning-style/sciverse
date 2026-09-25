@@ -60,7 +60,7 @@ export const C33NutrientCycleLab = ({ state, onStateChange }: Props) => {
             ctx.stroke();
         }
 
-        outlineText(ctx, 'Carbon atoms never leave -- they just move house', cx, 82, 'bold 15px monospace');
+        outlineText(ctx, 'Carbon atoms stay -- they just move around', cx, 82, 'bold 15px monospace');
 
         // Pile of undecomposed leaf litter when the crew is slow.
         const litter = Math.round((1 - v) * 12);
@@ -80,7 +80,7 @@ export const C33NutrientCycleLab = ({ state, onStateChange }: Props) => {
             : v < 0.7
                 ? 'The loop is turning -- soil is being restocked.'
                 : 'Fast crew! Atoms race back to the soil for new plants.';
-        return { meter: { fraction: v, caption: 'Nutrients Returned to the Soil', low: 'Locked up', high: 'Recycled' }, note: msg };
+        return { meter: { fraction: v, caption: 'Nutrients Back in the Soil', low: 'Locked up', high: 'Reused' }, note: msg };
     };
 
     return (

@@ -195,6 +195,13 @@ the word-presence test just by being echoed once. Gauge end labels
 ("Almost none", "Full") are qualitative by design and are exempt; a term counts
 as technical only where the lesson itself bolds it.
 
+`completeSubtitle` is deliberately **not** word-checked: it carries the Big Idea's
+own title, shared by all three of its lessons, so requiring its words in each one
+flagged *ecosystems*, *human* and *life* against a physics lesson. `note`,
+`caption`, `low`, `high`, `completeNote`, `completeTitle`, `title` and `display`
+are all still checked, and a real defect still fails -- C35's canvas prints
+*melted*, *ruined* and *solid* where its lesson uses none of them.
+
 It verifies **mechanics, not meaning**. Every genuine content problem found in
 review — a boot where a bat belonged, an undefined term, "in" with no
 referent — passed every check cleanly.

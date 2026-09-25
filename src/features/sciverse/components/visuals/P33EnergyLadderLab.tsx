@@ -53,7 +53,7 @@ export const P33EnergyLadderLab = ({ state, onStateChange }: Props) => {
             // Heat escaping, on the opposite side so the two never collide.
             if (i < steps - 1) {
                 const hx = Math.max(x - 12, 84);
-                outlineText(ctx, '90% lost as heat', hx, y + bandH / 2 + 5, 'bold 14px monospace', '#c2410c', 'right', Math.max(40, hx - 6));
+                outlineText(ctx, '90% escapes as heat', hx, y + bandH / 2 + 5, 'bold 14px monospace', '#c2410c', 'right', Math.max(40, hx - 6));
             }
         }
 
@@ -65,12 +65,12 @@ export const P33EnergyLadderLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#a16207';
         ctx.lineWidth = 2;
         ctx.stroke();
-        outlineText(ctx, 'SUN — 100% of the energy enters here', cx + 12, stageBottom - 11, 'bold 15px monospace');
+        outlineText(ctx, 'SUN — 100% of the energy starts here', cx + 12, stageBottom - 11, 'bold 15px monospace');
 
         // Headline readouts.
         const topEnergy = Math.pow(0.1, steps - 1) * 100;
         const topLabel = topEnergy >= 0.01 ? topEnergy.toFixed(2) : topEnergy.toExponential(0);
-        outlineText(ctx, `Top animal receives ${topLabel}% of the Sun's energy`, cx, 88, 'bold 15px monospace');
+        outlineText(ctx, `Top animal gets ${topLabel}% of the Sun's energy`, cx, 88, 'bold 15px monospace');
         const msg = steps <= 2
             ? 'Short chain — most of the energy is still here.'
             : steps === 3
@@ -93,7 +93,7 @@ export const P33EnergyLadderLab = ({ state, onStateChange }: Props) => {
             sky={['#dbeafe', '#f0fdf4']}
             completeTitle="P33 Complete!"
             completeSubtitle="How Do Ecosystems Support Human Life?"
-            completeNote="Only 10% of energy survives each step up the chain!"
+            completeNote="Only 10% of energy passes each step up the chain!"
             phase={phase}
             onStateChange={onStateChange}
             drawScene={drawScene}

@@ -60,7 +60,7 @@ export const B33EcosystemServicesLab = ({ state, onStateChange }: Props) => {
             ctx.fillStyle = '#ffffff';
             ctx.fillText(name, x + boxW / 2, y + boxH / 2 + size / 2 - 1);
         });
-        outlineText(ctx, 'Free services this ecosystem provides', safeRight / 2, y + boxH + 24, 'bold 15px monospace');
+        outlineText(ctx, 'Free services from this ecosystem', safeRight / 2, y + boxH + 24, 'bold 15px monospace');
 
 
         const msg = v < 0.25
@@ -68,7 +68,7 @@ export const B33EcosystemServicesLab = ({ state, onStateChange }: Props) => {
             : v < 0.6
                 ? 'Some variety. The ecosystem can absorb small shocks.'
                 : 'High biodiversity! Plenty of backup if one species struggles.';
-        return { meter: { fraction: health, caption: 'Ecosystem Resilience', low: 'Fragile', high: 'Strong' }, note: msg };
+        return { meter: { fraction: health, caption: 'Ecosystem Backup', low: 'Few kinds', high: 'Many kinds' }, note: msg };
     };
 
     return (

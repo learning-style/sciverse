@@ -225,7 +225,11 @@ def check(lesson_id, lab_file):
     for fn in ('fillText', 'outlineText', 'fitText'):
         for mm in re.finditer(r'(?<![\w.])' + fn + r'\s*\(', lab):
             printed |= printed_literals(paren_span(lab, mm.end() - 1))
-    for key in ('note', 'caption', 'low', 'high', 'completeNote', 'completeSubtitle', 'completeTitle', 'title', 'display'):
+    # completeSubtitle carries the Big Idea's own title -- 'How Do Ecosystems
+    # Support Human Life?' -- which is a heading shared by all three lessons of
+    # that Big Idea, not teaching prose. Requiring its words in each lesson
+    # flagged 'ecosystems', 'human' and 'life' against a physics lesson.
+    for key in ('note', 'caption', 'low', 'high', 'completeNote', 'completeTitle', 'title', 'display'):
         for mm in re.finditer(r'(?<![\w])' + key + r'\s*[:=]([^;\n]*(?:\n[^;\n]*){0,4}?)[;\n]', lab):
             printed |= printed_literals(mm.group(1))
     unexplained = sorted(w for w in printed - words(lesson) - STOP if len(w) > 3)
