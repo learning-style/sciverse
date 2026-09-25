@@ -27,6 +27,7 @@ export const B35CompostCrewLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#1e293b';
         ctx.lineWidth = 3;
         ctx.strokeRect(binX, binY, binW, binH);
+        outlineText(ctx, 'compost bin', binX + 8, binY + 18, 'bold 12px monospace', '#0f172a', 'left', binW / 2);
 
         // Scraps inside.
         ctx.font = '15px serif';

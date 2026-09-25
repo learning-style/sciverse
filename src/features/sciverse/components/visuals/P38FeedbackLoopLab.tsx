@@ -50,6 +50,7 @@ export const P38FeedbackLoopLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#1e293b';
         ctx.lineWidth = 2;
         ctx.strokeRect(rx - 14, ry - 10, 28, 20);
+        outlineText(ctx, 'robot', rx, ry + 24, 'bold 12px monospace', '#0f172a', 'center', 70);
         ctx.fillStyle = '#1e293b';
         ctx.fillRect(rx - 16, ry - 14, 6, 8);
         ctx.fillRect(rx + 10, ry - 14, 6, 8);

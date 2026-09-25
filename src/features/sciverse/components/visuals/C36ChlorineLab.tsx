@@ -27,6 +27,7 @@ export const C36ChlorineLab = ({ state, onStateChange }: Props) => {
         ctx.strokeStyle = '#334155';
         ctx.lineWidth = 3;
         ctx.strokeRect(tankX, tankY, tankW, tankH);
+        outlineText(ctx, 'drinking water', tankX + 8, tankY + 18, 'bold 12px monospace', '#0f172a', 'left', tankW / 2);
 
         // Germs: survivors wriggle, killed ones show as faded crosses.
         const total = 14;

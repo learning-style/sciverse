@@ -42,6 +42,7 @@ export const C49SmeltLab = ({ state, onStateChange }: Props) => {
             ctx.lineWidth = 1.5;
             ctx.strokeRect(bx, by, bw, bh);
         }
+        outlineText(ctx, 'buckets of rock', c1, rowBase - 6, 'bold 12px monospace', '#0f172a', 'center', labelW);
 
         // Middle: the smelter, with charcoal burning underneath
         const sx = c2 - 34;
