@@ -2606,7 +2606,7 @@ Here's your first question: if you attach a **heavier bob** to the same pendulum
 
 More mass means more gravitational force pulling it... but also more inertia resisting motion. These two effects cancel out exactly. The period stays the same!
 
-This discovery helped Galileo understand acceleration in 1602 — the same year he was supposedly watching a cathedral pendulum swing.`,options:[{id:"gravity_inertia_cancel",label:"More gravity AND more inertia — they cancel! Period unchanged.",nextNodeId:"correct_mass"}]},misconception_slow:{id:"misconception_slow",speaker:"AI",content:"Good instinct, but inertia (resisting motion) and gravity (pulling it) both scale with mass proportionally. They cancel each other out — the period is completely independent of mass! 🤯",options:[{id:"got_it",label:"Mass doesn't matter for pendulum period!",nextNodeId:"correct_mass"}]},correct_mass:{id:"correct_mass",speaker:"AI",content:`Yes! The period of a pendulum depends ONLY on **length** and **gravity** — not mass, not starting angle (for small swings).
+This discovery helped Galileo understand **acceleration** — how quickly something speeds up — in 1602 — the same year he was supposedly watching a cathedral pendulum swing.`,options:[{id:"gravity_inertia_cancel",label:"More gravity AND more inertia — they cancel! Period unchanged.",nextNodeId:"correct_mass"}]},misconception_slow:{id:"misconception_slow",speaker:"AI",content:"Good instinct, but inertia (resisting motion) and gravity (pulling it) both scale with mass proportionally. They cancel each other out — the period is completely independent of mass! 🤯",options:[{id:"got_it",label:"Mass doesn't matter for pendulum period!",nextNodeId:"correct_mass"}]},correct_mass:{id:"correct_mass",speaker:"AI",content:`Yes! The period of a pendulum depends ONLY on **length** and **gravity** — not mass, not starting angle (for small swings).
 
 The formula is: **T = 2π √(L/g)**
 
@@ -2622,22 +2622,22 @@ Think of pushing someone on a swing: if you push at just the right moment each c
 
 This is why soldiers break step when marching across bridges! ⚠️`,options:[{id:"bridges",label:"Wait — marching soldiers used to collapse bridges?!",nextNodeId:"resonance_demo"},{id:"push_demo",label:"Let me try the resonance demo in the sim!",nextNodeId:"resonance_demo"}]},resonance_demo:{id:"resonance_demo",speaker:"AI",content:`Yes! The Angers Bridge (1850) collapsed when soldiers marched in step across it. The Tacoma Narrows Bridge (1940) collapsed due to wind resonance with its natural frequency.
 
-Try the **Resonance Test** in the sim — push the pendulum at its natural period vs. at the wrong timing. See the amplitude difference! 🌊`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"resonance",showResonanceTest:!0}},options:[{id:"tested",label:"In-phase pushing made it swing 10× higher — scary power!",nextNodeId:"damping"}]},damping:{id:"damping",speaker:"AI",content:`Exactly! And notice: without any push, the pendulum gradually slows down. This is **damping** — air resistance and friction stealing energy each cycle.
+Try the **Resonance Test** in the sim — push the pendulum at its natural period, then at the wrong timing, and watch the difference. Push near resonance and the swing grows; push off resonance and you get a weak response, because half your pushes are fighting the swing instead of helping it. 🌊`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"resonance",showResonanceTest:!0}},options:[{id:"tested",label:"In-phase pushing made it swing 10× higher — scary power!",nextNodeId:"damping"}]},damping:{id:"damping",speaker:"AI",content:`Exactly! And notice: without any push, the pendulum gradually slows down. This is **damping** — air resistance and friction stealing energy each cycle.
 
-In a grandfather clock, the escapement mechanism gives tiny pushes each cycle to compensate for damping, keeping it going.
+In a grandfather clock, a small catch called the **escapement** gives the pendulum one tiny push every swing, replacing exactly what damping steals. That is why the clock keeps going.
 
-What do you think would happen with NO damping and no push — a perfect frictionless pendulum?`,options:[{id:"forever",label:"It would swing forever — no energy loss!",nextNodeId:"summary"},{id:"speed_up",label:"It would speed up over time somehow.",nextNodeId:"damping_hint"}]},damping_hint:{id:"damping_hint",speaker:"AI",content:"Energy only comes in/out if something adds or removes it! A perfect frictionless pendulum conserves all its initial energy — swings forever at the same amplitude. 🔋",options:[{id:"perfect_forever",label:"Perfect pendulum = perpetual motion (in theory)!",nextNodeId:"summary"}]},summary:{id:"summary",speaker:"AI",content:`🌟 **Oscillation Mastered:**
+What do you think would happen with no damping at all and no push either — a pendulum with no friction anywhere?`,options:[{id:"forever",label:"It would swing forever — no energy loss!",nextNodeId:"summary"},{id:"speed_up",label:"It would speed up over time somehow.",nextNodeId:"damping_hint"}]},damping_hint:{id:"damping_hint",speaker:"AI",content:"Energy only comes in/out if something adds or removes it! A pendulum with no friction anywhere keeps all the energy it started with — swinging forever, just as high each time. 🔋",options:[{id:"perfect_forever",label:"Perfect pendulum = perpetual motion (in theory)!",nextNodeId:"summary"}]},summary:{id:"summary",speaker:"AI",content:`🌟 **Oscillation Mastered:**
 
-✅ Period = 2π √(L/g) — length-dependent, mass-independent
+✅ The time for one swing depends on the pendulum's **length** and nothing else — not on how heavy the weight is
 ✅ Longer pendulum → slower period
 ✅ Resonance = pushing at natural frequency → amplitude grows dangerously
 ✅ Damping = friction/air resistance steals energy each cycle
 ✅ Clocks use pendulums because period is extremely regular
 ✅ Resonance explains bridge/building failures and musical tuning!
 
-**Real use:** Atomic clocks use electron oscillations — accurate to 1 second in 300 million years!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[{id:"done",label:"Oscillation unlocked! Clocks will never look the same.",nextNodeId:"done"}]},done:{id:"done",speaker:"AI",content:`Time master! ⏱️
+**Real use:** the most accurate clocks we have count the swings of something far smaller and far faster than a pendulum — and they are out by only 1 second in 300 million years.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[{id:"done",label:"Oscillation unlocked! Clocks will never look the same.",nextNodeId:"done"}]},done:{id:"done",speaker:"AI",content:`Time master! ⏱️
 
-Connect to **C15 (Chemical Equilibrium)** to see how chemistry oscillates to find balance, or **B15 (Predator-Prey)** to see population oscillations in nature!`,options:[]}}),b2=()=>({root:{id:"root",speaker:"AI",content:`Welcome to the Equilibrium Lab! ⚗️
+Connect to **C15 (Chemical Balance)** to see how chemistry swings back and forth to find its balance, or **B15 (Predator-Prey)** to see animal numbers swinging up and down in the same way!`,options:[]}}),b2=()=>({root:{id:"root",speaker:"AI",content:`Welcome to the Equilibrium Lab! ⚗️
 
 In the simulation, two chambers are connected. You can see molecules reacting: blue balls (reactants) → red balls (products). But the red balls can also convert back to blue.
 
