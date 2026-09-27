@@ -198,6 +198,8 @@ python3 scripts/check-lessons.py l2p1 l3c2  # named ones
 python3 scripts/check-clarity.py            # is every visual term explained?
 python3 scripts/check-unused.py             # unused symbols in changed TypeScript
 python3 scripts/check-strings.py             # string literals that will not parse
+python3 scripts/check-legacy-visuals.py      # the 96 pairs check-lessons cannot see
+python3 scripts/check-plainness.py           # hard words a lesson never defines
 ```
 
 It pairs lessons to labs through `extendedLabs.ts`, so it needs no argument
@@ -220,6 +222,41 @@ flagged *ecosystems*, *human* and *life* against a physics lesson. `note`,
 `caption`, `low`, `high`, `completeNote`, `completeTitle`, `title` and `display`
 are all still checked, and a real defect still fails -- C35's canvas prints
 *melted*, *ruined* and *solid* where its lesson uses none of them.
+
+`check-legacy-visuals.py` covers the pairs `check-lessons.py` structurally
+cannot. check-lessons finds a lesson's lab through `extendedLabs.ts`, which lists
+only the LabCanvas labs; the 96 Level 1 labs that predate LabCanvas are paired in
+a chain of ternaries in `LessonShell.tsx`, so for a long time nobody asked
+whether their printed words appeared in their lessons. 178 did not. It parses
+`check-lessons.py`'s own `STOP` list rather than keeping a second copy, because
+two hand-kept lists drift until the checkers disagree about the same word.
+
+`check-plainness.py` asks whether a long or latinate word is ever **defined**.
+Word length alone is the wrong test -- *mutation* and *corrosion* are the subject
+-- so it matches an everyday-word list through inflections, possessives and
+hyphenated compounds, which is why *germ-killing* passes and *enteric-coated*
+does not. **Both of these carry a `--selftest`, and it guards both directions**:
+a list wide enough to quiet *grandmother* must not also quiet *homeostasis*. Run
+it after touching either word list.
+
+**Level 1 was not written for Level 1.** Big Ideas 27-30 were pitched years above
+their readers: P30 handed a nine-year-old Fick's Law as `flux = -D x (concentration
+difference / distance)`, P28 gave `blood pressure = cardiac output x total
+peripheral resistance`, B29 gave the herd-immunity threshold as `1 - 1/R0`, and
+P15 carried `Period = 2 pi root(L/g)` -- four formulas in the level whose rule is
+*no formulas*. C27 ran on activation energy, denaturation and the Arrhenius
+principle; B30 on Brownian motion, van der Waals forces and monoclonal
+antibodies. All are rewritten, and the good results were kept by making them
+reachable instead: halve a vessel's width and a sixteenth gets through because
+2x2x2x2 = 16; the herd-immunity threshold is *how many of R0 people may still be
+catchable, and it must be under 1*, which gives 67%, 80% and measles' 93% by
+counting. **Check a Level 1 lesson for formulas before trusting its level.**
+Roughly 43 Level 1 lessons still carry a hard word they never define.
+
+C29 explained contact time with a steak in a hot pan, against the standing rule
+about examples involving eating animals. A corpus scan found no others: b18's
+salmon are wildlife in a river, l3c17's *ribs* are the ridges rolled onto a
+reinforcing bar, and b7's *sausage-shaped* describes a shape.
 
 It verifies **mechanics, not meaning**. Every genuine content problem found in
 review — a boot where a bat belonged, an undefined term, "in" with no
