@@ -10,7 +10,7 @@ export const getP8Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "🔥 Welcome to the great outdoors! It's a cool evening and someone has lit a **campfire**.\n\nYou're standing a few metres away, but you can already feel the warmth on your face. Interesting…\n\nYou haven't touched the fire, so **how is the heat reaching you?**",
+        content: "🔥 Welcome to the great outdoors! It's a cool evening and someone has lit a **campfire**.\n\nYou're standing a few metres away, but you can already feel the warmth on your face. Interesting…\n\nYou haven't touched the fire, so **how is the heat reaching you?**\n\nHeat has more than one way of travelling, and one of them you have felt without naming: **evaporation**, which is liquid water drying away into the air. It carries heat off with it, which is why stepping out of a swimming pool feels cold.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', showConduction: false, showConvection: false, showRadiation: false } },
         options: [
             { id: 'touch', label: "Heat travels through the air by touching it, like a chain.", nextNodeId: 'misconception_touch', sentiment: 'negative' },

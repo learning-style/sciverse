@@ -10,7 +10,7 @@ export const getC15Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "Welcome to the Equilibrium Lab! ⚗️\n\nIn the simulation, two chambers are connected. You can see molecules reacting: blue balls (reactants) → red balls (products). But the red balls can also convert back to blue.\n\nHere's my question: when the reaction reaches **equilibrium** and the counts stop changing, does that mean the reaction has stopped?",
+        content: "Welcome to the Equilibrium Lab! ⚗️\n\nIn the simulation, two chambers are connected. You can see molecules reacting: blue balls (reactants) → red balls (products). The graph tracks the **population** of each colour, which means simply how many of them there are. But the red balls can also convert back to blue.\n\nHere's my question: when the reaction reaches **equilibrium** and the counts stop changing, does that mean the reaction has stopped?",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', reactants: 20, products: 0, reactionActive: false } },
         options: [
             { id: 'stopped', label: "Yes — equilibrium means the reaction is done.", nextNodeId: 'misconception_stopped', sentiment: 'negative' },

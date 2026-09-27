@@ -10,7 +10,7 @@ export const getP7Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "⚡ Welcome to the Physics Lab — but oh no, the **lights are out!** 🔦\n\nThere's been a power cut. On the bench you can see:\n- A **battery** 🔋\n- Some **wires** 🪢\n- A **light bulb** 💡\n\nCan you build a circuit to get the light back on? What do you think you need to connect?",
+        content: "⚡ Welcome to the Physics Lab — but oh no, the **lights are out!** 🔦\n\nThere's been a power cut. On the bench you can see:\n- A **battery** 🔋\n- Some **wires** 🪢\n- A **light bulb** 💡\n\nCan you build a circuit to get the light back on? What do you think you need to connect?\n\nOne warning before you start: if there is a gap anywhere in the loop, the circuit is **incomplete** \u2014 not joined all the way round \u2014 and nothing will flow at all.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', circuitComplete: false, bulb1On: false, bulb2On: false, bulb1Broken: false, bulb2Broken: false } },
         options: [
             { id: 'wire_bulb', label: "Connect the wire from the battery to the bulb!", nextNodeId: 'one_wire', sentiment: 'neutral' },

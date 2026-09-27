@@ -39,6 +39,26 @@ def _project_stop_list():
     return set(m.group(1).split())
 
 
+def _plainness():
+    """Borrow check-plainness.py's everyday-word test.
+
+    Two different questions get confused here. "Does the lesson happen to
+    contain this word?" flags "happening", "behind" and "leaving" -- 178 of
+    them, all cosmetic. "Does the lesson explain this *term*?" is the question
+    worth asking, and check-plainness already knows how to tell an everyday
+    word from a technical one, so this borrows that rather than guessing again.
+    """
+    import importlib.util
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        'check-plainness.py')
+    spec = importlib.util.spec_from_file_location('check_plainness', path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+PLAIN = _plainness()
+
 SKIP = _project_stop_list() | set("""
 lesson level step steps big idea sim visual lab panel meter note caption
 title label value complete completed watch try click drag slide move total
@@ -111,8 +131,16 @@ def check(lid, component):
                 lw = lw[:-2]
             if lw in SKIP or len(lw) <= 3:
                 continue
-            if lw not in text:
-                missing.setdefault(lw, s)
+            if lw in text:
+                continue
+            # Only a word that could be a term at all. A printed "pink" or
+            # "zero" missing from the lesson is not a defect, and chasing those
+            # buried the fourteen findings that are.
+            if not (len(lw) >= 10 or PLAIN.LATIN.match(lw)):
+                continue
+            if PLAIN.ordinary(lw) or PLAIN.compound_ordinary(lw):
+                continue
+            missing.setdefault(lw, s)
     return ['%-18s printed in: %s' % (w, s[:56]) for w, s in sorted(missing.items())]
 
 
@@ -130,6 +158,12 @@ def selftest():
     for term in ('the', 'watch', 'step', 'complete'):
         assert term in SKIP, term + ' should be exempt'
     assert pairs(), 'the LessonShell ternary chain no longer parses'
+    # the narrowing must drop ordinary words and keep technical ones
+    for w in ('happening', 'leaving', 'building', 'surface'):
+        assert PLAIN.ordinary(w) or PLAIN.compound_ordinary(w), w + ' should read as ordinary'
+    for w in ('kinetics', 'transmittance', 'electrolyte'):
+        assert not (PLAIN.ordinary(w) or PLAIN.compound_ordinary(w)), \
+            w + ' reads as ordinary, which would hide a real gap'
     print('selftest ok')
     return 0
 

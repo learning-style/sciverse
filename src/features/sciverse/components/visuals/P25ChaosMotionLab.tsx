@@ -103,7 +103,7 @@ export const P25ChaosMotionLab = ({ onStateChange }: P25ChaosMotionLabProps) => 
         ctx.fillStyle = '#1e293b';
         ctx.font = 'bold 13px monospace';
         ctx.textAlign = 'left';
-        ctx.fillText(`Trajectory Divergence ${divergence}%`, 14, 22);
+        ctx.fillText(`Paths drifted apart ${divergence}%`, 14, 22);
         ctx.font = '10px monospace';
         ctx.fillStyle = '#64748b';
         const dist = Math.round(Math.hypot(ax - bx, ay - by));

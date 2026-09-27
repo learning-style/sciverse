@@ -713,7 +713,7 @@ export const B7NerveLab = ({ state }: B7NerveLabProps) => {
         ctx.fillStyle = 'rgba(244,114,182,0.6)';
         ctx.font = '17px monospace';
         ctx.textAlign = 'center';
-        ctx.fillText('→ neurotransmitters →', gapX, cy + 30);
+        ctx.fillText('→ chemical messengers →', gapX, cy + 30);
 
         // ── Post-synaptic neuron (right side) ──
         // Dendrite start
@@ -895,7 +895,7 @@ export const B7NerveLab = ({ state }: B7NerveLabProps) => {
             '1. Neurons are biological "wires" using IONS',
             '2. Na⁺ in, K⁺ out → action potential pulse',
             '3. Myelin insulation → signal jumps fast',
-            '4. Synapse: neurotransmitters cross the gap',
+            '4. Synapse: chemical messengers cross the gap',
             '5. Reflex: spinal cord pulls hand away',
             '',
             '🔗 P7: Neurons are like circuits (pathway)',
@@ -937,7 +937,7 @@ export const B7NerveLab = ({ state }: B7NerveLabProps) => {
         ctx.font = '17px monospace';
         ctx.fillText('P7: Circuits & Current (electrons in wires)', W / 2, H * 0.38 + 54);
         ctx.fillText('C7: Batteries & Chemical Energy (ions)', W / 2, H * 0.38 + 72);
-        ctx.fillText('B7: Nerve Signals (bioelectricity in neurons)', W / 2, H * 0.38 + 90);
+        ctx.fillText('B7: Nerve Signals (electricity in your nerves)', W / 2, H * 0.38 + 90);
 
         ctx.fillStyle = 'rgba(250,204,21,0.7)';
         ctx.font = 'bold 18px monospace';

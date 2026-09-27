@@ -10,7 +10,7 @@ export const getC2Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "Welcome to the Molecule Workshop! 🧱\n\nSee these colored circles? They are **atoms** — the smallest building blocks of matter.\n\n- ⚪ **Hydrogen** (H) — tiny and light\n- 🔴 **Oxygen** (O) — medium\n- ⚫ **Carbon** (C) — medium\n- 🔵 **Nitrogen** (N) — medium\n\nThink of them as LEGO bricks!",
+        content: "Welcome to the Molecule Workshop — your **build-a-molecule** bench! 🧱\n\nSee these colored circles? They are **atoms** — the smallest building blocks of matter.\n\n- ⚪ **Hydrogen** (H) — tiny and light\n- 🔴 **Oxygen** (O) — medium\n- ⚫ **Carbon** (C) — medium\n- 🔵 **Nitrogen** (N) — medium\n\nThink of them as LEGO bricks!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', atoms: ['H', 'O', 'C', 'N'], builtMolecule: null } },
         options: [
             { id: 'lego', label: "So molecules are like LEGO builds?", nextNodeId: 'lego_yes' },

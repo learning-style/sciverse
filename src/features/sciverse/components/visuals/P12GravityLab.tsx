@@ -125,7 +125,7 @@ export const P12GravityLab = ({ state, onStateChange }: P12GravityLabProps) => {
         ctx.fillStyle = '#1e3a8a';
         ctx.font = 'bold 13px monospace';
         ctx.textAlign = 'center';
-        ctx.fillText('velocity', px + tvx * 20, py + tvy * 20 - 6);
+        ctx.fillText('speed', px + tvx * 20, py + tvy * 20 - 6);
 
         // Planet (Earth-like)
         const earthGrad = ctx.createRadialGradient(px, py, 0, px, py, 18);

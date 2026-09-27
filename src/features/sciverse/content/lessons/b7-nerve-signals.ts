@@ -10,7 +10,7 @@ export const getB7Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "Welcome to **The Lightning Reflex!** ⚡🖐️\n\nImagine you accidentally touch a hot pan on the stove. OUCH! You pull your hand away *instantly*.\n\nBut how did your hand know to move so fast? **How fast does a signal travel along your nerves?**",
+        content: "Welcome to **The Lightning Reflex!** ⚡🖐️\n\nImagine you accidentally touch a hot pan on the stove. OUCH! You pull your hand away *instantly*.\n\nBut how did your hand know to move so fast? **How fast does a signal travel along your nerves?**\n\nNerves do not quite touch each other. At each tiny gap the electrical signal is carried across by **chemical messengers** \u2014 chemicals released on one side and caught on the other, passing the message along.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
         options: [
             { id: 'wire', label: "Nerves are like electrical wires, right?", nextNodeId: 'misconception_wire', sentiment: 'negative' },

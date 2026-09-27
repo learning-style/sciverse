@@ -10,7 +10,7 @@ export const getP9Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "Welcome to the Growth Tracker Lab! 🌱🐶\n\nWe have two living things to watch grow over 10 weeks:\n\n1. A **sunflower seedling** (just sprouted!)\n2. A **golden retriever puppy** (8 weeks old)\n\nEach week we'll measure their height and record it. Do you think they'll grow at the same rate?",
+        content: "Welcome to the Growth Tracker Lab! 🌱🐶\n\nWe have two living things to watch grow over 10 weeks:\n\n1. A **sunflower seedling** (just sprouted!)\n2. A **golden retriever puppy** (8 weeks old)\n\nEach week we'll measure their height and record it. Do you think they'll grow at the same rate?\n\nWatch for growth slowing down as well as speeding up. Slowing down has a name: **deceleration**.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
         options: [
             { id: 'same', label: "Probably — growth is growth, right?", nextNodeId: 'misconception_hook' },

@@ -10,7 +10,7 @@ export const getB4Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "Welcome to the Neuroscience Lab! 🧠\n\nI've built two pathways on screen:\n- **Left:** Sound → Ear → Nerve → Brain\n- **Right:** Light → Eye → Nerve → Brain\n\nLet's trigger a sound and watch what happens inside your body!",
+        content: "Welcome to the Neuroscience Lab! 🧠\n\nI've built two pathways on screen:\n- **Left:** Sound → Ear → Nerve → Brain\n- **Right:** Light → Eye → Nerve → Brain\n\nLight travels in waves, and those waves come in different lengths. The lengths are called **wavelengths**, and they are what makes one colour look different from another.\n\nLet's trigger a sound and watch what happens inside your body!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', earPath: 'idle', eyePath: 'idle', nerveBlocked: false } },
         options: [
             { id: 'sound', label: "Play a sound!", nextNodeId: 'hear_sound', simAction: { type: 'SET_VISUAL', payload: { earPath: 'active' } } }

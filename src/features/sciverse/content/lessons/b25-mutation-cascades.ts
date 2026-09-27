@@ -10,7 +10,7 @@ export const getB25Script = (): Record<string, DialogNode> => ({
         speaker: 'AI',
         content: `In **biology**, a **tiny DNA change** can ripple out to affect **whole organisms** and even **populations**.
 
-- **Mutation cascades** multiply effects through **gene networks** and **selection**.
+- **Mutation cascades** multiply effects through **gene networks** and **selection**. Over many generations that is how **evolutionary** change happens \u2014 **evolutionary** means to do with living things slowly changing from one generation to the next.
 - **Amplification** means small genetic changes can lead to big trait shifts.
 - **Selection pressure** and **genetic diversity** control how mutations spread or fade.
 

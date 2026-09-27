@@ -150,11 +150,14 @@ ultimate systematic catastrophe catastrophic building overreach
 cooperatively suppose punish
 
 swallow swallowing respond responding medicine surroundings fist arithmetic repair unfinished finish open broken pendulum
+happen leave push let accept dispose grid zoom factory block
+behind reverse one-way rebuild ingredient
 """.split())
 
 # Words the curriculum leans on everywhere, and that a Level 1 reader meets as
 # plain speech rather than as a term to be unpacked.
 CORE = set("""gravity gravitational energy energetic force matter material
+solid liquid gas state states surface
 speed weight mass heat light sound water air plant animal body blood muscle
 bone cell""".split())
 

@@ -104,7 +104,7 @@ export const C20OpticalMaterialsLab = ({ onStateChange }: C20OpticalMaterialsLab
         ctx.fillText(`refracted=${refractedAngle.toFixed(1)} deg`, 12, H - 12);
         ctx.textAlign = 'right';
         ctx.fillStyle = '#86efac';
-        ctx.fillText(`Transmittance ${transmittance}%`, W - 12, 20);
+        ctx.fillText(`Light let through ${transmittance}%`, W - 12, 20);
         ctx.save();
         ctx.font = '15px monospace';
         ctx.fillStyle = '#475569';

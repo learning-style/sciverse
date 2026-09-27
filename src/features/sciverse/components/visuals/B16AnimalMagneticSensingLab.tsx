@@ -142,7 +142,7 @@ export const B16AnimalMagneticSensingLab = ({ state, onStateChange }: B16AnimalM
         ctx.fillText(`Navigation Accuracy: ${navigationAccuracy}%`, W / 2, H * 0.80);
         ctx.fillStyle = '#475569';
         ctx.font = '11px monospace';
-        ctx.fillText(navigationAccuracy > 70 ? 'Flock on course!' : navigationAccuracy > 40 ? 'Some drift — storm interference' : 'Severe disorientation!', W / 2, H * 0.84);
+        ctx.fillText(navigationAccuracy > 70 ? 'Flock on course!' : navigationAccuracy > 40 ? 'Some drift — storm interference' : 'Badly lost!', W / 2, H * 0.84);
 
         // Info bar
         const by2 = H * 0.87;
@@ -157,7 +157,7 @@ export const B16AnimalMagneticSensingLab = ({ state, onStateChange }: B16AnimalM
         ctx.fillText(`Storm: ${solarStorm}`, 20, by2 + 26);
         ctx.textAlign = 'right';
         ctx.fillText('Stronger signal → better navigation', W - 20, by2 + 14);
-        ctx.fillText('Storm noise → disorientation', W - 20, by2 + 26);
+        ctx.fillText('Storm noise → birds get lost', W - 20, by2 + 26);
 
         if (phase === 'complete') {
             ctx.fillStyle = 'rgba(0,0,0,0.72)';
