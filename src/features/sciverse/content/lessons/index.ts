@@ -256,6 +256,9 @@ import { getL2B16Script } from './l2b16-two-cues';
 import { getL2P17Script } from './l2p17-how-much-can-it-carry';
 import { getL2C17Script } from './l2c17-how-much-steel';
 import { getL2B17Script } from './l2b17-why-bones-are-hollow';
+import { getL3P17Script } from './l3p17-when-columns-bend';
+import { getL3C17Script } from './l3c17-why-steel';
+import { getL3B17Script } from './l3b17-the-fourth-power';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1288,6 +1291,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p17': getL2P17Script,
     'l2c17': getL2C17Script,
     'l2b17': getL2B17Script,
+    'l3p17': getL3P17Script,
+    'l3c17': getL3C17Script,
+    'l3b17': getL3B17Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1814,6 +1820,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p17', title: 'How Much Can It Carry?', subtitle: 'Stress is force divided by area', discipline: 'physics', bigIdea: 17, bigIdeaTitle: 'How Do Structures Stay Standing?', icon: '🏗️', accentColor: 'indigo', crossLinks: ['p17', 'l2p5'], level: 2 },
     { id: 'l2c17', title: 'How Much Steel Does It Need?', subtitle: 'Concrete squeezed, steel stretched, and the numbers', discipline: 'chemistry', bigIdea: 17, bigIdeaTitle: 'How Do Structures Stay Standing?', icon: '🧱', accentColor: 'emerald', crossLinks: ['c17', 'l2p17'], level: 2 },
     { id: 'l2b17', title: 'Why Bones Are Hollow', subtitle: 'The same material, standing further out', discipline: 'biology', bigIdea: 17, bigIdeaTitle: 'How Do Structures Stay Standing?', icon: '🦴', accentColor: 'rose', crossLinks: ['b17', 'l2p17'], level: 2 },
+    { id: 'l3p17', title: 'When Tall Columns Bend', subtitle: 'Buckling: two failure loads, and the lower one wins', discipline: 'physics', bigIdea: 17, bigIdeaTitle: 'How Do Structures Stay Standing?', icon: '📐', accentColor: 'indigo', crossLinks: ['l2p17', 'l3b17'], level: 3 },
+    { id: 'l3c17', title: 'Why Steel, of All Metals', subtitle: 'Matching expansion, and concrete that protects', discipline: 'chemistry', bigIdea: 17, bigIdeaTitle: 'How Do Structures Stay Standing?', icon: '🌡️', accentColor: 'emerald', crossLinks: ['l2c17', 'l3p17'], level: 3 },
+    { id: 'l3b17', title: 'The Fourth Power', subtitle: 'What the hollow bone is really worth', discipline: 'biology', bigIdea: 17, bigIdeaTitle: 'How Do Structures Stay Standing?', icon: '🦴', accentColor: 'rose', crossLinks: ['l2b17', 'l3p17'], level: 3 },
     { id: 'l2p33', title: 'The Energy Pyramid, In Numbers', subtitle: 'Putting arithmetic on the 10% rule', discipline: 'physics', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🔺', accentColor: 'indigo', crossLinks: ['p33'], level: 2 },
     { id: 'l2c33', title: 'The Carbon Budget', subtitle: 'Reservoirs, fluxes, and net change', discipline: 'chemistry', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '⚖️', accentColor: 'emerald', crossLinks: ['c33', 'l2p33'], level: 2 },
     { id: 'l2b33', title: 'The Maths of a Backup Plan', subtitle: 'Putting a probability on biodiversity', discipline: 'biology', bigIdea: 33, bigIdeaTitle: 'How Do Ecosystems Support Human Life?', icon: '🎲', accentColor: 'rose', crossLinks: ['b33', 'l2p33'], level: 2 },
