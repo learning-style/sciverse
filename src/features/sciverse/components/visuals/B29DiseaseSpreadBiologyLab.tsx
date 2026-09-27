@@ -334,9 +334,9 @@ export const B29DiseaseSpreadBiologyLab = ({ state, onStateChange }: B29DiseaseS
             ctx.fillStyle = '#93c5fd';
             ctx.fillText('P29 Contact Networks', W / 2, H * 0.46);
             ctx.fillStyle = '#86efac';
-            ctx.fillText('C29 Disinfection Kinetics', W / 2, H * 0.52);
+            ctx.fillText('C29 Germ Busters', W / 2, H * 0.52);
             ctx.fillStyle = '#fca5a5';
-            ctx.fillText('B29 Immunity & Vaccination', W / 2, H * 0.58);
+            ctx.fillText('B29 The Germ Fighters', W / 2, H * 0.58);
             ctx.fillStyle = '#e2e8f0';
             ctx.font = '11px monospace';
             ctx.fillText('Contact, chemistry, and immunity — three defenses against disease.', W / 2, H * 0.65);

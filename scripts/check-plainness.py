@@ -149,7 +149,7 @@ mechanical microscope microscopic compensate
 ultimate systematic catastrophe catastrophic building overreach
 cooperatively suppose punish
 
-swallow swallowing respond responding medicine surroundings fist
+swallow swallowing respond responding medicine surroundings fist arithmetic repair unfinished finish open broken
 """.split())
 
 # Words the curriculum leans on everywhere, and that a Level 1 reader meets as
