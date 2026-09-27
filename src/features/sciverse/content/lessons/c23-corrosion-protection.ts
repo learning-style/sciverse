@@ -60,7 +60,7 @@ export const getC23Script = (): Record<string, DialogNode> => ({
     complete: {
         id: 'complete',
         speaker: 'AI',
-        content: `🔗 **Big Idea 23 Complete — How Do Materials Break and Recover?**\n\n- **Physics (P23):** Stress & Fracture — cracks and fatigue weaken materials\n- **Chemistry (C23):** Corrosion & Protection — electrochemical degradation eats away metals\n- **Biology (B23):** Wound Healing — tissue repair rebuilds damaged structures\n\n**Summary Table:**\n| Variable | If Increased | Typical Effect |\n| --- | --- | --- |\n| Humidity | Higher | Faster corrosion |\n| Salinity | Higher | Faster corrosion |\n| Oxidation Rate | Higher | More rust, faster failure |\n| Coating/Protection | Better | Slower corrosion |\n\nIn all three: **things break under stress, but understanding how leads to better protection and repair!** 🪓🧲🩹\n\n✅ **Lesson C23 Complete!**`,
+        content: `🔗 **Big Idea 23 Complete — How Do Materials Break and Recover?**\n\n- **Physics (P23):** Stress & Fracture — cracks and fatigue weaken materials\n- **Chemistry (C23):** Corrosion & Protection — how rust eats metal away\n- **Biology (B23):** Wound Healing — tissue repair rebuilds damaged structures\n\n**Summary Table:**\n| Variable | If Increased | Typical Effect |\n| --- | --- | --- |\n| Humidity | Higher | Faster corrosion |\n| Salinity | Higher | Faster corrosion |\n| Oxidation Rate | Higher | More rust, faster failure |\n| Coating/Protection | Better | Slower corrosion |\n\nIn all three: **things break under stress, but understanding how leads to better protection and repair!** 🪓🧲🩹\n\n✅ **Lesson C23 Complete!**`,
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }

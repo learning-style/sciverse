@@ -18,13 +18,13 @@ export const getB21Script = (): Record<string, DialogNode> => ({
     misconception: {
         id: 'misconception',
         speaker: 'AI',
-        content: 'Metabolism is continuous, not one-and-done. Glycolysis, the citric acid cycle, and oxidative phosphorylation are coupled pathways that run repeatedly.\n\nCycle intermediates are regenerated so throughput can continue while input conditions (oxygen supply, demand, substrate availability) fluctuate.',
+        content: 'Your body uses energy all the time, not just once. Three sets of steps run one after another, over and over.\n\nThe pieces each step needs are built again, so the flow never stops even when the oxygen coming in goes up and down.',
         options: [{ id: 'cont', label: 'So cycling supports steady energy output.', nextNodeId: 'correct' }]
     },
     correct: {
         id: 'correct',
         speaker: 'AI',
-        content: 'Exactly. Biological cycles maintain **throughput** while conditions change, preserving cellular energy supply.\n\nKey idea: ATP balance depends on two opposing forces:\n- **Oxygen support** increases efficient aerobic ATP yield\n- **Energy demand** consumes ATP faster and can push the system toward strain\n\nWhen demand rises faster than oxygen-supported production, reserve shrinks and stress markers increase.',
+        content: 'Exactly. Cycles keep the energy **flowing** even when things change around them.\n\nKey idea: ATP balance depends on two opposing forces:\n- **Oxygen support** increases efficient aerobic ATP yield\n- **Energy demand** consumes ATP faster and can push the system toward strain\n\nWhen demand rises faster than oxygen-supported production, reserve shrinks and stress markers increase.',
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'cycle', atpRate: 62 } },
         options: [
             { id: 'terms', label: 'Teach me key words first.', nextNodeId: 'key_terms' },

@@ -46,7 +46,7 @@ export const getB25Script = (): Record<string, DialogNode> => ({
     checkpoint_wrong: {
         id: 'checkpoint_wrong',
         speaker: 'AI',
-        content: '**If advantageous**, selection can **increase its frequency** in the population.',
+        content: '**If the change helps**, more of them **end up with it**.',
         options: [{ id: 'retry', label: 'Selection can amplify useful variants.', nextNodeId: 'checkpoint_correct' }]
     },
     checkpoint_correct: {

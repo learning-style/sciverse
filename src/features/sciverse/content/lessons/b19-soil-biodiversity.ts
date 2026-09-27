@@ -111,7 +111,7 @@ export const getB19Script = (): Record<string, DialogNode> => ({
     'reflection_feedback': {
         id: 'reflection_feedback',
         speaker: 'AI',
-        content: "Brilliant ecological reasoning! \ud83c\udf1f\n\nYou understand that soil health isn\u2019t just about CHEMISTRY (N-P-K) \u2014 it\u2019s about the **living biological community** that processes, cycles, and delivers those nutrients. Protect the organisms, and the soil takes care of itself! \ud83c\udf0d\n\n**Key takeaway:** Soil biodiversity is the foundation of sustainable agriculture.",
+        content: "Brilliant ecological reasoning! \ud83c\udf1f\n\nYou understand that soil health isn\u2019t just about CHEMISTRY (N-P-K) \u2014 it\u2019s about the **living biological community** that processes, cycles, and delivers those nutrients. Protect the organisms, and the soil takes care of itself! \ud83c\udf0d\n\n**Key takeaway:** Farms depend on the living things in the soil.",
         options: [{ id: 'finish', label: "Finish B19!", nextNodeId: 'complete' }]
     },
 

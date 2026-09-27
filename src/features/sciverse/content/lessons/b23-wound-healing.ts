@@ -25,7 +25,7 @@ export const getB23Script = (): Record<string, DialogNode> => ({
     correct: {
         id: 'correct',
         speaker: 'AI',
-        content: 'Exactly! **Biological materials** recover through **controlled cellular stages**.\n\nTry adjusting the controls — see how **Healing Progress** responds.\n\n**Visual tip:** The control box sliders let you simulate different healing environments. High oxygen = faster repair!',
+        content: 'Exactly! **Living things** heal in **careful steps**, one after another.\n\nTry adjusting the controls — see how **Healing Progress** responds.\n\n**Visual tip:** The control box sliders let you simulate different healing environments. High oxygen = faster repair!',
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'healing', collagenLevel: 40 } },
         options: [{ id: 'cp', label: 'Checkpoint', nextNodeId: 'checkpoint' }]
     },
@@ -60,7 +60,7 @@ export const getB23Script = (): Record<string, DialogNode> => ({
     complete: {
         id: 'complete',
         speaker: 'AI',
-        content: `🔗 **Big Idea 23 Complete — How Do Materials Break and Recover?**\n\n- **Physics (P23):** Stress & Fracture — cracks and fatigue weaken materials\n- **Chemistry (C23):** Corrosion & Protection — electrochemical degradation eats away metals\n- **Biology (B23):** Wound Healing — tissue repair rebuilds damaged structures\n\n**Summary Table:**\n| Variable | If Increased | Typical Effect |\n| --- | --- | --- |\n| Inflammation | Higher | Slower healing |\n| Oxygenation | Higher | Faster healing |\n| Infection | Present | Healing stalls |\n| Healing Progress | Higher | More tissue repair |\n\nIn all three: **things break under stress, but understanding how leads to better protection and repair!** 🪓🧲🩹\n\n✅ **Lesson B23 Complete!**`,
+        content: `🔗 **Big Idea 23 Complete — How Do Materials Break and Recover?**\n\n- **Physics (P23):** Stress & Fracture — cracks and fatigue weaken materials\n- **Chemistry (C23):** Corrosion & Protection — how rust eats metal away\n- **Biology (B23):** Wound Healing — tissue repair rebuilds damaged structures\n\n**Summary Table:**\n| Variable | If Increased | Typical Effect |\n| --- | --- | --- |\n| Inflammation | Higher | Slower healing |\n| Oxygenation | Higher | Faster healing |\n| Infection | Present | Healing stalls |\n| Healing Progress | Higher | More tissue repair |\n\nIn all three: **things break under stress, but understanding how leads to better protection and repair!** 🪓🧲🩹\n\n✅ **Lesson B23 Complete!**`,
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }

@@ -11,7 +11,7 @@ export const getC25Script = (): Record<string, DialogNode> => ({
         content: `In **chemistry**, a **tiny trigger** can cause a **rapid surge** in some systems.\n\n- **Chain reactions** multiply effects through **propagation steps**.\n- **Amplification** means small inputs can lead to big outputs.\n- **Thresholds** and **inhibitors** control when cascades start or stop.\n\n**Watch how a single spark can ignite a chain reaction!**`,
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', initiatorLevel: 15 } },
         options: [
-            { id: 'propagation', label: 'Propagation steps multiply reactive intermediates.', nextNodeId: 'correct', sentiment: 'positive' },
+            { id: 'propagation', label: 'Each step makes more of the busy pieces that keep it going.', nextNodeId: 'correct', sentiment: 'positive' },
             { id: 'single_event', label: 'Reactions stay one-step and isolated.', nextNodeId: 'misconception' }
         ]
     },
@@ -33,7 +33,7 @@ export const getC25Script = (): Record<string, DialogNode> => ({
         speaker: 'AI',
         content: 'A **strong inhibitor** usually:',
         options: [
-            { id: 'quench', label: 'Quenches reactive intermediates and slows amplification.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+            { id: 'quench', label: 'It soaks up the busy pieces, so the spreading slows down.', nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
             { id: 'boost', label: 'Always boosts chain growth.', nextNodeId: 'checkpoint_wrong' }
         ]
     },
