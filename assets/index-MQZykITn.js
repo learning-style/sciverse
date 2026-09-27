@@ -5065,201 +5065,275 @@ Physics makes the crumbs. Chemistry cuts the bonds. Biology puts them in order a
 - More surface, twice: crumbs for the enzymes, folds for the blood
 - Food is not really yours until **absorption** — until then it is only passing through
 
-✅ **Lesson B27 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function nI(){return{root:{id:"root",speaker:"AI",content:`Your heart pumps blood through **~100,000 km** of blood vessels — enough to circle the Earth twice. How does physics keep everything flowing?
+✅ **Lesson B27 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function nI(){return{root:{id:"root",speaker:"AI",content:`Your blood travels along tubes called **blood vessels**. Laid end to end, yours would stretch about **100,000 km** — twice around the world. And one pump the size of your fist pumps blood through all of it, about once a minute, your whole life long.
 
-**Visual legend:**
-- **Pump icon**: The heart generating pressure to drive blood flow.
-- **Tube with flowing particles**: Blood vessels carrying oxygen and nutrients.
-- **Pressure gauge**: Shows how vessel diameter and heart rate change flow pressure.
+How does that even work? Mostly by squeezing.
 
-**Key words:**
-- **Blood pressure**: The force blood exerts on vessel walls. Measured in mmHg (e.g., 120/80).
-- **Flow rate**: Volume of blood passing a point per unit time. Depends on pressure difference and resistance.
-- **Resistance**: Opposition to flow, mainly from vessel diameter. Narrow vessels = high resistance.
-- **Heart rate**: Beats per minute — each beat creates a pressure pulse that drives flow.
-- **Viscosity**: Blood thickness. Higher viscosity = more resistance to flow.
+**What you will see:**
+- **Heart pump**: your heart, squeezing to push blood out.
+- **Blood vessel**: one tube with blood moving along it.
+- **Pressure gauge**: **pressure** is how hard the blood pushes outwards on the walls of the tube. Squeeze a balloon and the air inside pushes harder on the skin of it — that harder push is more pressure.
+- **Flow rate**: how much blood actually gets past a point each second. Pressure is the push; **flow** is what arrives.
+- **Vessel Ø**: the width of the tube, straight across the middle. That measurement has a proper name, the **diameter**, and Ø is the short sign for it.
 
-What do you think determines how fast blood reaches your fingertips?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"physics_answer",label:"The heart creates pressure, and vessel diameter controls resistance — together they set flow rate.",nextNodeId:"correct",sentiment:"positive"},{id:"simple_answer",label:"The heart just pushes blood and gravity does the rest.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:"Gravity plays a small role, but the real driver is **pressure**. Your heart creates a pressure difference — higher at the arteries, lower at the veins — and blood flows down this gradient. The key insight: **vessel diameter** matters enormously. A tiny decrease in radius causes a huge increase in resistance (it scales with the **fourth power** of radius — Poiseuille's law). That's why clogged arteries are so dangerous: a 50% narrowing doesn't cut flow in half — it reduces it by **~94%**.",options:[{id:"cont",label:"So pressure and vessel size are the main physics controls.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! Circulatory physics depends on **three interacting variables**:
+Here is the question. Your blood has to get from your heart all the way to your toes, uphill much of the time. What pushes it?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"physics_answer",label:"The heart squeezes, which makes the pressure higher behind the blood than in front of it, and blood moves from the harder push towards the softer one.",nextNodeId:"correct",sentiment:"positive"},{id:"gravity_answer",label:"Gravity pulls it down to the toes and it finds its way back up.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Gravity does lend a hand going down. But think about the way back up, and about lying flat in bed — no downhill at all — and your blood still goes round perfectly well.
 
-1. **Heart rate** — More beats per minute = more pressure pulses = higher average flow. At rest: ~70 bpm. During exercise: up to 180 bpm.
-2. **Vessel diameter** — Arteries can dilate (widen) or constrict (narrow). Dilation drops resistance and increases flow. Constriction raises resistance and blood pressure.
-3. **Blood pressure** — The net result of heart output vs. vessel resistance. Too high = vessel damage. Too low = organs don't get enough oxygen.
+What really moves blood is a **difference** in pressure. Your heart squeezes and makes the push strong where the blood leaves it, and by the time blood has been all the way round, the push there is much weaker. Blood always moves from the harder push towards the softer one, whichever way that happens to be.
 
-These three create a **feedback system**: when you exercise, your heart rate rises, vessels in muscles dilate, and blood pressure adjusts to match demand.
+And here is the surprising part: what decides how much blood arrives is not mainly the heart. It is the **width** of the tubes.
 
-Let's trace the physics step by step.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"mech",label:"Walk me through flow mechanics.",nextNodeId:"mechanism"}]},mechanism:{id:"mechanism",speaker:"AI",content:`**Circulatory flow mechanics — step by step:**
+Squeeze a tube to half its width and you might expect half as much blood. It is far worse than that. **Only about a sixteenth gets through** — about six drops out of every hundred.
 
-1. **Heart contraction (systole)**: The left ventricle squeezes, creating ~120 mmHg of pressure. Blood surges into the aorta.
-2. **Elastic arteries**: Large arteries stretch to absorb the pressure pulse, then recoil — smoothing flow. This is why you feel a pulse.
-3. **Arterioles (flow control)**: Tiny muscular vessels that dilate or constrict. They're the main site of **resistance regulation**.
-4. **Capillaries**: Walls one cell thick. Pressure drops to ~30 mmHg. Nutrients and oxygen diffuse out; waste diffuses in.
-5. **Veins (return)**: Low pressure (~5 mmHg). One-way **valves** prevent backflow. Muscle contractions squeeze veins to push blood back to the heart.
-6. **Feedback**: Sensors in arteries detect pressure changes and signal the brain to adjust heart rate and vessel diameter.
+Why sixteen? Narrowing a tube hurts in four ways at once, and each one halves what gets past: the opening is narrower both across and around, and the blood also has to rub past far more wall for the little room it has left. Halve the width and you halve the flow four times over — 2 x 2 x 2 x 2 = **16**.
 
-**Try it:** Increase heart rate and watch pressure rise. Then widen vessels and see how flow changes!
+That is why a partly blocked blood vessel is so serious. It does not feel like a small problem to the body, because it never was one.`,options:[{id:"cont",label:"So it is a difference in pressure that moves blood — and the width of the tube matters enormously.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly. Three things decide how much blood gets where it is needed.
 
-Ready for a checkpoint?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"mechanism"}},options:[{id:"cp",label:"Yes, let's check my understanding.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"**Checkpoint:** If blood vessels constrict (get narrower), what happens to blood pressure?",options:[{id:"right",label:"Blood pressure increases because resistance rises.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"Blood pressure decreases because less blood can flow.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:"Close thinking, but not quite. When vessels narrow, **resistance increases** — the heart is still pumping the same volume, but now it's being pushed through a tighter space. Think of squeezing a garden hose: the water doesn't slow down — the **pressure goes up**. Blood pressure = cardiac output × resistance. If resistance rises and output stays the same, pressure must increase. This is exactly why chronic vasoconstriction leads to **hypertension** (high blood pressure).",options:[{id:"retry",label:"Got it — narrower vessels mean higher pressure, not lower flow.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct! **Blood pressure = cardiac output × total peripheral resistance.** When vessels constrict, resistance goes up, and pressure rises proportionally. Your body uses this relationship constantly — constricting skin vessels when cold (to conserve heat) and dilating muscle vessels during exercise (to deliver more oxygen).
+1. **Heart rate** — how many times your heart squeezes each minute. Sitting still, about 70. Running hard, up to about 180. More squeezes means more blood pushed out each minute.
+2. **Vessel diameter** — how wide the tubes are. Your blood vessels have muscle in their walls, so they can open wider or squeeze narrower. Wider is easier for blood to get through; narrower is much harder, as you have just seen.
+3. **Pressure** — how hard the blood pushes on the walls. This is what you get when you put the first two together: how hard the heart pushes, against how hard the tubes make it work.
 
-This is the same physics as any fluid system: flow through a pipe depends on the pressure difference divided by resistance.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Let's see the big picture.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:** The circulatory system is a pressure-driven flow network governed by basic physics.
+That last part is worth being careful about, because it is where people go wrong. Narrow tubes do not mean a gentle trickle. They mean the heart's push has nowhere easy to go, so the **pressure climbs**. The word for how hard the tubes make the heart work is **resistance** — how much something resists being pushed through.
 
-- **Heart rate** sets the pump output
-- **Vessel diameter** controls resistance (and scales by the 4th power of radius!)
-- **Blood pressure** is the net result of output vs. resistance
-- **Feedback sensors** constantly adjust the balance
-- The same fluid dynamics equations (Poiseuille's law) apply to blood as to water in pipes
+Too much pressure, kept up for years, wears out the vessel walls. Too little, and your toes and your brain do not get what they need. So your body is constantly adjusting, and it never asks you about it.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"mech",label:"Show me one trip round the body.",nextNodeId:"mechanism"}]},mechanism:{id:"mechanism",speaker:"AI",content:`**One trip round, step by step:**
 
-Physics provides the transport engine that every other body system depends on.`,options:[{id:"done",label:"Complete P28",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 28 Complete — How Do Body Systems Work Together?**
+1. **The heart squeezes.** A strong squeeze from the muscular left side sends blood out into the biggest tube of all, in a surge.
+2. **The big tubes stretch.** They are springy on purpose. Each surge stretches them wide, then they spring back and push the blood onward, so the pushing carries on between heartbeats instead of stopping dead. That springy stretch is what you feel as a **pulse** on your wrist.
+3. **The small tubes decide.** Next come tubes narrow enough to need a microscope, with rings of muscle around them. These are the taps of the whole system: squeeze a little and less blood goes that way, relax and more does. This is where your body chooses **who gets blood right now**.
+4. **The tiniest tubes hand things over.** At last the tubes are so fine that their walls are a single cell thick, and the blood is barely creeping. That slowness is the point: there is time for oxygen and food to slip out to the cells, and for waste to come aboard.
+5. **The way back.** Wide, floppy tubes bring blood back to the heart. The push left in it by now is very weak, so these tubes have little one-way flaps inside them, and the squeeze of your leg muscles when you walk about helps the blood upward. Sitting still for hours makes that job harder, which is why long journeys leave your legs feeling heavy.
+6. **Sensors check the pressure.** In the wall of one big vessel near your neck sit **sensors** — parts that measure something and report it. These **detect** the pressure — meaning they notice it and measure it — and send the reading straight to your **brain**.
+7. **The brain adjusts.** If pressure has fallen, your brain speeds the heart up and narrows some vessels. If it has risen too far, it slows the heart and lets vessels widen. That loop, measuring and correcting over and over, is the **pressure–flow cycle**.
 
-- **Physics (P28):** Flow & Pressure — heart rate, vessel diameter, and resistance govern blood transport
-- **Chemistry (C28):** Chemical Signaling — hormones and neurotransmitters coordinate organ responses
-- **Biology (B28):** Organ Coordination — respiratory, circulatory, nervous, and endocrine systems integrate into one unified body
+You can catch it happening. Stand up quickly and you sometimes feel a moment of dizziness: your blood sank towards your legs, the pressure at your head dropped, and it takes a second or two for the sensors and your brain to put it right. Your body did not prevent the problem — it noticed and corrected it.
+
+**Try it:** narrow the vessel and raise the heart rate together. Does the flow recover?
+
+Ready for a checkpoint?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"mechanism"}},options:[{id:"cp",label:"Test my understanding.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"**Checkpoint:** Your blood vessels squeeze narrower, and your heart keeps pumping just as much blood as before. What happens to the **pressure**?",options:[{id:"right",label:"It goes up. The same blood is being forced through a tighter space, so it pushes harder on the walls.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"It goes down, because a narrow tube lets less blood through.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`Careful — two different things are getting mixed up here. **Flow** is how much blood gets past. **Pressure** is how hard it pushes on the walls. Narrowing the tube sends those two in opposite directions.
+
+You have felt this in a garden hose. Squeeze the end with your thumb and the water does not dribble out gently. It sprays further than before, because the push behind it has gone up.
+
+Same in you. Your heart is still sending out the same amount of blood every minute, but now it has to force it through a tighter space, so it has to push harder. Less gets through, and it pushes harder while doing it.
+
+This is why vessels staying narrowed for years is a real problem. Your heart is pushing against too much **resistance** every single beat, and the walls take the strain. That is what high blood pressure means.`,options:[{id:"retry",label:"So narrowing lowers the flow and raises the pressure — those are two different things.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct. Pressure is what you get from the heart's pushing set against the tubes' **resistance**. Narrow the tubes without slowing the heart and the pressure has to rise.
+
+Your body uses this on purpose, every day:
+- **Cold outside?** It narrows the vessels near your skin, so less warm blood goes to the surface where the heat would be lost. This is why fingers go pale in the cold.
+- **Running?** It widens the vessels in your legs, so far more blood reaches the muscles that are asking for oxygen.
+- **Just eaten?** More blood goes to your gut, which is part of why a big meal leaves you sleepy.
+
+The heart is rarely the clever part. The tubes are, because they choose who gets the blood.
+
+And none of this is special to bodies. Water in pipes behaves the same way: how much arrives depends on the push at one end set against how hard the pipe makes it work.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Show me the big picture.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:** blood moves because of a difference in pushing, and the tubes are in charge.
+
+- **Heart rate** sets how much blood is sent out each minute
+- **Vessel diameter** sets the **resistance**, and it matters far more than it looks: halve the width and about a sixteenth gets through, because 2 x 2 x 2 x 2 = 16
+- **Pressure** is the heart's push set against that resistance
+- Narrowing raises the pressure and lowers the flow, both at once
+- **Sensors** measure the pressure and your **brain** corrects it, over and over, without you ever deciding to
+- Your body cannot stop pressure changing. It notices, and puts it right — which is why standing up fast can make you dizzy for a second
+
+The same physics runs water through pipes, oil through engines and blood through you.`,options:[{id:"done",label:"Complete P28",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 28 Complete — How Do Body Systems Work Together?**
+
+- **Physics (P28): Flow & Pressure** — heart rate, vessel width and **resistance** decide how much blood arrives where
+- **Chemistry (C28): Chemical Signaling** — chemical messages in the blood tell distant body parts what to do
+- **Biology (B28): Organ Coordination** — heart, lungs, brain and muscles working as one
 
 **Summary Table:**
-| Variable | Low Value | High Value | Effect |
+| Dial | Turned low | Turned high | What it changes |
 | --- | --- | --- | --- |
-| Heart Rate | Low flow, resting | High flow, active | Controls pump output |
-| Vessel Diameter | High resistance, high BP | Low resistance, high flow | Main resistance control |
-| Blood Pressure | Organs undersupplied | Vessel stress risk | Net system balance |
+| Heart rate | About 70 squeezes a minute, resting | Up to about 180, running hard | How much blood leaves the heart each minute |
+| Vessel diameter | Narrow, so high **resistance** | Wide, so low resistance | How easily blood gets through — and this one matters most |
+| Pressure | Too little reaches your brain and toes | Walls take a battering year after year | How hard the blood pushes on the walls |
 
 **Key takeaways:**
-- Blood pressure = cardiac output × resistance
-- Vessel diameter is the strongest flow control lever
-- Feedback loops maintain homeostasis automatically
-- The same fluid physics governs all transport systems
+- Blood moves from a harder push towards a softer one, uphill or not
+- Halve a tube's width and about a sixteenth of the blood gets through
+- Narrowing raises the pressure while lowering the flow
+- The small tubes are the taps: they decide which parts of you get blood now
+- **Sensors** and your **brain** keep correcting the pressure, and you never notice unless the correction is late
 
-✅ **Lesson P28 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function oI(){return{root:{id:"root",speaker:"AI",content:`How does your brain tell your heart to beat faster, or your pancreas know to release insulin? The answer is **chemical signaling**.
+✅ **Lesson P28 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function oI(){return{root:{id:"root",speaker:"AI",content:`Your brain is in your head. Your heart is in your chest. When you get a fright, your heart speeds up almost at once — so a message got from one to the other. How?
 
-**Visual legend:**
-- **Molecule icon**: A hormone or neurotransmitter — the chemical messenger.
-- **Receptor lock**: The target cell's receptor — only the right molecule fits.
-- **Signal strength bar**: Shows how concentration and receptor sensitivity affect the response.
+Some messages go along nerves, like wires. But your body has a second way of sending word, and it is chemistry: put the message **into the blood** and let it travel everywhere.
 
-**Key words:**
-- **Hormone**: A chemical messenger released into the blood by a gland. Travels slowly but affects distant organs.
-- **Neurotransmitter**: A chemical released at nerve endings. Acts fast and locally across the synapse.
-- **Receptor**: A protein on a cell's surface that binds a specific signaling molecule — like a lock for one key.
-- **Concentration**: The amount of signaling molecule present. More molecules = stronger signal.
-- **Feedback inhibition**: When the product of a signal tells the sender to stop releasing more — a built-in off switch.
+**What you will see:**
+- **Gland**: a **gland** is a body part whose job is making something and letting it out. This one makes the message.
+- **Signal molecule**: the message itself. A **signal** is anything sent to tell something else what to do, and here the signal is a **hormone** — a chemical message carried in your blood. A **molecule** is the smallest piece of something that is still that thing.
+- **Target cell**: the cell the message is meant for. **Target** means the one being aimed at.
+- **Receptors**: shapes on the outside of that cell. A **receptor** only fits one kind of message, the way one lock takes one key. A cell with no matching receptor never hears the message at all.
+- **Response**: what the cell does once it gets the message. Because it happens inside a cell, the screen calls it the **cellular response**.
 
-Why does your body use chemicals instead of just electrical signals for everything?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"chem_answer",label:"Chemicals can travel through blood to reach every cell and produce graded, long-lasting responses.",nextNodeId:"correct",sentiment:"positive"},{id:"simple_answer",label:"Electrical signals are too fast and chemicals slow things down on purpose.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:"Speed isn't the only consideration. Nerves are fast but can only reach cells they're physically wired to. **Hormones** travel through the blood and can reach **every cell in the body** simultaneously. They also produce **graded responses** — a little insulin causes a small effect, a lot causes a big one. And hormones can last **minutes to hours**, while nerve signals last milliseconds. The body uses both systems together: nerves for fast, precise signals; hormones for broad, sustained coordination.",options:[{id:"cont",label:"So chemical signals complement electrical ones — each has strengths.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! Chemical signaling works through **two key variables**:
+Here is the question. Nerves are much faster than blood. So why bother with chemical messages at all?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"chem_answer",label:"Because blood goes everywhere. One message in the blood reaches the whole body at once, while a nerve only reaches wherever it is wired to.",nextNodeId:"correct",sentiment:"positive"},{id:"speed_answer",label:"There is no good reason — nerves are faster, so chemical messages are just the slow leftover way.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Nerves really are much faster. But fast is not the only thing worth being, and the two ways of sending word are good at different jobs.
 
-1. **Signal concentration** — More hormone molecules in the blood = stronger activation of target cells. The pancreas releases insulin proportional to blood glucose level — a beautifully graded response.
-2. **Receptor sensitivity** — Cells can increase or decrease the number of receptors on their surface. More receptors = amplified response. Fewer receptors = dampened response (**desensitization**).
+A nerve is a wire. It is quick, and it goes to exactly one place — which is wonderful when you want to move one finger, and useless when you need to tell your **whole body** something at once. You have no wire to every cell in you.
 
-These two variables create a **tunable communication system** — the body adjusts both the volume of the signal AND the sensitivity of the listener.
+A chemical message needs no wires. It goes into the blood, and your blood visits everywhere, so every cell gets offered the message. Only the cells with a matching **receptor** act on it. It is a shout to the whole room, where only some people are listening for their name.
 
-Let's explore the main signaling pathways.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"mech",label:"Show me how signaling pathways work.",nextNodeId:"mechanism"}]},mechanism:{id:"mechanism",speaker:"AI",content:`**Chemical signaling — step by step:**
+There are two more things a chemical message can do that a nerve cannot:
+- **It can be sent by amount.** A little message means a small change; a lot means a big one. The sender picks how much.
+- **It can last.** A nerve signal is over in less time than a blink — a few **milliseconds**, and a **millisecond** is a thousandth of a second. A chemical message can keep working for minutes or hours.
 
-1. **Stimulus**: Blood glucose rises after a meal.
-2. **Detection**: Beta cells in the pancreas sense the glucose concentration.
-3. **Signal release**: Pancreas secretes **insulin** into the blood.
-4. **Transport**: Blood carries insulin to every cell in the body (takes ~1-2 minutes).
-5. **Receptor binding**: Insulin binds to **insulin receptors** on muscle and fat cells — like a key fitting a lock.
-6. **Cell response**: Cells open glucose channels, absorbing glucose from blood. Blood sugar drops.
-7. **Feedback**: As glucose falls, the pancreas reduces insulin release. The signal self-regulates.
+So your body keeps both. Nerves for fast and exact. Chemistry for everywhere and for a while.`,options:[{id:"cont",label:"So nerves are for speed and aim, and chemical messages are for reaching everywhere and lasting.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly. And how big an effect a message has comes down to two things — one chosen by the sender, one by the receiver. They are your two dials.
 
-**Other examples:**
-- **Adrenaline** (fight-or-flight): Heart rate ↑, pupils dilate, muscles get more blood
-- **Thyroid hormone**: Sets metabolic rate for every cell
-- **Melatonin**: Signals darkness, triggers sleepiness
+1. **Signal strength** — how much of the message the **gland** puts into the blood. More message means more of it bumping into receptors, so a bigger **response**. This is the sender's choice, and it is not all-or-nothing: your body can send a little or a lot, and get a little or a lot back.
+2. **Receptor sensitivity** — how many receptors the target cell is wearing. A cell covered in receptors catches plenty of the message and answers strongly. A cell with only a few catches very little, and barely answers.
 
-**Try it:** Adjust signal concentration and receptor sensitivity to see how the response changes!
+That second one deserves a moment, because it is easy to miss. **The receiver gets a vote.** Two cells sitting in the very same blood, with the very same amount of message going past, can answer completely differently — because one is covered in receptors and the other is not.
 
-Ready for a checkpoint?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"mechanism"}},options:[{id:"cp",label:"Test my understanding.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"**Checkpoint:** If a cell reduces the number of receptors on its surface, what happens to its response to a hormone?",options:[{id:"right",label:"The response decreases — fewer receptors means less signal is captured.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"The response increases because each receptor works harder.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`Not quite. Each receptor can only bind one molecule at a time and trigger one response — they don't "work harder." If you remove receptors, fewer hormone molecules get captured, and the overall signal reaching the cell interior is **weaker**. This is called **downregulation** and it's how cells protect themselves from overstimulation. It's like removing antennas from a radio — each remaining antenna works normally, but total reception drops.`,options:[{id:"retry",label:"Got it — fewer receptors means a weaker response, not a stronger one.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct! Cells regulate their sensitivity by changing **receptor count**. This is a fundamental principle in pharmacology too — chronic exposure to a drug causes cells to downregulate receptors, which is why you develop **tolerance**.
+And a cell can change its own number of receptors. If a message has been shouting at it all day, it quietly takes some receptors off its surface so the shouting matters less. That is the cell turning its own volume down.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"mech",label:"Show me a real message being sent.",nextNodeId:"mechanism"}]},mechanism:{id:"mechanism",speaker:"AI",content:`**A real one, start to finish. You set this off every time you eat.**
 
-The combination of signal concentration (controlled by the sender) and receptor sensitivity (controlled by the receiver) gives the body incredibly fine-tuned control over every process.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Let's connect it all.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:** Chemical signaling is the body's coordination language.
+1. **Something changes.** You finish a meal, and the amount of sugar in your blood goes up. Sugar is fuel, and your cells need it — but it has to get out of your blood and into them.
+2. **A gland notices.** A **gland** near your stomach is watching your blood sugar all the time. It **detects** the rise, which means it notices and measures it.
+3. **The message goes out.** The gland releases its **hormone** into the blood. The more sugar it found, the more message it sends — the amount is the point, not just the fact.
+4. **The blood carries it.** Within a minute or two it has been everywhere in you. Every cell is offered it.
+5. **Receptors bind the signal.** Cells that need sugar — muscle cells especially — are wearing matching receptors, and the message locks into them. To **bind** is to take hold and stay.
+6. **The response triggers.** Inside those cells, being bound sets off a change: doors open in the cell's surface and sugar comes in from the blood. To **trigger** something is to set it off, the way pulling a trigger fires at once rather than gradually.
+7. **Feedback shuts it off.** Now the sugar in your blood is falling, because the cells are taking it in. The gland is still watching, sees the level coming down, and sends less message. Less message, fewer doors open, and the whole thing eases off by itself.
 
-- **Concentration** controls signal strength from the sender side
-- **Receptor sensitivity** controls response strength from the receiver side
-- **Feedback inhibition** prevents overshoot — signals self-regulate
-- **Hormones** provide slow, broadcast coordination; **neurotransmitters** provide fast, targeted signals
-- Every body system — digestion, circulation, immunity, growth — depends on chemical messages
+That last step has a name worth knowing: **feedback**. Feedback is when the *result* of an action loops back and changes the action itself. Here the result — less sugar — makes the gland send less message. We say the falling sugar **inhibits** the gland, and to **inhibit** something is to hold it back or slow it down.
 
-Chemistry is the universal language that lets organs "talk" to each other across the entire body.`,options:[{id:"done",label:"Complete C28",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 28 Complete — How Do Body Systems Work Together?**
+Round and round: message, response, result, less message. That is the **signal–response cycle**, and a **cycle** is a set of steps that comes back to its start.
 
-- **Physics (P28):** Flow & Pressure — heart rate, vessel diameter, and resistance govern blood transport
-- **Chemistry (C28):** Chemical Signaling — hormones and receptors create tunable, self-regulating communication
-- **Biology (B28):** Organ Coordination — respiratory, circulatory, nervous, and endocrine systems integrate as one
+Without feedback, the gland would keep shouting after the job was done and your blood sugar would crash right through the floor. Feedback is what makes it stop at about the right place.
+
+**Try it:** send a strong signal to a cell with very few receptors. Does a loud message help?
+
+Ready for a checkpoint?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"mechanism"}},options:[{id:"cp",label:"Test my understanding.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"**Checkpoint:** A cell takes some of the **receptors** off its surface. The amount of hormone in the blood does not change at all. What happens to that cell's **response**?",options:[{id:"right",label:"It gets weaker. Fewer receptors catch less of the message, so less of it is heard — even though just as much is going past.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"It stays the same — the receptors that are left just work harder to make up for it.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`A receptor cannot work harder. That is the thing about it. Each one holds one message molecule and sets off one response, and that is all it can ever do. There is no extra effort available to it.
+
+So if a cell has half as many receptors, it catches about half as much of the message, and its response is about half as big. The hormone going past is unchanged. The cell simply hears less of it.
+
+Think of a radio aerial. Take half the aerials off and each one left is working exactly as well as before — but the radio is quieter, because less of the signal is being caught.
+
+And cells do this **deliberately**. If a message has been loud for a long time, a cell removes some receptors to protect itself from being shouted at non-stop. It is the cell turning its own volume down, and it is why the same amount of hormone can have a big effect one week and a small one the next.`,options:[{id:"retry",label:"So a receptor can only do one job, and having fewer means hearing less.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct. A cell sets how loudly it hears by choosing how many **receptors** to wear.
+
+So every chemical message in you has two hands on the volume knob:
+- **The sender** picks how much message to put into the blood.
+- **The receiver** picks how many receptors to catch it with.
+
+That is a lot of control from a fairly simple idea, and it explains something you may have noticed. Take a medicine every day for a long time and it can slowly stop working as well. Nothing has gone wrong with the medicine. The cells have quietly removed some of the receptors it works through, because a message that never stops is one they turn down.
+
+Same message. Same amount. Different answer — because the receiver changed its mind.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Show me the big picture.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:** your body talks to itself by putting chemistry in the blood.
+
+- A **gland** makes the message; the blood takes it everywhere; only cells with matching **receptors** hear it. Messages sent this way are **hormones**
+- **How much** is sent decides how big the answer is — it is never simply on or off
+- **How many receptors** a cell wears decides how much of the message it hears, so the receiver has a say too
+- **Feedback** is the result looping back to change the cause: falling blood sugar **inhibits** the gland that started it, which means it holds it back
+- Nerves are fast and go to one place; chemical messages are slower, reach everyone, and last much longer
+- A cell can turn its own volume down by removing receptors, which is why a message that never stops stops being heard
+
+Physics moves the blood that carries the message. Chemistry is the message. Biology decides who is listening.`,options:[{id:"done",label:"Complete C28",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 28 Complete — How Do Body Systems Work Together?**
+
+- **Physics (P28): Flow & Pressure** — heart rate, vessel width and resistance decide how much blood arrives, and the blood is what carries every chemical message
+- **Chemistry (C28): Chemical Signaling** — a **hormone** in the blood, a matching **receptor** to catch it, and **feedback** to stop it
+- **Biology (B28): Organ Coordination** — heart, lungs, brain and muscles keeping step
 
 **Summary Table:**
-| Signal Type | Speed | Range | Duration | Example |
-| --- | --- | --- | --- | --- |
-| Neurotransmitter | ms | Local (synapse) | Brief | Muscle contraction |
-| Hormone | min | Whole body (blood) | Hours | Insulin, adrenaline |
-| Both combined | Variable | Targeted + broadcast | Layered | Fight-or-flight |
+| Way of sending word | How fast | How far | How long it lasts |
+| --- | --- | --- | --- |
+| Along a nerve | A few **milliseconds** — thousandths of a second | Only where the nerve is wired | Gone almost at once |
+| Chemical message in the blood | A minute or two | Everywhere blood goes, so everywhere | Minutes, sometimes hours |
 
 **Key takeaways:**
-- Signal strength = concentration × receptor count
-- Feedback inhibition prevents overshoot
-- Cells tune their own sensitivity via receptor regulation
-- Hormones and nerves complement each other
+- One message in the blood reaches the whole body; only matching **receptors** hear it
+- The sender chooses how much, so the answer can be small or large
+- The receiver chooses how many receptors, so it sets its own volume
+- **Feedback** turns the sender down once the job is done — without it, nothing would stop
+- Your body keeps nerves *and* chemistry because they are good at different things
 
-✅ **Lesson C28 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function aI(){return{root:{id:"root",speaker:"AI",content:`When you sprint, your heart pounds, your lungs gasp, and your muscles burn. All of these responses happen instantly and in perfect sync. How do separate organ systems coordinate like a single machine?
+✅ **Lesson C28 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function aI(){return{root:{id:"root",speaker:"AI",content:`You start to run. Within seconds your heart is thumping, you are breathing hard, and your legs are burning. Nobody told those three things to happen. You did not decide any of them. And they all arrived together, in the right order, at the right size.
 
-**Visual legend:**
-- **Organ nodes**: Circles for lungs, heart, muscles, brain — the cooperating systems.
-- **Flow arrows**: Show information and resource flow between organs.
-- **Coordination indicator**: Shows how well the systems are synchronized.
+Separate body parts, acting like one thing. That is what this lesson is about.
 
-**Key words:**
-- **Organ system**: A group of organs that work together for one major function (e.g., circulatory = heart + blood vessels + blood).
-- **Integration**: Combining inputs from multiple systems to produce a coordinated output.
-- **Homeostasis**: Keeping internal conditions (temperature, pH, glucose) stable despite external changes.
-- **Negative feedback**: A control loop where the output reduces the original stimulus — like a thermostat turning off the heater.
-- **Cascading response**: When one system's change triggers responses in several other systems — a chain reaction.
+The two lessons before this one gave you the pieces. **P28** was the pushing: your heart squeezes, and how wide the tubes are decides how much blood arrives where. **C28** was the messages: chemistry put into the blood, heard only by cells wearing the matching **receptor** — a shape that fits one message the way a lock takes one key. Now watch both being used at once.
 
-Which is more important for keeping you alive — your circulatory system or your respiratory system?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"both_answer",label:"Neither works without the other — they depend on each other.",nextNodeId:"correct",sentiment:"positive"},{id:"heart_answer",label:"The circulatory system, because without blood flow everything stops.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:"The heart is vital, but stop and think: what is the blood **carrying**? Oxygen — and oxygen comes from the lungs. Without the respiratory system, the circulatory system pumps oxygen-depleted blood. Without the circulatory system, the lungs have no way to deliver oxygen to distant cells. They are **interdependent** — each one is useless without the other. This is the core insight of organ system coordination: no system works alone.",options:[{id:"cont",label:"They form a team — each system needs the others.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! Organ coordination depends on **two key variables**:
+**What you will see:**
+- **Body parts as circles**: **lungs**, heart, **muscles** and **brain**, the four working together.
+- **Arrows between them**: what each one sends the others — some carrying supplies, some carrying news.
+- **O₂ delivery**: **O₂** is the short way of writing **oxygen**, the part of air your body must have. **Delivery** is how much of it actually reaches the muscles.
+- **CO₂ return**: **CO₂** is short for **carbon dioxide**, the waste gas your cells make while they work. **Return** is that waste being carried back to your lungs to be breathed out.
+- **Coordination**: how well the parts are keeping step. To **coordinate** is to get separate things timed to fit together.
 
-1. **Respiratory rate** — How fast the lungs bring in oxygen. More breathing = more O₂ available for the blood to carry.
-2. **Heart rate** — How fast the heart pumps blood. Higher rate = faster delivery of O₂ to muscles and faster removal of CO₂.
+**The two dials:** **breathing** (how fast you breathe) and **heart rate** (how many times a minute your heart squeezes).
 
-These two systems are linked: when muscles demand more oxygen, the brain increases **both** breathing and heart rate simultaneously. The coordination score rises when the two systems are balanced — too much of one without the other creates a bottleneck.
+Here is the question. Which is the most important part for getting oxygen to a running leg?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"bio_answer",label:"None of them on its own. Lungs collect the oxygen and the heart moves it — either one alone gets you nowhere.",nextNodeId:"correct",sentiment:"positive"},{id:"heart_answer",label:"The heart, because it is the pump and the blood is what carries everything.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`The heart matters enormously — but ask one more question about it. The blood is carrying something. Where did that something come from?
 
-Let's explore the cascade.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"mech",label:"Show me the coordination cascade.",nextNodeId:"mechanism"}]},mechanism:{id:"mechanism",speaker:"AI",content:`**Organ coordination — step by step (sprinting example):**
+The **lungs**. Oxygen gets into your blood in one place only: the lungs, out of the air you breathe in. Your heart cannot make oxygen. It cannot collect oxygen. It is a pump, and a pump moves whatever it is given.
 
-1. **Muscles** start working hard → consume O₂ rapidly → produce CO₂ as waste.
-2. **Blood CO₂ rises** → chemoreceptors in the brain detect the change.
-3. **Brain** sends nerve signals → increases breathing rate (respiratory system).
-4. **Brain** simultaneously sends signals → increases heart rate (circulatory system).
-5. **Lungs** take in more O₂ and expel more CO₂ (gas exchange accelerates).
-6. **Heart** pumps oxygenated blood faster to muscles.
-7. **Muscles** receive O₂, continue working, CO₂ is carried away.
-8. **Feedback**: As CO₂ drops back to normal, the brain reduces both rates.
+So picture each one working alone:
+- **Heart with no breathing.** It pumps hard, round and round, moving blood that has almost no oxygen in it. Busy, and useless.
+- **Breathing with no pumping.** Your lungs fill with beautifully fresh air and the oxygen crosses into the blood sitting there — where it stays, because nothing is carrying it to your legs.
 
-**Key principle:** The **brain** acts as the coordinator, and **blood** is the communication highway. Chemical signals (CO₂, O₂, hormones) are the messages.
+Neither one is the important one. Each is useless without the other, and that is the whole point of this lesson: your body parts **need each other**. Not one of them can do a job by itself.`,options:[{id:"cont",label:"So they need each other — the lungs collect it, the heart moves it, and one without the other is no use.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly. Two things have to rise together when you run, and they are your two dials.
 
-**Try it:** Adjust respiratory rate and heart rate to see how organ coordination changes!
+1. **Breathing** — how fast your lungs take fresh air in. More breathing means more **oxygen** crossing into your blood, and more **carbon dioxide** getting out.
+2. **Heart rate** — how many times a minute your heart squeezes. A faster heart means blood goes round more often, so oxygen is **delivered** to your muscles sooner and waste is carried away sooner.
 
-Ready for a checkpoint?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"mechanism"}},options:[{id:"cp",label:"Test my understanding.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"**Checkpoint:** During exercise, what happens if your heart rate increases but your breathing rate stays the same?",options:[{id:"right",label:"Blood circulates fast but carries less oxygen — muscles still starve because the lungs can't keep up.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"The heart compensates by extracting more oxygen from each breath.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:"Not quite. The heart doesn't extract oxygen — the **lungs** do. The heart is just a pump that moves blood. If breathing rate stays low, each liter of blood passing through the lungs picks up **the same limited amount** of oxygen. Pumping that under-oxygenated blood faster doesn't help — it just circulates oxygen-poor blood more quickly. This is why coordination matters: **both** systems must ramp up together for effective oxygen delivery. One system can't compensate for the other's limitation.",options:[{id:"retry",label:"I see — faster pumping without more breathing creates an oxygen bottleneck.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Right! This illustrates the **bottleneck principle** — the weakest link limits the whole chain. If lungs can't supply enough O₂, faster circulation just moves low-oxygen blood around. If the heart can't pump fast enough, perfectly oxygenated blood sits in the lungs instead of reaching muscles.
+And they are **not** two separate controls that you happen to turn at the same time. Your brain raises them together on purpose, because raising only one is nearly worthless.
 
-This is why the brain coordinates **both** simultaneously — it avoids creating bottlenecks in either direction.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Connect all the pieces.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:** Your body is a network of interdependent systems.
+Think of it as fetching water in buckets. Breathing decides **how full each bucket is**. Heart rate decides **how many buckets arrive each minute**. What your legs get is the two multiplied together — and a fast line of nearly empty buckets delivers about as little as one full bucket a minute.
 
-- **Respiratory rate** controls oxygen supply to the blood
-- **Heart rate** controls oxygen delivery speed to tissues
-- **The brain** coordinates both through nerve signals and chemical feedback
-- **Blood** serves as the transport highway AND the communication medium (carrying O₂, CO₂, hormones)
-- **Negative feedback** ensures the system self-corrects — no overshoot
-- **Balance** between systems matters more than any single system's performance
+So whichever of the two is lagging sets what your muscles actually get. That is a **bottleneck**: the narrow neck of a bottle decides how fast it pours, however wide the rest of it is.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"mech",label:"Show me what happens when I start running.",nextNodeId:"mechanism"}]},mechanism:{id:"mechanism",speaker:"AI",content:`**You start to sprint. Here is the whole loop, in order:**
 
-Every major body function — digestion, immunity, movement, thinking — depends on multiple organ systems working in concert. The body isn't a collection of parts; it's an integrated network.`,options:[{id:"done",label:"Complete B28",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 28 Complete — How Do Body Systems Work Together?**
+1. **Your muscles demand more.** They start burning oxygen fast, and making **CO₂** as waste. Nothing has been sent anywhere yet — your legs have simply started spending.
+2. **The waste builds up in your blood.** Your muscles cannot store it, so it goes straight into the blood, and the amount of **CO₂** there begins to climb.
+3. **Sensors in your brain notice.** Your brain has parts that taste the blood going past, measuring how much waste gas it holds. Rising **CO₂** **signals** the brain — it is the news that your legs are working hard, and notice that nothing sent that message on purpose. **The waste itself is the message.**
+4. **Your brain raises your heart rate.** Nerve signals go to the heart to make it beat faster. This part is the fast, wired kind of message from C28.
+5. **Your brain increases your breathing.** At the same moment, other nerves make you breathe deeper and faster.
+6. **Your lungs do both jobs at once.** More fresh **O₂** crosses into the blood, and the **CO₂** crosses the other way to be breathed out. In and out, in the same breath.
+7. **The blood delivers and returns.** More blood, going round more often, carrying more oxygen out to the legs and more waste back. This is P28's physics doing the work — and your body widens the vessels in your legs at the same time, so that most of the extra blood goes where it is needed rather than everywhere equally.
+8. **The waste falls, and the loop eases off.** With more breathing and more pumping, the **CO₂** in your blood comes back down. The sensors notice **that** too, and the brain eases off. If you stop running, everything settles — which is why you carry on puffing for a minute afterwards, paying off what your legs borrowed.
 
-- **Physics (P28):** Flow & Pressure — heart rate and vessel diameter create the physics of blood transport
-- **Chemistry (C28):** Chemical Signaling — hormones and receptors create tunable communication
-- **Biology (B28):** Organ Coordination — respiratory, circulatory, and nervous systems integrate as one network
+Round and round, that is the **coordination loop**, and a **loop** is a path that comes back to where it started.
+
+The best part is what is *not* in that list: you. No step waited for you to decide anything. Your body noticed a change, worked out what was needed, and made it happen.
+
+**Try it:** raise the heart rate to its highest and leave breathing at its lowest. How much oxygen actually reaches the muscles?
+
+Ready for a checkpoint?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"mechanism"}},options:[{id:"cp",label:"Test my understanding.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"**Checkpoint:** Someone is exercising. Their **heart rate** goes right up, but their **breathing** stays exactly as slow as it was at rest. Do their muscles get much more oxygen?",options:[{id:"right",label:"No. Each bit of blood still picks up the same small amount of oxygen, so faster pumping just sends the same low-oxygen blood round more often.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"Yes — the blood is going round faster, so it collects more oxygen on each trip.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`Here is the catch. Going round faster does not mean picking up more on each trip. How much oxygen a bit of blood collects in the lungs depends on the air arriving there — and the air arriving there depends on **breathing**, which has not changed.
+
+So the buckets are going round the line twice as fast, and every one of them is just as empty as before.
+
+It is worse than useless, in fact. The heart is working much harder — using up oxygen itself, because the heart is a muscle too — to deliver blood that is carrying no more than it was.
+
+That is the **bottleneck** again. When one step in a chain cannot keep up, speeding up a different step gains you nothing. Your legs get what the slowest step allows.
+
+Which is exactly why your brain raises both together, every time. It does not try the heart first and see how that goes.`,options:[{id:"retry",label:"So a faster heart cannot make up for slow breathing — the slowest step decides.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct, and it runs the other way too:
+
+- **Fast heart, slow breathing**: plenty of trips, each carrying very little. Your legs go short.
+- **Fast breathing, slow heart**: oxygen crosses nicely into the blood and then sits in your chest, because too little is being carried away.
+- **Both together**: full buckets, arriving often. This is the only one that actually works.
+
+So your brain never raises one alone. It watches one number — how much waste gas is in your blood — and from that one reading it adjusts both, because both are needed and neither can cover for the other.
+
+That is what **coordination** really means. Not that the parts are near each other, or connected. It means what one part does is decided by what the others need.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Show me the big picture.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:** three Big Idea 28 lessons, one body keeping itself in step.
+
+- **Breathing** decides how much **O₂** gets into your blood; **heart rate** decides how often it is **delivered**. Your muscles get the two multiplied together
+- The slowest step decides the result, so your brain raises both at once rather than one at a time
+- The **CO₂** coming back from your muscles is not just waste — it is the message that tells your brain to act. **No part of you had to decide to send it**
+- Both kinds of message from C28 are used here: fast nerve **signals** to the heart and lungs, and the slow chemical reading of the blood itself
+- P28's physics does the delivering, and widening the leg vessels sends the extra blood where it is wanted
+- A **loop**: your muscles change the blood, the blood tells the brain, the brain changes the body, and that changes the blood back
+
+Physics moves the blood. Chemistry carries the news. Biology is the four parts — **lungs**, heart, **brain**, **muscles** — behaving as one **integrated** whole, which means joined so completely that they work as a single thing.`,options:[{id:"done",label:"Complete B28",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 28 Complete — How Do Body Systems Work Together?**
+
+- **Physics (P28): Flow & Pressure** — the heart's squeeze and the width of the tubes decide how much blood arrives where
+- **Chemistry (C28): Chemical Signaling** — messages in the blood, heard only by matching **receptors**, and switched off by feedback
+- **Biology (B28): Organ Coordination** — **lungs**, heart, **brain** and **muscles** keeping step without you deciding anything
 
 **Summary Table:**
-| System | Variable | Role in Coordination |
+| Part | Its one job | What it needs from the others |
 | --- | --- | --- |
-| Respiratory | Breathing rate | Controls O₂ input |
-| Circulatory | Heart rate | Controls O₂ delivery speed |
-| Nervous | Brain signals | Coordinates both systems |
-| Chemical | Hormones, CO₂ | Carries feedback messages |
+| Lungs | Take **O₂** in, let **CO₂** out | Blood brought to them, or there is nothing to load |
+| Heart | Move the blood round | Oxygen already in that blood, or it moves nothing useful |
+| Muscles | Do the work, make the waste | Both of the above, and more of both when running |
+| Brain | Read the blood and adjust the rest | Honest news, which rising **CO₂** provides by itself |
 
 **Key takeaways:**
-- No organ system works alone — they are all interdependent
-- The brain coordinates systems via nerve signals, blood carries chemical feedback
-- Bottleneck principle: the weakest link limits the whole chain
-- Negative feedback keeps everything stable (homeostasis)
+- No body part is the important one; each is useless alone
+- Full buckets arriving often: **breathing** sets how full, **heart rate** sets how often
+- The slowest step decides, so both are raised together
+- The waste gas from your muscles is the message that starts the whole correction
+- **Coordination** means each part's job is set by what the others need
 
 ✅ **Lesson B28 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function iI(){return{root:{id:"root",speaker:"AI",content:`In 2020, one virus shut down the entire world. How can something invisible spread so fast? The answer lies in **network physics** — the mathematics of who touches whom.
 
