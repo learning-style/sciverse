@@ -79,7 +79,7 @@ export const L3C17ExpansionLab = ({ state, onStateChange }: Props) => {
                 stops: ['#ecfdf5', '#fcd34d', ALU] as [string, string, string],
             },
             note: 'Over ' + metres + ' m and a swing of ' + dT
-                + ' °C, steel slides ' + steel.toFixed(1)
+                + ' °C, steel slips ' + steel.toFixed(1)
                 + ' mm against the concrete and aluminium slips ' + alu.toFixed(1)
                 + ' mm. The bond feels only the difference between the two rates, and '
                 + 'aluminium is always ' + worse.toFixed(1)
