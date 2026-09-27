@@ -55,7 +55,7 @@ export const getB21Script = (): Record<string, DialogNode> => ({
     checkpoint_correct: {
         id: 'checkpoint_correct',
         speaker: 'AI',
-        content: 'Right. Cycle performance depends on inputs and regulation.\n\nUse the lab controls to confirm:\n- Lower **Oxygen** with demand fixed: throughput falls, reserve drops\n- Raise **Demand** with oxygen fixed: strain rises, reserve compresses\n- Balance both: throughput stabilizes and stress visuals soften',
+        content: 'Right. Cycle performance depends on inputs and regulation.\n\nUse the lab controls to confirm:\n- Lower **Oxygen** with demand fixed: throughput falls, reserve drops\n- Raise **Demand** with oxygen fixed: strain rises, reserve compresses\n- Balance both: the flow steadies and the strain eases',
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', hypoxia: true } },
         options: [{ id: 'disc', label: 'Discovery', nextNodeId: 'discovery' }]
     },

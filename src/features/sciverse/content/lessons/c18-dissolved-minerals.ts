@@ -21,7 +21,7 @@ export const getC18Script = (): Record<string, DialogNode> => ({
     'misconception': {
         id: 'misconception',
         speaker: 'AI',
-        content: "Tasting random water is NEVER safe in a lab! \u26a0\ufe0f But the instinct isn\u2019t bad \u2014 mineral water DOES taste different because of dissolved ions.\n\nThe scientific method is better: **electrical conductivity**! \ud83d\udd0c\n\nPure distilled water doesn\u2019t conduct electricity well. But water with **dissolved ions** (like Ca\u00b2\u207a, Mg\u00b2\u207a, Na\u207a, Cl\u207b) acts like a wire \u2014 the ions carry charge between electrodes.\n\nMore dissolved minerals = **higher conductivity** = more ions in solution!\n\n**Fun fact:** Tap water conducts electricity about 100\u00d7 better than pure distilled water because of dissolved minerals from the treatment plant! \ud83d\udca1",
+        content: "Tasting random water is NEVER safe in a lab! \u26a0\ufe0f But the instinct isn\u2019t bad \u2014 mineral water DOES taste different because of dissolved ions.\n\nThere is a better way: measure how well the water carries **electricity**! \ud83d\udd0c\n\nPure distilled water doesn\u2019t conduct electricity well. But water with **dissolved ions** (like Ca\u00b2\u207a, Mg\u00b2\u207a, Na\u207a, Cl\u207b) acts like a wire \u2014 the ions carry charge between electrodes.\n\nMore dissolved minerals = **higher conductivity** = more ions in solution!\n\n**Fun fact:** Tap water conducts electricity about 100\u00d7 better than pure distilled water because of dissolved minerals from the treatment plant! \ud83d\udca1",
         options: [{ id: 'continue', label: "Conductivity measures invisible ions \u2014 smart!", nextNodeId: 'correct' }]
     },
 

@@ -18,13 +18,13 @@ export const getC25Script = (): Record<string, DialogNode> => ({
     misconception: {
         id: 'misconception',
         speaker: 'AI',
-        content: '**Chain mechanisms** can **amplify effects** dramatically before **termination steps** dominate.\n\nThis is why some reactions are explosive or runaway!',
+        content: '**Chain mechanisms** can **amplify effects** quickly before **stopping steps** take over.\n\nThis is why some reactions are explosive or runaway!',
         options: [{ id: 'cont', label: 'So chemistry can amplify tiny starts.', nextNodeId: 'correct' }]
     },
     correct: {
         id: 'correct',
         speaker: 'AI',
-        content: '**Exactly!**\n\n- **Reaction networks** can show **threshold-like behavior** from small inputs.\n- **Propagation** and **inhibition** balance determines the outcome.\n\n**Try adjusting the sliders to see how the chain grows or stops!**',
+        content: '**Exactly!**\n\n- **Reaction networks** can show **threshold-like behavior** from small inputs.\n- Whether it **spreads** or **stops** depends on which side wins.\n\n**Try adjusting the sliders to see how the chain grows or stops!**',
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'chain', propagationRate: 65 } },
         options: [{ id: 'cp', label: 'Checkpoint', nextNodeId: 'checkpoint' }]
     },
@@ -46,7 +46,7 @@ export const getC25Script = (): Record<string, DialogNode> => ({
     checkpoint_correct: {
         id: 'checkpoint_correct',
         speaker: 'AI',
-        content: '**Correct!** **Amplification** depends on **propagation vs termination** balance.\n\n- **Chain reactions** are everywhere: combustion, polymerization, DNA copying.\n- **Tiny triggers** can have **huge effects**.\n\n**Keep exploring!**',
+        content: '**Correct!** **Amplification** depends on **propagation vs termination** balance.\n\n- **Chain reactions** are everywhere: burning, making plastic, copying DNA.\n- **Tiny triggers** can have **huge effects**.\n\n**Keep exploring!**',
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', inhibitorOn: true } },
         options: [{ id: 'disc', label: 'Discovery', nextNodeId: 'discovery' }]
     },

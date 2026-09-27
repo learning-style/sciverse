@@ -41,7 +41,7 @@ export const getB23Script = (): Record<string, DialogNode> => ({
     checkpoint_wrong: {
         id: 'checkpoint_wrong',
         speaker: 'AI',
-        content: '**Persistent infection** disrupts **repair signaling** and **tissue rebuilding**.\n\n**Unresolved inflammation** can delay or block healing.',
+        content: 'An **infection that will not clear** stops the **repair messages** getting through.\n\n**Unresolved inflammation** can delay or block healing.',
         options: [{ id: 'retry', label: 'Unresolved inflammation can delay repair.', nextNodeId: 'checkpoint_correct' }]
     },
     checkpoint_correct: {

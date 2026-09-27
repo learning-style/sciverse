@@ -105,7 +105,7 @@ export const getP20Script = (): Record<string, DialogNode> => ({
         id: 'reflection_retry',
         speaker: 'AI',
         content: "Zoom and light-gathering are actually DIFFERENT properties! \ud83d\udcf7\n\n- **Zoom** (magnification) depends on **focal length** \u2014 longer = more zoom\n- **Light gathering** depends on **lens diameter** (aperture) \u2014 bigger = more photons collected\n\nA large lens acts like a bigger bucket for catching rain \u2014 it collects more **photons** from dim scenes. That\u2019s why professional cameras have those huge, expensive lenses and why astronomical telescopes are measured by mirror DIAMETER.\n\n**The f-number** (like f/1.4, f/2.8) measures the ratio of focal length to aperture diameter. Lower f-number = bigger opening relative to focal length = better low-light performance! \ud83c\udf03",
-        options: [{ id: 'retry_to_feedback', label: "Lens diameter determines light-gathering power, focal length determines magnification!", nextNodeId: 'reflection_feedback' }]
+        options: [{ id: 'retry_to_feedback', label: "A wider lens gathers more light, and its shape decides how big things look!", nextNodeId: 'reflection_feedback' }]
     },
 
     'reflection_feedback': {

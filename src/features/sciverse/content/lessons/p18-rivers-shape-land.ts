@@ -105,7 +105,7 @@ export const getP18Script = (): Record<string, DialogNode> => ({
         id: 'reflection_retry',
         speaker: 'AI',
         content: "Remember the physics! \ud83d\udd04\n\nFaster flow on the **outer bend** erodes the bank. Slower flow on the **inner bend** deposits sediment. This **feedback loop** pushes the curve further sideways with each flood cycle.\n\nOver centuries, small bends become huge meanders. Sometimes they even cut off entirely, forming **oxbow lakes**! \ud83d\udca7",
-        options: [{ id: 'retry_to_feedback', label: "Erosion and deposition create a self-reinforcing feedback loop!", nextNodeId: 'reflection_feedback' }]
+        options: [{ id: 'retry_to_feedback', label: "Wearing away and dropping off feed each other in a loop!", nextNodeId: 'reflection_feedback' }]
     },
 
     'reflection_feedback': {

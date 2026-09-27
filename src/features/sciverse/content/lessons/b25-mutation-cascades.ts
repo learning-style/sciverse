@@ -52,7 +52,7 @@ export const getB25Script = (): Record<string, DialogNode> => ({
     checkpoint_correct: {
         id: 'checkpoint_correct',
         speaker: 'AI',
-        content: '**Correct!**\n\n- **Tiny genetic variation** can scale into **population-level change**.\n- **Selection** and **mutation** together drive evolution.\n\n**Keep exploring!**',
+        content: '**Correct!**\n\n- **Tiny genetic variation** can scale into **population-level change**.\n- **Mutations** make changes, and **selection** decides which stay.\n\n**Keep exploring!**',
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', selectionOn: true } },
         options: [{ id: 'disc', label: 'Discovery', nextNodeId: 'discovery' }]
     },

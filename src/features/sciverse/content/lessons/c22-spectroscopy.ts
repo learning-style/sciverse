@@ -53,7 +53,7 @@ export const getC22Script = (): Record<string, DialogNode> => ({
     discovery: {
         id: 'discovery',
         speaker: 'AI',
-        content: 'Discovery:\n- **Spectroscopy** compares **light-line patterns** (spectra) to reveal hidden **identity**.\n- Matching **line positions** suggests the same **element** or **molecule**.\n- The clearer the **alignment**, the stronger the **match**.\n- This method lets us analyze **stars**, **planets**, and **unknown chemicals** from afar—using only **light**.\n- In the visual, the **vertical lines** are the spectral fingerprints, and the **flying dots** show how well the patterns align.\n- When the lines and dots line up, you have a strong identification!',
+        content: 'Discovery:\n- **Spectroscopy** compares the **pattern of light lines** to tell what something is.\n- Matching **line positions** suggests the same **element** or **molecule**.\n- The clearer the **alignment**, the stronger the **match**.\n- This method lets us analyze **stars**, **planets**, and **unknown chemicals** from afar—using only **light**.\n- In the visual, the **vertical lines** are the spectral fingerprints, and the **flying dots** show how well the patterns align.\n- When the lines and dots line up, you have a strong identification!',
         options: [{ id: 'done', label: 'Complete C22', nextNodeId: 'complete' }]
     },
     complete: {

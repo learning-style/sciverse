@@ -12,7 +12,7 @@ export const getC23Script = (): Record<string, DialogNode> => ({
             `Welcome to the Corrosion Lab! 🧲\n\nWhy does **steel rust** so much faster near the **ocean** than in dry air?\n\nIn this visual, you see a **metal surface** exposed to the environment.\n- **Blue droplets** above the metal represent **humidity** (water in the air).\n- **Red crystals** below show **salt** (salinity) on the surface.\n- **Brown patches** spreading across the metal are **rust** (iron oxide) — the result of **corrosion**.\n\nUse the **control box** (bottom left) to adjust **Humidity** and **Salinity**. Watch how the **Oxidation Rate** and the amount of rust change!\n\n**Key idea:** Corrosion is a **chemical reaction** that needs both **water** and **ions** (like salt) to speed up.\n\nWhy do you think ships and bridges near the sea need extra protection?`,
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', humidity: 60, salinity: 45 } },
         options: [
-            { id: 'electrochem', label: 'Moist salty environments accelerate electrochemical corrosion.', nextNodeId: 'correct', sentiment: 'positive' },
+            { id: 'electrochem', label: 'Damp, salty air makes metal rust faster.', nextNodeId: 'correct', sentiment: 'positive' },
             { id: 'age_only', label: 'Rust speed depends only on metal age.', nextNodeId: 'misconception' }
         ]
     },
@@ -47,7 +47,7 @@ export const getC23Script = (): Record<string, DialogNode> => ({
     checkpoint_correct: {
         id: 'checkpoint_correct',
         speaker: 'AI',
-        content: 'Correct! **Corrosion control** is **chemistry-guided engineering**.\n\nEngineers use **barrier layers**, **galvanization**, and **environmental control** to protect structures.\n\nIn the visual, when the coating is ON, rust stops spreading.',
+        content: 'Correct! **Stopping rust** is a **chemistry job**.\n\nEngineers use **barrier layers**, **galvanization**, and **environmental control** to protect structures.\n\nIn the visual, when the coating is ON, rust stops spreading.',
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', coatingOn: true } },
         options: [{ id: 'disc', label: 'Discovery', nextNodeId: 'discovery' }]
     },

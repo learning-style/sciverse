@@ -8,7 +8,7 @@ export const getC21Script = (): Record<string, DialogNode> => ({
     root: {
         id: 'root',
         speaker: 'AI',
-        content: 'Carbon atoms move between air, water, rocks, and life, but they never disappear — they just change form and location.\n\nThe visual shows **four reservoirs** constantly exchanging carbon:\n- **Atmosphere** — CO2 gas in the air\n- **Plants/Biomass** — carbon locked in living tissue\n- **Soil + Fuel Carbon** — ancient carbon in soil, rock, and fossil fuels\n- **Ocean** — dissolved carbon in seawater\n\nWhat keeps this exchange going across all four reservoirs?',
+        content: 'Carbon atoms move between air, water, rocks, and life, but they never disappear — they just change form and location.\n\nThe picture shows **four stores** passing carbon between them:\n- **Atmosphere** — CO2 gas in the air\n- **Plants/Biomass** — carbon locked in living tissue\n- **Soil + Fuel Carbon** — ancient carbon in soil, rock, and fossil fuels\n- **Ocean** — dissolved carbon in seawater\n\nWhat keeps this exchange going across all four reservoirs?',
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', atmosphericCO2: 45 } },
         options: [
             { id: 'reservoirs', label: 'Chemical reactions drive continuous exchange between reservoirs.', nextNodeId: 'correct', sentiment: 'positive' },
