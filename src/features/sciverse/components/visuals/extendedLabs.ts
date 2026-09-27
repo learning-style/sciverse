@@ -154,6 +154,9 @@ import { L2B16CuesLab } from './L2B16CuesLab';
 import { L3P16CoilLab } from './L3P16CoilLab';
 import { L3C16LoopLab } from './L3C16LoopLab';
 import { L3B16WeightLab } from './L3B16WeightLab';
+import { L2P17ColumnLab } from './L2P17ColumnLab';
+import { L2C17SteelLab } from './L2C17SteelLab';
+import { L2B17HollowLab } from './L2B17HollowLab';
 
 export interface LabProps {
     state: Record<string, unknown>;
@@ -319,4 +322,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p16: L3P16CoilLab,
     l3c16: L3C16LoopLab,
     l3b16: L3B16WeightLab,
+    l2p17: L2P17ColumnLab,
+    l2c17: L2C17SteelLab,
+    l2b17: L2B17HollowLab,
 };

@@ -191,6 +191,7 @@ const LESSONS_WITH_NATIVE_CONTROLS = new Set([
     'l3p15', 'l3c15', 'l3b15',
     'l2p16', 'l2c16', 'l2b16',
     'l3p16', 'l3c16', 'l3b16',
+    'l2p17', 'l2c17', 'l2b17',
 ]);
 
 interface WalkthroughGuide {
