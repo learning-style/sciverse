@@ -3156,7 +3156,7 @@ Geologists call this the **Hjulström curve** — it predicts exactly which part
 
 Faster flow on the **outer bend** erodes the bank. Slower flow on the **inner bend** deposits sediment. This **feedback loop** pushes the curve further sideways with each flood cycle.
 
-Over centuries, small bends become huge meanders. Sometimes they even cut off entirely, forming **oxbow lakes**! 💧`,options:[{id:"retry_to_feedback",label:"Erosion and deposition create a self-reinforcing feedback loop!",nextNodeId:"reflection_feedback"}]},reflection_feedback:{id:"reflection_feedback",speaker:"AI",content:`Excellent reasoning! 🌟 You’re connecting **flow dynamics** to **long-term landscape change** — exactly how geomorphologists think.
+Over centuries, small bends become huge meanders. Sometimes they even cut off entirely, forming **oxbow lakes**! 💧`,options:[{id:"retry_to_feedback",label:"Wearing away and dropping off feed each other in a loop!",nextNodeId:"reflection_feedback"}]},reflection_feedback:{id:"reflection_feedback",speaker:"AI",content:`Excellent reasoning! 🌟 You’re connecting **flow dynamics** to **long-term landscape change** — exactly how geomorphologists think.
 
 Every river valley, canyon, and delta on Earth was sculpted by this same physics over millions of years! 🌍`,options:[{id:"finish",label:"Finish P18!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
 - In **C18**, you’ll discover the **invisible chemistry** of rivers — how water dissolves rock and carries **ions** even when it looks crystal clear! 🧪
@@ -3170,7 +3170,7 @@ Every river on Earth is a natural chemistry experiment: water dissolves rock as 
 
 🤔 How would YOU test whether clear water has invisible chemicals in it?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",dissolvedLevel:.3}},options:[{id:"taste",label:"Taste it — pure water has no flavor, so any taste means something’s there!",nextNodeId:"misconception"},{id:"conductivity",label:"Use an electrical conductivity meter — dissolved ions carry current!",nextNodeId:"correct",sentiment:"positive"}]},misconception:{id:"misconception",speaker:"AI",content:`Tasting random water is NEVER safe in a lab! ⚠️ But the instinct isn’t bad — mineral water DOES taste different because of dissolved ions.
 
-The scientific method is better: **electrical conductivity**! 🔌
+There is a better way: measure how well the water carries **electricity**! 🔌
 
 Pure distilled water doesn’t conduct electricity well. But water with **dissolved ions** (like Ca²⁺, Mg²⁺, Na⁺, Cl⁻) acts like a wire — the ions carry charge between electrodes.
 
@@ -3633,7 +3633,7 @@ That’s why **regenerative agriculture** focuses on building soil biology inste
 
 You understand that soil health isn’t just about CHEMISTRY (N-P-K) — it’s about the **living biological community** that processes, cycles, and delivers those nutrients. Protect the organisms, and the soil takes care of itself! 🌍
 
-**Key takeaway:** Soil biodiversity is the foundation of sustainable agriculture.`,options:[{id:"finish",label:"Finish B19!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
+**Key takeaway:** Farms depend on the living things in the soil.`,options:[{id:"finish",label:"Finish B19!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
 - In **P19**, you explored the **physical pore structure** that gives soil organisms their habitat — tunnels, air spaces, and water films! 💧
 - In **C19**, you studied the **dissolved nutrients** that decomposers release and plants absorb! 🧪
 
@@ -3737,7 +3737,7 @@ The magnifying glass collects energy from its entire surface area and concentrat
 
 A large lens acts like a bigger bucket for catching rain — it collects more **photons** from dim scenes. That’s why professional cameras have those huge, expensive lenses and why astronomical telescopes are measured by mirror DIAMETER.
 
-**The f-number** (like f/1.4, f/2.8) measures the ratio of focal length to aperture diameter. Lower f-number = bigger opening relative to focal length = better low-light performance! 🌃`,options:[{id:"retry_to_feedback",label:"Lens diameter determines light-gathering power, focal length determines magnification!",nextNodeId:"reflection_feedback"}]},reflection_feedback:{id:"reflection_feedback",speaker:"AI",content:`Excellent optical reasoning! 🌟
+**The f-number** (like f/1.4, f/2.8) measures the ratio of focal length to aperture diameter. Lower f-number = bigger opening relative to focal length = better low-light performance! 🌃`,options:[{id:"retry_to_feedback",label:"A wider lens gathers more light, and its shape decides how big things look!",nextNodeId:"reflection_feedback"}]},reflection_feedback:{id:"reflection_feedback",speaker:"AI",content:`Excellent optical reasoning! 🌟
 
 You’ve connected **lens geometry** (diameter, focal length, curvature) to **real-world performance** (light gathering, magnification, image formation). This is exactly how optical engineers design everything from smartphone cameras to space telescopes! 🔭🌌`,options:[{id:"finish",label:"Finish P20!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
 - In **C20**, you’ll explore the **material science** behind lenses — how different glasses and crystals have different **refractive indices** that control light bending! 🧪
@@ -4002,7 +4002,7 @@ In all three: **repeating cycles with feedback control sustain stability in ever
 
 ✅ **Lesson P21 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}),h2=()=>({root:{id:"root",speaker:"AI",content:`Carbon atoms move between air, water, rocks, and life, but they never disappear — they just change form and location.
 
-The visual shows **four reservoirs** constantly exchanging carbon:
+The picture shows **four stores** passing carbon between them:
 - **Atmosphere** — CO2 gas in the air
 - **Plants/Biomass** — carbon locked in living tissue
 - **Soil + Fuel Carbon** — ancient carbon in soil, rock, and fossil fuels
@@ -4095,9 +4095,9 @@ In this lesson, here's what the picture shows:
 - **Red glow** = The cell is working too hard and can't keep up (not enough oxygen for the job).
 - **Purple pulse** = The cell has extra energy saved up, like a backup battery.
 
-Why do you think cells use a cycle instead of just one step?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",oxygenLevel:70}},options:[{id:"regenerated",label:"Cells reuse their parts each turn.",nextNodeId:"correct",sentiment:"positive"},{id:"one_step",label:"Cells do one reaction and stop.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Metabolism is continuous, not one-and-done. Glycolysis, the citric acid cycle, and oxidative phosphorylation are coupled pathways that run repeatedly.
+Why do you think cells use a cycle instead of just one step?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",oxygenLevel:70}},options:[{id:"regenerated",label:"Cells reuse their parts each turn.",nextNodeId:"correct",sentiment:"positive"},{id:"one_step",label:"Cells do one reaction and stop.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Your body uses energy all the time, not just once. Three sets of steps run one after another, over and over.
 
-Cycle intermediates are regenerated so throughput can continue while input conditions (oxygen supply, demand, substrate availability) fluctuate.`,options:[{id:"cont",label:"So cycling supports steady energy output.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly. Biological cycles maintain **throughput** while conditions change, preserving cellular energy supply.
+The pieces each step needs are built again, so the flow never stops even when the oxygen coming in goes up and down.`,options:[{id:"cont",label:"So cycling supports steady energy output.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly. Cycles keep the energy **flowing** even when things change around them.
 
 Key idea: ATP balance depends on two opposing forces:
 - **Oxygen support** increases efficient aerobic ATP yield
@@ -4116,7 +4116,7 @@ When demand rises faster than oxygen-supported production, reserve shrinks and s
 Use the lab controls to confirm:
 - Lower **Oxygen** with demand fixed: throughput falls, reserve drops
 - Raise **Demand** with oxygen fixed: strain rises, reserve compresses
-- Balance both: throughput stabilizes and stress visuals soften`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint",hypoxia:!0}},options:[{id:"disc",label:"Discovery",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`Discovery: biological survival depends on stable repeating cycles with **feedback control** and oxygen-sensitive regulation.
+- Balance both: the flow steadies and the strain eases`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint",hypoxia:!0}},options:[{id:"disc",label:"Discovery",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`Discovery: biological survival depends on stable repeating cycles with **feedback control** and oxygen-sensitive regulation.
 
 Summary Table:
 
@@ -4156,8 +4156,8 @@ Try adjusting the **Match** slider and watch how the **P-wave** paths and map cl
 - Better alignment (**match**) means a clearer map.`,options:[{id:"done",label:"Complete P22",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 22 Complete — How Do Waves Help Us See the Invisible?**
 
 - **Physics (P22):** Seismic Wave Mapping — wave paths reveal hidden underground layers
-- **Chemistry (C22):** Spectroscopy Fingerprints — wavelength signatures identify elements invisibly
-- **Biology (B22):** Ultrasound Imaging — echo timing reconstructs internal body structures
+- **Chemistry (C22):** Spectroscopy Fingerprints — every element has its own colours
+- **Biology (B22):** Ultrasound Imaging — echoes build a picture inside the body
 
 **Summary Table:**
 | Variable | If Increased | Typical Effect |
@@ -4198,7 +4198,7 @@ This is the main tool for remote chemical analysis.`,options:[{id:"retry",label:
 This is how **astronomers** identify elements in distant **stars**, how **chemists** analyze unknown samples, and how **environmental scientists** detect trace chemicals.
 
 **Spectroscopy** is a universal tool for seeing the invisible.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint",identified:!0}},options:[{id:"disc",label:"Discovery",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`Discovery:
-- **Spectroscopy** compares **light-line patterns** (spectra) to reveal hidden **identity**.
+- **Spectroscopy** compares the **pattern of light lines** to tell what something is.
 - Matching **line positions** suggests the same **element** or **molecule**.
 - The clearer the **alignment**, the stronger the **match**.
 - This method lets us analyze **stars**, **planets**, and **unknown chemicals** from afar—using only **light**.
@@ -4206,8 +4206,8 @@ This is how **astronomers** identify elements in distant **stars**, how **chemis
 - When the lines and dots line up, you have a strong identification!`,options:[{id:"done",label:"Complete C22",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 22 Complete — How Do Waves Help Us See the Invisible?**
 
 - **Physics (P22):** Seismic Wave Mapping — wave paths reveal hidden underground layers
-- **Chemistry (C22):** Spectroscopy Fingerprints — wavelength signatures identify elements invisibly
-- **Biology (B22):** Ultrasound Imaging — echo timing reconstructs internal body structures
+- **Chemistry (C22):** Spectroscopy Fingerprints — every element has its own colours
+- **Biology (B22):** Ultrasound Imaging — echoes build a picture inside the body
 
 **Summary Table:**
 | Variable | If Increased | Typical Effect |
@@ -4251,8 +4251,8 @@ This is how doctors see organs, babies, and even blood flow—using only **sound
 - Adjusting the controls helps you understand how sound reveals hidden structure!`,options:[{id:"done",label:"Complete B22",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 22 Complete — How Do Waves Help Us See the Invisible?**
 
 - **Physics (P22):** Seismic Wave Mapping — wave paths reveal hidden underground layers
-- **Chemistry (C22):** Spectroscopy Fingerprints — wavelength signatures identify elements invisibly
-- **Biology (B22):** Ultrasound Imaging — echo timing reconstructs internal body structures
+- **Chemistry (C22):** Spectroscopy Fingerprints — every element has its own colours
+- **Biology (B22):** Ultrasound Imaging — echoes build a picture inside the body
 
 **Summary Table:**
 | Variable | If Increased | Typical Effect |
@@ -4288,7 +4288,7 @@ Avoiding sharp corners and notches makes materials safer.`,onEnterAction:{type:"
 - Watch for **crack growth** when risk is high—this is how real failures start!`,options:[{id:"done",label:"Complete P23",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 23 Complete — How Do Materials Break and Recover?**
 
 - **Physics (P23):** Stress & Fracture — cracks and fatigue weaken materials
-- **Chemistry (C23):** Corrosion & Protection — electrochemical degradation eats away metals
+- **Chemistry (C23):** Corrosion & Protection — how rust eats metal away
 - **Biology (B23):** Wound Healing — tissue repair rebuilds damaged structures
 
 **Summary Table:**
@@ -4314,7 +4314,7 @@ Use the **control box** (bottom left) to adjust **Humidity** and **Salinity**. W
 
 **Key idea:** Corrosion is a **chemical reaction** that needs both **water** and **ions** (like salt) to speed up.
 
-Why do you think ships and bridges near the sea need extra protection?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",humidity:60,salinity:45}},options:[{id:"electrochem",label:"Moist salty environments accelerate electrochemical corrosion.",nextNodeId:"correct",sentiment:"positive"},{id:"age_only",label:"Rust speed depends only on metal age.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`**Environment** matters: **water** and **ions** support **oxidation-reduction** pathways that speed up corrosion.
+Why do you think ships and bridges near the sea need extra protection?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",humidity:60,salinity:45}},options:[{id:"electrochem",label:"Damp, salty air makes metal rust faster.",nextNodeId:"correct",sentiment:"positive"},{id:"age_only",label:"Rust speed depends only on metal age.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`**Environment** matters: **water** and **ions** support **oxidation-reduction** pathways that speed up corrosion.
 
 If you increase **humidity** or **salinity** in the visual, you’ll see more rust form — that’s chemistry in action!`,options:[{id:"cont",label:"So chemistry controls failure rate.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! **Corrosion** is a **chemical process** that can be slowed with **coatings** (like paint) or **sacrificial protection** (like zinc plating).
 
@@ -4322,7 +4322,7 @@ Try turning up the controls — notice how the **Oxidation Rate** and rust patch
 
 **Visual tip:** The control box sliders let you simulate different environments. High humidity and salt = rapid corrosion!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"corrosion",oxidationRate:62}},options:[{id:"cp",label:"Checkpoint",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"A **protective paint layer** helps mainly because it:",options:[{id:"barrier",label:"Blocks oxygen/water contact with metal.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"adds_mass",label:"Makes the metal heavier.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`**Protection** is about **chemical isolation**, not weight.
 
-**Paint** and **coatings** keep water and ions away from the metal, slowing corrosion.`,options:[{id:"retry",label:"Barrier layers slow oxidation reactions.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct! **Corrosion control** is **chemistry-guided engineering**.
+**Paint** and **coatings** keep water and ions away from the metal, slowing corrosion.`,options:[{id:"retry",label:"Barrier layers slow oxidation reactions.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct! **Stopping rust** is a **chemistry job**.
 
 Engineers use **barrier layers**, **galvanization**, and **environmental control** to protect structures.
 
@@ -4334,7 +4334,7 @@ In the visual, when the coating is ON, rust stops spreading.`,onEnterAction:{typ
 - **Visual:** Rust patches and oxidation rate show real-time chemical change`,options:[{id:"done",label:"Complete C23",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 23 Complete — How Do Materials Break and Recover?**
 
 - **Physics (P23):** Stress & Fracture — cracks and fatigue weaken materials
-- **Chemistry (C23):** Corrosion & Protection — electrochemical degradation eats away metals
+- **Chemistry (C23):** Corrosion & Protection — how rust eats metal away
 - **Biology (B23):** Wound Healing — tissue repair rebuilds damaged structures
 
 **Summary Table:**
@@ -4366,11 +4366,11 @@ Use the **control box** (bottom left) to adjust **Inflammation** and **Oxygenati
 
 Why do you think wounds heal faster with good oxygen and controlled inflammation?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",inflammation:50}},options:[{id:"phases",label:"Different cell processes run in sequence: clotting, inflammation, rebuilding.",nextNodeId:"correct",sentiment:"positive"},{id:"single_step",label:"One cell type does everything at once.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`**Healing** is **coordinated**: **immune cells** clean damage, then **tissue rebuild** pathways restore structure.
 
-If you set **inflammation** too high in the visual, healing slows down — the wound stays open longer!`,options:[{id:"cont",label:"So repair is a regulated timeline.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! **Biological materials** recover through **controlled cellular stages**.
+If you set **inflammation** too high in the visual, healing slows down — the wound stays open longer!`,options:[{id:"cont",label:"So repair is a regulated timeline.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! **Living things** heal in **careful steps**, one after another.
 
 Try adjusting the controls — see how **Healing Progress** responds.
 
-**Visual tip:** The control box sliders let you simulate different healing environments. High oxygen = faster repair!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"healing",collagenLevel:40}},options:[{id:"cp",label:"Checkpoint",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"If **infection** persists, healing usually:",options:[{id:"slows",label:"Slows or stalls due to ongoing inflammation.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"speeds",label:"Always speeds up.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`**Persistent infection** disrupts **repair signaling** and **tissue rebuilding**.
+**Visual tip:** The control box sliders let you simulate different healing environments. High oxygen = faster repair!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"healing",collagenLevel:40}},options:[{id:"cp",label:"Checkpoint",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"If **infection** persists, healing usually:",options:[{id:"slows",label:"Slows or stalls due to ongoing inflammation.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"speeds",label:"Always speeds up.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`An **infection that will not clear** stops the **repair messages** getting through.
 
 **Unresolved inflammation** can delay or block healing.`,options:[{id:"retry",label:"Unresolved inflammation can delay repair.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct! **Recovery** depends on both **mechanics** and **biological control**.
 
@@ -4382,7 +4382,7 @@ In the visual, when infection is present, healing progress stalls.`,onEnterActio
 - **Visual:** Healing progress bar and tissue fill show real-time repair`,options:[{id:"done",label:"Complete B23",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 23 Complete — How Do Materials Break and Recover?**
 
 - **Physics (P23):** Stress & Fracture — cracks and fatigue weaken materials
-- **Chemistry (C23):** Corrosion & Protection — electrochemical degradation eats away metals
+- **Chemistry (C23):** Corrosion & Protection — how rust eats metal away
 - **Biology (B23):** Wound Healing — tissue repair rebuilds damaged structures
 
 **Summary Table:**
@@ -4597,18 +4597,18 @@ In all three: **small causes can have big consequences!** 🦋🌪️🌱
 - **Amplification** means small inputs can lead to big outputs.
 - **Thresholds** and **inhibitors** control when cascades start or stop.
 
-**Watch how a single spark can ignite a chain reaction!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",initiatorLevel:15}},options:[{id:"propagation",label:"Propagation steps multiply reactive intermediates.",nextNodeId:"correct",sentiment:"positive"},{id:"single_event",label:"Reactions stay one-step and isolated.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`**Chain mechanisms** can **amplify effects** dramatically before **termination steps** dominate.
+**Watch how a single spark can ignite a chain reaction!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",initiatorLevel:15}},options:[{id:"propagation",label:"Each step makes more of the busy pieces that keep it going.",nextNodeId:"correct",sentiment:"positive"},{id:"single_event",label:"Reactions stay one-step and isolated.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`**Chain mechanisms** can **amplify effects** quickly before **stopping steps** take over.
 
 This is why some reactions are explosive or runaway!`,options:[{id:"cont",label:"So chemistry can amplify tiny starts.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`**Exactly!**
 
 - **Reaction networks** can show **threshold-like behavior** from small inputs.
-- **Propagation** and **inhibition** balance determines the outcome.
+- Whether it **spreads** or **stops** depends on which side wins.
 
-**Try adjusting the sliders to see how the chain grows or stops!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"chain",propagationRate:65}},options:[{id:"cp",label:"Checkpoint",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"A **strong inhibitor** usually:",options:[{id:"quench",label:"Quenches reactive intermediates and slows amplification.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"boost",label:"Always boosts chain growth.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`**Inhibitors** often **reduce chain propagation** by removing reactive species.
+**Try adjusting the sliders to see how the chain grows or stops!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"chain",propagationRate:65}},options:[{id:"cp",label:"Checkpoint",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"A **strong inhibitor** usually:",options:[{id:"quench",label:"It soaks up the busy pieces, so the spreading slows down.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"boost",label:"Always boosts chain growth.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`**Inhibitors** often **reduce chain propagation** by removing reactive species.
 
 **Suppression** can stop a runaway reaction!`,options:[{id:"retry",label:"Inhibitors can suppress amplification.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`**Correct!** **Amplification** depends on **propagation vs termination** balance.
 
-- **Chain reactions** are everywhere: combustion, polymerization, DNA copying.
+- **Chain reactions** are everywhere: burning, making plastic, copying DNA.
 - **Tiny triggers** can have **huge effects**.
 
 **Keep exploring!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint",inhibitorOn:!0}},options:[{id:"disc",label:"Discovery",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:**
@@ -4644,10 +4644,10 @@ In all three: **small causes can have big consequences!** 🦋⚗️🌱
 - **Biological systems** can **amplify tiny molecular changes** across many levels.
 - **Mutation cascades** are why evolution can be both gradual and sudden.
 
-**Try adjusting the sliders to see how mutations and selection shape the population!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"cascade",traitShift:40}},options:[{id:"cp",label:"Checkpoint",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"A **mutation** that increases **survival** in one environment will likely:",options:[{id:"increase_freq",label:"Increase in frequency over generations.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"vanish",label:"Always disappear quickly.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:"**If advantageous**, selection can **increase its frequency** in the population.",options:[{id:"retry",label:"Selection can amplify useful variants.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`**Correct!**
+**Try adjusting the sliders to see how mutations and selection shape the population!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"cascade",traitShift:40}},options:[{id:"cp",label:"Checkpoint",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"A **mutation** that increases **survival** in one environment will likely:",options:[{id:"increase_freq",label:"Increase in frequency over generations.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"vanish",label:"Always disappear quickly.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:"**If the change helps**, more of them **end up with it**.",options:[{id:"retry",label:"Selection can amplify useful variants.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`**Correct!**
 
 - **Tiny genetic variation** can scale into **population-level change**.
-- **Selection** and **mutation** together drive evolution.
+- **Mutations** make changes, and **selection** decides which stay.
 
 **Keep exploring!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint",selectionOn:!0}},options:[{id:"disc",label:"Discovery",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:**
 
