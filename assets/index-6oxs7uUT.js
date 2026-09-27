@@ -4811,195 +4811,259 @@ Weather follows patterns. People predicted weather for thousands of years by wat
 - C26 Cloud Factory
 - B26 Animal Weather Reporters
 
-**Lesson B26 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function Z2(){return{root:{id:"root",speaker:"AI",content:`When you eat an apple, how does your body turn it into energy you can actually use?
+**Lesson B26 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function Z2(){return{root:{id:"root",speaker:"AI",content:`You bite into an apple. Somehow that apple ends up as energy for running about. The very first part of the job is not chemistry at all — it is pushing, crushing and squeezing. Plain physics, and quite a lot of it.
 
-**Visual legend:**
-- **Teeth icon**: Mechanical grinding that increases surface area.
-- **Tube with wave arrows**: **Peristalsis** — rhythmic muscle contractions that push food through the digestive tract.
-- **Particle cloud**: Food broken into smaller pieces, exposing more surface for chemical attack.
+Nothing has changed *what* the apple is yet. It has only been made smaller. Breaking food up without changing what it is made of is called **mechanical digestion** — **mechanical** means to do with pushing and pulling and squashing.
 
-**Key words:**
-- **Mechanical digestion**: Physical breakdown of food — chewing, churning, and squeezing — without changing its chemical identity.
-- **Peristalsis**: Wave-like muscle contractions that move food from the esophagus through the stomach and intestines.
-- **Surface area**: The total exposed area of food particles. Smaller pieces = more surface = faster chemical digestion.
-- **Churning**: The stomach's muscular walls contract and relax to mix food with digestive juices.
-- **Force**: A push or pull that changes the shape or motion of food as it travels through the tract.
+**What you will see:**
+- **Teeth**: **grinding** the apple, which means crushing it between two hard surfaces until it is crumbs.
+- **Stomach**: **churning**, which means stirring and folding something over and over, the way you mix cake batter.
+- **Tube with travelling waves**: **peristalsis**. Your food pipe is a soft tube wrapped in rings of muscle. The rings squeeze one after another, and that travelling squeeze pushes the food along. A squeeze of a muscle is a **contraction**, so peristalsis is a row of contractions passing down the tube like a wave going down a skipping rope.
+- **Cloud of pieces**: the crumbs, and how much **surface** they have. **Surface** is the outside of something — the part you could touch, and the only part anything else can reach.
 
-What do you think happens to food between biting it and absorbing its nutrients?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"physics_answer",label:"The body physically breaks food into tiny pieces and pushes them through a long tube.",nextNodeId:"correct",sentiment:"positive"},{id:"magic_answer",label:"Food just dissolves on its own once you swallow it.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:"That's a common idea, but food doesn't dissolve on its own. Your body does **serious mechanical work** to break it down. Teeth crush and grind. The stomach churns with powerful muscle contractions. The intestines use **peristalsis** — coordinated waves of force — to keep everything moving. Without these physical forces, chemical digestion would be far too slow to sustain life.",options:[{id:"cont",label:"So the body uses physical force to prepare food for chemistry.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! Mechanical digestion uses **three key physics processes**:
+Here is the question. Why bother with all this crushing? Why not swallow the apple whole and let your insides get on with it?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"physics_answer",label:"Because crumbs have far more outside than one big lump, and things can only be worked on from the outside.",nextNodeId:"correct",sentiment:"positive"},{id:"dissolve_answer",label:"Food just dissolves inside you on its own, so the size cannot matter much.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Food does not dissolve on its own. Leave an apple in a glass of water all day and come back: it is a wet apple. Nothing has dissolved.
 
-1. **Grinding (teeth & jaw)** — Your jaw muscles exert **~70 N of force** on molars. Chewing fractures food into smaller particles, dramatically increasing **surface area**.
-2. **Churning (stomach)** — The stomach's muscular walls contract **~3 times per minute**, mixing food with acid and enzymes into a semi-liquid paste called **chyme**.
-3. **Peristalsis (esophagus & intestines)** — Smooth muscle rings contract in sequence, creating a traveling wave that propels food forward at **~2-25 cm/s**.
+Your body does real physical work on it instead, and it is harder work than you would think.
 
-These three processes create a **mechanical pipeline** — grinding exposes surface area, churning mixes reactants, and peristalsis moves everything through roughly **9 meters** of digestive tract.
+Your teeth crush. Your back teeth can press with about as much force as a heavy bag of flour resting on your thumb — which is why a nut gives way. Your stomach squeezes and folds the food over and over. Your gut passes it along with those travelling waves of **peristalsis**, hour after hour, without you thinking about it once.
 
-Let's explore how the physics works step by step.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"mech",label:"Walk me through the mechanical stages.",nextNodeId:"mechanism"}]},mechanism:{id:"mechanism",speaker:"AI",content:`**The mechanical digestion pipeline — step by step:**
+And the reason for all that effort is coming up next. It is not about making food small enough to fit. It is about making **outside**.`,options:[{id:"cont",label:"So my body really is doing physical work on food, not just waiting for it to dissolve.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly. Three pushing-and-squeezing jobs get it done, and the whole thing is aimed at one goal.
 
-1. **Mouth**: Teeth apply compressive and shearing forces. Incisors cut, canines tear, molars grind. Each chew cycle lasts ~0.5 seconds.
-2. **Swallowing**: The tongue pushes the **bolus** (chewed food ball) backward. The epiglottis closes the airway. This is a coordinated **reflex** involving >20 muscles.
-3. **Esophagus**: Peristaltic waves carry the bolus to the stomach in **6-10 seconds**. Gravity helps when upright, but peristalsis works even upside down!
-4. **Stomach**: Three muscular layers churn food for **2-5 hours**. The pyloric sphincter controls release — only particles smaller than ~2 mm pass through.
-5. **Small intestine**: **Segmentation** contractions mix chyme with enzymes. Peristalsis slowly advances it. The intestinal wall has **villi** — tiny finger-like projections that increase absorption surface area by **~600×**.
-6. **Large intestine**: Slower peristalsis. Water absorption. Remaining material compacted.
+1. **Grinding** — in your mouth. Front teeth cut, side teeth tear, flat back teeth crush. Each chew takes about half a second, and every chew turns a few big pieces into many small ones.
+2. **Churning** — in your stomach. The stomach wall squeezes about **3 times a minute**, folding the food over and mixing it with acid and enzymes until it is a thick soup. Mixing matters: without it the enzymes would only ever meet the food right next to them.
+3. **Peristalsis** — all the way along. Those travelling squeezes keep everything moving forward, and they are strong enough that they do not need any help from gravity. You could eat standing on your head and your dinner would still go the right way.
 
-**Try it:** Increase the grinding force slider and watch surface area multiply. Then increase peristalsis speed to see transit time change!
+Together these are the **mechanical pipeline** — a **pipeline** being a line of stages where each one hands on to the next.
 
-Ready for a checkpoint?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"mechanism"}},options:[{id:"cp",label:"Yes, let's check my understanding.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"**Checkpoint:** Why does chewing food thoroughly speed up digestion?",options:[{id:"right",label:"Smaller pieces have more surface area for enzymes to attack.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"Chewing heats the food, which makes it dissolve faster.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:"Not quite. Chewing doesn't significantly heat food. The real reason is **surface area**. Imagine a sugar cube vs. the same sugar ground into powder — the powder dissolves much faster because enzymes can access more surface at once. Chewing does the same thing: it fractures food into hundreds of smaller particles, each exposing fresh surface for digestive enzymes to work on. More surface area → faster chemical breakdown.",options:[{id:"retry",label:"Got it — it's about surface area, not temperature.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct! **Surface area** is the bridge between mechanical and chemical digestion. When you grind a food particle into 8 smaller cubes, you **double** the total surface area. The enzymes don't work faster per unit area — there's just **more area** for them to work on simultaneously.
+And the goal of every stage is the same: make more **surface**. Chemistry can only happen on a surface, so the amount of surface sets how fast the rest can go.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"mech",label:"Walk me through the whole journey.",nextNodeId:"mechanism"}]},mechanism:{id:"mechanism",speaker:"AI",content:`**From bite to soup, step by step:**
 
-This is the same principle used in industrial chemistry: catalysts are ground into fine powders to maximize reaction speed. Your teeth are doing industrial-grade surface preparation!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Let's see the big picture.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:** Mechanical digestion is a physics-driven pipeline that transforms whole food into a form chemistry can process efficiently.
+1. **Mouth.** Your teeth do different jobs on purpose: the sharp front ones cut a piece off, the pointed ones beside them tear, and the wide flat ones at the back crush it to crumbs. Meanwhile your spit wets everything so it holds together.
+2. **Swallowing.** Your tongue gathers the crumbs into a soft ball and pushes it backwards. At the same moment a small flap folds down over your airway so that food goes down the food pipe and not into your lungs. More than twenty muscles do this in the right order, in about a second, and you never once decide to do it.
+3. **Food pipe.** **Peristalsis** carries the ball down to your stomach in about 6 to 10 seconds.
+4. **Stomach.** Layers of muscle **churn** for 2 to 5 hours. At the bottom there is a ring of muscle acting as a gate: it stays shut until pieces are small enough — roughly the size of a grain of rice — so anything still too big is kept back and churned some more. Nothing leaves early.
+5. **Gut.** Now the food is a thin soup, and it is moved slowly along by peristalsis while enzymes work on it and your body takes up what it needs.
 
-- **Forces** (compression, shear, peristaltic waves) do the physical work
-- **Surface area** is the critical output — more surface means faster enzyme access
-- **Peristalsis** provides continuous transport through 9 meters of tract
-- **Timing** matters: the stomach holds food for hours to ensure thorough mixing before release
+**Why make crumbs? Here is the whole reason.**
 
-Without mechanical digestion, your enzymes would take **days** to break down a single meal instead of hours. Physics enables chemistry at biological speed.`,options:[{id:"done",label:"Complete P27",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 27 Complete — How Does Food Become Usable Energy?**
+Take a cube of food and cut it into 8 smaller cubes. You have exactly the same amount of food — but **twice as much surface**. Cut those again, and you double it again.
 
-- **Physics (P27):** Mechanical Digestion — grinding, churning, and peristalsis break food into small particles with maximum surface area
-- **Chemistry (C27):** Enzyme Reactions — specialized proteins catalyze the chemical breakdown of carbohydrates, proteins, and fats
-- **Biology (B27):** Digestive System — organs coordinate mechanical and chemical digestion into an integrated nutrient-extraction pipeline
+Enzymes can only work on a surface. They cannot reach the middle of a lump; they have to wait for the outside to come off first. So doubling the surface means twice as many enzymes can be at work at the same moment. The enzymes are no faster. There is simply more room for them, so they **access** the food — meaning they can reach it — all over it at once, instead of only at its skin.
+
+**Try it:** grind finely and churn hard. How much does the food's surface grow?
+
+Ready for a checkpoint?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"mechanism"}},options:[{id:"cp",label:"Test my understanding.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"**Checkpoint:** People say you should chew your food properly. Why would chewing more make digestion faster?",options:[{id:"right",label:"Chewing makes many small pieces out of a few big ones, and many small pieces have far more surface for enzymes to work on at once.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"Because chewing warms the food up, and warm food breaks down faster.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`Chewing barely warms food at all — and anyway, the food is about to sit inside you at body warmth for hours, which settles its temperature far more than your teeth ever could.
+
+The real answer is **surface**.
+
+Try this with sugar. Drop a sugar cube into a glass of water and watch how long it takes to vanish. Now stir the same amount of powdered sugar into another glass. The powder is gone almost at once. Same sugar, same water — but the powder has thousands of times more outside for the water to get at.
+
+Chewing turns your dinner into powder. A few big lumps become hundreds of small pieces, and every new piece brings fresh surface for enzymes to work on.
+
+Swallow a lump whole and your enzymes are left nibbling at its skin, working their way in from the outside, for hours longer than they needed to.`,options:[{id:"retry",label:"So it is about surface, and chewing is how I make more of it.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct. **Surface** is the bridge between the physics and the chemistry. Your teeth do not change the food one bit chemically — they just hand chemistry a much bigger surface to start on.
+
+And it is worth being clear about what does *not* change. Each enzyme works at exactly the same speed as before. Not one of them is hurrying. There is simply more space for more of them to work side by side.
+
+Grown-ups use this trick everywhere. Ground coffee gives up its flavour in seconds while a whole bean sits in hot water doing almost nothing. Kindling catches light while a log sits there. Same stuff, more surface, faster everything.
+
+Your back teeth have been doing it since before anybody worked out why.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Show me the big picture.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:** the physics of eating is all about making surface.
+
+- **Grinding** increases the surface; **churning** mixes the crumbs with acid and enzymes; **peristalsis** moves everything forward
+- **Surface** is the point of all three. Cut a cube into 8 and you have twice the surface for the same food
+- A **contraction** is one squeeze of a muscle, and peristalsis is a row of them passing along like a wave
+- Peristalsis is strong enough to work upside down, so gravity is a help rather than a need
+- The stomach's gate holds food back until the pieces are small enough, so nothing leaves too early
+- Chemistry is not made quicker. It is given more room
+
+Without the crushing and squeezing, your enzymes would need **days** to get through one meal instead of hours. Physics sets chemistry up; chemistry does the cutting; biology keeps the order.`,options:[{id:"done",label:"Complete P27",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 27 Complete — How Does Food Become Usable Energy?**
+
+- **Physics (P27): Mechanical Digestion** — grinding, churning and peristalsis turn a lump into crumbs with far more surface
+- **Chemistry (C27): Enzyme Reactions** — shaped tools cut the bonds in starchy food, protein and fat
+- **Biology (B27): Digestive System** — the organs keep the mechanical and chemical stages in the right order
 
 **Summary Table:**
-| Stage | Force Type | Key Outcome |
+| Stage | What squeezes | What you end up with |
 | --- | --- | --- |
-| Mouth | Compression & shear | Food fractured into small particles |
-| Stomach | Churning contractions | Mixing with acid → chyme |
-| Small intestine | Segmentation + peristalsis | Maximum enzyme contact |
-| Large intestine | Slow peristalsis | Water recovery, compaction |
+| Mouth | Teeth crushing and cutting | A few big pieces become hundreds of crumbs |
+| Stomach | Churning about 3 times a minute | A thick soup, well mixed with acid and enzymes |
+| Gut | Peristalsis, wave after wave | Soup kept moving while the enzymes finish |
 
 **Key takeaways:**
-- Mechanical digestion is about **forces** and **surface area**
-- **Peristalsis** moves food even against gravity
-- Smaller particles → exponentially faster chemical digestion
-- The stomach acts as both a mixer and a timed-release valve
-- Physics and chemistry work together at every stage
+- Mechanical digestion changes the size of food, never what it is made of
+- Cut a cube into 8 and the surface doubles — same food, twice the room to work
+- Enzymes can only work on a surface, so surface sets the pace
+- **Peristalsis** does not rely on gravity; it works upside down
+- Chewing properly really does help, and now you know exactly why
 
-✅ **Lesson P27 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function eI(){return{root:{id:"root",speaker:"AI",content:`After your teeth grind food into tiny pieces, how does your body actually break those molecules apart?
+✅ **Lesson P27 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function eI(){return{root:{id:"root",speaker:"AI",content:`Your teeth crush a mouthful of food into crumbs. Good start — but a crumb is still far too big for your body to use. Every piece has to come apart into bits so small you could never see them.
 
-**Visual legend:**
-- **Lock-and-key shape**: An **enzyme** binding to its **substrate** (the molecule it breaks down).
-- **Temperature gauge**: Enzyme activity changes with temperature — too hot or too cold and they stop working.
-- **pH scale bar**: Enzymes need the right acidity level. Stomach enzymes love acid; intestinal enzymes prefer neutral.
+Chewing cannot do that. Something else has to.
 
-**Key words:**
-- **Enzyme**: A biological **catalyst** — a protein that speeds up a specific chemical reaction without being consumed.
-- **Substrate**: The molecule an enzyme acts on. Each enzyme fits its substrate like a key fits a lock.
-- **Activation energy**: The energy barrier a reaction must overcome. Enzymes **lower** this barrier dramatically.
-- **Denaturation**: When heat or extreme pH unfolds an enzyme's 3D shape, destroying its function.
-- **Hydrolysis**: Breaking a bond by adding **water** — the main reaction type in digestion.
+Your body uses tiny tools called **enzymes**. An **enzyme** is a tool your body builds to take one exact thing apart. Not anything — one thing. The piece of food it works on is called its **substrate**. An enzyme fits its substrate the way one key fits one lock — when it takes hold we say it **binds** to it — and if the shape is wrong, nothing happens at all.
 
-Why can't food molecules just break apart on their own inside your body?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"chem_answer",label:"The bonds are too stable — enzymes lower the activation energy to break them.",nextNodeId:"correct",sentiment:"positive"},{id:"acid_answer",label:"Stomach acid does all the work by dissolving everything.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:"Stomach acid (HCl, pH ~2) is important — it **denatures proteins** (unfolds them) and kills bacteria. But acid alone can't efficiently break the specific bonds in carbohydrates, proteins, and fats. That requires **enzymes** — specialized protein catalysts that target specific bonds. Without enzymes, the chemical reactions of digestion would take **weeks** instead of hours. Acid creates the right environment; enzymes do the precision cutting.",options:[{id:"cont",label:"So enzymes are the real molecular scissors.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! Chemical digestion relies on **three classes of enzymes**:
+**What you will see:**
+- **Lock and key**: an enzyme closing around its substrate. Only the matching shape fits.
+- **Temperature gauge**: how warm things are. Enzymes work best at **37°C**, which is how warm you are inside. Too cold and they go slow; too hot and they are wrecked.
+- **pH scale**: **pH** is a number for how sour or how soapy a liquid is. Low numbers are sour, like lemon juice. 7 in the middle is plain water. High numbers are soapy. Your stomach is very sour — about **pH** 2. Further along, in your **gut**, it is soapy instead, about **pH** 8.
+- **Enzyme activity**: how much cutting is getting done right now.
 
-1. **Amylase** (carbohydrates) — Starts in the mouth! Salivary amylase breaks **starch** into **maltose** (a sugar). Pancreatic amylase continues in the small intestine.
-2. **Protease** (proteins) — **Pepsin** works in the acidic stomach (pH 2). **Trypsin** and **chymotrypsin** work in the alkaline intestine (pH 8). Each cuts proteins at different amino acid positions.
-3. **Lipase** (fats) — **Pancreatic lipase** breaks triglycerides into fatty acids and glycerol. Bile salts **emulsify** fat first (like dish soap on grease), creating tiny droplets for lipase to attack.
+One more word, because the screen uses it. The joins that hold food together have a proper name: each one is a **bond**. When an enzyme cuts food apart it does it by adding water to a bond. Breaking **bonds** apart by adding water is called **hydrolysis**, and it is how nearly all of digestion works.
 
-These three enzyme families create a **chemical disassembly line** — each specialized for one macronutrient type, each requiring specific **temperature** and **pH** conditions.
+So here is the question: why does food not simply fall apart by itself inside you?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"chem_answer",label:"Because the joins holding food together are strong. Something has to make the cutting easy, and that is what an enzyme does.",nextNodeId:"correct",sentiment:"positive"},{id:"acid_answer",label:"Stomach acid does the whole job by dissolving everything.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Stomach acid matters, so this is a good guess. **Acid** is a sour liquid, and your stomach's acid is strong stuff. It does two useful jobs: it makes floppy food parts unravel so they are easier to cut, and it kills most germs that came in with your dinner.
 
-Let's see how they work step by step.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"mech",label:"Show me the chemical stages of digestion.",nextNodeId:"mechanism"}]},mechanism:{id:"mechanism",speaker:"AI",content:`**Chemical digestion — step by step:**
+But acid is blunt. It cannot pick out the one join that needs cutting. Food is held together by particular joins, and acid simply does not know where they are.
 
-1. **Mouth (pH 7)**: Salivary **amylase** begins breaking starch → maltose. Lingual **lipase** starts on fats.
-2. **Stomach (pH 1.5-3.5)**: HCl denatures proteins. **Pepsin** (activated from pepsinogen by acid) cleaves proteins into shorter **peptides**.
-3. **Duodenum (pH 7-8)**: The pancreas releases a cocktail: **trypsin** (proteins), **pancreatic amylase** (starch), **pancreatic lipase** (fats). **Bile** from the liver emulsifies fats.
-4. **Small intestine wall**: **Brush border enzymes** (maltase, lactase, peptidases) perform the final cuts — disaccharides → monosaccharides, dipeptides → amino acids.
-5. **Absorption**: The end products — **glucose**, **amino acids**, **fatty acids** — are small enough to cross the intestinal wall into the blood.
+That is the enzyme's job. An enzyme goes to one exact join and nowhere else. Without enzymes, digesting a meal would take **weeks** instead of hours — the joins would come apart eventually, far too late to be any use to you.
 
-**Try it:** Adjust the temperature and pH sliders. Watch how enzyme activity peaks at the optimal point and drops off sharply outside it!
+So think of it as teamwork. Acid gets the food ready. Enzymes do the careful cutting.`,options:[{id:"cont",label:"So enzymes are the real scissors, and acid just prepares the food.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly. And you do not have one enzyme that does everything, because one shape cannot fit everything. You have a set, each for a different part of your dinner.
 
-Ready for a checkpoint?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"mechanism"}},options:[{id:"cp",label:"Yes, test my understanding.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"**Checkpoint:** What happens to an enzyme if the temperature rises well above 40°C?",options:[{id:"right",label:"It denatures — its 3D shape unfolds and it can no longer bind its substrate.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"It works even faster because heat always speeds up reactions.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:"Heat does speed up most chemical reactions — that's the **Arrhenius principle**. But enzymes are proteins with a precise 3D shape. Above ~40-50°C, thermal energy **breaks the weak bonds** (hydrogen bonds, hydrophobic interactions) that hold the enzyme's shape. The active site deforms, the substrate can't bind, and the reaction **stops**. This is **denaturation** — and for most enzymes, it's irreversible. That's why fever above 41°C is dangerous: critical enzymes start to fail.",options:[{id:"retry",label:"So there's an optimal temperature — not too hot, not too cold.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct! Every enzyme has an **optimal temperature** (usually 37°C for human enzymes) and an **optimal pH**. The activity curve looks like a bell shape — rising as temperature increases molecular collisions, then dropping sharply as denaturation destroys the enzyme's structure.
+1. **For starchy and sugary food.** **Carbohydrates** are the starchy and sugary parts of food — bread, rice, potato, fruit. The enzyme that cuts them is called **amylase**, and it starts work in your mouth. That is why a plain cracker slowly turns sweet if you hold it on your tongue: amylase is already cutting the starch into sugar while you wait.
+2. **For protein.** **Protein** is the stretchy, chewy part of food, found in beans, nuts, eggs and cheese. Two enzymes share this job, and they work in different places. **Pepsin** works in your sour stomach, at about **pH** 2. **Trypsin** takes over further along where it is soapy, at about **pH** 8. Swap them round and neither would work at all.
+3. **For fat.** The enzyme for fat is called **lipase**. Fat is awkward, because it clumps into big blobs and lipase can only work on the outside of a blob. So your body first squirts in a soapy liquid that breaks the big blob into thousands of tiny droplets — exactly what washing-up liquid does to greasy water. Thousands of small droplets have far more outside than one big blob, so lipase gets on much faster.
 
-This is why your body maintains temperature so precisely (**homeostasis**). Even a few degrees of change can significantly alter enzyme efficiency across thousands of reactions happening simultaneously.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Let's connect it all together.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:** Chemical digestion is a precisely orchestrated sequence of **enzyme-catalyzed hydrolysis reactions**.
+That is your **disassembly line**: to **disassemble** is to take something apart piece by piece. Each enzyme has one job, one shape, and one place it works best.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"mech",label:"Show me one enzyme doing its job.",nextNodeId:"mechanism"}]},mechanism:{id:"mechanism",speaker:"AI",content:`**Follow your dinner down, and watch who is working where:**
 
-- Each enzyme is **specific** to one type of bond and one set of conditions
-- **Temperature** and **pH** control enzyme shape and therefore function
-- The digestive tract creates **different chemical environments** (acidic stomach, alkaline intestine) to activate different enzyme sets in sequence
-- The end products — glucose, amino acids, fatty acids — are the universal fuel molecules that cells can actually use
+1. **Mouth.** Plain, neither sour nor soapy. **Amylase** in your spit starts cutting starch into sugar, and chewing keeps making more crumbs for it to reach.
+2. **Stomach.** Very sour, around **pH** 2. The acid makes protein unravel from a tight tangle into a loose thread, and **pepsin** cuts that thread into shorter pieces. Notice that pepsin needs the sourness — it would not work in your mouth.
+3. **Gut.** Now soapy, around **pH** 8, because a splash of something soapy is added as food leaves the stomach. **Trypsin** carries on cutting protein, more **amylase** finishes the starch, and **lipase** works through the fat droplets.
+4. **The gut wall.** The last cuts happen right at the wall, by enzymes standing in it. Whatever leaves here is small enough to pass through into your blood.
 
-Chemistry turns mechanical crumbs into molecular building blocks. Without enzymes, life's chemistry would be impossibly slow.`,options:[{id:"done",label:"Complete C27",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 27 Complete — How Does Food Become Usable Energy?**
+**And here is the step people miss — the enzyme is not used up.**
 
-- **Physics (P27):** Mechanical Digestion — forces grind, churn, and transport food to maximize surface area
-- **Chemistry (C27):** Enzyme Chemistry — amylase, protease, and lipase catalyze hydrolysis at optimal temperature and pH
-- **Biology (B27):** Digestive System — organs integrate mechanical and chemical stages into a coordinated nutrient pipeline
+1. **The enzyme binds its substrate.** The shape fits, and it closes around it.
+2. **Hydrolysis.** Water is added at the bond, and the bond gives way.
+3. **The pieces leave.** They are called the **products** — what you are left with after the change. The **products** are **released**, which means let go of.
+4. **The enzyme is recycled.** It springs back to its own shape, unchanged and ready, and catches the next piece. The same enzyme can do this thousands of times over.
+
+That round of work is the **catalytic cycle**. A **catalyst** is something that makes a change happen faster without being used up itself, and a **cycle** is a set of steps that comes back round to the start. An enzyme is a catalyst, which is why a tiny amount of it can get through an entire meal.
+
+**Try it:** find the **temperature** where activity is highest, then push past it and watch what happens.
+
+Ready for a checkpoint?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"mechanism"}},options:[{id:"cp",label:"Test my understanding.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"**Checkpoint:** Warmth usually makes things happen faster. What happens to an enzyme if the **temperature** climbs well past 40°C?",options:[{id:"right",label:"It stops working. An enzyme only works because of its shape, and too much heat wrecks the shape for good.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"It works faster and faster, because heat speeds things up.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`Half right, and the half that is wrong matters. Gentle warming really does speed an enzyme up: everything jiggles about more, so enzyme and substrate bump into each other more often.
+
+But an enzyme works **only** because of its shape. Take the shape away and there is no lock for the key.
+
+You have watched this happen. Crack an egg into a hot pan: the clear runny part turns white and solid, and it never goes back to runny however long you let it cool. Heat pulled the shapes apart for good. The same thing happens to an enzyme above about 40 to 50°C. Its careful shape falls open, its substrate no longer fits, and the cutting stops. Cooling it down does not mend it.
+
+So activity climbs as things warm — then falls off a cliff. Best at **37°C**, wrecked not far above.
+
+This is also why a very high fever is taken seriously. It is not the warmth itself. It is that your enzymes, all of them at once, begin to lose the shapes they need.`,options:[{id:"retry",label:"So it climbs with warmth and then collapses, because the shape is the whole thing.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct. Every enzyme has one **temperature** it likes best — for yours it is **37°C**, which is exactly how warm you keep yourself inside — and one **pH** it likes best.
+
+Draw enzyme activity against temperature and you get a hill, not a slope. Up the near side as warmth gets things bumping into each other more often. Over the top. Then straight down the far side as the shapes fall apart, and that far side does not come back.
+
+Which explains something about you. Your body works hard to hold its inside temperature almost perfectly steady, whether you are in snow or in sunshine. Now you know what it is protecting. Thousands of different enzymes are working in you at this moment, and every one of them has the same favourite warmth.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Show me the big picture.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:** digestion is a set of shaped tools, each working in its own place.
+
+- Each **enzyme** cuts one kind of join and ignores everything else
+- Cutting is **hydrolysis**: water is added at a **bond** and the bond gives way
+- **Temperature** and **pH** decide an enzyme's shape, and the shape is the tool
+- Your insides are sour in one place and soapy in the next on purpose, so that different enzymes take their turns in order
+- An enzyme is a **catalyst**: it is not used up, so it works again and again
+- What comes out at the end — sugar, protein pieces, fat pieces — is small enough for a cell to burn for energy
+
+Physics makes the crumbs. Chemistry cuts the joins. Biology puts the whole line in order.`,options:[{id:"done",label:"Complete C27",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 27 Complete — How Does Food Become Usable Energy?**
+
+- **Physics (P27): Mechanical Digestion** — chewing and squeezing make crumbs, and crumbs give enzymes more surface to work on
+- **Chemistry (C27): Enzyme Chemistry** — amylase, pepsin, trypsin and lipase cut the joins by **hydrolysis**, each at its own **temperature** and **pH**
+- **Biology (B27): Digestive System** — the organs put the mechanical and chemical stages in the right order
 
 **Summary Table:**
-| Enzyme Class | Target | Location | Optimal pH | End Product |
+| Enzyme | What it cuts | Where it works | Sour or soapy | What you get |
 | --- | --- | --- | --- | --- |
-| Amylase | Starch | Mouth, intestine | 7 | Glucose |
-| Protease | Protein | Stomach, intestine | 2-8 | Amino acids |
-| Lipase | Fat | Intestine | 7-8 | Fatty acids |
+| Amylase | Starchy food | Mouth, then gut | Neither, then soapy | Sugar |
+| Pepsin | Protein | Stomach | Very sour, **pH** 2 | Shorter protein pieces |
+| Trypsin | Protein | Gut | Soapy, **pH** 8 | Smaller pieces still |
+| Lipase | Fat | Gut | Soapy, **pH** 8 | Fat pieces |
 
 **Key takeaways:**
-- Enzymes are biological **catalysts** that lower activation energy
-- Each enzyme has an optimal **temperature** (~37°C) and **pH**
-- **Denaturation** destroys enzyme function irreversibly
-- The digestive tract creates sequential chemical environments
-- End products (glucose, amino acids, fatty acids) are the universal fuel
+- One enzyme, one job: the shape decides, and nothing else
+- Water does the breaking, at the **bonds** that hold food together — that is **hydrolysis**
+- **37°C** is the best warmth; well past 40°C the shape is wrecked and does not come back
+- Sour stomach, soapy gut: different rooms for different tools
+- Enzymes are not used up, so a little goes a very long way
 
-✅ **Lesson C27 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function tI(){return{root:{id:"root",speaker:"AI",content:`Your digestive system is a **9-meter pipeline** with specialized organs working in sequence. How do all these parts coordinate to turn a meal into energy your cells can use?
+✅ **Lesson C27 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function tI(){return{root:{id:"root",speaker:"AI",content:`Laid out straight, the tube your food travels down is about **9 metres** long — longer than a bus. Along it sit different body parts, each doing one job and then handing the food on. How do they all keep in step?
 
-**Visual legend:**
-- **Organ diagram**: The digestive tract from mouth to large intestine, with each organ highlighted.
-- **Three sliders**: Control **mechanical efficiency** (grinding/churning quality), **enzyme level** (chemical digestion strength), and **absorption rate** (intestinal surface function).
-- **Nutrient bar**: Shows how much usable energy is extracted at the current settings.
+In the two lessons before this one you met the two halves of the work. **P27** was the crushing: teeth and squeezing muscles making crumbs, so there is more surface to work on. **C27** was the cutting: enzymes, the shaped tools that take each **bond** apart — a **bond** being a join holding food together. This lesson is about the two of them working as one line.
 
-**Key words:**
-- **Digestive tract**: The continuous tube from mouth → esophagus → stomach → small intestine → large intestine.
-- **Mechanical efficiency**: How well food is physically broken down (chewing, churning).
-- **Enzyme level**: The concentration and activity of digestive enzymes.
-- **Absorption**: The transfer of nutrients from the intestine into the bloodstream via **villi**.
-- **Integration**: How organs coordinate timing, pH, and signals to optimize the whole process.
+**What you will see:**
+- **Body diagram**: the whole tube from mouth to the end, lighting up part by part.
+- **Three dials**: **mechanical** (how well the crushing is going — *mechanical* means to do with pushing and squashing), **enzymes** (how much cutting is going on), and **absorption**. **Absorption** is food passing out of the tube and into your blood, where your body can finally use it. Until that happens, food is still only travelling through you.
+- **Nutrient bar**: how much you actually get out of your dinner. A **nutrient** is any useful part of food, and getting it out is called **nutrient extraction** — to **extract** something is to get it out of whatever it was inside.
 
-What do you think would happen to nutrient extraction if one part of this system underperformed?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"system_answer",label:"The whole system would be less efficient — each stage depends on the one before it.",nextNodeId:"correct",sentiment:"positive"},{id:"backup_answer",label:"Other organs would compensate automatically.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:"There is some compensation — for example, the small intestine can partially make up for poor chewing by longer processing time. But the system is **sequential**: each organ depends on the output of the previous one. If you don't chew well, the stomach must work harder and longer. If the stomach doesn't acidify properly, protein digestion suffers downstream. The system is **integrated**, not independent. Poor performance at any stage reduces the efficiency of every stage that follows.",options:[{id:"cont",label:"So it's a chain where each link matters.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! The digestive system integrates **three functional layers**:
+Here is the question. If you chew badly, can the rest of the line simply make up for it?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"bio_answer",label:"Only partly. Each part is handed what the one before it produced, so a poor start makes more work for everything after it.",nextNodeId:"correct",sentiment:"positive"},{id:"independent_answer",label:"Yes — each part works on its own, so one weak step does not matter.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`There is some making up for it. Swallow food badly chewed and your stomach will churn it for longer, which does help.
 
-1. **Mechanical processing** (mouth, stomach) — Grinding and churning prepare food physically. Output: small particles with high surface area.
-2. **Chemical processing** (stomach, pancreas, small intestine) — Enzymes catalyze hydrolysis. Output: simple molecules (glucose, amino acids, fatty acids).
-3. **Absorption** (small intestine, large intestine) — Villi and microvilli provide **~250 m²** of absorptive surface. Nutrients cross into blood and lymph.
+But the parts do not work on their own. They work **in order**, and each one can only start with what the one before it handed over.
 
-These three layers form a **pipeline** — mechanical feeds chemical, chemical feeds absorption. The efficiency of the whole system is limited by its **weakest link**.
+Think of a line of people making sandwiches. One slices bread, the next spreads butter, the last cuts them in half. If the slicer is slow, everyone after them stands waiting — and the butterer cannot fix bad slices, because slicing is not their job.
 
-Use the sliders to test: what happens when you change one layer while keeping the others constant?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"organs",label:"Walk me through each organ's role.",nextNodeId:"mechanism"}]},mechanism:{id:"mechanism",speaker:"AI",content:`**The organ pipeline — integrated roles:**
+Your tube is that line. Chew badly and the crumbs are too big, so your stomach has to work longer and harder to make up the difference. If your stomach is not sour enough, protein arrives further along still tangled up, and the enzymes there cannot untangle it — untangling was the stomach's job.
 
-1. **Mouth**: Mechanical (teeth) + chemical (salivary amylase). Produces a **bolus**.
-2. **Esophagus**: Transport only — peristalsis carries the bolus to the stomach in ~8 seconds.
-3. **Stomach**: Mechanical (churning, 3 muscle layers) + chemical (HCl + pepsin). Produces **chyme**. Holds food 2-5 hours.
-4. **Liver & Gallbladder**: Produce and store **bile** for fat emulsification. No direct food contact.
-5. **Pancreas**: Secretes enzyme cocktail (amylase, trypsin, lipase) + bicarbonate to neutralize stomach acid.
-6. **Small intestine** (6 m): Maximum absorption zone. **Villi** increase surface area 600×. Brush border enzymes complete final breakdown.
-7. **Large intestine** (1.5 m): Water and electrolyte recovery. Gut bacteria ferment remaining fiber, producing vitamins (K, B12).
+So the line is **joined up**, not a set of separate parts. Whichever stage does worst drags on everything after it.`,options:[{id:"cont",label:"So it is one joined-up line, and a weak step early on costs me later.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly. The line does three kinds of work, in this order, and your three dials are those three kinds.
 
-**Coordination signals**: **Hormones** (gastrin, secretin, CCK) tell each organ when to activate based on what's arriving. It's a **feedback-controlled assembly line**.
+1. **Mechanical** — mouth and stomach. Crushing and churning: the **prep** work, meaning getting everything ready for what comes next. What comes out: small crumbs with plenty of surface. This was **P27**.
+2. **Chemical** — stomach and gut, where the real **breakdown** happens. Enzymes cut the **bonds** by adding water at the join. What comes out: pieces small enough to pass through a wall — sugar from starchy food, and the small parts of protein and of fat. This was **C27**.
+3. **Absorption** — the gut. Those small pieces cross the gut wall into your blood.
 
-**Try it:** Set all three sliders high to see maximum nutrient extraction. Then drop one at a time to find the bottleneck.
+That third stage needs a trick, and it is a good one. Your gut wall is not smooth. It is covered in millions of tiny fingers, and each of those is covered in smaller fingers still. All that folding means the inside of your gut has about as much surface as a **badminton court** — folded up and packed into your middle.
 
-Ready for a checkpoint?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"mechanism"}},options:[{id:"cp",label:"Let's test my understanding.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"**Checkpoint:** If you set mechanical efficiency high but enzyme level very low, what would you expect?",options:[{id:"right",label:"Food would be well-ground but poorly broken down chemically — nutrient extraction drops.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"High mechanical efficiency would compensate for low enzymes — nutrient output stays the same.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:"Not quite. Mechanical digestion creates **surface area**, but it can't break chemical bonds. Without sufficient enzymes, starch stays as starch, proteins stay as proteins — they can't cross the intestinal wall. It's like crushing a rock into sand but having no solvent to dissolve the minerals. Both stages are **necessary** — you need physical preparation AND chemical breakdown to extract nutrients. The system's output is limited by whichever stage is weakest.",options:[{id:"retry",label:"So both mechanical and chemical stages are essential — one can't replace the other.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct! The digestive system is a **serial pipeline** — the output of each stage is the input of the next. High mechanical efficiency gives enzymes more surface to work on, but without the enzymes themselves, that surface advantage is wasted. Similarly, even the best enzymes can't work efficiently on large, unground food chunks.
+And this is the same idea as P27, one step further on. Crushing made more surface so enzymes could reach the food. Folding makes more surface so your blood can collect it. Twice, in one meal, the answer is more surface.
 
-This is why conditions like **enzyme deficiency** (e.g., lactose intolerance — missing **lactase**) cause problems even when everything else works perfectly. One missing link affects the whole chain.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Let's see the full picture.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:** The digestive system is a masterpiece of **biological integration**.
+Put all three together and the whole thing is one **integration pipeline** — a **pipeline** is a line of stages that hand on to each other, and **integration** means separate parts working as a single whole.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"explore"}},options:[{id:"mech",label:"Who does what along the line?",nextNodeId:"mechanism"}]},mechanism:{id:"mechanism",speaker:"AI",content:`**Every part, and its one job:**
 
-- **Sequential processing**: Each organ builds on the output of the previous one
-- **Three functional layers**: Mechanical → Chemical → Absorption operate as a coordinated pipeline
-- **Hormonal coordination**: Gastrin, secretin, and CCK synchronize organ activation
-- **Bottleneck principle**: Overall efficiency is limited by the weakest stage
-- **Massive surface area**: 250 m² of intestinal surface ensures nothing is wasted
+1. **Mouth** — crushing and cutting at the same time. Teeth make crumbs; the enzyme in your spit starts on starchy food. Out comes a soft ball of food.
+2. **Food pipe** — carrying, and nothing else. Rings of muscle squeeze one after another so that a travelling squeeze pushes the ball down to the stomach in about 8 seconds. That travelling squeeze is called **peristalsis**.
+3. **Stomach** — crushing and cutting again. Muscle layers churn while acid untangles protein and an enzyme cuts it into shorter pieces. Food waits here 2 to 5 hours. Out comes a thick soup.
+4. **Liver** — makes a soapy liquid, ready for later. It never touches your food. The liquid is stored nearby until fat arrives and then squirted in to break big fat blobs into tiny droplets.
+5. **Pancreas** — sends in the main set of enzymes, and something else just as important. The soup arriving from the stomach is far too sour for those enzymes to work in, so the pancreas adds a soapy liquid to cancel the acid out. To cancel out an acid like that is to **neutralize** it — the liquid is very close to what is in indigestion medicine, and it does the same job.
+6. **Gut** — the last cuts and all of the **absorption**. This is where the fingery folds are, and where most of what you eat finally crosses into your blood.
+7. **Large gut** — takes back the water. By now the useful parts are gone, so what is left is mostly water, and your body reclaims it rather than wasting it.
 
-From a single bite to cellular fuel, the journey takes **24-72 hours** and involves dozens of organs, enzymes, and control signals working in concert. This is biological engineering at its finest.`,options:[{id:"done",label:"Complete B27",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 27 Complete — How Does Food Become Usable Energy?**
+**And how does everyone know when to start?** Not by clock, and not by you deciding. Each part sends **hormones** — a **hormone** is a chemical message your body puts into your blood, so that a part somewhere else knows what to do. Food arriving in your stomach sets off a message that tells the pancreas to get its enzymes ready; fat arriving further on sets off a message that calls for the soapy liquid. That is how the parts **coordinate**, which means getting their timing to fit together.
 
-- **Physics (P27):** Mechanical Digestion — forces grind, churn, and transport food to maximize surface area
-- **Chemistry (C27):** Enzyme Chemistry — amylase, protease, and lipase catalyze hydrolysis at optimal temperature and pH
-- **Biology (B27):** Digestive Integration — organs coordinate mechanical, chemical, and absorptive stages into one pipeline
+**Try it:** turn the **mechanical** dial right up but the **enzymes** dial right down, and see what you end up getting out.
+
+Ready for a checkpoint?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"mechanism"}},options:[{id:"cp",label:"Test my understanding.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:"**Checkpoint:** Suppose the crushing works perfectly — beautifully chewed food, plenty of churning — but there are hardly any enzymes. What do you get out of the meal?",options:[{id:"right",label:"Very little. Crushing makes surface but cannot cut a single bond, so the pieces stay too big to cross into the blood.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"Nearly everything — the food is in tiny pieces, so it can soak straight into the blood.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`Here is the thing those two stages do differently. Crushing makes food **smaller**. Enzymes make it **different**.
+
+A crumb of bread is smaller than a slice, but it is still bread. The starch in it is still starch: long chains, far too big to cross the gut wall. Only an enzyme can cut those chains into single sugars, and cutting is the one thing no amount of chewing can do.
+
+It is like crushing a rock to sand when what you wanted was the gold inside. The sand is beautifully fine. There is still no gold in your hand, because grinding was never going to separate it.
+
+So you need both, and in order: crushing to open up the surface, then cutting to make the pieces small enough to pass through. Whichever of the two is weakest decides what you get, and the other one cannot cover for it.
+
+This really happens. Some people cannot make the enzyme that cuts the sugar in milk. Everything else about their digestion works perfectly — but that one sugar goes through uncut and gives them a sore stomach. It is called being **intolerant** to it, which means their body cannot deal with that one thing. One missing tool out of thousands, and you notice.`,options:[{id:"retry",label:"So crushing changes the size and enzymes change the substance — I need both.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct. What each stage hands on becomes what the next one starts with, so the weakest stage sets what the whole line manages. That is a **bottleneck** — the narrow neck of a bottle decides how fast it pours, however wide the rest of the bottle is.
+
+It cuts both ways, which is worth noticing:
+- Perfect crushing with no enzymes gets you almost nothing. All that surface, and nothing to cut with.
+- Perfect enzymes with no crushing gets you very little either. The best tools in the world, left nibbling at the outside of a lump.
+- Both working, and even a modest amount of each, and you get most of your dinner.
+
+So the answer to "which stage matters most?" is: the one going worst at the time.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Show me the big picture.",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**Discovery:** three Big Idea 27 lessons, one line of work.
+
+- **In order**: each part is handed what the one before it made, so the order is not a detail — it is the design
+- **Three kinds of work**: **mechanical** crushing, then chemical cutting, then **absorption** into the blood
+- **Hormones** keep the timing right, sending word ahead so each part is ready before the food arrives
+- **The weakest stage decides** what you get out of a meal, however good the others are
+- **Surface, twice over**: crushed crumbs give enzymes their room, folded gut walls give your blood its room — about a badminton court of it
+- **Nutrient extraction** is the whole point, and the job only **completes** — finishes properly — once the food is in your blood
+
+Physics makes the crumbs. Chemistry cuts the bonds. Biology puts them in order and keeps time. The three of them **united** are how one bite becomes **cellular** fuel — fuel inside your **cells**, the tiny building blocks you are made of.`,options:[{id:"done",label:"Complete B27",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 27 Complete — How Does Food Become Usable Energy?**
+
+- **Physics (P27): Mechanical Digestion** — grinding, churning and peristalsis make crumbs with far more surface
+- **Chemistry (C27): Enzyme Chemistry** — amylase, pepsin, trypsin and lipase cut the bonds, each at its own temperature and **pH**
+- **Biology (B27): Digestive Integration** — the parts put crushing, cutting and **absorption** in order, and **hormones** keep them in step
 
 **Summary Table:**
-| Layer | Key Organs | Function | Output |
+| Kind of work | Which parts | What it does | What it hands on |
 | --- | --- | --- | --- |
-| Mechanical | Mouth, stomach | Grind, churn, transport | Small particles |
-| Chemical | Stomach, pancreas, intestine | Enzyme-catalyzed hydrolysis | Glucose, amino acids, fatty acids |
-| Absorption | Small intestine, large intestine | Nutrient transfer to blood | Cellular fuel |
+| Mechanical | Mouth, stomach | Crushes and churns | Crumbs with plenty of surface |
+| Chemical | Stomach, pancreas, gut | Cuts the bonds with water | Pieces small enough to pass a wall |
+| Absorption | Gut, large gut | Takes them into the blood | Fuel your cells can burn |
 
 **Key takeaways:**
-- Digestion is a **serial pipeline** — each stage feeds the next
-- **Hormones** coordinate organ timing and activation
-- System efficiency = weakest link
-- **250 m²** of absorptive surface maximizes nutrient capture
-- Physics, chemistry, and biology are inseparable in this system
+- The line works in order, and a weak early stage costs every stage after it
+- Crushing changes size; enzymes change substance. You need both
+- **Hormones** are messages in the blood, and they are why the parts keep time
+- More surface, twice: crumbs for the enzymes, folds for the blood
+- Food is not really yours until **absorption** — until then it is only passing through
 
 ✅ **Lesson B27 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function nI(){return{root:{id:"root",speaker:"AI",content:`Your heart pumps blood through **~100,000 km** of blood vessels — enough to circle the Earth twice. How does physics keep everything flowing?
 
