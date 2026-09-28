@@ -1402,13 +1402,13 @@ Watch the display:
 - Breathing slows to just a few breaths per minute
 - It won't eat, drink, or go to the bathroom for **5-7 MONTHS!**
 
-The bear lives off **stored body fat** — it ate huge amounts in autumn to prepare. Its metabolism slows by ~75%!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"hibernation"}},options:[{id:"how",label:"How can it survive without eating?!",nextNodeId:"hibernation_detail"},{id:"fox",label:"What about the arctic fox?",nextNodeId:"insulation_intro"}]},hibernation_detail:{id:"hibernation_detail",speaker:"AI",content:`It's all about **energy conservation**! 🔋
+The bear lives off **stored body fat** — it ate huge amounts in autumn to prepare. Its **metabolism** — all the chemical work going on inside its body — slows by about 75%!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"hibernation"}},options:[{id:"how",label:"How can it survive without eating?!",nextNodeId:"hibernation_detail"},{id:"fox",label:"What about the arctic fox?",nextNodeId:"insulation_intro"}]},hibernation_detail:{id:"hibernation_detail",speaker:"AI",content:`It's all about **energy conservation**! 🔋
 
 A bear burns ~6,000 calories/day when active. During hibernation, that drops to about **1,500 calories/day** — all from stored fat.
 
 By slowing its heartbeat and cooling its body, the bear uses far less energy. It's like putting your phone on ultra power-saving mode! 📱
 
-🔗 *P8 Connection (Heat Transfer):* The cave acts as **insulation** — rock blocks wind (convection) and the small entrance reduces heat loss. The bear's own body heat warms the small space, just like how P8 showed that reducing conduction and convection keeps things warm!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"hibernation"}},options:[{id:"fox",label:"Now show me the arctic fox!",nextNodeId:"insulation_intro"}]},insulation_intro:{id:"insulation_intro",speaker:"AI",content:`**Strategy 3: Insulation** 🦊🧥
+🔗 *P8 Connection (Heat Transfer):* The cave acts as **insulation** — rock blocks wind, so heat is not carried away by moving air — that carrying away is called **convection** and the small entrance reduces heat loss. The bear's own body heat warms the small space, just like how P8 showed that reducing conduction and convection keeps things warm!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"hibernation"}},options:[{id:"fox",label:"Now show me the arctic fox!",nextNodeId:"insulation_intro"}]},insulation_intro:{id:"insulation_intro",speaker:"AI",content:`**Strategy 3: Insulation** 🦊🧥
 
 The arctic fox doesn't migrate OR hibernate — it stays active all winter at **-40°C!** How?!
 
@@ -1432,7 +1432,7 @@ Many desert animals — like geckos, scorpions, and desert mice — are active *
 
 **Why do some desert animals come out only at night?**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"correct",label:"The desert is dangerously hot during the day — by being nocturnal, they avoid overheating and losing water!",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong1",label:"Because they're scared of the sunlight",nextNodeId:"checkpoint_wrong1",sentiment:"negative"},{id:"wrong2",label:"Because their food only grows at night",nextNodeId:"checkpoint_wrong2",sentiment:"negative"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`✅ **Excellent!** That's spot on!
 
-Daytime desert heat (50°C+) would cause deadly **overheating** and rapid **water loss** through evaporation. By hiding underground during the day, animals stay cool and conserve precious water.
+Daytime desert heat (50°C+) would cause deadly **overheating** and rapid **water loss** through **evaporation**, which is water drying away into the air and taking heat with it. By hiding underground during the day, animals stay cool and conserve precious water.
 
 At night (15-20°C), they can be active without wasting energy on cooling down. It's a brilliant survival strategy! 🦎🌙`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint",correct:!0}},options:[{id:"discovery",label:"Let's see everything we learned!",nextNodeId:"discovery"}]},checkpoint_wrong1:{id:"checkpoint_wrong1",speaker:"AI",content:`Not quite! Animals aren't afraid of sunlight. 🤔
 
@@ -1939,13 +1939,13 @@ These gases rise into clouds and mix with water droplets to form **acid rain** �
 
 Watch the SO₂ clouds form and the rain damage the trees below!
 
-🔗 **Link to B10:** Acid rain destroys **ecosystems** — entire forests and lakes can die, taking all their biodiversity with them.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"acid_rain"}},options:[{id:"to_ozone",label:"What about the ozone layer I've heard of?",nextNodeId:"ozone"}]},ozone:{id:"ozone",speaker:"AI",content:`🛡️ **The Ozone Layer — Good Ozone vs Bad Ozone**
+🔗 **Link to B10:** Acid rain destroys **ecosystems** — entire forests and lakes can die, taking all their **biodiversity** with them — **biodiversity** means the whole variety of living things in a place.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"acid_rain"}},options:[{id:"to_ozone",label:"What about the ozone layer I've heard of?",nextNodeId:"ozone"}]},ozone:{id:"ozone",speaker:"AI",content:`🛡️ **The Ozone Layer — Good Ozone vs Bad Ozone**
 
 Here's a twist: ozone (O₃) can be **good** OR **bad** depending on WHERE it is!
 
 | Location | Type | What it does |
 |----------|------|-------------|
-| ☁️ High up (stratosphere) | **Good ozone** | Blocks dangerous **UV** (ultraviolet) rays from the Sun |
+| ☁️ High up (the **stratosphere**, a layer of air far above the clouds) | **Good ozone** | Blocks dangerous **UV** (ultraviolet) rays from the Sun |
 | 🏙️ Ground level | **Bad ozone** (smog) | Irritates lungs, harms plants |
 
 **Good ozone** is like a sunscreen for the whole planet. But chemicals called **CFCs** (chlorofluorocarbons) punched a **hole** in it, letting harmful UV rays through — causing sunburn and skin cancer.
@@ -1987,7 +1987,7 @@ The Sun sends the same energy either way — CO₂ just keeps more of it from es
 |-----------|--------|--------|
 | CO₂ | Burning fossil fuels | Greenhouse effect → global warming 🌡️ |
 | SO₂ / NOₓ | Factories & cars | Acid rain → kills forests & lakes 🌧️ |
-| CFCs | Old refrigerants & sprays | Ozone hole → UV damage ☀️ |
+| CFCs | Old **refrigerants** (the chemicals that make fridges cold) & sprays | Ozone hole → UV damage ☀️ |
 | Ground ozone | Car exhaust + sunlight | Smog → breathing problems 🌫️ |
 
 **Key Insight:** These aren't separate problems — they're all connected! Burning fossil fuels causes greenhouse warming AND acid rain AND smog, all at the same time.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"discovery"}},options:[{id:"finish",label:"It's all connected to what we burn!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links:**
@@ -2482,9 +2482,9 @@ In all three: **the shape and arrangement of parts determines what a system can 
 
 ✅ **Lesson B13 Complete!**`,options:[]}}),m2=()=>({root:{id:"root",speaker:"AI",content:`Welcome to the Wave & Signal Lab! 📡
 
-Look at the oscilloscope display — it's showing a wave traveling from left to right. This could be a sound wave, radio wave, or electrical signal.
+Look at the **oscilloscope** display — an **oscilloscope** is a screen that draws the shape of a wave so you can look at it — it's showing a wave traveling from left to right. This could be a sound wave, radio wave, or electrical signal.
 
-Here's a classic question: which do you think travels faster — light (electromagnetic wave) or sound?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",waveType:"sine",frequency:2,amplitude:50}},options:[{id:"light",label:"Light — about 300,000 km/second!",nextNodeId:"correct_light",sentiment:"positive"},{id:"sound",label:"Sound — you can hear explosions before you see the flash.",nextNodeId:"misconception_sound",sentiment:"negative"},{id:"same",label:"They travel at the same speed.",nextNodeId:"hint_speed",sentiment:"neutral"}]},misconception_sound:{id:"misconception_sound",speaker:"AI",content:`Actually it's the other way around — you see things before you hear them! ⚡
+Here's a classic question: which do you think travels faster — light (an **electromagnetic** wave, which means it is made of electricity and magnetism moving along together) or sound?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",waveType:"sine",frequency:2,amplitude:50}},options:[{id:"light",label:"Light — about 300,000 km/second!",nextNodeId:"correct_light",sentiment:"positive"},{id:"sound",label:"Sound — you can hear explosions before you see the flash.",nextNodeId:"misconception_sound",sentiment:"negative"},{id:"same",label:"They travel at the same speed.",nextNodeId:"hint_speed",sentiment:"neutral"}]},misconception_sound:{id:"misconception_sound",speaker:"AI",content:`Actually it's the other way around — you see things before you hear them! ⚡
 
 Think of lightning: you see the flash instantly, then hear the thunder seconds later. Light reaches you at **300,000 km/s**, sound travels at just **0.34 km/s** — light is nearly a million times faster!`,options:[{id:"thunder",label:"Of course — thunder comes after lightning! Light wins.",nextNodeId:"correct_light"}]},hint_speed:{id:"hint_speed",speaker:"AI",content:"They travel through VERY different mechanisms! Sound is a pressure wave that needs matter. Light is an electromagnetic wave that travels through vacuum at the ultimate speed limit — 300,000 km/s. 🌌",options:[{id:"light_faster",label:"Light is much faster — it doesn't need matter to travel!",nextNodeId:"correct_light"}]},correct_light:{id:"correct_light",speaker:"AI",content:`Exactly! Light travels at about **300,000 km/s** in a vacuum — the speed limit of the universe.
 
@@ -2498,7 +2498,7 @@ Try the **Frequency slider** — notice how wavelength and frequency are inverse
 
 Now adjust the **Amplitude** slider. What changes about the wave?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"amplitude",showAmpSlider:!0}},options:[{id:"taller",label:"It gets taller — the peaks are higher.",nextNodeId:"digital_intro"}]},digital_intro:{id:"digital_intro",speaker:"AI",content:`Right! A bigger amplitude carries more energy. Now here's where it gets modern:
 
-Your phone uses **digital signals** — 1s and 0s. But here's the thing a lot of people miss: those 1s and 0s are still transmitted as **physical waves**. The wave just switches between two amplitudes (high = 1, low = 0).
+Your phone uses **digital signals** — 1s and 0s. But here's the thing a lot of people miss: those 1s and 0s are still transmitted as **physical waves**. The wave just switches between two **amplitudes** — an **amplitude** is how tall a wave is (high = 1, low = 0).
 
 Switch the oscilloscope to **Digital mode** in the sim — see the square wave!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"digital",waveType:"square",showDigitalMode:!0}},options:[{id:"saw_digital",label:"It's a square wave — ON/OFF pattern = 1s and 0s!",nextNodeId:"encoding"}]},encoding:{id:"encoding",speaker:"AI",content:`Exactly! Let's encode a letter:
 
@@ -2685,9 +2685,9 @@ Try changing the temperature slider in the sim!`,onEnterAction:{type:"SET_VISUAL
 ✅ Raising temperature → shifts toward endothermic direction
 ✅ Used in: industrial chemistry, blood pH buffering, atmospheric chemistry!
 
-**Real-world:** Your kidneys maintain blood equilibria 24/7 using these exact principles.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[{id:"done",label:"Equilibrium equilibrated in my brain!",nextNodeId:"done"}]},done:{id:"done",speaker:"AI",content:`Excellent equilibrium expertise! ⚗️
+**Real-world:** Your kidneys hold several balances in your blood steady at once — several **equilibria**, which is just the plural of equilibrium — all day and all night using these exact principles.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[{id:"done",label:"Equilibrium equilibrated in my brain!",nextNodeId:"done"}]},done:{id:"done",speaker:"AI",content:`Excellent equilibrium expertise! ⚗️
 
-Connect to **P15 (Pendulum)** to see physical oscillation balance, or **B15 (Predator-Prey)** to watch ecological equilibrium — balance in the natural world!`,options:[]}}),w2=()=>({root:{id:"root",speaker:"AI",content:`Welcome to the Ecology Lab! 🐺
+Connect to **P15 (Pendulum)** to see the same balance as a swinging **oscillation** — something moving steadily back and forth, or **B15 (Predator-Prey)** to watch **ecological** equilibrium — **ecological** means to do with how living things and their surroundings affect one another — balance in the natural world!`,options:[]}}),w2=()=>({root:{id:"root",speaker:"AI",content:`Welcome to the Ecology Lab! 🐺
 
 Watch the graph update in real time — deer (green line) and wolves (red line) both have populations that change over time. This is a classic predator-prey simulation.
 
@@ -2709,9 +2709,9 @@ The core cycle:
 5. 🐺 Wolves decrease (less deer to eat)
 6. → Back to step 1!
 
-Press **Start** in the sim and watch this cycle!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"running",running:!0,showCycle:!0}},options:[{id:"saw_cycle",label:"I see the sine-wave oscillation — wolves and deer trade positions!",nextNodeId:"time_lag"}]},time_lag:{id:"time_lag",speaker:"AI",content:`Notice the **time lag** — wolf population peaks AFTER deer population peaks. Makes sense: wolves need time to breed after finding abundant food!
+Press **Start** in the sim and watch this cycle!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"running",running:!0,showCycle:!0}},options:[{id:"saw_cycle",label:"I see the smooth up-and-down **oscillation** — wolves and deer trade positions!",nextNodeId:"time_lag"}]},time_lag:{id:"time_lag",speaker:"AI",content:`Notice the **time lag** — wolf population peaks AFTER deer population peaks. Makes sense: wolves need time to breed after finding abundant food!
 
-This lag is what creates oscillation instead of a single crash. Without it, predators would always track prey perfectly and there'd be no cycles.
+This lag is what creates **oscillation** — numbers swinging up and down over and over — instead of a single crash. Without it, predators would always track prey perfectly and there'd be no cycles.
 
 Now try **removing all wolves** (set wolves to 0) in the sim — does the deer population stabilize?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"remove_wolves",showWolfControl:!0}},options:[{id:"crashed",label:"Deer exploded then crashed — just like Kaibab!",nextNodeId:"reintroduce"}]},reintroduce:{id:"reintroduce",speaker:"AI",content:`History recreated! Now try **reintroducing wolves** while deer are very high.
 
@@ -2723,16 +2723,16 @@ This is exactly what happened in Yellowstone in 1995 — the first wolf reintrod
 This is a **trophic cascade** — predators changing the whole landscape, not just prey numbers. 🏞️`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"reintroduce",showReintroduceButton:!0}},options:[{id:"reintroduced",label:"After reintroduction, both populations settled into stable cycles!",nextNodeId:"summary"}]},summary:{id:"summary",speaker:"AI",content:`🌟 **Predator-Prey Dynamics Mastered:**
 
 ✅ Predators stabilize prey populations — preventing boom-bust
-✅ Lotka-Volterra: oscillating populations with time lag
+✅ Predator and prey numbers keep **oscillating** — swinging up and down, over and over — with one lagging behind the other
 ✅ Removing predators → prey overshoots → crashes below original level
 ✅ Trophic cascades: predator effects ripple through entire ecosystems
 ✅ Yellowstone wolves: changed riverbanks by changing elk behavior!
 
-**Big picture:** Balance in nature is dynamic (like chemical equilibrium!) — not static. Disruption causes oscillation, recovery takes time. 🌍`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[{id:"done",label:"Ecology makes sense! I'll never look at wolves the same way.",nextNodeId:"done"}]},done:{id:"done",speaker:"AI",content:`🔗 **Big Idea 15 Complete — How Do Systems Find Balance?**
+**Big picture:** Balance in nature is a moving balance (like **equilibrium** in chemistry — **equilibrium** is a balance that holds steady because two opposite changes are happening at the same rate!) — not static. Disruption causes oscillation, recovery takes time. 🌍`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[{id:"done",label:"Ecology makes sense! I'll never look at wolves the same way.",nextNodeId:"done"}]},done:{id:"done",speaker:"AI",content:`🔗 **Big Idea 15 Complete — How Do Systems Find Balance?**
 
 - Physics (P15): Pendulum & Resonance — oscillation, damping, and natural timing
 - Chemistry (C15): Chemical Equilibrium — forward and reverse reactions reach dynamic balance
-- Biology (B15): Predator-Prey Cycles — populations oscillate and stabilize through ecological feedback
+- Biology (B15): Predator-Prey Cycles — populations swing up and down and settle through **ecological** feedback — **ecological** means to do with how living things and their surroundings affect each other
 
 In all three: **balance isn't static — it's a dynamic dance of opposing forces!** ⚖️🐺⚗️
 
@@ -2774,12 +2774,12 @@ In short: stronger clean fields improve alignment confidence, while disturbances
 
 You place three items near a magnet: an iron nail, aluminum foil, and copper wire. One jumps strongly, one barely responds, and one seems almost unaffected.
 
-Why are these materials so different if they are all metallic substances?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",sample:"steel"}},options:[{id:"all_metals",label:"All metals should be magnetic in the same way.",nextNodeId:"misconception"},{id:"domain",label:"Magnetic behavior depends on electron structure and domain alignment.",nextNodeId:"correct",sentiment:"positive"},{id:"weight_guess",label:"Heavier materials must be more magnetic.",nextNodeId:"misconception_weight"}]},misconception:{id:"misconception",speaker:"AI",content:`Common misconception. Being a metal does not guarantee strong ferromagnetism.
+Why are these materials so different if they are all metallic substances?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",sample:"steel"}},options:[{id:"all_metals",label:"All metals should be magnetic in the same way.",nextNodeId:"misconception"},{id:"domain",label:"Magnetic behavior depends on electron structure and domain alignment.",nextNodeId:"correct",sentiment:"positive"},{id:"weight_guess",label:"Heavier materials must be more magnetic.",nextNodeId:"misconception_weight"}]},misconception:{id:"misconception",speaker:"AI",content:`Common misconception. Being a metal does not guarantee strong **ferromagnetism** — **ferromagnetism** is the kind of magnetism that iron has, where a material can be made into a magnet and stay one.
 
 Iron, cobalt, and nickel often show strong magnetic response, while copper and aluminum usually do not show the same domain behavior.`,options:[{id:"next",label:"Explain domain behavior.",nextNodeId:"correct"}]},misconception_weight:{id:"misconception_weight",speaker:"AI",content:"Mass is not the key variable here. Magnetic response depends primarily on electronic structure and whether domains can align cooperatively.",options:[{id:"next2",label:"So composition matters more than weight.",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly. In ferromagnetic materials, microscopic magnetic **domains** can line up, creating a stronger net magnetic effect.
 
 In this lab, vary **iron fraction** and **temperature**. You will see composition increase response, while higher temperature can reduce domain order.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"domains",showDomains:!0}},options:[{id:"checkpoint",label:"Give me a checkpoint.",nextNodeId:"checkpoint"},{id:"test_first",label:"Let me test controls before checkpoint.",nextNodeId:"experiment_prompt"}]},experiment_prompt:{id:"experiment_prompt",speaker:"AI",content:`Try this mini-investigation:
-1. Increase iron fraction and observe magnetization trend.
+1. Increase iron fraction and watch the **magnetization** — how strongly the sample has been turned into a magnet.
 2. Keep iron high, then raise temperature and watch response fall.
 3. Use the probe to sample local metric changes.
 
@@ -2796,7 +2796,7 @@ You observed a chemistry pattern: composition can strengthen domain alignment, w
 
 1. Why might a motor component need both magnetic performance and thermal stability?
 2. If two alloys have similar iron content, what else might explain different magnetic response?
-3. How would you design a fair test to compare materials?`,options:[{id:"reflect_good",label:"Composition, microstructure, and temperature history can all matter.",nextNodeId:"reflection_feedback",sentiment:"positive"},{id:"reflect_bad",label:"Only mass matters, so testing details are unnecessary.",nextNodeId:"reflection_retry"}]},reflection_retry:{id:"reflection_retry",speaker:"AI",content:"Good experiments control variables carefully. Material behavior often depends on multiple linked factors, not one number.",options:[{id:"retry_to_feedback",label:"Understood. Multiple factors matter.",nextNodeId:"reflection_feedback"}]},reflection_feedback:{id:"reflection_feedback",speaker:"AI",content:"Excellent. You are reasoning like a scientist: mechanism, evidence, and controlled comparison.",options:[{id:"finish",label:"Finish C16",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
+3. How would you design a fair test to compare materials?`,options:[{id:"reflect_good",label:"Composition, microstructure, and temperature history can all matter.",nextNodeId:"reflection_feedback",sentiment:"positive"},{id:"reflect_bad",label:"Only mass matters, so testing details are unnecessary.",nextNodeId:"reflection_retry"}]},reflection_retry:{id:"reflection_retry",speaker:"AI",content:"Good experiments control variables carefully. Material behavior often depends on multiple linked factors, not one number.",options:[{id:"retry_to_feedback",label:"Understood. Multiple factors matter.",nextNodeId:"reflection_feedback"}]},reflection_feedback:{id:"reflection_feedback",speaker:"AI",content:"Excellent. You are reasoning like a scientist: **mechanism** (how the thing actually works), evidence, and careful comparison.",options:[{id:"finish",label:"Finish C16",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
 - In **P16**, magnetic fields determine compass direction and navigation confidence.
 - In **B16**, organisms combine magnetic input with other sensory systems for robust migration.
 
@@ -2813,16 +2813,16 @@ In this lab, vary magnetic signal and solar-storm noise. Watch how navigation ac
 
 After that, answer a checkpoint question.`,options:[{id:"to_checkpoint",label:"I tested it. Ask checkpoint.",nextNodeId:"checkpoint"}]},checkpoint:{id:"checkpoint",speaker:"AI",content:`⏸️ **Checkpoint**
 
-If one navigation cue becomes noisy, why can migration still succeed in many species?`,options:[{id:"redundancy",label:"Redundant cue systems can compensate and reweight decisions.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"impossible",label:"Navigation must fail immediately.",nextNodeId:"checkpoint_wrong"},{id:"random",label:"Animals then navigate randomly with no pattern.",nextNodeId:"checkpoint_wrong2"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:"Many biological systems are robust because they combine partially independent signals rather than relying on one fragile channel.",options:[{id:"retry",label:"Multiple cues increase robustness.",nextNodeId:"checkpoint_correct"}]},checkpoint_wrong2:{id:"checkpoint_wrong2",speaker:"AI",content:"Behavior may become less precise, but not instantly random. Organisms often compensate by weighting alternative cues.",options:[{id:"retry2",label:"Compensation keeps some directional performance.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:"Exactly. Biology often uses layered sensing and feedback, which improves reliability under uncertainty.",onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint",robustNavigation:!0}},options:[{id:"discovery",label:"Give me the key systems takeaway.",nextNodeId:"discovery"},{id:"summary_now",label:"Show summary table first.",nextNodeId:"summary_table"}]},discovery:{id:"discovery",speaker:"AI",content:"🎉 **Discovery:** Migration is a systems-level behavior. Success comes from integrating physical signals (like magnetic fields) with biological processing and cue fusion.",options:[{id:"summary",label:"Show summary table.",nextNodeId:"summary_table"},{id:"reflect",label:"Ask me reflection questions.",nextNodeId:"reflection_questions"}]},summary_table:{id:"summary_table",speaker:"AI",content:`| **System Element** | **Biology Meaning** | **Lab Evidence** |
+If one navigation cue becomes noisy, why can migration still succeed in many species?`,options:[{id:"redundancy",label:"Redundant cue systems can compensate and reweight decisions.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"impossible",label:"Navigation must fail immediately.",nextNodeId:"checkpoint_wrong"},{id:"random",label:"Animals then navigate randomly with no pattern.",nextNodeId:"checkpoint_wrong2"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:"Many biological systems are robust because they combine partially independent signals rather than relying on one fragile channel.",options:[{id:"retry",label:"Multiple cues increase robustness.",nextNodeId:"checkpoint_correct"}]},checkpoint_wrong2:{id:"checkpoint_wrong2",speaker:"AI",content:"Behavior may become less precise, but not instantly random. Organisms often compensate by weighting alternative cues.",options:[{id:"retry2",label:"Compensation keeps some directional performance.",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:"Exactly. Biology often uses layered sensing and feedback, which improves reliability under uncertainty.",onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint",robustNavigation:!0}},options:[{id:"discovery",label:"Give me the key systems takeaway.",nextNodeId:"discovery"},{id:"summary_now",label:"Show summary table first.",nextNodeId:"summary_table"}]},discovery:{id:"discovery",speaker:"AI",content:"🎉 **Discovery:** Migration is a systems-level behavior. Success comes from integrating physical signals (like magnetic fields) with biological processing and cue **fusion** — **fusion** here means joining separate pieces of information into one answer.",options:[{id:"summary",label:"Show summary table.",nextNodeId:"summary_table"},{id:"reflect",label:"Ask me reflection questions.",nextNodeId:"reflection_questions"}]},summary_table:{id:"summary_table",speaker:"AI",content:`| **System Element** | **Biology Meaning** | **Lab Evidence** |
 |---|---|---|
 | **Magnetic cue** | Environmental directional input | Higher signal improved navigation accuracy |
-| **Noise / disturbance** | Signal corruption (e.g., geomagnetic turbulence) | Higher storm noise reduced accuracy |
+| **Noise / disturbance** | Signal corruption (e.g., **geomagnetic** **turbulence**) — **geomagnetic** means to do with the Earth’s own magnetism, and **turbulence** here means it churning about unsteadily | Higher storm noise reduced accuracy |
 | **Cue integration** | Combining multiple signals for decisions | Performance can persist when one cue weakens |
-| **Robustness** | Reliability under changing conditions | Layered sensing outperforms single-cue dependence |`,options:[{id:"reflect_after_table",label:"Now ask reflection questions.",nextNodeId:"reflection_questions"},{id:"to_complete",label:"Wrap up B16.",nextNodeId:"complete"}]},reflection_questions:{id:"reflection_questions",speaker:"AI",content:`🧠 **Think Like A Systems Biologist**
+| **Robustness** | Reliability under changing conditions | Layered sensing beats **dependence** on a single cue — **dependence** means relying on one thing only |`,options:[{id:"reflect_after_table",label:"Now ask reflection questions.",nextNodeId:"reflection_questions"},{id:"to_complete",label:"Wrap up B16.",nextNodeId:"complete"}]},reflection_questions:{id:"reflection_questions",speaker:"AI",content:`🧠 **Think Like A Systems Biologist**
 
 1. Why might evolution favor multi-cue navigation over one perfect cue?
 2. What tradeoff appears when magnetic signal is strong but environmental noise spikes?
-3. How could changing climate or light pollution affect cue reliability?`,options:[{id:"reflect_good",label:"Multiple cues improve resilience when one cue fails.",nextNodeId:"reflection_feedback",sentiment:"positive"},{id:"reflect_bad",label:"One cue is always enough, so redundancy is wasteful.",nextNodeId:"reflection_retry"}]},reflection_retry:{id:"reflection_retry",speaker:"AI",content:"In uncertain environments, redundancy is often a survival advantage. Biological systems trade efficiency for reliability when needed.",options:[{id:"retry_to_feedback",label:"Got it. Redundancy supports survival.",nextNodeId:"reflection_feedback"}]},reflection_feedback:{id:"reflection_feedback",speaker:"AI",content:"Excellent. You are connecting physiology, behavior, and environmental physics in one model.",options:[{id:"finish",label:"Finish B16",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 16 Complete — How Do Magnets Help Us Navigate?**
+3. How could changing climate or light pollution affect cue reliability?`,options:[{id:"reflect_good",label:"Multiple cues improve resilience when one cue fails.",nextNodeId:"reflection_feedback",sentiment:"positive"},{id:"reflect_bad",label:"One cue is always enough, so redundancy is wasteful.",nextNodeId:"reflection_retry"}]},reflection_retry:{id:"reflection_retry",speaker:"AI",content:"In uncertain environments, redundancy is often a survival advantage. Biological systems trade efficiency for reliability when needed.",options:[{id:"retry_to_feedback",label:"Got it. Redundancy supports survival.",nextNodeId:"reflection_feedback"}]},reflection_feedback:{id:"reflection_feedback",speaker:"AI",content:"Excellent. You are connecting **physiology** — how a living body works — behavior, and environmental physics in one model.",options:[{id:"finish",label:"Finish B16",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 16 Complete — How Do Magnets Help Us Navigate?**
 
 - Physics (P16): Magnets & Navigation — magnetic fields create directional alignment for compasses
 - Chemistry (C16): Magnetic Materials — atomic structure controls why only some materials respond to magnets
@@ -3273,7 +3273,7 @@ Here’s why: each species is **adapted** to a narrow range of conditions:
 
 Moving a trout to warm, slow water is like moving a polar bear to the Sahara! 🐻‍❄️→🏜️`,options:[{id:"continue",label:"Each species has a specific habitat window — they can’t just go anywhere!",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! 🎯 A river is like a long corridor of DIFFERENT habitats:
 
-- ⚡ **Headwaters** (fast, cold, high O₂): Trout, stoneflies, mosses — adapted to turbulence
+- ⚡ **Headwaters** (fast, cold, high O₂): Trout, **stoneflies** (an insect whose young only survive in clean, fast water), mosses — adapted to **turbulence**, the churning and swirling of fast-moving water
 - 🌊 **Mid-reach** (moderate flow, variable temp): Bass, dragonflies, water plants — versatile hunters
 - 🏖️ **Lowlands** (slow, warm, low O₂): Catfish, mussels, algae mats — adapted to still, murky conditions
 
@@ -3296,7 +3296,7 @@ Here’s the lethal chain:
 2. 💨 **Dissolved oxygen drops** (warm water holds less O₂)
 3. 🐟 **Trout gills** can’t extract enough oxygen → stress, disease, death
 
-This is called **thermal pollution** — one of the most common threats to river ecosystems worldwide. 🌍`,options:[{id:"retry",label:"Thermal pollution kills cold-adapted species by reducing oxygen!",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`✅ **Exactly!** You identified the core problem: **thermal pollution** disrupts the delicate relationship between temperature, dissolved oxygen, and species survival.
+This is called **thermal pollution** — one of the most common threats to river **ecosystems** worldwide — an **ecosystem** is all the living things in one place together with the surroundings they share. 🌍`,options:[{id:"retry",label:"Thermal pollution kills cold-adapted species by reducing oxygen!",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`✅ **Exactly!** You identified the core problem: **thermal pollution** disrupts the delicate relationship between temperature, dissolved oxygen, and species survival.
 
 Power plants and factories that discharge warm water often have to build **cooling towers** or **retention ponds** to let the water cool before it enters the river. 🏭
 
@@ -3333,14 +3333,14 @@ Power plants and factories that discharge warm water often have to build **cooli
 **Riparian vegetation** (streamside trees and plants) provides critical **shade** that keeps water temperatures cool. Studies show that removing streamside trees can raise water temperature by 5-10°C — enough to make the habitat uninhabitable for trout!
 
 Trees also:
-- Drop **leaf litter** that feeds invertebrates (trout food!) 🍂
+- Drop **leaf litter** that feeds **invertebrates** — small animals with no backbone, like insects and worms (trout food!) 🍂
 - Provide **root structure** that creates hiding spots 🪵
 - Filter **runoff** before it reaches the stream 💧`,options:[{id:"retry_to_feedback",label:"Shade, food, shelter, and filtration — trees are essential river habitat!",nextNodeId:"reflection_feedback"}]},reflection_feedback:{id:"reflection_feedback",speaker:"AI",content:`Brilliant ecological thinking! 🌟
 
 You’re connecting **physical habitat variables** (temperature, shade, current) to **biological outcomes** (species survival, community structure). This is exactly how conservation biologists design river restoration projects! 🌍
 
 **Key takeaway:** Protecting river life means protecting the PHYSICAL conditions that species depend on.`,options:[{id:"finish",label:"Finish B18!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
-- In **P18**, you saw how **flow physics** creates different erosion and deposition zones — those same zones create different habitats! 🌊
+- In **P18**, you saw how **flow physics** creates different **erosion** and **deposition** zones — **erosion** is where flowing water picks material up, and **deposition** is where it drops it again — those same zones create different habitats! 🌊
 - In **C18**, you measured **dissolved minerals** — the chemical foundation that supports aquatic food webs! 🧪
 
 ✅ **Lesson B18 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}),M2=()=>({root:{id:"root",speaker:"AI",content:`Welcome to the Soil Physics Lab! 🌱
@@ -3387,7 +3387,7 @@ What’s the most likely difference between their soils?
 The difference is in the SOIL. **Clay-heavy soil** has low permeability: water infiltrates slowly and pools on the surface. **Sandy soil** drains quickly through its large, connected pores.
 
 This is why soil mapping is SO important for agriculture:
-- Fields with clay need **drainage tiles** (underground pipes) to prevent waterlogging
+- Fields with clay need **drainage tiles** (underground pipes) to prevent **waterlogging**, which is soil so full of water that roots drown in it
 - Fields with sand may need **irrigation** because water drains away too fast
 
 **Real example:** The Netherlands has built an entire nation on clay soils, using an elaborate system of **polders** (drained land) and **dikes** to manage water! 🇳🇱`,options:[{id:"retry",label:"Soil permeability — not rainfall amount — controls drainage speed!",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`✅ **Perfect!** Soil **permeability** is the key factor controlling field drainage.
@@ -3401,7 +3401,7 @@ Soil scientists classify soils into **textural classes** (sand, sandy loam, silt
 | 📊 **Porosity** | Fraction of soil that’s empty space (air + water) |
 | 🌊 **Permeability** | How easily water flows through (depends on pore SIZE) |
 | 🏖️ **Sand** | Large particles, big pores → high permeability |
-| 🧱 **Clay** | Tiny particles, micro-pores → low permeability |
+| 🧱 **Clay** | Tiny particles, **micro-pores** (pores far too small to see) → low permeability |
 | 🌾 **Loam** | Balanced mix → ideal for plant roots |
 | 💧 **Infiltration** | Rate water enters soil from the surface |
 | 🚰 **Capillary action** | Water clinging and rising through tiny pores |
@@ -3428,13 +3428,13 @@ Soil scientists classify soils into **textural classes** (sand, sandy loam, silt
 
 **Compost** adds organic matter that acts as a **structural scaffold** between clay particles. It:
 - Creates LARGER pore channels for water and air 💨
-- Prevents clay plates from sticking together and forming impermeable layers
+- Prevents clay plates from sticking together and forming **impermeable** layers — **impermeable** means water cannot get through at all
 - Improves **aggregate structure** — clumps of particles with pores between them
 
 Result: better drainage, more oxygen, easier root growth. That’s why garden centers sell compost by the truckload! 🚚`,options:[{id:"retry_to_feedback",label:"Compost changes pore structure, not just chemistry — it’s a physical improvement!",nextNodeId:"reflection_feedback"}]},reflection_feedback:{id:"reflection_feedback",speaker:"AI",content:`Excellent reasoning! 🌟 You’re thinking about soil as a **physical system** where particle arrangement controls everything — from drainage to root growth to crop yield.
 
-Soil physicists use CT scanners (like hospital MRIs!) to create 3D maps of pore networks inside soil samples. The physics of soil pores is literally the foundation of all terrestrial life! 🌍`,options:[{id:"finish",label:"Finish P19!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
-- In **C19**, you’ll discover the **chemical nutrients** dissolved in soil water — nitrogen, phosphorus, potassium — and how pH controls their availability to roots! 🧪
+Soil physicists use CT scanners (like hospital MRIs!) to create 3D maps of pore networks inside soil samples. The physics of soil pores is literally the foundation of all **terrestrial** life — **terrestrial** means living on land, rather than in water! 🌍`,options:[{id:"finish",label:"Finish P19!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
+- In **C19**, you’ll discover the **chemical nutrients** dissolved in soil water — nitrogen, **phosphorus** and potassium — three of the foods plants need from soil, and **phosphorus** is the one that helps roots and flowers grow — and how pH controls their availability to roots! 🧪
 - In **B19**, you’ll explore the incredible **biodiversity** hidden in soil — more organisms live in a teaspoon of healthy soil than there are people on Earth! 🐛
 
 ✅ **Lesson P19 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}),L2=()=>({root:{id:"root",speaker:"AI",content:`Welcome to the Soil Chemistry Lab! 🧪
@@ -3456,7 +3456,7 @@ None of these minerals come from air or water — they come from **dissolved ion
 **Fun fact:** The Haber-Bosch process, which manufactures nitrogen fertilizer from air, is estimated to support the food supply of nearly HALF the world’s population! 🌍🌾`,options:[{id:"continue",label:"Photosynthesis makes sugar, but minerals from soil build everything else!",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! 🎯 Here’s the soil chemistry that controls plant life:
 
 - 🟢 **Nitrogen (N)**: Essential for proteins, chlorophyll, and DNA — makes leaves GREEN
-- 🟠 **Phosphorus (P)**: Powers energy transfer (**ATP**, adenosine triphosphate) and root growth 🌱
+- 🟠 **Phosphorus (P)**: Powers energy transfer (**ATP**) and root growth 🌱
 - 🟣 **Potassium (K)**: Regulates water balance and enzyme activity 💧
 - 📊 **Soil pH**: Controls which nutrients dissolve and stay available to roots
 
@@ -3477,7 +3477,7 @@ A farmer adds TONS of nitrogen fertilizer to boost crop yields. The next year, t
 
 What caused the fish kill?
 
-🔗 **Link to P19:** The soil porosity you explored in P19 controls how fast excess fertilizer washes out of the field!`,options:[{id:"eutrophication",label:"Excess nitrogen washed into the river, causing algae to grow out of control — when the algae died, decomposition consumed all the dissolved oxygen!",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"toxic",label:"Nitrogen fertilizer is directly toxic to fish.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`Nitrogen itself isn’t the direct killer — the chain reaction is more complex! 🔗
+🔗 **Link to P19:** The soil **porosity** you explored in P19 — how much of the soil is empty space between the grains — controls how fast excess fertilizer washes out of the field!`,options:[{id:"eutrophication",label:"Excess nitrogen washed into the river, causing algae to grow out of control — when the algae died, decomposition consumed all the dissolved oxygen!",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"toxic",label:"Nitrogen fertilizer is directly toxic to fish.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`Nitrogen itself isn’t the direct killer — the chain reaction is more complex! 🔗
 
 Here’s the deadly sequence called **eutrophication**:
 1. 🌾 Excess **nitrogen** (and phosphorus) washes into the river as **runoff**
@@ -3513,10 +3513,10 @@ The solution? **Precision agriculture** 🌾 — using **GPS** (the Global Posit
 |---|---|---|
 | 🟢 **Nitrogen HIGH** | Many green ◇ N diamonds | Rich nutrient solution |
 | 🟢 **Nitrogen LOW** | Few green diamonds | Nutrient-deficient soil |
-| 🟠 **Salinity HIGH** | Many orange ○ S circles | Salt-stressed soil |
+| 🟠 **Salinity HIGH** | Many orange ○ S circles | Soil with too much salt in it |
 | 🟠 **Salinity LOW** | Few orange circles | Healthy low-salt conditions |
 | 🌿 **Best combo** | High N + Low S | Optimal plant growth conditions |
-| ☠️ **Worst combo** | Low N + High S | Nutrient-poor + salt-stressed |`,options:[{id:"reflect_after_table",label:"Now ask me reflection questions!",nextNodeId:"reflection_questions"},{id:"to_complete",label:"Wrap up C19.",nextNodeId:"complete"}]},reflection_questions:{id:"reflection_questions",speaker:"AI",content:`🧠 **Think Like An Agrochemist**
+| ☠️ **Worst combo** | Low N + High S | Nutrient-poor + too much salt |`,options:[{id:"reflect_after_table",label:"Now ask me reflection questions!",nextNodeId:"reflection_questions"},{id:"to_complete",label:"Wrap up C19.",nextNodeId:"complete"}]},reflection_questions:{id:"reflection_questions",speaker:"AI",content:`🧠 **Think Like An Agrochemist**
 
 1. Why do organic farmers use **cover crops** (like clover) instead of synthetic nitrogen fertilizer? 🌿
 2. Why does **liming** (adding calcium carbonate) help acidic soils support better plant growth?
@@ -3675,7 +3675,7 @@ So magnification is just ONE special case of what lenses do. The same lens can s
 
 Use the **Focal Length** slider to change the lens strength. Shorter focal length = MORE bending = stronger lens! Watch how the focal point moves closer to the lens. 🔬
 
-**Did you know?** The Hubble Space Telescope’s primary mirror has a focal length of 57.6 meters — it bends light so precisely it can resolve objects 0.05 arcseconds apart (that’s like reading a newspaper from 1.6 km away)! 🌟`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"refraction",showRays:!0}},options:[{id:"experiment",label:"Let me play with the focal length slider!",nextNodeId:"experiment_prompt"},{id:"checkpoint",label:"Test me with a checkpoint!",nextNodeId:"checkpoint"}]},experiment_prompt:{id:"experiment_prompt",speaker:"AI",content:`🔬 **Lens Optics Experiment:**
+**Did you know?** The Hubble Space Telescope’s primary mirror has a focal length of 57.6 meters — it bends light so precisely it can resolve objects 0.05 **arcseconds** apart — an **arcsecond** is a way of measuring how far apart two things look, and one arcsecond is about the width of a hair held at arm’s length — that is (that’s like reading a newspaper from 1.6 km away)! 🌟`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"refraction",showRays:!0}},options:[{id:"experiment",label:"Let me play with the focal length slider!",nextNodeId:"experiment_prompt"},{id:"checkpoint",label:"Test me with a checkpoint!",nextNodeId:"checkpoint"}]},experiment_prompt:{id:"experiment_prompt",speaker:"AI",content:`🔬 **Lens Optics Experiment:**
 
 1. Set **Focal Length** SHORT → light bends sharply, focal point is close to the lens (strong lens)
 2. Set **Focal Length** LONG → light bends gently, focal point moves far from the lens (weak lens)
@@ -3725,7 +3725,7 @@ The magnifying glass collects energy from its entire surface area and concentrat
 
 | **Focal Length** | **Bending Strength** | **What You Observed** |
 |---|---|---|
-| Short (e.g. 50mm) | ⬆️ Strong refraction | Focal point close to lens, tight convergence |
+| Short (e.g. 50mm) | ⬆️ Strong refraction | Focal point close to lens, tight **convergence** (the rays crowding together) |
 | Medium (e.g. 100mm) | ↔️ Moderate | Balanced focal distance |
 | Long (e.g. 200mm) | ⬇️ Gentle refraction | Focal point far from lens, wide convergence |
 
@@ -3751,7 +3751,7 @@ A large lens acts like a bigger bucket for catching rain — it collects more **
 
 You’ve connected **lens geometry** (diameter, focal length, curvature) to **real-world performance** (light gathering, magnification, image formation). This is exactly how optical engineers design everything from smartphone cameras to space telescopes! 🔭🌌`,options:[{id:"finish",label:"Finish P20!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
 - In **C20**, you’ll explore the **material science** behind lenses — how different glasses and crystals have different **refractive indices** that control light bending! 🧪
-- In **B20**, you’ll discover how the **human eye** uses a flexible lens and ciliary muscles to focus — and what goes wrong in nearsightedness and farsightedness! 👁️
+- In **B20**, you’ll discover how the **human eye** uses a flexible lens and ciliary muscles to focus — and what goes wrong in being **nearsighted** — near things look clear and far ones blurry — and being **farsighted**, which is the other way round. Those two are called **nearsightedness** and **farsightedness**! 👁️
 
 ✅ **Lesson P20 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}),P2=()=>({root:{id:"root",speaker:"AI",content:`Welcome to the Optical Materials Lab! 🧪
 
@@ -3775,7 +3775,7 @@ Diamond’s refractive index (n = 2.42) is nearly DOUBLE that of ordinary glass 
 
 A perfectly cut glass crystal won’t sparkle like diamond because glass’s lower refractive index can’t trap and split light the same way!
 
-**Fun fact:** Cubic zirconia (CZ) was invented as a diamond substitute specifically because its refractive index (n = 2.16) is close to diamond’s — close enough to fool most eyes but not a gemologist’s refractometer! 🔍`,options:[{id:"continue",label:"The refractive index of the material controls how strongly light bends — not just the shape!",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! 🎯 The chemistry of optical materials determines their refractive index:
+**Fun fact:** Cubic zirconia (CZ) was invented as a diamond substitute specifically because its refractive index (n = 2.16) is close to diamond’s — close enough to fool most eyes but not a **gemologist**, which is someone whose job is knowing gemstones’s **refractometer** — a tool that measures how strongly a material bends light! 🔍`,options:[{id:"continue",label:"The refractive index of the material controls how strongly light bends — not just the shape!",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! 🎯 The chemistry of optical materials determines their refractive index:
 
 - 🧪 **Atomic density**: More tightly packed atoms → light interacts more → higher n
 - ⚡ **Electron cloud polarizability**: Heavier atoms with loosely held electrons bend light more
@@ -3854,7 +3854,7 @@ Solution: pair a **crown glass** element (low dispersion) with a **flint glass**
 
 This is called an **achromatic doublet** — and it was invented in 1733 by Chester Moore Hall. Every quality camera lens uses this principle! 📷`,options:[{id:"retry_to_feedback",label:"Combining different glass types cancels chromatic aberration — achromatic design!",nextNodeId:"reflection_feedback"}]},reflection_feedback:{id:"reflection_feedback",speaker:"AI",content:`Outstanding materials science thinking! 🌟
 
-You understand that optical design isn’t just about SHAPE — it’s about choosing the RIGHT materials with complementary properties. Modern lens design is a perfect fusion of **physics** (ray optics), **chemistry** (glass composition), and **engineering** (manufacturing precision)! 🔬`,options:[{id:"finish",label:"Finish C20!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
+You understand that optical design isn’t just about SHAPE — it’s about choosing the RIGHT materials with complementary properties. Modern lens design is a perfect **fusion** — a joining together — of **physics** (ray optics), **chemistry** (glass composition), and **engineering** (manufacturing precision)! 🔬`,options:[{id:"finish",label:"Finish C20!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
 - In **P20**, you learned how **lens shape** (curvature, focal length) controls image formation — now you know the MATERIAL matters just as much! 🔮
 - In **B20**, you’ll see how the **human eye** uses a flexible biological lens with variable refractive properties to focus! 👁️
 
@@ -3889,7 +3889,7 @@ This happens because the lens gets STIFFER with age, a condition called **presby
   - 🔵 Relax → lens gets FLATTER → longer focal length → focus FAR
 - 🎯 **Retina**: The “screen” at the back where the focused image lands
 
-In the visual, you can see the eye cross-section with light rays focusing onto the retina. The **Accommodation** slider changes how much the ciliary muscles squeeze the lens!
+In the visual, you can see the eye in **cross-section**, meaning sliced through so you can see inside, with light rays focusing onto the retina. The **Accommodation** slider changes how much the ciliary muscles squeeze the lens!
 
 **Did you know?** The human eye can distinguish about 10 million different colors and detect a single photon of light in complete darkness! It’s the most sophisticated optical instrument ever evolved. 🌟`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"accommodation",showLensChange:!0}},options:[{id:"experiment",label:"Let me adjust the accommodation slider!",nextNodeId:"experiment_prompt"},{id:"checkpoint",label:"Test me with a checkpoint!",nextNodeId:"checkpoint"}]},experiment_prompt:{id:"experiment_prompt",speaker:"AI",content:`🔬 **Eye Accommodation Experiment:**
 
@@ -3945,7 +3945,7 @@ The OPPOSITE condition is **farsightedness (hyperopia)**: eyeball too SHORT → 
 |---|---|---|---|
 | 🔵 Low (relaxed) | Flat | Far (∞ to 6m) | Light converged far back on retina |
 | 🟡 Medium | Moderate curve | Mid (1-6m) | Focal point shifted forward |
-| 🔴 High (contracted) | Round/bulging | Near (25cm-1m) | Tight convergence on retina |
+| 🔴 High (contracted) | Round/bulging | Near (25cm-1m) | Tight **convergence** on retina, meaning the rays crowd together sharply |
 | ⚠️ Maximum | Roundest possible | Near point limit | Lens can’t curve more = blur |
 
 | **Age** | **Near Point** | **Accommodation Range** |
@@ -3970,14 +3970,14 @@ The **20-20-20 rule** helps: every 20 minutes, look at something 20 feet away fo
 
 Looking at distant green trees is ideal because:
 - Distance viewing relaxes ciliary muscles 🌳
-- Green light is easiest for the eye to focus (lowest chromatic aberration) 🟢
+- Green light is easiest for the eye to focus (the least **aberration**, which means the least blurring, and the least of that faint rainbow edging you sometimes see around things) 🟢
 - Natural scenes promote blink rate (screens reduce blinking by 60%!) 😮`,options:[{id:"retry_to_feedback",label:"Screen strain is ciliary muscle fatigue from sustained near focus!",nextNodeId:"reflection_feedback"}]},reflection_feedback:{id:"reflection_feedback",speaker:"AI",content:`Brilliant biomedical reasoning! 🌟
 
 You’ve connected **optics** (focal length, accommodation), **biology** (ciliary muscle physiology), and **real-world health** (screen habits, vision correction). This interdisciplinary thinking is exactly what ophthalmologists, optometrists, and biomedical engineers use every day! 👁️🔬
 
 **Key takeaway:** Your eyes are incredible optical instruments — understanding how they work helps you take better care of them!`,options:[{id:"finish",label:"Finish B20!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Cross-Links**
-- In **P20**, you learned how **lenses bend light** through refraction and focal length — your eye uses these exact same physics! 🔮
-- In **C20**, you explored how **material refractive index** controls bending strength — your cornea and lens have carefully tuned refractive indices! 🧪
+- In **P20**, you learned how **lenses bend light** through **refraction** — the bending of light as it passes into something new, which is what makes a straw look broken in a glass of water — and focal length — your eye uses these exact same physics! 🔮
+- In **C20**, you explored how **material **refractive index** — how strongly that material bends light — ** controls bending strength — your cornea and lens have carefully tuned refractive indices! 🧪
 
 ✅ **Lesson B20 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}),q2=()=>({root:{id:"root",speaker:"AI",content:`Why do sea levels rise and fall in a regular pattern?
 
@@ -6688,13 +6688,13 @@ Slide **Moisture Level** to find the sweet spot where the crew works hardest!`,o
 
 What went wrong?`,options:[{id:"right",label:"Too wet and packed, so no air could get in -- different microbes took over that work without oxygen and produce smelly gases.",nextNodeId:"checkpoint_correct",sentiment:"positive"},{id:"wrong",label:"The microbes all died, so nothing was left alive to break down the grass.",nextNodeId:"checkpoint_wrong"}]},checkpoint_wrong:{id:"checkpoint_wrong",speaker:"AI",content:`The microbes did not die -- a **different team took over**, and that is exactly the problem!
 
-Wet, packed grass squeezes out all the air pockets. The fast, hot-working decomposers need **oxygen**, so they shut down. In their place, **anaerobic** microbes (ones that work without oxygen) move in.
+Wet, packed grass squeezes out all the air pockets. The fast decomposers, working hardest when it is hot, need **oxygen**, so they shut down. In their place, **anaerobic** microbes (ones that work without oxygen) move in.
 
 Those microbes are slow, they make no heat, and they release the gases that cause that awful rotten smell. The fix is simple: add dry **"browns"** like leaves or shredded cardboard, and **turn the pile** to let air back in. The good crew returns within days.`,options:[{id:"retry",label:"Oh -- no air means the smelly microbes take over!",nextNodeId:"checkpoint_correct"}]},checkpoint_correct:{id:"checkpoint_correct",speaker:"AI",content:`Correct! Composting is really about **keeping the right microbes happy**: greens plus browns plus air plus the right dampness.
 
 And look at how Big Idea 35 fits together:
-- **P35** -- **physics** separates mixed materials using magnets, air, and density
-- **C35** -- **chemistry** melts metal back to new metal, but only downcycles plastic
+- **P35** -- **physics** separates mixed materials using magnets, air, and **density** — how heavy something is for its size
+- **C35** -- **chemistry** melts metal back to new metal, but plastic only ever comes back as something less useful than it was, which is called **downcycling**
 - **B35** -- **biology** does the whole job for food and garden waste, powered by nothing but microbes
 
 About **a third** of household rubbish is food and garden waste. Composted, it becomes free fertiliser -- exactly the **nutrient cycle** from C33, closed by hand.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Machines, chemistry, and microbes all recycle!",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**You discovered nature's recycling crew!**
@@ -6722,7 +6722,7 @@ Waste is only waste when nobody has worked out what it is worth.
 
 **Big Idea 35 connections:**
 - P35 (The Sorting Machine) showed how magnets, air, and density pull mixed trash apart
-- C35 (Melt and Remake) showed why metal recycles forever but plastic only downcycles
+- C35 (Melt and Remake) showed why metal recycles forever but plastic only ever comes back as something less useful
 - B35 (The Compost Crew) showed how living microbes recycle food and garden waste into soil with no factory at all!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}}function AI(){return{root:{id:"root",speaker:"AI",content:`Water can look perfectly clear and still be dangerous to drink. The things that make people sick -- **bacteria** and tiny particles -- are far too small for your eyes to catch.
 
 So the first job in a water plant is to physically remove everything it can, using **filters**.
