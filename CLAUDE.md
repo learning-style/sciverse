@@ -198,6 +198,7 @@ python3 scripts/check-lessons.py l2p1 l3c2  # named ones
 python3 scripts/check-clarity.py            # is every visual term explained?
 python3 scripts/check-unused.py             # unused symbols in changed TypeScript
 python3 scripts/check-strings.py             # string literals that will not parse
+python3 scripts/check-syntax.py              # will it parse: open strings, stray braces
 python3 scripts/check-legacy-visuals.py      # the 96 pairs check-lessons cannot see
 python3 scripts/check-plainness.py           # hard words a lesson never defines
 ```
@@ -282,6 +283,19 @@ single-quoted value holds an unescaped apostrophe, plus strings left open at a
 newline. It knows to ignore JSX text (`You've mastered`) and union types
 (`target: 'plant' | 'puppy'`), and both exclusions are regression-tested against
 the real failure so they cannot silently disarm it.
+
+`check-syntax.py` answers the one question that has broken this build three
+times: will the file parse? It walks a file string- and comment-aware and reports
+a quoted string left open at a newline, or an unbalanced brace. It is not a
+parser. It exists because `check-strings.py` looks at strings and not at
+structure, and Big Idea 18 failed CI twice in a row through the gap: first a real
+newline inside a `content:` string, then -- in the script that repaired it -- the
+file's closing braces swallowed into the last `content:` string, which has no
+trailing comma because it ends the object. That second state was quote-balanced,
+and every other checker passed it. Both failures are in its `--selftest`, along
+with the JSX apostrophe (`You've mastered`) that must stay quiet. Repo-wide it
+reports **0 across 625 files**, which is the calibration that matters: CI is
+green here, so any finding on untouched code is a bug in the scan.
 
 **Run the checks as the last thing before committing, not merely at some point
 before it.** Big Idea 18's Level 2 broke CI this way: `check-strings.py` ran clean,
