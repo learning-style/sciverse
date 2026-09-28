@@ -56,7 +56,7 @@ export const getP19Script = (): Record<string, DialogNode> => ({
     'checkpoint_wrong': {
         id: 'checkpoint_wrong',
         speaker: 'AI',
-        content: "They\u2019re neighbors \u2014 they got the same rain! \ud83c\udf27\ufe0f\n\nThe difference is in the SOIL. **Clay-heavy soil** has low permeability: water infiltrates slowly and pools on the surface. **Sandy soil** drains quickly through its large, connected pores.\n\nThis is why soil mapping is SO important for agriculture:\n- Fields with clay need **drainage tiles** (underground pipes) to prevent waterlogging\n- Fields with sand may need **irrigation** because water drains away too fast\n\n**Real example:** The Netherlands has built an entire nation on clay soils, using an elaborate system of **polders** (drained land) and **dikes** to manage water! \ud83c\uddf3\ud83c\uddf1",
+        content: "They\u2019re neighbors \u2014 they got the same rain! \ud83c\udf27\ufe0f\n\nThe difference is in the SOIL. **Clay-heavy soil** has low permeability: water infiltrates slowly and pools on the surface. **Sandy soil** drains quickly through its large, connected pores.\n\nThis is why soil mapping is SO important for agriculture:\n- Fields with clay need **drainage tiles** (underground pipes) to prevent **waterlogging**, which is soil so full of water that roots drown in it\n- Fields with sand may need **irrigation** because water drains away too fast\n\n**Real example:** The Netherlands has built an entire nation on clay soils, using an elaborate system of **polders** (drained land) and **dikes** to manage water! \ud83c\uddf3\ud83c\uddf1",
         options: [{ id: 'retry', label: "Soil permeability \u2014 not rainfall amount \u2014 controls drainage speed!", nextNodeId: 'checkpoint_correct' }]
     },
 
@@ -74,7 +74,7 @@ export const getP19Script = (): Record<string, DialogNode> => ({
     'discovery': {
         id: 'discovery',
         speaker: 'AI',
-        content: "\ud83c\udf89 **Discovery: Soil is A Hidden Engineering System!**\n\n| Concept | What it means |\n|---------|---------------|\n| \ud83d\udcca **Porosity** | Fraction of soil that\u2019s empty space (air + water) |\n| \ud83c\udf0a **Permeability** | How easily water flows through (depends on pore SIZE) |\n| \ud83c\udfd6\ufe0f **Sand** | Large particles, big pores \u2192 high permeability |\n| \ud83e\uddf1 **Clay** | Tiny particles, micro-pores \u2192 low permeability |\n| \ud83c\udf3e **Loam** | Balanced mix \u2192 ideal for plant roots |\n| \ud83d\udca7 **Infiltration** | Rate water enters soil from the surface |\n| \ud83d\udeb0 **Capillary action** | Water clinging and rising through tiny pores |\n\n**Key Insight:** Soil isn\u2019t just \u201cdirt\u201d \u2014 it\u2019s a **porous medium** where particle size controls water storage, drainage, aeration, and root growth. The physics of **pore space** determines whether land floods, drains, or supports life!",
+        content: "\ud83c\udf89 **Discovery: Soil is A Hidden Engineering System!**\n\n| Concept | What it means |\n|---------|---------------|\n| \ud83d\udcca **Porosity** | Fraction of soil that\u2019s empty space (air + water) |\n| \ud83c\udf0a **Permeability** | How easily water flows through (depends on pore SIZE) |\n| \ud83c\udfd6\ufe0f **Sand** | Large particles, big pores \u2192 high permeability |\n| \ud83e\uddf1 **Clay** | Tiny particles, **micro-pores** (pores far too small to see) \u2192 low permeability |\n| \ud83c\udf3e **Loam** | Balanced mix \u2192 ideal for plant roots |\n| \ud83d\udca7 **Infiltration** | Rate water enters soil from the surface |\n| \ud83d\udeb0 **Capillary action** | Water clinging and rising through tiny pores |\n\n**Key Insight:** Soil isn\u2019t just \u201cdirt\u201d \u2014 it\u2019s a **porous medium** where particle size controls water storage, drainage, aeration, and root growth. The physics of **pore space** determines whether land floods, drains, or supports life!",
         options: [
             { id: 'summary', label: "Show the lab data summary.", nextNodeId: 'summary_table' },
             { id: 'reflect', label: "Ask me reflection questions!", nextNodeId: 'reflection_questions' }
@@ -104,21 +104,21 @@ export const getP19Script = (): Record<string, DialogNode> => ({
     'reflection_retry': {
         id: 'reflection_retry',
         speaker: 'AI',
-        content: "Nutrients are a bonus, but the MAIN effect is physical! \ud83c\udf3f\n\n**Compost** adds organic matter that acts as a **structural scaffold** between clay particles. It:\n- Creates LARGER pore channels for water and air \ud83d\udca8\n- Prevents clay plates from sticking together and forming impermeable layers\n- Improves **aggregate structure** \u2014 clumps of particles with pores between them\n\nResult: better drainage, more oxygen, easier root growth. That\u2019s why garden centers sell compost by the truckload! \ud83d\ude9a",
+        content: "Nutrients are a bonus, but the MAIN effect is physical! \ud83c\udf3f\n\n**Compost** adds organic matter that acts as a **structural scaffold** between clay particles. It:\n- Creates LARGER pore channels for water and air \ud83d\udca8\n- Prevents clay plates from sticking together and forming **impermeable** layers — **impermeable** means water cannot get through at all\n- Improves **aggregate structure** \u2014 clumps of particles with pores between them\n\nResult: better drainage, more oxygen, easier root growth. That\u2019s why garden centers sell compost by the truckload! \ud83d\ude9a",
         options: [{ id: 'retry_to_feedback', label: "Compost changes pore structure, not just chemistry \u2014 it\u2019s a physical improvement!", nextNodeId: 'reflection_feedback' }]
     },
 
     'reflection_feedback': {
         id: 'reflection_feedback',
         speaker: 'AI',
-        content: "Excellent reasoning! \ud83c\udf1f You\u2019re thinking about soil as a **physical system** where particle arrangement controls everything \u2014 from drainage to root growth to crop yield.\n\nSoil physicists use CT scanners (like hospital MRIs!) to create 3D maps of pore networks inside soil samples. The physics of soil pores is literally the foundation of all terrestrial life! \ud83c\udf0d",
+        content: "Excellent reasoning! \ud83c\udf1f You\u2019re thinking about soil as a **physical system** where particle arrangement controls everything \u2014 from drainage to root growth to crop yield.\n\nSoil physicists use CT scanners (like hospital MRIs!) to create 3D maps of pore networks inside soil samples. The physics of soil pores is literally the foundation of all **terrestrial** life — **terrestrial** means living on land, rather than in water! \ud83c\udf0d",
         options: [{ id: 'finish', label: "Finish P19!", nextNodeId: 'complete' }]
     },
 
     'complete': {
         id: 'complete',
         speaker: 'AI',
-        content: "\ud83d\udd17 **Cross-Links**\n- In **C19**, you\u2019ll discover the **chemical nutrients** dissolved in soil water \u2014 nitrogen, phosphorus, potassium \u2014 and how pH controls their availability to roots! \ud83e\uddea\n- In **B19**, you\u2019ll explore the incredible **biodiversity** hidden in soil \u2014 more organisms live in a teaspoon of healthy soil than there are people on Earth! \ud83d\udc1b\n\n\u2705 **Lesson P19 Complete!**",
+        content: "\ud83d\udd17 **Cross-Links**\n- In **C19**, you\u2019ll discover the **chemical nutrients** dissolved in soil water \u2014 nitrogen, **phosphorus** and potassium — three of the foods plants need from soil, and **phosphorus** is the one that helps roots and flowers grow \u2014 and how pH controls their availability to roots! \ud83e\uddea\n- In **B19**, you\u2019ll explore the incredible **biodiversity** hidden in soil \u2014 more organisms live in a teaspoon of healthy soil than there are people on Earth! \ud83d\udc1b\n\n\u2705 **Lesson P19 Complete!**",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }

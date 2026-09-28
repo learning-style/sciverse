@@ -88,7 +88,7 @@ export const getB16Script = (): Record<string, DialogNode> => ({
     'discovery': {
         id: 'discovery',
         speaker: 'AI',
-        content: "🎉 **Discovery:** Migration is a systems-level behavior. Success comes from integrating physical signals (like magnetic fields) with biological processing and cue fusion.",
+        content: "🎉 **Discovery:** Migration is a systems-level behavior. Success comes from integrating physical signals (like magnetic fields) with biological processing and cue **fusion** — **fusion** here means joining separate pieces of information into one answer.",
         options: [
             { id: 'summary', label: 'Show summary table.', nextNodeId: 'summary_table' },
             { id: 'reflect', label: 'Ask me reflection questions.', nextNodeId: 'reflection_questions' }
@@ -98,7 +98,7 @@ export const getB16Script = (): Record<string, DialogNode> => ({
     'summary_table': {
         id: 'summary_table',
         speaker: 'AI',
-        content: "| **System Element** | **Biology Meaning** | **Lab Evidence** |\n|---|---|---|\n| **Magnetic cue** | Environmental directional input | Higher signal improved navigation accuracy |\n| **Noise / disturbance** | Signal corruption (e.g., geomagnetic turbulence) | Higher storm noise reduced accuracy |\n| **Cue integration** | Combining multiple signals for decisions | Performance can persist when one cue weakens |\n| **Robustness** | Reliability under changing conditions | Layered sensing outperforms single-cue dependence |",
+        content: "| **System Element** | **Biology Meaning** | **Lab Evidence** |\n|---|---|---|\n| **Magnetic cue** | Environmental directional input | Higher signal improved navigation accuracy |\n| **Noise / disturbance** | Signal corruption (e.g., **geomagnetic** **turbulence**) — **geomagnetic** means to do with the Earth’s own magnetism, and **turbulence** here means it churning about unsteadily | Higher storm noise reduced accuracy |\n| **Cue integration** | Combining multiple signals for decisions | Performance can persist when one cue weakens |\n| **Robustness** | Reliability under changing conditions | Layered sensing beats **dependence** on a single cue — **dependence** means relying on one thing only |",
         options: [
             { id: 'reflect_after_table', label: 'Now ask reflection questions.', nextNodeId: 'reflection_questions' },
             { id: 'to_complete', label: 'Wrap up B16.', nextNodeId: 'complete' }
@@ -125,7 +125,7 @@ export const getB16Script = (): Record<string, DialogNode> => ({
     'reflection_feedback': {
         id: 'reflection_feedback',
         speaker: 'AI',
-        content: "Excellent. You are connecting physiology, behavior, and environmental physics in one model.",
+        content: "Excellent. You are connecting **physiology** — how a living body works — behavior, and environmental physics in one model.",
         options: [{ id: 'finish', label: 'Finish B16', nextNodeId: 'complete' }]
     },
 

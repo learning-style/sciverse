@@ -28,7 +28,7 @@ export const getB18Script = (): Record<string, DialogNode> => ({
     'correct': {
         id: 'correct',
         speaker: 'AI',
-        content: "Exactly! \ud83c\udfaf A river is like a long corridor of DIFFERENT habitats:\n\n- \u26a1 **Headwaters** (fast, cold, high O\u2082): Trout, stoneflies, mosses \u2014 adapted to turbulence\n- \ud83c\udf0a **Mid-reach** (moderate flow, variable temp): Bass, dragonflies, water plants \u2014 versatile hunters\n- \ud83c\udfd6\ufe0f **Lowlands** (slow, warm, low O\u2082): Catfish, mussels, algae mats \u2014 adapted to still, murky conditions\n\nIn the visual, the blue wavy lines show **flow current** direction and speed. The \u201cFlow X% \u2192\u201d label tells you how fast the current is moving. Different fish icons appear in different zones based on flow conditions!\n\n**Fun fact:** Salmon are one of the very few fish that travel the ENTIRE river \u2014 born in cold headwaters, they migrate to the ocean, then return upstream to spawn! They literally fight the current for hundreds of miles! \ud83d\udc1f\u27a1\ufe0f\ud83c\udf0a",
+        content: "Exactly! \ud83c\udfaf A river is like a long corridor of DIFFERENT habitats:\n\n- \u26a1 **Headwaters** (fast, cold, high O\u2082): Trout, **stoneflies** (an insect whose young only survive in clean, fast water), mosses \u2014 adapted to **turbulence**, the churning and swirling of fast-moving water\n- \ud83c\udf0a **Mid-reach** (moderate flow, variable temp): Bass, dragonflies, water plants \u2014 versatile hunters\n- \ud83c\udfd6\ufe0f **Lowlands** (slow, warm, low O\u2082): Catfish, mussels, algae mats \u2014 adapted to still, murky conditions\n\nIn the visual, the blue wavy lines show **flow current** direction and speed. The \u201cFlow X% \u2192\u201d label tells you how fast the current is moving. Different fish icons appear in different zones based on flow conditions!\n\n**Fun fact:** Salmon are one of the very few fish that travel the ENTIRE river \u2014 born in cold headwaters, they migrate to the ocean, then return upstream to spawn! They literally fight the current for hundreds of miles! \ud83d\udc1f\u27a1\ufe0f\ud83c\udf0a",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'zones', showFlowLabel: true } },
         options: [
             { id: 'experiment', label: "Let me adjust the flow and see what changes!", nextNodeId: 'experiment_prompt' },
@@ -56,7 +56,7 @@ export const getB18Script = (): Record<string, DialogNode> => ({
     'checkpoint_wrong': {
         id: 'checkpoint_wrong',
         speaker: 'AI',
-        content: "Fish can\u2019t adapt that quickly! \ud83d\udea8 Evolutionary **adaptation** takes generations (thousands of years), but the factory\u2019s warm water arrives in days.\n\nHere\u2019s the lethal chain:\n1. \ud83c\udf21\ufe0f **Temperature rises** above trout tolerance (~20\u00b0C)\n2. \ud83d\udca8 **Dissolved oxygen drops** (warm water holds less O\u2082)\n3. \ud83d\udc1f **Trout gills** can\u2019t extract enough oxygen \u2192 stress, disease, death\n\nThis is called **thermal pollution** \u2014 one of the most common threats to river ecosystems worldwide. \ud83c\udf0d",
+        content: "Fish can\u2019t adapt that quickly! \ud83d\udea8 Evolutionary **adaptation** takes generations (thousands of years), but the factory\u2019s warm water arrives in days.\n\nHere\u2019s the lethal chain:\n1. \ud83c\udf21\ufe0f **Temperature rises** above trout tolerance (~20\u00b0C)\n2. \ud83d\udca8 **Dissolved oxygen drops** (warm water holds less O\u2082)\n3. \ud83d\udc1f **Trout gills** can\u2019t extract enough oxygen \u2192 stress, disease, death\n\nThis is called **thermal pollution** \u2014 one of the most common threats to river **ecosystems** worldwide — an **ecosystem** is all the living things in one place together with the surroundings they share. \ud83c\udf0d",
         options: [{ id: 'retry', label: "Thermal pollution kills cold-adapted species by reducing oxygen!", nextNodeId: 'checkpoint_correct' }]
     },
 
@@ -104,7 +104,7 @@ export const getB18Script = (): Record<string, DialogNode> => ({
     'reflection_retry': {
         id: 'reflection_retry',
         speaker: 'AI',
-        content: "Erosion control is ONE benefit, but there\u2019s a bigger one! \ud83c\udf33\n\n**Riparian vegetation** (streamside trees and plants) provides critical **shade** that keeps water temperatures cool. Studies show that removing streamside trees can raise water temperature by 5-10\u00b0C \u2014 enough to make the habitat uninhabitable for trout!\n\nTrees also:\n- Drop **leaf litter** that feeds invertebrates (trout food!) \ud83c\udf42\n- Provide **root structure** that creates hiding spots \ud83e\udeb5\n- Filter **runoff** before it reaches the stream \ud83d\udca7",
+        content: "Erosion control is ONE benefit, but there\u2019s a bigger one! \ud83c\udf33\n\n**Riparian vegetation** (streamside trees and plants) provides critical **shade** that keeps water temperatures cool. Studies show that removing streamside trees can raise water temperature by 5-10\u00b0C \u2014 enough to make the habitat uninhabitable for trout!\n\nTrees also:\n- Drop **leaf litter** that feeds **invertebrates** — small animals with no backbone, like insects and worms (trout food!) \ud83c\udf42\n- Provide **root structure** that creates hiding spots \ud83e\udeb5\n- Filter **runoff** before it reaches the stream \ud83d\udca7",
         options: [{ id: 'retry_to_feedback', label: "Shade, food, shelter, and filtration \u2014 trees are essential river habitat!", nextNodeId: 'reflection_feedback' }]
     },
 
@@ -118,7 +118,7 @@ export const getB18Script = (): Record<string, DialogNode> => ({
     'complete': {
         id: 'complete',
         speaker: 'AI',
-        content: "\ud83d\udd17 **Cross-Links**\n- In **P18**, you saw how **flow physics** creates different erosion and deposition zones \u2014 those same zones create different habitats! \ud83c\udf0a\n- In **C18**, you measured **dissolved minerals** \u2014 the chemical foundation that supports aquatic food webs! \ud83e\uddea\n\n\u2705 **Lesson B18 Complete!**",
+        content: "\ud83d\udd17 **Cross-Links**\n- In **P18**, you saw how **flow physics** creates different **erosion** and **deposition** zones — **erosion** is where flowing water picks material up, and **deposition** is where it drops it again \u2014 those same zones create different habitats! \ud83c\udf0a\n- In **C18**, you measured **dissolved minerals** \u2014 the chemical foundation that supports aquatic food webs! \ud83e\uddea\n\n\u2705 **Lesson B18 Complete!**",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }

@@ -3,14 +3,14 @@ import { DialogNode } from '../../types';
 /**
  * P14 — Waves & Signals
  * Big Idea 14: "How Is Information Coded and Transmitted?"
- * Scenario: Oscilloscope showing wave properties and digital encoding
+ * Scenario: an **oscilloscope** — a screen that draws the shape of a wave so you can look at it — showing wave properties and digital encoding
  * Target Misconception: "Digital = no waves / digital signals are not physical waves"
  */
 export const getP14Script = (): Record<string, DialogNode> => ({
     'root': {
         id: 'root',
         speaker: 'AI',
-        content: "Welcome to the Wave & Signal Lab! 📡\n\nLook at the oscilloscope display — it's showing a wave traveling from left to right. This could be a sound wave, radio wave, or electrical signal.\n\nHere's a classic question: which do you think travels faster — light (electromagnetic wave) or sound?",
+        content: "Welcome to the Wave & Signal Lab! 📡\n\nLook at the **oscilloscope** display — an **oscilloscope** is a screen that draws the shape of a wave so you can look at it — it's showing a wave traveling from left to right. This could be a sound wave, radio wave, or electrical signal.\n\nHere's a classic question: which do you think travels faster — light (an **electromagnetic** wave, which means it is made of electricity and magnetism moving along together) or sound?",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', waveType: 'sine', frequency: 2, amplitude: 50 } },
         options: [
             { id: 'light', label: "Light — about 300,000 km/second!", nextNodeId: 'correct_light', sentiment: 'positive' },
@@ -60,7 +60,7 @@ export const getP14Script = (): Record<string, DialogNode> => ({
     'digital_intro': {
         id: 'digital_intro',
         speaker: 'AI',
-        content: "Right! A bigger amplitude carries more energy. Now here's where it gets modern:\n\nYour phone uses **digital signals** — 1s and 0s. But here's the thing a lot of people miss: those 1s and 0s are still transmitted as **physical waves**. The wave just switches between two amplitudes (high = 1, low = 0).\n\nSwitch the oscilloscope to **Digital mode** in the sim — see the square wave!",
+        content: "Right! A bigger amplitude carries more energy. Now here's where it gets modern:\n\nYour phone uses **digital signals** — 1s and 0s. But here's the thing a lot of people miss: those 1s and 0s are still transmitted as **physical waves**. The wave just switches between two **amplitudes** — an **amplitude** is how tall a wave is (high = 1, low = 0).\n\nSwitch the oscilloscope to **Digital mode** in the sim — see the square wave!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'digital', waveType: 'square', showDigitalMode: true } },
         options: [
             { id: 'saw_digital', label: "It's a square wave — ON/OFF pattern = 1s and 0s!", nextNodeId: 'encoding' }

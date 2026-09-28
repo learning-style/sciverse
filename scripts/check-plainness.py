@@ -151,7 +151,7 @@ cooperatively suppose punish
 
 swallow swallowing respond responding medicine surroundings fist arithmetic repair unfinished finish open broken pendulum
 happen leave push let accept dispose grid zoom factory block
-behind reverse one-way rebuild ingredient
+behind reverse one-way rebuild ingredient steady unsteadily fast-moving magnet magnetism travel
 """.split())
 
 # Words the curriculum leans on everywhere, and that a Level 1 reader meets as

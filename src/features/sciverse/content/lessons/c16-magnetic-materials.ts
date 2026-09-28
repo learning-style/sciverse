@@ -20,7 +20,7 @@ export const getC16Script = (): Record<string, DialogNode> => ({
     'misconception': {
         id: 'misconception',
         speaker: 'AI',
-        content: "Common misconception. Being a metal does not guarantee strong ferromagnetism.\n\nIron, cobalt, and nickel often show strong magnetic response, while copper and aluminum usually do not show the same domain behavior.",
+        content: "Common misconception. Being a metal does not guarantee strong **ferromagnetism** — **ferromagnetism** is the kind of magnetism that iron has, where a material can be made into a magnet and stay one.\n\nIron, cobalt, and nickel often show strong magnetic response, while copper and aluminum usually do not show the same domain behavior.",
         options: [{ id: 'next', label: 'Explain domain behavior.', nextNodeId: 'correct' }]
     },
 
@@ -45,7 +45,7 @@ export const getC16Script = (): Record<string, DialogNode> => ({
     'experiment_prompt': {
         id: 'experiment_prompt',
         speaker: 'AI',
-        content: "Try this mini-investigation:\n1. Increase iron fraction and observe magnetization trend.\n2. Keep iron high, then raise temperature and watch response fall.\n3. Use the probe to sample local metric changes.\n\nThen answer the checkpoint using evidence.",
+        content: "Try this mini-investigation:\n1. Increase iron fraction and watch the **magnetization** — how strongly the sample has been turned into a magnet.\n2. Keep iron high, then raise temperature and watch response fall.\n3. Use the probe to sample local metric changes.\n\nThen answer the checkpoint using evidence.",
         options: [{ id: 'to_checkpoint', label: 'I tested it. Ask checkpoint.', nextNodeId: 'checkpoint' }]
     },
 
@@ -125,7 +125,7 @@ export const getC16Script = (): Record<string, DialogNode> => ({
     'reflection_feedback': {
         id: 'reflection_feedback',
         speaker: 'AI',
-        content: "Excellent. You are reasoning like a scientist: mechanism, evidence, and controlled comparison.",
+        content: "Excellent. You are reasoning like a scientist: **mechanism** (how the thing actually works), evidence, and careful comparison.",
         options: [{ id: 'finish', label: 'Finish C16', nextNodeId: 'complete' }]
     },
 

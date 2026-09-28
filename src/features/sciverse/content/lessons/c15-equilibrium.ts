@@ -70,7 +70,7 @@ export const getC15Script = (): Record<string, DialogNode> => ({
     'summary': {
         id: 'summary',
         speaker: 'AI',
-        content: "🌟 **Chemical Equilibrium Mastered:**\n\n✅ Equilibrium = dynamic balance (reactions still happening both ways!)\n✅ Equilibrium constant K = ratio of products to reactants\n✅ Le Chatelier's Principle: stress → system shifts to relieve stress\n✅ Adding reactants → shifts toward products\n✅ Raising temperature → shifts toward endothermic direction\n✅ Used in: industrial chemistry, blood pH buffering, atmospheric chemistry!\n\n**Real-world:** Your kidneys maintain blood equilibria 24/7 using these exact principles.",
+        content: "🌟 **Chemical Equilibrium Mastered:**\n\n✅ Equilibrium = dynamic balance (reactions still happening both ways!)\n✅ Equilibrium constant K = ratio of products to reactants\n✅ Le Chatelier's Principle: stress → system shifts to relieve stress\n✅ Adding reactants → shifts toward products\n✅ Raising temperature → shifts toward endothermic direction\n✅ Used in: industrial chemistry, blood pH buffering, atmospheric chemistry!\n\n**Real-world:** Your kidneys hold several balances in your blood steady at once — several **equilibria**, which is just the plural of equilibrium — all day and all night using these exact principles.",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: [{ id: 'done', label: "Equilibrium equilibrated in my brain!", nextNodeId: 'done' }]
     },
@@ -78,7 +78,7 @@ export const getC15Script = (): Record<string, DialogNode> => ({
     'done': {
         id: 'done',
         speaker: 'AI',
-        content: "Excellent equilibrium expertise! ⚗️\n\nConnect to **P15 (Pendulum)** to see physical oscillation balance, or **B15 (Predator-Prey)** to watch ecological equilibrium — balance in the natural world!",
+        content: "Excellent equilibrium expertise! ⚗️\n\nConnect to **P15 (Pendulum)** to see the same balance as a swinging **oscillation** — something moving steadily back and forth, or **B15 (Predator-Prey)** to watch **ecological** equilibrium — **ecological** means to do with how living things and their surroundings affect one another — balance in the natural world!",
         options: []
     }
 });

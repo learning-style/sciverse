@@ -43,14 +43,14 @@ export const getB15Script = (): Record<string, DialogNode> => ({
         content: "Exactly! This boom-bust cycle is described mathematically by the **Lotka-Volterra equations** (1925).\n\nThe core cycle:\n1. 🦌 Deer increase (lots of plants, few wolves)\n2. 🐺 Wolves increase (lots of deer to eat)\n3. 🌿 Plants decrease (deer eat too much)\n4. 🦌 Deer decrease (less food + more wolves)\n5. 🐺 Wolves decrease (less deer to eat)\n6. → Back to step 1!\n\nPress **Start** in the sim and watch this cycle!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'running', running: true, showCycle: true } },
         options: [
-            { id: 'saw_cycle', label: "I see the sine-wave oscillation — wolves and deer trade positions!", nextNodeId: 'time_lag' }
+            { id: 'saw_cycle', label: "I see the smooth up-and-down **oscillation** — wolves and deer trade positions!", nextNodeId: 'time_lag' }
         ]
     },
 
     'time_lag': {
         id: 'time_lag',
         speaker: 'AI',
-        content: "Notice the **time lag** — wolf population peaks AFTER deer population peaks. Makes sense: wolves need time to breed after finding abundant food!\n\nThis lag is what creates oscillation instead of a single crash. Without it, predators would always track prey perfectly and there'd be no cycles.\n\nNow try **removing all wolves** (set wolves to 0) in the sim — does the deer population stabilize?",
+        content: "Notice the **time lag** — wolf population peaks AFTER deer population peaks. Makes sense: wolves need time to breed after finding abundant food!\n\nThis lag is what creates **oscillation** — numbers swinging up and down over and over — instead of a single crash. Without it, predators would always track prey perfectly and there'd be no cycles.\n\nNow try **removing all wolves** (set wolves to 0) in the sim — does the deer population stabilize?",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'remove_wolves', showWolfControl: true } },
         options: [
             { id: 'crashed', label: "Deer exploded then crashed — just like Kaibab!", nextNodeId: 'reintroduce' }
@@ -70,7 +70,7 @@ export const getB15Script = (): Record<string, DialogNode> => ({
     'summary': {
         id: 'summary',
         speaker: 'AI',
-        content: "🌟 **Predator-Prey Dynamics Mastered:**\n\n✅ Predators stabilize prey populations — preventing boom-bust\n✅ Lotka-Volterra: oscillating populations with time lag\n✅ Removing predators → prey overshoots → crashes below original level\n✅ Trophic cascades: predator effects ripple through entire ecosystems\n✅ Yellowstone wolves: changed riverbanks by changing elk behavior!\n\n**Big picture:** Balance in nature is dynamic (like chemical equilibrium!) — not static. Disruption causes oscillation, recovery takes time. 🌍",
+        content: "🌟 **Predator-Prey Dynamics Mastered:**\n\n✅ Predators stabilize prey populations — preventing boom-bust\n✅ Predator and prey numbers keep **oscillating** — swinging up and down, over and over — with one lagging behind the other\n✅ Removing predators → prey overshoots → crashes below original level\n✅ Trophic cascades: predator effects ripple through entire ecosystems\n✅ Yellowstone wolves: changed riverbanks by changing elk behavior!\n\n**Big picture:** Balance in nature is a moving balance (like **equilibrium** in chemistry — **equilibrium** is a balance that holds steady because two opposite changes are happening at the same rate!) — not static. Disruption causes oscillation, recovery takes time. 🌍",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: [{ id: 'done', label: "Ecology makes sense! I'll never look at wolves the same way.", nextNodeId: 'done' }]
     },
@@ -78,7 +78,7 @@ export const getB15Script = (): Record<string, DialogNode> => ({
     'done': {
         id: 'done',
         speaker: 'AI',
-        content: "🔗 **Big Idea 15 Complete — How Do Systems Find Balance?**\n\n- Physics (P15): Pendulum & Resonance — oscillation, damping, and natural timing\n- Chemistry (C15): Chemical Equilibrium — forward and reverse reactions reach dynamic balance\n- Biology (B15): Predator-Prey Cycles — populations oscillate and stabilize through ecological feedback\n\nIn all three: **balance isn't static — it's a dynamic dance of opposing forces!** ⚖️🐺⚗️\n\n✅ **Lesson B15 Complete!**",
+        content: "🔗 **Big Idea 15 Complete — How Do Systems Find Balance?**\n\n- Physics (P15): Pendulum & Resonance — oscillation, damping, and natural timing\n- Chemistry (C15): Chemical Equilibrium — forward and reverse reactions reach dynamic balance\n- Biology (B15): Predator-Prey Cycles — populations swing up and down and settle through **ecological** feedback — **ecological** means to do with how living things and their surroundings affect each other\n\nIn all three: **balance isn't static — it's a dynamic dance of opposing forces!** ⚖️🐺⚗️\n\n✅ **Lesson B15 Complete!**",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }

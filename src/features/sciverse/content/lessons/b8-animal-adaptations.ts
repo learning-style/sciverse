@@ -65,7 +65,7 @@ export const getB8Script = (): Record<string, DialogNode> => ({
     'hibernation_intro': {
         id: 'hibernation_intro',
         speaker: 'AI',
-        content: "**Strategy 2: Hibernation** 🐻💤\n\nThe brown bear crawls into its cave and does something incredible — it enters **hibernation**!\n\nWatch the display:\n- Heart rate drops from **80 bpm** to just **8 bpm** 💓\n- Body temperature falls from 37°C to about **33°C**\n- Breathing slows to just a few breaths per minute\n- It won't eat, drink, or go to the bathroom for **5-7 MONTHS!**\n\nThe bear lives off **stored body fat** — it ate huge amounts in autumn to prepare. Its metabolism slows by ~75%!",
+        content: "**Strategy 2: Hibernation** 🐻💤\n\nThe brown bear crawls into its cave and does something incredible — it enters **hibernation**!\n\nWatch the display:\n- Heart rate drops from **80 bpm** to just **8 bpm** 💓\n- Body temperature falls from 37°C to about **33°C**\n- Breathing slows to just a few breaths per minute\n- It won't eat, drink, or go to the bathroom for **5-7 MONTHS!**\n\nThe bear lives off **stored body fat** — it ate huge amounts in autumn to prepare. Its **metabolism** — all the chemical work going on inside its body — slows by about 75%!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'hibernation' } },
         options: [
             { id: 'how', label: "How can it survive without eating?!", nextNodeId: 'hibernation_detail' },
@@ -76,7 +76,7 @@ export const getB8Script = (): Record<string, DialogNode> => ({
     'hibernation_detail': {
         id: 'hibernation_detail',
         speaker: 'AI',
-        content: "It's all about **energy conservation**! 🔋\n\nA bear burns ~6,000 calories/day when active. During hibernation, that drops to about **1,500 calories/day** — all from stored fat.\n\nBy slowing its heartbeat and cooling its body, the bear uses far less energy. It's like putting your phone on ultra power-saving mode! 📱\n\n🔗 *P8 Connection (Heat Transfer):* The cave acts as **insulation** — rock blocks wind (convection) and the small entrance reduces heat loss. The bear's own body heat warms the small space, just like how P8 showed that reducing conduction and convection keeps things warm!",
+        content: "It's all about **energy conservation**! 🔋\n\nA bear burns ~6,000 calories/day when active. During hibernation, that drops to about **1,500 calories/day** — all from stored fat.\n\nBy slowing its heartbeat and cooling its body, the bear uses far less energy. It's like putting your phone on ultra power-saving mode! 📱\n\n🔗 *P8 Connection (Heat Transfer):* The cave acts as **insulation** — rock blocks wind, so heat is not carried away by moving air — that carrying away is called **convection** and the small entrance reduces heat loss. The bear's own body heat warms the small space, just like how P8 showed that reducing conduction and convection keeps things warm!",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'hibernation' } },
         options: [
             { id: 'fox', label: "Now show me the arctic fox!", nextNodeId: 'insulation_intro' }
@@ -119,7 +119,7 @@ export const getB8Script = (): Record<string, DialogNode> => ({
     'checkpoint_correct': {
         id: 'checkpoint_correct',
         speaker: 'AI',
-        content: "✅ **Excellent!** That's spot on!\n\nDaytime desert heat (50°C+) would cause deadly **overheating** and rapid **water loss** through evaporation. By hiding underground during the day, animals stay cool and conserve precious water.\n\nAt night (15-20°C), they can be active without wasting energy on cooling down. It's a brilliant survival strategy! 🦎🌙",
+        content: "✅ **Excellent!** That's spot on!\n\nDaytime desert heat (50°C+) would cause deadly **overheating** and rapid **water loss** through **evaporation**, which is water drying away into the air and taking heat with it. By hiding underground during the day, animals stay cool and conserve precious water.\n\nAt night (15-20°C), they can be active without wasting energy on cooling down. It's a brilliant survival strategy! 🦎🌙",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', correct: true } },
         options: [
             { id: 'discovery', label: "Let's see everything we learned!", nextNodeId: 'discovery' }
