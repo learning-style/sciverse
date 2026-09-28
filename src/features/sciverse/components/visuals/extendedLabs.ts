@@ -155,6 +155,9 @@ import { L3P16CoilLab } from './L3P16CoilLab';
 import { L3C16LoopLab } from './L3C16LoopLab';
 import { L3B16WeightLab } from './L3B16WeightLab';
 import { L2P17ColumnLab } from './L2P17ColumnLab';
+import { L2P18DischargeLab } from './L2P18DischargeLab';
+import { L2C18LoadLab } from './L2C18LoadLab';
+import { L2B18OxygenLab } from './L2B18OxygenLab';
 import { L2C17SteelLab } from './L2C17SteelLab';
 import { L2B17HollowLab } from './L2B17HollowLab';
 import { L3P17BucklingLab } from './L3P17BucklingLab';
@@ -326,6 +329,9 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3c16: L3C16LoopLab,
     l3b16: L3B16WeightLab,
     l2p17: L2P17ColumnLab,
+    l2p18: L2P18DischargeLab,
+    l2c18: L2C18LoadLab,
+    l2b18: L2B18OxygenLab,
     l2c17: L2C17SteelLab,
     l2b17: L2B17HollowLab,
     l3p17: L3P17BucklingLab,
