@@ -622,9 +622,9 @@ These same rules explain:
 
 - Physics (P5): Levers multiply force — distance is the secret ingredient
 - Chemistry (C5): Dissolving has a limit (saturation), but pressure & temperature can shift it
-- Biology (B5): Tiny changes in body temperature switch on sweating or shivering, keeping you near 37°C (homeostasis)
+- Biology (B5): Tiny changes in body temperature switch on sweating or shivering, keeping you near 37°C. Holding a body steady like that is called homeostasis
 
-Nature loves amplification — small inputs, big outputs! 🚀
+Nature loves amplification -- a small change at one end making a large one at the other, so small inputs give big outputs! 🚀
 
 ✅ **Lesson C5 Complete!**`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}),S2=()=>({root:{id:"root",speaker:"AI",content:`Welcome to the Body Control Center! 🌡️
 
@@ -1787,11 +1787,11 @@ Watch the factory power up the town!`,onEnterAction:{type:"SET_VISUAL",payload:{
 
 Burning fossil fuels releases CO₂ into the air, along with other pollution. This is a HUGE problem:
 
-🌡️ CO₂ traps heat in the atmosphere → **global warming**
+🌡️ CO₂ traps heat in the **atmosphere**, which is the blanket of air around the Earth → **global warming**
 🌧️ Other gases from burning mix with rain → **acid rain** that damages forests
 💨 Exhaust fumes and sunlight make **smog** that makes it hard to breathe
 
-🔗 *Chemistry (C10) will explore these pollutants in detail!*
+🔗 *Chemistry (C10) will explore these **pollutants** in detail. A pollutant is waste that dirties air or water!*
 🔗 *Biology (B10) will show how pollution harms ecosystems!*
 
 Can we power the town WITHOUT all this pollution? Let's try **solar energy**! ☀️`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"fossil",showPollution:!0}},options:[{id:"solar",label:"Show me solar power! ☀️",nextNodeId:"solar_intro"}]},solar_intro:{id:"solar_intro",speaker:"AI",content:`Here comes the sun! ☀️
@@ -3590,10 +3590,10 @@ It’s a **cascade failure**: losing the soil food web destroys soil structure, 
 
 - 🔄 **Nutrient cycling** (decomposition → available nutrients)
 - 💨 **Soil aeration** (worm tunnels let air and water penetrate)
-- 🏗️ **Soil structure** (organisms create aggregates that resist compaction)
+- 🏗️ **Soil structure** (organisms create crumbs that resist compaction, which is soil being squashed down until the air spaces close)
 - 🧹 **Disease suppression** (beneficial microbes outcompete pathogens)
 
-That’s why **regenerative agriculture** focuses on building soil biology instead of treating soil as just a chemical container! 🌱`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint",showDamage:!0}},options:[{id:"discovery",label:"Show me the big discovery!",nextNodeId:"discovery"},{id:"summary_now",label:"Show summary table first.",nextNodeId:"summary_table"}]},discovery:{id:"discovery",speaker:"AI",content:`🎉 **Discovery: Soil is the Most Biodiverse Habitat on Earth!**
+That’s why **regenerative agriculture** focuses on building soil biology instead of treating soil as just a chemical container! 🌱`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint",showDamage:!0}},options:[{id:"discovery",label:"Show me the big discovery!",nextNodeId:"discovery"},{id:"summary_now",label:"Show summary table first.",nextNodeId:"summary_table"}]},discovery:{id:"discovery",speaker:"AI",content:`🎉 **Discovery: Soil is the Most Crowded Habitat on Earth. It is the most **Biodiverse** too, which means it holds the widest variety of living things!**
 
 | Organism | Role | Scale |
 |----------|------|-------|
@@ -3611,7 +3611,7 @@ That’s why **regenerative agriculture** focuses on building soil biology inste
 | 🧱 **Soil structure** | Organisms bind particles into aggregates |
 | 🛡️ **Disease suppression** | Beneficial microbes outcompete pathogens |
 
-**Key Insight:** Healthy soil is a **living ecosystem**, not lifeless dirt! The organisms within it provide essential services that support ALL terrestrial plant life — and by extension, all life on land.`,options:[{id:"summary",label:"Show the lab data summary.",nextNodeId:"summary_table"},{id:"reflect",label:"Ask me reflection questions!",nextNodeId:"reflection_questions"}]},summary_table:{id:"summary_table",speaker:"AI",content:`📊 **Lab Results Summary:**
+**Key Insight:** Healthy soil is a **living ecosystem**, not lifeless dirt! The organisms within it provide essential services that support ALL **terrestrial** plant life. Terrestrial means living on land rather than in water — and by extension, all life on land.`,options:[{id:"summary",label:"Show the lab data summary.",nextNodeId:"summary_table"},{id:"reflect",label:"Ask me reflection questions!",nextNodeId:"reflection_questions"}]},summary_table:{id:"summary_table",speaker:"AI",content:`📊 **Lab Results Summary:**
 
 | **Organism Group** | **What You Observed** | **Ecological Function** |
 |---|---|---|
@@ -4583,7 +4583,7 @@ This is why **weather** and other complex systems are hard to predict!`,options:
 **Nonlinear dynamics** can turn **small differences** into **large outcomes**.
 
 - **Butterfly effect:** a tiny change can alter the future.
-- **Chaos** is not randomness—it’s sensitive dependence on initial conditions.
+- **Chaos** is not randomness—it’s sensitive dependence on initial conditions -- dependence meaning the outcome leans entirely on where you started.
 
 Ready to complete the lesson?`,options:[{id:"done",label:"Complete P25",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`🔗 **Big Idea 25 Complete — How Can Tiny Changes Cause Big Effects?**
 
@@ -6083,7 +6083,7 @@ Clean water is the foundation of **public health** -- without it, invisible germ
 
 What do you think determines whether a particle stays floating in the air or falls to the ground?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro"}},options:[{id:"size",label:"Smaller particles float longer because air resistance holds them up -- big particles are too heavy and fall.",nextNodeId:"correct",sentiment:"positive"},{id:"wind",label:"Wind keeps everything floating -- without wind, all particles would fall.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Wind helps spread particles, but the real factor is **size vs. gravity**! Even in perfectly still air, some particles float for hours or even days.
 
-The reason is **air resistance** -- tiny particles are so light that the air molecules bumping into them keep them suspended. The smaller the particle, the longer it floats. Big particles like sand fall fast, but particles smaller than 2.5 micrometers (called **PM2.5 (Particulate Matter)**) can hang in the air for days!`,options:[{id:"cont",label:"So size determines how long a particle stays in the air?",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! **Particle size** determines everything about how dangerous air pollution is:
+The reason is **air resistance** -- tiny particles are so light that the air molecules bumping into them keep them suspended. The smaller the particle, the longer it floats. Big particles like sand fall fast, but particles smaller than 2.5 micrometers, a micrometer being a thousandth of a millimetre (called **PM2.5 (Particulate Matter)**) can hang in the air for days!`,options:[{id:"cont",label:"So size determines how long a particle stays in the air?",nextNodeId:"correct"}]},correct:{id:"correct",speaker:"AI",content:`Exactly! **Particle size** determines everything about how dangerous air pollution is:
 
 1. **Large particles** (>10 micrometers) -- dust, pollen. They fall quickly and your nose catches most of them
 2. **PM10 (Particulate Matter)** (2.5-10 micrometers) -- fine dust. Float longer and get past your nose into your throat
@@ -6113,7 +6113,7 @@ Particle size determines how air pollution behaves:
 - Tall smokestacks spread pollution further, not less
 - Air pollution is a **regional** problem because tiny particles travel far
 
-In C32 you'll see how chemical reactions in the atmosphere create dangerous invisible pollutants!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"discovery"}},options:[{id:"done",label:"Smaller particles are more dangerous because they float longer and go deeper!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`**P32 Complete -- Particle Drift!**
+In C32 you'll see how chemical reactions in the atmosphere -- the blanket of air around the Earth -- create dangerous invisible pollutants, which are the waste that dirties it!`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"discovery"}},options:[{id:"done",label:"Smaller particles are more dangerous because they float longer and go deeper!",nextNodeId:"complete"}]},complete:{id:"complete",speaker:"AI",content:`**P32 Complete -- Particle Drift!**
 
 Particle size controls how long pollution stays in the air.
 
@@ -6155,7 +6155,7 @@ This is why Los Angeles (sunny, still) has worse smog than Seattle (cloudy, bree
 - **Wind** disperses pollutants (no wind = smog gets trapped)
 - **Temperature** affects reaction speed (hotter = faster reactions)
 
-This connects to **P32 Particle Drift** -- the tiny particles created by these reactions float for days because they're **PM2.5** size -- particulate matter smaller than 2.5 micrometres. Physics and chemistry work together to create the air quality problem!
+This connects to **P32 Particle Drift** -- the tiny particles created by these reactions float for days because they're **PM2.5** size -- particulate matter -- the tiny solid specks floating in air -- smaller than 2.5 micrometres, a micrometre being a thousandth of a millimetre. Physics and chemistry work together to create the air quality problem!
 
 In B32 you'll see what these pollutants do to your lungs when you breathe them in.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"checkpoint"}},options:[{id:"disc",label:"Sunlight plus exhaust equals dangerous smog chemistry!",nextNodeId:"discovery"}]},discovery:{id:"discovery",speaker:"AI",content:`**You discovered how chemistry creates smog!**
 
