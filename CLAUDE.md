@@ -300,6 +300,18 @@ newline. It knows to ignore JSX text (`You've mastered`) and union types
 (`target: 'plant' | 'puppy'`), and both exclusions are regression-tested against
 the real failure so they cannot silently disarm it.
 
+**Quoting prose inside a lesson string is the third way to break the build, and
+the best hidden.** L3C18 reached CI with `content: "... chooses between "nearly
+pure" and "barely thinner"."` The bare quotes close the literal early and then
+**re-pair**, so the line is still quote-balanced at the newline and the braces are
+untouched: `check-syntax.py` read it as clean, and tsc answered with ten
+"',' expected" on one line. `check-strings.py` now checks double-quoted properties
+the same way it checks single-quoted ones, and the fix in the prose is simply not
+to quote — say *a river whose flood water is nearly pure* instead.
+
+All three failures in this family share one cause: prose was rewritten from a
+Python heredoc, where `\n` becomes a real newline and `\"` becomes a bare quote.
+
 `check-syntax.py` answers the one question that has broken this build three
 times: will the file parse? It walks a file string- and comment-aware and reports
 a quoted string left open at a newline, or an unbalanced brace. It is not a

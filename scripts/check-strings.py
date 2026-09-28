@@ -134,6 +134,48 @@ def bad_property_quotes(path):
     return out
 
 
+def bad_double_quotes(path):
+    """key: "value" where the value holds a bare, unescaped double quote.
+
+    The mirror image of the apostrophe case, and it hides better. Prose quoted
+    inside a double-quoted string -- chooses between "nearly pure" and "barely
+    thinner" -- closes the literal early and then *re-pairs*, so the line stays
+    quote-balanced at the newline and the braces are untouched. check-syntax.py
+    reads it as clean, and tsc reports ten "',' expected" on one line. That is how
+    L3C18 reached CI.
+    """
+    out = []
+    pat = re.compile(r'^\s*([A-Za-z_]\w*)\s*:\s*"(.*)"\s*,?\s*$')
+    for no, line in enumerate(open(path), 1):
+        m = pat.match(line.rstrip('\n'))
+        if not m:
+            continue
+        value = m.group(2)
+        parts, buf, i = [], '', 0
+        while i < len(value):
+            if value[i] == '\\':
+                buf += value[i:i + 2]
+                i += 2
+                continue
+            if value[i] == '"':
+                parts.append(buf)
+                buf = ''
+                i += 1
+                continue
+            buf += value[i]
+            i += 1
+        parts.append(buf)
+        if len(parts) == 1:
+            continue
+        between = parts[1::2]
+        if all(re.fullmatch(r'[\s|]*', b) for b in between):
+            continue
+        if all(re.search(r'\+', b) for b in between):
+            continue
+        out.append((no, m.group(1), line.strip()[:110]))
+    return out
+
+
 def main():
     files = sys.argv[1:] or changed()
     files = [f for f in files if f.endswith(('.ts', '.tsx'))]
@@ -144,14 +186,17 @@ def main():
     for f in files:
         bad = unterminated(f)
         props = bad_property_quotes(f)
-        total += len(bad) + len(props)
-        n = len(bad) + len(props)
+        dquotes = bad_double_quotes(f)
+        total += len(bad) + len(props) + len(dquotes)
+        n = len(bad) + len(props) + len(dquotes)
         flag = '' if not n else '   <-- will not parse'
         print(f.split('/')[-1] + ': ' + str(n) + ' problem(s)' + flag)
         for no, txt in bad:
             print('    line ' + str(no) + ': unterminated: ' + txt)
         for no, key, txt in props:
             print('    line ' + str(no) + ": unescaped apostrophe in '" + key + "': " + txt)
+        for no, key, txt in dquotes:
+            print('    line ' + str(no) + ": unescaped double quote in '" + key + "': " + txt)
     print()
     print(str(len(files)) + ' file(s) scanned, ' + str(total) + ' problem(s)')
     return 1 if total else 0
