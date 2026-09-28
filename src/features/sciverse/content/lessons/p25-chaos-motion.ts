@@ -53,7 +53,7 @@ export const getP25Script = (): Record<string, DialogNode> => ({
     discovery: {
         id: 'discovery',
         speaker: 'AI',
-        content: '**Discovery:**\n\n**Nonlinear dynamics** can turn **small differences** into **large outcomes**.\n\n- **Butterfly effect:** a tiny change can alter the future.\n- **Chaos** is not randomness—it’s sensitive dependence on initial conditions.\n\nReady to complete the lesson?',
+        content: '**Discovery:**\n\n**Nonlinear dynamics** can turn **small differences** into **large outcomes**.\n\n- **Butterfly effect:** a tiny change can alter the future.\n- **Chaos** is not randomness—it’s sensitive dependence on initial conditions -- dependence meaning the outcome leans entirely on where you started.\n\nReady to complete the lesson?',
         options: [{ id: 'done', label: 'Complete P25', nextNodeId: 'complete' }]
     },
     complete: {

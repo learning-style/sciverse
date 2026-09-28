@@ -15,7 +15,7 @@ export function getP32Script(): Record<string, DialogNode> {
         misconception: {
             id: 'misconception',
             speaker: 'AI',
-            content: "Wind helps spread particles, but the real factor is **size vs. gravity**! Even in perfectly still air, some particles float for hours or even days.\n\nThe reason is **air resistance** -- tiny particles are so light that the air molecules bumping into them keep them suspended. The smaller the particle, the longer it floats. Big particles like sand fall fast, but particles smaller than 2.5 micrometers (called **PM2.5 (Particulate Matter)**) can hang in the air for days!",
+            content: "Wind helps spread particles, but the real factor is **size vs. gravity**! Even in perfectly still air, some particles float for hours or even days.\n\nThe reason is **air resistance** -- tiny particles are so light that the air molecules bumping into them keep them suspended. The smaller the particle, the longer it floats. Big particles like sand fall fast, but particles smaller than 2.5 micrometers, a micrometer being a thousandth of a millimetre (called **PM2.5 (Particulate Matter)**) can hang in the air for days!",
             options: [
                 { id: 'cont', label: "So size determines how long a particle stays in the air?", nextNodeId: 'correct' }
             ]
@@ -67,7 +67,7 @@ export function getP32Script(): Record<string, DialogNode> {
         discovery: {
             id: 'discovery',
             speaker: 'AI',
-            content: "**You discovered the physics of air particles!**\n\nParticle size determines how air pollution behaves:\n- **Large particles** fall fast -- gravity wins easily\n- **PM2.5 (Particulate Matter)** (tiny particles) float for days -- air resistance beats gravity\n- Smaller particles reach **deeper** into your lungs\n- Tall smokestacks spread pollution further, not less\n- Air pollution is a **regional** problem because tiny particles travel far\n\nIn C32 you'll see how chemical reactions in the atmosphere create dangerous invisible pollutants!",
+            content: "**You discovered the physics of air particles!**\n\nParticle size determines how air pollution behaves:\n- **Large particles** fall fast -- gravity wins easily\n- **PM2.5 (Particulate Matter)** (tiny particles) float for days -- air resistance beats gravity\n- Smaller particles reach **deeper** into your lungs\n- Tall smokestacks spread pollution further, not less\n- Air pollution is a **regional** problem because tiny particles travel far\n\nIn C32 you'll see how chemical reactions in the atmosphere -- the blanket of air around the Earth -- create dangerous invisible pollutants, which are the waste that dirties it!",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery' } },
             options: [
                 { id: 'done', label: "Smaller particles are more dangerous because they float longer and go deeper!", nextNodeId: 'complete' }

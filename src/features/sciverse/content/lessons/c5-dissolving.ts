@@ -140,7 +140,7 @@ export const getC5Script = (): Record<string, DialogNode> => ({
     'complete': {
         id: 'complete',
         speaker: 'AI',
-        content: "🔗 **Big Idea 5 Across Disciplines!**\n\n- Physics (P5): Levers multiply force — distance is the secret ingredient\n- Chemistry (C5): Dissolving has a limit (saturation), but pressure & temperature can shift it\n- Biology (B5): Tiny changes in body temperature switch on sweating or shivering, keeping you near 37°C (homeostasis)\n\nNature loves amplification — small inputs, big outputs! 🚀\n\n✅ **Lesson C5 Complete!**",
+        content: "🔗 **Big Idea 5 Across Disciplines!**\n\n- Physics (P5): Levers multiply force — distance is the secret ingredient\n- Chemistry (C5): Dissolving has a limit (saturation), but pressure & temperature can shift it\n- Biology (B5): Tiny changes in body temperature switch on sweating or shivering, keeping you near 37°C. Holding a body steady like that is called homeostasis\n\nNature loves amplification -- a small change at one end making a large one at the other, so small inputs give big outputs! 🚀\n\n✅ **Lesson C5 Complete!**",
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }

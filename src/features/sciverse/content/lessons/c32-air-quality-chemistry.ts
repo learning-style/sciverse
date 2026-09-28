@@ -58,7 +58,7 @@ export function getC32Script(): Record<string, DialogNode> {
         checkpoint_correct: {
             id: 'checkpoint_correct',
             speaker: 'AI',
-            content: "Correct! Weather controls the chemistry of smog:\n\n- **Sunlight** provides energy for reactions (more sun = more smog)\n- **Wind** disperses pollutants (no wind = smog gets trapped)\n- **Temperature** affects reaction speed (hotter = faster reactions)\n\nThis connects to **P32 Particle Drift** -- the tiny particles created by these reactions float for days because they're **PM2.5** size -- particulate matter smaller than 2.5 micrometres. Physics and chemistry work together to create the air quality problem!\n\nIn B32 you'll see what these pollutants do to your lungs when you breathe them in.",
+            content: "Correct! Weather controls the chemistry of smog:\n\n- **Sunlight** provides energy for reactions (more sun = more smog)\n- **Wind** disperses pollutants (no wind = smog gets trapped)\n- **Temperature** affects reaction speed (hotter = faster reactions)\n\nThis connects to **P32 Particle Drift** -- the tiny particles created by these reactions float for days because they're **PM2.5** size -- particulate matter -- the tiny solid specks floating in air -- smaller than 2.5 micrometres, a micrometre being a thousandth of a millimetre. Physics and chemistry work together to create the air quality problem!\n\nIn B32 you'll see what these pollutants do to your lungs when you breathe them in.",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint' } },
             options: [
                 { id: 'disc', label: "Sunlight plus exhaust equals dangerous smog chemistry!", nextNodeId: 'discovery' }
