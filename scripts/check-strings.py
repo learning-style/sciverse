@@ -114,8 +114,21 @@ def bad_property_quotes(path):
         parts.append(buf)
         if len(parts) == 1:
             continue
-        between = parts[1:-1] if len(parts) > 2 else [parts[1]]
+        # Splitting the value on apostrophes alternates inside-string and
+        # outside-string text, starting inside, so the segments that are
+        # genuinely outside the quotes are the odd-numbered ones. Looking at
+        # the even ones as well is what made a three-part concatenation --
+        # 'At ' + degC + ' °C and ' + PERCENT + '% left' -- report falsely.
+        between = parts[1::2]
+        # A union type -- target: 'a' | 'b' -- leaves only whitespace and pipes.
         if all(re.fullmatch(r'[\s|]*', b) for b in between):
+            continue
+        # A concatenation -- high: '100% of the ' + REF + ' °C margin' -- leaves a
+        # + and an expression between the quotes. Those apostrophes really are
+        # string delimiters, so the line is legal and must not be reported. Prose
+        # with a stray apostrophe never contains a +, which is what keeps the real
+        # failure (lens: 'A magnet's pull ...') visible.
+        if all(re.search(r'\+', b) for b in between):
             continue
         out.append((no, m.group(1), line.strip()[:110]))
     return out

@@ -158,6 +158,9 @@ import { L2P17ColumnLab } from './L2P17ColumnLab';
 import { L2P18DischargeLab } from './L2P18DischargeLab';
 import { L2C18LoadLab } from './L2C18LoadLab';
 import { L2B18OxygenLab } from './L2B18OxygenLab';
+import { L3P18TiltLab } from './L3P18TiltLab';
+import { L3C18ExponentLab } from './L3C18ExponentLab';
+import { L3B18MarginLab } from './L3B18MarginLab';
 import { L2C17SteelLab } from './L2C17SteelLab';
 import { L2B17HollowLab } from './L2B17HollowLab';
 import { L3P17BucklingLab } from './L3P17BucklingLab';
@@ -332,6 +335,9 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2p18: L2P18DischargeLab,
     l2c18: L2C18LoadLab,
     l2b18: L2B18OxygenLab,
+    l3p18: L3P18TiltLab,
+    l3c18: L3C18ExponentLab,
+    l3b18: L3B18MarginLab,
     l2c17: L2C17SteelLab,
     l2b17: L2B17HollowLab,
     l3p17: L3P17BucklingLab,

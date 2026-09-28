@@ -42,6 +42,11 @@ def changed():
                    if f.endswith(('.ts', '.tsx')) and os.path.exists(f)})
 
 
+def typescript_only(files):
+    """This scanner knows TypeScript. Anything else is filtered by extension."""
+    return [f for f in files if f.endswith(('.ts', '.tsx'))]
+
+
 def scan(src):
     """Problems in one file's text, as a list of strings."""
     i, n, line = 0, len(src), 1
@@ -144,6 +149,10 @@ def selftest():
 
     balanced = 'function f() { return [1, 2, {a: (3)}]; }\n'
     assert not scan(balanced), 'balanced code reported'
+    # Only TypeScript reaches scan(). A hand-passed .py file once did, and every
+    # docstring in it was reported as an unterminated string.
+    assert typescript_only(['a.ts', 'b.tsx', 'c.py', 'd.md']) == ['a.ts', 'b.tsx'], \
+        'the extension filter no longer keeps non-TypeScript out'
     print('selftest ok')
     return 0
 
@@ -153,6 +162,12 @@ def main():
     if args[:1] == ['--selftest']:
         return selftest()
     files = args or changed()
+    # Explicit paths get the same filter the default list has -- a .py file
+    # passed by hand is not something this scanner can judge.
+    files = typescript_only(files)
+    if not files:
+        print('no TypeScript files to scan')
+        return 0
     total = 0
     for f in files:
         problems = scan(open(f, encoding='utf-8').read())

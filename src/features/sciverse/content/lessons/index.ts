@@ -262,6 +262,9 @@ import { getL3B17Script } from './l3b17-the-fourth-power';
 import { getL2P18Script } from './l2p18-how-much-water-goes-past';
 import { getL2C18Script } from './l2c18-how-much-rock-leaves';
 import { getL2B18Script } from './l2b18-enough-oxygen-to-breathe';
+import { getL3P18Script } from './l3p18-why-the-outside-of-the-bend';
+import { getL3C18Script } from './l3c18-why-flood-water-is-not-diluted';
+import { getL3B18Script } from './l3b18-both-ends-of-the-squeeze';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1300,6 +1303,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p18': getL2P18Script,
     'l2c18': getL2C18Script,
     'l2b18': getL2B18Script,
+    'l3p18': getL3P18Script,
+    'l3c18': getL3C18Script,
+    'l3b18': getL3B18Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1829,6 +1835,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p18', title: 'How Much Water Goes Past?', subtitle: 'Discharge is width times depth times speed', discipline: 'physics', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '🌊', accentColor: 'indigo', crossLinks: ['p18', 'l2p11'], level: 2 },
     { id: 'l2c18', title: 'How Much Rock Leaves?', subtitle: 'Concentration times discharge, in tonnes a day', discipline: 'chemistry', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '💧', accentColor: 'emerald', crossLinks: ['c18', 'l2p18'], level: 2 },
     { id: 'l2b18', title: 'Enough Oxygen to Breathe?', subtitle: 'What the water holds against what a trout needs', discipline: 'biology', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '🐟', accentColor: 'rose', crossLinks: ['b18', 'l2p18'], level: 2 },
+    { id: 'l3p18', title: 'Why the Outside of the Bend?', subtitle: 'A four-centimetre tilt, and the corkscrew it drives', discipline: 'physics', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '🌊', accentColor: 'indigo', crossLinks: ['l2p18', 'p18'], level: 3 },
+    { id: 'l3c18', title: 'Why Flood Water Is Not Diluted', subtitle: 'More surface against less time, and what b reveals', discipline: 'chemistry', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '💧', accentColor: 'emerald', crossLinks: ['l2c18', 'l3p18'], level: 3 },
+    { id: 'l3b18', title: 'Both Ends of the Squeeze', subtitle: 'Supply falls, demand climbs faster', discipline: 'biology', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '🐟', accentColor: 'rose', crossLinks: ['l2b18', 'l3c18'], level: 3 },
     { id: 'l3p17', title: 'When Tall Columns Bend', subtitle: 'Buckling: two failure loads, and the lower one wins', discipline: 'physics', bigIdea: 17, bigIdeaTitle: 'How Do Structures Stay Standing?', icon: '📐', accentColor: 'indigo', crossLinks: ['l2p17', 'l3b17'], level: 3 },
     { id: 'l3c17', title: 'Why Steel, of All Metals', subtitle: 'Matching expansion, and concrete that protects', discipline: 'chemistry', bigIdea: 17, bigIdeaTitle: 'How Do Structures Stay Standing?', icon: '🌡️', accentColor: 'emerald', crossLinks: ['l2c17', 'l3p17'], level: 3 },
     { id: 'l3b17', title: 'The Fourth Power', subtitle: 'What the hollow bone is really worth', discipline: 'biology', bigIdea: 17, bigIdeaTitle: 'How Do Structures Stay Standing?', icon: '🦴', accentColor: 'rose', crossLinks: ['l2b17', 'l3p17'], level: 3 },
