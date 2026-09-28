@@ -283,6 +283,19 @@ newline. It knows to ignore JSX text (`You've mastered`) and union types
 (`target: 'plant' | 'puppy'`), and both exclusions are regression-tested against
 the real failure so they cannot silently disarm it.
 
+**Run the checks as the last thing before committing, not merely at some point
+before it.** Big Idea 18's Level 2 broke CI this way: `check-strings.py` ran clean,
+then two more edits went in, and one of them inserted a real newline into a
+double-quoted `content:` string. tsc answered with an unterminated string literal
+and ten "',' expected" on one line -- exactly the failure class the checker exists
+for, and the checker catches it on a two-line repro. It was never run again after
+the edit. An edit after the last check is an unchecked edit.
+
+Rewriting a lesson string from a Python heredoc is the specific trap: inside a
+normal Python string, `\n` is a real newline, so it lands in the file as a line
+break rather than as the two characters TypeScript needs. Escape it as `\\n`, or
+write the replacement with a raw string.
+
 Pass these scripts explicit paths when the work is already committed -- their
 no-argument default diffs against `origin/main`, which is empty once pushed, and
 an empty scan reads as a pass.
