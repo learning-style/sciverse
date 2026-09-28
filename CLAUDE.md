@@ -76,8 +76,24 @@ lesson's header *and* body — a header alone will mislead you):
 
 | | Mechanism | Mechanism + Limit | Limit | Quantity only |
 |---|---|---|---|---|
-| Level 2 (52) | 16 | — | 2 | 34 |
-| Level 3 (48) | 5 | 21 | 15 | 7 |
+| Level 2 (58) | 16 | — | 2 | 40 |
+| Level 3 (54) | 7 | 23 | 16 | 8 |
+
+Big Ideas 17 and 18 were built after that audit and are counted above. Big Idea
+18's Level 3 is the pattern to copy: **L3P18 is pure Mechanism** and adds no new
+machinery at all — it derives the tilt across a bend from circular motion and a
+force balance, `Δh = v²w/(gR)`, and then explains *both* banks from the one fact
+that a single tilt is set by the average speed while the surface runs faster than
+the bed. **L3C18 is a Limit** — concentration is not a property of the rock, and
+`C = aQ^b` with b ≈ −0.1 rather than −1 is stated as empirical because it is.
+**L3B18 is Mechanism closing the Big Idea**, and it earns its place by making
+L2B18's checkpoint unwinnable on purpose: the supply arithmetic there is right,
+the trout still dies, and the missing term is the fish's own demand.
+
+Level 2 stays Quantity-dominant, which is correct — its verb *is* Calculate — but
+its three Big Idea 18 lessons chain rather than sit side by side: L2P18's
+discharge is an input to L2C18's load, and L2B18's percent saturation is L2P18's
+flow wearing a different hat.
 
 Level 2 being Quantity-dominant is correct: its verb *is* Calculate. Level 3 is
 the one to watch, and **41 of its 48 lessons already carry Mechanism or Limit
