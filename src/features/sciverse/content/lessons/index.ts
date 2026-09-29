@@ -265,6 +265,9 @@ import { getL2B18Script } from './l2b18-enough-oxygen-to-breathe';
 import { getL3P18Script } from './l3p18-why-the-outside-of-the-bend';
 import { getL3C18Script } from './l3c18-why-flood-water-is-not-diluted';
 import { getL3B18Script } from './l3b18-both-ends-of-the-squeeze';
+import { getL2P19Script } from './l2p19-will-the-rain-soak-in';
+import { getL2C19Script } from './l2c19-how-much-fertiliser-is-wasted';
+import { getL2B19Script } from './l2b19-how-much-dead-leaf-piles-up';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1306,6 +1309,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p18': getL3P18Script,
     'l3c18': getL3C18Script,
     'l3b18': getL3B18Script,
+    'l2p19': getL2P19Script,
+    'l2c19': getL2C19Script,
+    'l2b19': getL2B19Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1835,6 +1841,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p18', title: 'How Much Water Goes Past?', subtitle: 'Discharge is width times depth times speed', discipline: 'physics', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '🌊', accentColor: 'indigo', crossLinks: ['p18', 'l2p11'], level: 2 },
     { id: 'l2c18', title: 'How Much Rock Leaves?', subtitle: 'Concentration times discharge, in tonnes a day', discipline: 'chemistry', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '💧', accentColor: 'emerald', crossLinks: ['c18', 'l2p18'], level: 2 },
     { id: 'l2b18', title: 'Enough Oxygen to Breathe?', subtitle: 'What the water holds against what a trout needs', discipline: 'biology', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '🐟', accentColor: 'rose', crossLinks: ['b18', 'l2p18'], level: 2 },
+    { id: 'l2p19', title: 'Will the Rain Soak In?', subtitle: 'Runoff is the gap between two speeds', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['p19', 'l2p18'], level: 2 },
+    { id: 'l2c19', title: 'How Much Fertiliser Is Wasted?', subtitle: 'Why the surplus is arithmetic, not carelessness', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['c19', 'l2p19'], level: 2 },
+    { id: 'l2b19', title: 'How Much Dead Leaf Piles Up?', subtitle: 'A store settles where its losses match its arrivals', discipline: 'biology', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪱', accentColor: 'rose', crossLinks: ['b19', 'l2c19'], level: 2 },
     { id: 'l3p18', title: 'Why the Outside of the Bend?', subtitle: 'A four-centimetre tilt, and the corkscrew it drives', discipline: 'physics', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '🌊', accentColor: 'indigo', crossLinks: ['l2p18', 'p18'], level: 3 },
     { id: 'l3c18', title: 'Why Flood Water Is Not Diluted', subtitle: 'More surface against less time, and what b reveals', discipline: 'chemistry', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '💧', accentColor: 'emerald', crossLinks: ['l2c18', 'l3p18'], level: 3 },
     { id: 'l3b18', title: 'Both Ends of the Squeeze', subtitle: 'Supply falls, demand climbs faster', discipline: 'biology', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '🐟', accentColor: 'rose', crossLinks: ['l2b18', 'l3c18'], level: 3 },
