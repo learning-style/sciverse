@@ -65,7 +65,11 @@ def unterminated(path):
                     # expected. In JSX text -- >Outstanding! You've mastered --
                     # it follows a letter and is ordinary punctuation.
                     prev = stripped[:i].rstrip()
-                    if not prev or prev[-1] in ':=(,[{?&|+;':
+                    # A string may follow an arrow, so '>' belongs here: without it
+                    #   display: raw => 'b = ' + f(raw)
+                    # reads as prose after "b =" and reports a false unterminated
+                    # string. check-syntax.py already allowed it.
+                    if not prev or prev[-1] in ':=(,[{?&|+;<>':
                         quote = c
                 i += 1
                 continue
