@@ -76,8 +76,8 @@ lesson's header *and* body — a header alone will mislead you):
 
 | | Mechanism | Mechanism + Limit | Limit | Quantity only |
 |---|---|---|---|---|
-| Level 2 (58) | 16 | — | 2 | 40 |
-| Level 3 (54) | 7 | 23 | 16 | 8 |
+| Level 2 (61) | 16 | — | 2 | 43 |
+| Level 3 (57) | 10 | 23 | 16 | 8 |
 
 Big Ideas 17 and 18 were built after that audit and are counted above. Big Idea
 18's Level 3 is the pattern to copy: **L3P18 is pure Mechanism** and adds no new
@@ -89,6 +89,19 @@ the bed. **L3C18 is a Limit** — concentration is not a property of the rock, a
 **L3B18 is Mechanism closing the Big Idea**, and it earns its place by making
 L2B18's checkpoint unwinnable on purpose: the supply arithmetic there is right,
 the trout still dies, and the missing term is the fish's own demand.
+
+Big Idea 19 is the strongest Level 3 trio so far: **all three are Mechanism**, and
+all three are about the same pore space P19 names in its first paragraph. L3P19
+derives the falling soaking rate from two forces and a growing distance; L3C19
+explains why one nutrient leaves and another stays from a single minus sign;
+L3B19 derives L2B19's rotting share from water and air competing for the same
+pores, with a peak near 60% full. A dial that reads *How Full of Water the Pores
+Are* is doing three lessons' work at once.
+
+It also names a reasoning shape rather than only a result: L3B18's two curves gave
+a **ratio** that collapsed, L3B19's give a **product** that peaks. Pointing that
+out is worth more than either number, and it is the kind of thing a Level 3
+lesson should be doing.
 
 Level 2 stays Quantity-dominant, which is correct — its verb *is* Calculate — but
 its three Big Idea 18 lessons chain rather than sit side by side: L2P18's

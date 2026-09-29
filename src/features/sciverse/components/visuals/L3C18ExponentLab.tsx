@@ -147,12 +147,12 @@ export const L3C18ExponentLab = ({ state, onStateChange }: Props) => {
             controlInitial={10}
             controlDisplay={raw => 'x' + floodOf(raw)}
             control2={{
-                label: 'Exponent b',
+                label: 'How Much Flow Thins It',
                 key: 'exponentB',
                 min: -100,
                 max: 40,
                 initial: -10,
-                display: raw => bOf(raw).toFixed(2),
+                display: raw => 'b = ' + bOf(raw).toFixed(2),
             }}
             accent="emerald"
             sky={['#ecfdf5', '#f8fafc']}
