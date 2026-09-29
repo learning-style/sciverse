@@ -4,7 +4,7 @@ import { AssessmentData } from '../../types';
  * Big Idea 18 Assessment -- LEVEL 3 (grades 9-12).
  * Covers L3P18 (the surface tilt across a bend and the corkscrew it drives),
  * L3C18 (C = a Q^b, chemostatic behaviour, and what the sign of b reveals),
- * L3B18 (margin = dissolved oxygen / Q10^(dT/10), and which end of the squeeze
+ * L3B18 (spare oxygen = oxygen in the water / how many times more the fish needs,
  * moves further).
  * 12 questions: 4 easy -> 4 medium -> 4 hard
  */
@@ -50,11 +50,11 @@ export const bigIdea18Level3Assessment: AssessmentData = {
             id: 3,
             difficulty: 'easy',
             discipline: 'biology',
-            question: 'A trout is warmed from 10 °C to 20 °C. With Q10 = 2, its oxygen demand:',
+            question: 'A trout is warmed from 10 °C to 20 °C. Its need multiplies by 2 for every 10 °C. So its oxygen need:',
             options: ['Stays the same, since it is cold-blooded', 'Doubles', 'Halves', 'Rises by 10%'],
             correctIndex: 1,
-            hint: 'Q10 is the factor for a ten-degree rise.',
-            explanation: 'demand factor = Q10^(ΔT/10) = 2^(10/10) = 2. Being cold-blooded is precisely the reason: the fish has no thermostat, so its whole chemistry runs at river temperature and speeds up with it.'
+            hint: 'The factor given is for a ten-degree rise, and this is exactly ten degrees.',
+            explanation: 'how many times more it needs = 2^(10/10) = 2. Biologists write that per-ten-degrees factor as Q10, which means nothing more than the factor for ten degrees. Being cold-blooded is precisely the reason: the fish has no thermostat, so its whole chemistry runs at river temperature and speeds up with it.'
         },
         {
             id: 4,
@@ -92,10 +92,10 @@ export const bigIdea18Level3Assessment: AssessmentData = {
             id: 7,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'A pool warms from 15 °C to 25 °C at constant saturation, with supply falling by a factor of 0.82 and Q10 = 2. The margin changes by:',
+            question: 'A pool warms from 15 °C to 25 °C and stays equally full, so its oxygen falls by a factor of 0.82. The trout needs twice as much for every 10 °C. The spare oxygen changes by:',
             options: ['0.82', '0.41', '0.32', '1.64'],
             correctIndex: 1,
-            hint: 'Margin is supply divided by demand, and these are factors.',
+            hint: 'Spare oxygen is what is there divided by how many times more is needed, and these are factors.',
             explanation: 'Factors divide: 0.82 / 2 = 0.41. Subtracting them would give 0.32, which treats scalings as amounts; using 0.82 alone is the supply-only mistake that makes a lethal change look survivable.'
         },
         {
@@ -137,7 +137,7 @@ export const bigIdea18Level3Assessment: AssessmentData = {
             question: 'In the same flood, calcium shows b = -0.1 while nitrate shows b = +0.4. What does that difference tell you?',
             options: [
                 'The nitrate measurement must be contaminated with suspended mud',
-                'Calcium is dissolved out of rock and near its ceiling, while nitrate sits in a store the low-flow river never reaches',
+                'Calcium is dissolved out of rock and the water already holds nearly as much as it can, while nitrate sits in a store the low-flow river never reaches',
                 'C = a Q^b does not apply to nitrate',
                 'The river drains two different rock types'
             ],
@@ -149,26 +149,26 @@ export const bigIdea18Level3Assessment: AssessmentData = {
             id: 11,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'From 10 °C to 25 °C, supply falls to 0.735 and demand rises 2.83-fold. Roughly what share of the lost margin is due to the water holding less oxygen?',
+            question: 'From 10 °C to 25 °C the oxygen in the water falls to 0.735 of what it was, while the trout needs 2.83 times as much. Roughly what share of the lost spare is due to the water holding less oxygen?',
             options: ['About three quarters', 'About half', 'About a quarter', 'Nearly all of it'],
             correctIndex: 2,
             hint: 'Compare how far each factor moves, not just that both move.',
-            explanation: 'The margin falls to 0.735/2.83 = 0.26. Of that squeeze about 23% comes from the falling supply and about 77% from the rising demand. So "warm water holds less oxygen" — the usual explanation — is the smaller quarter of the story.'
+            explanation: 'The spare falls to 0.735/2.83 = 0.26. Of that squeeze about 23% comes from the water holding less and about 77% from the fish needing more. So "warm water holds less oxygen" — the usual explanation — is the smaller quarter of the story.'
         },
         {
             id: 12,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'A stream warmed to 25 °C sits at 95% saturation. Why can aeration not rescue its trout, however many weirs are built?',
+            question: 'A stream warmed to 25 °C is 95% full of the oxygen it could hold. Why can aeration not rescue its trout, however many weirs are built?',
             options: [
                 'Because aeration does not actually add oxygen to water',
-                'Because aeration can only raise the percentage towards 100, and there are five points of headroom against a demand that has nearly tripled',
+                'Because aeration can only fill the water closer to full, and five points of headroom is nothing against a need that has nearly tripled',
                 'Because weirs make the water warmer',
                 'Because trout cannot swim past weirs'
             ],
             correctIndex: 1,
-            hint: 'What is the most aeration could possibly achieve from 95%?',
-            explanation: 'Aeration works only on the percentage of saturation, and the ceiling itself has fallen. From 95% to a perfect 100% buys about 5% more margin, against a demand factor of 2.83. Cooling moves both terms — it raises the ceiling and lowers the demand — which is why dealing with the temperature is not a close call.'
+            hint: 'What is the most aeration could possibly achieve from 95% full?',
+            explanation: 'Aeration works only on how full the water is, and the amount it can hold when full has itself shrunk. From 95% to completely full buys about 5% more spare, against a need that has risen 2.83-fold. Cooling moves both terms — it gives the water more room and lowers what the fish needs — which is why dealing with the temperature is not a close call.'
         }
     ]
 };

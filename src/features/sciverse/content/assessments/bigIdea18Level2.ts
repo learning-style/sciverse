@@ -99,8 +99,8 @@ export const bigIdea18Level2Assessment: AssessmentData = {
             question: 'A stretch of river is at 20 °C, where saturation is 9.1 mg/L, and sits at 85% of that. How much dissolved oxygen is in it?',
             options: ['9.1 mg/L', '7.7 mg/L', '1.4 mg/L', '10.7 mg/L'],
             correctIndex: 1,
-            hint: '85% of the ceiling, not the ceiling itself, and not what is left over.',
-            explanation: '9.1 x 0.85 = 7.7 mg/L, which clears the 6 mg/L a trout needs. Using 9.1 would be taking the ceiling for the answer; 1.4 would be taking 15% instead of 85%.'
+            hint: '85% of the most it can hold, not the maximum itself, and not what is left over.',
+            explanation: '9.1 x 0.85 = 7.7 mg/L, which clears the 6 mg/L a trout needs. 9.1 is the most that water could hold if it were completely full, not what is in it; 1.4 would be taking 15% instead of 85%.'
         },
         {
             id: 8,
@@ -142,7 +142,7 @@ export const bigIdea18Level2Assessment: AssessmentData = {
             ],
             correctIndex: 1,
             hint: 'At 30 °C but fast, a trout still gets 7.2 mg/L. At 10 °C but sluggish, 7.9.',
-            explanation: 'Warmth lowers the ceiling and slowness lowers the percentage of it reached, and the two multiply. Either alone leaves a trout above 6 mg/L; together, 8.3 x 0.70 = 5.8 mg/L, and it fails. This is the same multiplying that made the flood quadruple rather than double.'
+            explanation: 'Warmth shrinks the room for oxygen and slowness leaves the water less full, and the two multiply. Either alone leaves a trout above 6 mg/L; together, 8.3 x 0.70 = 5.8 mg/L, and it fails. This is the same multiplying that made the flood quadruple rather than double.'
         },
         {
             id: 11,

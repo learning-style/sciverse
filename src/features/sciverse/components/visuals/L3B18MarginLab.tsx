@@ -6,13 +6,13 @@ interface Props {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-const PERCENT = 95;        // saturation held at 95%, so the dials are temperature and Q10
-const REF = 10;            // the reference temperature the margin is measured against
+const FULL = 95;           // how full the water is, held fixed so the dials are the two sides
+const REF = 10;            // the reference temperature the spare is measured against
 const SAFE = '#be123c';
 const TIGHT = '#7f1d1d';
 
-/** Saturation in mg/L, from the lesson's table, straight-lined between points. */
-const saturationAt = (degC: number): number => {
+/** The most oxygen water can hold, in mg/L, from L2B18's table. */
+const mostItCanHold = (degC: number): number => {
     const table: Array<[number, number]> = [
         [0, 14.6], [5, 12.8], [10, 11.3], [15, 10.1], [20, 9.1], [25, 8.3], [30, 7.6],
     ];
@@ -29,19 +29,19 @@ const saturationAt = (degC: number): number => {
 };
 
 const tempOf = (dial: number): number => Math.max(10, Math.min(30, Math.round(dial)));
-const q10Of = (dial: number): number => Math.max(20, Math.min(30, Math.round(dial / 5) * 5)) / 10;
+const factorOf = (dial: number): number => Math.max(20, Math.min(30, Math.round(dial / 5) * 5)) / 10;
 
 export const L3B18MarginLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
     const drawScene = ({ ctx, safeRight, raw, raw2, stageTop, stageBottom }: LabScene) => {
         const degC = tempOf(raw);
-        const q10 = q10Of(raw2);
-        const supply = (saturationAt(degC) * PERCENT) / 100;
-        const demand = Math.pow(q10, (degC - REF) / 10);
-        const margin = supply / demand;
-        const refMargin = (saturationAt(REF) * PERCENT) / 100;
-        const share = margin / refMargin;
+        const perTen = factorOf(raw2);
+        const inWater = (mostItCanHold(degC) * FULL) / 100;
+        const needs = Math.pow(perTen, (degC - REF) / 10);
+        const spare = inWater / needs;
+        const refSpare = (mostItCanHold(REF) * FULL) / 100;
+        const share = spare / refSpare;
         const comfortable = share >= 0.5;
 
         const artTop = stageTop + 18;
@@ -55,73 +55,76 @@ export const L3B18MarginLab = ({ state, onStateChange }: Props) => {
         const barTop = top + capBand;
         const baseY = barTop + barH;
 
-        // Two bars: what the water offers, and what the fish now wants. Both are
-        // drawn against the same 10 C reference so the closing gap is visible.
+        // Two bars side by side: what the water has in it, and how many times more
+        // the trout now needs. Both are measured against the 10 C figures, so the
+        // closing gap is the thing you watch.
         const barW = Math.max(26, Math.min(56, safeRight * 0.13));
         const gap = Math.max(26, Math.min(70, safeRight * 0.14));
         const cx = safeRight / 2;
         const leftBar = cx - gap / 2 - barW;
         const rightBar = cx + gap / 2;
 
-        const supplyFrac = Math.max(0, Math.min(1, supply / refMargin));
-        const demandFrac = Math.max(0, Math.min(1, demand / 4));
+        const waterFrac = Math.max(0, Math.min(1, inWater / refSpare));
+        const needFrac = Math.max(0, Math.min(1, needs / 4));
 
         ctx.fillStyle = '#fecdd3';
-        ctx.fillRect(leftBar, baseY - supplyFrac * barH, barW, supplyFrac * barH);
+        ctx.fillRect(leftBar, baseY - waterFrac * barH, barW, waterFrac * barH);
         ctx.strokeStyle = '#0f172a';
         ctx.lineWidth = 2;
-        ctx.strokeRect(leftBar, baseY - supplyFrac * barH, barW, supplyFrac * barH);
+        ctx.strokeRect(leftBar, baseY - waterFrac * barH, barW, waterFrac * barH);
 
         ctx.fillStyle = comfortable ? '#fda4af' : '#fca5a5';
-        ctx.fillRect(rightBar, baseY - demandFrac * barH, barW, demandFrac * barH);
+        ctx.fillRect(rightBar, baseY - needFrac * barH, barW, needFrac * barH);
         ctx.strokeStyle = '#0f172a';
-        ctx.strokeRect(rightBar, baseY - demandFrac * barH, barW, demandFrac * barH);
+        ctx.strokeRect(rightBar, baseY - needFrac * barH, barW, needFrac * barH);
 
-        outlineText(ctx, 'what the water offers, and what the fish now wants',
+        outlineText(ctx, 'what is in the water, and how much more the trout needs',
             cx, Math.max(top + 11, artTop + 11),
             'bold 11px monospace', '#334155', 'center', safeRight - 36);
-        outlineText(ctx, 'supply ' + supply.toFixed(1) + ' mg/L',
+        outlineText(ctx, 'in the water ' + inWater.toFixed(1) + ' mg/L',
             leftBar + barW / 2, Math.min(baseY + 14, artBottom - 12),
             'bold 11px monospace', '#0f172a', 'center', Math.max(60, barW + gap / 2));
-        outlineText(ctx, 'demand x' + demand.toFixed(2),
+        outlineText(ctx, 'needs x' + needs.toFixed(2) + ' more',
             rightBar + barW / 2, Math.min(baseY + 14, artBottom - 12),
             'bold 11px monospace', comfortable ? SAFE : TIGHT, 'center',
             Math.max(60, barW + gap / 2));
-        outlineText(ctx, 'margin ' + (share * 100).toFixed(0) + '% of the ' + REF + ' °C margin',
+        outlineText(ctx, 'spare oxygen ' + (share * 100).toFixed(0) + '% of the '
+            + REF + ' °C spare',
             cx, Math.min(baseY + labelTail + 10, artBottom),
             'bold 11px monospace', comfortable ? SAFE : TIGHT, 'center', safeRight - 30);
 
-        outlineText(ctx, 'margin = ' + supply.toFixed(1) + ' / ' + demand.toFixed(2)
-            + ' = ' + margin.toFixed(2) + ' at ' + degC + ' °C',
+        outlineText(ctx, 'spare oxygen = ' + inWater.toFixed(1) + ' / ' + needs.toFixed(2)
+            + ' = ' + spare.toFixed(1) + ' at ' + degC + ' °C',
             safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
-        outlineText(ctx, 'demand factor = Q10^(ΔT/10), with Q10 = ' + q10.toFixed(1)
-            + ' -- an empirical rule of thumb',
+        outlineText(ctx, 'the trout needs x' + perTen.toFixed(1)
+            + ' more oxygen for every 10 °C warmer',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#334155', 'center', safeRight - 30);
 
-        fitText(ctx, 'margin ' + (share * 100).toFixed(0) + '% of what it was at ' + REF + ' °C',
-            safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'Supply falls gently, and the margin collapses',
+        fitText(ctx, 'spare oxygen ' + (share * 100).toFixed(0) + '% of what it was at '
+            + REF + ' °C', safeRight / 2, 94, safeRight - 24, 16);
+        fitText(ctx, 'The oxygen falls gently, and the spare collapses',
             safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, share)),
-                caption: 'Margin Left to the Trout',
+                caption: 'Spare Oxygen Left to the Trout',
                 low: '0%',
-                high: '100% of the ' + REF + ' °C margin',
+                high: '100% of the ' + REF + ' °C spare',
                 stops: ['#fff1f2', '#fda4af', SAFE] as [string, string, string],
             },
-            note: 'At ' + degC + ' °C and ' + PERCENT + '% of saturation the water offers '
-                + supply.toFixed(1) + ' mg/L, down from ' + refMargin.toFixed(1) + ' at '
-                + REF + ' °C. Meanwhile the trout\'s own demand has risen '
-                + demand.toFixed(2) + '-fold, because a fish has no thermostat and its whole '
-                + 'chemistry runs at river temperature. Dividing one by the other leaves '
-                + (share * 100).toFixed(0) + '% of the margin it had at ' + REF
-                + ' °C. Notice which side moves further: across 10 to 30 °C the supply falls '
-                + 'by about a third while the margin falls to a sixth, so roughly a quarter of '
-                + 'the squeeze is the water holding less and three quarters is the fish needing '
-                + 'more. Q10 is a rule of thumb, and raising it from 2 to 3 changes the answer '
-                + 'considerably -- which is why survival can sit inside its uncertainty.',
+            note: 'At ' + degC + ' °C and ' + FULL + '% full the water holds '
+                + inWater.toFixed(1) + ' mg/L, down from ' + refSpare.toFixed(1) + ' at '
+                + REF + ' °C. Meanwhile the trout needs ' + needs.toFixed(2)
+                + ' times as much oxygen as it did at ' + REF
+                + ' °C, because a fish has no thermostat and its whole chemistry runs at river '
+                + 'temperature. Dividing one by the other leaves '
+                + (share * 100).toFixed(0) + '% of the spare it had at ' + REF
+                + ' °C. Notice which side moves further: across 10 to 30 °C the oxygen falls by '
+                + 'about a third while the spare falls to a sixth, so roughly a quarter of the '
+                + 'squeeze is the water holding less and three quarters is the fish needing more. '
+                + 'The need factor is a rule of thumb, and raising it from 2 to 3 changes the '
+                + 'answer considerably -- which is why survival can sit inside its uncertainty.',
         };
     };
 
@@ -136,12 +139,12 @@ export const L3B18MarginLab = ({ state, onStateChange }: Props) => {
             controlInitial={10}
             controlDisplay={raw => tempOf(raw) + ' °C'}
             control2={{
-                label: 'Q10',
-                key: 'q10Value',
+                label: 'Extra Need per 10 °C',
+                key: 'extraNeedPerTen',
                 min: 20,
                 max: 30,
                 initial: 20,
-                display: raw => q10Of(raw).toFixed(1),
+                display: raw => 'x' + factorOf(raw).toFixed(1),
             }}
             accent="rose"
             sky={['#fff1f2', '#f8fafc']}

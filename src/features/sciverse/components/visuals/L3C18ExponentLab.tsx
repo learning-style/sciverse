@@ -112,7 +112,7 @@ export const L3C18ExponentLab = ({ state, onStateChange }: Props) => {
 
         fitText(ctx, 'load x' + loadFactor.toFixed(1) + ', concentration x' + concFactor.toFixed(2),
             safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'More surface against less time, with a ceiling',
+        fitText(ctx, 'More surface against less time, and water already near full',
             safeRight / 2, 118, safeRight - 24, 13);
 
         return {
