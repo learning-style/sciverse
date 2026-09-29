@@ -164,6 +164,9 @@ import { L3B18MarginLab } from './L3B18MarginLab';
 import { L2P19RunoffLab } from './L2P19RunoffLab';
 import { L2C19FertiliserLab } from './L2C19FertiliserLab';
 import { L2B19LitterStoreLab } from './L2B19LitterStoreLab';
+import { L3P19SoakingLab } from './L3P19SoakingLab';
+import { L3C19NitrateLab } from './L3C19NitrateLab';
+import { L3B19RottingPeakLab } from './L3B19RottingPeakLab';
 import { L2C17SteelLab } from './L2C17SteelLab';
 import { L2B17HollowLab } from './L2B17HollowLab';
 import { L3P17BucklingLab } from './L3P17BucklingLab';
@@ -344,6 +347,9 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2p19: L2P19RunoffLab,
     l2c19: L2C19FertiliserLab,
     l2b19: L2B19LitterStoreLab,
+    l3p19: L3P19SoakingLab,
+    l3c19: L3C19NitrateLab,
+    l3b19: L3B19RottingPeakLab,
     l2c17: L2C17SteelLab,
     l2b17: L2B17HollowLab,
     l3p17: L3P17BucklingLab,

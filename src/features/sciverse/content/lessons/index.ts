@@ -268,6 +268,9 @@ import { getL3B18Script } from './l3b18-both-ends-of-the-squeeze';
 import { getL2P19Script } from './l2p19-will-the-rain-soak-in';
 import { getL2C19Script } from './l2c19-how-much-fertiliser-is-wasted';
 import { getL2B19Script } from './l2b19-how-much-dead-leaf-piles-up';
+import { getL3P19Script } from './l3p19-why-the-ground-stops-drinking';
+import { getL3C19Script } from './l3c19-why-nitrate-is-the-one-that-leaves';
+import { getL3B19Script } from './l3b19-water-and-air-share-the-spaces';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1312,6 +1315,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p19': getL2P19Script,
     'l2c19': getL2C19Script,
     'l2b19': getL2B19Script,
+    'l3p19': getL3P19Script,
+    'l3c19': getL3C19Script,
+    'l3b19': getL3B19Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1844,6 +1850,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p19', title: 'Will the Rain Soak In?', subtitle: 'Runoff is the gap between two speeds', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['p19', 'l2p18'], level: 2 },
     { id: 'l2c19', title: 'How Much Fertiliser Is Wasted?', subtitle: 'Why the surplus is arithmetic, not carelessness', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['c19', 'l2p19'], level: 2 },
     { id: 'l2b19', title: 'How Much Dead Leaf Piles Up?', subtitle: 'A store settles where its losses match its arrivals', discipline: 'biology', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪱', accentColor: 'rose', crossLinks: ['b19', 'l2c19'], level: 2 },
+    { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
+    { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },
+    { id: 'l3b19', title: 'Water and Air Share the Spaces', subtitle: 'Two limits, one pore space, and a peak', discipline: 'biology', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪱', accentColor: 'rose', crossLinks: ['l2b19', 'l3b18'], level: 3 },
     { id: 'l3p18', title: 'Why the Outside of the Bend?', subtitle: 'A four-centimetre tilt, and the corkscrew it drives', discipline: 'physics', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '🌊', accentColor: 'indigo', crossLinks: ['l2p18', 'p18'], level: 3 },
     { id: 'l3c18', title: 'Why Flood Water Is Not Diluted', subtitle: 'More surface against less time, and what b reveals', discipline: 'chemistry', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '💧', accentColor: 'emerald', crossLinks: ['l2c18', 'l3p18'], level: 3 },
     { id: 'l3b18', title: 'Both Ends of the Squeeze', subtitle: 'Supply falls, demand climbs faster', discipline: 'biology', bigIdea: 18, bigIdeaTitle: 'How Do Rivers Shape the Land?', icon: '🐟', accentColor: 'rose', crossLinks: ['l2b18', 'l3c18'], level: 3 },
