@@ -274,6 +274,9 @@ import { getL3B19Script } from './l3b19-water-and-air-share-the-spaces';
 import { getL2P20Script } from './l2p20-how-strong-is-that-lens';
 import { getL2C20Script } from './l2c20-why-strong-glasses-need-special-glass';
 import { getL2B20Script } from './l2b20-when-will-you-need-reading-glasses';
+import { getL3P20Script } from './l3p20-why-a-lens-is-fat-in-the-middle';
+import { getL3C20Script } from './l3c20-the-price-of-thin';
+import { getL3B20Script } from './l3b20-why-it-feels-sudden';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1324,6 +1327,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p20': getL2P20Script,
     'l2c20': getL2C20Script,
     'l2b20': getL2B20Script,
+    'l3p20': getL3P20Script,
+    'l3c20': getL3C20Script,
+    'l3b20': getL3B20Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1859,6 +1865,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p20', title: 'How Strong Is That Lens?', subtitle: 'Dioptres, and why powers add', discipline: 'physics', bigIdea: 20, bigIdeaTitle: 'How Do Lenses Change What We See?', icon: '🔍', accentColor: 'indigo', crossLinks: ['p20', 'b20'], level: 2 },
     { id: 'l2c20', title: 'Why Strong Glasses Need Special Glass', subtitle: 'Thickness goes as 1 over (n - 1)', discipline: 'chemistry', bigIdea: 20, bigIdeaTitle: 'How Do Lenses Change What We See?', icon: '🧪', accentColor: 'emerald', crossLinks: ['c20', 'l2p20'], level: 2 },
     { id: 'l2b20', title: 'When Will You Need Reading Glasses?', subtitle: 'A fixed requirement against a falling supply', discipline: 'biology', bigIdea: 20, bigIdeaTitle: 'How Do Lenses Change What We See?', icon: '👁️', accentColor: 'rose', crossLinks: ['b20', 'l2p20'], level: 2 },
+    { id: 'l3p20', title: 'Why a Lens Is Fat in the Middle', subtitle: 'A delay cut in glass, and where (n - 1) comes from', discipline: 'physics', bigIdea: 20, bigIdeaTitle: 'How Do Lenses Change What We See?', icon: '🔍', accentColor: 'indigo', crossLinks: ['l2p20', 'l2c20'], level: 3 },
+    { id: 'l3c20', title: 'The Price of Thin', subtitle: 'Index and Abbe number pull against each other', discipline: 'chemistry', bigIdea: 20, bigIdeaTitle: 'How Do Lenses Change What We See?', icon: '🧪', accentColor: 'emerald', crossLinks: ['l2c20', 'l3p20'], level: 3 },
+    { id: 'l3b20', title: 'Why It Feels Sudden', subtitle: 'A steady decline, seen through a reciprocal', discipline: 'biology', bigIdea: 20, bigIdeaTitle: 'How Do Lenses Change What We See?', icon: '👁️', accentColor: 'rose', crossLinks: ['l2b20', 'l3b19'], level: 3 },
     { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
     { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },
     { id: 'l3b19', title: 'Water and Air Share the Spaces', subtitle: 'Two limits, one pore space, and a peak', discipline: 'biology', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪱', accentColor: 'rose', crossLinks: ['l2b19', 'l3b18'], level: 3 },

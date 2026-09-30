@@ -170,6 +170,9 @@ import { L3B19RottingPeakLab } from './L3B19RottingPeakLab';
 import { L2P20PowerLab } from './L2P20PowerLab';
 import { L2C20ThicknessLab } from './L2C20ThicknessLab';
 import { L2B20ReadingLab } from './L2B20ReadingLab';
+import { L3P20BulgeLab } from './L3P20BulgeLab';
+import { L3C20ColourLab } from './L3C20ColourLab';
+import { L3B20SuddenLab } from './L3B20SuddenLab';
 import { L2C17SteelLab } from './L2C17SteelLab';
 import { L2B17HollowLab } from './L2B17HollowLab';
 import { L3P17BucklingLab } from './L3P17BucklingLab';
@@ -356,6 +359,9 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2p20: L2P20PowerLab,
     l2c20: L2C20ThicknessLab,
     l2b20: L2B20ReadingLab,
+    l3p20: L3P20BulgeLab,
+    l3c20: L3C20ColourLab,
+    l3b20: L3B20SuddenLab,
     l2c17: L2C17SteelLab,
     l2b17: L2B17HollowLab,
     l3p17: L3P17BucklingLab,
