@@ -26587,7 +26587,7 @@ And now the point that turns L2B21 on its head. **The amplification comes from A
 Two things to be careful about:
 
 - **The signal is a ratio, not a level.** What the machinery responds to is how much ADP there is relative to ATP, which is why it works the same in a cell with plenty of both and a cell with little of either.
-- **The condition:** real control is not one signal. Cells also read **AMP** -- adenosine monophosphate, two phosphates gone -- and free phosphate, and calcium, which rises when a muscle is told to contract. Several sensors, reinforcing each other.`,options:[{id:"cont",label:"Work out a real muscle.",nextNodeId:"worked"}]},worked:{id:"worked",speaker:"AI",content:`**A resting muscle cell: ATP 5.0 mM, ADP 0.5 mM, a ratio of 10:1.**
+- **The condition:** real control is not one signal. Cells also read **AMP** -- adenosine monophosphate, two phosphates gone -- and free phosphate, and calcium, which rises inside the cell when a muscle is told to contract. Several sensors, reinforcing each other.`,options:[{id:"cont",label:"Work out a real muscle.",nextNodeId:"worked"}]},worked:{id:"worked",speaker:"AI",content:`**A resting muscle cell: ATP 5.0 mM, ADP 0.5 mM, a ratio of 10:1.**
 
 You start to run. Demand rises tenfold. In the first fraction of a second, before production has caught up, spending outruns supply and some ATP is converted.
 
