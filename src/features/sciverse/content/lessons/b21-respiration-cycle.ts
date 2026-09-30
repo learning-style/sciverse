@@ -8,7 +8,7 @@ export const getB21Script = (): Record<string, DialogNode> => ({
     root: {
         id: 'root',
         speaker: 'AI',
-        content: 'Your body keeps making energy all day long. This isn\'t just one big reaction—it\'s a cycle that keeps going, making sure your cells always have power.\n\nIn this lesson, here\'s what the picture shows:\n- **Brighter web** = The cell is making energy easily and everything is working well.\n- **Red glow** = The cell is working too hard and can\'t keep up (not enough oxygen for the job).\n- **Purple pulse** = The cell has extra energy saved up, like a backup battery.\n\nWhy do you think cells use a cycle instead of just one step?',
+        content: 'Your body keeps making energy all day long. This isn\'t just one big reaction—it\'s a cycle that keeps going, making sure your cells always have power.\n\nIn this lesson, here\'s what the picture shows:\n- **Brighter web** = The cell is making energy easily and everything is working well.\n- **Red glow** = The cell is working too hard and can\'t keep up (not enough oxygen for the job).\n- **Purple pulse** = The cell has extra energy saved up, like a backup battery.\n\nCells barely store any of the energy they spend. They carry it in a molecule called **ATP**, short for **adenosine triphosphate**. Think of ATP as a tiny battery: a cell charges it up, spends it, and charges it again, over and over.\n\nWhy do you think cells use a cycle instead of just one step?',
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro', oxygenLevel: 70 } },
         options: [
             { id: 'regenerated', label: 'Cells reuse their parts each turn.', nextNodeId: 'correct', sentiment: 'positive' },

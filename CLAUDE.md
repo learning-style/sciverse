@@ -299,6 +299,16 @@ does not. **Both of these carry a `--selftest`, and it guards both directions**:
 a list wide enough to quiet *grandmother* must not also quiet *homeostasis*. Run
 it after touching either word list.
 
+**`check-plainness.py` takes lesson ids, not paths.** `check-plainness.py b21 c21`,
+never `.../lessons/b21-respiration-cycle.ts` -- a path matches no lesson, the scan
+reports `0 lesson(s)`, and an empty scan reads as a pass. That is the same trap the
+other scripts have when their no-argument default diffs an already-pushed commit,
+and it cost a pass that had checked nothing. Its inflection matching also has no
+`able`/`ible` suffix and no `re`/`un` prefix, so *rechargeable* reports even though
+*charge* is ordinary. That one was worth rewording rather than exempting -- a
+grades 3-5 lesson is better off with *a cell charges it up* -- but a real false
+positive belongs in the word list with a `--selftest` line, not in the prose.
+
 **Level 1 was not written for Level 1.** Big Ideas 27-30 were pitched years above
 their readers: P30 handed a nine-year-old Fick's Law as `flux = -D x (concentration
 difference / distance)`, P28 gave `blood pressure = cardiac output x total

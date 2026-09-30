@@ -40,7 +40,7 @@ export const getC21Script = (): Record<string, DialogNode> => ({
     steps: {
         id: 'steps',
         speaker: 'AI',
-        content: 'Here is how carbon moves through the cycle, step by step:\n\n**Step 1 — Photosynthesis (green arrow):** Plants absorb atmospheric CO2 and use sunlight energy to convert it into glucose (C₆H₁₂O₆). This is a carbon **sink** — it removes CO2 from air and locks it in biomass.\n\n**Step 2 — Respiration + Decomposition (yellow arrow):** Living organisms break down organic matter to release energy, returning CO2 to the soil/fuel pool. Dead biomass decomposes similarly. This is a neutral transfer within the biological subsystem.\n\n**Step 3 — Combustion (red arrow):** Burning fossil fuels or biomass breaks carbon-carbon bonds and releases stored carbon as CO2. This is a carbon **source** — it rapidly adds CO2 to the atmosphere.\n\n**Step 4 — Ocean Uptake (blue arrow):** CO2 dissolves into seawater and reacts to form carbonate and bicarbonate ions. Cold, high-pressure deep water absorbs more. This is a carbon **sink** — it removes CO2 from air into the ocean reservoir.',
+        content: 'Here is how carbon moves through the cycle, step by step:\n\n**Step 1 — Photosynthesis (green arrow):** Plants absorb atmospheric CO2 and use sunlight energy to convert it into glucose (C₆H₁₂O₆). This is a carbon **sink** — it removes CO2 from air and locks it in biomass.\n\n**Step 2 — Respiration + Decomposition (yellow arrow):** **Decomposition** means dead material breaking down into simpler pieces. Living things break down organic matter to release energy, returning CO2 to the soil/fuel pool. Dead biomass decomposes similarly. This is a neutral transfer within the biological subsystem.\n\n**Step 3 — Combustion (red arrow):** Burning fossil fuels or biomass breaks carbon-carbon bonds and releases stored carbon as CO2. This is a carbon **source** — it rapidly adds CO2 to the atmosphere.\n\n**Step 4 — Ocean Uptake (blue arrow):** CO2 dissolves into seawater and reacts to form carbonate and bicarbonate ions. Cold, high-pressure deep water absorbs more. This is a carbon **sink** — it removes CO2 from air into the ocean reservoir.',
         options: [{ id: 'checkpoint', label: 'Checkpoint: test my understanding.', nextNodeId: 'checkpoint' }]
     },
     checkpoint: {
@@ -68,7 +68,7 @@ export const getC21Script = (): Record<string, DialogNode> => ({
     checkpoint_correct: {
         id: 'checkpoint_correct',
         speaker: 'AI',
-        content: 'Correct. When total source flux > total sink flux, the atmospheric reservoir accumulates CO2.\n\nIn the lab visual, watch the **atmospheric change bar** at the bottom-right:\n- **Red bar growing** = CO2 accumulating (sources winning)\n- **Green bar** = CO2 declining (sinks winning)\n- **Cycle Balance** drops when the system is far from equilibrium\n\nTry these experiments:\n1. Drag **Combustion** to maximum — watch the red bar grow 🔴\n2. Now raise **Ocean Uptake** to maximum — the blue Step 4 arrow thickens and the bar shrinks back 🔵\n3. Raise **Photosynthesis** too — both sinks now fight the source, and Cycle Health climbs 🟢\n\nStep 4 (ocean uptake) is a powerful but often overlooked carbon sink — the ocean absorbs about **25%** of all human CO2 emissions!',
+        content: 'Correct. When total source flux > total sink flux, the atmospheric reservoir accumulates CO2.\n\nIn the lab visual, watch the **atmospheric change bar** at the bottom-right:\n- **Red bar growing** = CO2 accumulating (sources winning)\n- **Green bar** = CO2 declining (sinks winning)\n- **Cycle Balance** drops when sources and sinks are far from even\n\nTry these experiments:\n1. Drag **Combustion** to maximum — watch the red bar grow 🔴\n2. Now raise **Ocean Uptake** to maximum — the blue Step 4 arrow thickens and the bar shrinks back 🔵\n3. Raise **Photosynthesis** too — both sinks now fight the source, and Cycle Health climbs 🟢\n\nStep 4 (ocean uptake) is a powerful but often overlooked carbon sink — the ocean absorbs about **25%** of all human CO2 emissions!',
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint', photosynthesisOn: true } },
         options: [{ id: 'disc', label: 'Show me the full summary.', nextNodeId: 'discovery' }]
     },
@@ -81,7 +81,7 @@ export const getC21Script = (): Record<string, DialogNode> => ({
     complete: {
         id: 'complete',
         speaker: 'AI',
-        content: 'C21 complete. You have covered:\n- Four carbon reservoirs and their chemical forms\n- Flux as the rate of transfer between reservoirs\n- Sources vs sinks and their atmospheric impact\n- Step-by-step cycle walkthrough\n- Feedback loops and system balance\n\nCross-links: **P21** (timing/tidal cycles), **B21** (metabolic cycles), **C22** (chemical equilibrium).',
+        content: 'C21 complete. You have covered:\n- Four carbon reservoirs and their chemical forms\n- Flux as the rate of transfer between reservoirs\n- Sources vs sinks and their atmospheric impact\n- Step-by-step cycle walkthrough\n- Feedback loops and system balance\n\nCross-links: **P21** (timing/tidal cycles), **B21** (metabolic cycles), **C22** (how a reaction settles into balance).',
         onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
         options: []
     }
