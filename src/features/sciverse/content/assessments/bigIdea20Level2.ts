@@ -29,16 +29,16 @@ export const bigIdea20Level2Assessment: AssessmentData = {
             id: 2,
             difficulty: 'easy',
             discipline: 'chemistry',
-            question: 'What decides how strongly a material bends light?',
+            question: 'Why does a material bend light at all?',
             options: [
-                'Its refractive index n',
-                'How far n sits above 1',
-                'Its thickness',
-                'Its colour'
+                'Because light bounces off its surface',
+                'Because the light wave pushes the material\'s electrons, and each wobbling electron re-radiates a slightly late wave, so the sum travels slower',
+                'Because the material is transparent',
+                'Because light is attracted to dense materials'
             ],
             correctIndex: 1,
-            hint: 'Air has n = 1.00. How much does air bend light?',
-            explanation: 'A material with n = 1 bends light not at all, so bending cannot be proportional to n itself — it goes with (n - 1). This is why 1.52 to 1.74 looks like a 15% change and is really 42% more bending: 0.74 / 0.52.'
+            hint: 'What is there inside every atom for a wave of electric push and pull to act on?',
+            explanation: 'Light is a travelling wave of electric push and pull, and it wobbles the electrons in whatever it passes through. Each wobble sends out its own slightly late wave, and the sum of them all travels slower than light in a vacuum. That slowing is what the refractive index measures — which makes index a question about composition.'
         },
         {
             id: 3,
@@ -66,11 +66,16 @@ export const bigIdea20Level2Assessment: AssessmentData = {
             id: 5,
             difficulty: 'medium',
             discipline: 'chemistry',
-            question: 'Switching from ordinary 1.52 glass to n = 1.67 makes a lens how thick, compared with before?',
-            options: ['91% as thick', '78% as thick', '129% as thick', '67% as thick'],
-            correctIndex: 1,
-            hint: 'Subtract 1 from each index first, then put the better glass on the bottom.',
-            explanation: '0.52 / 0.67 = 0.78, so about 78% as thick — 22% thinner. Using the raw indices gives 0.91, which would say a lens made of air is only 1.52 times as thick as glass rather than impossible.'
+            question: 'Lanthanum glass (n = 1.850, density 4.44 g/cm³) replaces crown glass (n = 1.517, density 2.51). The lens is 39% thinner. What happens to its weight?',
+            options: [
+                'It falls by 39% as well',
+                'It falls by about 20%',
+                'It rises by about 8% — thinner and heavier at once',
+                'It stays exactly the same'
+            ],
+            correctIndex: 2,
+            hint: 'Multiply the thickness ratio by the density ratio.',
+            explanation: 'Thickness ratio 0.517/0.850 = 0.61, density ratio 4.44/2.51 = 1.77, and 0.61 x 1.77 = 1.08. So the lens has 39% less material in it and weighs 8% more, because lanthanum atoms are heavy and you need a great many of them. No optical argument could predict that — you have to know what the glass is made of.'
         },
         {
             id: 6,
@@ -108,16 +113,16 @@ export const bigIdea20Level2Assessment: AssessmentData = {
             id: 9,
             difficulty: 'hard',
             discipline: 'chemistry',
-            question: 'Two customers are offered n = 1.74 glass. One is -1.5 D, the other -8 D. Both lenses would be 30% thinner. Should they get the same advice?',
+            question: 'MR-174 plastic reaches n = 1.740 at 1.47 g/cm³, while dense flint glass needs 3.37 g/cm³ for a similar index. How does the plastic manage it?',
             options: [
-                'Yes — the improvement is 30% for both',
-                'No — 30% is 0.3 mm for one and 1.4 mm for the other',
-                'Yes, but only if both lenses are the same diameter',
-                'No — the percentage is different for different prescriptions'
+                'It is simply a more modern material',
+                'It packs in more electrons per cubic centimetre than the glass does',
+                'Its sulfur atoms hold their outer electrons loosely, so each electron slows light more — index per electron rather than index per gram',
+                'It is thinner, so it needs less index'
             ],
-            correctIndex: 1,
-            hint: 'Work out what the percentage is worth in millimetres.',
-            explanation: 'The percentage is a property of the glass and holds for every prescription. The millimetres belong to the customer: about 0.3 mm saved at -1.5 D, which nobody can see, and about 1.4 mm at -8 D, off a lens that was almost 5 mm thick. A percentage tells you nothing about a size.'
+            correctIndex: 2,
+            hint: 'The plastic has far fewer electrons than the glass. So the difference cannot be how many.',
+            explanation: 'Carbon, hydrogen, oxygen and sulfur are all light atoms, so the plastic has fewer electrons per cubic centimetre, not more. What it has is sulfur, whose outer electrons are loosely held and therefore wobble further for the same push. That is why modern thin spectacles are plastic: you can buy index with slackness instead of with mass.'
         },
         {
             id: 10,

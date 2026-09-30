@@ -34,16 +34,16 @@ export const bigIdea20Level3Assessment: AssessmentData = {
             id: 2,
             difficulty: 'easy',
             discipline: 'chemistry',
-            question: 'Why does a lens have a slightly shorter focal length for blue light than for red?',
+            question: 'An electron in a material behaves like a mass on a spring. What follows when light\'s frequency approaches the electron\'s natural frequency?',
             options: [
-                'Blue light is brighter',
-                'Glass has a different speed of light for every colour, so it bends blue more',
-                'Blue light travels further before it focuses',
-                'The coating on the lens filters red'
+                'The electron stops moving',
+                'The electron swings further, so the wave is slowed more — a higher index',
+                'The light is absorbed completely',
+                'The index falls towards 1'
             ],
             correctIndex: 1,
-            hint: 'What does a prism do, and what is it made of?',
-            explanation: 'A prism splits white light because glass bends blue more than red. A lens is the same material doing the same thing, so each colour has its own focal length and only one can be sharp. The index you look up is the index for one colour, usually yellow.'
+            hint: 'Think about pushing a child on a swing at the right rate.',
+            explanation: 'A push near a spring\'s natural frequency produces a large swing, exactly as timing matters more than force on a playground swing. A bigger electron swing means a later re-radiated wave and a slower overall wave — which is a higher refractive index.'
         },
         {
             id: 3,
@@ -133,16 +133,16 @@ export const bigIdea20Level3Assessment: AssessmentData = {
             id: 10,
             difficulty: 'hard',
             discipline: 'chemistry',
-            question: 'Why do the people who most want thin lenses turn out to be the only ones for whom thin lenses cause trouble?',
+            question: 'Lead oxide, lanthanum oxide, titanium oxide and sulfur all raise a material\'s index, and all of them lower its Abbe number. Why does every route have the same side effect?',
             options: [
-                'Because strong prescriptions are usually fitted badly',
-                'Because both the thickness saved and the colour spread grow with lens power, so they arrive together',
-                'Because high-index glass is more fragile',
-                'Because strong lenses are always larger in diameter'
+                'Because all four are heavy elements',
+                'Because each works by moving the electron resonance nearer the visible, and a response near resonance is both larger and steeper',
+                'Because they all absorb blue light',
+                'It is a coincidence of which materials happen to be available'
             ],
             correctIndex: 1,
-            hint: 'Work out the spread at 2 D and at 8 D in high-index glass.',
-            explanation: 'At 2 D nobody needs the thinness and the spread is 0.06 D, invisible. At 8 D the thinness is worth 1.4 mm and the spread reaches 0.250 D, exactly the threshold. Both scale with power, so the benefit and the cost fall due in the same breath.'
+            hint: 'What does "near resonance" do to the size of the response, and what does it do to the slope?',
+            explanation: 'They are not four separate tricks. Every one raises the index by putting the electrons\' natural frequency closer to visible light, and near a resonance the response grows and steepens together. Index and Abbe number are one property read two ways, which is why no cleverness in composition escapes the trade — sulfur is not even a heavy element and it pays the same price.'
         },
         {
             id: 11,

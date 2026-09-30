@@ -81,6 +81,10 @@ export const L3C20ColourLab = ({ state, onStateChange }: Props) => {
             ctx.fill();
         }
 
+        const recipe = abbe >= 50 ? 'silica: electrons held tightly'
+            : abbe >= 38 ? 'some titanium and barium oxide'
+            : abbe >= 30 ? 'lanthanum oxide, or sulfur in a plastic'
+            : 'lead oxide: 82 electrons an atom';
         outlineText(ctx, 'blue bends more than red, so they focus apart',
             safeRight / 2, Math.max(top + 11, artTop + 11),
             'bold 11px monospace', '#334155', 'center', safeRight - 36);
@@ -91,6 +95,9 @@ export const L3C20ColourLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'spread ' + spread.toFixed(3) + ' D between red and blue',
             safeRight / 2, Math.min(boxBottom + 14, artBottom - 12),
             'bold 12px monospace', visible ? RED : OK, 'center', safeRight - 30);
+        outlineText(ctx, recipe, safeRight / 2,
+            Math.min(boxBottom + labelTail - 4, artBottom - 2),
+            'bold 10px monospace', '#334155', 'center', safeRight - 30);
         outlineText(ctx, visible
             ? 'at or over the ' + NOTICE + ' D people notice'
             : 'under the ' + NOTICE + ' D people notice',
@@ -144,12 +151,12 @@ export const L3C20ColourLab = ({ state, onStateChange }: Props) => {
             controlInitial={8}
             controlDisplay={raw => powerOf(raw).toFixed(1) + ' D'}
             control2={{
-                label: 'Abbe Number',
+                label: 'How Little It Spreads Colours',
                 key: 'abbeNumber',
                 min: 25,
                 max: 60,
                 initial: 32,
-                display: raw => String(abbeOf(raw)),
+                display: raw => 'Abbe ' + abbeOf(raw),
             }}
             accent="emerald"
             sky={['#ecfdf5', '#f8fafc']}
