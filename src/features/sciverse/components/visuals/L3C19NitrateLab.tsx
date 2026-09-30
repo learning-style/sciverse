@@ -89,12 +89,13 @@ export const L3C19NitrateLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'in the drainage ' + mgL.toFixed(1) + ' mg/L',
             cx, Math.min(baseY + 14, artBottom - 12),
             'bold 12px monospace', over ? OVER : UNDER, 'center', safeRight - 30);
-        outlineText(ctx, surplus + ' kg/ha surplus in ' + drain + ' mm of drainage',
+        outlineText(ctx, drain + ' mm of drainage over a hectare is '
+            + cubic.toLocaleString() + ' m³',
             cx, Math.min(baseY + labelTail + 12, artBottom),
             'bold 11px monospace', '#0f172a', 'center', safeRight - 30);
 
-        outlineText(ctx, surplus + ' kg / ' + cubic.toLocaleString() + ' m³ = '
-            + mgL.toFixed(1) + ' mg/L as nitrogen',
+        outlineText(ctx, 'surplus ' + surplus + ' kg / drainage ' + cubic.toLocaleString()
+            + ' m³ = ' + mgL.toFixed(1) + ' mg/L as nitrogen',
             safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
         outlineText(ctx, over
             ? times.toFixed(1) + ' times the drinking-water limit'

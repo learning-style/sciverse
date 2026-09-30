@@ -101,8 +101,8 @@ export const L3P19SoakingLab = ({ state, onStateChange }: Props) => {
             cx, Math.min(baseY + labelTail + 12, artBottom),
             'bold 11px monospace', ahead ? FAST : '#b91c1c', 'center', safeRight - 30);
 
-        outlineText(ctx, own + ' mm/h x (1 + ' + pull + '/' + soaked.toFixed(0) + ') = '
-            + own + ' x ' + bracket.toFixed(2) + ' = ' + rate.toFixed(0) + ' mm/h',
+        outlineText(ctx, 'own speed ' + own + ' x (1 + pull ' + pull + ' / soaked in '
+            + soaked.toFixed(0) + ') = ' + rate.toFixed(0) + ' mm/h',
             safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
         outlineText(ctx, 'the bracket falls towards 1, and the 1 is gravity',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', '#334155', 'center', safeRight - 30);

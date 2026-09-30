@@ -70,8 +70,8 @@ export const L2B19LitterStoreLab = ({ state, onStateChange }: Props) => {
             cx, Math.min(baseY + labelTail + 12, artBottom),
             'bold 11px monospace', '#0f172a', 'center', safeRight - 30);
 
-        outlineText(ctx, 'leaf fall ' + fall.toFixed(1) + ' t/ha / ' + rot
-            + '% rotting = store of ' + store.toFixed(1) + ' t/ha',
+        outlineText(ctx, 'leaf fall ' + fall.toFixed(1) + ' t/ha divided by ' + rot
+            + '% rotting = store ' + store.toFixed(1) + ' t/ha',
             safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
         outlineText(ctx, deep
             ? 'slow rotting builds a deep store, which is how peat happens'
