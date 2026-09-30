@@ -76,8 +76,8 @@ lesson's header *and* body — a header alone will mislead you):
 
 | | Mechanism | Mechanism + Limit | Limit | Quantity only |
 |---|---|---|---|---|
-| Level 2 (64) | 16 | — | 2 | 46 |
-| Level 3 (60) | 12 | 23 | 17 | 8 |
+| Level 2 (67) | 16 | — | 3 | 48 |
+| Level 3 (63) | 13 | 25 | 17 | 8 |
 
 Big Ideas 17 and 18 were built after that audit and are counted above. Big Idea
 18's Level 3 is the pattern to copy: **L3P18 is pure Mechanism** and adds no new
@@ -106,16 +106,32 @@ Abbe-number trade falls out -- *the limit was visible in the assumption before t
 consequence was measured*. That is what a **Still standing** line is for, and it
 is worth writing them precisely enough to be picked up later.
 
-**Three closing biology lessons now turn on a shape rather than a fact**, and each
-says so: L3B18's two curves gave a **ratio** that collapses, L3B19's two factors a
-**product** that peaks, and L3B20's a **reciprocal** that turns a steady decline
-into a sudden event. A learner who recognises the third shape from the first two
-has gained more than any of the three results.
+Big Idea 21 is the first trio where **all three lessons are about the same
+structural fact**: a cycle is what you use when you cannot store. L3P21 is
+Mechanism + Limit and the cleanest **Mechanism** argument in the curriculum — the
+Earth is in free fall, so an *even* pull raises no tide, and taking the difference
+of a 1/r² pull costs one power of r. That single exponent derives L2P21's borrowed
+spring/neap 2.70 from mass and distance alone, and dismisses planetary alignments
+by a factor of ten million. L3C21 is Mechanism + Limit too, and its limit is
+unusual: **the sink is consumed by its own work**, because absorbing one CO₂
+spends one carbonate ion, so the Revelle factor rises as the ocean absorbs and the
+two dials are not independent. L3B21 is **Mechanism**, and it is the one to study
+for how a Level 3 lesson should treat a Level 2 finding it inherits.
 
-It also names a reasoning shape rather than only a result: L3B18's two curves gave
-a **ratio** that collapsed, L3B19's give a **product** that peaks. Pointing that
-out is worth more than either number, and it is the kind of thing a Level 3
-lesson should be doing.
+**L2B21's alarming number became L3B21's mechanism.** Level 2 measured a reserve of
+5.5 minutes and left it looking like a design flaw. Level 3 shows the thinness *is*
+the sensor: spending ATP removes from the large pool and adds to the small one, so
+the fractional changes differ by exactly `[ATP]/[ADP]` and a 1% fall in ATP is a
+10% rise in ADP. A level does not only remove a simplification — at its best it
+**reverses the sign of the level below's conclusion** while keeping every figure.
+
+**Four closing biology lessons now turn on a shape rather than a fact**, and each
+says so: L3B18's two curves gave a **ratio** that collapses, L3B19's two factors a
+**product** that peaks, L3B20's a **reciprocal** that turns a steady decline into a
+sudden event, and L3B21 **amplification by scarcity** — read the small pool, and
+the signal is magnified by exactly the ratio of the two. A learner who recognises
+the fourth shape from the first three has gained more than any of the four
+results, which is why each lesson names its shape and lists the earlier ones.
 
 Level 2 stays Quantity-dominant, which is correct — its verb *is* Calculate — but
 its three Big Idea 18 lessons chain rather than sit side by side: L2P18's
@@ -123,8 +139,8 @@ discharge is an input to L2C18's load, and L2B18's percent saturation is L2P18's
 flow wearing a different hat.
 
 Level 2 being Quantity-dominant is correct: its verb *is* Calculate. Level 3 is
-the one to watch, and **41 of its 48 lessons already carry Mechanism or Limit
-reasoning**. The 7 that are Quantity alone each pass the third test — L3C15's ICE
+the one to watch, and **55 of its 63 lessons already carry Mechanism or Limit
+reasoning**. The 8 that are Quantity alone each pass the third test — L3C15's ICE
 tables, L3P14's sampling rate, L3B14's 138 silent swaps all change a decision.
 
 L3P15 was wrongly flagged as failing the test on the strength of its header,
