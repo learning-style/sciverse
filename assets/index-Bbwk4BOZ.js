@@ -4052,7 +4052,7 @@ Try raising Ocean Uptake while lowering Combustion — watch the Cycle Health im
 
 **Step 1 — Photosynthesis (green arrow):** Plants absorb atmospheric CO2 and use sunlight energy to convert it into glucose (C₆H₁₂O₆). This is a carbon **sink** — it removes CO2 from air and locks it in biomass.
 
-**Step 2 — Respiration + Decomposition (yellow arrow):** Living organisms break down organic matter to release energy, returning CO2 to the soil/fuel pool. Dead biomass decomposes similarly. This is a neutral transfer within the biological subsystem.
+**Step 2 — Respiration + Decomposition (yellow arrow):** **Decomposition** means dead material breaking down into simpler pieces. Living things break down organic matter to release energy, returning CO2 to the soil/fuel pool. Dead biomass decomposes similarly. This is a neutral transfer within the biological subsystem.
 
 **Step 3 — Combustion (red arrow):** Burning fossil fuels or biomass breaks carbon-carbon bonds and releases stored carbon as CO2. This is a carbon **source** — it rapidly adds CO2 to the atmosphere.
 
@@ -4067,7 +4067,7 @@ Feedback loops exist but are partial — they dampen the rise, not eliminate it.
 In the lab visual, watch the **atmospheric change bar** at the bottom-right:
 - **Red bar growing** = CO2 accumulating (sources winning)
 - **Green bar** = CO2 declining (sinks winning)
-- **Cycle Balance** drops when the system is far from equilibrium
+- **Cycle Balance** drops when sources and sinks are far from even
 
 Try these experiments:
 1. Drag **Combustion** to maximum — watch the red bar grow 🔴
@@ -4098,12 +4098,14 @@ Step 4 (ocean uptake) is a powerful but often overlooked carbon sink — the oce
 - Step-by-step cycle walkthrough
 - Feedback loops and system balance
 
-Cross-links: **P21** (timing/tidal cycles), **B21** (metabolic cycles), **C22** (chemical equilibrium).`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}),II=()=>({root:{id:"root",speaker:"AI",content:`Your body keeps making energy all day long. This isn't just one big reaction—it's a cycle that keeps going, making sure your cells always have power.
+Cross-links: **P21** (timing/tidal cycles), **B21** (metabolic cycles), **C22** (how a reaction settles into balance).`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"complete"}},options:[]}}),II=()=>({root:{id:"root",speaker:"AI",content:`Your body keeps making energy all day long. This isn't just one big reaction—it's a cycle that keeps going, making sure your cells always have power.
 
 In this lesson, here's what the picture shows:
 - **Brighter web** = The cell is making energy easily and everything is working well.
 - **Red glow** = The cell is working too hard and can't keep up (not enough oxygen for the job).
 - **Purple pulse** = The cell has extra energy saved up, like a backup battery.
+
+Cells barely store any of the energy they spend. They carry it in a molecule called **ATP**, short for **adenosine triphosphate**. Think of ATP as a tiny battery: a cell charges it up, spends it, and charges it again, over and over.
 
 Why do you think cells use a cycle instead of just one step?`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"intro",oxygenLevel:70}},options:[{id:"regenerated",label:"Cells reuse their parts each turn.",nextNodeId:"correct",sentiment:"positive"},{id:"one_step",label:"Cells do one reaction and stop.",nextNodeId:"misconception"}]},misconception:{id:"misconception",speaker:"AI",content:`Your body uses energy all the time, not just once. Three sets of steps run one after another, over and over.
 
