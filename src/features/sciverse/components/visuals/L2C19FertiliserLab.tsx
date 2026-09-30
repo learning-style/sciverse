@@ -6,7 +6,8 @@ interface Props {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-const MAX_SURPLUS = 250;   // kg/ha at the top of the meter
+const MAX_SURPLUS = 420;   // kg/ha at the top of the meter: 180 kg/ha at a 30%
+                           // catch needs 600 applied, so 420 is surplus
 const CROP = '#047857';
 const LOST = '#b45309';
 
@@ -39,7 +40,7 @@ export const L2C19FertiliserLab = ({ state, onStateChange }: Props) => {
         const barW = Math.max(40, Math.min(96, safeRight * 0.2));
         const cx = safeRight / 2;
         const left = cx - barW / 2;
-        const bagFrac = Math.max(0.1, Math.min(1, applied / 400));
+        const bagFrac = Math.max(0.1, Math.min(1, applied / 600));
         const bagTop = baseY - bagFrac * barH;
         const cropH = (demand / applied) * (baseY - bagTop);
 
@@ -55,7 +56,7 @@ export const L2C19FertiliserLab = ({ state, onStateChange }: Props) => {
         ctx.lineTo(left + barW, baseY - cropH);
         ctx.stroke();
 
-        outlineText(ctx, 'one bag of fertiliser, and where it ends up',
+        outlineText(ctx, 'everything you apply, and where it ends up',
             cx, Math.max(top + 11, artTop + 11),
             'bold 11px monospace', '#334155', 'center', safeRight - 36);
         outlineText(ctx, 'surplus ' + surplus.toFixed(0) + ' kg/ha',
@@ -64,21 +65,23 @@ export const L2C19FertiliserLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'the crop takes ' + demand + ' kg/ha',
             left - 10, Math.max(baseY - cropH / 2, artTop + 40),
             'bold 11px monospace', CROP, 'right', Math.max(60, left - 14));
-        outlineText(ctx, 'apply ' + applied.toFixed(0) + ' kg/ha',
+        outlineText(ctx, 'so you apply ' + applied.toFixed(0) + ' kg/ha of nitrogen fertiliser',
             cx, Math.min(baseY + 14, artBottom - 12),
             'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
-        outlineText(ctx, 'plants catch ' + share + '% of what is spread',
+        outlineText(ctx, 'because the plants catch only ' + share + '% of it',
             cx, Math.min(baseY + labelTail + 12, artBottom),
             'bold 11px monospace', CROP, 'center', safeRight - 30);
 
-        outlineText(ctx, demand + ' kg/ha / ' + share + '% caught = apply '
-            + applied.toFixed(0) + ' kg/ha',
+        outlineText(ctx, 'crop takes ' + demand + ' kg/ha divided by ' + share
+            + '% caught = ' + applied.toFixed(0) + ' kg/ha to apply',
             safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
-        outlineText(ctx, 'surplus ' + surplus.toFixed(0)
-            + ' kg/ha left loose in the soil, heading for the river',
+        outlineText(ctx, 'check: ' + share + '% of that is the ' + demand
+            + ' kg/ha the crop needs, so ' + surplus.toFixed(0) + ' kg/ha is surplus',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', LOST, 'center', safeRight - 30);
 
-        fitText(ctx, 'surplus ' + surplus.toFixed(0) + ' kg/ha', safeRight / 2, 94, safeRight - 24, 16);
+        fitText(ctx, 'apply ' + applied.toFixed(0) + ' kg/ha, of which '
+            + surplus.toFixed(0) + ' kg/ha is surplus',
+            safeRight / 2, 94, safeRight - 24, 16);
         fitText(ctx, 'A poor catch costs twice: a bigger bag, and more left behind',
             safeRight / 2, 118, safeRight - 24, 13);
 
