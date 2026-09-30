@@ -277,6 +277,9 @@ import { getL2B20Script } from './l2b20-when-will-you-need-reading-glasses';
 import { getL3P20Script } from './l3p20-why-a-lens-is-fat-in-the-middle';
 import { getL3C20Script } from './l3c20-the-price-of-thin';
 import { getL3B20Script } from './l3b20-why-it-feels-sudden';
+import { getL2P21Script } from './l2p21-when-is-the-next-high-tide';
+import { getL2C21Script } from './l2c21-how-long-does-a-carbon-atom-stay';
+import { getL2B21Script } from './l2b21-how-much-head-start';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1330,6 +1333,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p20': getL3P20Script,
     'l3c20': getL3C20Script,
     'l3b20': getL3B20Script,
+    'l2p21': getL2P21Script,
+    'l2c21': getL2C21Script,
+    'l2b21': getL2B21Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1865,6 +1871,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p20', title: 'How Strong Is That Lens?', subtitle: 'Dioptres, and why powers add', discipline: 'physics', bigIdea: 20, bigIdeaTitle: 'How Do Lenses Change What We See?', icon: '🔍', accentColor: 'indigo', crossLinks: ['p20', 'b20'], level: 2 },
     { id: 'l2c20', title: 'Thinner, But Heavier?', subtitle: 'Index comes from electrons, and electrons have mass', discipline: 'chemistry', bigIdea: 20, bigIdeaTitle: 'How Do Lenses Change What We See?', icon: '🧪', accentColor: 'emerald', crossLinks: ['c20', 'l2p20'], level: 2 },
     { id: 'l2b20', title: 'When Will You Need Reading Glasses?', subtitle: 'A fixed requirement against a falling supply', discipline: 'biology', bigIdea: 20, bigIdeaTitle: 'How Do Lenses Change What We See?', icon: '👁️', accentColor: 'rose', crossLinks: ['b20', 'l2p20'], level: 2 },
+    { id: 'l2p21', title: 'When Is the Next High Tide?', subtitle: 'Twelve hours twenty-five, and fifty minutes later each day', discipline: 'physics', bigIdea: 21, bigIdeaTitle: 'How Do Cycles Keep Systems Alive?', icon: '🌙', accentColor: 'indigo', crossLinks: ['p21', 'l2p20'], level: 2 },
+    { id: 'l2c21', title: 'How Long Does a Carbon Atom Stay?', subtitle: 'Reservoir over flux, and what it does not mean', discipline: 'chemistry', bigIdea: 21, bigIdeaTitle: 'How Do Cycles Keep Systems Alive?', icon: '♻️', accentColor: 'emerald', crossLinks: ['c21', 'l2b19'], level: 2 },
+    { id: 'l2b21', title: 'How Much Head Start?', subtitle: 'Five minutes of ATP, rebuilt 260 times a day', discipline: 'biology', bigIdea: 21, bigIdeaTitle: 'How Do Cycles Keep Systems Alive?', icon: '🫁', accentColor: 'rose', crossLinks: ['b21', 'l2c21'], level: 2 },
     { id: 'l3p20', title: 'Why a Lens Is Fat in the Middle', subtitle: 'A delay cut in glass, and where (n - 1) comes from', discipline: 'physics', bigIdea: 20, bigIdeaTitle: 'How Do Lenses Change What We See?', icon: '🔍', accentColor: 'indigo', crossLinks: ['l2p20', 'l2c20'], level: 3 },
     { id: 'l3c20', title: 'The Price of Thin', subtitle: 'An electron on a spring, read two ways', discipline: 'chemistry', bigIdea: 20, bigIdeaTitle: 'How Do Lenses Change What We See?', icon: '🧪', accentColor: 'emerald', crossLinks: ['l2c20', 'l3p20'], level: 3 },
     { id: 'l3b20', title: 'Why It Feels Sudden', subtitle: 'A steady decline, seen through a reciprocal', discipline: 'biology', bigIdea: 20, bigIdeaTitle: 'How Do Lenses Change What We See?', icon: '👁️', accentColor: 'rose', crossLinks: ['l2b20', 'l3b19'], level: 3 },
