@@ -76,8 +76,8 @@ lesson's header *and* body — a header alone will mislead you):
 
 | | Mechanism | Mechanism + Limit | Limit | Quantity only |
 |---|---|---|---|---|
-| Level 2 (61) | 16 | — | 2 | 43 |
-| Level 3 (57) | 10 | 23 | 16 | 8 |
+| Level 2 (64) | 16 | — | 2 | 46 |
+| Level 3 (60) | 12 | 23 | 17 | 8 |
 
 Big Ideas 17 and 18 were built after that audit and are counted above. Big Idea
 18's Level 3 is the pattern to copy: **L3P18 is pure Mechanism** and adds no new
@@ -97,6 +97,20 @@ explains why one nutrient leaves and another stays from a single minus sign;
 L3B19 derives L2B19's rotting share from water and air competing for the same
 pores, with a peak near 60% full. A dial that reads *How Full of Water the Pores
 Are* is doing three lessons' work at once.
+
+Big Idea 20 does something the earlier trios did not: **each Level 3 lesson is
+answerable only because an earlier one stated its assumption.** L3P20 derives the
+`(n - 1)` that L2C20 openly borrowed, and closes by noting that it assumed one
+speed of light in the glass. L3C20 relaxes exactly that assumption and the whole
+Abbe-number trade falls out -- *the limit was visible in the assumption before the
+consequence was measured*. That is what a **Still standing** line is for, and it
+is worth writing them precisely enough to be picked up later.
+
+**Three closing biology lessons now turn on a shape rather than a fact**, and each
+says so: L3B18's two curves gave a **ratio** that collapses, L3B19's two factors a
+**product** that peaks, and L3B20's a **reciprocal** that turns a steady decline
+into a sudden event. A learner who recognises the third shape from the first two
+has gained more than any of the three results.
 
 It also names a reasoning shape rather than only a result: L3B18's two curves gave
 a **ratio** that collapsed, L3B19's give a **product** that peaks. Pointing that
