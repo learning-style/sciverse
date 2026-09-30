@@ -226,6 +226,25 @@ was confirmed.
 and footer bands. Its three-zone layout exists to make overlap impossible — most
 of the rules above came from a defect found on screen.
 
+**A length cannot show a small percentage -- count instead.** L3B21's point is
+that a **1%** fall in ATP is a **10%** rise in ADP. Drawn as two bars on one
+shared scale -- which is honest -- that 1% is 1.3px on a 150px bar: a hairline,
+so the drawing could not show the one thing the lesson is about, and captions,
+travelling dots and a hatched block were piled on to compensate. Nine strings on
+screen and the mechanism still had to be taken on trust. **Counting fixed it
+exactly.** One dot is 0.05 mM, so ATP is 100 dots, a 1% fall is precisely one
+dot, and the learner reads *lost 1 of 100, gained 1 of 10* off the screen. No
+scale, no metaphor, and the arithmetic is exact rather than approximated. Where
+the interesting quantity is a small share of a big pool, make the dial values
+divide the pool into whole countable units and let the learner count.
+
+**A metaphor on the canvas is a technical term with no definition.** *Slice* in
+L3B21 and *ceiling* in L2B18 were both invented by the lab, and both were read
+off the screen by a learner who had been given no way to know what they meant.
+The word-presence check passes them, because the lesson echoes them once. If a
+word on the canvas is not the plain name of the thing, it is jargon -- say
+*share*, or name the quantity.
+
 **Every number the canvas prints must be named by a word beside it.** A unit is
 not a name: `0.9` and `3.0` on two atoms were electronegativities with nothing
 on screen saying so, and `104.5°` was a bond angle. Either name the quantity in
