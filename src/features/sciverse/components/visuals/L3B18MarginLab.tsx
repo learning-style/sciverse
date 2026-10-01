@@ -113,18 +113,9 @@ export const L3B18MarginLab = ({ state, onStateChange }: Props) => {
                 high: '100% of the ' + REF + ' °C spare',
                 stops: ['#fff1f2', '#fda4af', SAFE] as [string, string, string],
             },
-            note: 'At ' + degC + ' °C and ' + FULL + '% full the water holds '
-                + inWater.toFixed(1) + ' mg/L, down from ' + refSpare.toFixed(1) + ' at '
-                + REF + ' °C. Meanwhile the trout needs ' + needs.toFixed(2)
-                + ' times as much oxygen as it did at ' + REF
-                + ' °C, because a fish has no thermostat and its whole chemistry runs at river '
-                + 'temperature. Dividing one by the other leaves '
-                + (share * 100).toFixed(0) + '% of the spare it had at ' + REF
-                + ' °C. Notice which side moves further: across 10 to 30 °C the oxygen falls by '
-                + 'about a third while the spare falls to a sixth, so roughly a quarter of the '
-                + 'squeeze is the water holding less and three quarters is the fish needing more. '
-                + 'The need factor is a rule of thumb, and raising it from 2 to 3 changes the '
-                + 'answer considerably -- which is why survival can sit inside its uncertainty.',
+            note: 'At ' + degC + ' \u00b0C the water holds ' + inWater.toFixed(1)
+                + ' mg/L and the trout needs ' + needs.toFixed(2) + ' times as much oxygen as at ' + REF
+                + ' \u00b0C, which leaves ' + (share * 100).toFixed(0) + '% of the spare it had at ' + REF + ' \u00b0C.',
         };
     };
 

@@ -100,7 +100,7 @@ export const L2B4WeberLab = ({ state, onStateChange }: Props) => {
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, added / (threshold * 2))),
-                caption: 'Extra Weight Compared With the Threshold',
+                caption: 'Extra Weight vs the Threshold',
                 low: 'Not noticed',
                 high: 'Clearly felt',
             },

@@ -101,10 +101,7 @@ export const L2P18DischargeLab = ({ state, onStateChange }: Props) => {
                 + ' m deep gives a cross-section of ' + area.toFixed(1)
                 + ' m², and water crossing it at ' + speed.toFixed(1) + ' m/s makes the discharge '
                 + flow.toFixed(1) + ' m³/s -- about ' + flow.toFixed(1)
-                + ' tonnes of water every second. All three numbers are multiplied, so none of them is '
-                + 'the important one: doubling the width and doubling the speed both do the same thing. '
-                + 'In flood the depth and the speed rise together, which is why the discharge can '
-                + 'quadruple while the river only looks twice as angry.',
+                + ' tonnes of water every second.',
         };
     };
 

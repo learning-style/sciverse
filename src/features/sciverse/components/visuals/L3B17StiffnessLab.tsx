@@ -85,9 +85,7 @@ export const L3B17StiffnessLab = ({ state, onStateChange }: Props) => {
             note: 'The same material as a solid rod of radius ' + rod
                 + ' mm, rolled into a ' + wall + ' mm wall, reaches '
                 + reach.toFixed(2) + ' times as far -- and is ' + gain.toFixed(1)
-                + ' times stiffer, because distance counts to the fourth power. The rod is '
-                + iRod.toFixed(0) + ' mm⁴ and the tube is ' + iTube.toFixed(0)
-                + ' mm⁴. For a thin wall the gain is close to 2 times the reach squared.',
+                + ' times stiffer, because distance counts to the fourth power.',
         };
     };
 

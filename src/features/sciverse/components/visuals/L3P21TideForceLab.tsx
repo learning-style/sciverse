@@ -151,15 +151,7 @@ export const L3P21TideForceLab = ({ state, onStateChange }: Props) => {
             note: 'A body of ' + show(mass) + ' Moon masses at ' + show(dist)
                 + ' Moon distances pulls the Earth ' + show(pull)
                 + ' times as hard as the Moon does, and raises ' + show(tide)
-                + ' times the tide. The two differ by exactly the distance, because a pull goes as '
-                + 'one over distance squared and a difference in that pull goes as one over distance '
-                + 'cubed. The Earth as a whole is in free fall, so a pull that is the same everywhere '
-                + 'raises no tide at all; only the unevenness across the width of the Earth is left '
-                + 'over. Set the dials to 27,000,000 and 389 for the Sun and the tide reads 0.46, '
-                + 'which is why the Sun raises less than half the Moon’s tide while pulling 179 '
-                + 'times harder. Set them to 25,900 and 1,600 for Jupiter at its closest and the tide '
-                + 'is about six millionths. This is the force, not the height of the water, which also '
-                + 'depends on the shape of the ocean basin.',
+                + ' times the tide. The two differ by exactly the distance.',
         };
     };
 

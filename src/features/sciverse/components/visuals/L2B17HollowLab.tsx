@@ -85,7 +85,7 @@ export const L2B17HollowLab = ({ state, onStateChange }: Props) => {
                 + ' mm² of material. Rolled into a tube with a ' + wall
                 + ' mm wall, that same material reaches out to ' + outer.toFixed(1)
                 + ' mm, which is ' + reach.toFixed(2)
-                + ' times as far. Nothing was added: a thinner wall simply stands further out.',
+                + ' times as far.',
         };
     };
 

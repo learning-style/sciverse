@@ -137,19 +137,11 @@ export const L2P20PowerLab = ({ state, onStateChange }: Props) => {
                 high: MAX_D + ' D',
                 stops: ['#eef2ff', '#a5b4fc', CONVERGE] as [string, string, string],
             },
-            note: 'A lens with a focal length of ' + focalCm + ' cm is ' + (focalCm / 100).toFixed(2)
-                + ' m, so its power is 1 / ' + (focalCm / 100).toFixed(2) + ' = '
-                + firstD.toFixed(1) + ' dioptres. Holding a ' + secondD.toFixed(1)
-                + ' D lens against it gives ' + totalD.toFixed(1)
-                + ' D, because powers simply add when lenses sit together. '
-                + (converges
-                    ? 'Check it backwards: 1 / ' + totalD.toFixed(1) + ' = '
-                      + (combinedCm / 100).toFixed(2) + ' m, a focal length of '
-                      + combinedCm.toFixed(0) + ' cm.'
-                    : 'A total of zero or below spreads light apart rather than bringing it together.')
-                + ' Your own eye is this same sum: a cornea of about 43 D plus a lens of about '
-                + '20 D gives 63 D, and a prescription is however many dioptres must be added or '
-                + 'taken away to match the eye to its own length.',
+            note: 'A focal length of ' + focalCm + ' cm is ' + (focalCm / 100).toFixed(2)
+                + ' m, a power of ' + firstD.toFixed(1) + ' dioptres. A ' + secondD.toFixed(1)
+                + ' D lens against it gives ' + totalD.toFixed(1) + ' D, because powers add. '
+                + (converges ? 'That is ' + combinedCm.toFixed(0) + ' cm.'
+                    : 'Zero or below spreads light apart.'),
         };
     };
 

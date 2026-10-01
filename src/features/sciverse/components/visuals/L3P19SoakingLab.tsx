@@ -119,18 +119,11 @@ export const L3P19SoakingLab = ({ state, onStateChange }: Props) => {
                 high: MAX_RATE + ' mm/h',
                 stops: ['#eef2ff', '#93c5fd', FAST] as [string, string, string],
             },
-            note: 'This soil moves water at ' + own
-                + ' mm/h under gravity alone, and dry soil below pulls with a strength worth '
-                + pull + ' mm. With ' + soaked.toFixed(0)
-                + ' mm of water soaked in so far, the bracket is ' + bracket.toFixed(2)
-                + ' and the soaking rate is ' + rate.toFixed(0) + ' mm/h. '
+            note: 'With ' + soaked.toFixed(0) + ' mm soaked in so far, the bracket is '
+                + bracket.toFixed(2) + ' and this soil takes water at ' + rate.toFixed(0) + ' mm/h. '
                 + (ahead
-                    ? 'That is still ahead of ' + RAIN + ' mm/h of rain, so nothing runs off yet.'
-                    : 'That has fallen below ' + RAIN + ' mm/h of rain, so the surplus now runs off.')
-                + ' The pull decides the opening minutes and the soil’s own speed decides the '
-                + 'rest of the storm, because the pull has to reach across everything already wet '
-                + 'while gravity never fades. That is why dry ground looks bottomless at first, and '
-                + 'why the second day of rain floods when the first did not.',
+                    ? 'Still ahead of ' + RAIN + ' mm/h of rain, so nothing runs off yet.'
+                    : 'Below ' + RAIN + ' mm/h of rain, so the surplus now runs off.'),
         };
     };
 

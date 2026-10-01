@@ -116,13 +116,8 @@ export const L3P18TiltLab = ({ state, onStateChange }: Props) => {
             },
             note: 'Water at ' + speed.toFixed(1) + ' m/s round a bend of radius ' + radius
                 + ' m must accelerate inward at ' + ((speed * speed) / radius).toFixed(4)
-                + ' m/s², and the only way an open channel supplies that is by tilting its '
-                + 'surface: higher against the outer bank, lower against the inner one. Across '
-                + WIDTH_M + ' m that tilt is ' + cm.toFixed(1)
-                + ' cm. Because the tilt is set by the average speed while surface water runs '
-                + 'faster than bed water, it is too little on top and too much below -- so the '
-                + 'flow corkscrews, and the sand and gravel rolling along the bed travel inward '
-                + 'to build the point bar. Tilt goes as v², so doubling the speed quadruples it.',
+                + ' m/s\u00b2, and an open channel supplies that by tilting its surface '
+                + cm.toFixed(1) + ' cm across ' + WIDTH_M + ' m.',
         };
     };
 

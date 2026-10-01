@@ -98,19 +98,11 @@ export const L3C21RevelleLab = ({ state, onStateChange }: Props) => {
                 high: MAX_YEARS + ' years',
                 stops: ['#ecfdf5', '#6ee7b7', SEA] as [string, string, string],
             },
-            note: 'An excess of ' + excess + ' GtC draining at a net uptake of '
-                + uptake.toFixed(1) + ' GtC a year takes about ' + years.toFixed(0)
-                + ' years. The uptake is set by the Revelle factor, here ' + revelle.toFixed(1)
-                + ': absorbing one molecule of CO₂ spends one carbonate ion, and carbonate is '
-                + 'only about a tenth of the ocean’s dissolved carbon. So the sea takes up a '
-                + 'fraction of what its size suggests, and takes up less as it goes, because '
-                + 'absorbing is what raises the factor. The two dials are therefore linked: a '
-                + 'larger excess, once absorbed, leaves a sea less able to absorb the next lot. '
-                + 'That is why emitting slowly is not merely gentler than emitting quickly but '
-                + 'chemically different, since carbon released over centuries meets a surface '
-                + 'layer that keeps being resupplied with carbonate from below. And the years '
-                + 'shown here only drain the easy part: the rest waits on the deep ocean, and '
-                + 'then on rock weathering, which is millennia.',
+            note: 'An excess of ' + excess + ' GtC at a net uptake of ' + uptake.toFixed(1)
+                + ' GtC a year takes about ' + years.toFixed(0)
+                + ' years. A Revelle factor of ' + revelle.toFixed(1)
+                + ' means the sea takes up 1 part in ' + revelle.toFixed(0)
+                + ' of what its size suggests.',
         };
     };
 

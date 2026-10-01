@@ -134,15 +134,12 @@ export const L2P19RunoffLab = ({ state, onStateChange }: Props) => {
                 high: MAX_RUNOFF + ' mm/h',
                 stops: ['#eef2ff', '#93c5fd', RUNOFF] as [string, string, string],
             },
-            note: 'Rain is arriving at ' + rain + ' mm/h and this soil can take water in at '
-                + soil + ' mm/h, so ' + soaks + ' mm/h soaks in and ' + runs
-                + ' mm/h runs off. ' + (floods
-                    ? 'Across a ' + HOURS + '-hour storm that is ' + runs * HOURS
-                      + ' mm of water leaving the field, heading for the nearest ditch and then a river.'
-                    : 'Nothing runs off, because the ground can take the rain as fast as it arrives.')
-                + ' Gentle rain almost never runs off, whatever the soil: flooding comes from rain '
-                + 'arriving faster than the ground can accept it. The same 30 mm of rain loses '
-                + '20 mm if it falls in an hour and nothing at all if it falls over six.',
+            note: 'Rain arrives at ' + rain + ' mm/h and this soil takes water in at ' + soil
+                + ' mm/h, so ' + soaks + ' mm/h soaks in and ' + runs + ' mm/h runs off. '
+                + (floods
+                    ? 'Over ' + HOURS + ' hours that is ' + runs * HOURS
+                      + ' mm leaving the field.'
+                    : 'Nothing runs off: the ground takes the rain as fast as it arrives.'),
         };
     };
 

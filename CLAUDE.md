@@ -226,7 +226,24 @@ was confirmed.
 and footer bands. Its three-zone layout exists to make overlap impossible — most
 of the rules above came from a defect found on screen.
 
-**The footer `note` holds about 150 characters, and the rest was being thrown
+**A visual has to stand on its own.** A reader who skims the lesson and looks only
+at the canvas should still get the point -- that is the standard, and it is what
+`check-visual.py` is for. It already asked five questions (a plain-language
+takeaway, a named quantity, a complete meter, dialled units, word labels on the
+artwork) and answered them for 184 labs; it now also checks the three things that
+were silently failing anyway:
+
+| | Budget | Why |
+|---|---|---|
+| footer `note` | **220 chars** | four 11px lines at the 400px panel; past it, an ellipsis |
+| meter `caption` | **33 chars** | 14px bold on a 330px panel |
+| strings on the stage | **10** | the corpus median is 5; 14 is a wall of text |
+
+Its `est_len` measures the **longest rendering path**, collapsing each
+`(cond ? A : B)` to the longer branch -- counting both overstated every note with a
+verdict in it and would have had me trim good ones.
+
+**The footer `note` holds about 150 characters at 12px, and the rest was being thrown
 away.** `fitText` shrinks to a 10px floor and then splits into exactly **two**
 lines, so everything past roughly 120 characters was drawn off the sides of the
 canvas and clipped -- silently, mid-word. **110 of 123 notes exceeded that**
@@ -290,7 +307,12 @@ python3 scripts/check-strings.py             # string literals that will not par
 python3 scripts/check-syntax.py              # will it parse: open strings, stray braces
 python3 scripts/check-legacy-visuals.py      # the 96 pairs check-lessons cannot see
 python3 scripts/check-plainness.py           # hard words a lesson never defines
+python3 scripts/check-visual.py              # can the visual be read on its own?
 ```
+
+**`check-visual.py` was missing from this list** and had fallen out of the routine,
+which is how 110 clipped notes and seven overflowing captions survived. A checker
+that is not in the list is not run.
 
 It pairs lessons to labs through `extendedLabs.ts`, so it needs no argument
 list. It checks bracket balance, scene params referenced-but-not-destructured

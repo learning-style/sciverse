@@ -121,26 +121,16 @@ export const L3B20SuddenLab = ({ state, onStateChange }: Props) => {
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, nearCm / MAX_CM)),
-                caption: 'Nearest Distance This Eye Can Focus',
+                caption: 'Nearest This Eye Can Focus',
                 low: '0 cm',
                 high: MAX_CM + ' cm',
                 stops: ['#fff1f2', '#fda4af', CURVE] as [string, string, string],
             },
-            note: 'Starting from ' + START_D + ' D at age ' + START_AGE + ' and losing '
-                + rate.toFixed(2) + ' D a year, this eye has ' + accom.toFixed(1)
-                + ' D of accommodation at age ' + age + ', which puts its nearest focus at '
-                + nearCm.toFixed(0) + ' cm. '
-                + (needsGlasses
-                    ? 'The book at ' + READ_CM + ' cm needs ' + READ_D.toFixed(1)
-                      + ' D, so this eye is short by ' + shortfall.toFixed(1)
-                      + ' D and needs reading glasses.'
-                    : 'The book at ' + READ_CM + ' cm needs ' + READ_D.toFixed(1)
-                      + ' D, which this eye still has, so no reading glasses are needed.')
-                + ' The decline is perfectly steady -- the same loss every year -- and the curve '
-                + 'is not, because the near point is 1 divided by the accommodation. Watch the '
-                + 'age dial: the curve barely moves for thirty years and then runs away, crossing '
-                + 'the book at about age ' + crossAge.toFixed(0)
-                + '. That is why a change spread over decades arrives as an event.',
+            note: 'At age ' + age + ' this eye has ' + accom.toFixed(1)
+                + ' D left, so its nearest focus is ' + nearCm.toFixed(0)
+                + ' cm. The book at ' + READ_CM + ' cm needs ' + READ_D.toFixed(1) + ' D, '
+                + (needsGlasses ? 'so it is short by ' + shortfall.toFixed(1) + ' D.'
+                    : 'which it still has.'),
         };
     };
 

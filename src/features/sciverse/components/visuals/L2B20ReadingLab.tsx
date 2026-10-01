@@ -115,20 +115,13 @@ export const L2B20ReadingLab = ({ state, onStateChange }: Props) => {
                 high: '+' + MAX_NEEDED + ' D',
                 stops: ['#fff1f2', '#fda4af', FINE] as [string, string, string],
             },
-            note: 'Focusing on a page ' + readCm + ' cm away takes 1 / '
-                + (readCm / 100).toFixed(2) + ' = ' + needed.toFixed(1)
-                + ' dioptres of extra bending, and that figure is the same for everybody '
-                + 'because it is set by the distance alone. This eye has '
-                + accom.toFixed(1) + ' D of accommodation left, which puts its nearest focus at '
+            note: 'A page at ' + readCm + ' cm needs ' + needed.toFixed(1)
+                + ' dioptres. This eye has ' + accom.toFixed(1) + ' D left, so its nearest focus is '
                 + nearPointCm.toFixed(0) + ' cm. '
                 + (canFocus
-                    ? 'That is enough, with some to spare, so no reading glasses are needed.'
-                    : 'It is short by ' + shortfall.toFixed(1) + ' D, so reading glasses of +'
-                      + shortfall.toFixed(1) + ' D close the gap.')
-                + ' Move the page further away and the requirement falls, which is why a music '
-                + 'score at 50 cm needs weaker glasses than a book at 25 cm. Accommodation runs '
-                + 'from about 14 D at age ten to about 2 D at fifty, and the requirement never '
-                + 'moves -- so all the change over a lifetime is on the supply side.',
+                    ? 'That is enough, with some to spare.'
+                    : 'Short by ' + shortfall.toFixed(1) + ' D, so +' + shortfall.toFixed(1)
+                      + ' D reading glasses close the gap.'),
         };
     };
 

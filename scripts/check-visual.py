@@ -12,8 +12,13 @@ Five checkable properties per lab:
   3. METER      caption, low and high all present
   4. UNITS      every dial's display carries a unit or a named thing
   5. LABELS     the artwork carries word labels, not just shapes
+  6. NOTE FITS  the footer note fits the room it is drawn in, so none is clipped
+  7. CAP FITS   the meter caption fits a narrow panel
+  8. NOT BUSY   the scene does not drown its point in text
 
 Usage:  python3 scripts/check-visual.py [LabFile.tsx ...]
+        python3 scripts/check-visual.py --selftest
+
 """
 import os
 import re
@@ -26,6 +31,105 @@ UNITY = ('°', '%', 'µ', 'Ω', '²', '³', 'm', 'g', 'A', 'V', 'W', 'J', 'K', '
          'N', 'Hz', 'kg', 'cm', 'mm', 'km', 'kJ', 'MJ', 'mT', 'pH', 'ppm', 'per',
          'atm', 'bar', 'tonne', 'spoon', 'bucket', 'step', 'turn', 'year', 'day',
          'hour', 'min', 'cue', 'bit', 'ATP', 'mol')
+
+
+# wrapNote draws the note at 12px over three lines, or 11px over four if it will
+# not fit, in the 46px between the meter's end labels and the bottom of the canvas.
+# The lab panel is 400px wide on a desktop (LessonShell: lg:w-[400px]), so a line
+# holds 368/6.6 characters at 11px. Four of those is the real budget; past it the
+# note ends in an ellipsis and the rest is simply not read.
+NOTE_BUDGET = 220
+# The meter caption is 14px bold monospace, centred on footW = min(W - 48, 620).
+# A 330px panel gives 282px, which is 33 characters.
+CAPTION_BUDGET = 33
+# Median across the corpus is 5 scene strings. Ten is already a wall of text.
+BUSY_STRINGS = 10
+
+
+def _top_ternary(expr):
+    """(q, c) -- the top-level '?' and its matching ':', or None."""
+    depth = 0
+    q = -1
+    for i, ch in enumerate(expr):
+        if ch in '([{':
+            depth += 1
+        elif ch in ')]}':
+            depth -= 1
+        elif depth == 0 and ch == '?':
+            q = i
+            break
+    if q < 0:
+        return None
+    depth = 0
+    for j in range(q + 1, len(expr)):
+        ch = expr[j]
+        if ch in '([{':
+            depth += 1
+        elif ch in ')]}':
+            depth -= 1
+        elif depth == 0 and ch == ':':
+            return q, j
+    return None
+
+
+def longest_branch(expr):
+    """Collapse every ternary to whichever branch is longer.
+
+    Only one branch is ever drawn, so counting both overstates the note. This has
+    to cope with a bare top-level ternary (`captured ? \u2018a\u2019 : \u2018b\u2019`,
+    with no enclosing parens) as well as one wrapped in a group, and with nesting.
+    """
+    t = _top_ternary(expr)
+    if t:
+        q, c = t
+        left, right = expr[q + 1:c], expr[c + 1:]
+        return longest_branch(left if len(left) >= len(right) else right)
+    # no bare ternary: collapse the innermost parenthesised one, then retry
+    for _ in range(8):
+        best = None
+        stack = []
+        for i, ch in enumerate(expr):
+            if ch == '(':
+                stack.append(i)
+            elif ch == ')' and stack:
+                a2 = stack.pop()
+                inner = expr[a2 + 1:i]
+                if _top_ternary(inner) and (best is None or (i - a2) < (best[1] - best[0])):
+                    best = (a2, i + 1, inner)
+        if not best:
+            break
+        a2, b2, inner = best
+        expr = expr[:a2] + longest_branch(inner) + expr[b2:]
+    return expr
+
+
+def est_len(expr):
+    """Rendered length of a TS string expression, counting an interpolation as 5."""
+    t = longest_branch(expr)
+    t = re.sub(r"'\s*\+\s*[^+]*?\+\s*'", 'XXXXX', t)
+    t = re.sub(r"\$\{[^{}]*\}", 'XXXXX', t)
+    t = re.sub(r"[`'\"]", '', t)
+    t = re.sub(r"\s*\+\s*", '', t)
+    return len(re.sub(r'\s+', ' ', t).strip().rstrip(','))
+
+
+def note_of(src):
+    m = re.search(r"\n\s*note:\s*(.*?)(?=\n\s*\}\s*;|\n\s*\};)", src, re.S)
+    return est_len(m.group(1)) if m else 0
+
+
+def caption_of(src):
+    m = re.search(r"caption:\s*'([^']*)'", src)
+    return len(m.group(1)) if m else 0
+
+
+def scene_strings(src):
+    i = src.find('const drawScene')
+    if i < 0:
+        return 0
+    j = src.find('\n    return (', i)
+    sc = src[i:j if j > 0 else len(src)]
+    return len(re.findall(r'\boutlineText\(', sc)) + len(re.findall(r'\bfitText\(', sc))
 
 
 def strip(src):
@@ -166,10 +270,76 @@ def check(path):
     labels, shapes = drawn_labels(src), shape_count(src)
     if shapes >= 6 and len(labels) < 2:
         probs.append(str(shapes) + ' shapes drawn but only ' + str(len(labels)) + ' word label(s)')
+
+    # 6: the note is a caption, not a paragraph -- past the budget it is clipped
+    n = note_of(src)
+    if n > NOTE_BUDGET:
+        probs.append('note is ' + str(n) + ' chars; past ' + str(NOTE_BUDGET)
+                     + ' it is clipped with an ellipsis and never read')
+
+    # 7: the meter caption must survive a narrow panel
+    c = caption_of(src)
+    if c > CAPTION_BUDGET:
+        probs.append('meter caption is ' + str(c) + ' chars; over '
+                     + str(CAPTION_BUDGET) + ' it overflows a 330px panel')
+
+    # 8: too much text on the stage buries the point
+    st = scene_strings(src)
+    if st > BUSY_STRINGS:
+        probs.append(str(st) + ' strings drawn on the stage; over '
+                     + str(BUSY_STRINGS) + ' the picture is a wall of text')
     return probs, len(labels), shapes
 
 
+def selftest():
+    """Pin the three new budgets against real cases, in both directions.
+
+    A budget wide enough to pass an ordinary caption must still catch the 695-char
+    paragraph that was being clipped, or it has quietly disarmed itself.
+    """
+    bad = 0
+
+    def want(label, got, expect):
+        nonlocal bad
+        if got != expect:
+            print('  FAIL ' + label + ': got ' + repr(got) + ', wanted ' + repr(expect))
+            bad += 1
+
+    # est_len sees through concatenation and interpolation
+    want('est_len concat', est_len("'a ' + x + ' b'") > 5, True)
+
+    # a ternary counts one branch, not both -- including a bare top-level one,
+    # which is how L3B2DiffusionLab and L3P14SampleLab are written
+    want('bare ternary takes the longer branch',
+         est_len("c ? `aaaaaaaaaaaaaaaaaaaa` : `bb`"), 20)
+    want('parenthesised ternary collapses',
+         est_len("(c ? 'aaaaaaaaaaaaaaaaaaaaaa' : 'b')"), 22)
+    want('nested ternary collapses',
+         est_len("(a ? 'p' : (b ? 'qqqqqqqqqqqqqqqqqq' : 'r'))"), 18)
+
+    # NOTE: the real L3B21 note (120 chars) passes; the real L3C20 one (698) does not
+    short = "'The same 1 unit is 1% of the ATP pool and 10% of the ADP pool, "
+    short += "because ADP is 10 times scarcer. So the cell watches ADP.'"
+    want('a 120-char note fits', est_len(short) <= NOTE_BUDGET, True)
+    want('a 700-char note does not', 700 <= NOTE_BUDGET, False)
+    want('budget is the 4x11px line capacity', NOTE_BUDGET, 220)
+
+    # CAPTION: 'Reserve of Spendable Energy' (27) passes, the 47-char one does not
+    want('a 27-char caption fits', 27 <= CAPTION_BUDGET, True)
+    want('a 47-char caption does not', 47 <= CAPTION_BUDGET, False)
+
+    # BUSY: the corpus median is 5, and the worst lab draws 14
+    want('5 strings is not busy', 5 > BUSY_STRINGS, False)
+    want('14 strings is busy', 14 > BUSY_STRINGS, True)
+
+    print('selftest ok' if not bad else 'selftest FAILED (' + str(bad) + ')')
+    return 1 if bad else 0
+
+
 def main():
+    if '--selftest' in sys.argv:
+        return selftest()
+
     files = sys.argv[1:] or sorted(f for f in os.listdir(VISUALS)
                                    if f.endswith('.tsx') and f != 'LabCanvas.tsx')
     total, worst, legacy, unread = 0, [], [], []

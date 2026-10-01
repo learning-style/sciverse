@@ -118,7 +118,7 @@ export const L3C18ExponentLab = ({ state, onStateChange }: Props) => {
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, loadFactor / MAX_LOAD)),
-                caption: 'Dissolved Load Against Ordinary Flow',
+                caption: 'Load Against Ordinary Flow',
                 low: 'x1',
                 high: 'x' + MAX_LOAD,
                 stops: ['#ecfdf5', '#6ee7b7', FLAT] as [string, string, string],
@@ -127,12 +127,7 @@ export const L3C18ExponentLab = ({ state, onStateChange }: Props) => {
                 + ' times the ordinary flow leaves the water at ' + concFactor.toFixed(2)
                 + ' of its usual concentration -- ' + conc.toFixed(0) + ' mg/L instead of '
                 + BASE_C + ' -- while the load rises ' + loadFactor.toFixed(1)
-                + '-fold, to ' + tonnes.toFixed(0) + ' tonnes a day. Pure dilution would be '
-                + 'b = -1, and weathering solutes measure near -0.1, because a rising river '
-                + 'wets ground that was dry and so gains contact area as it loses contact time. '
-                + 'A positive b means the opposite: a store the low river never reaches, '
-                + 'flushed in by high water, which is how nitrate behaves. The exponent is '
-                + 'fitted to measurements, not derived.',
+                + '-fold, to ' + tonnes.toFixed(0) + ' tonnes a day.',
         };
     };
 

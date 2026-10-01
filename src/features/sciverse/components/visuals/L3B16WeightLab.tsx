@@ -112,7 +112,9 @@ export const L3B16WeightLab = ({ state, onStateChange }: Props) => {
                 high: `${Y_MAX}°`,
                 stops: ['#ecfdf5', '#fda4af', ROSE] as [string, string, string],
             },
-            note: `A sharp cue of ±${sharp}° in a blend with the vague cue at ±${VAGUE}°. Give the sharp cue ${pct}% of the vote and the combined error is ±${err.toFixed(2)}°. ${ending} The best share works out as ${VAGUE}² / (${sharp}² + ${VAGUE}²), which is 1 / error² written as a fraction.`,
+            note: `A sharp cue of \u00b1${sharp}\u00b0 in a blend with the vague cue at \u00b1${VAGUE}\u00b0. `
+                + `Give the sharp cue ${pct}% of the vote and the combined error is \u00b1${err.toFixed(2)}\u00b0. `
+                + `${ending}`,
         };
     };
 

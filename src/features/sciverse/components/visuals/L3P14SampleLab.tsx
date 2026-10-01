@@ -108,8 +108,7 @@ export const L3P14SampleLab = ({ state, onStateChange }: Props) => {
                 stops: ['#eef2ff', '#a5b4fc', INDIGO] as [string, string, string],
             },
             note: captured
-                ? `${rate} samples each second gives a Nyquist frequency of ${nyquist} Hz, so a ${WAVE_HZ} Hz wave is captured. Each sample is rounded to one of ${levels} levels, and the bit rate is ${bitRate.toLocaleString('en-US')} bits each second.`
-                : `${rate} samples each second gives a Nyquist frequency of only ${nyquist} Hz, so the ${WAVE_HZ} Hz wave is stored as a ${stored} Hz wave that was never played: aliasing.`,
+                ? `${rate} samples each second gives a Nyquist frequency of ${nyquist} Hz, so a ${WAVE_HZ} Hz wave is captured.`,
         };
     };
 

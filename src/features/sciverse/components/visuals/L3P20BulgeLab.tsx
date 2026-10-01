@@ -113,17 +113,11 @@ export const L3P20BulgeLab = ({ state, onStateChange }: Props) => {
                 high: MAX_BULGE + ' mm',
                 stops: ['#eef2ff', '#a5b4fc', GLASS] as [string, string, string],
             },
-            note: 'A ray through the edge of this lens, ' + r
-                + ' mm out from the middle, travels ' + extraPath.toFixed(2)
-                + ' mm further through air than a ray through the centre, because the edge path '
-                + 'is the hypotenuse of a triangle with sides ' + FOCAL_MM + ' and ' + r
-                + ' mm. For both to arrive in step, the middle ray must be delayed by exactly as '
-                + 'much -- and glass of index ' + n.toFixed(2) + ' delays light by (index - 1) = '
-                + (n - 1).toFixed(2) + ' times its thickness, because it replaces air that was '
-                + 'already there. So the middle needs ' + bulge.toFixed(2)
-                + ' mm of extra glass. Double the radius and the bulge quadruples, because the '
-                + 'edge path grows as the radius squared -- which is why wide camera lenses are '
-                + 'heavy and strong magnifiers are small.',
+            note: 'The edge ray, ' + r + ' mm out, travels ' + extraPath.toFixed(2)
+                + ' mm further through air than the middle ray. Glass of index ' + n.toFixed(2)
+                + ' delays light by (index - 1) = ' + (n - 1).toFixed(2)
+                + ' times its thickness, so the middle needs ' + bulge.toFixed(2)
+                + ' mm of extra glass.',
         };
     };
 

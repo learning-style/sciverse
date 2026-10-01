@@ -110,17 +110,7 @@ export const L2P21TideLab = ({ state, onStateChange }: Props) => {
             note: 'On day ' + days + ' of the lunar month the Sun and Moon are '
                 + (springing ? 'nearly lined up, so their pulls add'
                     : neaping ? 'nearly at right angles, so the Sun works against the Moon'
-                    : 'partly lined up')
-                + ', giving a range of ' + range.toFixed(1) + ' m. With the Moon worth '
-                + MOON_SHARE.toFixed(1) + ' m and the Sun ' + sun.toFixed(1)
-                + ' m, the biggest tides of the month are ' + (MOON_SHARE + sun).toFixed(1)
-                + ' m and the smallest ' + (MOON_SHARE - sun).toFixed(1) + ' m, a ratio of '
-                + ((MOON_SHARE + sun) / Math.max(0.1, MOON_SHARE - sun)).toFixed(1)
-                + '. Spring tides come at new moon AND full moon, because a line through Earth, '
-                + 'Moon and Sun works whichever side the Moon is on -- so they arrive every 14.8 '
-                + 'days, not once a month. And the timing is set by the Moon, not our clock: high '
-                + 'tides every 12 h 25 min, each about 50 minutes later than yesterday, which is '
-                + 'why a week later the tide is nearly six hours out.',
+                        : 'partly lined up') + ', giving a range of ' + range.toFixed(1) + ' m.',
         };
     };
 

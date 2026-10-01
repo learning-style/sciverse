@@ -87,8 +87,7 @@ export const L2C17SteelLab = ({ state, onStateChange }: Props) => {
                 + ' mm² of steel, because steel carries ' + STEEL
                 + ' N/mm². One ' + dia + ' mm bar is ' + one.toFixed(1)
                 + ' mm², so it takes ' + bars + ' bars, giving ' + supplied.toFixed(0)
-                + ' mm². Bars come in whole numbers, so you always round up, and the '
-                + spare.toFixed(0) + ' mm² spare is the price of that.',
+                + ' mm².',
         };
     };
 

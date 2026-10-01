@@ -114,20 +114,11 @@ export const L3B19RottingPeakLab = ({ state, onStateChange }: Props) => {
                 high: 'the best rate',
                 stops: ['#fff1f2', '#fdba74', BEST] as [string, string, string],
             },
-            note: 'With ' + full + '% of the pores holding water, the water factor is '
-                + water.toFixed(2) + ' and the air factor is ' + air.toFixed(2)
-                + ', so rotting runs at ' + rate.toFixed(2) + ' of its best rate. '
-                + (atPeak
-                    ? 'This is the peak: enough water to live in and enough air to breathe, with neither one short.'
-                    : (full < PEAK_AT
-                        ? 'Water is short here -- microbes cannot work in dust.'
-                        : 'Air is short here, and oxygen moves about ten thousand times more slowly through water than through air.'))
-                + ' Feeding that into L2B19’s store formula, ' + FALL
-                + ' t/ha/yr of leaf fall settles at ' + store.toFixed(0)
-                + ' t/ha. The factors multiply rather than add, so either one can veto: no amount '
-                + 'of water rescues airless soil, which is exactly why peat exists. Compaction '
-                + 'lowers the total pore space, so the same rain fills a larger share of what is '
-                + 'left and pushes the soil towards the airless end.',
+            note: 'At ' + full + '% full the water factor is ' + water.toFixed(2)
+                + ', the air factor ' + air.toFixed(2) + ', so rotting runs at '
+                + rate.toFixed(2) + ' of its best. '
+                + (atPeak ? 'This is the peak.'
+                    : (full < PEAK_AT ? 'Water is short here.' : 'Air is short here.')),
         };
     };
 

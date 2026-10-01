@@ -83,9 +83,7 @@ export const L3P17BucklingLab = ({ state, onStateChange }: Props) => {
             note: 'A ' + mm + ' mm column ' + metres.toFixed(1)
                 + ' m tall buckles at ' + buckle.toFixed(0)
                 + ' kN and crushes at ' + crush.toFixed(0) + ' kN, so it fails at '
-                + governs.toFixed(0) + ' kN by ' + (buckles ? 'buckling' : 'crushing')
-                + '. Height is squared and underneath, so doubling it leaves a quarter of the '
-                + 'buckling load, while crushing does not change at all.',
+                + governs.toFixed(0) + ' kN by ' + (buckles ? 'buckling' : 'crushing'),
         };
     };
 

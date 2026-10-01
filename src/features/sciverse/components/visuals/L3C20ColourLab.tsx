@@ -117,26 +117,16 @@ export const L3C20ColourLab = ({ state, onStateChange }: Props) => {
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, spread / MAX_SPREAD)),
-                caption: 'Colour Spread Against What People Notice',
+                caption: 'Colour Spread vs Noticing',
                 low: '0 D',
                 high: MAX_SPREAD + ' D',
                 stops: ['#ecfdf5', '#fcd34d', RED] as [string, string, string],
             },
-            note: 'A ' + power.toFixed(1) + ' D lens made from glass with an Abbe number of '
-                + abbe + ' focuses blue and red ' + spread.toFixed(3)
-                + ' dioptres apart, because glass has a different speed of light for every colour '
-                + 'and the index you look up is the one for yellow. '
+            note: 'A ' + power.toFixed(1) + ' D lens of Abbe number ' + abbe
+                + ' splits blue from red by ' + spread.toFixed(3) + ' dioptres. '
                 + (visible
-                    ? 'That is at or over the ' + NOTICE
-                      + ' D at which people begin to see coloured fringes, worst through the edge '
-                      + 'of the lens rather than the middle.'
-                    : 'That is under the ' + NOTICE
-                      + ' D at which people begin to notice, so it will not be seen.')
-                + ' The trap is that index and Abbe number pull against each other: the loosely '
-                + 'held electrons that make a glass bend hardest also make its bending depend most '
-                + 'on colour. So the strong prescriptions that most want thin lenses are the only '
-                + 'ones that pay for them. Pairing two glasses of opposite power cancels the '
-                + 'colour error while leaving some power, which is why a camera lens is a stack.',
+                    ? 'That is over the ' + NOTICE + ' D at which fringes show, worst at the edge.'
+                    : 'That is under the ' + NOTICE + ' D at which fringes show.'),
         };
     };
 

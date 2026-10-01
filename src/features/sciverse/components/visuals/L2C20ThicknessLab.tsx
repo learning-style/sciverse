@@ -110,22 +110,12 @@ export const L2C20ThicknessLab = ({ state, onStateChange }: Props) => {
                 high: MAX_WEIGHT.toFixed(1) + ' x crown glass',
                 stops: ['#ecfdf5', '#fcd34d', HEAVIER] as [string, string, string],
             },
-            note: 'A material with n = ' + n.toFixed(3)
-                + ' needs less of itself for the same bending power, so the lens is '
-                + thickRatio.toFixed(2) + ' as thick as one in crown glass. But at '
-                + rho.toFixed(1) + ' g/cm³ against crown glass’s ' + REF_RHO
-                + ', each cubic centimetre weighs ' + densRatio.toFixed(2)
-                + ' times as much. Multiply the two and the lens weighs '
-                + weight.toFixed(2) + ' of the original -- '
-                + (lighter
-                    ? (100 * (1 - weight)).toFixed(0) + '% lighter.'
-                    : (100 * (weight - 1)).toFixed(0)
-                      + '% HEAVIER, despite having less material in it.')
-                + ' Index comes from electrons being pushed about by the light, and electrons '
-                + 'arrive attached to nuclei, so packing in heavy atoms like lead or lanthanum '
-                + 'buys index by the gram. Sulfur-rich plastics reach a high index without the '
-                + 'mass, because their electrons are loosely held -- index per electron rather '
-                + 'than index per gram.',
+            note: 'An index of ' + n.toFixed(3) + ' makes this lens ' + thickRatio.toFixed(2)
+                + ' as thick as crown glass, but at ' + rho.toFixed(1) + ' g/cm\u00b3 it is '
+                + densRatio.toFixed(2) + ' times as dense, so it weighs ' + weight.toFixed(2)
+                + ' of the original: '
+                + (lighter ? (100 * (1 - weight)).toFixed(0) + '% lighter.'
+                    : (100 * (weight - 1)).toFixed(0) + '% HEAVIER.'),
         };
     };
 

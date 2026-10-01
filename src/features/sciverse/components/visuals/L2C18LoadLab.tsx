@@ -86,14 +86,10 @@ export const L2C18LoadLab = ({ state, onStateChange }: Props) => {
                 high: MAX_T + ' tonnes a day',
                 stops: ['#ecfdf5', '#6ee7b7', HEAVY] as [string, string, string],
             },
-            note: 'Water holding ' + mgL + ' mg/L of dissolved rock is water holding ' + mgL
-                + ' g/m³, because a milligram per litre and a gram per cubic metre are the same thing. '
-                + 'At a discharge of ' + flow + ' m³/s that is ' + perSec.toFixed(2)
-                + ' kg every second, which comes to ' + perDay.toFixed(0)
-                + ' tonnes a day -- roughly ' + lorries.toFixed(0)
-                + ' lorry loads, out of water you would call clear. Raise either dial and the load '
-                + 'rises in step, so a mineral-rich trickle and a weak torrent can be taking their '
-                + 'valleys apart at exactly the same rate.',
+            note: 'Water holding ' + mgL + ' mg/L of dissolved rock is ' + mgL
+                + ' g/m\u00b3 -- the same thing. At a discharge of ' + flow + ' m\u00b3/s that is '
+                + perSec.toFixed(2) + ' kg every second, or ' + perDay.toFixed(0)
+                + ' tonnes a day, roughly ' + lorries.toFixed(0) + ' lorry loads.',
         };
     };
 

@@ -105,20 +105,10 @@ export const L2B21ATPLab = ({ state, onStateChange }: Props) => {
                 high: MAX_MIN + ' minutes',
                 stops: ['#fff1f2', '#fda4af', EASY] as [string, string, string],
             },
-            note: 'A pool of ' + poolG + ' g spent at ' + rateKg
-                + ' kg a day is ' + (rateKg * 1000).toLocaleString()
-                + ' g a day, so the whole pool is rebuilt ' + rebuilds.toFixed(0)
-                + ' times a day and lasts '
+            note: 'A pool of ' + poolG + ' g spent at ' + rateKg + ' kg a day is rebuilt '
+                + rebuilds.toFixed(0) + ' times a day, and would last '
                 + (minutes >= 1 ? minutes.toFixed(1) + ' minutes' : (minutes * 60).toFixed(0) + ' seconds')
-                + ' if production stopped. That is what reserve means here: not a tank of ATP but '
-                + 'a turnover time. At rest a body holds about 250 g and spends about 65 kg a day, '
-                + 'which is 5.5 minutes -- and working hard it spends ten times faster, leaving '
-                + 'about 33 seconds. Which matches what a held breath tells you, since '
-                + 'consciousness goes in roughly ten seconds when the blood supply stops. The pool '
-                + 'cannot be made larger: a day of ATP would weigh 65 kg, and ATP is a big, '
-                + 'heavily charged molecule that a cell cannot hoard without wrecking its water '
-                + 'and salt balance. So the body stores fuel instead and rebuilds the cash '
-                + 'continuously.',
+                + ' if production stopped.',
         };
     };
 

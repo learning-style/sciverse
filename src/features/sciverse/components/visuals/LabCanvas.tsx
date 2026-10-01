@@ -197,51 +197,56 @@ export const meterBar = (
 };
 
 /**
- * Draws the footer note as up to `maxLines` wrapped lines, bottom-aligned on
- * `baseline`. `fitText` shrinks to 10px and then splits exactly twice, so a note
- * longer than about 120 characters had the rest drawn off the canvas and clipped.
- * Anything that still will not fit ends in an ellipsis, so the note is visibly
- * cut rather than silently truncated mid-word.
+ * Draws the footer note in the 46px between the meter's end labels and the bottom
+ * of the canvas: three lines at 12px, or four at 11px when that is what it takes.
+ *
+ * `fitText` shrinks to a 10px floor and then splits exactly twice, so a note past
+ * about 120 characters had the rest drawn off the sides of the canvas and clipped
+ * silently, mid-word. 110 of 123 notes were over that. Four 11px lines is about
+ * 220 characters at the 400px panel; anything longer ends in an ellipsis, so a
+ * note that does not fit is visibly cut rather than invisibly lost.
  */
 export const wrapNote = (
     ctx: CanvasRenderingContext2D,
     text: string,
     cx: number,
     baseline: number,
-    maxWidth: number,
-    maxLines = 3,
-    size = 12
+    maxWidth: number
 ) => {
-    const font = `bold ${size}px monospace`;
-    ctx.font = font;
-    const words = text.split(' ');
-    const lines: string[] = [];
-    let line = '';
-    for (const word of words) {
-        const next = line === '' ? word : line + ' ' + word;
-        if (ctx.measureText(next).width <= maxWidth || line === '') {
-            line = next;
-        } else {
-            lines.push(line);
-            line = word;
-            if (lines.length === maxLines) break;
-        }
-    }
-    if (lines.length < maxLines && line !== '') lines.push(line);
-    if (lines.length === maxLines) {
-        // did anything not make it in?
-        const shown = lines.join(' ');
-        if (shown.length < text.length - 1) {
-            let last = lines[maxLines - 1];
-            while (last.length > 1 && ctx.measureText(last + ' ...').width > maxWidth) {
-                last = last.slice(0, -1);
+    const layout = (size: number, maxLines: number) => {
+        ctx.font = `bold ${size}px monospace`;
+        const lines: string[] = [];
+        let line = '';
+        let spilled = false;
+        for (const word of text.split(' ')) {
+            const next = line === '' ? word : line + ' ' + word;
+            if (ctx.measureText(next).width <= maxWidth || line === '') {
+                line = next;
+            } else {
+                lines.push(line);
+                line = word;
+                if (lines.length === maxLines) { spilled = true; break; }
             }
-            lines[maxLines - 1] = last + ' ...';
         }
+        if (!spilled && line !== '') lines.push(line);
+        return { lines, spilled, size };
+    };
+
+    let plan = layout(12, 3);
+    if (plan.spilled) plan = layout(11, 4);
+    const { lines, spilled, size } = plan;
+    ctx.font = `bold ${size}px monospace`;
+    if (spilled && lines.length > 0) {
+        let last = lines[lines.length - 1];
+        while (last.length > 1 && ctx.measureText(last + ' ...').width > maxWidth) {
+            last = last.slice(0, -1);
+        }
+        lines[lines.length - 1] = last + ' ...';
     }
-    const step = size + 2;
+    const step = size + 1;
     lines.forEach((l, i) => {
-        outlineText(ctx, l, cx, baseline - (lines.length - 1 - i) * step, font, '#000000');
+        outlineText(ctx, l, cx, baseline - (lines.length - 1 - i) * step,
+            `bold ${size}px monospace`, '#000000');
     });
 };
 

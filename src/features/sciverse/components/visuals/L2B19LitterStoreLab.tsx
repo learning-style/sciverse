@@ -94,14 +94,7 @@ export const L2B19LitterStoreLab = ({ state, onStateChange }: Props) => {
             },
             note: 'With ' + fall.toFixed(1) + ' t/ha of dead material landing each year and '
                 + rot + '% of the store rotting away annually, the layer settles at '
-                + store.toFixed(1) + ' t/ha. At that depth the losses -- '
-                + leaves.toFixed(1) + ' t/ha a year -- exactly match what arrives, so the store '
-                + 'holds still while material pours in and out the whole time. Notice that the '
-                + 'store depends far more on the rotting side than on the leaf fall: identical '
-                + 'leaf fall settles at 5 t/ha where 80% rots each year and 40 t/ha where only '
-                + '10% does. That is how peat happens -- not more leaves, slower rotting -- and '
-                + 'it is why draining a bog lets a store built over centuries leave as carbon '
-                + 'dioxide within a few decades.',
+                + store.toFixed(1) + ' t/ha.',
         };
     };
 

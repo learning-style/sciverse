@@ -97,11 +97,7 @@ export const L2C19FertiliserLab = ({ state, onStateChange }: Props) => {
                 + ' kg/ha of nitrogen, on a field where the plants catch only ' + share
                 + '% of what is spread, needs ' + applied.toFixed(0)
                 + ' kg/ha applied -- and that leaves ' + surplus.toFixed(0)
-                + ' kg/ha loose in the soil. The surplus is not carelessness, it is arithmetic: '
-                + 'if the plants catch less than everything, you must spread more than they need. '
-                + 'Improving the catch pays twice over, because a better catch means a smaller bag '
-                + 'and a smaller share of that bag left behind. Cutting the amount instead shares '
-                + 'the loss between the harvest and the river.',
+                + ' kg/ha loose in the soil.',
         };
     };
 

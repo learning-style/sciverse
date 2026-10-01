@@ -90,23 +90,17 @@ export const L2C21ResidenceLab = ({ state, onStateChange }: Props) => {
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, Math.sqrt(years / MAX_YEARS))),
-                caption: 'How Long an Atom Stays (stretched scale)',
+                caption: 'How Long an Atom Stays',
                 low: '0 years',
                 high: MAX_YEARS.toLocaleString() + ' years',
                 stops: ['#ecfdf5', '#6ee7b7', SLOW] as [string, string, string],
             },
-            note: 'A store holding ' + reservoir.toLocaleString()
-                + ' GtC and losing ' + flux + ' GtC a year turns over in '
-                + reservoir.toLocaleString() + ' / ' + flux + ' = ' + years.toFixed(1)
-                + ' years, which is the average time a carbon atom spends in it. '
+            note: 'A store holding ' + reservoir.toLocaleString() + ' GtC and losing ' + flux
+                + ' GtC a year turns over in ' + years.toFixed(1)
+                + ' years. The scale is stretched. '
                 + (slow
-                    ? 'Centuries: this is a vault, like the deep ocean at 37,000 GtC and 90 GtC a year.'
-                    : 'Years: this is a thoroughfare, like the atmosphere at 875 GtC and 210 GtC a year.')
-                + ' The units do the checking -- GtC divided by GtC a year leaves years. But be '
-                + 'careful what the answer means: it says how fast the store is stirred, not how '
-                + 'fast an addition to it fades. The air loses 210 GtC a year and gains about 210, '
-                + 'so an added molecule is swapped rather than removed, and an excess drains only '
-                + 'as fast as the small imbalance between the two flows.',
+                    ? 'Centuries: a vault, like the deep ocean.'
+                    : 'Years: a thoroughfare, like the atmosphere.'),
         };
     };
 

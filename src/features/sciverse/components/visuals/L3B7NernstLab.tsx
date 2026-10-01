@@ -109,7 +109,7 @@ export const L3B7NernstLab = ({ state, onStateChange }: Props) => {
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, (potential - SCALE_MIN) / (SCALE_MAX - SCALE_MIN))),
-                caption: 'Balancing Voltage, Inside Compared With Outside',
+                caption: 'Balancing Voltage Across It',
                 low: '−120 mV',
                 high: '+80 mV',
                 stops: ['#e0e7ff', '#e2e8f0', '#ffe4e6'] as [string, string, string],

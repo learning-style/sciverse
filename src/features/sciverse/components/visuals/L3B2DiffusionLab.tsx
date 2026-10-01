@@ -89,8 +89,11 @@ export const L3B2DiffusionLab = ({ state, onStateChange }: Props) => {
                 high: 'Arrives in good time',
             },
             note: starving
-                ? `At ${size} µm oxygen needs ${arriveNow.toFixed(2)} s to wander to the middle, longer than the ${survive.toFixed(1)} s the cell can wait. Above about ${maxSize.toFixed(0)} µm no amount of folding helps.`
-                : `At ${size} µm oxygen arrives in ${arriveNow.toFixed(3)} s, well inside the ${survive.toFixed(1)} s the cell can wait.`,
+                    ? `At ${size} \u00b5m oxygen needs ${arriveNow.toFixed(2)} s to wander to the middle, `
+                      + `longer than the ${survive.toFixed(1)} s the cell can wait. `
+                      + `Above about ${maxSize.toFixed(0)} \u00b5m no folding helps.`
+                    : `At ${size} \u00b5m oxygen arrives in ${arriveNow.toFixed(3)} s, `
+                      + `well inside the ${survive.toFixed(1)} s the cell can wait.`,
         };
     };
 

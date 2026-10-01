@@ -116,17 +116,13 @@ export const L2B18OxygenLab = ({ state, onStateChange }: Props) => {
                 high: TOP + ' mg/L',
                 stops: ['#fff1f2', '#fda4af', OK] as [string, string, string],
             },
-            note: 'At ' + degC + ' °C the most oxygen this water can hold is ' + room.toFixed(1)
-                + ' mg/L -- that is the size of the glass. This stretch is ' + percentFull
-                + '% full, so it actually holds ' + actual.toFixed(1) + ' mg/L. '
+            note: 'At ' + degC + ' \u00b0C this water can hold ' + room.toFixed(1) + ' mg/L and is '
+                + percentFull + '% full, so it holds ' + actual.toFixed(1) + ' mg/L. '
                 + (enough
-                    ? 'That clears the ' + TROUT + ' mg/L a trout needs, by '
+                    ? 'That clears the ' + TROUT + ' mg/L a trout needs by '
                       + (actual - TROUT).toFixed(1) + ' mg/L.'
-                    : 'That is ' + (TROUT - actual).toFixed(1) + ' mg/L short of the '
-                      + TROUT + ' mg/L a trout needs.')
-                + ' Warming the water shrinks the room, and slowing it leaves the water less full '
-                + 'because nothing is mixing air in. The two losses multiply, which is why it '
-                + 'takes warm and slow together to cross the line.',
+                    : 'That is ' + (TROUT - actual).toFixed(1) + ' mg/L short of the ' + TROUT
+                      + ' mg/L a trout needs.'),
         };
     };
 

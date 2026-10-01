@@ -100,12 +100,10 @@ export const L2P17ColumnLab = ({ state, onStateChange }: Props) => {
             },
             note: 'A load of ' + kN.toLocaleString() + ' kN on a ' + mm
                 + ' mm square column spreads over ' + area.toLocaleString()
-                + ' mm², so the stress is ' + stress.toFixed(1) + ' N/mm². '
-                + (holds
-                    ? 'That holds, and this column would crush at about ' + crushAt.toFixed(0) + ' kN.'
-                    : 'That crushes, because the limit of ' + LIMIT + ' N/mm² arrives at about '
-                      + crushAt.toFixed(0) + ' kN.')
-                + ' Area goes as the width squared, so widening the column pays four times over.',
+                + ' mm\u00b2, a stress of ' + stress.toFixed(1) + ' N/mm\u00b2. '
+                + (holds ? 'That holds; it crushes at about ' + crushAt.toFixed(0) + ' kN.'
+                    : 'That crushes: the ' + LIMIT + ' N/mm\u00b2 limit is at '
+                      + crushAt.toFixed(0) + ' kN.'),
         };
     };
 

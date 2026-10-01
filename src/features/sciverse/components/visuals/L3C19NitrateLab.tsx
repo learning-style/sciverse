@@ -116,17 +116,11 @@ export const L3C19NitrateLab = ({ state, onStateChange }: Props) => {
                 stops: ['#ecfdf5', '#fcd34d', OVER] as [string, string, string],
             },
             note: 'A surplus of ' + surplus + ' kg/ha meeting ' + drain
-                + ' mm of drainage -- which is ' + cubic.toLocaleString()
-                + ' m³ per hectare, since 1 mm over 1 hectare is 10 m³ -- gives '
-                + mgL.toFixed(1) + ' mg/L as nitrogen. '
+                + ' mm of drainage gives ' + mgL.toFixed(1) + ' mg/L as nitrogen. '
                 + (over
                     ? 'That is ' + times.toFixed(1) + ' times the drinking-water limit of '
                       + LIMIT + ' mg/L.'
-                    : 'That is under the drinking-water limit of ' + LIMIT + ' mg/L.')
-                + ' Nitrate carries a negative charge and so do the clay and humus surfaces that '
-                + 'hold nutrients, so nitrate is repelled and travels with whatever water is '
-                + 'moving. Potassium is positive, is held, and mostly stays. Notice that a wetter '
-                + 'year dilutes without reducing: the same nitrogen leaves, in more water.',
+                    : 'That is under the drinking-water limit of ' + LIMIT + ' mg/L.'),
         };
     };
 
