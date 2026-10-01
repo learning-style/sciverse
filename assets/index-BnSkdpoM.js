@@ -26931,7 +26931,7 @@ resolving power = wavelength / smallest gap it can split
 
 = **1,313**    ← nanometres over nanometres, so the units cancel and the answer is a plain number
 
-So this instrument can separate one part in about **1,300**. To tell hydrogen from sodium you only needed one part in ten, so you had a thousand times more than you needed.
+So this instrument can separate one part in about **1,300**. To tell hydrogen from sodium you only needed one part in ten, so you had about a hundred times more than you needed.
 
 **Step 3 -- confirm with the pattern, not one line.** One line is weak evidence; coincidences happen. Hydrogen also shows **486.1 nm** and **434.0 nm**. Find all three at the right positions and nothing else in the universe looks like that.
 
