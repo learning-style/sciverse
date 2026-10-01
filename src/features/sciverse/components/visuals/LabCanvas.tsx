@@ -196,6 +196,55 @@ export const meterBar = (
     ctx.fillText(highLabel, x + w, y + 46);
 };
 
+/**
+ * Draws the footer note as up to `maxLines` wrapped lines, bottom-aligned on
+ * `baseline`. `fitText` shrinks to 10px and then splits exactly twice, so a note
+ * longer than about 120 characters had the rest drawn off the canvas and clipped.
+ * Anything that still will not fit ends in an ellipsis, so the note is visibly
+ * cut rather than silently truncated mid-word.
+ */
+export const wrapNote = (
+    ctx: CanvasRenderingContext2D,
+    text: string,
+    cx: number,
+    baseline: number,
+    maxWidth: number,
+    maxLines = 3,
+    size = 12
+) => {
+    const font = `bold ${size}px monospace`;
+    ctx.font = font;
+    const words = text.split(' ');
+    const lines: string[] = [];
+    let line = '';
+    for (const word of words) {
+        const next = line === '' ? word : line + ' ' + word;
+        if (ctx.measureText(next).width <= maxWidth || line === '') {
+            line = next;
+        } else {
+            lines.push(line);
+            line = word;
+            if (lines.length === maxLines) break;
+        }
+    }
+    if (lines.length < maxLines && line !== '') lines.push(line);
+    if (lines.length === maxLines) {
+        // did anything not make it in?
+        const shown = lines.join(' ');
+        if (shown.length < text.length - 1) {
+            let last = lines[maxLines - 1];
+            while (last.length > 1 && ctx.measureText(last + ' ...').width > maxWidth) {
+                last = last.slice(0, -1);
+            }
+            lines[maxLines - 1] = last + ' ...';
+        }
+    }
+    const step = size + 2;
+    lines.forEach((l, i) => {
+        outlineText(ctx, l, cx, baseline - (lines.length - 1 - i) * step, font, '#000000');
+    });
+};
+
 /** Rounded label chip -- handy for tagging parts of a diagram. */
 export const chip = (
     ctx: CanvasRenderingContext2D,
@@ -353,7 +402,7 @@ export const LabCanvas = ({
                 m.fraction, m.caption, m.low, m.high, m.stops);
         }
         if (footer.note) {
-            fitText(ctx, footer.note, footCx, H - 12, W - 32);
+            wrapNote(ctx, footer.note, footCx, H - 12, W - 32);
         }
 
         if (phase === 'complete') {

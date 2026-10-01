@@ -226,6 +226,17 @@ was confirmed.
 and footer bands. Its three-zone layout exists to make overlap impossible — most
 of the rules above came from a defect found on screen.
 
+**The footer `note` holds about 150 characters, and the rest was being thrown
+away.** `fitText` shrinks to a 10px floor and then splits into exactly **two**
+lines, so everything past roughly 120 characters was drawn off the sides of the
+canvas and clipped -- silently, mid-word. **110 of 123 notes exceeded that**
+(median 193 characters, and two over 690). `wrapNote` now wraps to three lines
+and ends in an ellipsis if it still will not fit, so a long note is visibly cut
+rather than invisibly lost; it fits in the 46px between the meter's end labels
+and the bottom of the canvas, with 12px of clearance. **Three lines is about 150
+characters at the common 400px panel width** -- the note is a caption, not a
+paragraph. Explanation belongs in the lesson, which has room for it.
+
 **A length cannot show a small percentage -- count instead.** L3B21's point is
 that a **1%** fall in ATP is a **10%** rise in ADP. Drawn as two bars on one
 shared scale -- which is honest -- that 1% is 1.3px on a 150px bar: a hairline,
