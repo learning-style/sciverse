@@ -48,6 +48,30 @@ def typescript_only(files):
     return [f for f in files if f.endswith(('.ts', '.tsx'))]
 
 
+# An apostrophe opens a string only where a value is expected. After punctuation
+# that is clear enough, but a value is also expected after a keyword -- `return
+# 'rgb('` is a string, and reading it as prose made the '(' inside it look like an
+# unclosed bracket.
+#
+# The list is deliberately short. `in`, `of` and `as` are left out: they match the
+# tail of a hyphenated name, so `from './l2p19-will-the-rain-soak-in'` had its
+# CLOSING quote read as an opener and the scanner then ran to the newline. For the
+# same reason a candidate keyword must be preceded by whitespace or nothing, never
+# by a hyphen.
+VALUE_WORDS = ('return', 'from', 'case', 'typeof', 'new', 'delete', 'void',
+               'await', 'yield', 'throw', 'default', 'instanceof')
+
+
+def expects_value(prev):
+    """True if a quote at this point opens a string rather than being punctuation."""
+    if not prev:
+        return True
+    if prev[-1] in ':=(,[{?&|+;<>!*/%-':
+        return True
+    m = re.search(r'(^|[^\w$-])([A-Za-z_$][\w$]*)$', prev)
+    return bool(m) and m.group(2) in VALUE_WORDS
+
+
 def blank_strings(src):
     """The file with every string's contents replaced by filler, comments removed.
 
@@ -70,7 +94,7 @@ def blank_strings(src):
             continue
         if c == "'":
             prev = ''.join(out).rstrip()
-            if prev and prev[-1] not in ':=(,[{?&|+;<>':
+            if not expects_value(prev):
                 out.append(c)
                 i += 1
                 continue
@@ -180,7 +204,7 @@ def scan(src):
             # ordinary punctuation, which is the same exclusion check-strings.py
             # makes, and it is why this scanner reads a CI-green repo as clean.
             prev = src[:i].rstrip()
-            if prev and prev[-1] not in ':=(,[{?&|+;<>':
+            if not expects_value(prev):
                 i += 1
                 continue
         if c in '"\'`':
@@ -271,6 +295,16 @@ def selftest():
     ):
         assert not [p for p in scan(ok_src) if 'else branch' in p], \
             'a legal conditional reported: ' + repr(ok_src)
+
+    # A quote after a keyword opens a string: `return 'rgb('` carries an unbalanced
+    # '(' that is inside the string, and reading the quote as prose reported it as an
+    # unclosed bracket. The fix must not go too far, either -- a filename whose tail
+    # is a keyword had its CLOSING quote read as an opener.
+    kw_string = "const c = () => { return 'rgb(' + x + ')'; };\n"
+    assert not scan(kw_string), 'a string after return read as prose: ' + repr(scan(kw_string))
+    hyphen_tail = "import { a } from './l2p19-will-the-rain-soak-in';\n"
+    assert not scan(hyphen_tail), \
+        'a filename ending in a keyword misread: ' + repr(scan(hyphen_tail))
 
     balanced = 'function f() { return [1, 2, {a: (3)}]; }\n'
     assert not scan(balanced), 'balanced code reported'

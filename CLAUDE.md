@@ -76,8 +76,8 @@ lesson's header *and* body — a header alone will mislead you):
 
 | | Mechanism | Mechanism + Limit | Limit | Quantity only |
 |---|---|---|---|---|
-| Level 2 (67) | 16 | — | 3 | 48 |
-| Level 3 (63) | 13 | 25 | 17 | 8 |
+| Level 2 (70) | 16 | — | 5 | 49 |
+| Level 3 (66) | 13 | 28 | 17 | 8 |
 
 Big Ideas 17 and 18 were built after that audit and are counted above. Big Idea
 18's Level 3 is the pattern to copy: **L3P18 is pure Mechanism** and adds no new
@@ -125,6 +125,32 @@ the fractional changes differ by exactly `[ATP]/[ADP]` and a 1% fall in ATP is a
 10% rise in ADP. A level does not only remove a simplification — at its best it
 **reverses the sign of the level below's conclusion** while keeping every figure.
 
+Big Idea 22 is the first trio where **all three Level 3 lessons are Mechanism +
+Limit**, and the first where the three disciplines converge on a single word. L3P22
+does something no other lesson does: it takes L2P22's admitted assumption, **measures
+how wrong it is** (straight lines turn the 103° shadow into a 3,966 km core against
+the real 3,480), and shows that the error is the discovery — because *an imprecise
+measurement scatters and a wrong model leans*, a consistent 14% is a measurement of
+the speed gradient. The liquid outer core is then proved by an **absence**: no S-wave
+anywhere beyond 103°, because a liquid has no shear strength. L3C22 calculates what
+L2C22 looked up — `E(n) = -13.6/n²` gives all four visible hydrogen lines inside
+**0.04%** — and its limit is sharp: sodium's 2.105 eV fits **no** integer pair, because
+eleven electrons screen one another. L3B22 explains why there is an echo at all from a
+mismatch in `Z = density x speed`.
+
+**The three disciplines read the same word.** A difference in wave speed, a difference
+in electron energy, a difference in impedance — and each instrument is **blind to
+sameness**: uniform rock, evenly spaced levels and uniform tissue are all invisible.
+That is the actual answer to the Big Idea, and no single lesson states it.
+
+**L3B22 also repeats L3B21's reversal, which makes it a pattern rather than a
+curiosity.** Soft tissue against liver reflects **0.0037%**, so eight boundaries still
+pass 99.97% of the pulse and it reaches the bottom intact; a 50% reflector would show
+the first boundary brilliantly and nothing behind it. **Ultrasound works because its
+echoes are faint**, exactly as a cell's tiny ATP store is what makes its sensor sharp.
+Twice now the apparent weakness has turned out to be the mechanism — worth looking for
+a third time.
+
 **Four closing biology lessons now turn on a shape rather than a fact**, and each
 says so: L3B18's two curves gave a **ratio** that collapses, L3B19's two factors a
 **product** that peaks, L3B20's a **reciprocal** that turns a steady decline into a
@@ -139,7 +165,7 @@ discharge is an input to L2C18's load, and L2B18's percent saturation is L2P18's
 flow wearing a different hat.
 
 Level 2 being Quantity-dominant is correct: its verb *is* Calculate. Level 3 is
-the one to watch, and **55 of its 63 lessons already carry Mechanism or Limit
+the one to watch, and **58 of its 66 lessons already carry Mechanism or Limit
 reasoning**. The 8 that are Quantity alone each pass the third test — L3C15's ICE
 tables, L3P14's sampling rate, L3B14's 138 silent swaps all change a decision.
 
@@ -422,6 +448,23 @@ and `check-syntax.py` had nothing that knew a `?` needs a `:` -- so tsc answered
 only (`note`, `caption`, `low`, `high`, `display`, `readout`, `label`), skipping
 `?.`, `??` and nested conditionals, and reports **0 across 672 files**. The real
 failure and four legal shapes are in its `--selftest`.
+
+**`return 'rgb('` was a false positive in two checkers at once.** An apostrophe
+opens a string only where a value is expected, and both `check-syntax.py` and
+`check-strings.py` tested that with a set of **punctuation** -- `:=(,[{?&|+;<>`.
+A value is also expected after a **keyword**, so `return 'rgb('` was read as prose,
+and the `(` inside the string then counted as an unclosed bracket. Both now share
+the same short keyword list (`return`, `from`, `case`, `typeof`, `new`, ...).
+
+**Widening that list is where it got interesting.** Including `in` and `of` broke
+it the other way: the regex matches the tail of a hyphenated name, so
+`from './l2p19-will-the-rain-soak-in'` had its **closing** quote read as an opener
+and the scanner ran to the newline. So `in`, `of` and `as` are deliberately out,
+and a candidate keyword must be preceded by whitespace rather than a hyphen. Both
+shapes are pinned in `check-syntax.py --selftest`, and both scanners report **0
+across 686 files** -- which is the only calibration that counts, because CI is
+green. **A false positive is as damaging as a miss**: it teaches you to commit past
+the output, which is how the string family reached CI three times.
 
 **The deeper lesson is about the trim, not the checker.** An automated edit that
 deletes trailing text will cut a conditional in half and will orphan the variables

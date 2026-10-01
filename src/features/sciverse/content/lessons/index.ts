@@ -286,6 +286,9 @@ import { getL3B21Script } from './l3b21-a-small-store-is-a-fast-sensor';
 import { getL2P22Script } from './l2p22-how-far-away-was-the-quake';
 import { getL2C22Script } from './l2c22-which-element-is-it';
 import { getL2B22Script } from './l2b22-how-deep-and-how-fine';
+import { getL3P22Script } from './l3p22-what-the-missing-waves-proved';
+import { getL3C22Script } from './l3c22-where-the-lines-come-from';
+import { getL3B22Script } from './l3b22-why-there-is-an-echo-at-all';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1348,6 +1351,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p22': getL2P22Script,
     'l2c22': getL2C22Script,
     'l2b22': getL2B22Script,
+    'l3p22': getL3P22Script,
+    'l3c22': getL3C22Script,
+    'l3b22': getL3B22Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1895,6 +1901,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p22', title: 'How Far Away Was the Quake?', subtitle: 'Two waves, one start, and a gap that measures distance', discipline: 'physics', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '📳', accentColor: 'indigo', crossLinks: ['p22', 'l2p21'], level: 2 },
     { id: 'l2c22', title: 'Which Element Is It?', subtitle: 'A line is an energy gap: 1240 over the wavelength', discipline: 'chemistry', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '🌈', accentColor: 'emerald', crossLinks: ['c22', 'l2p22'], level: 2 },
     { id: 'l2b22', title: 'How Deep and How Fine?', subtitle: 'Halve the journey, and pay for detail in depth', discipline: 'biology', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '🩺', accentColor: 'rose', crossLinks: ['b22', 'l2c22'], level: 2 },
+    { id: 'l3p22', title: 'What the Missing Waves Proved', subtitle: 'Rays curve, and the absence of a wave found the core', discipline: 'physics', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '🌍', accentColor: 'indigo', crossLinks: ['l2p22', 'l3p21'], level: 3 },
+    { id: 'l3c22', title: 'Where the Lines Come From', subtitle: 'A ladder of rungs going as 1 over n squared', discipline: 'chemistry', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '📐', accentColor: 'emerald', crossLinks: ['l2c22', 'l3p22'], level: 3 },
+    { id: 'l3b22', title: 'Why There Is an Echo at All', subtitle: 'A mismatch in impedance, and why faint is better', discipline: 'biology', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '🔊', accentColor: 'rose', crossLinks: ['l2b22', 'l3b21'], level: 3 },
     { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
     { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },
     { id: 'l3b19', title: 'Water and Air Share the Spaces', subtitle: 'Two limits, one pore space, and a peak', discipline: 'biology', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪱', accentColor: 'rose', crossLinks: ['l2b19', 'l3b18'], level: 3 },

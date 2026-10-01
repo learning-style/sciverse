@@ -24,6 +24,16 @@ def changed():
                    if f.endswith(('.ts', '.tsx')) and os.path.exists(f)})
 
 
+VALUE_WORDS = ('return', 'from', 'case', 'typeof', 'new', 'delete', 'void',
+               'await', 'yield', 'throw', 'default', 'instanceof')
+
+
+def _keyword_tail(prev):
+    """True if `prev` ends in a keyword after which a string literal may start."""
+    m = re.search(r'(^|[^\w$-])([A-Za-z_$][\w$]*)$', prev)
+    return bool(m) and m.group(2) in VALUE_WORDS
+
+
 def unterminated(path):
     """Lines where a ' or " string is still open at the newline."""
     bad = []
@@ -69,7 +79,15 @@ def unterminated(path):
                     #   display: raw => 'b = ' + f(raw)
                     # reads as prose after "b =" and reports a false unterminated
                     # string. check-syntax.py already allowed it.
-                    if not prev or prev[-1] in ':=(,[{?&|+;<>':
+                    #
+                    # A value is also expected after a keyword, and this missed it:
+                    #   return 'rgb(' + tone + ',' + ...
+                    # read as prose and reported a false unterminated string. The
+                    # keyword list is short on purpose, and must not match the tail
+                    # of a hyphenated name -- see check-syntax.py for why 'in' and
+                    # 'of' are left out.
+                    if not prev or prev[-1] in ':=(,[{?&|+;<>!*/%-' \
+                            or _keyword_tail(prev):
                         quote = c
                 i += 1
                 continue
