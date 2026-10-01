@@ -414,8 +414,25 @@ untouched: `check-syntax.py` read it as clean, and tsc answered with ten
 the same way it checks single-quoted ones, and the fix in the prose is simply not
 to quote — say *a river whose flood water is nearly pure* instead.
 
-All three failures in this family share one cause: prose was rewritten from a
-Python heredoc, where `\n` becomes a real newline and `\"` becomes a bare quote.
+**The fourth way, and the first that was not about quoting: a conditional whose
+else branch was deleted.** Trimming L3P14SampleLab's note cut a bare
+`captured ? \`...\`` after its first branch. Braces balanced, every string closed,
+and `check-syntax.py` had nothing that knew a `?` needs a `:` -- so tsc answered
+"':' expected" and CI went red. It now checks exactly that, on property values
+only (`note`, `caption`, `low`, `high`, `display`, `readout`, `label`), skipping
+`?.`, `??` and nested conditionals, and reports **0 across 672 files**. The real
+failure and four legal shapes are in its `--selftest`.
+
+**The deeper lesson is about the trim, not the checker.** An automated edit that
+deletes trailing text will cut a conditional in half and will orphan the variables
+the deleted text used -- `ending`, `maxSize`, `bracket` all became unused, which is
+the `noUnusedLocals` class. It also cost three notes their conclusion, because
+several put the payload last. **Run `check-unused.py` and `check-syntax.py` after
+any scripted edit to a lot of files**, and prefer rewriting by hand where the text
+carries a result.
+
+All three quoting failures in this family share one cause: prose was rewritten from
+a Python heredoc, where `\n` becomes a real newline and `\"` becomes a bare quote.
 
 `check-syntax.py` answers the one question that has broken this build three
 times: will the file parse? It walks a file string- and comment-aware and reports
