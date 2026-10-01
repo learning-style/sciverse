@@ -179,6 +179,9 @@ import { L2B21ATPLab } from './L2B21ATPLab';
 import { L3P21TideForceLab } from './L3P21TideForceLab';
 import { L3C21RevelleLab } from './L3C21RevelleLab';
 import { L3B21SignalLab } from './L3B21SignalLab';
+import { L2P22QuakeLab } from './L2P22QuakeLab';
+import { L2C22SpectrumLab } from './L2C22SpectrumLab';
+import { L2B22EchoLab } from './L2B22EchoLab';
 import { L2C17SteelLab } from './L2C17SteelLab';
 import { L2B17HollowLab } from './L2B17HollowLab';
 import { L3P17BucklingLab } from './L3P17BucklingLab';
@@ -374,6 +377,9 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p21: L3P21TideForceLab,
     l3c21: L3C21RevelleLab,
     l3b21: L3B21SignalLab,
+    l2p22: L2P22QuakeLab,
+    l2c22: L2C22SpectrumLab,
+    l2b22: L2B22EchoLab,
     l2c17: L2C17SteelLab,
     l2b17: L2B17HollowLab,
     l3p17: L3P17BucklingLab,

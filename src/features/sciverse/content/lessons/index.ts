@@ -283,6 +283,9 @@ import { getL2B21Script } from './l2b21-how-much-head-start';
 import { getL3P21Script } from './l3p21-why-the-sun-raises-a-smaller-tide';
 import { getL3C21Script } from './l3c21-why-the-excess-outlasts-the-atom';
 import { getL3B21Script } from './l3b21-a-small-store-is-a-fast-sensor';
+import { getL2P22Script } from './l2p22-how-far-away-was-the-quake';
+import { getL2C22Script } from './l2c22-which-element-is-it';
+import { getL2B22Script } from './l2b22-how-deep-and-how-fine';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1342,6 +1345,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p21': getL3P21Script,
     'l3c21': getL3C21Script,
     'l3b21': getL3B21Script,
+    'l2p22': getL2P22Script,
+    'l2c22': getL2C22Script,
+    'l2b22': getL2B22Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1886,6 +1892,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p21', title: 'Why the Sun Raises a Smaller Tide', subtitle: 'A difference in a pull loses one power of distance', discipline: 'physics', bigIdea: 21, bigIdeaTitle: 'How Do Cycles Keep Systems Alive?', icon: '🌑', accentColor: 'indigo', crossLinks: ['l2p21', 'l3p20'], level: 3 },
     { id: 'l3c21', title: 'Why the Excess Outlasts the Atom', subtitle: 'Absorbing spends a carbonate ion, so the sink wears out', discipline: 'chemistry', bigIdea: 21, bigIdeaTitle: 'How Do Cycles Keep Systems Alive?', icon: '🌊', accentColor: 'emerald', crossLinks: ['l2c21', 'l3p21'], level: 3 },
     { id: 'l3b21', title: 'A Small Store Is a Fast Sensor', subtitle: 'Amplification is the ratio of the two pools', discipline: 'biology', bigIdea: 21, bigIdeaTitle: 'How Do Cycles Keep Systems Alive?', icon: '⚡', accentColor: 'rose', crossLinks: ['l2b21', 'l3c21'], level: 3 },
+    { id: 'l2p22', title: 'How Far Away Was the Quake?', subtitle: 'Two waves, one start, and a gap that measures distance', discipline: 'physics', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '📳', accentColor: 'indigo', crossLinks: ['p22', 'l2p21'], level: 2 },
+    { id: 'l2c22', title: 'Which Element Is It?', subtitle: 'A line is an energy gap: 1240 over the wavelength', discipline: 'chemistry', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '🌈', accentColor: 'emerald', crossLinks: ['c22', 'l2p22'], level: 2 },
+    { id: 'l2b22', title: 'How Deep and How Fine?', subtitle: 'Halve the journey, and pay for detail in depth', discipline: 'biology', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '🩺', accentColor: 'rose', crossLinks: ['b22', 'l2c22'], level: 2 },
     { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
     { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },
     { id: 'l3b19', title: 'Water and Air Share the Spaces', subtitle: 'Two limits, one pore space, and a peak', discipline: 'biology', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪱', accentColor: 'rose', crossLinks: ['l2b19', 'l3b18'], level: 3 },
