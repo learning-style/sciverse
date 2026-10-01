@@ -12,7 +12,6 @@ interface Props {
 const LO_NM = 380;
 const HI_NM = 750;
 const PAIR_NM = 0.6;
-const HC = 1240;                      // Planck constant x c, in eV nm
 const EMERALD = '#047857';
 const MERGED = '#7f1d1d';
 
@@ -35,8 +34,9 @@ export const L2C22SpectrumLab = ({ state, onStateChange }: Props) => {
     const drawScene = ({ ctx, safeRight, t, raw, raw2, stageTop, stageBottom }: LabScene) => {
         const nm = nmOf(raw);
         const sharp = sharpOf(raw2);
-        const eV = HC / nm;
         const split = sharp <= PAIR_NM;
+        // both numbers here are nm over nm, so both are plain numbers
+        const have = Math.round(nm / sharp);
         const needed = Math.round(nm / PAIR_NM);
 
         const artTop = stageTop + 18;
@@ -102,30 +102,30 @@ export const L2C22SpectrumLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, Math.min(stripTop + stripH + 32, artBottom),
             'bold 12px monospace', split ? EMERALD : MERGED, 'center', safeRight - 24);
 
-        outlineText(ctx, 'energy = 1240 / ' + nm.toFixed(1) + ' nm = ' + eV.toFixed(3) + ' eV',
+        outlineText(ctx, 'resolving power = ' + nm.toFixed(1) + ' nm / ' + sharp.toFixed(1)
+            + ' nm = ' + have.toLocaleString(),
             safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
-        outlineText(ctx, 'to split a ' + PAIR_NM.toFixed(1)
-            + ' nm pair here needs resolving power ' + needed,
+        outlineText(ctx, 'splitting a ' + PAIR_NM.toFixed(1) + ' nm pair here needs ' + needed,
             safeRight / 2, stageBottom - 14, 'bold 12px monospace',
             split ? EMERALD : MERGED, 'center', safeRight - 30);
 
-        fitText(ctx, 'energy ' + eV.toFixed(3) + ' eV', safeRight / 2, 94, safeRight - 24, 16);
+        fitText(ctx, 'one part in ' + have.toLocaleString(), safeRight / 2, 94, safeRight - 24, 16);
         fitText(ctx, 'Position is the atom, brightness is the conditions',
             safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {
-                fraction: Math.max(0, Math.min(1, (eV - 1.6) / (3.4 - 1.6))),
-                caption: 'Energy of the Electron Jump',
-                low: '1.6 eV',
-                high: '3.4 eV',
+                fraction: Math.max(0, Math.min(1, have / 7500)),
+                caption: 'Resolving Power You Have',
+                low: '0',
+                high: '7,500',
                 stops: ['#ecfdf5', '#6ee7b7', EMERALD] as [string, string, string],
             },
-            note: 'A line at ' + nm.toFixed(1) + ' nm is an electron jump of '
-                + eV.toFixed(3) + ' eV. '
+            note: 'At ' + nm.toFixed(1) + ' nm an instrument sharp to ' + sharp.toFixed(1)
+                + ' nm resolves one part in ' + have.toLocaleString() + '. '
                 + (split
-                    ? 'This instrument can split a ' + PAIR_NM.toFixed(1) + ' nm pair, so two lines here are real.'
-                    : 'It cannot split a ' + PAIR_NM.toFixed(1) + ' nm pair, so one line here proves nothing.'),
+                    ? 'That splits a ' + PAIR_NM.toFixed(1) + ' nm pair, so two lines here are real.'
+                    : 'That cannot split a ' + PAIR_NM.toFixed(1) + ' nm pair, so one line proves nothing.'),
         };
     };
 
@@ -151,7 +151,7 @@ export const L2C22SpectrumLab = ({ state, onStateChange }: Props) => {
             sky={['#ecfdf5', '#f8fafc']}
             completeTitle="Level 2 Complete!"
             completeSubtitle="How Do Waves Help Us See the Invisible?"
-            completeNote="1240 over the wavelength!"
+            completeNote="Nanometres over nanometres!"
             phase={phase}
             onStateChange={onStateChange}
             drawScene={drawScene}

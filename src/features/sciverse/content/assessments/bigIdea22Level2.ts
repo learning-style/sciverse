@@ -3,7 +3,8 @@ import { AssessmentData } from '../../types';
 /**
  * Big Idea 22 Assessment -- LEVEL 2 (grades 6-8).
  * Covers L2P22 (distance = gap x (Vp Vs)/(Vp - Vs), 10.3 km per second of gap),
- * L2C22 (E = 1240 / wavelength in eV, and the resolving power needed to trust it),
+ * L2C22 (comparing jumps as a ratio of wavelengths, and the resolving power needed to
+ * trust a reading -- both nm over nm, so no constants and no energy unit),
  * L2B22 (depth = speed x time / 2, and the detail-against-depth trade).
  * 12 questions: 4 easy -> 4 medium -> 4 hard
  */
@@ -36,14 +37,14 @@ export const bigIdea22Level2Assessment: AssessmentData = {
             discipline: 'chemistry',
             question: 'What is a single bright line in an element\'s spectrum?',
             options: [
-                'A photon carrying the energy difference between two electron levels in the atom',
+                'One flash of light, given out when an electron drops between two fixed rungs in the atom',
                 'The colour the element happens to look',
                 'The temperature of the gas, written as a colour',
                 'The number of electrons the atom has'
             ],
             correctIndex: 0,
-            hint: 'Electrons can only sit at certain fixed energies. What happens when one drops?',
-            explanation: 'Electrons occupy fixed energy levels, never values in between. When one drops, the atom must shed exactly the difference, and it does so as one photon. The line is that difference — which is why it identifies the element, since the levels belong to the atom.'
+            hint: 'Electrons can only stand on certain rungs, never halfway up. What happens when one drops?',
+            explanation: 'Electrons sit only on fixed rungs, never in between. When one drops to a lower rung, the atom must shed exactly the energy lost, and it does so as one flash of light. That flash is the line — and because the rungs are fixed by the atom, the position names the element.'
         },
         {
             id: 3,
@@ -80,16 +81,16 @@ export const bigIdea22Level2Assessment: AssessmentData = {
             id: 5,
             difficulty: 'medium',
             discipline: 'chemistry',
-            question: 'A lamp shows a strong line at 435.8 nm. Using E = 1240 / wavelength, what is the energy of the jump?',
+            question: 'Hydrogen\'s red line is at 656.3 nm and its violet line at 410.2 nm. How much bigger was the electron\'s drop that made the violet line?',
             options: [
-                'About 2.845 eV',
-                'About 0.352 eV, from 435.8 / 1240',
-                'About 540,000 eV, from 1240 × 435.8',
-                'About 435.8 eV'
+                'About 1.60 times, from 656.3 nm / 410.2 nm — and the nanometres cancel, so it is a plain number',
+                'About 0.63 times, from 410.2 nm / 656.3 nm',
+                '246.1 nm bigger, from 656.3 − 410.2',
+                'The same, because both lines come from hydrogen'
             ],
             correctIndex: 0,
-            hint: 'The wavelength goes underneath, and every visible line lands between about 1.8 and 3.3 eV.',
-            explanation: '1240 / 435.8 = 2.845 eV, which is mercury. The sanity check does the work here: visible light runs from about 1.8 eV (deep red) to 3.3 eV (violet), so 0.352 and 540,000 are both impossible before you check any answer key.'
+            hint: 'Shorter wavelength means a bigger drop, so divide the longer by the shorter.',
+            explanation: '656.3 / 410.2 = 1.60. Dividing the other way gives 0.63, which says the violet drop was smaller — backwards, since shorter waves carry more energy. Subtracting gives a length in nanometres, and "how many times bigger" cannot have a unit. Carrying the units through rules out two of the three wrong answers on its own.'
         },
         {
             id: 6,
@@ -129,7 +130,7 @@ export const bigIdea22Level2Assessment: AssessmentData = {
             options: [
                 'About 982, from 589.0 / 0.6',
                 'About 0.6, the separation itself',
-                'About 2.105, the energy in eV',
+                'About 0.001, from 0.6 / 589.0',
                 'About 1,178, from 589.0 + 589.6'
             ],
             correctIndex: 0,

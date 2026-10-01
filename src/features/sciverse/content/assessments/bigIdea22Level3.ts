@@ -90,7 +90,7 @@ export const bigIdea22Level3Assessment: AssessmentData = {
             ],
             correctIndex: 0,
             hint: 'The gap is E(n₂) − E(n₁) = 13.6 × (1/n₁² − 1/n₂²).',
-            explanation: 'E(3) = −1.511 eV and E(2) = −3.400 eV, so the drop releases 1.8889 eV, and 1240/1.8889 = 656.5 nm. The measured line is at 656.3 nm — 0.03% out, which is the rounding in 1240 and 13.6. Level 2 read that 1.889 eV off a wavelength from a table; here it is produced from the atom.'
+            explanation: 'E(3) = −1.511 eV and E(2) = −3.400 eV, so the drop releases 1.8889 eV, and 1240/1.8889 = 656.5 nm. The measured line is at 656.3 nm — 0.03% out, which is the rounding in 1240 and 13.6. Level 2 could only say the violet jump was 1.60 times the red one \u2014 a ratio with no size attached; here both the size and the wavelength are produced from the atom.'
         },
         {
             id: 6,

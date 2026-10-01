@@ -209,6 +209,28 @@ neither, while the two dials named them and described neither: the learner met
 the idea and the label in different places. Name the term where the idea is
 introduced, and say which dial it is. `scripts/check-clarity.py` finds these.
 
+**A round constant is still an unfamiliar constant.** L2C22 first gave a spectral
+line's energy as `E = 1240 / wavelength` in **electronvolts**, and justified the
+1240 as "two constants multiplied together -- the speed of light and the Planck
+constant". A grades 6-8 learner has met neither, so the lesson was leaning on
+something it could not explain, dressed up as a round number. **Switching the unit
+does not help**: joules needs the Planck constant *explicitly* and turns a readable
+2.105 into 3.37 x 10-19. The fix was to drop the energy number from Level 2
+altogether. The chemistry survives intact -- a line is one electron dropping
+between fixed rungs, so position names the element -- and every calculation became
+**nanometres divided by nanometres**, so the units cancel and the answer is a plain
+number with no constant anywhere: *how many times bigger* is the longer wavelength
+over the shorter, and *resolving power* is the wavelength over the smallest gap.
+Electronvolts and the 1240 now arrive in **L3C22**, which is grades 9-12, where they
+are on the syllabus and where they earn their keep by calculating the wavelengths
+Level 2 had to borrow.
+
+**Ask what Level 2 can reach with what it owns**, and let the level below say
+honestly what it could not do: L2C22's *still standing* now reads that the jumps
+have only been **compared**, never sized. Carrying the units through a division is
+worth teaching in its own right -- it disqualified two of three wrong answers in
+that lesson's check without any appeal to the answer key.
+
 **Every formula must state its condition.** `Q = mcΔT` holds within one state of
 matter. `pV/T` describes an ideal gas. `1 − (1−p)ⁿ` assumes independence. Say so
 where the formula is introduced, not only at the end.
