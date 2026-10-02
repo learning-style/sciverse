@@ -321,6 +321,34 @@ The word-presence check passes them, because the lesson echoes them once. If a
 word on the canvas is not the plain name of the thing, it is jargon -- say
 *share*, or name the quantity.
 
+**A formula line on the canvas must be dimensionally correct, and the naming
+exemption is exactly where that goes wrong.** Formula lines are exempt from the
+rule below because their symbols name themselves -- which is how L2B22 came to
+print `depth = 0.77 mm x 245 us = 189 mm`. The answer was right and the arithmetic
+shown was nonsense: millimetres times microseconds cannot be millimetres. The 0.77
+was a **rate**, mm per us, with the factor of 2 already folded into it, so printing
+it as a plain multiplier was wrong twice over -- the units did not work, and it
+**hid the halving the lesson is about**. It now prints two honest steps whose units
+cancel:
+
+```
+1.54 mm per us x 245 us = 377 mm there and back
+half of 377 mm = 189 mm, so 18.9 cm down
+```
+
+**A constant with a factor folded into it is a shortcut, not a quantity to put on
+screen.** Keep the shortcut in the lesson, where it can be explained, and show the
+working on the canvas. `check-visual.py` now checks this: a printed
+`A unitX x B unitY = C unitX` with unitY different is flagged unless the first term
+is a rate, it is regression-tested against this exact line, and it reports 0 across
+the corpus.
+
+**And the halving had to be drawn, not asserted.** The old picture said "the probe
+sends and listens, so halve the journey" in a caption and showed one arrow. The new
+one draws **two arrows of equal length** side by side, down and back, so the factor
+of 2 is visible before any text is read -- the same lesson as L3B21, where the
+encoding had to carry the point instead of the captions compensating for it.
+
 **Every number the canvas prints must be named by a word beside it.** A unit is
 not a name: `0.9` and `3.0` on two atoms were electronegativities with nothing
 on screen saying so, and `104.5°` was a bond angle. Either name the quantity in

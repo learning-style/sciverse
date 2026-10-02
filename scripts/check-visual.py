@@ -15,6 +15,7 @@ Five checkable properties per lab:
   6. NOTE FITS  the footer note fits the room it is drawn in, so none is clipped
   7. CAP FITS   the meter caption fits a narrow panel
   8. NOT BUSY   the scene does not drown its point in text
+  9. UNITS      a printed multiplication's units can give the stated result
 
 Usage:  python3 scripts/check-visual.py [LabFile.tsx ...]
         python3 scripts/check-visual.py --selftest
@@ -69,6 +70,40 @@ def _top_ternary(expr):
             depth -= 1
         elif depth == 0 and ch == ':':
             return q, j
+    return None
+
+
+# A formula line on the canvas is exempt from the naming rule, because its symbols
+# name themselves -- which is how "depth = 0.77 mm x 245 us = 189 mm" reached the
+# screen. Millimetres times microseconds cannot be millimetres. The 0.77 was a RATE,
+# mm per us, with the factor of 2 folded in, and printing it as a plain multiplier
+# was both dimensionally wrong and hid the halving the lesson is about.
+UNIT = (r"(?:mm|cm|m|km|nm|s|ms|\u00b5s|us|min|h|g|kg|t|N|J|kJ|W|K|Hz|MHz|eV|GtC|L|mL)")
+
+
+def canvas_literals(src):
+    """The text each outlineText/fitText draws, with interpolated values as ' N '."""
+    out = []
+    for m in re.finditer(r"(?:outlineText|fitText)\(\s*ctx\s*,\s*"
+                         r"((?:'[^']*'|\s*\+\s*|[A-Za-z_$][\w$.()]*|\d+)+)", src):
+        frag = re.sub(r"\+\s*[A-Za-z_$][\w$.()]*", " N ", m.group(1))
+        parts = re.findall(r"'([^']*)'", frag)
+        if parts:
+            out.append(' N '.join(parts) if len(parts) > 1 else parts[0])
+    return out
+
+
+def bad_multiplication(text):
+    """'A unitX x B unitY = C unitX' with unitY different -- unless A is a rate."""
+    m = re.search(r"(?P<a>(?:per\s+)?" + UNIT + r")\s*(?:N\s*)?x\s*(?:N\s*)?"
+                  r"(?P<b>" + UNIT + r")\s*=\s*(?:N\s*)?(?P<c>" + UNIT + r")", text)
+    if not m:
+        return None
+    a, b, c = m.group('a'), m.group('b'), m.group('c')
+    if a.startswith('per') or 'per' in text.split('x')[0]:
+        return None                      # "1.54 mm per us x 245 us = 377 mm" is right
+    if a == c and b != c:
+        return a + ' x ' + b + ' cannot give ' + c
     return None
 
 
@@ -288,6 +323,13 @@ def check(path):
     if st > BUSY_STRINGS:
         probs.append(str(st) + ' strings drawn on the stage; over '
                      + str(BUSY_STRINGS) + ' the picture is a wall of text')
+
+    # 9: the units of a printed multiplication must give the printed result
+    for lit in canvas_literals(src):
+        why = bad_multiplication(lit)
+        if why:
+            probs.append('units do not work: ' + why + ' -- ' + lit[:60])
+            break
     return probs, len(labels), shapes
 
 
@@ -331,6 +373,16 @@ def selftest():
     # BUSY: the corpus median is 5, and the worst lab draws 14
     want('5 strings is not busy', 5 > BUSY_STRINGS, False)
     want('14 strings is busy', 14 > BUSY_STRINGS, True)
+
+    # the real units failure, and the corrected line that must stay quiet
+    want('mm x us cannot be mm',
+         bool(bad_multiplication('depth = 0.77 mm x  N  \u00b5s =  N  mm')), True)
+    want('mm per us x us = mm is fine',
+         bool(bad_multiplication('1.54 mm per \u00b5s x  N  \u00b5s =  N  mm there and back')), False)
+    want('a rate stated before the x is fine',
+         bool(bad_multiplication('speed  N  mm per \u00b5s x time  N  \u00b5s =  N  mm')), False)
+    want('same unit throughout is fine',
+         bool(bad_multiplication('area  N  m x  N  m =  N  m')), False)
 
     print('selftest ok' if not bad else 'selftest FAILED (' + str(bad) + ')')
     return 1 if bad else 0
