@@ -321,6 +321,33 @@ The word-presence check passes them, because the lesson echoes them once. If a
 word on the canvas is not the plain name of the thing, it is jargon -- say
 *share*, or name the quantity.
 
+**A formula on the canvas must only use numbers the picture has already shown.**
+L3C22 drew a ladder of rungs labelled `n=1` to `n=8` -- numbers, with no energies --
+and then printed `13.6 x (1/2² - 1/6²) = 3.022 eV, so 1240/3.022 = 410.3 nm`. Two
+constants appeared from nowhere and the difference being taken was invisible,
+because the picture never showed either rung's energy. A learner working from the
+visual alone had no way in.
+
+The repair was not more words but **putting the subtracted numbers beside the rungs
+they belong to**, and then writing the arithmetic as what it actually is:
+
+```
+caption        rung n: 13.6 / n2 eV below free
+beside rung 6  0.378 eV          beside rung 2  3.400 eV
+footer 1       gap = 3.400 - 0.378 = 3.022 eV
+footer 2       1240 eV nm / 3.022 eV = 410.3 nm
+```
+
+Every number in footer 1 is written beside its own rung; footer 2 divides eV nm by
+eV, which **cancels to nm**; and 13.6 is named by the caption and anchored by the
+n=1 rung, which reads 13.600 eV. **Prefer the long form that can be followed over
+the compact form that cannot** -- a Rydberg-style expression is elegant and it hides
+exactly the step the picture was meant to supply.
+
+Removing a label can be the fix: the old gap label beside the arrow duplicated
+footer 1's answer, and dropping it brought the stage back under the ten-string
+budget, which `check-visual.py` had started flagging.
+
 **A formula line on the canvas must be dimensionally correct, and the naming
 exemption is exactly where that goes wrong.** Formula lines are exempt from the
 rule below because their symbols name themselves -- which is how L2B22 came to

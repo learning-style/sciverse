@@ -55,6 +55,10 @@ export const L3C22LadderLab = ({ state, onStateChange }: Props) => {
         ctx.beginPath();
         ctx.moveTo(left, ladderTop); ctx.lineTo(left, ladderTop + ladderH);
         ctx.stroke();
+        // Each rung's DEPTH below a free electron, for the two in play and for n=1,
+        // which is where the 13.6 comes from. Without these the subtraction in the
+        // footer is two numbers the picture never showed.
+        const margin = Math.max(40, safeRight - (left + rungW) - 8);
         for (let n = 1; n <= 8; n++) {
             const y = yOf(levelOf(n));
             const on = n === nUp || n === nDown;
@@ -67,6 +71,30 @@ export const L3C22LadderLab = ({ state, onStateChange }: Props) => {
                 outlineText(ctx, 'n=' + n, left - 16, y + 4,
                     'bold 10px monospace', on ? EMERALD : UNSEEN, 'center', 34);
             }
+        }
+
+        // The two depths the footer subtracts, written beside their own rungs. High
+        // rungs crowd towards zero -- which is the lesson -- so when the two labels
+        // would collide they are nudged apart, and the 'free' label stands down when
+        // the upper rung is close enough to sit on it.
+        const yUpRaw = yOf(levelOf(nUp));
+        const yDnRaw = yOf(levelOf(nDown));
+        let yUpLab = yUpRaw;
+        let yDnLab = yDnRaw;
+        if (valid && yDnRaw - yUpRaw < 12) {
+            const mid = (yUpRaw + yDnRaw) / 2;
+            yUpLab = mid - 6;
+            yDnLab = mid + 6;
+        }
+        if (valid) {
+            outlineText(ctx, Math.abs(levelOf(nUp)).toFixed(3) + ' eV',
+                left + rungW + 6, yUpLab + 4, 'bold 10px monospace', EMERALD, 'left', margin);
+            outlineText(ctx, Math.abs(levelOf(nDown)).toFixed(3) + ' eV',
+                left + rungW + 6, yDnLab + 4, 'bold 10px monospace', EMERALD, 'left', margin);
+        }
+        if (!valid || yUpLab - ladderTop > 12) {
+            outlineText(ctx, 'free, 0 eV', left + rungW + 6, ladderTop + 4,
+                'bold 10px monospace', '#0f172a', 'left', margin);
         }
         // zero: the electron has escaped
         ctx.strokeStyle = '#0f172a';
@@ -91,13 +119,9 @@ export const L3C22LadderLab = ({ state, onStateChange }: Props) => {
             ctx.fill();
         }
 
-        outlineText(ctx, 'the rungs crowd as 1 over n squared',
+        outlineText(ctx, 'rung n: 13.6 / n² eV below free',
             safeRight / 2, Math.max(top + 10, artTop + 10),
             'bold 11px monospace', '#334155', 'center', safeRight - 24);
-        outlineText(ctx, valid ? 'gap ' + gap.toFixed(3) + ' eV' : 'pick an upper level above the lower one',
-            Math.min(left + rungW * 0.62 + 52, safeRight - 44),
-            valid ? (yOf(levelOf(nUp)) + yOf(levelOf(nDown))) / 2 + 4 : ladderTop + 20,
-            'bold 11px monospace', visible ? EMERALD : UNSEEN, 'center', safeRight / 2);
         outlineText(ctx, valid
             ? seriesOf(nDown) + ' series, ' + band + ', ' + nm.toFixed(1) + ' nm'
             : 'no jump: the electron would have to climb',
@@ -105,11 +129,13 @@ export const L3C22LadderLab = ({ state, onStateChange }: Props) => {
             'bold 12px monospace', visible ? EMERALD : UNSEEN, 'center', safeRight - 24);
 
         outlineText(ctx, valid
-            ? '13.6 x (1/' + nDown + '² - 1/' + nUp + '²) = ' + gap.toFixed(3)
-              + ' eV, so 1240/' + gap.toFixed(3) + ' = ' + nm.toFixed(1) + ' nm'
+            ? 'gap = ' + Math.abs(levelOf(nDown)).toFixed(3) + ' - '
+              + Math.abs(levelOf(nUp)).toFixed(3) + ' = ' + gap.toFixed(3) + ' eV'
             : 'the upper level must be above the lower one',
             safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
-        outlineText(ctx, 'only the series ending at n = 2 lands in visible light',
+        outlineText(ctx, valid
+            ? '1240 eV nm / ' + gap.toFixed(3) + ' eV = ' + nm.toFixed(1) + ' nm'
+            : 'pick an upper level above the lower one',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', EMERALD, 'center', safeRight - 30);
 
         fitText(ctx, valid ? nm.toFixed(1) + ' nm, ' + band : 'choose two levels',
