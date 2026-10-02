@@ -118,9 +118,11 @@ export const L2B22EchoLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'down to the boundary and back up again',
             safeRight / 2, Math.max(top + 10, artTop + 10),
             'bold 11px monospace', '#334155', 'center', safeRight - 24);
-        outlineText(ctx, 'down ' + depthCm.toFixed(1) + ' cm, back ' + depthCm.toFixed(1) + ' cm',
-            safeRight / 2, Math.max(Math.min((scaleTop + by) / 2 + 4, artBottom - 4), scaleTop + 14),
-            'bold 12px monospace', legColour, 'center', safeRight - 24);
+        // one short word beside each arrow, clear of both so the two equal lengths
+        // stay the thing you see. A single centred label would be drawn across them.
+        const legY = Math.max(Math.min((scaleTop + by) / 2 + 4, artBottom - 4), scaleTop + 14);
+        outlineText(ctx, 'down', cx - 38, legY, 'bold 11px monospace', legColour, 'center', 40);
+        outlineText(ctx, 'back', cx + 38, legY, 'bold 11px monospace', legColour, 'center', 40);
         if (reachCm < MAX_CM) {
             outlineText(ctx, 'this probe reaches ' + reachCm.toFixed(0) + ' cm',
                 safeRight / 2, Math.max(Math.min(yOf(reachCm) + 13, artBottom), scaleTop + 28),
