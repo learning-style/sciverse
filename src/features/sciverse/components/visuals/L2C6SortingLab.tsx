@@ -117,8 +117,8 @@ export const L2C6SortingLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (density - 1) / 0.2)),
                 caption: 'Density of the Solution',
-                low: '1.00 g/cm³',
-                high: '1.20 g/cm³',
+                low: 'water alone',
+                high: 'the saltiest',
                 stops: ['#eff6ff', '#93c5fd', '#1d4ed8'] as [string, string, string],
             },
             note: `${salt} g of salt in 1,000 g of water makes ${volume.toLocaleString()} cm³ of solution, at ${density.toFixed(3)} g/cm³.`,

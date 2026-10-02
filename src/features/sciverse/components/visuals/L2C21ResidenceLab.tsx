@@ -91,8 +91,8 @@ export const L2C21ResidenceLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, Math.sqrt(years / MAX_YEARS))),
                 caption: 'How Long an Atom Stays',
-                low: '0 years',
-                high: MAX_YEARS.toLocaleString() + ' years',
+                low: 'a thoroughfare',
+                high: 'a vault',
                 stops: ['#ecfdf5', '#6ee7b7', SLOW] as [string, string, string],
             },
             note: 'A store holding ' + reservoir.toLocaleString() + ' GtC and losing ' + flux

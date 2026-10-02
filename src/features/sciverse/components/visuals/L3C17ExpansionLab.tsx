@@ -74,8 +74,8 @@ export const L3C17ExpansionLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, alu / most)),
                 caption: 'Slip Against the Concrete',
-                low: '0 mm',
-                high: most + ' mm',
+                low: 'they move together',
+                high: 'the bond fails',
                 stops: ['#ecfdf5', '#fcd34d', ALU] as [string, string, string],
             },
             note: 'Over ' + metres + ' m and a swing of ' + dT

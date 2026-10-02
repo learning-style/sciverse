@@ -113,8 +113,8 @@ export const L3C8CloudLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, baseKm / TOP_KM)),
                 caption: 'Cloud Base Height',
-                low: '0 m',
-                high: '4,000 m',
+                low: 'cloud at the ground',
+                high: 'cloud far above',
                 stops: ['#f1f5f9', '#bae6fd', '#0369a1'] as [string, string, string],
             },
             note: `Ground air at ${groundTemp} °C with a ${groundDew} °C dew point has a ${gap} °C gap, so clouds begin at about ${baseM.toLocaleString()} m.`,

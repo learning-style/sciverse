@@ -103,8 +103,8 @@ export const L3P14SampleLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, rate / WAVE_HZ / 4)),
                 caption: 'Samples Each Cycle',
-                low: '0',
-                high: '4',
+                low: 'too few',
+                high: 'enough samples',
                 stops: ['#eef2ff', '#a5b4fc', INDIGO] as [string, string, string],
             },
             note: captured

@@ -94,8 +94,8 @@ export const L3C21RevelleLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, years / MAX_YEARS)),
                 caption: 'Years to Drain the Easy Part',
-                low: '0',
-                high: MAX_YEARS + ' years',
+                low: 'drains quickly',
+                high: 'centuries of it',
                 stops: ['#ecfdf5', '#6ee7b7', SEA] as [string, string, string],
             },
             note: 'An excess of ' + excess + ' GtC at a net uptake of ' + uptake.toFixed(1)

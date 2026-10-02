@@ -117,8 +117,8 @@ export const L3B21SignalLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, rise / 100)),
                 caption: 'Rise in ADP, the Signal',
-                low: '0',
-                high: '100%',
+                low: 'no signal',
+                high: 'an enormous signal',
                 stops: ['#fff1f2', '#fda4af', SIGNAL] as [string, string, string],
             },
             note: 'The same ' + moved + ' unit' + (moved === 1 ? '' : 's')

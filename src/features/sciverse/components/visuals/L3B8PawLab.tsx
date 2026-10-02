@@ -117,8 +117,8 @@ export const L3B8PawLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, lost / MAX_LOSS)),
                 caption: 'Heat Lost Through the Paws',
-                low: '0 W',
-                high: '67 W',
+                low: 'no heat lost',
+                high: 'much heat lost',
                 stops: ['#e0f2fe', '#93c5fd', '#1d4ed8'] as [string, string, string],
             },
             note: `With ${flow.toFixed(1)} g of blood each second arriving at ${arrival} °C, the paws lose ${lost.toFixed(1)} W and ${(handedBack * 100).toFixed(0)}% of the heat is handed back to the body.`,

@@ -111,8 +111,8 @@ export const L2B20ReadingLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, shortfall / MAX_NEEDED)),
                 caption: 'Reading Glasses Needed',
-                low: '0 D',
-                high: '+' + MAX_NEEDED + ' D',
+                low: 'none needed',
+                high: 'a strong pair needed',
                 stops: ['#fff1f2', '#fda4af', FINE] as [string, string, string],
             },
             note: 'A page at ' + readCm + ' cm needs ' + needed.toFixed(1)

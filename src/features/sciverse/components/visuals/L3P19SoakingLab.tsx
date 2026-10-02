@@ -115,8 +115,8 @@ export const L3P19SoakingLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, rate / MAX_RATE)),
                 caption: 'How Fast the Soil Is Taking Water',
-                low: '0 mm/h',
-                high: MAX_RATE + ' mm/h',
+                low: 'nothing soaks in',
+                high: 'takes it all in',
                 stops: ['#eef2ff', '#93c5fd', FAST] as [string, string, string],
             },
             note: 'With ' + soaked.toFixed(0) + ' mm soaked in so far, the bracket is '

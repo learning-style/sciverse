@@ -89,8 +89,8 @@ export const L3B12OddsLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, endShare)),
                 caption: 'Dark Share at Generation 60',
-                low: '0%',
-                high: '100%',
+                low: 'none dark',
+                high: 'all dark',
                 stops: ['#f5f5f4', '#a8a29e', '#1f2937'] as [string, string, string],
             },
             note: `Starting at ${(startShare * 100).toFixed(0)}% dark, odds of ${startOdds.toFixed(4)}, multiplied by ${ratio.toFixed(2)} each generation: ${(endShare * 100).toFixed(0)}% dark after ${GENERATIONS} generations.`,

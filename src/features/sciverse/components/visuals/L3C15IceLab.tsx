@@ -126,8 +126,8 @@ export const L3C15IceLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, x / start)),
                 caption: 'Reacted',
-                low: '0',
-                high: '1',
+                low: 'nothing reacted',
+                high: 'all reacted',
                 stops: ['#eff6ff', '#6ee7b7', PRODUCT] as [string, string, string],
             },
             note: `Starting with ${start.toFixed(2)} mol/L of each and Kc = ${kc}: the change is −${x.toFixed(4)} for H₂ and I₂ and +${hi.toFixed(4)} for HI, leaving ${left.toFixed(4)}, ${left.toFixed(4)} and ${hi.toFixed(4)} mol/L at equilibrium. Check: ${(hi * hi / (left * left)).toFixed(1)}.`,

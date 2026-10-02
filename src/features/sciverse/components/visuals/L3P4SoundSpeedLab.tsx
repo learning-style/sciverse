@@ -123,8 +123,8 @@ export const L3P4SoundSpeedLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (Math.log10(speed) - 2) / 2)),
                 caption: 'Speed of Sound',
-                low: '100 m/s',
-                high: '10,000 m/s',
+                low: 'slow, like a gas',
+                high: 'fast, like a solid',
                 stops: ['#e0e7ff', '#818cf8', '#3730a3'] as [string, string, string],
             },
             note: `Stiffness ${sci(stiffness)} Pa and density ${densityText(rho)} kg/m³ give ${speedText(speed)} m/s.`,

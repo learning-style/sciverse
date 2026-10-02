@@ -126,8 +126,8 @@ export const L3P22ShadowLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, deep / 2900)),
                 caption: 'How Deep the Ray Reached',
-                low: '0',
-                high: '2,900 km',
+                low: 'just below the surface',
+                high: 'at the core boundary',
                 stops: ['#eef2ff', '#a5b4fc', INDIGO] as [string, string, string],
             },
             note: 'A ray recorded ' + deg + '° round bottoms out about ' + deep.toFixed(0)

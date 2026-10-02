@@ -90,8 +90,8 @@ export const L2B7EelLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (Math.log10(amps) + 2) / 4)),
                 caption: 'Current Through the Water',
-                low: '0.01 A',
-                high: '100 A',
+                low: 'a small current',
+                high: 'a strong current',
                 stops: ['#ffe4e6', '#fb7185', '#9f1239'] as [string, string, string],
             },
             note: `${cells.toLocaleString()} electrocytes in series give ${volts.toFixed(0)} V; through ${ohms} Ω of water that drives ${ampText(amps)} A.`,

@@ -321,6 +321,33 @@ The word-presence check passes them, because the lesson echoes them once. If a
 word on the canvas is not the plain name of the thing, it is jargon -- say
 *share*, or name the quantity.
 
+**A gauge must say what is good, not just how big.** "Reflects 99.90%" tells a
+visual-only learner nothing about whether that is success or failure -- and in
+L3B22 it is failure, because nothing gets past and there is no scan, while the
+0.0037% that looks like nothing is what makes imaging work at all. The meter's
+`low` and `high` are the place for this, because they cost no extra strings:
+
+| | `low` | `high` |
+|---|---|---|
+| L3B22, echo | `faint: you see deeper` | `total: no scan` |
+| L2C22, resolving power | `too blunt to trust` | `sharp enough to trust` |
+| L2B22, depth | `at the skin` | `25 cm deep` |
+
+**Only two of those carry a verdict, and that is deliberate.** Echo strength and
+resolving power have a direction that matters; a depth, a tide height and a
+wavelength do not. **Never invent a good end for a neutral quantity** -- say what
+the extremes *are* instead. `check-visual.py` checks the mechanical half of this:
+a gauge whose `low` and `high` are both bare numbers says neither, and it reported
+**74 of 143** when first written. All 74 are now worded.
+
+Two things that made the backlog tractable. **Validate the wording against the
+lesson before writing it**, because every word on the canvas must appear in the
+lesson -- a small helper that lists the missing words turned 74 edits into three
+batches with five retries instead of 74 word-check failures. And some lessons have
+only a 300-word vocabulary, so *all*, *most* and *help* are genuinely absent from
+L2P5: pull the lesson's own word list and choose from it rather than guessing.
+Keep each pair under about 340px, since `low` and `high` share one 13px line.
+
 **A formula on the canvas must only use numbers the picture has already shown.**
 L3C22 drew a ladder of rungs labelled `n=1` to `n=8` -- numbers, with no energies --
 and then printed `13.6 x (1/2² - 1/6²) = 3.022 eV, so 1240/3.022 = 410.3 nm`. Two

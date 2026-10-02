@@ -120,8 +120,8 @@ export const L2C16CurieLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, temp / MAX_C)),
                 caption: 'Temperature',
-                low: '20 °C',
-                high: '1,200 °C',
+                low: 'magnetic',
+                high: 'magnetism gone',
                 stops: ['#ecfdf5', '#fcd34d', '#b45309'] as [string, string, string],
             },
             note: `${pick.name} has a Curie temperature of ${pick.tc} °C and this sample is at ${temp} °C, ${ending}`,

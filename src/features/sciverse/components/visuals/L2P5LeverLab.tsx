@@ -113,8 +113,8 @@ export const L2P5LeverLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (Math.log10(advantage) - Math.log10(0.2)) / 2)),
                 caption: 'Mechanical Advantage',
-                low: '0.2',
-                high: '20',
+                low: 'no advantage',
+                high: 'a big advantage',
                 stops: ['#e0e7ff', '#818cf8', '#3730a3'] as [string, string, string],
             },
             note: `Mechanical advantage ${advantage.toFixed(1)}: push ${forceText(push)} N through ${handsMove.toFixed(2)} m to lift the ${ROCK_N} N rock by ${LIFT_M.toFixed(2)} m. Work in ${workIn.toFixed(0)} J, work out ${workOut.toFixed(0)} J.`,

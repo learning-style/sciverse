@@ -122,8 +122,8 @@ export const L3B20SuddenLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, nearCm / MAX_CM)),
                 caption: 'Nearest This Eye Can Focus',
-                low: '0 cm',
-                high: MAX_CM + ' cm',
+                low: 'can focus up close',
+                high: 'too far for a book',
                 stops: ['#fff1f2', '#fda4af', CURVE] as [string, string, string],
             },
             note: 'At age ' + age + ' this eye has ' + accom.toFixed(1)

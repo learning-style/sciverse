@@ -88,8 +88,8 @@ export const L3B9CycleLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, index / 0.3)),
                 caption: 'Mitotic Index',
-                low: '0',
-                high: '0.30',
+                low: 'no cells dividing',
+                high: 'most cells dividing',
                 stops: ['#fff1f2', '#fb7185', '#9f1239'] as [string, string, string],
             },
             note: `${dividing} of ${COUNTED} cells are in mitosis, so a ${hours}-hour cycle spends ${inMitosis.toFixed(1)} hours dividing and ${inInterphase.toFixed(1)} hours in interphase.`,

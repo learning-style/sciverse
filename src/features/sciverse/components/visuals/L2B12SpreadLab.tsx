@@ -84,8 +84,8 @@ export const L2B12SpreadLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, last)),
                 caption: 'Dark Share at the End',
-                low: '0%',
-                high: '100%',
+                low: 'all light',
+                high: 'all dark',
                 stops: ['#f5f5f4', '#a8a29e', '#1f2937'] as [string, string, string],
             },
             note: `With light moth survival ${lightRate}% and dark moth survival ${darkRate}%, the dark share goes from 20% to ${(last * 100).toFixed(1)}% in ${GENERATIONS} generations.`,

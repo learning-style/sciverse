@@ -110,8 +110,8 @@ export const L3B7NernstLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (potential - SCALE_MIN) / (SCALE_MAX - SCALE_MIN))),
                 caption: 'Balancing Voltage Across It',
-                low: '−120 mV',
-                high: '+80 mV',
+                low: 'pulls ions in',
+                high: 'pushes ions out',
                 stops: ['#e0e7ff', '#e2e8f0', '#ffe4e6'] as [string, string, string],
             },
             note: `With ${outside.toFixed(1)} mM outside and ${inside} mM inside, potassium's balancing voltage is ${mvText(potential)} mV, the inside compared with the outside.`,

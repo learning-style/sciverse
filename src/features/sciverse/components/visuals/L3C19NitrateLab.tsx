@@ -111,8 +111,8 @@ export const L3C19NitrateLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, mgL / TOP)),
                 caption: 'Nitrogen Leaving in the Drainage',
-                low: '0 mg/L',
-                high: TOP + ' mg/L',
+                low: 'under the limit',
+                high: 'far over the limit',
                 stops: ['#ecfdf5', '#fcd34d', OVER] as [string, string, string],
             },
             note: 'A surplus of ' + surplus + ' kg/ha meeting ' + drain

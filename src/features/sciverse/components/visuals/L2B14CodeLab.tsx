@@ -120,8 +120,8 @@ export const L2B14CodeLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, words / SIGNALS)),
                 caption: 'Words for 21 Signals',
-                low: '0',
-                high: '21',
+                low: 'no words at all',
+                high: 'one word each',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
             note: `${letters} letters in words of ${places} makes ${fmt(words)} words, ${verdict}. Each letter carries ${bits.toFixed(1)} bits.`,

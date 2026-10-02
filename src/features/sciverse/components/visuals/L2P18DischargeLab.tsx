@@ -93,8 +93,8 @@ export const L2P18DischargeLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, flow / MAX_Q)),
                 caption: 'Discharge Past the Gauge',
-                low: '0 m³/s',
-                high: MAX_Q + ' m³/s',
+                low: 'a dry channel',
+                high: 'a river in flood',
                 stops: ['#eef2ff', '#93c5fd', FAST] as [string, string, string],
             },
             note: 'A channel ' + metres + ' m wide and ' + DEPTH.toFixed(1)

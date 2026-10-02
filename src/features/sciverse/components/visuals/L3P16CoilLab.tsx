@@ -80,8 +80,8 @@ export const L3P16CoilLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, milli / 19)),
                 caption: 'Field Inside the Coil',
-                low: '0 mT',
-                high: '19 mT',
+                low: 'no field',
+                high: 'a strong field',
                 stops: ['#eef2ff', '#a5b4fc', INDIGO] as [string, string, string],
             },
             note: `A coil of ${perMetre.toLocaleString()} turns per metre carrying ${amps.toFixed(1)} A holds ${milli.toFixed(2)} mT along its axis, about ${earths.toFixed(0)} times Earth's ${EARTH_UT} µT. B is a straight line in both dials, and the coil's diameter does not appear in the formula at all.`,

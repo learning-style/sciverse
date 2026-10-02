@@ -95,8 +95,8 @@ export const L2B13LeafLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, litres / MAX_LITRES)),
                 caption: 'Water Lost in a Day',
-                low: '0 litres',
-                high: '250 litres',
+                low: 'no water lost',
+                high: '250 litres lost',
                 stops: ['#e0f2fe', '#38bdf8', '#075985'] as [string, string, string],
             },
             note: `${area} m² of leaf makes ${glucose.toFixed(0)} g of sugar, takes in ${co2.toFixed(0)} g of CO₂, and loses ${litres.toFixed(1)} litres of water at ${cost} g for each gram of CO₂.`,

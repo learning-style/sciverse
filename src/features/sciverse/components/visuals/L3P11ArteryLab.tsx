@@ -81,8 +81,8 @@ export const L3P11ArteryLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, flow / MAX_FLOW)),
                 caption: 'Flow',
-                low: '0 L/min',
-                high: '5 L/min',
+                low: 'a narrow artery',
+                high: 'a wide artery',
                 stops: ['#fee2e2', '#f87171', '#b91c1c'] as [string, string, string],
             },
             note: `At ${pct}% of its radius the artery's resistance is ${resistance.toFixed(1)} mmHg for each L/min, so with a ${drop} mmHg drop the flow is ${flow.toFixed(2)} L/min.`,

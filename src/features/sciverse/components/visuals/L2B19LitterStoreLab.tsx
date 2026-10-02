@@ -88,8 +88,8 @@ export const L2B19LitterStoreLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, store / MAX_STORE)),
                 caption: 'Dead Material Held in the Soil',
-                low: '0 t/ha',
-                high: MAX_STORE + ' t/ha',
+                low: 'nothing held',
+                high: 'peat building up',
                 stops: ['#fff1f2', '#fdba74', DEEP] as [string, string, string],
             },
             note: 'With ' + fall.toFixed(1) + ' t/ha of dead material landing each year and '

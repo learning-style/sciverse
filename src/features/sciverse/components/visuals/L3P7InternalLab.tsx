@@ -111,8 +111,8 @@ export const L3P7InternalLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, terminal / EMF)),
                 caption: 'Terminal Voltage',
-                low: '0 V',
-                high: '1.50 V',
+                low: 'no voltage left',
+                high: 'full voltage',
                 stops: ['#fed7aa', '#a5b4fc', '#4338ca'] as [string, string, string],
             },
             note: `With ${ohmText(load)} Ω outside and ${ohmText(inner)} Ω inside, ${current.toFixed(3)} A flows: ${lost.toFixed(3)} V is lost inside and ${terminal.toFixed(3)} V is left at the terminals.`,

@@ -92,8 +92,8 @@ export const L2P9GrowthLab = ({ state, onStateChange }: Props) => {
                 // Grey sits at 0%: shrinking fills the red half, growing the green half
                 fraction: pct < 0 ? 0.5 * (1 + pct / 100) : 0.5 + 0.5 * Math.min(1, pct / 300),
                 caption: 'Percentage Change',
-                low: '−100%',
-                high: '+300%',
+                low: 'smaller and smaller',
+                high: 'much bigger',
                 stops: ['#fca5a5', '#e2e8f0', '#86efac'] as [string, string, string],
             },
             note: `From ${start} cm to ${end} cm: a change of ${signed(change, 0)} cm, which is ${signed(pct, 1)}% of the starting height.`,

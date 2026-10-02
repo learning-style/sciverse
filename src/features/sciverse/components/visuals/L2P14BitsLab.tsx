@@ -87,8 +87,8 @@ export const L2P14BitsLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: bits / 8,
                 caption: 'Bits for Each Symbol',
-                low: '1',
-                high: '8',
+                low: 'one bit each',
+                high: 'eight bits each',
                 stops: ['#eef2ff', '#a5b4fc', ON] as [string, string, string],
             },
             note: `${bits} bits make ${fmt(patterns)} patterns -- ${enoughFor(bits)}. A message of ${fmt(SYMBOLS)} symbols is ${fmt(totalBits)} bits, which takes ${seconds.toFixed(1)} s at ${fmt(rate)} bits per second.`,

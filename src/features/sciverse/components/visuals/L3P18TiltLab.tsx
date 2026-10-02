@@ -110,8 +110,8 @@ export const L3P18TiltLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, tilt / MAX_TILT)),
                 caption: 'Tilt Across the Channel',
-                low: '0 cm',
-                high: (MAX_TILT * 100).toFixed(0) + ' cm',
+                low: 'no tilt at all',
+                high: 'the biggest tilt',
                 stops: ['#eef2ff', '#93c5fd', STRONG] as [string, string, string],
             },
             note: 'Water at ' + speed.toFixed(1) + ' m/s round a bend of radius ' + radius

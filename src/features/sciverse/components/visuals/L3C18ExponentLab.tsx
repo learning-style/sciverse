@@ -119,8 +119,8 @@ export const L3C18ExponentLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, loadFactor / MAX_LOAD)),
                 caption: 'Load Against Ordinary Flow',
-                low: 'x1',
-                high: 'x' + MAX_LOAD,
+                low: 'an ordinary day',
+                high: 'x' + MAX_LOAD + ' in flood',
                 stops: ['#ecfdf5', '#6ee7b7', FLAT] as [string, string, string],
             },
             note: 'With b = ' + b.toFixed(2) + ', a flood ' + flood

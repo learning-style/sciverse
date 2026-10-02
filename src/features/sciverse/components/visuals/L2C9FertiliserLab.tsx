@@ -75,8 +75,8 @@ export const L2C9FertiliserLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, bagShare)),
                 caption: 'Share of a 20 kg Bag',
-                low: '0 kg',
-                high: '20 kg',
+                low: 'no nitrogen',
+                high: 'all 20 kg',
                 stops: ['#ecfdf5', '#6ee7b7', '#047857'] as [string, string, string],
             },
             note: `${area} m² needs ${nitrogen.toLocaleString()} g of nitrogen, which is ${(fertiliser / 1000).toFixed(1)} kg of a ${pct}% fertiliser.`,

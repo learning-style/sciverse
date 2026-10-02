@@ -111,8 +111,8 @@ export const L3C7NernstLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (volts - PLOT_MIN) / (PLOT_MAX - PLOT_MIN))),
                 caption: 'Cell Voltage',
-                low: '0.90 V',
-                high: '1.20 V',
+                low: 'a flat cell',
+                high: 'a fresh cell',
                 stops: ['#ecfdf5', '#6ee7b7', '#047857'] as [string, string, string],
             },
             note: `With [Zn²⁺] = ${concText(zinc)} mol/L and [Cu²⁺] = ${concText(copper)} mol/L, Q = ${qText(q)} and E = ${volts.toFixed(3)} V.`,

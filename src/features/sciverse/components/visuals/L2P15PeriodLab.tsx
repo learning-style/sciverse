@@ -110,8 +110,8 @@ export const L2P15PeriodLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, period / 4)),
                 caption: 'Period',
-                low: '0 s',
-                high: '4 s',
+                low: 'a fast swing',
+                high: 'a slow swing',
                 stops: ['#eef2ff', '#a5b4fc', INDIGO] as [string, string, string],
             },
             note: `A pendulum ${cm} cm long where gravity is ${grav.toFixed(1)} m/s² has a period of ${period.toFixed(2)} s, so it makes ${perMinute.toFixed(1)} swings in a minute. Four times the length gives twice the period.`,

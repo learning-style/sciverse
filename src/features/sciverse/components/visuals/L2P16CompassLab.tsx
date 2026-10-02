@@ -135,8 +135,8 @@ export const L2P16CompassLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, horizontal / TOTAL)),
                 caption: 'Field Turning the Needle',
-                low: '0 µT',
-                high: '50 µT',
+                low: 'no field to turn it',
+                high: 'a strong field',
                 stops: ['#eef2ff', '#a5b4fc', INDIGO] as [string, string, string],
             },
             note: `At a dip of ${dip}°, only ${horizontal.toFixed(1)} µT of the ${TOTAL} µT field is left to turn the needle. With magnetic north ${Math.abs(dec)}° ${side} of true north, a ${WALK_KM} km walk on an uncorrected bearing ends ${off.toFixed(2)} km off.`,

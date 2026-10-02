@@ -101,8 +101,8 @@ export const L2B21ATPLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, minutes / MAX_MIN)),
                 caption: 'Reserve of Spendable Energy',
-                low: '0',
-                high: MAX_MIN + ' minutes',
+                low: 'nothing in hand',
+                high: MAX_MIN + ' minutes in hand',
                 stops: ['#fff1f2', '#fda4af', EASY] as [string, string, string],
             },
             note: 'A pool of ' + poolG + ' g spent at ' + rateKg + ' kg a day is rebuilt '

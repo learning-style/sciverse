@@ -90,8 +90,8 @@ export const L3C6SeawaterLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (density - SCALE_TOP) / (SCALE_BOTTOM - SCALE_TOP))),
                 caption: 'Seawater Density',
-                low: '1,018 kg/m³',
-                high: '1,032 kg/m³',
+                low: 'floats on top',
+                high: 'dense, and sinks',
                 stops: ['#e0f2fe', '#60a5fa', '#1e3a8a'] as [string, string, string],
             },
             note: `At ${celsius.toFixed(1)} °C and ${salinity.toFixed(1)} g/kg, the formula gives ${density.toFixed(1)} kg/m³, so the sample ${verdict}.`,

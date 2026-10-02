@@ -102,8 +102,8 @@ export const L3B10HabitatLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, species / FULL_SPECIES)),
                 caption: 'Species Left',
-                low: '0',
-                high: '400',
+                low: 'none left',
+                high: 'all species left',
                 stops: ['#fef2f2', '#86efac', '#15803d'] as [string, string, string],
             },
             note: `With ${area.toLocaleString()} km² of the 10,000 km² forest left and z = ${z.toFixed(2)}, about ${Math.round(species)} of the 400 species remain.`,

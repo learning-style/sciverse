@@ -75,8 +75,8 @@ export const L2B11TownLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, ill / (TOWN * UNVACCINATED_RISK))),
                 caption: 'People Ill',
-                low: '0',
-                high: '200',
+                low: 'nobody ill',
+                high: 'everyone ill',
                 stops: ['#fff1f2', '#fb7185', '#9f1239'] as [string, string, string],
             },
             note: `With ${share}% vaccinated and a ${effective}% effective vaccine, ${ill} people fall ill, and ${illVaccinated} of them were vaccinated.`,

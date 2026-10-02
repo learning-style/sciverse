@@ -80,8 +80,8 @@ export const L2P12ScaleLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, squared)),
                 caption: 'Gravity at This Height',
-                low: '0',
-                high: '1',
+                low: 'no pull at all',
+                high: 'full surface gravity',
                 stops: ['#e0e7ff', '#818cf8', '#3730a3'] as [string, string, string],
             },
             note: `At ${height.toLocaleString()} km up, r is ${r.toLocaleString()} km, so gravity is 9.8 x ${squared.toFixed(3)} = ${gravity.toFixed(2)} N/kg, and a ${mass} kg astronaut is pulled with ${Math.round(weight)} N.`,

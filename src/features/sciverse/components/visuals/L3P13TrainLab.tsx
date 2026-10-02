@@ -94,8 +94,8 @@ export const L3P13TrainLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, efficiency)),
                 caption: 'Power Surviving',
-                low: '0%',
-                high: '100%',
+                low: 'all power lost',
+                high: 'nothing lost',
                 stops: ['#fee2e2', '#fcd34d', '#4f46e5'] as [string, string, string],
             },
             note: `${stages} stages of 4 at ${(stageEfficiency * 100).toFixed(0)}% give a ratio of ${ratio.toLocaleString()} and ${(efficiency * 100).toFixed(1)}% efficiency: ${powerOut.toFixed(0)} W of the motor's ${POWER_IN.toFixed(0)} W, with ${lost.toFixed(0)} W lost as heat.`,

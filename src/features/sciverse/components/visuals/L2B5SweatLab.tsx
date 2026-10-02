@@ -91,8 +91,8 @@ export const L2B5SweatLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (finalTemp - 30) / 20)),
                 caption: 'Body Temperature After One Hour',
-                low: '30 °C',
-                high: '50 °C',
+                low: 'no rise at all',
+                high: 'heatstroke',
                 stops: ['#93c5fd', '#e2e8f0', '#fdba74'] as [string, string, string],
             },
             note: `${watts} W for one hour makes ${heatIn.toLocaleString()} J; ${grams} g of evaporated sweat carries out ${heatOut.toLocaleString()} J. The body ends at ${finalTemp.toFixed(1)} °C.`,

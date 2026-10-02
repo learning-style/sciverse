@@ -98,8 +98,8 @@ export const L2B8FoxLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, heatOut / 45)),
                 caption: 'Heat Leaking Out Through the Fur',
-                low: '0 W',
-                high: '45 W',
+                low: 'no heat lost',
+                high: 'much heat lost',
                 stops: ['#fed7aa', '#e2e8f0', '#bfdbfe'] as [string, string, string],
             },
             note: `In ${furCm.toFixed(1)} cm of fur at ${air} °C, ${heatOut.toFixed(1)} W leaks out against 15 W made at rest; the lower critical temperature is ${critical.toFixed(0)} °C.`,

@@ -103,8 +103,8 @@ export const L2P21TideLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, range / MAX_RANGE)),
                 caption: 'Tidal Range Today',
-                low: '0 m',
-                high: MAX_RANGE.toFixed(1) + ' m',
+                low: 'no tide',
+                high: 'the biggest spring',
                 stops: ['#eef2ff', '#93c5fd', SPRING] as [string, string, string],
             },
             note: 'On day ' + days + ' of the lunar month the Sun and Moon are '

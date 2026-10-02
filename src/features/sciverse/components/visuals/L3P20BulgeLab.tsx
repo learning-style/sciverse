@@ -109,8 +109,8 @@ export const L3P20BulgeLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, bulge / MAX_BULGE)),
                 caption: 'Extra Glass Needed in the Middle',
-                low: '0 mm',
-                high: MAX_BULGE + ' mm',
+                low: 'no bulge',
+                high: 'a thick bulge',
                 stops: ['#eef2ff', '#a5b4fc', GLASS] as [string, string, string],
             },
             note: 'The edge ray, ' + r + ' mm out, travels ' + extraPath.toFixed(2)

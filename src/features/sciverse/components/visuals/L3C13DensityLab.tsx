@@ -93,8 +93,8 @@ export const L3C13DensityLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, fraction)),
                 caption: 'Crystalline Fraction',
-                low: '0',
-                high: '1',
+                low: 'no crystals',
+                high: 'all crystal',
                 stops: ['#f1f5f9', '#6ee7b7', '#047857'] as [string, string, string],
             },
             note: `A density of ${density.toFixed(2)} g/cm³ sits ${(fraction * 100).toFixed(0)}% of the way from 0.85 to 1.00, so the sample is ${(fraction * 100).toFixed(0)}% crystalline: ${grade}.`,

@@ -130,8 +130,8 @@ export const L2P19RunoffLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, runs / MAX_RUNOFF)),
                 caption: 'Water Running Off the Field',
-                low: '0 mm/h',
-                high: MAX_RUNOFF + ' mm/h',
+                low: 'all of it soaks in',
+                high: 'most of it runs off',
                 stops: ['#eef2ff', '#93c5fd', RUNOFF] as [string, string, string],
             },
             note: 'Rain arrives at ' + rain + ' mm/h and this soil takes water in at ' + soil

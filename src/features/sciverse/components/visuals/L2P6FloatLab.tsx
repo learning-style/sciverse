@@ -115,8 +115,8 @@ export const L2P6FloatLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction,
                 caption: 'Fraction Under Water',
-                low: '0',
-                high: '1',
+                low: 'barely in',
+                high: 'all the way in',
                 stops: ['#e0e7ff', '#818cf8', '#3730a3'] as [string, string, string],
             },
             note: floats

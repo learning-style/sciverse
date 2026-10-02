@@ -104,8 +104,8 @@ export const L2P22QuakeLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, km / MAX_KM)),
                 caption: 'Distance to the Earthquake',
-                low: '0',
-                high: MAX_KM.toLocaleString() + ' km',
+                low: 'at the station',
+                high: MAX_KM.toLocaleString() + ' km away',
                 stops: ['#eef2ff', '#a5b4fc', P_COLOUR] as [string, string, string],
             },
             note: 'A gap of ' + gap + ' s where Vp is ' + vp.toFixed(1) + ' and Vs is '

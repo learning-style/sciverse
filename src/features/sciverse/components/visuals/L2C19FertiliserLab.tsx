@@ -89,8 +89,8 @@ export const L2C19FertiliserLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, surplus / MAX_SURPLUS)),
                 caption: 'Surplus Heading for the River',
-                low: '0 kg/ha',
-                high: MAX_SURPLUS + ' kg/ha',
+                low: 'nothing wasted',
+                high: 'most of it wasted',
                 stops: ['#ecfdf5', '#fcd34d', LOST] as [string, string, string],
             },
             note: 'A crop that takes away ' + demand

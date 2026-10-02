@@ -100,8 +100,8 @@ export const L2B16CuesLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, combined / 30)),
                 caption: 'Combined Error',
-                low: '0°',
-                high: '30°',
+                low: 'no error at all',
+                high: 'as bad as one cue',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
             note: `${cues} independent cue${cues === 1 ? '' : 's'} of ±${each}° give a combined error of ±${combined.toFixed(1)}°, so a 1,000 km flight finishes about ${miss.toFixed(0)} km off. Averaging shrinks the scatter by the root of the count, and does nothing at all to a bias.`,

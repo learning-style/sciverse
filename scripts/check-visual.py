@@ -16,6 +16,7 @@ Five checkable properties per lab:
   7. CAP FITS   the meter caption fits a narrow panel
   8. NOT BUSY   the scene does not drown its point in text
   9. UNITS      a printed multiplication's units can give the stated result
+ 10. GAUGE ENDS the meter's ends say what they MEAN, not just how big they are
 
 Usage:  python3 scripts/check-visual.py [LabFile.tsx ...]
         python3 scripts/check-visual.py --selftest
@@ -79,6 +80,38 @@ def _top_ternary(expr):
 # mm per us, with the factor of 2 folded in, and printing it as a plain multiplier
 # was both dimensionally wrong and hid the halving the lesson is about.
 UNIT = (r"(?:mm|cm|m|km|nm|s|ms|\u00b5s|us|min|h|g|kg|t|N|J|kJ|W|K|Hz|MHz|eV|GtC|L|mL)")
+
+
+# "Reflects 99.90%" tells a visual-only learner nothing about whether that is
+# success or failure. Where a quantity has a direction that matters, the gauge's
+# ends should say which end helps -- L3B22 reads "faint: you see deeper" against
+# "total: no scan". Where it has no good direction, they should at least say what
+# the extremes ARE: "at the skin" against "25 cm deep". A bare '0' and '7,500'
+# says neither.
+UNIT_WORDS = re.compile(r"\b(?:eV|nm|mm|cm|m|km|s|ms|us|min|h|g|kg|t|N|J|kJ|W|K|Hz|MHz"
+                        r"|GtC|L|mL|litres?|years?|days?|hours?|seconds?|minutes?)\b")
+
+
+def gauge_ends(src):
+    """The meter's low and high as written, or None when there is no gauge."""
+    m = re.search(r"meter:\s*\{(.*?)\n            \}", src, re.S)
+    if not m:
+        return None
+    blk = m.group(1)
+
+    def one(key):
+        mm = re.search(key + r":\s*((?:'[^']*')|[^,\n]+)", blk)
+        return mm.group(1).strip() if mm else None
+    return one('low'), one('high')
+
+
+def says_what_it_means(end):
+    """True if this end carries a word, beyond a bare number and its unit."""
+    if not end:
+        return False
+    lits = re.findall(r"'([^']*)'", end)
+    txt = ' '.join(lits) if lits else end
+    return bool(re.search(r"[A-Za-z]{3,}", UNIT_WORDS.sub('', txt)))
 
 
 def canvas_literals(src):
@@ -330,6 +363,12 @@ def check(path):
         if why:
             probs.append('units do not work: ' + why + ' -- ' + lit[:60])
             break
+
+    # 10: the gauge's ends must say what they mean
+    ends = gauge_ends(src)
+    if ends and not says_what_it_means(ends[0]) and not says_what_it_means(ends[1]):
+        probs.append('gauge ends say only how big, not what they mean: '
+                     + str(ends[0]) + ' .. ' + str(ends[1]))
     return probs, len(labels), shapes
 
 
@@ -383,6 +422,14 @@ def selftest():
          bool(bad_multiplication('speed  N  mm per \u00b5s x time  N  \u00b5s =  N  mm')), False)
     want('same unit throughout is fine',
          bool(bad_multiplication('area  N  m x  N  m =  N  m')), False)
+
+    # a gauge end must carry a word, not just a number and its unit
+    want('bare zero says nothing', says_what_it_means("'0'"), False)
+    want('a number with a unit says nothing', says_what_it_means("'2,900 km'"), False)
+    want('an expression with a unit says nothing',
+         says_what_it_means("MAX_CM + ' cm'"), False)
+    want('a worded end counts', says_what_it_means("'faint: you see deeper'"), True)
+    want('a worded end with a unit counts', says_what_it_means("'25 cm deep'"), True)
 
     print('selftest ok' if not bad else 'selftest FAILED (' + str(bad) + ')')
     return 1 if bad else 0

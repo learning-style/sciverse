@@ -71,8 +71,8 @@ export const L2C13ChainLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, Math.log10(Math.max(1, units)) / 5)),
                 caption: 'Units in the Chain',
-                low: '1',
-                high: '100,000',
+                low: 'a single unit',
+                high: 'a long chain',
                 stops: ['#ecfdf5', '#6ee7b7', '#047857'] as [string, string, string],
             },
             note: `A chain of mass ${chainMass.toLocaleString()} built from ${monomerName(monomerMass)} units of mass ${monomerMass} is ${Math.round(units).toLocaleString()} units long: ${material}.`,

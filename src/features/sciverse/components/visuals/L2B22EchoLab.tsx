@@ -146,8 +146,8 @@ export const L2B22EchoLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, depthCm / MAX_CM)),
                 caption: 'Depth of the Boundary',
-                low: '0',
-                high: MAX_CM + ' cm',
+                low: 'at the skin',
+                high: MAX_CM + ' cm deep',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
             note: 'An echo at ' + us + ' µs is ' + roundTripMm.toFixed(0)

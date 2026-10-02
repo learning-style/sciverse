@@ -96,8 +96,8 @@ export const L3B14MutationLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: silent / PER_POSITION,
                 caption: 'Silent Substitutions',
-                low: '0',
-                high: '192',
+                low: 'none silent',
+                high: 'all silent',
                 stops: ['#fff1f2', '#fda4af', SILENT] as [string, string, string],
             },
             note: `At position ${position} of a codon, ${silent} of the 192 possible changes are silent (${share}%), ${changes} change the amino acid and ${stop} involve a stop. With ${inserted} bases inserted, ${tail}`,

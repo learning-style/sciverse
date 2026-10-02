@@ -112,8 +112,8 @@ export const L2B18OxygenLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, actual / TOP)),
                 caption: 'Oxygen Against the Trout Line',
-                low: '0 mg/L',
-                high: TOP + ' mg/L',
+                low: 'too little for trout',
+                high: TOP + ' mg/L, plenty',
                 stops: ['#fff1f2', '#fda4af', OK] as [string, string, string],
             },
             note: 'At ' + degC + ' \u00b0C this water can hold ' + room.toFixed(1) + ' mg/L and is '

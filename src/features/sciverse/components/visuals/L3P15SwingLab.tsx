@@ -115,8 +115,8 @@ export const L3P15SwingLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (factor - 1) / 0.18)),
                 caption: 'Correction',
-                low: '0%',
-                high: '18%',
+                low: 'no correction',
+                high: 'a big correction',
                 stops: ['#eef2ff', '#a5b4fc', TRUTH] as [string, string, string],
             },
             note: `At ${deg}° the period is ${((factor - 1) * 100).toFixed(2)}% longer than the small-swing period of ${base.toFixed(3)} s, so ${period.toFixed(3)} s, and it loses ${dayLoss.toFixed(0)} s a day. The truth is +${((exactFactor - 1) * 100).toFixed(2)}%, because this correction is only the first term.`,

@@ -93,8 +93,8 @@ export const L3P8GlazingLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, flow / 150)),
                 caption: 'Heat Flow Through 1 m²',
-                low: '0 W',
-                high: '150 W',
+                low: 'almost no heat',
+                high: 'much heat lost',
                 stops: ['#e0e7ff', '#fdba74', '#c2410c'] as [string, string, string],
             },
             note: `${panes} ${panes === 1 ? 'pane' : 'panes'} of glass with a ${wind} m/s wind: U = ${uValue.toFixed(2)} W/m²/°C, ${flow.toFixed(0)} W through each m², inside surface at ${insideSurface.toFixed(1)} °C.`,

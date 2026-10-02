@@ -112,8 +112,8 @@ export const L3P6PressureLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, buoyant / 12.2)),
                 caption: 'Buoyant Force',
-                low: '0 N',
-                high: '12 N',
+                low: 'barely any lift',
+                high: 'all the lift',
                 stops: ['#e0e7ff', '#818cf8', '#3730a3'] as [string, string, string],
             },
             note: `In ${fluidName}, the top of the 10 cm cube at ${depth} m feels ${faceText(forceDown, rho)} N down and its bottom ${faceText(forceUp, rho)} N up: a difference of ${newtonText(buoyant)} N.`,

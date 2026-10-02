@@ -133,8 +133,8 @@ export const L2P20PowerLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (totalD - MIN_D) / (MAX_D - MIN_D))),
                 caption: 'Power of the Pair Together',
-                low: MIN_D + ' D',
-                high: MAX_D + ' D',
+                low: 'spreads light apart',
+                high: 'bends light most',
                 stops: ['#eef2ff', '#a5b4fc', CONVERGE] as [string, string, string],
             },
             note: 'A focal length of ' + focalCm + ' cm is ' + (focalCm / 100).toFixed(2)

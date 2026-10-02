@@ -88,8 +88,8 @@ export const L3C11BufferLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (ph - PH_LOW) / (PH_HIGH - PH_LOW))),
                 caption: 'pH',
-                low: '6.8',
-                high: '8.0',
+                low: 'more acid',
+                high: 'less acid',
                 stops: [ACID_SIDE, IN_BAND, BASE_SIDE] as [string, string, string],
             },
             note: `Bicarbonate ${bicarbonate} mmol/L over ${dissolved.toFixed(2)} mmol/L of dissolved CO₂ is a ratio of ${ratio.toFixed(1)}, so the pH is ${ph.toFixed(2)}: ${status}.`,

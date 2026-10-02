@@ -89,8 +89,8 @@ export const L2C11DilutionLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, ph / 14)),
                 caption: 'pH',
-                low: '0',
-                high: '14',
+                low: 'strong acid',
+                high: 'strong base',
                 stops: ['#dc2626', '#22c55e', '#7c3aed'] as [string, string, string],
             },
             note: `An acid at pH ${start.toFixed(1)}, diluted tenfold ${n} times, ends at pH ${ph.toFixed(2)}, with ${timesText(fewer)} times fewer H⁺ in each litre.`,

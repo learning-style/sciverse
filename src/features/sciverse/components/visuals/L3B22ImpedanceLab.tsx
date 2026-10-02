@@ -108,7 +108,10 @@ export const L3B22ImpedanceLab = ({ state, onStateChange }: Props) => {
             Math.min(boxTop + boxH + 14, artBottom - 18),
             'bold 11px monospace', '#0f172a', 'center', half);
         outlineText(ctx, same ? 'no boundary here: nothing comes back'
-            : 'reflects ' + pct.toFixed(4) + '%, passes ' + passed.toFixed(4) + '%',
+            : pct < 0.01 ? 'faint, so the pulse goes deeper'
+                : pct < 5 ? 'a visible edge in the image'
+                    : pct < 60 ? 'a wall: the image stops'
+                        : 'nothing gets in: no scan',
             safeRight / 2, Math.min(boxTop + boxH + 32, artBottom),
             'bold 12px monospace', same ? '#64748b' : (wall ? WALL : ROSE), 'center', safeRight - 24);
 
@@ -126,8 +129,8 @@ export const L3B22ImpedanceLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: meterFrac(pct),
                 caption: 'Pulse Reflected (stretched)',
-                low: 'a millionth',
-                high: 'all of it',
+                low: 'faint: you see deeper',
+                high: 'total: no scan',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
             note: nearName + ' at ' + z1.toFixed(2) + ' meeting ' + farName + ' at '

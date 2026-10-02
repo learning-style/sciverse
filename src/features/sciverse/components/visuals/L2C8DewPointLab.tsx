@@ -136,8 +136,8 @@ export const L2C8DewPointLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, humidity / 100)),
                 caption: 'Relative Humidity',
-                low: '0%',
-                high: '100%',
+                low: 'dry air',
+                high: 'wet air',
                 stops: ['#f0f9ff', '#7dd3fc', '#0369a1'] as [string, string, string],
             },
             note: `At ${celsius} °C with ${vapour.toFixed(1)} g/m³ of water vapour, the relative humidity is ${humidity.toFixed(0)}% and the dew point is ${dewText} °C.`,

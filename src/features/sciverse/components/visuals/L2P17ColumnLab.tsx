@@ -94,8 +94,8 @@ export const L2P17ColumnLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, stress / LIMIT)),
                 caption: 'How Close to Crushing',
-                low: '0 N/mm²',
-                high: LIMIT + ' N/mm²',
+                low: 'no load at all',
+                high: 'crushing',
                 stops: ['#eef2ff', '#a5b4fc', CRUSH] as [string, string, string],
             },
             note: 'A load of ' + kN.toLocaleString() + ' kN on a ' + mm

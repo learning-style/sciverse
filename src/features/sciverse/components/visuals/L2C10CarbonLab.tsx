@@ -61,8 +61,8 @@ export const L2C10CarbonLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, co2 / fuel / (44 / 12))),
                 caption: 'CO₂ for Each kg of Fuel',
-                low: '0 kg',
-                high: '3.67 kg',
+                low: 'no carbon dioxide',
+                high: 'all the carbon',
                 stops: ['#f1f5f9', '#94a3b8', '#334155'] as [string, string, string],
             },
             note: `${fuel} kg of fuel at ${share}% carbon is ${carbon.toFixed(1)} kg of carbon, which joins ${oxygen.toFixed(1)} kg of oxygen from the air to make ${co2.toFixed(1)} kg of CO₂.`,

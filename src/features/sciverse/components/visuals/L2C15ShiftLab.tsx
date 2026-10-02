@@ -96,8 +96,8 @@ export const L2C15ShiftLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, product / TOTAL)),
                 caption: 'Product Particles',
-                low: '0',
-                high: '20',
+                low: 'no product yet',
+                high: 'all product',
                 stops: ['#eff6ff', '#6ee7b7', PRODUCT] as [string, string, string],
             },
             note: `Right now Q = ${product} / ${reactant} = ${q.toFixed(2)} and this reaction rests at K = ${k.toFixed(2)}, ${tail}`,

@@ -89,8 +89,8 @@ export const L3B5HumidityLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, cooling / (W_PER_KPA * SKIN_KPA))),
                 caption: 'Most Cooling by Sweat',
-                low: '0 W',
-                high: '1,344 W',
+                low: 'no cooling',
+                high: 'the most cooling',
                 stops: ['#dbeafe', '#93c5fd', '#2563eb'] as [string, string, string],
             },
             note: `${humidity}% humidity: air ${airKpa.toFixed(2)} kPa, skin 5.6 kPa, so sweat can carry away up to ${Math.round(cooling)} W against ${heatMade} W made.`,

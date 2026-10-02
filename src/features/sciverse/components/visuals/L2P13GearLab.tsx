@@ -82,8 +82,8 @@ export const L2P13GearLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, ratio / 6)),
                 caption: 'Gear Ratio',
-                low: '0',
-                high: '6',
+                low: 'speed, not force',
+                high: 'force, not speed',
                 stops: ['#e0e7ff', '#818cf8', '#3730a3'] as [string, string, string],
             },
             note: `${driverTeeth} teeth driving ${drivenTeeth} is a gear ratio of ${ratio.toFixed(2)}: ${turnsOut.toFixed(1)} turns a minute at ${torqueOut.toFixed(1)} N m, and torque x turns stays at ${(torqueOut * turnsOut).toFixed(0)}.`,

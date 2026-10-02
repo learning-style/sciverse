@@ -71,8 +71,8 @@ export const L3C10SinkLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, fraction)),
                 caption: 'Airborne Fraction',
-                low: '0',
-                high: '1',
+                low: 'the sinks take all',
+                high: 'the sinks take nothing',
                 stops: ['#e0f2fe', '#fbbf24', '#b45309'] as [string, string, string],
             },
             note: `Of ${released} billion tonnes released, ${stayed.toFixed(1)} billion tonnes stayed in the air, an airborne fraction of ${fraction.toFixed(2)}.`,

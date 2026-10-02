@@ -97,8 +97,8 @@ export const L3B15CycleLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (period - 5) / 16)),
                 caption: 'Lap Length',
-                low: '5 years',
-                high: '21 years',
+                low: 'a fast cycle',
+                high: 'a slow cycle',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
             note: `With a hare growth rate of ${r.toFixed(2)} and a lynx death rate of ${m.toFixed(2)} a year, the balance point is ${hareStar.toFixed(0)} hares and ${lynxStar.toFixed(0)} lynx, and one lap takes ${period.toFixed(2)} years, giving a lag between peaks of ${(period / 4).toFixed(2)} years.`,

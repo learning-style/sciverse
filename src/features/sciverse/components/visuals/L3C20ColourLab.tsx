@@ -118,8 +118,8 @@ export const L3C20ColourLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, spread / MAX_SPREAD)),
                 caption: 'Colour Spread vs Noticing',
-                low: '0 D',
-                high: MAX_SPREAD + ' D',
+                low: 'no fringes',
+                high: 'fringes you can see',
                 stops: ['#ecfdf5', '#fcd34d', RED] as [string, string, string],
             },
             note: 'A ' + power.toFixed(1) + ' D lens of Abbe number ' + abbe

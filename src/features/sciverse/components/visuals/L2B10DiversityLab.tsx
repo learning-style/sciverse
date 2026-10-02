@@ -85,8 +85,8 @@ export const L2B10DiversityLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, diversity)),
                 caption: 'Diversity Index D',
-                low: '0',
-                high: '1',
+                low: 'one species only',
+                high: 'an even spread',
                 stops: ['#fff1f2', '#fb7185', '#9f1239'] as [string, string, string],
             },
             note: `${species} species, with the commonest kind at ${counts[0]} of 100 plants: the chance of a match is ${match.toFixed(4)}, so D = ${diversity.toFixed(2)}.`,

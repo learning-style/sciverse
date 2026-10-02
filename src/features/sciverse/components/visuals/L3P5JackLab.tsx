@@ -92,8 +92,8 @@ export const L3P5JackLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: eta,
                 caption: 'Efficiency',
-                low: '0%',
-                high: '100%',
+                low: 'all work wasted',
+                high: 'no work wasted',
                 stops: ['#e0e7ff', '#a5b4fc', '#4338ca'] as [string, string, string],
             },
             note: `One turn: ${workIn.toFixed(1)} J in, ${workOut.toFixed(1)} J out, ${lost.toFixed(1)} J lost to friction. ${holds ? 'Friction takes more than the load gives back, so the car stays up.' : 'The load gives back more than friction takes, so the car comes down.'}`,
