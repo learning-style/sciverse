@@ -175,6 +175,31 @@ def ternary_colon(src):
     return problems
 
 
+def missing_comma(src):
+    """A property value followed by the next property with no comma between them.
+
+    The fourth way an edit has broken this build, and the second that is not about
+    quoting: replacing `high: 'three weeks',` with an unquoted-comma version left
+    `high: 'x'` sitting directly above `stops: [...]`. Braces balance and every
+    string is closed, so nothing else here could see it.
+    """
+    blank = blank_strings(src)
+    problems = []
+    lines = blank.split('\n')
+    for i in range(len(lines) - 1):
+        cur = lines[i].rstrip()
+        nxt = lines[i + 1].strip()
+        if not cur or cur.endswith((',', '{', '[', '(', '&&', '||', '?', ':', '+', '=', ';', '>')):
+            continue
+        if not re.match(r"^[A-Za-z_$][\w$]*\s*:", nxt):
+            continue
+        if not re.search(r"(?:'[^']*'|\"[^\"]*\"|[\w$\])])\s*$", cur):
+            continue
+        problems.append('line %d: no comma after this property, and the next one '
+                        'starts below it' % (i + 1))
+    return problems
+
+
 def scan(src):
     """Problems in one file's text, as a list of strings."""
     i, n, line = 0, len(src), 1
@@ -237,6 +262,7 @@ def scan(src):
         if left:
             problems.append('%d unclosed %s at end of file' % (left, opener))
     problems.extend(ternary_colon(src))
+    problems.extend(missing_comma(src))
     return problems
 
 
@@ -305,6 +331,20 @@ def selftest():
     hyphen_tail = "import { a } from './l2p19-will-the-rain-soak-in';\n"
     assert not scan(hyphen_tail), \
         'a filename ending in a keyword misread: ' + repr(scan(hyphen_tail))
+
+    # The fourth real failure: a property left without its comma, so the next
+    # property sits directly below it. Balanced braces, closed strings, invisible.
+    no_comma = ("const x = {\n    low: 'closed in hours',\n"
+                "    high: 'three weeks of it'\n    stops: ['a', 'b'],\n};\n")
+    assert any('no comma after this property' in p for p in scan(no_comma)), \
+        'no longer catches a property missing its comma'
+    for ok_src in (
+        "const x = {\n    low: 'a',\n    high: 'b',\n};\n",
+        "interface P {\n    state: Record<string, unknown>;\n    go: (k: string) => void;\n}\n",
+        "const y = cond\n    ? 'a'\n    : 'b';\nconst z = {\n    a: 1,\n};\n",
+    ):
+        assert not [p for p in scan(ok_src) if 'no comma' in p], \
+            'a legal object reported: ' + repr(ok_src)
 
     balanced = 'function f() { return [1, 2, {a: (3)}]; }\n'
     assert not scan(balanced), 'balanced code reported'

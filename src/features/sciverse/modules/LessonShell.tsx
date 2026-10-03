@@ -202,6 +202,7 @@ const LESSONS_WITH_NATIVE_CONTROLS = new Set([
     'l3p21', 'l3c21', 'l3b21',
     'l2p22', 'l2c22', 'l2b22',
     'l3p22', 'l3c22', 'l3b22',
+    'l2p23', 'l2c23', 'l2b23',
     'l3p17', 'l3c17', 'l3b17',
 ]);
 

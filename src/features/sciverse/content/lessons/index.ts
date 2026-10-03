@@ -289,6 +289,9 @@ import { getL2B22Script } from './l2b22-how-deep-and-how-fine';
 import { getL3P22Script } from './l3p22-what-the-missing-waves-proved';
 import { getL3C22Script } from './l3c22-where-the-lines-come-from';
 import { getL3B22Script } from './l3b22-why-there-is-an-echo-at-all';
+import { getL2P23Script } from './l2p23-will-the-notch-break-it';
+import { getL2C23Script } from './l2c23-how-long-will-the-zinc-last';
+import { getL2B23Script } from './l2b23-round-or-a-line';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1354,6 +1357,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p22': getL3P22Script,
     'l3c22': getL3C22Script,
     'l3b22': getL3B22Script,
+    'l2p23': getL2P23Script,
+    'l2c23': getL2C23Script,
+    'l2b23': getL2B23Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1904,6 +1910,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p22', title: 'What the Missing Waves Proved', subtitle: 'Rays curve, and the absence of a wave found the core', discipline: 'physics', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '🌍', accentColor: 'indigo', crossLinks: ['l2p22', 'l3p21'], level: 3 },
     { id: 'l3c22', title: 'Where the Lines Come From', subtitle: 'A ladder of rungs going as 1 over n squared', discipline: 'chemistry', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '📐', accentColor: 'emerald', crossLinks: ['l2c22', 'l3p22'], level: 3 },
     { id: 'l3b22', title: 'Why There Is an Echo at All', subtitle: 'A mismatch in impedance, and why faint is better', discipline: 'biology', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '🔊', accentColor: 'rose', crossLinks: ['l2b22', 'l3b21'], level: 3 },
+    { id: 'l2p23', title: 'Will the Notch Break It?', subtitle: 'A flaw multiplies the stress: K = 1 + 2a/b', discipline: 'physics', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🪓', accentColor: 'indigo', crossLinks: ['p23', 'l2p17'], level: 2 },
+    { id: 'l2c23', title: 'How Long Will the Zinc Last?', subtitle: 'Protection is a supply, spent on purpose', discipline: 'chemistry', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🧪', accentColor: 'emerald', crossLinks: ['c23', 'l2p23'], level: 2 },
+    { id: 'l2b23', title: 'Round or a Line?', subtitle: 'Healing crosses the short side, so shape beats size', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🩹', accentColor: 'rose', crossLinks: ['b23', 'l2c23'], level: 2 },
     { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
     { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },
     { id: 'l3b19', title: 'Water and Air Share the Spaces', subtitle: 'Two limits, one pore space, and a peak', discipline: 'biology', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪱', accentColor: 'rose', crossLinks: ['l2b19', 'l3b18'], level: 3 },

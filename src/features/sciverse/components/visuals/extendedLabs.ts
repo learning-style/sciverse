@@ -185,6 +185,9 @@ import { L2B22EchoLab } from './L2B22EchoLab';
 import { L3P22ShadowLab } from './L3P22ShadowLab';
 import { L3C22LadderLab } from './L3C22LadderLab';
 import { L3B22ImpedanceLab } from './L3B22ImpedanceLab';
+import { L2P23NotchLab } from './L2P23NotchLab';
+import { L2C23ZincLab } from './L2C23ZincLab';
+import { L2B23ClosingLab } from './L2B23ClosingLab';
 import { L2C17SteelLab } from './L2C17SteelLab';
 import { L2B17HollowLab } from './L2B17HollowLab';
 import { L3P17BucklingLab } from './L3P17BucklingLab';
@@ -386,6 +389,9 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p22: L3P22ShadowLab,
     l3c22: L3C22LadderLab,
     l3b22: L3B22ImpedanceLab,
+    l2p23: L2P23NotchLab,
+    l2c23: L2C23ZincLab,
+    l2b23: L2B23ClosingLab,
     l2c17: L2C17SteelLab,
     l2b17: L2B17HollowLab,
     l3p17: L3P17BucklingLab,
