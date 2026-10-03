@@ -76,8 +76,8 @@ lesson's header *and* body — a header alone will mislead you):
 
 | | Mechanism | Mechanism + Limit | Limit | Quantity only |
 |---|---|---|---|---|
-| Level 2 (70) | 16 | — | 5 | 49 |
-| Level 3 (66) | 13 | 28 | 17 | 8 |
+| Level 2 (73) | 17 | — | 7 | 49 |
+| Level 3 (69) | 13 | 31 | 17 | 8 |
 
 Big Ideas 17 and 18 were built after that audit and are counted above. Big Idea
 18's Level 3 is the pattern to copy: **L3P18 is pure Mechanism** and adds no new
@@ -138,6 +138,24 @@ L2C22 looked up — `E(n) = -13.6/n²` gives all four visible hydrogen lines ins
 eleven electrons screen one another. L3B22 explains why there is an echo at all from a
 mismatch in `Z = density x speed`.
 
+Big Idea 23 is the second trio where **all three Level 3 lessons are Mechanism +
+Limit**, and the first where a Level 2 lesson is built to end in a contradiction on
+purpose. L2P23 gives `K = 1 + 2a/b` and then pushes the dial until the formula
+claims that **any scratch breaks anything** -- which it must, because K runs to
+infinity at a real crack tip. L3P23 resolves it by changing what fracture is *about*:
+a crack must pay for the new surface it makes, release goes as stress² x length
+while cost per millimetre is constant, so **length replaces sharpness** and the
+critical crack is 12.7 mm in steel against 62 µm in glass. L3C23 does the same for
+a different impossibility -- a coating that protects steel it is not covering -- and
+the resolution is that the steel is **the wrong electrode**, not a covered one.
+L3B23 is the cleanest **unification** in the curriculum: L2B23's "half the short
+side" and "the radius" were one quantity all along, the **inradius**, and naming it
+explains stitching, the surgeon's ellipse and the graft at once.
+
+**Build a Level 2 lesson whose formula visibly breaks.** It is a better handover
+than a *still standing* line, because the learner has already felt the problem and
+arrives at Level 3 wanting the answer rather than being told one was owed.
+
 **The three disciplines read the same word.** A difference in wave speed, a difference
 in electron energy, a difference in impedance — and each instrument is **blind to
 sameness**: uniform rock, evenly spaced levels and uniform tissue are all invisible.
@@ -165,7 +183,7 @@ discharge is an input to L2C18's load, and L2B18's percent saturation is L2P18's
 flow wearing a different hat.
 
 Level 2 being Quantity-dominant is correct: its verb *is* Calculate. Level 3 is
-the one to watch, and **58 of its 66 lessons already carry Mechanism or Limit
+the one to watch, and **61 of its 69 lessons already carry Mechanism or Limit
 reasoning**. The 8 that are Quantity alone each pass the third test — L3C15's ICE
 tables, L3P14's sampling rate, L3B14's 138 silent swaps all change a decision.
 

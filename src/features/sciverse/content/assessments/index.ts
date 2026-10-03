@@ -94,6 +94,7 @@ import { bigIdea21Level3Assessment } from './bigIdea21Level3';
 import { bigIdea22Level2Assessment } from './bigIdea22Level2';
 import { bigIdea22Level3Assessment } from './bigIdea22Level3';
 import { bigIdea23Level2Assessment } from './bigIdea23Level2';
+import { bigIdea23Level3Assessment } from './bigIdea23Level3';
 
 export const ASSESSMENTS: Record<number, AssessmentData> = {
     1: bigIdea1Assessment,
@@ -199,6 +200,7 @@ export const ASSESSMENTS_LEVEL3: Record<number, AssessmentData> = {
     20: bigIdea20Level3Assessment,
     21: bigIdea21Level3Assessment,
     22: bigIdea22Level3Assessment,
+    23: bigIdea23Level3Assessment,
 };
 
 const BY_LEVEL: Record<number, Record<number, AssessmentData>> = {

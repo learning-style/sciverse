@@ -292,6 +292,9 @@ import { getL3B22Script } from './l3b22-why-there-is-an-echo-at-all';
 import { getL2P23Script } from './l2p23-will-the-notch-break-it';
 import { getL2C23Script } from './l2c23-how-long-will-the-zinc-last';
 import { getL2B23Script } from './l2b23-round-or-a-line';
+import { getL3P23Script } from './l3p23-why-a-scratch-does-not-break-a-girder';
+import { getL3C23Script } from './l3c23-why-a-scratch-in-the-zinc-does-not-matter';
+import { getL3B23Script } from './l3b23-why-the-edge-does-the-work';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1360,6 +1363,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p23': getL2P23Script,
     'l2c23': getL2C23Script,
     'l2b23': getL2B23Script,
+    'l3p23': getL3P23Script,
+    'l3c23': getL3C23Script,
+    'l3b23': getL3B23Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1913,6 +1919,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p23', title: 'Will the Notch Break It?', subtitle: 'A flaw multiplies the stress: K = 1 + 2a/b', discipline: 'physics', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🪓', accentColor: 'indigo', crossLinks: ['p23', 'l2p17'], level: 2 },
     { id: 'l2c23', title: 'How Long Will the Zinc Last?', subtitle: 'Protection is a supply, spent on purpose', discipline: 'chemistry', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🧪', accentColor: 'emerald', crossLinks: ['c23', 'l2p23'], level: 2 },
     { id: 'l2b23', title: 'Round or a Line?', subtitle: 'Healing crosses the short side, so shape beats size', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🩹', accentColor: 'rose', crossLinks: ['b23', 'l2c23'], level: 2 },
+    { id: 'l3p23', title: 'Why a Scratch Does Not Break a Girder', subtitle: 'A crack must pay for its own new surface', discipline: 'physics', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🔬', accentColor: 'indigo', crossLinks: ['l2p23', 'l3p17'], level: 3 },
+    { id: 'l3c23', title: 'Why a Scratch in the Zinc Does Not Matter', subtitle: 'A 0.32 V cell, and the steel is the wrong electrode', discipline: 'chemistry', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '⚡', accentColor: 'emerald', crossLinks: ['l2c23', 'l3p23'], level: 3 },
+    { id: 'l3b23', title: 'Why the Edge Does the Work', subtitle: 'One rule for every shape: the largest circle that fits', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '⭕', accentColor: 'rose', crossLinks: ['l2b23', 'l3c23'], level: 3 },
     { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
     { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },
     { id: 'l3b19', title: 'Water and Air Share the Spaces', subtitle: 'Two limits, one pore space, and a peak', discipline: 'biology', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪱', accentColor: 'rose', crossLinks: ['l2b19', 'l3b18'], level: 3 },
