@@ -366,6 +366,26 @@ only a 300-word vocabulary, so *all*, *most* and *help* are genuinely absent fro
 L2P5: pull the lesson's own word list and choose from it rather than guessing.
 Keep each pair under about 340px, since `low` and `high` share one 13px line.
 
+**Name what a derived number IS, not just its value.** L2P23's canvas printed
+`K = 1 + 2 x 1.0 = 3.0` with nothing saying what K was, and drew a notch without
+marking which direction was *across* the pull and which was *along* it -- so the
+division had two unexplained inputs and an unexplained output. The caption now
+carries the definition (`K = how many times the notch beats the average`), both
+lengths are **measured on the notch with ticks** and named with their own arrow
+glyph (`↕ a 3.0 across, ↔ b 1.0 along`), and the footers run the chain:
+`K = 1 + 2 x 3.0/1.0 = 7.0` then `7.0 x 100 N/mm² = 700 N/mm²`.
+
+**A ratio dial should have a real denominator.** The dial used to read "3.0 across
+for 1 along", which is a bare ratio with nothing to point at. Holding **b at 1.0 mm**
+makes the dial's reading *be* a in millimetres, so a/b in the footer divides two
+numbers the drawing labels. **Where a control sets a ratio, fix the other side at a
+real value and let the dial read a real quantity.**
+
+**Two labels will not share a 240px line.** `safeRight` is 240 at the common 400px
+desktop panel *and* on a phone, so a pair of side-by-side labels at 11px overlapped
+by 29px. Merging them into one centred string -- 198px of the 216px available -- fixed
+it. Check a label pair against `safeRight - 24` before splitting it in two.
+
 **A formula on the canvas must only use numbers the picture has already shown.**
 L3C22 drew a ladder of rungs labelled `n=1` to `n=8` -- numbers, with no energies --
 and then printed `13.6 x (1/2² - 1/6²) = 3.022 eV, so 1240/3.022 = 410.3 nm`. Two

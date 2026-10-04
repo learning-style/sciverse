@@ -15,8 +15,11 @@ const MAX_SHOWN = 3400;        // K = 21 at 80 kN, so the gauge is stretched to 
 const INDIGO = '#4338ca';
 const BREAK = '#7f1d1d';
 
+// b is held at 1.0 mm along the pull, so the dial's reading IS a in mm and the
+// footer's a/b is a division of two numbers labelled on the drawing.
+const B_MM = 1.0;
 const loadOf = (dial: number): number => Math.max(10, Math.min(80, Math.round(dial / 5) * 5));
-const abOf = (dial: number): number => Math.round(Math.max(5, Math.min(100, dial))) / 10;
+const aOf = (dial: number): number => Math.round(Math.max(5, Math.min(100, dial))) / 10;
 const kOf = (ab: number): number => 1 + 2 * ab;
 
 export const L2P23NotchLab = ({ state, onStateChange }: Props) => {
@@ -24,7 +27,8 @@ export const L2P23NotchLab = ({ state, onStateChange }: Props) => {
 
     const drawScene = ({ ctx, safeRight, t, raw, raw2, stageTop, stageBottom }: LabScene) => {
         const kN = loadOf(raw);
-        const ab = abOf(raw2);
+        const aMm = aOf(raw2);
+        const ab = aMm / B_MM;
         const K = kOf(ab);
         const plain = (kN * 1000) / AREA;
         const peak = K * plain;
@@ -64,6 +68,29 @@ export const L2P23NotchLab = ({ state, onStateChange }: Props) => {
         ctx.lineWidth = 1.8;
         ctx.stroke();
 
+        // a and b measured on the notch itself, to scale, so the words "across" and
+        // "along" below the plate have something to point at. At a sharp setting b
+        // really is a sliver, and the drawing says so rather than flattering it.
+        const tick = (x1: number, y1: number, x2: number, y2: number) => {
+            ctx.strokeStyle = '#0f172a';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+            const vertical = x1 === x2;
+            for (const [px, py] of [[x1, y1], [x2, y2]] as [number, number][]) {
+                ctx.beginPath();
+                if (vertical) { ctx.moveTo(px - 3, py); ctx.lineTo(px + 3, py); }
+                else { ctx.moveTo(px, py - 3); ctx.lineTo(px, py + 3); }
+                ctx.stroke();
+            }
+        };
+        // a, across the pull
+        tick(cx - along - 8, midY - across, cx - along - 8, midY + across);
+        // b, along the pull
+        tick(cx - along, midY + across + 4, cx + along, midY + across + 4);
+
         // The load crowding past the notch. The lines are the paths the load takes;
         // they bunch against the notch and spread out further away, and the bigger K
         // is the harder they bunch -- so the drawing shows what the number means.
@@ -94,21 +121,25 @@ export const L2P23NotchLab = ({ state, onStateChange }: Props) => {
             ctx.stroke();
         }
 
-        outlineText(ctx, 'the load crowds past the notch and bunches beside it',
+        outlineText(ctx, 'K = how many times the notch beats the average',
             safeRight / 2, Math.max(top + 10, artTop + 10),
             'bold 11px monospace', '#334155', 'center', safeRight - 24);
         outlineText(ctx, 'plain ' + plain.toFixed(0) + ' N/mm²',
-            left + plateW * 0.17, Math.max(plateTop - 5, artTop + 22),
+            left + plateW * 0.17, Math.max(midY - across - 7, plateTop + 11),
             'bold 11px monospace', INDIGO, 'center', plateW / 2);
-        outlineText(ctx, 'at the notch ' + peak.toFixed(0) + ' N/mm²',
-            cx, Math.min(plateTop + plateH + 14, artBottom - 16),
-            'bold 12px monospace', breaks ? BREAK : INDIGO, 'center', safeRight - 24);
+        // Both lengths the footer divides, in one line so they fit the 240px panel,
+        // each with the arrow for its own direction and matching the ticks above.
+        outlineText(ctx, '↕ a ' + aMm.toFixed(1) + ' across, ↔ b '
+            + B_MM.toFixed(1) + ' along',
+            safeRight / 2, Math.min(plateTop + plateH + 14, artBottom - 16),
+            'bold 11px monospace', '#0f172a', 'center', safeRight - 24);
         outlineText(ctx, breaks ? 'breaks: steel yields at ' + YIELD + ' N/mm²'
             : 'holds: under ' + YIELD + ' N/mm²',
             safeRight / 2, Math.min(plateTop + plateH + 30, artBottom),
             'bold 12px monospace', breaks ? BREAK : INDIGO, 'center', safeRight - 24);
 
-        outlineText(ctx, 'K = 1 + 2 x ' + ab.toFixed(1) + ' = ' + K.toFixed(1),
+        outlineText(ctx, 'K = 1 + 2 x ' + aMm.toFixed(1) + '/' + B_MM.toFixed(1)
+            + ' = ' + K.toFixed(1),
             safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
         outlineText(ctx, K.toFixed(1) + ' x ' + plain.toFixed(0) + ' N/mm² = '
             + peak.toFixed(0) + ' N/mm²',
@@ -151,7 +182,8 @@ export const L2P23NotchLab = ({ state, onStateChange }: Props) => {
                 min: 5,
                 max: 100,
                 initial: 10,
-                display: raw => abOf(raw).toFixed(1) + ' across for 1 along',
+                display: raw => 'a ' + aOf(raw).toFixed(1) + ' mm across, b '
+                    + B_MM.toFixed(1) + ' mm along',
             }}
             accent="indigo"
             sky={['#eef2ff', '#f8fafc']}
