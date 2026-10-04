@@ -71,8 +71,10 @@ export const L2C23ZincLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'the zinc is a supply being spent, not a seal',
             safeRight / 2, Math.max(top + 10, artTop + 10),
             'bold 11px monospace', '#334155', 'center', safeRight - 24);
+        // Pinned to the top of the bar, which is where the zinc is. Following the
+        // zinc/steel boundary down brought it within 8 px of the label below.
         outlineText(ctx, 'zinc ' + thick + ' µm',
-            safeRight / 2, Math.max(Math.min(steelTop + 12, artBottom - 30), barTop + 11),
+            safeRight / 2, barTop + 11,
             'bold 11px monospace', '#065f46', 'center', safeRight - 24);
         outlineText(ctx, 'steel below, not rusting while the zinc lasts',
             safeRight / 2, Math.min(barTop + barH - 8, artBottom - 16),

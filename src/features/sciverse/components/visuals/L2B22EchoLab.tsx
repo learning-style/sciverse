@@ -124,8 +124,10 @@ export const L2B22EchoLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'down', cx - 38, legY, 'bold 11px monospace', legColour, 'center', 40);
         outlineText(ctx, 'back', cx + 38, legY, 'bold 11px monospace', legColour, 'center', 40);
         if (reachCm < MAX_CM) {
+            // Capped clear of the verdict row below, which sits at artBottom - 5.
             outlineText(ctx, 'this probe reaches ' + reachCm.toFixed(0) + ' cm',
-                safeRight / 2, Math.max(Math.min(yOf(reachCm) + 13, artBottom), scaleTop + 28),
+                safeRight / 2,
+                Math.max(Math.min(yOf(reachCm) + 13, artBottom - 18), scaleTop + 28),
                 'bold 11px monospace', '#9f1239', 'center', safeRight - 24);
         }
         outlineText(ctx, seen ? 'the echo comes back' : 'too deep for ' + mhz.toFixed(1) + ' MHz: no echo',

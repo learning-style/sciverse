@@ -78,11 +78,16 @@ export const L2B23ClosingLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'each long edge creeps inward, so each goes half way',
             safeRight / 2, Math.max(top + 10, artTop + 10),
             'bold 11px monospace', '#334155', 'center', safeRight - 24);
+        // Two fixed slots below the artwork. Placing one label from the rectangle
+        // and the other from the band let them land on each other -- 2 px apart in
+        // the worst case, which is what a reader saw.
+        const rowOne = Math.min(bandTop + room + 14, artBottom - 14);
+        const rowTwo = Math.min(bandTop + room + 28, artBottom);
         outlineText(ctx, 'short side ' + shortMm.toFixed(1) + ' mm',
-            safeRight / 2, Math.max(Math.min(midY + hPx / 2 + 14, artBottom - 16), bandTop + 12),
+            safeRight / 2, rowOne,
             'bold 12px monospace', slow ? SLOW : ROSE, 'center', safeRight - 24);
         outlineText(ctx, 'long side ' + longMm.toFixed(0) + ' mm, which barely matters',
-            safeRight / 2, Math.min(bandTop + room + 16, artBottom),
+            safeRight / 2, rowTwo,
             'bold 11px monospace', '#334155', 'center', safeRight - 24);
 
         outlineText(ctx, 'short side = √(' + area + ' / ' + ratio + ') = '

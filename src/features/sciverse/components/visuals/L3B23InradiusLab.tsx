@@ -78,11 +78,14 @@ export const L3B23InradiusLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'the largest circle that fits, and its radius',
             safeRight / 2, Math.max(top + 10, artTop + 10),
             'bold 11px monospace', '#334155', 'center', safeRight - 24);
+        // Same two fixed slots as L2B23, for the same reason.
+        const rowOne = Math.min(bandTop + room + 14, artBottom - 14);
+        const rowTwo = Math.min(bandTop + room + 28, artBottom);
         outlineText(ctx, 'inradius ' + inradiusMm.toFixed(2) + ' mm',
-            safeRight / 2, Math.max(Math.min(midY + hPx / 2 + 14, artBottom - 16), bandTop + 12),
+            safeRight / 2, rowOne,
             'bold 12px monospace', slow ? STUCK : ROSE, 'center', safeRight - 24);
         outlineText(ctx, longMm.toFixed(0) + ' mm long, which is not in the answer',
-            safeRight / 2, Math.min(bandTop + room + 16, artBottom),
+            safeRight / 2, rowTwo,
             'bold 11px monospace', '#334155', 'center', safeRight - 24);
 
         outlineText(ctx, 'inradius ' + inradiusMm.toFixed(2) + ' mm / ' + speed.toFixed(2)

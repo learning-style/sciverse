@@ -381,6 +381,21 @@ makes the dial's reading *be* a in millimetres, so a/b in the footer divides two
 numbers the drawing labels. **Where a control sets a ratio, fix the other side at a
 real value and let the dial read a real quantity.**
 
+**Simulate how far labels are from EACH OTHER, not just whether each is in the
+stage.** A reader sent a screenshot of L2B23 with two captions printed on top of
+one another, and every one of them was inside `artBottom` -- the bounds check that
+has caught so much else is blind to this. The cause is placing one label from the
+**artwork** (it moves as the drawing grows) and the next from the **band** (it does
+not), so they converge: 150 of 588 combinations put them within 11px, two of them
+2px apart. **Give labels below the artwork fixed, separated slots** rather than
+following the thing they describe.
+
+A scan for the pattern across the corpus flagged 31 labs by structure and only
+**4 genuinely collided** -- the structure is common and harmless unless the second
+label's unclamped value can rise **above** the first. L2B23, L3B23, L2C23 and
+L2B22 are fixed; the rest were checked and are clear. When a heuristic flags
+dozens, simulate each one before touching any of them.
+
 **Two labels will not share a 240px line.** `safeRight` is 240 at the common 400px
 desktop panel *and* on a phone, so a pair of side-by-side labels at 11px overlapped
 by 29px. Merging them into one centred string -- 198px of the 216px available -- fixed
