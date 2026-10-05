@@ -289,7 +289,7 @@ import { getL2B22Script } from './l2b22-how-deep-and-how-fine';
 import { getL3P22Script } from './l3p22-what-the-missing-waves-proved';
 import { getL3C22Script } from './l3c22-where-the-lines-come-from';
 import { getL3B22Script } from './l3b22-why-there-is-an-echo-at-all';
-import { getL2P23Script } from './l2p23-will-the-notch-break-it';
+import { getL2P23Script } from './l2p23-how-many-bends-before-it-snaps';
 import { getL2C23Script } from './l2c23-how-long-will-the-zinc-last';
 import { getL2B23Script } from './l2b23-round-or-a-line';
 import { getL3P23Script } from './l3p23-why-a-scratch-does-not-break-a-girder';
@@ -1916,7 +1916,7 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p22', title: 'What the Missing Waves Proved', subtitle: 'Rays curve, and the absence of a wave found the core', discipline: 'physics', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '🌍', accentColor: 'indigo', crossLinks: ['l2p22', 'l3p21'], level: 3 },
     { id: 'l3c22', title: 'Where the Lines Come From', subtitle: 'A ladder of rungs going as 1 over n squared', discipline: 'chemistry', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '📐', accentColor: 'emerald', crossLinks: ['l2c22', 'l3p22'], level: 3 },
     { id: 'l3b22', title: 'Why There Is an Echo at All', subtitle: 'A mismatch in impedance, and why faint is better', discipline: 'biology', bigIdea: 22, bigIdeaTitle: 'How Do Waves Help Us See the Invisible?', icon: '🔊', accentColor: 'rose', crossLinks: ['l2b22', 'l3b21'], level: 3 },
-    { id: 'l2p23', title: 'Will the Notch Break It?', subtitle: 'A flaw multiplies the stress: K = 1 + 2a/b', discipline: 'physics', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🪓', accentColor: 'indigo', crossLinks: ['p23', 'l2p17'], level: 2 },
+    { id: 'l2p23', title: 'How Many Bends Before It Snaps?', subtitle: 'Invisible damage that adds up, and the cube that rules it', discipline: 'physics', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🪓', accentColor: 'indigo', crossLinks: ['p23', 'l2p17'], level: 2 },
     { id: 'l2c23', title: 'How Long Will the Zinc Last?', subtitle: 'Protection is a supply, spent on purpose', discipline: 'chemistry', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🧪', accentColor: 'emerald', crossLinks: ['c23', 'l2p23'], level: 2 },
     { id: 'l2b23', title: 'Round or a Line?', subtitle: 'Healing crosses the short side, so shape beats size', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🩹', accentColor: 'rose', crossLinks: ['b23', 'l2c23'], level: 2 },
     { id: 'l3p23', title: 'Why a Scratch Does Not Break a Girder', subtitle: 'A crack must pay for its own new surface', discipline: 'physics', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🔬', accentColor: 'indigo', crossLinks: ['l2p23', 'l3p17'], level: 3 },

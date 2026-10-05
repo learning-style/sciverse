@@ -71,6 +71,29 @@ Nernst in L3C7, Henderson-Hasselbalch in L3C11 — or where the law is empirical
 the lesson **says so**, as L3B10 does for S = cA^z. It is not acceptable when the
 formula belongs to no syllabus at this age.
 
+**A finished lesson that sits above its level goes to `docs/level4/`, not the bin.**
+L2P23 was stress concentration -- `K = 1 + 2a/b` -- which is engineering-level for
+grades 6-8. It is kept whole there with a `.parked` suffix, outside `include: ["src"]`
+so neither tsc nor the checkers can reach it, and with a README saying why it moved
+and what reinstating it would cost. The science was checked and the layout simulated;
+that work should not be thrown away because the level was wrong.
+
+**Check a Level 2 lesson against the question Level 1 actually asked.** The giveaway
+here was not the difficulty but a word count: P23 opens with *"why do bridges fail
+after many small loads?"* and names **fatigue** five times, and L2P23 named it
+**zero** times. It had answered the *concentration* half of Level 1 and skipped the
+*repeated-loads* half -- which is the half a learner has actually seen happen, every
+time they have snapped a paperclip. The replacement is that paperclip.
+
+**Replacing a lesson means hunting its cross-references.** L3P23 was built to
+demolish L2P23's formula, so it now has to **introduce** `K` itself before taking it
+apart. L2B23 referred to the crack six times, and the whole Level 2 spine had been
+"boundaries, not bulk", which only held because the physics was a crack. With fatigue
+in place the truer spine is that **all three Level 2 lessons are something spent at a
+rate** -- a life of bends, a thickness of zinc, a distance between edges -- so all
+three are a division, and in every case the rate is what can be changed. Boundaries
+still close Level 3, where they genuinely hold.
+
 **Where the curriculum actually stands** (audited September 2026, by reading each
 lesson's header *and* body — a header alone will mislead you):
 
