@@ -21,7 +21,7 @@ export const bigIdea23Level3Assessment: AssessmentData = {
             id: 1,
             difficulty: 'easy',
             discipline: 'physics',
-            question: 'L2P23\'s K = 1 + 2a/b runs to infinity at a real crack tip, which would mean any scratch breaks anything. What does that tell you?',
+            question: 'The natural first guess, K = 1 + 2a/b, runs to infinity at a real crack tip, which would mean any scratch breaks anything. What does that tell you?',
             options: [
                 'That cracks really are extremely dangerous',
                 'That peak stress cannot be what decides fracture — if it were, the crack would already be running',
