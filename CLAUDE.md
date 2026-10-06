@@ -732,7 +732,12 @@ To confirm a deploy actually landed, three steps rather than one:
 1. Job-level conclusion of **Publish GitHub Pages** for that SHA — not the run
    conclusion.
 2. `git ls-remote origin gh-pages` moved, **and** the new head's message names
-   your SHA (it reads `deploy: <full sha>`).
+   your SHA (it reads `deploy: <full sha>`). **A commit that changes nothing under
+   `src/` will not move it**, and that is correct: `peaceiris/actions-gh-pages`
+   compares the built `dist/` and skips the commit when it is identical, while the
+   job still reports success. So a docs-only commit leaves gh-pages naming the last
+   commit that changed the site. Expect step 2 to fail for those, and check the
+   diff before reading it as a broken deploy.
 3. Fetch the site's hashed JS bundle and grep for the strings you added **and
    the ones you removed**. New text being present does not prove old text is
    gone.
