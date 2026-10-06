@@ -162,22 +162,44 @@ eleven electrons screen one another. L3B22 explains why there is an echo at all 
 mismatch in `Z = density x speed`.
 
 Big Idea 23 is the second trio where **all three Level 3 lessons are Mechanism +
-Limit**, and the first where a Level 2 lesson is built to end in a contradiction on
-purpose. L2P23 gives `K = 1 + 2a/b` and then pushes the dial until the formula
-claims that **any scratch breaks anything** -- which it must, because K runs to
-infinity at a real crack tip. L3P23 resolves it by changing what fracture is *about*:
-a crack must pay for the new surface it makes, release goes as stress² x length
-while cost per millimetre is constant, so **length replaces sharpness** and the
-critical crack is 12.7 mm in steel against 62 µm in glass. L3C23 does the same for
+Limit**, and the one whose handover was redesigned after it was built. L2P23 is
+fatigue -- a paperclip's `life = 4 x (90/angle)³` bends -- and it closes by saying
+plainly that it never told you *what* the invisible damage is. L3P23 answers that in
+its first line: a **crack**, a little longer after every bend, which turns *when
+does this break?* into *how long a crack is too long?* It then raises
+`K = 1 + 2a/b` as the natural guess and pushes it until the formula claims that
+**any scratch breaks anything** -- which it must, because K runs to infinity at a
+real crack tip. The resolution changes what fracture is *about*: a crack must pay
+for the new surface it makes, release goes as stress² x length while cost per
+millimetre is constant, so **length replaces sharpness** and the critical crack is
+12.7 mm in steel against 62 µm in glass. L3C23 does the same for
 a different impossibility -- a coating that protects steel it is not covering -- and
 the resolution is that the steel is **the wrong electrode**, not a covered one.
 L3B23 is the cleanest **unification** in the curriculum: L2B23's "half the short
 side" and "the radius" were one quantity all along, the **inradius**, and naming it
 explains stitching, the surgeon's ellipse and the graft at once.
 
-**Build a Level 2 lesson whose formula visibly breaks.** It is a better handover
-than a *still standing* line, because the learner has already felt the problem and
-arrives at Level 3 wanting the answer rather than being told one was owed.
+**A lesson may introduce a formula in order to demolish it, and both halves can
+live at one level.** That contradiction was first built as a handover across two:
+L2P23 gave K, L3P23 broke it, and the learner arrived at Level 3 already wanting the
+answer rather than being told one was owed. It is a good shape and worth reaching
+for -- but it only works if the setup half genuinely belongs at the lower level, and
+`K = 1 + 2a/b` did not. Moving it left L3P23 owning both halves, which cost one
+paragraph and lost nothing. **Where the setup cannot sit a level down on its own
+merits, put setup and payoff in the same lesson rather than mis-levelling the
+setup.** The replacement handover is better anyway, because L2P23 now ends on a
+question it states but cannot answer.
+
+**Cross-references outlive the lesson they point at.** Replacing L2P23 left three
+behind: L3B23's closing table gave `K = 1 + 2a/b` as the **Level 2** physics rule
+and credited Level 3 with removing *the sharpness*, and the Level 3 assessment
+opened by calling the formula *L2P23's*. **Not one of the checkers can see this** --
+the text is well-formed, every word still appears in some lesson, and nothing in the
+repo records which lesson a claim was borrowed from. So after replacing a lesson,
+grep the corpus for **its ID and for its formula**, and read the **other two
+disciplines' closing tables**, which are where the level-by-level rows live. The
+replaced lesson's own siblings were already correct; the stale rows were all in the
+level above.
 
 **The three disciplines read the same word.** A difference in wave speed, a difference
 in electron energy, a difference in impedance — and each instrument is **blind to
@@ -389,8 +411,8 @@ only a 300-word vocabulary, so *all*, *most* and *help* are genuinely absent fro
 L2P5: pull the lesson's own word list and choose from it rather than guessing.
 Keep each pair under about 340px, since `low` and `high` share one 13px line.
 
-**Name what a derived number IS, not just its value.** L2P23's canvas printed
-`K = 1 + 2 x 1.0 = 3.0` with nothing saying what K was, and drew a notch without
+**Name what a derived number IS, not just its value.** The notch lab now parked in
+`docs/level4/` printed `K = 1 + 2 x 1.0 = 3.0` with nothing saying what K was, and drew a notch without
 marking which direction was *across* the pull and which was *along* it -- so the
 division had two unexplained inputs and an unexplained output. The caption now
 carries the definition (`K = how many times the notch beats the average`), both
@@ -714,6 +736,17 @@ To confirm a deploy actually landed, three steps rather than one:
 3. Fetch the site's hashed JS bundle and grep for the strings you added **and
    the ones you removed**. New text being present does not prove old text is
    gone.
+
+**Step 1 is first for a reason: a cancelled publish job is indistinguishable
+from a slow one if you only watch gh-pages.** `a584ac1` type-checked, built and
+passed its tests, and then the publish job was **cancelled** by GitHub itself --
+*the job was not acquired by Runner of type hosted even after multiple
+attempts*. From the gh-pages side that looks exactly like a deploy still in
+flight, so a watcher polling `git ls-remote` waits forever and reports *pending*.
+Nothing was wrong with the code; an empty commit re-triggered it and it went
+green. **If gh-pages has not moved, read the job conclusion rather than waiting
+longer** -- and note that the API watcher can hit GitHub's rate limit, which also
+reads as *pending* and is worth distinguishing before reporting a state.
 
 Every deep link returns HTTP 404 from GitHub Pages — Pages has no SPA rewrite,
 so the deploy copies `index.html` to `404.html` and React Router takes over. The
