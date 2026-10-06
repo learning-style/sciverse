@@ -191,6 +191,9 @@ import { L2B23ClosingLab } from './L2B23ClosingLab';
 import { L3P23ToughnessLab } from './L3P23ToughnessLab';
 import { L3C23ReachLab } from './L3C23ReachLab';
 import { L3B23InradiusLab } from './L3B23InradiusLab';
+import { L2P24NetworkLab } from './L2P24NetworkLab';
+import { L2C24JunctionLab } from './L2C24JunctionLab';
+import { L2B24QueueLab } from './L2B24QueueLab';
 import { L2C17SteelLab } from './L2C17SteelLab';
 import { L2B17HollowLab } from './L2B17HollowLab';
 import { L3P17BucklingLab } from './L3P17BucklingLab';
@@ -398,6 +401,9 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p23: L3P23ToughnessLab,
     l3c23: L3C23ReachLab,
     l3b23: L3B23InradiusLab,
+    l2p24: L2P24NetworkLab,
+    l2c24: L2C24JunctionLab,
+    l2b24: L2B24QueueLab,
     l2c17: L2C17SteelLab,
     l2b17: L2B17HollowLab,
     l3p17: L3P17BucklingLab,

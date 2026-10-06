@@ -295,6 +295,9 @@ import { getL2B23Script } from './l2b23-round-or-a-line';
 import { getL3P23Script } from './l3p23-why-a-scratch-does-not-break-a-girder';
 import { getL3C23Script } from './l3c23-why-a-scratch-in-the-zinc-does-not-matter';
 import { getL3B23Script } from './l3b23-why-the-edge-does-the-work';
+import { getL2P24Script } from './l2p24-which-pipe-should-the-city-replace';
+import { getL2C24Script } from './l2c24-why-a-bigger-flame-is-not-a-safer-flame';
+import { getL2B24Script } from './l2b24-where-the-tree-gets-stuck';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1366,6 +1369,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p23': getL3P23Script,
     'l3c23': getL3C23Script,
     'l3b23': getL3B23Script,
+    'l2p24': getL2P24Script,
+    'l2c24': getL2C24Script,
+    'l2b24': getL2B24Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1921,6 +1927,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2b23', title: 'Round or a Line?', subtitle: 'Healing crosses the short side, so shape beats size', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🩹', accentColor: 'rose', crossLinks: ['b23', 'l2c23'], level: 2 },
     { id: 'l3p23', title: 'Why a Scratch Does Not Break a Girder', subtitle: 'A crack must pay for its own new surface', discipline: 'physics', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '🔬', accentColor: 'indigo', crossLinks: ['l2p23', 'l3p17'], level: 3 },
     { id: 'l3c23', title: 'Why a Scratch in the Zinc Does Not Matter', subtitle: 'A 0.32 V cell, and the steel is the wrong electrode', discipline: 'chemistry', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '⚡', accentColor: 'emerald', crossLinks: ['l2c23', 'l3p23'], level: 3 },
+    { id: 'l2p24', title: 'Which Pipe Should the City Replace?', subtitle: 'A network is capped by lines, not by pipes', discipline: 'physics', bigIdea: 24, bigIdeaTitle: 'How Do Networks Deliver What Matters?', icon: '🚰', accentColor: 'indigo', crossLinks: ['p24', 'l2p7'], level: 2 },
+    { id: 'l2c24', title: 'Why a Bigger Flame Is Not a Safer Flame', subtitle: 'Two routes divide one stream, so only the ratio counts', discipline: 'chemistry', bigIdea: 24, bigIdeaTitle: 'How Do Networks Deliver What Matters?', icon: '🔥', accentColor: 'emerald', crossLinks: ['c24', 'l2p24'], level: 2 },
+    { id: 'l2b24', title: 'Where the Tree Gets Stuck', subtitle: 'A chain delivers only as much as its smallest step', discipline: 'biology', bigIdea: 24, bigIdeaTitle: 'How Do Networks Deliver What Matters?', icon: '🌳', accentColor: 'rose', crossLinks: ['b24', 'l2c24'], level: 2 },
     { id: 'l3b23', title: 'Why the Edge Does the Work', subtitle: 'One rule for every shape: the largest circle that fits', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '⭕', accentColor: 'rose', crossLinks: ['l2b23', 'l3c23'], level: 3 },
     { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
     { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },
