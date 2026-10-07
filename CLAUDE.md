@@ -99,10 +99,16 @@ lesson's header *and* body — a header alone will mislead you):
 
 | | Mechanism | Mechanism + Limit | Limit | Quantity only |
 |---|---|---|---|---|
-| Level 2 (73) | 17 | — | 7 | 49 |
-| Level 3 (69) | 13 | 31 | 17 | 8 |
+| Level 2 (76) | 19 | — | 8 | 49 |
+| Level 3 (72) | 14 | 33 | 17 | 8 |
 
-Big Ideas 17 and 18 were built after that audit and are counted above. Big Idea
+Big Ideas 17 and 18 were built after that audit and are counted above, as are 19 to
+24. **Everything after Big Idea 18 was classified by whoever wrote it**, which is not
+the same as being audited -- the September count came from reading bodies with fresh
+eyes, and L3P15 shows how far a header can mislead. The rows for 19-24 are worth
+re-reading rather than trusted, and the figure to be most sceptical of is Level 2's
+19 Mechanism lessons: a lesson whose verb is *Calculate* can look like it explains
+why its rule holds when it has only stated the rule carefully. Big Idea
 18's Level 3 is the pattern to copy: **L3P18 is pure Mechanism** and adds no new
 machinery at all — it derives the tilt across a bend from circular motion and a
 force balance, `Δh = v²w/(gR)`, and then explains *both* banks from the one fact
@@ -214,6 +220,42 @@ echoes are faint**, exactly as a cell's tiny ATP store is what makes its sensor 
 Twice now the apparent weakness has turned out to be the mechanism — worth looking for
 a third time.
 
+Big Idea 24 is the first trio where **each Level 3 lesson removes something its
+Level 2 lesson had already confessed to**, which turned out to be easier to write
+than guessing at a simplification. Its Level 1 lessons are among the vaguest in the
+curriculum -- dials called Pressure and Resistance and not a number anywhere -- so
+Level 2 had to invent the question as well as answer it: **which part of a network
+is actually deciding?** The answer needs only two rules, and they are opposites.
+L2P24 has capacities **add** across pipes that sit side by side, so the narrowest
+pipe is often the wrong one to replace. L2C24 has two reaction routes **divide** one
+stream of carbon, because they compete for the same material -- so doubling both
+routes changes the share by exactly nothing, while doubling both pipes doubled the
+delivery. **Same picture, opposite arithmetic, and the difference is who owns the
+material.** L2B24 closes it with a queue of three steps whose limit **moves three
+times in three days** while the tree does not change.
+
+The lesson for the next Big Idea is about where Level 3 comes from. **A Level 2
+lesson that names its own weak point precisely has written the Level 3 lesson's
+first paragraph.** L2P24 said *take the smaller of the two lines* and could only
+prove *no more than*; L3P24 proves the rest, and **being stuck is itself a cut** --
+mark everything still reachable and the edge of what you marked is the bottleneck,
+with everything forwards full and everything backwards empty. L2C24 stated in
+passing that the gases rush away and never come back; L3C24 removes exactly that
+sentence and **the speeds vanish from the answer entirely**. L2B24 admitted its
+capacities were handed over; L3B24 derives the xylem's from a cost that falls
+against one that rises.
+
+**L3B24 is the fourth closing biology lesson to turn on a shape, and the first whose
+shape is forgiving.** At the best radius the friction cost is *exactly* half the
+upkeep -- at every flow, whatever the constants -- which lets a learner find the
+optimum by inspection instead of by differentiating, and makes the arbitrary units
+cancel out of a ratio. That puts r³ proportional to Q, so conservation at a junction
+gives **r₀³ = r₁³ + r₂³** with no new biology at all. And the bottom of the curve is
+**flat**: 10% off the best radius costs under 5%. That one fact answers two things at
+once -- why one xylem can serve every kind of weather, which L2B24 raised and could
+not resolve, and why real measurements scatter around Murray's law while the rule
+still holds. **Near the bottom, almost right is almost free.**
+
 **Four closing biology lessons now turn on a shape rather than a fact**, and each
 says so: L3B18's two curves gave a **ratio** that collapses, L3B19's two factors a
 **product** that peaks, L3B20's a **reciprocal** that turns a steady decline into a
@@ -228,7 +270,7 @@ discharge is an input to L2C18's load, and L2B18's percent saturation is L2P18's
 flow wearing a different hat.
 
 Level 2 being Quantity-dominant is correct: its verb *is* Calculate. Level 3 is
-the one to watch, and **61 of its 69 lessons already carry Mechanism or Limit
+the one to watch, and **64 of its 72 lessons already carry Mechanism or Limit
 reasoning**. The 8 that are Quantity alone each pass the third test — L3C15's ICE
 tables, L3P14's sampling rate, L3B14's 138 silent swaps all change a decision.
 
@@ -445,6 +487,43 @@ dozens, simulate each one before touching any of them.
 desktop panel *and* on a phone, so a pair of side-by-side labels at 11px overlapped
 by 29px. Merging them into one centred string -- 198px of the 216px available -- fixed
 it. Check a label pair against `safeRight - 24` before splitting it in two.
+
+**So 216px is the design width, and that is about thirty characters at 12px.** The
+240px case is not an edge case -- it is the common one, and `outlineText` shrinks
+only to **8px**, which is unreadable. So an over-long string does not fail loudly,
+it quietly becomes illegible: Big Idea 24's first draft had five strings needing up
+to 310px of 216, and the simulation reported 1092 failures where reading the file
+had shown nothing. **Budget 30 characters at 12px and 26 at 13px**, simulate the
+shrink rather than the nominal size, and treat anything that renders below 11px as a
+failure. Shortening is usually free -- `street A 25 + street B 20 = 45 L/min` became
+`streets 25 + 20 = 45 L/min`, which is also the lesson's own phrase for them.
+
+**Derive the number of label rows from the height available; never assume it.** A
+phone-height canvas leaves a 128px stage, and at 340px tall only 88px, which cannot
+hold a drawing and three label rows however carefully they are placed. Computing
+`fit = floor((usable - 24) / 15)` and dropping rows **from the bottom up** -- least
+useful first, since a verdict row is already carried by colour and by the meter
+note -- turned four separate overlap failures into zero across six labs. The
+specific bug to watch for is a **floor on the drawing's height**: `Math.max(20,
+usable - rows)` silently exceeds the space it is being fitted into, and
+`Math.max(24, usable)` is worse. Floor the drawing low and cap it by what is left.
+The same mistake appeared three times in one sitting, in three different labs.
+
+**Encode the arithmetic in the geometry and the picture needs no caption to be
+believed.** Three of Big Idea 24's labs make their rule true by construction rather
+than asserting it: pipe **width** is capacity, so the eye compares the trunk against
+the two streets *stacked*; the burner's two outgoing streams are drawn at one scale
+from one total, so they **sum to the inlet by construction** -- which is the whole
+contrast with the pipes, and the simulation asserts it in all 896 settings; and the
+two cost curves are plotted so that *friction is half the upkeep* is visibly one
+curve at half the height of the other. A learner who only looks has still been told.
+
+**Verify a theorem before teaching it.** L3P24 claims the smallest cut equals the
+most that can flow. That was checked against an actual max-flow computation over all
+**2116 dial settings** before a word of the lesson was written -- and the same sweep
+confirmed that all four cuts are the binding one somewhere on the grid, which is
+what makes the lab worth moving. Picking the network so that every case is reachable
+is a design decision, and it needs a search rather than a guess.
 
 **A formula on the canvas must only use numbers the picture has already shown.**
 L3C22 drew a ladder of rungs labelled `n=1` to `n=8` -- numbers, with no energies --
