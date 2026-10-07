@@ -298,6 +298,9 @@ import { getL3B23Script } from './l3b23-why-the-edge-does-the-work';
 import { getL2P24Script } from './l2p24-which-pipe-should-the-city-replace';
 import { getL2C24Script } from './l2c24-why-a-bigger-flame-is-not-a-safer-flame';
 import { getL2B24Script } from './l2b24-where-the-tree-gets-stuck';
+import { getL3P24Script } from './l3p24-why-the-smallest-line-is-always-reachable';
+import { getL3C24Script } from './l3c24-the-product-that-forms-first';
+import { getL3B24Script } from './l3b24-what-shape-is-worth-building';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1372,6 +1375,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p24': getL2P24Script,
     'l2c24': getL2C24Script,
     'l2b24': getL2B24Script,
+    'l3p24': getL3P24Script,
+    'l3c24': getL3C24Script,
+    'l3b24': getL3B24Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1930,6 +1936,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p24', title: 'Which Pipe Should the City Replace?', subtitle: 'A network is capped by lines, not by pipes', discipline: 'physics', bigIdea: 24, bigIdeaTitle: 'How Do Networks Deliver What Matters?', icon: '🚰', accentColor: 'indigo', crossLinks: ['p24', 'l2p7'], level: 2 },
     { id: 'l2c24', title: 'Why a Bigger Flame Is Not a Safer Flame', subtitle: 'Two routes divide one stream, so only the ratio counts', discipline: 'chemistry', bigIdea: 24, bigIdeaTitle: 'How Do Networks Deliver What Matters?', icon: '🔥', accentColor: 'emerald', crossLinks: ['c24', 'l2p24'], level: 2 },
     { id: 'l2b24', title: 'Where the Tree Gets Stuck', subtitle: 'A chain delivers only as much as its smallest step', discipline: 'biology', bigIdea: 24, bigIdeaTitle: 'How Do Networks Deliver What Matters?', icon: '🌳', accentColor: 'rose', crossLinks: ['b24', 'l2c24'], level: 2 },
+    { id: 'l3p24', title: 'Why the Smallest Line Is Always Reachable', subtitle: 'The bottleneck is a boundary, and being stuck proves it', discipline: 'physics', bigIdea: 24, bigIdeaTitle: 'How Do Networks Deliver What Matters?', icon: '✂️', accentColor: 'indigo', crossLinks: ['l2p24', 'l3p11'], level: 3 },
+    { id: 'l3c24', title: 'The Product That Forms First', subtitle: 'Speed decides where you arrive, the gap where you stay', discipline: 'chemistry', bigIdea: 24, bigIdeaTitle: 'How Do Networks Deliver What Matters?', icon: '⚗️', accentColor: 'emerald', crossLinks: ['l2c24', 'l3p24'], level: 3 },
+    { id: 'l3b24', title: 'What Shape Is Worth Building', subtitle: 'Two costs settle every radius, and the cubes add', discipline: 'biology', bigIdea: 24, bigIdeaTitle: 'How Do Networks Deliver What Matters?', icon: '🌿', accentColor: 'rose', crossLinks: ['l2b24', 'l3c24'], level: 3 },
     { id: 'l3b23', title: 'Why the Edge Does the Work', subtitle: 'One rule for every shape: the largest circle that fits', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '⭕', accentColor: 'rose', crossLinks: ['l2b23', 'l3c23'], level: 3 },
     { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
     { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },
