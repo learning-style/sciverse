@@ -304,6 +304,9 @@ import { getL3B24Script } from './l3b24-what-shape-is-worth-building';
 import { getL2P25Script } from './l2p25-how-far-ahead-can-anyone-predict';
 import { getL2C25Script } from './l2c25-one-atom-a-hundred-thousand-molecules';
 import { getL2B25Script } from './l2b25-where-the-mutation-lands';
+import { getL3P25Script } from './l3p25-where-the-doubling-comes-from';
+import { getL3C25Script } from './l3c25-when-a-chain-hands-back-two';
+import { getL3B25Script } from './l3b25-why-most-mutations-do-nothing';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1384,6 +1387,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p25': getL2P25Script,
     'l2c25': getL2C25Script,
     'l2b25': getL2B25Script,
+    'l3p25': getL3P25Script,
+    'l3c25': getL3C25Script,
+    'l3b25': getL3B25Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1948,6 +1954,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p25', title: 'How Far Ahead Can Anyone Predict?', subtitle: 'An error that doubles eats a head start in a fixed number of steps', discipline: 'physics', bigIdea: 25, bigIdeaTitle: 'How Can Tiny Changes Cause Big Effects?', icon: '🌪️', accentColor: 'indigo', crossLinks: ['p25', 'l2p24'], level: 2 },
     { id: 'l2c25', title: 'One Atom, a Hundred Thousand Molecules', subtitle: 'The carrier is handed back, so the chain length is a reciprocal', discipline: 'chemistry', bigIdea: 25, bigIdeaTitle: 'How Can Tiny Changes Cause Big Effects?', icon: '🔄', accentColor: 'emerald', crossLinks: ['c25', 'l2p25'], level: 2 },
     { id: 'l2b25', title: 'Where the Mutation Lands', subtitle: 'Position in the network, not size of the change', discipline: 'biology', bigIdea: 25, bigIdeaTitle: 'How Can Tiny Changes Cause Big Effects?', icon: '🧬', accentColor: 'rose', crossLinks: ['b25', 'l2c25'], level: 2 },
+    { id: 'l3p25', title: 'Where the Doubling Comes From', subtitle: 'An error is multiplied by the slope of the rule it meets', discipline: 'physics', bigIdea: 25, bigIdeaTitle: 'How Can Tiny Changes Cause Big Effects?', icon: '📈', accentColor: 'indigo', crossLinks: ['l2p25', 'l3p9'], level: 3 },
+    { id: 'l3c25', title: 'When a Chain Hands Back Two', subtitle: 'A dividing line at exactly one, and a reciprocal into it', discipline: 'chemistry', bigIdea: 25, bigIdeaTitle: 'How Can Tiny Changes Cause Big Effects?', icon: '💥', accentColor: 'emerald', crossLinks: ['l2c25', 'l3p25'], level: 3 },
+    { id: 'l3b25', title: 'Why Most Mutations Do Nothing', subtitle: 'A spare switch, and a dividing line at exactly one', discipline: 'biology', bigIdea: 25, bigIdeaTitle: 'How Can Tiny Changes Cause Big Effects?', icon: '🛡️', accentColor: 'rose', crossLinks: ['l2b25', 'l3c25'], level: 3 },
     { id: 'l3b23', title: 'Why the Edge Does the Work', subtitle: 'One rule for every shape: the largest circle that fits', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '⭕', accentColor: 'rose', crossLinks: ['l2b23', 'l3c23'], level: 3 },
     { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
     { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },
