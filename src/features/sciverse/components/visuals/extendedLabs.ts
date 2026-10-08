@@ -197,6 +197,9 @@ import { L2B24QueueLab } from './L2B24QueueLab';
 import { L3P24CutLab } from './L3P24CutLab';
 import { L3C24ControlLab } from './L3C24ControlLab';
 import { L3B24MurrayLab } from './L3B24MurrayLab';
+import { L2P25DoublingLab } from './L2P25DoublingLab';
+import { L2C25ChainLab } from './L2C25ChainLab';
+import { L2B25CascadeLab } from './L2B25CascadeLab';
 import { L2C17SteelLab } from './L2C17SteelLab';
 import { L2B17HollowLab } from './L2B17HollowLab';
 import { L3P17BucklingLab } from './L3P17BucklingLab';
@@ -410,6 +413,9 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p24: L3P24CutLab,
     l3c24: L3C24ControlLab,
     l3b24: L3B24MurrayLab,
+    l2p25: L2P25DoublingLab,
+    l2c25: L2C25ChainLab,
+    l2b25: L2B25CascadeLab,
     l2c17: L2C17SteelLab,
     l2b17: L2B17HollowLab,
     l3p17: L3P17BucklingLab,
