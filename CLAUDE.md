@@ -99,8 +99,8 @@ lesson's header *and* body — a header alone will mislead you):
 
 | | Mechanism | Mechanism + Limit | Limit | Quantity only |
 |---|---|---|---|---|
-| Level 2 (76) | 19 | — | 8 | 49 |
-| Level 3 (72) | 14 | 33 | 17 | 8 |
+| Level 2 (79) | 21 | — | 9 | 49 |
+| Level 3 (75) | 14 | 36 | 17 | 8 |
 
 Big Ideas 17 and 18 were built after that audit and are counted above, as are 19 to
 24. **Everything after Big Idea 18 was classified by whoever wrote it**, which is not
@@ -256,6 +256,37 @@ once -- why one xylem can serve every kind of weather, which L2B24 raised and co
 not resolve, and why real measurements scatter around Murray's law while the rule
 still holds. **Near the bottom, almost right is almost free.**
 
+Big Idea 25 is the trio where **all three Level 3 lessons land on the same number**,
+and it is the strongest close so far. Its Level 1 lessons are the jargon high-water
+mark of the curriculum -- *chaotic*, *nonlinear*, *trajectory*, *deterministic*,
+*propagation*, *amplification*, *cascade*, and not one number anywhere -- so Level 2
+had to find the question too. It is this: **a tiny cause becomes a big effect only by
+being multiplied, so the size of the effect is set by how many repeats and never by
+how big the cause was.** L2P25 doubles a forecast error, L2C25 sends a carrier round
+a cycle, L2B25 multiplies a switch gene's reach layer by layer, and each one's
+punchline is that the obvious proportional answer is wrong: a **thousand**-fold
+better thermometer buys a fixed **fifteen days**.
+
+Then Level 3 supplies the half that was missing, and it is the same half three times.
+**L3P25** finds L2P25's doubling inside the rule -- a step multiplies a difference by
+the **slope** of whatever it is pushed through, and at r = 4 the measured multiplier is
+**2.0000**, so the assumed 2 was a slope all along. **L3C25** takes the lid off
+L2C25's formula by letting a cycle hand back **b** carriers instead of one, and
+1/(1-b) **generalises** the old chain length rather than replacing it, since b = 1-p
+returns 1/p exactly. **L3B25** gives real genes a **spare switch**, so g = breadth x
+share and the threshold share is 1/breadth.
+
+**Three unrelated multipliers -- a steepness, a count of atoms, a count of genes --
+and one dividing line at exactly 1**, with **1/(1 - multiplier)** accelerating into it
+in all three. So Level 2's answer was the first half and Level 3's is the second:
+**a repeated multiplication has only ever had one question, and it is which side of 1
+the multiplier is on.** Below it everything fades however long you wait; above it
+nothing stops. Chaos, explosion and developmental catastrophe are three subjects on
+the wrong side of the same number, and L3B25 earns the close by pointing out that
+living networks are **below** it as a condition of existing -- a lineage with g above
+1 has a schedule rather than a risk, so the ones above the line are not here to be
+studied.
+
 **Four closing biology lessons now turn on a shape rather than a fact**, and each
 says so: L3B18's two curves gave a **ratio** that collapses, L3B19's two factors a
 **product** that peaks, L3B20's a **reciprocal** that turns a steady decline into a
@@ -270,7 +301,7 @@ discharge is an input to L2C18's load, and L2B18's percent saturation is L2P18's
 flow wearing a different hat.
 
 Level 2 being Quantity-dominant is correct: its verb *is* Calculate. Level 3 is
-the one to watch, and **64 of its 72 lessons already carry Mechanism or Limit
+the one to watch, and **67 of its 75 lessons already carry Mechanism or Limit
 reasoning**. The 8 that are Quantity alone each pass the third test — L3C15's ICE
 tables, L3P14's sampling rate, L3B14's 138 silent swaps all change a decision.
 
@@ -508,6 +539,26 @@ specific bug to watch for is a **floor on the drawing's height**: `Math.max(20,
 usable - rows)` silently exceeds the space it is being fitted into, and
 `Math.max(24, usable)` is worse. Floor the drawing low and cap it by what is left.
 The same mistake appeared three times in one sitting, in three different labs.
+
+**Check the model at the exact value the lesson emphasises.** L3P25's lab works out
+whether a population settles, 2-cycles, 4-cycles or goes chaotic by iterating the map
+and looking for a repeat. It was right everywhere except **r = 3.00**, where it
+reported *no pattern at all* -- and r = 3 is the threshold the whole lesson is built
+on, the one dial position a learner is told to stop at. The cause is ordinary: at the
+threshold the slope is exactly -1, so the approach is far too slow to detect in any
+number of iterations a canvas can afford. **A numerical method is weakest exactly
+where the mathematics is marginal, which is exactly where a lesson plants its flag.**
+It is named there now rather than computed. Sweep every value the dial can actually
+reach and check the ones the prose singles out.
+
+**A dimension floored to a minimum will exceed the space it is being fitted into.**
+`Math.max(20, usable - rows)` and `Math.max(24, usable)` both overran a phone-height
+stage, in five different labs across two Big Ideas, every time by the same mechanism:
+the floor wins when the space is smaller than the floor. Floor low and **cap by what
+is left**. The subtler version is two dimensions defined through each other -- L3B25
+capped a dot's radius by the inset and derived the inset from the radius, so a small
+inset let the dots overflow the band and a large one let two rows touch. **Settle one
+of them from the band alone, then derive the other from it.**
 
 **Encode the arithmetic in the geometry and the picture needs no caption to be
 believed.** Three of Big Idea 24's labs make their rule true by construction rather
