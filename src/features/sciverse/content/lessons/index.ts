@@ -310,6 +310,9 @@ import { getL3B25Script } from './l3b25-why-most-mutations-do-nothing';
 import { getL2P26Script } from './l2p26-how-close-are-the-lines';
 import { getL2C26Script } from './l2c26-will-it-storm-today';
 import { getL2B26Script } from './l2b26-the-cricket-thermometer';
+import { getL3P26Script } from './l3p26-why-the-wind-blows-along-the-lines';
+import { getL3C26Script } from './l3c26-the-day-that-is-both';
+import { getL3B26Script } from './l3b26-why-a-straight-line-ever-worked';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1396,6 +1399,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2p26': getL2P26Script,
     'l2c26': getL2C26Script,
     'l2b26': getL2B26Script,
+    'l3p26': getL3P26Script,
+    'l3c26': getL3C26Script,
+    'l3b26': getL3B26Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1966,6 +1972,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p26', title: 'How Close Are the Lines?', subtitle: 'The wind is in the spacing, not in the numbers', discipline: 'physics', bigIdea: 26, bigIdeaTitle: 'How Do We Predict Weather?', icon: '🌬️', accentColor: 'indigo', crossLinks: ['p26', 'l2p25'], level: 2 },
     { id: 'l2c26', title: 'Will It Storm Today?', subtitle: 'One comparison decides it, and the ground temperature cancels', discipline: 'chemistry', bigIdea: 26, bigIdeaTitle: 'How Do We Predict Weather?', icon: '⛈️', accentColor: 'emerald', crossLinks: ['c26', 'l3c8'], level: 2 },
     { id: 'l2b26', title: 'The Cricket Thermometer', subtitle: 'A real instrument, and the range where it stops working', discipline: 'biology', bigIdea: 26, bigIdeaTitle: 'How Do We Predict Weather?', icon: '🦗', accentColor: 'rose', crossLinks: ['b26', 'l2c26'], level: 2 },
+    { id: 'l3p26', title: 'Why the Wind Blows Along the Lines', subtitle: 'A balance of two effects, one of them sideways', discipline: 'physics', bigIdea: 26, bigIdeaTitle: 'How Do We Predict Weather?', icon: '🧭', accentColor: 'indigo', crossLinks: ['l2p26', 'l2c26'], level: 3 },
+    { id: 'l3c26', title: 'The Day That Is Both', subtitle: 'Two thresholds, and the commonest day sits between them', discipline: 'chemistry', bigIdea: 26, bigIdeaTitle: 'How Do We Predict Weather?', icon: '🌩️', accentColor: 'emerald', crossLinks: ['l2c26', 'l3c1'], level: 3 },
+    { id: 'l3b26', title: 'Why a Straight Line Ever Worked', subtitle: 'A fitted constant is a dependence you have not noticed', discipline: 'biology', bigIdea: 26, bigIdeaTitle: 'How Do We Predict Weather?', icon: '📏', accentColor: 'rose', crossLinks: ['l2b26', 'l3b18'], level: 3 },
     { id: 'l3b23', title: 'Why the Edge Does the Work', subtitle: 'One rule for every shape: the largest circle that fits', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '⭕', accentColor: 'rose', crossLinks: ['l2b23', 'l3c23'], level: 3 },
     { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
     { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },
