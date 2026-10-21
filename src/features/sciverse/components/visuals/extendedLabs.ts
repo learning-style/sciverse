@@ -203,6 +203,9 @@ import { L2B25CascadeLab } from './L2B25CascadeLab';
 import { L3P25MapLab } from './L3P25MapLab';
 import { L3C25BranchLab } from './L3C25BranchLab';
 import { L3B25BufferLab } from './L3B25BufferLab';
+import { L2P26IsobarLab } from './L2P26IsobarLab';
+import { L2C26StabilityLab } from './L2C26StabilityLab';
+import { L2B26CricketLab } from './L2B26CricketLab';
 import { L2C17SteelLab } from './L2C17SteelLab';
 import { L2B17HollowLab } from './L2B17HollowLab';
 import { L3P17BucklingLab } from './L3P17BucklingLab';
@@ -422,6 +425,9 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3p25: L3P25MapLab,
     l3c25: L3C25BranchLab,
     l3b25: L3B25BufferLab,
+    l2p26: L2P26IsobarLab,
+    l2c26: L2C26StabilityLab,
+    l2b26: L2B26CricketLab,
     l2c17: L2C17SteelLab,
     l2b17: L2B17HollowLab,
     l3p17: L3P17BucklingLab,

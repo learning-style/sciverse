@@ -96,6 +96,7 @@ import { bigIdea22Level3Assessment } from './bigIdea22Level3';
 import { bigIdea23Level2Assessment } from './bigIdea23Level2';
 import { bigIdea24Level2Assessment } from './bigIdea24Level2';
 import { bigIdea25Level2Assessment } from './bigIdea25Level2';
+import { bigIdea26Level2Assessment } from './bigIdea26Level2';
 import { bigIdea25Level3Assessment } from './bigIdea25Level3';
 import { bigIdea24Level3Assessment } from './bigIdea24Level3';
 import { bigIdea23Level3Assessment } from './bigIdea23Level3';
@@ -181,6 +182,7 @@ export const ASSESSMENTS_LEVEL2: Record<number, AssessmentData> = {
     23: bigIdea23Level2Assessment,
     24: bigIdea24Level2Assessment,
     25: bigIdea25Level2Assessment,
+    26: bigIdea26Level2Assessment,
 };
 
 export const ASSESSMENTS_LEVEL3: Record<number, AssessmentData> = {
