@@ -99,8 +99,8 @@ lesson's header *and* body — a header alone will mislead you):
 
 | | Mechanism | Mechanism + Limit | Limit | Quantity only |
 |---|---|---|---|---|
-| Level 2 (79) | 21 | — | 9 | 49 |
-| Level 3 (75) | 14 | 36 | 17 | 8 |
+| Level 2 (82) | 22 | — | 11 | 49 |
+| Level 3 (78) | 14 | 39 | 17 | 8 |
 
 Big Ideas 17 and 18 were built after that audit and are counted above, as are 19 to
 24. **Everything after Big Idea 18 was classified by whoever wrote it**, which is not
@@ -287,6 +287,34 @@ living networks are **below** it as a condition of existing -- a lineage with g 
 1 has a schedule rather than a risk, so the ones above the line are not here to be
 studied.
 
+**Big Idea 26 needed a collision scan before it needed a design**, and that is the
+transferable part. Most of its listed ground was already owned: **Big Idea 8 has
+humidity, dew point and cloud base** -- L2C8 and L3C8, including the 9.8 C/km dry
+lapse rate and cloud base at 125 m per degree -- and **L2P25 had just taken the
+forecast horizon**. What was left was better than what was taken. Isobars, Coriolis,
+geostrophic wind, hPa and chirp rates are all unused in the corpus, so Level 2 became
+**isobar spacing, two cooling rates and a cricket**, and the Big Idea's real question
+turned out to be *what can you see, and what rule connects it to what you want?*
+
+Level 2's answer is that **predicting weather is measuring a proxy and applying a
+calibrated rule**, which is genuinely how it is done. L2P26 reads the wind off the
+**spacing** of the isobars and not the numbers on them -- 8 hPa over 200 km and 40
+over 1000 forecast the same 104 km/h. L2C26 compares the surroundings' cooling rate
+with the 10 C/km a rising bubble cools at, and **the ground temperature cancels out**,
+so a 32 C town stays quiet while a 19 C town storms. L2B26 uses Dolbear's 1897 cricket
+law and makes its second dial the counting **window**, because that is where a
+calibrated proxy really fails.
+
+**Then Level 3 took the three calibration constants apart and found the same thing in
+each: a dependence nobody had noticed.** The 26 km/h hid **sin(latitude)**, so there
+is no rule at all at the equator. The 10 C/km hid **whether condensation had
+started**, so there is a second threshold at 5.5 and a conditionally unstable band
+covering most days. Three chirps per degree hid an **exponential**, so the rule is
+good over about twelve degrees. **A calibration constant is a dependence you have not
+noticed yet, and the rule's range is wherever that dependence starts to matter** --
+which is why a more precise wrong constant is still wrong, and why **a derivation
+gives you the rule and its limits out of the same algebra** while measuring never can.
+
 **Four closing biology lessons now turn on a shape rather than a fact**, and each
 says so: L3B18's two curves gave a **ratio** that collapses, L3B19's two factors a
 **product** that peaks, L3B20's a **reciprocal** that turns a steady decline into a
@@ -301,7 +329,7 @@ discharge is an input to L2C18's load, and L2B18's percent saturation is L2P18's
 flow wearing a different hat.
 
 Level 2 being Quantity-dominant is correct: its verb *is* Calculate. Level 3 is
-the one to watch, and **67 of its 75 lessons already carry Mechanism or Limit
+the one to watch, and **70 of its 78 lessons already carry Mechanism or Limit
 reasoning**. The 8 that are Quantity alone each pass the third test — L3C15's ICE
 tables, L3P14's sampling rate, L3B14's 138 silent swaps all change a decision.
 
@@ -540,6 +568,16 @@ usable - rows)` silently exceeds the space it is being fitted into, and
 `Math.max(24, usable)` is worse. Floor the drawing low and cap it by what is left.
 The same mistake appeared three times in one sitting, in three different labs.
 
+**Simulate every dial position, not just the extremes -- a lesson about a threshold
+will have a dial setting exactly on it, and that is the setting most likely to be
+broken.** This has now bitten twice running. L3P25's lab misreported the one value
+its whole lesson is built on, r = 3.00. L3C26's lab would have **crashed** at a rate
+of exactly 5.5: `stable` was written `rate < SAT` and `outright` is `rate > DRY`, so
+5.5 fell between both branches and the footer called `toFixed` on a null. Neither
+appears at a dial extreme, and both appear the moment the sweep steps through the
+whole range. **Where a value splits the dial into bands, test the boundary itself**,
+and prefer `<=` on the side where the degenerate case belongs.
+
 **Check the model at the exact value the lesson emphasises.** L3P25's lab works out
 whether a population settles, 2-cycles, 4-cycles or goes chaotic by iterating the map
 and looking for a repeat. It was right everywhere except **r = 3.00**, where it
@@ -552,9 +590,13 @@ It is named there now rather than computed. Sweep every value the dial can actua
 reach and check the ones the prose singles out.
 
 **A dimension floored to a minimum will exceed the space it is being fitted into.**
-`Math.max(20, usable - rows)` and `Math.max(24, usable)` both overran a phone-height
-stage, in five different labs across two Big Ideas, every time by the same mechanism:
-the floor wins when the space is smaller than the floor. Floor low and **cap by what
+`Math.max(20, usable - rows)`, `Math.max(24, usable)` and `Math.max(26, usable)` have
+now overrun a phone-height stage in **six** labs across **three** Big Ideas -- the
+last one after this rule was already written down here, which is worth admitting.
+Every time it is the same mechanism: the floor wins when the space is smaller than
+the floor. The habit that actually prevents it is to write the floor **below any
+stage height that renders**, around 12, and never to reach for a number that looks
+like a comfortable minimum. Floor low and **cap by what
 is left**. The subtler version is two dimensions defined through each other -- L3B25
 capped a dot's radius by the inset and derived the inset from the radius, so a small
 inset let the dots overflow the band and a large one let two rows touch. **Settle one
