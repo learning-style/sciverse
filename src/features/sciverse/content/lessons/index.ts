@@ -313,6 +313,9 @@ import { getL2B26Script } from './l2b26-the-cricket-thermometer';
 import { getL3P26Script } from './l3p26-why-the-wind-blows-along-the-lines';
 import { getL3C26Script } from './l3c26-the-day-that-is-both';
 import { getL3B26Script } from './l3b26-why-a-straight-line-ever-worked';
+import { getL2P27Script } from './l2p27-how-long-does-food-take';
+import { getL2C27Script } from './l2c27-how-many-cutters';
+import { getL2B27Script } from './l2b27-why-the-tube-is-so-long';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1402,6 +1405,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3p26': getL3P26Script,
     'l3c26': getL3C26Script,
     'l3b26': getL3B26Script,
+    'l2p27': getL2P27Script,
+    'l2c27': getL2C27Script,
+    'l2b27': getL2B27Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1975,6 +1981,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3p26', title: 'Why the Wind Blows Along the Lines', subtitle: 'A balance of two effects, one of them sideways', discipline: 'physics', bigIdea: 26, bigIdeaTitle: 'How Do We Predict Weather?', icon: '🧭', accentColor: 'indigo', crossLinks: ['l2p26', 'l2c26'], level: 3 },
     { id: 'l3c26', title: 'The Day That Is Both', subtitle: 'Two thresholds, and the commonest day sits between them', discipline: 'chemistry', bigIdea: 26, bigIdeaTitle: 'How Do We Predict Weather?', icon: '🌩️', accentColor: 'emerald', crossLinks: ['l2c26', 'l3c1'], level: 3 },
     { id: 'l3b26', title: 'Why a Straight Line Ever Worked', subtitle: 'A fitted constant is a dependence you have not noticed', discipline: 'biology', bigIdea: 26, bigIdeaTitle: 'How Do We Predict Weather?', icon: '📏', accentColor: 'rose', crossLinks: ['l2b26', 'l3b18'], level: 3 },
+    { id: 'l2p27', title: 'How Long Does Food Take?', subtitle: 'Two speeds in one tube, and the gap tells you the job', discipline: 'physics', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '🍎', accentColor: 'indigo', crossLinks: ['p27', 'l2p4'], level: 2 },
+    { id: 'l2c27', title: 'How Many Cutters?', subtitle: 'One molecule could not do it in a hundred ages of the universe', discipline: 'chemistry', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '✂️', accentColor: 'emerald', crossLinks: ['c27', 'l2c25'], level: 2 },
+    { id: 'l2b27', title: 'Why the Tube Is So Long', subtitle: 'The job needs 69.5 cm, and you have 600', discipline: 'biology', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '📏', accentColor: 'rose', crossLinks: ['l2p27', 'l2c27'], level: 2 },
     { id: 'l3b23', title: 'Why the Edge Does the Work', subtitle: 'One rule for every shape: the largest circle that fits', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '⭕', accentColor: 'rose', crossLinks: ['l2b23', 'l3c23'], level: 3 },
     { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
     { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },

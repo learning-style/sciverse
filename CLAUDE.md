@@ -99,7 +99,7 @@ lesson's header *and* body — a header alone will mislead you):
 
 | | Mechanism | Mechanism + Limit | Limit | Quantity only |
 |---|---|---|---|---|
-| Level 2 (82) | 22 | — | 11 | 49 |
+| Level 2 (85) | 24 | — | 11 | 50 |
 | Level 3 (78) | 14 | 39 | 17 | 8 |
 
 Big Ideas 17 and 18 were built after that audit and are counted above, as are 19 to
@@ -329,6 +329,38 @@ discharge is an input to L2C18's load, and L2B18's percent saturation is L2P18's
 flow wearing a different hat.
 
 Level 2 being Quantity-dominant is correct: its verb *is* Calculate. Level 3 is
+**Big Idea 27 is the first trio whose three lessons are a length, a number and a
+ratio** -- and the ratio is the only one of the three that says whether the body
+works. L2P27 divides a length by a speed and finds food spends 4.2 hours in the small
+intestine; its real result is a *gap*, because the squeezing wave runs at 3 cm/s while
+the food advances at 0.04, so 74 parts in 75 of the muscle's motion go into **mixing**
+rather than carrying. L2C27 counts what C27 only gestured at: 5.6 x 10²² bonds in one
+slice of bread, which **one** amylase molecule cutting 1,000 a second would need 130
+ages of the universe to finish, and which 3 mg of it finishes in 29 minutes. Not a
+faster cutter -- 3 x 10¹⁶ ordinary ones. L2B27 divides the first by the second and gets
+a margin of **8.6**, then asks the better question: the job needs only **69.5 cm** of
+the 600, so what is the other 530 cm for?
+
+**It is for the bad days, and the dials prove it rather than asserting it.** Half the
+usual enzyme is *invisible* at 600 cm (margin 4.3) and leaves 28% of the meal uncut at
+100 cm (margin 0.72). The length cuts nothing; it is what makes an enzyme shortage
+**survivable**, which is why a shortened bowel and a tired pancreas present as the same
+problem.
+
+**And Big Idea 27 closes by discovering that its first lesson was the condition of its
+second.** L2C27's formula is only true *while every enzyme is busy every second* -- an
+enzyme with no starch near it makes zero cuts, not 1,000 -- and L2P27's 75-fold speed
+gap is exactly the mechanism that keeps the two mixed. The curiosity in the physics
+turned out to be the fine print of the chemistry, and neither lesson could see it
+alone. A wave that merely *carried* food would empty the tube in three minutes: a
+margin of 0.1. **When a Level 2 lesson notices something it cannot use, check whether a
+later lesson's formula quietly depends on it.**
+
+It also had to stay clear of **Big Idea 2**, which owns surface-area-to-volume and the
+villi, so L2B27 says plainly that one organ is solving two problems: **area** gets
+glucose across the wall, and **length** buys the time to make the glucose at all. A
+lesson that counts only one of a shared organ's two jobs should name the other.
+
 the one to watch, and **70 of its 78 lessons already carry Mechanism or Limit
 reasoning**. The 8 that are Quantity alone each pass the third test — L3C15's ICE
 tables, L3P14's sampling rate, L3B14's 138 silent swaps all change a decision.
@@ -680,6 +712,17 @@ the same string (`bond angle 104.5°`, `torque 12.5 N m`) or in a caption that
 clearly governs it. Formula lines (`Q = 300 g x c x 20 °C`) already name
 themselves through their symbols.
 
+**A lesson's accent is set in two places and nothing checks they agree with its
+discipline.** L2P27 was written with `accent="rose"` in the lab and
+`accentColor: 'rose'` in the `index.ts` registry row -- a physics lesson in biology's
+colour, in both places, which compiles cleanly because rose is a legal member of the
+union. The discipline is right there in the same registry row (`discipline: 'physics'`),
+so the pair is checkable, and `check-visual.py` now checks it -- across all 313
+registry rows and all 163 wired labs, reporting 0. Its `--selftest` pins the real
+failure and the corrected row, and asserts the row shape still parses, because a
+registry format change that silently stopped matching would disarm the scan rather
+than fail it.
+
 **`Accent` is a closed union: `indigo | emerald | rose`** (physics/chemistry/
 biology). Anything else is a type error, not a fallback.
 
@@ -750,6 +793,38 @@ hyphenated compounds, which is why *germ-killing* passes and *enteric-coated*
 does not. **Both of these carry a `--selftest`, and it guards both directions**:
 a list wide enough to quiet *grandmother* must not also quiet *homeostasis*. Run
 it after touching either word list.
+
+**`check-plainness.py` had never read a single Level 2 or Level 3 lesson.** Its file
+filter was `^[pcb]\d+-`, which matches `c27-...` and nothing else -- so the checker that
+asks *is every hard word defined* had been running against 150 Level 1 files and
+skipping the **163** Level 2 and Level 3 ones for as long as those levels have existed.
+Passing it `l2p27 l2c27 l2b27` reported `0 lesson(s)`, which is why it was never
+noticed: **the trap below is not just about paths, it is about anything that matches no
+file.** The filter is now `^(l[23])?[pcb]\d+-` and lives in one constant that `main()`
+and `--selftest` share, and the summary line reads `0 of 3 lesson(s) scanned` so an
+empty scan can no longer be mistaken for a pass -- an id that matches nothing now
+prints what it missed and **exits 1**.
+
+Widening it exposed four gaps in the inflection matcher, all of them words whose plain
+form the list already knew: `ably`->`able` (*comfortably*), `ative`->`ation`
+(*informative*), the **number words**, which were absent altogether so neither half of
+*twenty-four* was known, and a possessive, because `ordinary()` strips `'s` and
+`defines()` did not -- so a term the lesson defines reported as undefined the moment it
+took an apostrophe. All four are in `--selftest` in both directions, together with the
+assertion that `l2c27-...ts` is still matched and that `-ative` and `-ably` do not quiet
+*qualitative*.
+
+**The number words went into the wrong list first.** There are two: `ORDINARY`, which
+`hard_words()` consults as a whole-word skip list, and `ORDINARY_STEMS`, which
+`ordinary()` consults and which `compound_ordinary()` reaches *through* `ordinary()`. A
+word added to the first is invisible to inflection and compound matching, so
+*twenty-four* kept reporting. New everyday words belong in `ORDINARY_STEMS`.
+
+It now reports **161 lessons and 453 undefined hard words** across all three levels,
+against 24 and 36 for Level 1 alone. That backlog is unexamined: a grades 9-12 lesson
+may legitimately use a latinate word a grades 3-5 lesson may not, so the Level 2 and
+Level 3 findings need reading before they need fixing, and some of them will want the
+word list rather than the prose.
 
 **`check-plainness.py` takes lesson ids, not paths.** `check-plainness.py b21 c21`,
 never `.../lessons/b21-respiration-cycle.ts` -- a path matches no lesson, the scan
