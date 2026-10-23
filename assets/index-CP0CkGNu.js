@@ -30642,9 +30642,23 @@ This step has a condition, and it is easy to miss because it is about the cricke
 
 **temperature in °C = (chirps in 25 s) / 3 + 4.4**
 
-That second line is where all the biology is hiding, and it is worth being clear about what it is. **It is not derived from anything.** Nobody worked out from cricket anatomy that it should be *divide by three and add 4.4*. Dolbear sat with a thermometer and a notebook and **fitted a straight line to what he measured**. The 3 and the 4.4 are the slope and the intercept of that line.
+That second line is where all the biology is hiding, and two things in it are easy to run together.
 
-Which means the rule holds **for a snowy tree cricket, for one cricket at a time, and over the range of temperatures Dolbear actually measured**. Two crickets chirping together will double your count, which at 30 chirps is another ten degrees. A different species has a different line.
+**The line itself is a measurement.** Nobody worked out from cricket anatomy that the rate should rise in a straight line. **Amos Dolbear**, an American physicist, sat with a thermometer and a notebook in **1897** and fitted a straight line to what he heard, publishing it as *The Cricket as a Thermometer*. What he actually wrote down was in Fahrenheit, counting for a full minute:
+
+**temperature in °F = 50 + (chirps per minute - 40) / 4**
+
+**The 3 and the 4.4 are then just arithmetic.** Put his line into Celsius, which means taking off 32 and multiplying by 5/9:
+
+**°C = 10 + (chirps per minute - 40) / 7.2**
+
+and that **7.2** is nothing but his **4** multiplied by the **9/5** of the unit change. Now count for 25 seconds instead of a minute, so chirps per minute = 2.4 x your count:
+
+**°C = 10 + (2.4 x count - 40) / 7.2 = count / 3 + 4.44**
+
+**And here is the reason for the 25 seconds**, which is the one part of the whole rule that has nothing to do with crickets. 2.4 divided by 7.2 is **exactly one third**. Count for 15 seconds instead and the slope is 5/9; for 20 seconds, 5/12; for half a minute, 5/18. **Only a 25-second count turns Dolbear's line into something you can do in your head**, and that is the entire reason the field version asks for 25.
+
+So the rule holds **for a snowy tree cricket, for one cricket at a time, and over the range of temperatures Dolbear actually measured** -- and the 4.4 is 40/9 rounded off, which runs a flat 0.04 °C low and need trouble nobody. Two crickets chirping together will double your count, which at 30 chirps is another ten degrees. A different species has a different line.
 
 A fitted line is a real and useful thing. It is just not the same kind of thing as a law.`,onEnterAction:{type:"SET_VISUAL",payload:{phase:"network"}},options:[{id:"work",label:"Show me it on real numbers.",nextNodeId:"worked"}]},worked:{id:"worked",speaker:"AI",content:`**A worked example.** You count **48 chirps** while listening for **30 seconds**.
 
