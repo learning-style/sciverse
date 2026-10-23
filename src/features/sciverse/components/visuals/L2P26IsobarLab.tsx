@@ -34,11 +34,20 @@ export const L2P26IsobarLab = ({ state, onStateChange }: Props) => {
         const artTop = stageTop + 18;
         const artBottom = stageBottom - 52;
         const usable = artBottom - artTop;
-        // floored below any stage height that renders, and capped by half the band
-        const radius = Math.max(6, Math.min(usable / 2 - 2, (safeRight - 56) / 2, 68));
-        const showLabels = radius >= 28;
         const cx = safeRight / 2;
         const cy = artTop + usable / 2;
+        // As large as the band and the two outer labels allow. A flat cap of 68 used to
+        // bind on every stage with more than ~140px of band, which left the globe small
+        // in a lot of white space. The real limits are the labels that sit OUTSIDE the
+        // rings: the distance label, right-aligned past the outer ring at 0.75 R, and
+        // the wind label, left-aligned past the arrow tip at 0.78 R. Both are 11px.
+        const byBand = usable / 2 - 2;
+        // '1000 km' at 11px is 46px wide and sits 4px past the outer ring, so it needs
+        // 52.2px; 54 and 36 leave a margin rather than tuning to the exact pixel
+        const byDistanceLabel = (cx - 54) / 0.75;
+        const byWindLabel = (cx - 36) / 0.78;
+        const radius = Math.max(6, Math.min(byBand, byDistanceLabel, byWindLabel, 150));
+        const showLabels = radius >= 28;
 
         // the globe
         ctx.fillStyle = OCEAN;
