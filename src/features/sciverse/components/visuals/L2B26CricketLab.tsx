@@ -47,7 +47,9 @@ export const L2B26CricketLab = ({ state, onStateChange }: Props) => {
         const showYours = fit >= 1;
         const showRule = fit >= 2;
         const brackets = (showYours ? ROW : 0) + (showRule ? ROW : 0);
-        const tickH = Math.max(8, Math.min(usable - brackets, 36));
+        // 36 used to cap this, so a tall stage left the chirps and the thermometer
+        // small with white space beneath them
+        const tickH = Math.max(8, Math.min(usable - brackets, 110));
         const blockH = tickH + brackets;
         const top = artTop + Math.max(0, (usable - blockH) / 2);
 
@@ -81,7 +83,7 @@ export const L2B26CricketLab = ({ state, onStateChange }: Props) => {
         ctx.stroke();
 
         // the thermometer the chirps are driving
-        const tubeW = Math.max(6, Math.min(tickH * 0.26, 11));
+        const tubeW = Math.max(6, Math.min(tickH * 0.26, 18));
         const tx = left + fullW - tubeW / 2 - 6;
         const tubeTop = tickTop + 2;
         const bulbR = tubeW * 0.78;

@@ -47,9 +47,12 @@ export const L3P26GeostrophicLab = ({ state, onStateChange }: Props) => {
         const artTop = stageTop + 18;
         const artBottom = stageBottom - 52;
         const usable = artBottom - artTop;
-        // floored below any stage height that renders, and capped by half the band, so
-        // the globe can never be drawn larger than the space it is being fitted into
-        const radius = Math.max(6, Math.min(usable / 2 - 2, (safeRight - 56) / 2, 68));
+        // Floored below any stage height that renders, and capped by half the band, so
+        // the globe can never be drawn larger than the space it is being fitted into.
+        // A flat cap of 68 used to bind on every stage with more than ~140px of band,
+        // which left the globe small in a lot of white space; this lab's labels all sit
+        // near the centre at cx +/- 8, so nothing but the band and the width limits it.
+        const radius = Math.max(6, Math.min(usable / 2 - 2, safeRight / 2 - 4, 150));
         const showArrows = radius >= 30;
         const showGlobeLabels = radius >= 24;
         const cx = safeRight / 2;
@@ -127,7 +130,13 @@ export const L3P26GeostrophicLab = ({ state, onStateChange }: Props) => {
 
         // the push across the circle, and the deflection equal and opposite
         if (showArrows) {
-            const armLen = Math.max(6, (grad / 5) * radius * 0.34);
+            // Both arms must stay the SAME length -- that is the balance -- so the
+            // length is capped by whichever side has less room. Near the pole the
+            // marker is high on the globe and the poleward arm runs out of stage.
+            const roomUp = my - Math.max(stageTop + 20, cy - radius);
+            const roomDown = Math.min(artBottom, cy + radius) - my;
+            const armLen = Math.max(5, Math.min((grad / 5) * radius * 0.34,
+                roomUp - 6, roomDown - 6));
             const arm = (dir: number, colour: string) => {
                 const tipY = my + dir * armLen;
                 ctx.strokeStyle = colour;
