@@ -58,6 +58,12 @@ def prose(path):
 # listed, however familiar they look: 'evaporation' and 'diffusion' have to be
 # explained where they are used. Matched through inflections by ordinary().
 ORDINARY_STEMS = set("""
+# number words, which were absent altogether: "twenty-four" reported
+# because compound_ordinary() asks ordinary() about each half, and
+# ordinary() reads this list and CORE -- never ORDINARY.
+one two three four five six seven eight nine ten eleven twelve thirteen
+fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty
+fifty sixty seventy eighty ninety hundred hundreds thousand thousands dozen
 question answer science scientist constant dramatic incredible amazing control
 eventual electric individual activity compare comparison enormous version
 identify independent destroy function automatic efficient eliminate ingredient
@@ -166,10 +172,18 @@ SUFFIXES = ('iest', 'ier', 'ing', 'ies', 'est', 'ed', 'es', 'er', 'ly', 's',
             'ness', 'able', 'ible', 'ity')
 
 
+# Levels 2 and 3 are named l2p27-..., l3c27-..., so a filter of ^[pcb]\d+- matched
+# Level 1 ONLY -- this checker had never read a single Level 2 or Level 3 lesson, and
+# passing it their ids reported "0 lesson(s)", which reads exactly like a pass. Kept
+# as one constant because main() and selftest() must not hold two copies that drift.
+LESSON_FILE = re.compile(r'^(l[23])?[pcb]\d+-')
+
+
 # Endings that map back to a plain stem no amount of trimming reaches.
 MORPH = (('edly', 'e'), ('ingly', ''), ('ively', 'e'), ('ility', 'le'), ('ibility', 'ible'), ('ability', 'able'),
          ('ously', 'ous'), ('ically', 'ic'), ('ally', 'al'),
-         ('ization', 'ize'), ('isation', 'ise'), ('ability', 'e'))
+         ('ization', 'ize'), ('isation', 'ise'), ('ability', 'e'),
+         ('ably', 'able'), ('ative', 'ation'))
 
 
 def ordinary(word):
@@ -246,6 +260,10 @@ def hard_words(text):
 
 def defines(text, word):
     low = text.lower()
+    if word.endswith("'s") or word.endswith("s'"):
+        base = word[:-2]
+        if base and defines(text, base):
+            return True
     if ('**' + word) in low or (word + '**') in low:
         return True
     for m in re.finditer(re.escape(word), low):
@@ -281,6 +299,34 @@ def selftest():
              "material's brightness was surprising, so we went downstairs "
              "afterwards to look at the thunderstorm.")
     assert not hard_words(plain), 'everyday words flagged: ' + repr(hard_words(plain))
+
+    # The filter that had hidden every Level 2 and Level 3 lesson. An id that matches
+    # no file reports "0 lesson(s)", which is indistinguishable from a clean pass, so
+    # this is the one assertion that keeps the scan from going quietly blind.
+    for seen in ('c27-how-does-food-become-energy.ts', 'l2c27-how-many-cutters.ts',
+                 'l3b27-anything.ts'):
+        assert LESSON_FILE.match(seen), 'lesson file no longer scanned: ' + seen
+    for skipped in ('index.ts', 'types.ts'):
+        assert not LESSON_FILE.match(skipped), 'non-lesson now scanned: ' + skipped
+
+    # Four matcher gaps the widened filter exposed, all of them stems already known:
+    # comfortable, information, and the number words. Checked through hard_words so a
+    # regression shows up the way a lesson would show it.
+    gaps = ('A comfortably long tube, an informative reading, and twenty-four of them '
+            'in four rows.')
+    assert not hard_words(gaps), 'suffix or number gap returned: ' + repr(hard_words(gaps))
+
+    # ...and the same suffixes must not quiet real jargon, which is the direction that
+    # matters: -ative and -ably only clear a word whose plain form is already known.
+    for jargon in ('A qualitative change happened.', 'The flow was irrotationally even.'):
+        assert hard_words(jargon), 'suffix rule went too wide: ' + jargon
+
+    # A possessive is cleared by its base word's definition, and only by a real one.
+    poss = 'a **molecule** is a group of atoms, and the molecule\'s shape matters.'
+    assert defines(poss, "molecule's"), 'possessive of a defined term reported'
+    assert not defines('we measured the homeostasis\'s value yesterday.',
+                       "homeostasis's"), 'possessive read as defined'
+
     print('selftest ok')
     return 0
 
@@ -289,12 +335,13 @@ def main():
     if want[:1] == ['--selftest']:
         return selftest()
     files = sorted(f for f in os.listdir(L)
-                   if f.endswith('.ts') and re.match(r'^[pcb]\d+-', f))
-    total, rows = 0, []
+                   if f.endswith('.ts') and LESSON_FILE.match(f))
+    total, rows, scanned = 0, [], []
     for f in files:
         lid = f.split('-')[0]
         if want and lid not in want:
             continue
+        scanned.append(lid)
         text = prose(os.path.join(L, f))
         if not text:
             continue
@@ -307,8 +354,19 @@ def main():
     for n, lid, undef in rows:
         print('%-5s %2d undefined: %s' % (lid, n, ', '.join(undef[:12])))
     print()
-    print(str(len(rows)) + ' lesson(s) with undefined hard words, '
+    print(str(len(rows)) + ' of ' + str(len(scanned))
+          + ' lesson(s) scanned carry undefined hard words, '
           + str(total) + ' word(s) in total')
+    # An id that matches no file used to print a clean-looking "0 lesson(s)", which is
+    # how a scan that checked nothing got read as a pass. Say so, and fail.
+    missed = [w for w in want if w not in scanned]
+    if missed:
+        print('!! matched no lesson: ' + ', '.join(missed)
+              + '  (ids like l2c27, not paths)')
+        return 1
+    if not scanned:
+        print('!! nothing was scanned')
+        return 1
     return 1 if total else 0
 
 

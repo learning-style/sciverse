@@ -431,8 +431,65 @@ def selftest():
     want('a worded end counts', says_what_it_means("'faint: you see deeper'"), True)
     want('a worded end with a unit counts', says_what_it_means("'25 cm deep'"), True)
 
+    # The real wiring failure: a physics lesson in biology's colour, which is a legal
+    # member of the Accent union and so compiles cleanly. Both directions, because a
+    # row-shape change that silently stops matching would disarm the scan entirely.
+    wrong = ("{ id: 'l2p27', title: 'x', subtitle: 'y', discipline: 'physics', "
+             "bigIdea: 27, bigIdeaTitle: 'z', icon: 'a', accentColor: 'rose', "
+             "crossLinks: ['p27'], level: 2 },")
+    want('a registry row still parses', accent_rows(wrong),
+         [('l2p27', 'physics', 'rose')])
+    want('physics in rose is caught',
+         ACCENT_FOR[accent_rows(wrong)[0][1]] == accent_rows(wrong)[0][2], False)
+    right = wrong.replace("accentColor: 'rose'", "accentColor: 'indigo'")
+    want('physics in indigo is quiet',
+         ACCENT_FOR[accent_rows(right)[0][1]] == accent_rows(right)[0][2], True)
+    want('the corpus agrees with its disciplines', accent_scan(), [])
+
     print('selftest ok' if not bad else 'selftest FAILED (' + str(bad) + ')')
     return 1 if bad else 0
+
+
+# Physics is indigo, chemistry emerald, biology rose. Every one of the three is a legal
+# member of the Accent union, so a lesson wired in the wrong discipline's colour
+# compiles perfectly: L2P27 shipped as physics-in-rose, in the lab AND in the registry
+# row. The discipline is written in that same row, so the pair is checkable.
+ACCENT_FOR = {'physics': 'indigo', 'chemistry': 'emerald', 'biology': 'rose'}
+LESSON_INDEX = os.path.join(os.path.dirname(VISUALS), '..', 'content', 'lessons', 'index.ts')
+EXTENDED = os.path.join(VISUALS, 'extendedLabs.ts')
+
+
+def accent_rows(index_src):
+    """(id, discipline, accentColor) for every registry row that carries all three."""
+    return re.findall(r"\{ id: '([a-z0-9]+)',[^}]*?discipline: '(\w+)',"
+                      r"[^}]*?accentColor: '(\w+)'", index_src)
+
+
+def accent_scan():
+    """Does each lesson's colour -- in the registry and in its lab -- match its subject?"""
+    probs = []
+    try:
+        index_src = open(os.path.normpath(LESSON_INDEX)).read()
+        ext_src = open(EXTENDED).read()
+    except OSError:
+        return probs
+    disc = {}
+    for lid, d, acc in accent_rows(index_src):
+        disc[lid] = d
+        want = ACCENT_FOR.get(d)
+        if want and acc != want:
+            probs.append(lid + ': registry accentColor is ' + acc
+                         + ' but the lesson is ' + d + ', which is ' + want)
+    for lid, comp in re.findall(r'^\s*(l[23]?[pcb]\d+): (\w+),', ext_src, re.M):
+        want = ACCENT_FOR.get(disc.get(lid, ''))
+        lab = os.path.join(VISUALS, comp + '.tsx')
+        if not want or not os.path.exists(lab):
+            continue
+        m = re.search(r'accent="(\w+)"', open(lab).read())
+        if m and m.group(1) != want:
+            probs.append(comp + '.tsx: accent is ' + m.group(1) + ' but ' + lid
+                         + ' is ' + disc[lid] + ', which is ' + want)
+    return probs
 
 
 def main():
@@ -468,7 +525,11 @@ def main():
           + str(len(worst)) + ' with problems, ' + str(total) + ' problem(s)')
     print(str(len(legacy)) + ' legacy Level 1 labs skipped -- they predate LabCanvas '
           + 'and need their own criteria')
-    return 1 if total else 0
+    mism = accent_scan()
+    for m in mism:
+        print('!! ' + m)
+    print(str(len(mism)) + ' accent(s) disagreeing with their lesson\'s discipline')
+    return 1 if total or mism else 0
 
 
 if __name__ == '__main__':
