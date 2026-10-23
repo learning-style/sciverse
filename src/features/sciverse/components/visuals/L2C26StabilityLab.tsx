@@ -6,18 +6,21 @@ interface Props {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-// One idea: two lines leave the same point on the ground and fan apart, and which
-// side the bubble ends up on is the whole forecast. Both scales are fixed -- 0 to 3
-// km up, 0 to 36 degrees of cooling across -- so the slopes never change as the
-// dials move and the height dial visibly extends the lines up the plot. At a rate of
-// exactly 10 the two lines lie on top of each other, which is the pivot the lesson
-// is about, so the labels are kept in fixed rows and coloured rather than attached.
+// One idea: does the cloud keep going up? An earlier version drew two lines on a
+// temperature-against-height plot, which is the arithmetic without the weather -- and
+// "how much it is rising" is exactly what a reader cannot picture from two lines.
+//
+// This draws the sky instead. The ground is a curved horizon so it reads as the
+// Earth; the sky behind darkens towards the top at a rate the dial sets, so a steep
+// lapse rate LOOKS like a sky that turns cold fast; and the bubble is warm-coloured
+// when it is warmer than the air it is in. Above it a cumulus towers when it keeps
+// rising and shrinks to a puff when it sinks back. The arithmetic is still in the
+// footers, where it can be followed.
 const BUBBLE_RATE = 10;        // °C per km, the same for every bubble
 const MAX_KM = 3;
-const MAX_COOL = 36;           // °C across the plot, so 12 °C/km x 3 km fits
-const BUBBLE = '#047857';
-const AROUND = '#4338ca';
-const STORM = '#b45309';
+const WARM = '#b45309';
+const COLD = '#0369a1';
+const GROUND = '#3f3f46';
 
 const rateOf = (dial: number): number => Math.max(4, Math.min(12, Math.round(dial * 2) / 2));
 const heightOf = (dial: number): number => Math.max(0, Math.min(MAX_KM, Math.round(dial * 4) / 4));
@@ -25,7 +28,7 @@ const heightOf = (dial: number): number => Math.max(0, Math.min(MAX_KM, Math.rou
 export const L2C26StabilityLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
-    const drawScene = ({ ctx, safeRight, raw, raw2, stageTop, stageBottom }: LabScene) => {
+    const drawScene = ({ ctx, safeRight, t, raw, raw2, stageTop, stageBottom }: LabScene) => {
         const rate = rateOf(raw);
         const height = heightOf(raw2);
         const diff = (rate - BUBBLE_RATE) * height;
@@ -36,63 +39,96 @@ export const L2C26StabilityLab = ({ state, onStateChange }: Props) => {
         const artBottom = stageBottom - 52;
         const usable = artBottom - artTop;
         const ROW = 15;
-        const fit = Math.max(0, Math.min(2, Math.floor((usable - 26) / ROW)));
-        const showAbove = fit >= 1;
-        const showBelow = fit >= 2;
-        const aboveH = showAbove ? ROW : 0;
-        const belowH = showBelow ? ROW : 0;
-        const plotH = Math.max(10, usable - aboveH - belowH);
-        const top = artTop + Math.max(0, (usable - (aboveH + plotH + belowH)) / 2);
-        const aboveRow = top + 11;
-        const plotTop = top + aboveH;
-        const plotBottom = plotTop + plotH;
-        const belowRow = plotBottom + 11;
+        const GROUND_H = 8;
+        // the ground strip and its label row are both reserved IN the layout, so the
+        // drawing can never reach past artBottom
+        const showGround = usable >= ROW + GROUND_H + 30;
+        const labelH = showGround ? ROW : 0;
+        const skyH = Math.max(10, usable - GROUND_H - labelH);
+        const top = artTop + Math.max(0, (usable - (skyH + GROUND_H + labelH)) / 2);
+        const skyBottom = top + skyH;
 
         const left = 26;
         const fullW = Math.max(80, safeRight - 52);
-        const groundX = left + fullW - 8;
-        const yOf = (km: number) => plotBottom - plotH * (km / MAX_KM);
-        const xOf = (cooled: number) => groundX - (fullW - 16) * (cooled / MAX_COOL);
+        const yOf = (km: number) => skyBottom - skyH * (km / MAX_KM);
 
-        // the ground, where both lines start together
-        ctx.strokeStyle = '#94a3b8';
-        ctx.lineWidth = 1;
+        // the sky, darkening towards the top at the rate the dial sets
+        const chill = (rate - 4) / 8;
+        const sky = ctx.createLinearGradient(0, top, 0, skyBottom);
+        sky.addColorStop(0, 'rgb(' + Math.round(150 - 80 * chill) + ','
+            + Math.round(190 - 60 * chill) + ',' + Math.round(235 - 10 * chill) + ')');
+        sky.addColorStop(1, '#e0f2fe');
+        ctx.fillStyle = sky;
+        ctx.fillRect(left, top, fullW, skyH);
+
+        // the ground, curved, so the picture is standing on the Earth
+        ctx.fillStyle = GROUND;
         ctx.beginPath();
-        ctx.moveTo(left, plotBottom);
-        ctx.lineTo(left + fullW, plotBottom);
-        ctx.stroke();
+        ctx.moveTo(left, skyBottom + 6);
+        ctx.quadraticCurveTo(left + fullW / 2, skyBottom - 4, left + fullW, skyBottom + 6);
+        ctx.lineTo(left + fullW, skyBottom + GROUND_H);
+        ctx.lineTo(left, skyBottom + GROUND_H);
+        ctx.closePath();
+        ctx.fill();
 
-        const line = (perKm: number, colour: string, width: number) => {
-            ctx.strokeStyle = colour;
-            ctx.lineWidth = width;
-            ctx.beginPath();
-            ctx.moveTo(groundX, plotBottom);
-            ctx.lineTo(xOf(perKm * height), yOf(height));
-            ctx.stroke();
-        };
-        line(rate, AROUND, 2.2);
-        line(BUBBLE_RATE, BUBBLE, 2.6);
+        const bx = left + fullW * 0.34;
+        const bubbleR = Math.max(3, Math.min(skyH * 0.08, 11));
+        // clamped so the whole circle stays inside the sky at both extremes
+        const by = Math.max(top + bubbleR, Math.min(skyBottom - bubbleR, yOf(height)));
 
-        // the gap at the top, shaded so the side the bubble is on reads at a glance
-        if (height > 0 && !same) {
-            const yTop = yOf(height);
-            ctx.strokeStyle = warmer ? STORM : '#64748b';
-            ctx.lineWidth = 1.4;
-            ctx.setLineDash([3, 2]);
+        // the cumulus the bubble is building: tall while it keeps rising
+        const towerKm = warmer ? Math.min(MAX_KM, height + 0.9 + 0.5 * diff) : height + 0.25;
+        const topY = Math.max(top + 2, yOf(Math.min(MAX_KM, towerKm)));
+        const puffs = warmer ? 5 : 2;
+        ctx.fillStyle = warmer ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.65)';
+        for (let i = 0; i < puffs; i++) {
+            const f = puffs === 1 ? 0 : i / (puffs - 1);
+            const py = by - (by - topY) * f;
+            const pr = bubbleR * (warmer ? 1.5 - 0.5 * f : 1.1 - 0.3 * f);
             ctx.beginPath();
-            ctx.moveTo(xOf(rate * height), yTop);
-            ctx.lineTo(xOf(BUBBLE_RATE * height), yTop);
-            ctx.stroke();
-            ctx.setLineDash([]);
+            ctx.arc(bx + (i % 2 === 0 ? -1 : 1) * pr * 0.35, py, pr, 0, Math.PI * 2);
+            ctx.fill();
         }
 
-        if (showAbove) {
-            outlineText(ctx, 'bubble cools 10 °C/km', safeRight / 2, aboveRow,
-                'bold 11px monospace', BUBBLE, 'center', safeRight - 24);
+        // the bubble, coloured by whether it is warmer than the air it is in
+        ctx.fillStyle = same ? '#64748b' : warmer ? WARM : COLD;
+        ctx.beginPath();
+        ctx.arc(bx, by, bubbleR, 0, Math.PI * 2);
+        ctx.fill();
+
+        // and which way it is going
+        const room = warmer ? by - bubbleR - top : skyBottom - by - bubbleR;
+        if (!same && height > 0 && room > 7) {
+            const dir = warmer ? -1 : 1;
+            const tipY = by + dir * (bubbleR + Math.min(10, room - 2));
+            ctx.strokeStyle = warmer ? WARM : COLD;
+            ctx.lineWidth = 2.4;
+            ctx.beginPath();
+            ctx.moveTo(bx, by + dir * bubbleR);
+            ctx.lineTo(bx, tipY);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(bx - 4, tipY - dir * 5);
+            ctx.lineTo(bx, tipY);
+            ctx.lineTo(bx + 4, tipY - dir * 5);
+            ctx.stroke();
+            const bob = Math.sin(t * 2) * 1.2;
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(bx, by + dir * (bubbleR + 4) + bob, 1.5, 0, Math.PI * 2);
+            ctx.fill();
         }
-        if (showBelow) {
-            outlineText(ctx, 'the air cools ' + rate.toFixed(1) + ' °C/km', safeRight / 2, belowRow,
-                'bold 11px monospace', AROUND, 'center', safeRight - 24);
+
+        outlineText(ctx, height === 0 ? 'on the ground'
+            : same ? 'same as the air'
+                : Math.abs(diff).toFixed(1) + ' °C ' + (warmer ? 'warmer' : 'colder'),
+            bx + bubbleR + 6, by + 4, 'bold 11px monospace',
+            same ? '#334155' : warmer ? WARM : COLD, 'left', fullW - fullW * 0.34 - 10);
+
+        if (showGround) {
+            outlineText(ctx, 'the air cools ' + rate.toFixed(1) + ' °C/km',
+                safeRight / 2, skyBottom + GROUND_H + 12,
+                'bold 11px monospace', '#334155', 'center', safeRight - 24);
         }
 
         outlineText(ctx, '(' + rate.toFixed(1) + ' - 10) x ' + height.toFixed(2).replace(/\.?0+$/, '')
@@ -101,7 +137,7 @@ export const L2C26StabilityLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, same ? 'the same: it just sits there'
             : warmer ? 'warmer: it keeps rising' : 'colder: it sinks back',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace',
-            same ? '#334155' : warmer ? STORM : AROUND, 'center', safeRight - 30);
+            same ? '#334155' : warmer ? WARM : COLD, 'center', safeRight - 30);
 
         fitText(ctx, height === 0 ? 'still on the ground'
             : same ? 'no difference'
@@ -115,16 +151,16 @@ export const L2C26StabilityLab = ({ state, onStateChange }: Props) => {
                 caption: 'The Air Cooling Rate',
                 low: 'under 10: quiet',
                 high: 'over 10: storms',
-                stops: [AROUND, '#fcd34d', STORM] as [string, string, string],
+                stops: [COLD, '#fcd34d', WARM] as [string, string, string],
             },
             note: height === 0
                 ? 'The bubble has not risen yet. A rate of ' + rate.toFixed(1)
                   + ' °C/km is ' + (rate > BUBBLE_RATE ? 'above' : rate < BUBBLE_RATE ? 'below' : 'exactly')
                   + ' the 10 a bubble cools at, so the forecast is already decided.'
                 : 'After ' + height + ' km the bubble is ' + Math.abs(diff).toFixed(1) + ' °C '
-                  + (warmer ? 'warmer than the air around it, so it keeps rising.'
+                  + (warmer ? 'warmer than the air around it, so it keeps rising and the cloud towers.'
                       : same ? 'different from the air around it, so it just sits there.'
-                          : 'colder than the air around it, so it sinks back.'),
+                          : 'colder than the air around it, so it sinks back and the cloud fades.'),
         };
     };
 
