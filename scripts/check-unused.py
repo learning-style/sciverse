@@ -1,12 +1,20 @@
 #!/usr/bin/env python3
-"""Find unused symbols in changed TypeScript, before CI does.
+"""Find the type errors CI would catch in changed TypeScript, before CI does.
 
-Three CI runs have been lost to this: a raw2 in a readout, a module-level const
-declared for the top of a range, and a function parameter left behind when the
-string that used it was rewritten. tsc runs with noUnusedLocals and
-noUnusedParameters, and there is no Node on this machine, so this stands in.
+Unused symbols first. Three CI runs have been lost to those: a raw2 in a readout,
+a module-level const declared for the top of a range, and a function parameter
+left behind when the string that used it was rewritten. tsc runs with
+noUnusedLocals and noUnusedParameters, and there is no Node on this machine, so
+this stands in.
+
+And since a fourth run was lost to something this script could not see, it now
+also catches DEAD LITERAL COMPARISONS. `const puffs = warmer ? 5 : 2` is inferred
+as the literal union `5 | 2`, so `puffs === 1` is TS2367 -- a comparison whose two
+sides have no overlap -- and tsc treats it as an error rather than dead code. The
+guard reads as defensive and is a build failure.
 
 Usage:  python3 scripts/check-unused.py [file ...]
+        python3 scripts/check-unused.py --selftest
 With no arguments it scans everything changed against origin/main.
 """
 import os
@@ -103,11 +111,57 @@ def check(path):
             # search raw, not the stripped copy: stripping shifts every offset
             if nm and not re.search(r'\b' + re.escape(nm) + r'\b', raw[m.end():]):
                 problems.append("imports '" + nm + "' but never uses it")
+
+    # a const assigned one of two numeric literals, then compared with a third:
+    # tsc infers the literal union and rejects the comparison as TS2367
+    for m in re.finditer(r'\b(?:const|let)\s+([A-Za-z_]\w*)\s*=\s*[^;?]*\?\s*'
+                         r'(-?\d+(?:\.\d+)?)\s*:\s*(-?\d+(?:\.\d+)?)\s*;', t):
+        nm, lo, hi = m.group(1), m.group(2), m.group(3)
+        allowed = {lo, hi}
+        for cmp_m in re.finditer(r'\b' + re.escape(nm) + r'\s*(?:===|!==)\s*'
+                                 r'(-?\d+(?:\.\d+)?)\b', t):
+            if cmp_m.group(1) not in allowed:
+                problems.append("'" + nm + "' is " + lo + '|' + hi + ' but is compared with '
+                                + cmp_m.group(1) + ' (line '
+                                + str(t[:cmp_m.start()].count('\n') + 1)
+                                + '): tsc rejects that comparison')
     return problems
 
 
+SELFTEST = [
+    # the real failure: puffs is 5|2 and the guard tests for 1
+    ('const puffs = warmer ? 5 : 2;\nconst f = puffs === 1 ? 0 : i / (puffs - 1);', 1),
+    # comparing against one of its own two values is fine
+    ('const puffs = warmer ? 5 : 2;\nif (puffs === 5) { go(); }\nuse(puffs);', 0),
+    ('const dir = warmer ? -1 : 1;\nif (dir === -1) { up(); }\nuse(dir);', 0),
+    # a plain number is not a literal union, so any comparison is legal
+    ('const n: number = warmer ? 5 : 2;\nif (n === 1) { go(); }\nuse(n);', 0),
+    # arithmetic use, never compared
+    ('const dir = warmer ? -1 : 1;\nconst y = base + dir * 10;\nuse(y);', 0),
+]
+
+
+def selftest():
+    import tempfile
+    bad = 0
+    for src, want in SELFTEST:
+        with tempfile.NamedTemporaryFile('w', suffix='.ts', delete=False) as fh:
+            fh.write(src)
+            path = fh.name
+        got = [p for p in check(path) if 'compared with' in p]
+        os.unlink(path)
+        if len(got) != want:
+            bad += 1
+            print('selftest FAILED: wanted ' + str(want) + ', got ' + str(len(got))
+                  + ' for ' + repr(src[:60]))
+    print('selftest ok' if not bad else str(bad) + ' selftest case(s) failed')
+    return 1 if bad else 0
+
+
 def main():
-    files = sys.argv[1:] or changed_files()
+    if '--selftest' in sys.argv:
+        return selftest()
+    files = [a for a in sys.argv[1:] if not a.startswith('--')] or changed_files()
     files = [f for f in files if f.endswith(('.ts', '.tsx'))]
     if not files:
         print('no changed TypeScript files to scan')

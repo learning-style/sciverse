@@ -82,7 +82,7 @@ export const L2C26StabilityLab = ({ state, onStateChange }: Props) => {
         const puffs = warmer ? 5 : 2;
         ctx.fillStyle = warmer ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.65)';
         for (let i = 0; i < puffs; i++) {
-            const f = puffs === 1 ? 0 : i / (puffs - 1);
+            const f = i / (puffs - 1);
             const py = by - (by - topY) * f;
             const pr = bubbleR * (warmer ? 1.5 - 0.5 * f : 1.1 - 0.3 * f);
             ctx.beginPath();
