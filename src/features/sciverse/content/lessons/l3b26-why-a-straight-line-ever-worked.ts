@@ -3,78 +3,83 @@ import { DialogNode } from '../../types';
 /**
  * Level 3 (grades 9-12) for Big Idea 26, biology. The synthesis lesson. Mechanism + Limit.
  *
- * L2B26 was honest that Dolbear's 3 and 4.4 were a fitted line rather than anything
- * derived. It did not ask the harder question: why should a straight line fit at all?
+ * Rewritten to be lighter. The first version carried Q10 as an abstract dial, a
+ * reference temperature, an exponent, and a line drawn TANGENT at 20 C -- a derivative
+ * concept -- which is four pieces of machinery for one idea.
  *
- * It should not. Chirping is a muscle contracting, and muscles run on chemical
- * reactions whose rate rises by a factor of about 2 for every 10 C -- the factor
- * L3B18 named Q10. So
+ * The idea survives with almost none of it. One stated fact: a chemical rate roughly
+ * doubles for every 10 C, which is empirical and the lesson says so. Anchor the curve
+ * to the real cricket at 20 C -- 48 chirps in 25 s, near Dolbear's own 47 -- and the
+ * whole curve is whole numbers reached by doubling:
  *
- *   chirp rate = rate at 20 C x Q10^((T - 20) / 10)
+ *   0 C: 12    10 C: 24    20 C: 48    30 C: 96    40 C: 192
  *
- * which is an exponential, and a straight line through an exponential is a LOCAL FIT
- * that touches at one point and falls away both sides. Verified against a line drawn
- * tangent at 20 C with Q10 = 2: the line is 7.6% low at 15 C, 4.8% low at 25 C,
- * 15.3% low at 30 C, 27.9% low at 35 C and 38.6% low at 10 C -- within 8% only from
- * 15 C to 27 C, a window about 12 degrees wide.
+ * Dolbear joined MEASUREMENTS with a ruler, so his line is a chord through two points
+ * of that curve, not a tangent. And a chord's midpoint is just the AVERAGE of its two
+ * ends, so the entire result is one average a learner can do in their head:
  *
- * And the window's width is set by the curvature: at Q10 = 1.5 it is 20 degrees
- * wide, at 2.0 twelve, at 3.0 only seven. The more curved the truth, the less a
- * straight line is worth.
+ *   24 and 96 average to 60. The truth at 20 C is 48. The line reads 25% high.
  *
- * The cold limit is a different kind of thing and the lesson says so: below about
- * 13 C the cricket does not get inaccurate, it stops. That is a mechanism threshold,
- * not the exponential failing.
+ * That is the convexity of an exponential, with no calculus and no exponent. The line
+ * crosses the truth exactly at its two anchors, reads high between them and low
+ * outside, and at 3.3 C it reaches zero chirps, which is visibly nonsense.
  *
- * It closes the Big Idea on the thing all three Level 3 lessons found: the Level 2
- * calibration constant was hiding a dependence, and the range boundary is where that
- * dependence bites. 26 km/h hid sin(latitude). 10 C/km hid whether condensation had
- * started. Three chirps per degree hid an exponential.
+ * The error depends ONLY on the span between the anchors, verified identical at every
+ * centre -- which is what makes 'the window is N degrees wide' a well-defined idea.
+ * Span 5 C: 1.5%. Span 10 C: 6.1%. Span 20 C: 25%. Within 5% needs a span under about
+ * 9 C, so a straight line is worth roughly ten degrees.
  *
- * Frame of reference stated: rates are chirps per minute for one cricket, and the
- * line is drawn tangent to the curve at 20 C.
+ * A result the Q10 version never reached: the chord's slope over a 10 C span is 3.39
+ * chirps per C against Dolbear's measured 3, so the doubling rule roughly EXPLAINS the
+ * constant Level 2 was handed rather than merely bounding it.
  *
- * Still standing: Q10 is itself only roughly constant, and above about 35 C it
- * reverses as the enzymes start to come apart -- so the curve has a peak this lesson
- * does not model. Dolbear also fitted by least squares over his whole range rather
- * than tangentially at one point, which shifts the window a little.
+ * The cold limit is a different kind of thing and the lesson says so: below about 13 C
+ * the cricket does not get inaccurate, it stops. A mechanism threshold, not curvature.
+ *
+ * Frames stated: every count is chirps in 25 s for one cricket, as L2B26 counted them,
+ * and every error is the line measured against the doubling curve.
+ *
+ * Still standing: the doubling factor is itself only roughly 2 and varies with species
+ * and temperature; above about 35 C the rate reverses as the enzymes come apart, so the
+ * real curve has a peak this one does not model; and Dolbear fitted over his whole range
+ * rather than through two points, which shifts the window a little.
  */
 export function getL3B26Script(): Record<string, DialogNode> {
     return {
         root: {
             id: 'root',
             speaker: 'AI',
-            content: "L2B26 was careful about one thing and incurious about another.\n\nIt was careful to say that Dolbear's **3** and **4.4** were not derived from anything -- he sat with a thermometer and a notebook and **fitted a straight line**. Good.\n\nWhat it never asked is: **why should a straight line fit?**\n\nBecause there is no reason it should. Think about what chirping actually is. A cricket rubs a ridge on one wing against a scraper on the other, and it is **muscle** that moves the wing. Muscle contracts because of chemical reactions, and chemical reactions have a very well known way of responding to temperature -- and it is not a straight line.\n\n**A chemical rate roughly doubles for every 10 °C.** L3B18 met that factor and gave it its name: **Q10**, which means nothing more than *the factor for ten degrees*. For most biological processes it is somewhere between 2 and 3.\n\nSo the chirp rate should go like this:\n\n**chirp rate = (rate at 20 °C) x Q10 to the power of ((T - 20) / 10)**\n\nThat is an **exponential**, not a line. Every ten degrees multiplies the rate; it does not add a fixed amount.\n\nWhich leaves a real puzzle. Dolbear's straight line **works** -- it has been used for over a century and it is accurate to about a degree. **How can a straight line be a good description of an exponential?**\n\nYour two dials:\n\n- **Temperature**, in °C.\n- **Q10** -- the factor the rate multiplies by for every 10 °C warmer.\n\nBefore any arithmetic: can a straight line ever match a curve?",
+            content: "L2B26 was honest about Dolbear's rule. **Count the chirps in 25 seconds, divide by 3, add 4.4** -- and it said plainly that the 3 and the 4.4 were *fitted*, not derived. Somebody sat with a thermometer and drew the line that best matched.\n\nIt left one question open, and it is the sharpest one in the Big Idea. **Why should a straight line fit at all?**\n\nBecause it has no business fitting. A chirp is a muscle contracting, a muscle runs on chemical reactions, and chemical reactions do not speed up in straight lines. They speed up by **multiplying**:\n\n**a chemical rate roughly doubles for every 10 °C**\n\nThat is a measured rule of thumb rather than a law -- it is near enough to 2 for a great many reactions and it varies -- but it is the right shape, and the shape is what matters here.\n\nSo take one real cricket. At **20 °C** it gives about **48 chirps in 25 seconds**, which is what Dolbear's rule says too. Now get the rest of the curve by doubling and halving -- no formula needed:\n\n| Temperature | Chirps in 25 s |\n| --- | --- |\n| 0 °C | **12** |\n| 10 °C | **24** |\n| 20 °C | **48** |\n| 30 °C | **96** |\n| 40 °C | **192** |\n\nEvery number there came from the one beside it. **That is the truth about the cricket, and it is plainly not a straight line** -- the steps are 12, 24, 48, getting bigger each time, where a straight line would add the same amount every ten degrees.\n\nYour dials are **Temperature** in °C, and **Span** in °C -- how far apart the two temperatures were that Dolbear drew his line through.\n\nBefore any arithmetic. He measured at **10 °C** and at **30 °C** and joined the two with a ruler. What does his line say at 20 °C, halfway between?",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
             options: [
-                { id: 'locally', label: "Over a short stretch, yes -- any smooth curve looks straight if you do not go far.", nextNodeId: 'defining', sentiment: 'positive' },
-                { id: 'never', label: "No, so Dolbear's rule must be wrong and people have been lucky.", nextNodeId: 'misconception' }
+                { id: 'average', label: "The average of 24 and 96 — so 60, which is too high.", nextNodeId: 'defining', sentiment: 'positive' },
+                { id: 'right', label: "48 — the line is fitted to the cricket, so it gets the middle right.", nextNodeId: 'misconception' }
             ]
         },
 
         misconception: {
             id: 'misconception',
             speaker: 'AI',
-            content: "A century of campers is a lot of luck. The rule works, so the interesting question is not *whether* but *where*.\n\nAnd the answer is the thing that makes all of calculus useful: **any smooth curve looks straight if you only look at a short piece of it.** Stand on a hillside and the ground under your feet is flat, although the hill is not. Walk far enough and the flatness fails.\n\nSo a straight line through an exponential is not wrong. **It is right at one point and gets steadily worse in both directions**, and the only real question is how far you can go before the error matters.\n\nThat question has a number, and getting it is the point of this lesson.\n\nNotice also what sort of claim this is. L2B26 said Dolbear's rule holds *over the range he measured*, which sounded like a note about one man's fieldwork. It is not. **The range is a property of the curve**, and you can work it out without knowing anything about Dolbear -- which means you can work out the range of a fitted line you have never seen the data for.",
+            content: "The line is fitted to the cricket at **the two ends**, and that is all a ruler can promise.\n\nA straight line between two points goes through the **midpoint** of those two points. That is just what straight means -- half the distance across, half the distance up. So at 20 °C, halfway between 10 °C and 30 °C, the line must read the **average** of the two end counts:\n\n(24 + 96) / 2 = **60 chirps**\n\nAnd the cricket actually gives **48**.\n\n**60 against 48. The line is 25% high**, right in the middle of the range it was fitted to.\n\nStop and see why, because this is the whole lesson in one line. Going up from 20 °C to 30 °C, the cricket **adds 48** chirps. Coming down from 20 °C to 10 °C, it only **loses 24**. The two halves are not the same size, because each step doubles -- so their average sits **above** the middle value rather than on it.\n\n**A curve that bends upwards always lies below the straight line joining two of its points.** Nothing about crickets is needed for that; it follows from the bending alone.",
             options: [
-                { id: 'cont', label: "So how far can the line go?", nextNodeId: 'defining' }
+                { id: 'cont', label: "So where is the line right?", nextNodeId: 'defining' }
             ]
         },
 
         defining: {
             id: 'defining',
             speaker: 'AI',
-            content: "Put the line where it has the best chance: touching the curve in the **middle** of the useful range, at **20 °C**, and sloping the same way the curve does there.\n\nThen compare them. For **Q10 = 2** -- a doubling every ten degrees -- the line comes out like this:\n\n| Temperature | The line is |\n| --- | --- |\n| 10 °C | **38.6% low** |\n| 13 °C | **16.4% low** |\n| 15 °C | **7.6% low** |\n| 20 °C | **exact** |\n| 25 °C | **4.8% low** |\n| 30 °C | **15.3% low** |\n| 35 °C | **27.9% low** |\n\nTwo things in that column are worth noticing.\n\n**It is low on both sides.** Not high on one and low on the other -- an exponential curves upward away from any tangent, so the line always underestimates. A fitted line through curved data is **biased**, not merely imprecise, and bias does not average out however many measurements you take.\n\n**And it is good over a surprisingly narrow band.** If you ask where the line stays within 8%, the answer is **15 °C to 27 °C** -- about **twelve degrees**. Outside that it goes wrong fast, because an exponential's error grows the way exponentials do.\n\nSo Dolbear's rule is not approximately right everywhere. **It is well inside a twelve-degree window and getting rapidly worse outside it**, and that window is where he took his measurements, because that is where a line fitted well enough to publish.",
+            content: "In exactly two places: **the two temperatures it was fitted at.** There the line touches the truth because that is where it was pinned. Everywhere else it is wrong, and it is wrong in a pattern worth knowing:\n\n- **between** the two anchors, the line reads **high**, because the curve sags below the chord\n- **outside** them, the line reads **low**, because the curve climbs away faster than any straight line can\n\nSo the picture is a curve crossed twice by a line, bulging below it in the middle and escaping above it at both ends.\n\nAnd outside, it gets bad quickly. His line through 10 °C and 30 °C has a slope of (96 - 24)/20 = **3.6 chirps per °C**, so running it outwards:\n\n| | the line says | the cricket gives | |\n| --- | --- | --- | --- |\n| 40 °C | **132** | **192** | 31% low |\n| 30 °C | **96** | **96** | fitted here |\n| 20 °C | **60** | **48** | 25% high |\n| 10 °C | **24** | **24** | fitted here |\n| 5 °C | **6** | **17** | 65% low |\n\nRun it down a little further and the line reaches **zero chirps at 3.3 °C** -- it claims a cricket at 3 °C chirps a negative number of times. **A straight line through a doubling curve does not merely lose accuracy at the edges; it eventually says something impossible.**\n\nNone of which makes Dolbear wrong. It makes his rule **local**, and the obvious next question is how local.",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'network' } },
             options: [
-                { id: 'work', label: "What sets the width of the window?", nextNodeId: 'worked' }
+                { id: 'work', label: "How wide can the range be?", nextNodeId: 'worked' }
             ]
         },
 
         worked: {
             id: 'worked',
             speaker: 'AI',
-            content: "**The curvature does**, and the curvature is Q10. A bigger Q10 means a sharper curve, and a sharper curve leaves less of itself looking straight.\n\nMove the Q10 dial and ask each time where the line stays within 8%:\n\n| Q10 | The window | Width |\n| --- | --- | --- |\n| 1.5 | 11 to 31 °C | **20 degrees** |\n| 2.0 | 15 to 27 °C | **12 degrees** |\n| 2.5 | 16 to 25 °C | **9 degrees** |\n| 3.0 | 17 to 24 °C | **7 degrees** |\n\nFrom 20 degrees down to 7, and all that changed was how strongly the chemistry responds to temperature. **The width of a straight line's usefulness is set by how curved the thing it is approximating is**, and nothing else -- not by how carefully you fitted it, and not by how many measurements you took.\n\nThat is worth holding on to, because it is a general fact about fitted rules rather than a fact about crickets. **A linear rule for a process with a strong temperature dependence has a narrow working range, and you can estimate the range from the Q10 alone.**\n\n**And now the cold end, which is a different kind of failure entirely.** Below about **13 °C** a snowy tree cricket does not chirp inaccurately. **It stops.** The exponential does not say that -- it goes on predicting slower and slower chirping all the way down, and at 5 °C it would cheerfully give you a rate.\n\nSo the silence L2B26 ran into is **not this curve failing**. It is a separate mechanism: below some temperature the muscle cannot cycle fast enough to make the sound at all, and the mechanism simply stops working. **An exponential has no bottom. A cricket does.**",
+            content: "The thing that decides it is the **Span** -- how far apart the two fitting temperatures were. Narrow the span and the curve has less room to sag away from the line.\n\nWork the middle error for each span the same way every time: average the two ends, compare with the truth halfway between.\n\n| Span | Fitted at | Line says | Truth | Error |\n| --- | --- | --- | --- | --- |\n| **20 °C** | 10 and 30 | 60 | 48 | **25% high** |\n| **10 °C** | 15 and 25 | 50.9 | 48 | **6.0% high** |\n| **5 °C** | 17.5 and 22.5 | 48.8 | 48 | **1.7% high** |\n\n**Halving the span cuts the error by about four**, which is the signature of a bend: the gap grows with the square of how far you have gone.\n\nSo if you will accept **5%**, the span has to be under about **9 °C**. Dolbear's rule is worth roughly **ten degrees** of temperature, and outside that window you are reading a number the line never promised.\n\n**And now the part that pays the Big Idea back.** Take the slope of the chord over a sensible 10 °C span, from 15 °C to 25 °C:\n\n(67.9 - 33.9) / 10 = **3.4 chirps per °C**\n\nDolbear measured **3**. We did not fit anything -- we took *a chemical rate doubles every 10 °C*, anchored it to one cricket at one temperature, and out came very nearly his constant. **The 3 that L2B26 had to accept as a fitted number is mostly explained by the doubling**, and the leftover difference is exactly the sort of thing a real species and a real fitting range would account for.",
             options: [
                 { id: 'check', label: "Let me try one.", nextNodeId: 'math_check' }
             ]
@@ -83,27 +88,27 @@ export function getL3B26Script(): Record<string, DialogNode> {
         math_check: {
             id: 'math_check',
             speaker: 'AI',
-            content: "Your turn. A biologist finds a different insect whose call rate has a **Q10 of 3**, and fits a straight line to it at 20 °C.\n\nThey then use that line at **30 °C**. What should they expect?",
+            content: "Your turn, and read the table in `root` rather than reaching for anything else.\n\nSuppose Dolbear had instead fitted his line through **0 °C** and **20 °C** -- still a 20-degree span, but a colder one.\n\nHow far out is his line at 10 °C, halfway between?",
             options: [
-                { id: 'thirty', label: "The line reads about 30% low, because a Q10 of 3 curves hard and 30 °C is well outside its 7-degree window.", nextNodeId: 'explore', sentiment: 'positive' },
-                { id: 'fine', label: "It should be fine — 30 °C is only 10 degrees from where it was fitted.", nextNodeId: 'math_wrong' },
-                { id: 'high', label: "The line reads about 30% high, since it keeps rising past the curve.", nextNodeId: 'math_wrong' }
+                { id: 'same', label: "25% high again — the same as before, because the span is the same", nextNodeId: 'explore', sentiment: 'positive' },
+                { id: 'less', label: "Less than before, because the counts are smaller down there", nextNodeId: 'math_wrong' },
+                { id: 'more', label: "More than before, because the cricket is near its silent point", nextNodeId: 'math_wrong' }
             ]
         },
 
         math_wrong: {
             id: 'math_wrong',
             speaker: 'AI',
-            content: "Ten degrees sounds modest and it is not, because what counts is ten degrees **measured against the curvature**.\n\nAt a Q10 of 3 the real rate at 30 °C is three times what it is at 20. The line, which only knows the slope at 20, has climbed by ten times that slope -- and ten times the slope at the bottom of a tripling curve does not reach the top. It lands about **30% low**.\n\nAnd *low* is the direction to remember. **An exponential curves upward away from its tangent**, so the line falls below the curve on **both** sides -- above 20 °C because the curve has accelerated away upward, and below 20 °C because the curve has flattened out above where the straight line keeps descending. A line through curved data does not scatter around the truth. **It sits consistently on one side of it.**\n\nSo the right expectation is not *roughly right* and not *too high*. It is **systematically about a third low**, which is the kind of error that looks like a real biological finding if you do not know it is there.",
+            content: "Do it with the same two steps. The ends are **12** and **48**, so the line at 10 °C reads\n\n(12 + 48) / 2 = **30**\n\nand the truth at 10 °C is **24**. So 30 against 24, which is **25% high** -- the identical figure.\n\nThat is not a coincidence and it is the most useful thing in the lesson. **The error depends only on the span, not on where the span sits.** Both of these are 20-degree spans, so both are 25% out in the middle, even though one deals in dozens of chirps and the other in hundreds.\n\nThe reason is that doubling cares about **ratios**, not amounts. Across any 20-degree span the far end is 4 times the near end, whatever the two temperatures are -- 12 to 48, or 24 to 96, or 48 to 192. The shape of the problem is identical every time, so the percentage error has to be too.\n\n**Which is what lets you speak of a window at all.** If the error depended on where you were as well as how wide you had gone, *Dolbear's rule is good over ten degrees* would be a meaningless sentence. Instead it is a property of the rule.\n\n(And the cricket being near its silent point is a real worry, but a different one -- it has nothing to do with the line bending.)",
             options: [
-                { id: 'retry', label: "Low on both sides, and the window is narrow.", nextNodeId: 'explore' }
+                { id: 'retry', label: "Only the span matters.", nextNodeId: 'explore' }
             ]
         },
 
         explore: {
             id: 'explore',
             speaker: 'AI',
-            content: "Both dials are live. The true exponential and the straight line fitted at 20 °C are drawn together, with your temperature marked and the error between them.\n\nThings worth doing:\n\n- Set **Q10** to 2 and walk the **Temperature** from 20 outward in both directions. The error is **zero at 20** and grows both ways -- and it is **negative both ways**, which is the bias.\n- Now hold the temperature at 30 and sweep **Q10** from 1.5 to 3. The error goes from about 6% to about 30%. **Same line, same temperature; only the curvature changed.**\n- Find the two temperatures where the error reaches 8% at Q10 = 2. They are about **15** and **27** -- Dolbear's working window, read straight off the picture.\n- Set Q10 to **1.5** and look at how straight the curve looks. A weakly temperature-dependent process is nearly linear, and a fitted line for it would be genuinely useful over twenty degrees.\n- Take the temperature below **13 °C** and read what the curve claims. It gives a number, and a real cricket gives **silence**. **The two failures are different: one is the line leaving the curve, the other is the curve leaving the animal.**",
+            content: "Both dials are live. The picture shows the cricket's real doubling curve and Dolbear's straight line on the same axes, with the two **anchor dots** where the line was pinned to the curve. At the temperature you dial, the gap between them is drawn and measured.\n\nThings worth doing:\n\n- Leave the span at **20 °C** and walk the **Temperature** across. The gap shuts to nothing at **10** and **30** -- the anchors -- bulges to **25% high** at 20 in between, and opens the other way outside, reaching **31% low** by 40 °C\n- Follow the line down past 5 °C and watch it **hit the floor**. It crosses zero at 3.3 °C, which is a cricket chirping a negative number of times\n- Now narrow the **Span** and watch the whole middle bulge collapse: 20 °C gives 25%, 10 °C gives 6.0%, 5 °C gives 1.7%. **Halving the span quarters the error**\n- Set the span to about **9 °C**, which is the widest that keeps the middle inside 5%. That is the honest width of Dolbear's rule\n- Then widen it to **30 °C** and look at what a greedy fit costs: **59% high** in the middle. A line asked to cover too much is worse everywhere than a line asked to cover a little\n- And take the temperature below **13 °C**. The picture stops reporting an error, because down there the cricket is **silent** -- which is not the line being inaccurate but the animal stopping, and those are different kinds of limit",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'explore' } },
             options: [
                 { id: 'cp', label: "Checkpoint", nextNodeId: 'checkpoint' }
@@ -113,47 +118,47 @@ export function getL3B26Script(): Record<string, DialogNode> {
         checkpoint: {
             id: 'checkpoint',
             speaker: 'AI',
-            content: "All three of this level's lessons took a Level 2 rule apart, and the same thing was inside each one.\n\n- **L2P26** said multiply the gradient by **26 km/h**. L3P26 found **sin(latitude)** inside the 26, and the equator where it fails.\n- **L2C26** said compare with **10 °C per km**. L3C26 found *whether condensation has started* inside the 10, and the second threshold at 5.5.\n- **L2B26** said **3 chirps per degree**. L3B26 found an **exponential** inside the 3, and a twelve-degree window.\n\nWhat is the general statement?",
+            content: "Two things in this lesson stop Dolbear's rule working, and they are not the same kind of thing.\n\nOne: at **35 °C** the rule reads about 28% low. Two: at **8 °C** the rule reads 4.4 °C and the cricket makes no sound at all.\n\nWhat is the difference between those two failures?",
             options: [
-                { id: 'hidden', label: "A calibration constant is a dependence you have not noticed yet -- and the rule's range is wherever that dependence starts to matter.", nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
-                { id: 'wrong', label: "Level 2 rules are simply wrong and should not be taught.", nextNodeId: 'checkpoint_wrong' },
-                { id: 'precision', label: "The constants need more decimal places to work over wider ranges.", nextNodeId: 'checkpoint_wrong' }
+                { id: 'kinds', label: "The first is the straight line bending away from a curve — it gets gradually worse. The second is the cricket stopping, which is a threshold, and no better line would fix it.", nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+                { id: 'same', label: "No real difference — both are the rule being used outside the range it was fitted over.", nextNodeId: 'checkpoint_wrong' },
+                { id: 'fit', label: "Both could be fixed by fitting the line over a wider range of temperatures.", nextNodeId: 'checkpoint_wrong' }
             ]
         },
 
         checkpoint_wrong: {
             id: 'checkpoint_wrong',
             speaker: 'AI',
-            content: "None of the three Level 2 rules was wrong. Each one gave good answers for years, and two of them are what working forecasters actually use.\n\nWhat each one did was replace something that **varies** with a single number. And a single number standing in for something that varies is fine **exactly where that thing does not vary much** -- which is the definition of a working range.\n\n- the 26 is right wherever **sin(latitude)** is close to sin(50°) -- the middle latitudes, as stated\n- the 10 is right wherever **nothing is condensing** -- below the cloud base, as stated\n- the 3 chirps per degree is right wherever the **exponential looks straight** -- about twelve degrees, which was not stated because nobody knew\n\nSo more decimal places would not help at all, and this is the point worth taking away. **A more precise wrong constant is still wrong.** Measuring the 26 to four figures tells you nothing about the equator; what tells you about the equator is finding the sine.\n\n**Precision inside the range and complete failure outside it are the normal condition of a fitted rule**, and the only cure is to find out what the constant is standing in for.",
+            content: "Both are outside the range, so that much is true -- but ask what you would have to change to repair each one.\n\n**The 35 °C failure is about shape.** The truth curves and the line does not, so the two drift apart smoothly: 1.5% out, then 6%, then 25%, then 31%. There is no edge to it. You could shrink it as far as you liked by fitting a narrower span, or kill it altogether by using a curve instead of a line. **It is an approximation error, and it is under your control.**\n\n**The 8 °C failure is about the animal.** Below about **13 °C** the snowy tree cricket does not chirp slowly -- it stops. The curve does not gently approach zero there; the mechanism switches off. No line, no curve and no amount of careful fitting will extract a temperature from a silent cricket, because the information is not in the silence. **It is a mechanism threshold, and nothing in your gift will move it.**\n\nThat is why L2B26 was right to treat silence as its own case rather than as a reading of zero. **An approximation gets worse gradually and tells you so. A mechanism limit gives no warning and still hands you a number** -- 4.4 °C, confidently, on a night that might be twelve below.",
             options: [
-                { id: 'retry', label: "A constant stands in for something that varies.", nextNodeId: 'checkpoint_correct' }
+                { id: 'retry', label: "One is the fit, the other is the cricket.", nextNodeId: 'checkpoint_correct' }
             ]
         },
 
         checkpoint_correct: {
             id: 'checkpoint_correct',
             speaker: 'AI',
-            content: "**That is the Big Idea, and it took all six lessons to say it.**\n\nLevel 2 found that predicting weather means measuring a **proxy** and applying a **calibrated rule** -- the spacing of isobars, two cooling rates, a chirp rate. That is genuinely how it is done.\n\nLevel 3 found what a calibration costs you. **Every one of those constants was a variable in disguise**, and the rule's range was wherever the disguise held:\n\n| | The constant | What it hid | Where it fails |\n| --- | --- | --- | --- |\n| **P** | 26 km/h | **sin(latitude)** | the equator, where f is zero |\n| **C** | 10 °C/km | **condensation** | above the cloud base |\n| **B** | 3 chirps/°C | an **exponential** | outside about 12 degrees |\n\nAnd deriving each one gave two things for the price of one: **the rule, and the rule's limits, out of the same algebra.** That is what a derivation is worth and a measurement can never give you -- because you can measure a constant very accurately without ever discovering what it depends on.\n\n**So the useful question about any rule is not how accurate it is. It is what its constants are standing in for.**",
+            content: "**And that closes the Big Idea, because all three Level 3 lessons did the same thing to Level 2's constants.**\n\nEach Level 2 lesson was handed a tidy number and used it well. Each Level 3 lesson went and asked what the number was made of, and found **a dependence hiding inside it**:\n\n| | The constant | What was hiding in it | So the rule ends where |\n| --- | --- | --- | --- |\n| **L3P26** | 26 km/h per hPa/100 km | **sin(latitude)** | you approach the equator |\n| **L3C26** | 10 °C per km | whether **condensation** has started | the bubble reaches its cloud base |\n| **L3B26** | 3 chirps per °C | a **doubling**, not an adding | about ten degrees from where it was fitted |\n\nSo the answer to *how do we predict weather* has a second half that Level 2 could not supply. Level 2's answer was **measure a proxy and apply a calibrated rule.** Level 3's is that **a calibration constant is a dependence you have not noticed yet**, and the rule's range is precisely where that dependence starts to bite.\n\nWhich is why a **derivation** is worth more than a better measurement. Measuring harder gives you a more precise 3, and a more precise 3 is still a straight line through a curve. Deriving it gives you the 3 **and the ten degrees** out of the same piece of work -- the rule and its limits together.",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint' } },
             options: [
-                { id: 'disc', label: "A constant is a variable in disguise!", nextNodeId: 'discovery' }
+                { id: 'disc', label: "The constant was hiding the range!", nextNodeId: 'discovery' }
             ]
         },
 
         discovery: {
             id: 'discovery',
             speaker: 'AI',
-            content: "**You found out why a straight line ever worked, and how far.**\n\n- Chirping is **muscle**, muscle is **chemistry**, and a chemical rate rises by a factor of about 2 for every 10 °C -- the **Q10** L3B18 named. So **chirp rate = (rate at 20 °C) x Q10^((T-20)/10)**, an **exponential**\n- A straight line through an exponential is a **local fit**. It is exact at one point and gets worse both ways, because **any smooth curve looks straight over a short enough stretch**\n- Fitted tangent at 20 °C with Q10 = 2, the line is **7.6% low at 15 °C**, **4.8% low at 25**, **15.3% low at 30**, **27.9% low at 35** and **38.6% low at 10**\n- **It is low on both sides**, because an exponential curves upward away from any tangent. So a fitted line through curved data is **biased, not merely imprecise** -- and bias does not average out however many measurements you take\n- Within 8%, the window is **15 to 27 °C: about twelve degrees**. That is where Dolbear measured, because that is where a line fitted well enough to publish\n- **The curvature sets the width**, and nothing else: Q10 of 1.5 gives a **20-degree** window, 2.0 gives **12**, 3.0 gives **7**. Not how carefully you fitted it, and not how many readings you took\n- So **you can estimate a linear rule's working range from the Q10 alone**, without seeing the data -- which makes the range a property of the curve rather than of one man's fieldwork\n- **The cold end is a different failure.** Below about 13 °C the cricket does not chirp inaccurately, it **stops**. The exponential has no bottom; it would give a rate at 5 °C. **A curve leaving the animal is not the same as a line leaving the curve**\n- And all three Level 3 lessons found the same thing in their Level 2 rule. **26 km/h hid sin(latitude). 10 °C/km hid condensation. Three chirps per degree hid an exponential**\n- **A calibration constant is a dependence you have not noticed yet**, and the rule's range is wherever that dependence starts to matter. None of the Level 2 rules was wrong -- each replaced something that varies with one number, which works exactly where it does not vary much\n- **A more precise wrong constant is still wrong.** Measuring the 26 to four figures says nothing about the equator; finding the sine does\n- **A derivation gives the rule and the rule's limits out of the same algebra**, which is what measuring can never do\n- **Still standing:** Q10 is itself only roughly constant, and above about 35 °C it **reverses** -- enzymes start coming apart, so the real curve has a peak and then falls, which this exponential knows nothing about. And Dolbear fitted by least squares across his whole range rather than tangentially at one point, which shifts the window by a degree or so either way.",
+            content: "**You explained a fitted constant without fitting anything.**\n\n- A chirp is a muscle contracting and a muscle runs on chemistry, and **a chemical rate roughly doubles for every 10 °C** -- a measured rule of thumb, not a law, but the right shape\n- Anchor it to one real cricket at **20 °C** -- 48 chirps in 25 s -- and the rest is doubling and halving: **12, 24, 48, 96, 192** at 0, 10, 20, 30 and 40 °C. No formula anywhere\n- The steps are 12, 24, 48 -- **getting bigger**, where a straight line adds the same amount every time. So the truth is plainly not a straight line\n- Dolbear joined **two measurements** with a ruler, and a straight line passes through the **average** of its two ends. Fitted at 10 and 30 °C, at 20 °C it reads (24 + 96)/2 = **60** against a true **48**: **25% high**\n- Why: going up ten degrees **adds 48**, coming down ten degrees only **loses 24**. The halves are unequal because each step doubles, so their average sits above the middle. **A curve bending upwards always lies below the chord joining two of its points**, and no crickets are needed for that\n- The line is exactly right at its **two anchors**, reads **high between** them and **low outside**, and at **3.3 °C** it reaches zero chirps -- so it does not just lose accuracy at the edges, it ends up saying something impossible\n- The middle error is set by the **span** alone: **20 °C gives 25%, 10 °C gives 6.0%, 5 °C gives 1.7%.** Halving the span **quarters** the error, which is the signature of a bend\n- **And only the span matters, not where it sits.** A line through 0 and 20 °C is also 25% out at its midpoint, because doubling cares about **ratios** and the far end of any 20-degree span is 4 times the near end. **That is what makes a window a property of the rule** rather than of the day\n- Accept 5% and the span must be under about **9 °C**, so Dolbear's rule is worth roughly **ten degrees**\n- **The pay-off:** the chord's slope over 15 to 25 °C is (67.9 - 33.9)/10 = **3.4 chirps per °C**, and Dolbear measured **3**. The doubling rule, anchored at one point, very nearly **produces** the constant L2B26 had to accept on trust\n- **Two failures, two kinds.** The 35 °C error is the line bending away from a curve: smooth, gradual, shrinkable by fitting a narrower span. The 13 °C silence is the cricket **stopping**: a mechanism threshold that no line or curve will repair, because the information is not in the silence. **An approximation warns you; a mechanism limit does not**\n- All three Level 3 lessons found the same thing: **26 km/h hid sin(latitude), 10 °C/km hid condensation, 3 chirps per °C hid a doubling.** A calibration constant is a dependence you have not noticed yet, and the rule's range is where it starts to bite\n- **Still standing:** the doubling factor is itself only roughly 2 and varies by species and temperature. Above about 35 °C the rate **reverses** as the enzymes come apart, so the real curve has a peak this one does not model. And Dolbear fitted across his whole range rather than through two points, which shifts the window a little.",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery' } },
             options: [
-                { id: 'done', label: "Complete L3B26", nextNodeId: 'complete' }
+                { id: 'done', label: "Complete Big Idea 26, Level 3", nextNodeId: 'complete' }
             ]
         },
 
         complete: {
             id: 'complete',
             speaker: 'AI',
-            content: "**Level 3 Complete -- How Do We Predict Weather?**\n\nLevel 2 showed that a forecast is a proxy and a calibrated rule. Level 3 took the calibrations apart, and found the same thing in all three.\n\n**Summary Table:**\n| | Physics (L3P26) | Chemistry (L3C26) | Biology (L3B26) |\n| --- | --- | --- | --- |\n| Level 2's constant | **26 km/h** per hPa/100 km | **10 °C/km** | **3 chirps** per degree |\n| What it hid | **sin(latitude)** | whether **condensation** started | an **exponential** |\n| The real relation | **v = (1/(ρf)) x (Δp/Δn)** | 10 below the cloud base, **5.5** above | rate x **Q10^((T-20)/10)** |\n| The derived number | **26.3 km/h** at 50° | breaks even at **4.5 x base / (rate - 5.5)** | window **15 to 27 °C** |\n| The new boundary | **f = 0** at the equator | a **second** threshold at 5.5 | about **12 degrees** wide |\n| What is beyond it | no geostrophic wind **at all** | **conditionally unstable**: 56% of days | **38.6% low** at 10 °C |\n| The surprise | the wind runs **along** the lines | most days need a **trigger** | the error is **biased**, not scattered |\n| A second kind of limit | friction near the ground | the **work** a trigger must do | the cricket **stops** at 13 °C |\n\n**The one line to remember:** every one of Level 2's rules worked by replacing something that varies with a single measured constant, so each one was precise inside a range and useless outside it -- and the only way to find the range is to work out what the constant was standing in for, which is what a derivation gives you and a measurement never can.",
+            content: "**Level 3 Complete -- How Do We Predict Weather?**\n\nThree lessons, three borrowed constants, and the same discovery in each.\n\n**Summary Table:**\n| | Physics (L3P26) | Chemistry (L3C26) | Biology (L3B26) |\n| --- | --- | --- | --- |\n| Level 2's constant | **26 km/h** per hPa/100 km | **10 °C** per km | **3 chirps** per °C |\n| What it was hiding | **sin(latitude)** | whether **condensation** started | a **doubling**, not an adding |\n| The real shape | a balance that needs spin | **two** rates, 10 then 5.5 | a doubling, not a line |\n| The arithmetic | 1/(ρf) x Δp/Δn | 4.5 x base / (rate - 5.5) | average the two ends |\n| The range it holds over | the **middle latitudes** | below the **cloud base** | about **ten degrees** |\n| Outside it | no rule at the equator | the answer **flips** | 25% out, then impossible |\n| A second limit | -- | -- | **silence below 13 °C** |\n\n**What ties them together:** every one of Level 2's rules worked, and every one worked because somebody had quietly chosen a range for it. The physics hid a latitude, the chemistry hid a change of state, and the biology hid the fact that chemistry multiplies where a ruler adds.\n\n**The one line to remember:** a calibration constant is a dependence you have not noticed yet -- so measuring it more precisely buys you nothing, while deriving it hands you the constant and the range it holds over out of the same piece of work.",
             onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
             options: []
         }
