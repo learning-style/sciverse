@@ -8,8 +8,12 @@ import { AssessmentData } from '../../types';
  * sin(latitude)), L3C26 (condensation releases latent heat, so the bubble cools at
  * 5.5 C/km above its cloud base rather than 10 -- two thresholds, a conditionally
  * unstable band covering most days, and breaking even at 4.5 x base / (rate - 5.5)),
- * L3B26 (chirping is a chemical rate, so it is exponential in temperature and
- * Dolbear's line is a local fit good over about twelve degrees).
+ * L3B26 (chirping is a chemical rate, which doubles every 10 C, so Dolbear's line is
+ * a chord through two points of a doubling curve -- high in the middle of its range,
+ * low outside it, and worth about ten degrees). Questions 3, 7 and 11 were rewritten
+ * when that lesson dropped Q10, the exponent and the tangent: Q7 in particular had
+ * asserted that the line sits below the curve on BOTH sides, which is true of a
+ * tangent and false of a chord.
  * The spine: each Level 2 calibration constant was a dependence nobody had noticed,
  * and the rule's range is wherever that dependence starts to matter.
  * 12 questions: 4 easy -> 4 medium -> 4 hard
@@ -18,7 +22,7 @@ export const bigIdea26Level3Assessment: AssessmentData = {
     bigIdea: 26,
     level: 3,
     title: 'How Do We Predict Weather?',
-    subtitle: 'Level 3 -- The Balance, the Kink, and the Tangent',
+    subtitle: 'Level 3 -- The Balance, the Lift, and the Doubling',
     icon: '🧭',
     questions: [
         // ── EASY ──
@@ -65,7 +69,7 @@ export const bigIdea26Level3Assessment: AssessmentData = {
             ],
             correctIndex: 1,
             hint: 'What does a chemical rate do for every 10 °C of warming?',
-            explanation: 'A chemical rate roughly doubles for every 10 °C — the Q10 factor. So the chirp rate goes as rate x Q10^((T-20)/10), which is an exponential: every ten degrees multiplies it rather than adding a fixed amount. A straight line through an exponential can only ever be a local fit.'
+            explanation: 'A chemical rate roughly doubles for every 10 °C. So the count goes 24 at 10 °C, 48 at 20 and 96 at 30 — each ten degrees multiplies by two, where a straight line would add the same amount every time. The steps are 24 and then 48, not 24 and then 24. A straight line through a doubling curve can only ever be a local fit.'
         },
         {
             id: 4,
@@ -118,16 +122,16 @@ export const bigIdea26Level3Assessment: AssessmentData = {
             id: 7,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'A straight line is fitted tangent to a Q10 = 2 curve at 20 °C. Used at 30 °C, what does it do?',
+            question: 'Dolbear fits his line through measurements at 10 °C and 30 °C, where the cricket gives 24 and 96 chirps in 25 seconds. What does that line say at 20 °C?',
             options: [
-                'Reads about 15% high',
-                'Reads about 15% low',
-                'Reads exactly right, since 30 °C is only 10 degrees away',
-                'Reads about 50% low'
+                'It says 60, which is 25% high — a line passes through the average of its two ends, and the truth is 48',
+                'It says 48, which is right, because 20 °C is halfway between the two fitted points',
+                'It says 60, which is 25% low',
+                'It says 72, the average of 48 and 96'
             ],
-            correctIndex: 1,
-            hint: 'Which way does an exponential curve away from its own tangent?',
-            explanation: 'At 30 °C the real rate has doubled while the line has only climbed by ten times its slope at 20, so it lands about 15% low. And low is the direction to remember: an exponential curves upward away from any tangent, so the line sits below the curve on BOTH sides. A fit through curved data is biased, not merely scattered, and bias does not average out however many readings you take.'
+            correctIndex: 0,
+            hint: 'A straight line passes through the midpoint of its two ends. What is the average of 24 and 96?',
+            explanation: 'A straight line goes through the average of its two ends: (24 + 96) / 2 = 60. The cricket really gives 48, so the line reads 25% high. It is high rather than low because the curve sags below the chord joining two of its points, and the reason is in the steps: going up ten degrees from 20 °C adds 48 chirps while coming down ten degrees only loses 24, so the average of the two ends has to sit above the middle value. Note where the error lives — the line is exactly right at 10 and 30 °C, where it was pinned, and worst in the middle of its own range.'
         },
         {
             id: 8,
@@ -180,16 +184,16 @@ export const bigIdea26Level3Assessment: AssessmentData = {
             id: 11,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'A straight line fitted at 20 °C stays within 8% of the curve over 20 degrees when Q10 is 1.5, but only 7 degrees when Q10 is 3. What sets the width of a fitted line\'s useful range?',
+            question: 'A line fitted through 10 °C and 30 °C is 25% out in the middle. A line fitted through 0 °C and 20 °C is also 25% out in the middle, though the counts down there are half the size. What does that tell you?',
             options: [
-                'How many measurements went into the fit',
-                'The curvature of the thing being approximated, and nothing else',
-                'How precisely the temperature was measured',
-                'The length of the range the data happened to cover'
+                'The error depends only on how wide the span is, not on where the span sits',
+                'The two lines are really the same line',
+                'It is a coincidence of these particular temperatures',
+                'The error depends on the size of the counts, and here they happen to cancel'
             ],
-            correctIndex: 1,
-            hint: 'What changed between the two cases — the fitting, or the curve?',
-            explanation: 'Nothing about the fitting changed; only how strongly the chemistry responds to temperature. A sharper curve leaves less of itself looking straight. That makes the range a property of the curve rather than of anyone\'s fieldwork — so you can estimate a linear rule\'s working range from the Q10 alone, without ever seeing the data it was fitted to.'
+            correctIndex: 0,
+            hint: 'What is the same about those two fits, and what is different?',
+            explanation: 'Doubling cares about ratios rather than amounts: across any 20-degree span the far end is four times the near end, whether that is 12 to 48 or 24 to 96. The shape of the problem is identical, so the percentage error has to be identical too. That is what makes a working range a property of the rule rather than of the day you happened to use it. Halve the span to 10 degrees and the error falls to 6.0%; halve it again to 5 degrees and it is 1.7%.'
         },
         {
             id: 12,
