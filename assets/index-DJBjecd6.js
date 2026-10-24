@@ -30613,6 +30613,8 @@ That is a thermometer made of an insect, and it is accurate to about a degree.
 
 But a rule like that comes with instructions, and the instructions are not optional. **You have to count for the right length of time.** The 25 seconds is not a suggestion -- it is part of the rule, because the rule converts a *count* into a temperature and a count means nothing without the time it was counted over.
 
+And the 25 is a **choice somebody made**, not a fact about crickets. No cricket knows anything about 25 seconds -- what the animal has is a **rate**, so many chirps per second, and *any* counting window would measure it correctly. 25 was picked because it is the one window that makes the sum come out as **divide by 3**, and this lesson will show why it has to be 25 and not 20 or 30. **The cricket supplies the rate; the 25 seconds is ours.**
+
 So your two dials are the measurement and the method.
 
 - **Chirps Counted** -- how many you heard.
@@ -30656,7 +30658,17 @@ and that **7.2** is nothing but his **4** multiplied by the **9/5** of the unit 
 
 **°C = 10 + (2.4 x count - 40) / 7.2 = count / 3 + 4.44**
 
-**And here is the reason for the 25 seconds**, which is the one part of the whole rule that has nothing to do with crickets. 2.4 divided by 7.2 is **exactly one third**. Count for 15 seconds instead and the slope is 5/9; for 20 seconds, 5/12; for half a minute, 5/18. **Only a 25-second count turns Dolbear's line into something you can do in your head**, and that is the entire reason the field version asks for 25.
+**And here is the reason for the 25 seconds**, which is the one part of the whole rule that has nothing to do with crickets.
+
+Do that last step again with a general window of **W** seconds. Chirps per minute is then 60/W times your count, so the slope of the rule is
+
+**(60/W) / 7.2 = 25 / (3W)**
+
+**The 25 in *count for 25 seconds* is the same 25 that appears in that fraction**, and that is the whole answer. Put W = 25 in and the slope is 25/75 = **exactly one third**, and no other window gives a third. Count for 15 seconds instead and the slope is 5/9; for 20 seconds, 5/12; for half a minute, 5/18; for a full minute, 5/36. **None of those is arithmetic anybody would do in a field in the dark.**
+
+You can go further and ask which windows are easy. A slope of **1 / k** needs **W = 25k / 3**, so a **whole number of seconds** gives a slope like 1/3 or 1/6 only at **25 s, 50 s and 75 s** -- and nothing shorter than 25. Fifty seconds would give a tidy 1/6, but it is a long time to stand still while an evening cools, which breaks the steady rate the first step needs. **So 25 is the shortest count that makes the arithmetic free.**
+
+**The 25 is therefore arbitrary in one sense and not at all in the other.** Any window would have measured the cricket; exactly one turns Dolbear's fitted line into *divide by 3*.
 
 So the rule holds **for a snowy tree cricket, for one cricket at a time, and over the range of temperatures Dolbear actually measured** -- and the 4.4 is 40/9 rounded off, which runs a flat 0.04 °C low and need trouble nobody. Two crickets chirping together will double your count, which at 30 chirps is another ten degrees. A different species has a different line.
 
@@ -30734,7 +30746,8 @@ And every one of those rules came with conditions. The 26 holds in the middle la
 - **The rule has no way to know how long you listened.** The 25 seconds lives in the rule, not in the numbers. **A calibrated instrument comes with a method, and the method is part of the calibration**
 - Check the direction before the arithmetic: **fewer seconds must mean more chirps**. A short count always reads **cold**, a long count always reads **warm**
 - Ten more chirps is **3.3 °C**, every time -- so **three chirps is about a degree**, which is what makes it usable in your head
-- The 3 and the 4.4 are not derived from anything. Dolbear **fitted a straight line** to measurements. It is a real and useful thing and it is **not a law**
+- **The straight line is the measurement; the 3 and the 4.4 are only arithmetic.** Dolbear **fitted** the line -- °F = 50 + (chirps per minute - 40) / 4 -- and carrying that into Celsius for a 25-second count gives count / 3 + 4.44 with nothing whatever added. A fitted line is a real and useful thing and it is **not a law**
+- **The 25 seconds is ours, not the cricket's.** For a window of **W** seconds the slope is **25 / (3W)**, so W = 25 is the only window making it **1/3**, and a whole number of seconds gives an easy slope only at 25, 50 and 75. **Any window would measure the cricket; only this one makes the arithmetic free**
 - So it holds for **one species**, **one cricket at a time** -- two crickets together double your count, which at 30 chirps adds ten degrees -- and over the range he measured
 - **Silence is not a reading of zero.** Below about **13 °C** the cricket stops, so silence means *below 13* and nothing more precise. It could be 12 °C or -8 °C
 - **An instrument used outside its range gives a confident wrong answer, not a vague one**, which is why 4.4 °C from a silent night is worse than admitting you do not know
