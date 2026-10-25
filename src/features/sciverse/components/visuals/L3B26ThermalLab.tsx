@@ -6,189 +6,199 @@ interface Props {
     onStateChange: (key: string, value: unknown) => void;
 }
 
-// One idea: the plant keeps a running total, and the DATE that total is reached can be
-// predicted months ahead even though no single day can be. So the picture is the total
-// climbing day by day towards its target, with the prediction window drawn on a day
-// axis that is FIXED at one year -- which makes the window's drawn width the relative
-// precision, and makes "it does not finish in one season" something you see rather than
-// read. The window is the point of the lesson, so it is the only thing that moves.
-const BASE = 10;               // °C, maize base temperature
-const SIGMA = 3;               // °C, day-to-day scatter of the daily mean
-const SEASON = 365;            // days on the axis
-const TOTAL = '#be123c';
-const TARGET = '#334155';
-const WINDOW = '#047857';
-const DEAD = '#64748b';
+// A reader said the previous version was "too dry with just some line and lot of words"
+// and asked to see a corn plant and what a tassel is. They were right: it was an
+// accumulation chart, which draws the arithmetic and not the thing.
+//
+// So this draws the plant. A stalk grows out of the ground as the season runs, leaves
+// unfold, and at the end it pushes out a labelled TASSEL -- the plume the lesson is
+// about. Beside it a column fills with the warmth banked so far, with the 700 the plant
+// needs marked across it and the doubt in that total shaded around the mark. The two
+// dials then separate visibly: the average moves the date, and the swing only widens the
+// shaded band.
+const BASE = 10;               // °C, corn does not grow below this
+const NEED = 700;              // degree-days to tasselling
+const COL_TOP = 790;           // the column's scale, leaving headroom above the mark
+const STALK = '#15803d';
+const LEAF = '#16a34a';
+const PLUME = '#a16207';
+const WARM = '#b45309';
+const DOUBT = '#047857';
+const DEAD = '#94a3b8';
 
 const meanOf = (dial: number): number => Math.max(10, Math.min(30, Math.round(dial * 2) / 2));
-const needOf = (dial: number): number => Math.max(175, Math.min(2800, Math.round(dial / 25) * 25));
+const swingOf = (dial: number): number => Math.max(1, Math.min(6, Math.round(dial * 2) / 2));
 
 export const L3B26ThermalLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
 
     const drawScene = ({ ctx, safeRight, t, raw, raw2, stageTop, stageBottom }: LabScene) => {
         const mean = meanOf(raw);
-        const need = needOf(raw2);
+        const swing = swingOf(raw2);
         const perDay = Math.max(0, mean - BASE);
         const stalled = perDay <= 0;
-        // days to the event, and the window from spreads adding through their squares
-        const days = stalled ? SEASON * 9 : need / perDay;
-        const wobble = stalled ? 0 : SIGMA * Math.sqrt(days) / perDay;
-        const inSeason = !stalled && days <= SEASON;
+        const days = stalled ? 0 : NEED / perDay;
+        const doubt = stalled ? 0 : swing * Math.sqrt(days);
+        const windowDays = stalled ? 0 : doubt / perDay;
+        const num = (x: number) => (Math.abs(x - Math.round(x)) < 0.05 ? x.toFixed(0) : x.toFixed(1));
 
         const artTop = stageTop + 18;
         const artBottom = stageBottom - 52;
-        const usable = artBottom - artTop;
-        const LBL = 15;
-        // floored below any stage height that renders, and capped by what the one label
-        // row under the axis leaves
-        const showWindowRow = usable >= 44;
-        const plotH = Math.max(12, usable - (showWindowRow ? LBL : 0) - 4);
-        const plotTop = artTop + Math.max(0, (usable - (plotH + (showWindowRow ? LBL : 0) + 4)) / 2);
-        const plotBottom = plotTop + plotH;
-        const windowRow = plotBottom + 13;
-        const showInPlot = plotH >= 34;
+        const GROUND_H = 7;
+        const groundY = artBottom - GROUND_H;
+        const skyH = Math.max(10, groundY - artTop);
 
-        const left = 32;
-        const plotW = Math.max(70, safeRight - 58);
-        const xOf = (day: number) => left + plotW * Math.max(0, Math.min(1, day / SEASON));
-        const yOf = (dd: number) => plotBottom - plotH * Math.max(0, Math.min(1, dd / need));
+        const left = 26;
+        const fullW = Math.max(80, safeRight - 52);
 
-        ctx.strokeStyle = '#cbd5e1';
-        ctx.lineWidth = 1;
+        // the season runs on a loop, so the plant is seen growing and tasselling
+        const season = stalled ? 0.12 : 0.12 + 0.88 * ((t * 0.17) % 1);
+        const done = !stalled && season > 0.97;
+
+        // the ground
+        ctx.fillStyle = '#78350f';
+        ctx.fillRect(left, groundY, fullW, GROUND_H);
+
+        // ---- the corn plant
+        const px = left + fullW * 0.34;
+        // the plume rises up to ~16px above the apex, so that room is taken out of the
+        // plant's height here; otherwise a short stage pushes the tassel off the top
+        const topH = Math.max(6, Math.min(skyH * 0.86 - 16, skyH - 6));
+        const plantH = Math.max(5, topH * season);
+        const apexY = groundY - plantH;
+
+        ctx.strokeStyle = STALK;
+        ctx.lineWidth = Math.max(1.6, Math.min(plantH * 0.035, 4));
         ctx.beginPath();
-        ctx.moveTo(left, plotBottom);
-        ctx.lineTo(left + plotW, plotBottom);
-        ctx.moveTo(left, plotTop);
-        ctx.lineTo(left, plotBottom);
+        ctx.moveTo(px, groundY);
+        ctx.lineTo(px, apexY);
         ctx.stroke();
 
-        // the target: the total the species needs
-        ctx.strokeStyle = TARGET;
-        ctx.lineWidth = 1.6;
-        ctx.setLineDash([4, 3]);
-        ctx.beginPath();
-        ctx.moveTo(left, yOf(need));
-        ctx.lineTo(left + plotW, yOf(need));
-        ctx.stroke();
-        ctx.setLineDash([]);
-
-        // the window: where the date could land
-        if (inSeason && wobble > 0) {
-            const x1 = xOf(Math.max(0, days - wobble));
-            const x2 = xOf(Math.min(SEASON, days + wobble));
-            ctx.fillStyle = 'rgba(4,120,87,0.20)';
-            ctx.fillRect(x1, plotTop, Math.max(1.5, x2 - x1), plotH);
-            ctx.strokeStyle = WINDOW;
-            ctx.lineWidth = 1;
+        // leaves, unfolding up the stalk as it grows
+        const leaves = Math.max(1, Math.min(5, Math.floor(plantH / 16)));
+        ctx.strokeStyle = LEAF;
+        ctx.lineWidth = Math.max(1.4, Math.min(plantH * 0.022, 3));
+        for (let i = 0; i < leaves; i++) {
+            const up = plantH * (0.18 + 0.68 * (i / Math.max(1, leaves - 1 || 1)));
+            const side = i % 2 === 0 ? -1 : 1;
+            const span = Math.min(plantH * 0.42, fullW * 0.17);
+            const y0 = groundY - up;
             ctx.beginPath();
-            ctx.moveTo(x1, plotTop); ctx.lineTo(x1, plotBottom);
-            ctx.moveTo(x2, plotTop); ctx.lineTo(x2, plotBottom);
+            ctx.moveTo(px, y0);
+            ctx.quadraticCurveTo(px + side * span * 0.7, y0 - span * 0.34,
+                px + side * span, y0 + span * 0.16);
             ctx.stroke();
         }
 
-        // the running total, climbing at perDay a day
-        ctx.strokeStyle = stalled ? DEAD : TOTAL;
-        ctx.lineWidth = 2.6;
-        ctx.beginPath();
-        ctx.moveTo(xOf(0), yOf(0));
-        if (stalled) {
-            ctx.lineTo(xOf(SEASON), yOf(0));
-        } else {
-            const endDay = Math.min(SEASON, days);
-            ctx.lineTo(xOf(endDay), yOf(perDay * endDay));
-        }
-        ctx.stroke();
-
-        // something accumulating, so the line reads as a total being added to
-        if (!stalled) {
-            const along = (t * 0.22) % 1;
-            const d0 = Math.min(SEASON, days) * along;
-            ctx.fillStyle = '#ffffff';
-            ctx.beginPath();
-            ctx.arc(xOf(d0), yOf(perDay * d0), 2.2, 0, Math.PI * 2);
-            ctx.fill();
-        }
-
-        // the event itself, where the total meets the target
-        if (inSeason) {
-            const ex = xOf(days);
-            const ey = yOf(need);
-            ctx.fillStyle = TOTAL;
-            ctx.beginPath();
-            ctx.arc(ex, ey, 3.6, 0, Math.PI * 2);
-            ctx.fill();
-            if (showInPlot) {
-                ctx.strokeStyle = WINDOW;
-                ctx.lineWidth = 1.8;
+        // the tassel: the plume at the very top, which is what the lesson is about
+        if (done && plantH >= 18) {
+            const spread = Math.min(plantH * 0.2, 13);
+            ctx.strokeStyle = PLUME;
+            ctx.lineWidth = 1.7;
+            for (let k = -3; k <= 3; k++) {
+                const lean = k / 3;
                 ctx.beginPath();
-                ctx.moveTo(ex, ey + 14);
-                ctx.lineTo(ex, ey + 5);
+                ctx.moveTo(px, apexY);
+                ctx.quadraticCurveTo(px + lean * spread * 0.7, apexY - spread * 0.75,
+                    px + lean * spread, apexY - spread * (1.15 - 0.3 * Math.abs(lean)));
                 ctx.stroke();
+            }
+            // and the ear it is shedding pollen onto, with its silks
+            if (plantH >= 52) {
+                const ey = groundY - plantH * 0.42;
+                ctx.fillStyle = '#ca8a04';
                 ctx.beginPath();
-                ctx.moveTo(ex - 4, ey + 10);
-                ctx.lineTo(ex, ey + 5);
-                ctx.lineTo(ex + 4, ey + 10);
+                ctx.ellipse(px + 4, ey, 3.4, 8, -0.25, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = '#d97706';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(px + 5, ey - 8);
+                ctx.quadraticCurveTo(px + 11, ey - 13, px + 14, ey - 9);
                 ctx.stroke();
             }
         }
 
-        if (showInPlot) {
-            outlineText(ctx, 'needs ' + need + ' degree-days', left + 4, yOf(need) + 12,
-                'bold 10px monospace', TARGET, 'left', plotW - 8);
-            // the temperature is already on the dial and in the readout, so the space
-            // is better spent naming what is being gained ten OF
-            outlineText(ctx, perDay.toFixed(1) + ' degree-days a day',
-                left + 4, plotBottom - 6, 'bold 10px monospace',
-                stalled ? DEAD : TOTAL, 'left', plotW - 8);
+        // ---- the warmth banked so far
+        const colW = Math.max(9, Math.min(fullW * 0.12, 26));
+        const cx = left + fullW * 0.79;
+        const colTopY = artTop + 4;
+        const colH = Math.max(6, groundY - colTopY);
+        const yOfDD = (dd: number) => groundY - colH * Math.max(0, Math.min(1, dd / COL_TOP));
+
+        ctx.fillStyle = '#f1f5f9';
+        ctx.fillRect(cx - colW / 2, colTopY, colW, colH);
+        const banked = stalled ? 0 : NEED * season;
+        ctx.fillStyle = stalled ? DEAD : WARM;
+        ctx.fillRect(cx - colW / 2, yOfDD(banked), colW, groundY - yOfDD(banked));
+        ctx.strokeStyle = '#475569';
+        ctx.lineWidth = 1.3;
+        ctx.strokeRect(cx - colW / 2, colTopY, colW, colH);
+
+        // the doubt in the total, shaded around the mark it has to reach
+        if (!stalled && doubt > 0) {
+            const yHi = yOfDD(Math.min(COL_TOP, NEED + doubt));
+            const yLo = yOfDD(Math.max(0, NEED - doubt));
+            ctx.fillStyle = 'rgba(4,120,87,0.26)';
+            ctx.fillRect(cx - colW / 2 - 4, yHi, colW + 8, Math.max(2, yLo - yHi));
         }
-        if (showWindowRow) {
-            outlineText(ctx, stalled ? 'never reaches ' + need
-                : inSeason ? '± ' + wobble.toFixed(1) + ' days'
-                    : 'not in one season',
-                inSeason ? Math.max(left + 26, Math.min(left + plotW - 26, xOf(days))) : safeRight / 2,
-                windowRow, 'bold 11px monospace', inSeason ? WINDOW : DEAD, 'center', plotW);
+        ctx.strokeStyle = '#0f172a';
+        ctx.lineWidth = 1.8;
+        ctx.beginPath();
+        ctx.moveTo(cx - colW / 2 - 5, yOfDD(NEED));
+        ctx.lineTo(cx + colW / 2 + 5, yOfDD(NEED));
+        ctx.stroke();
+
+        // ---- words, kept few and attached to what they name
+        if (skyH >= 56) {
+            if (done && plantH >= 18) {
+                outlineText(ctx, 'tassel', px - 8, apexY - 4,
+                    'bold 11px monospace', PLUME, 'right', fullW * 0.3);
+            }
+            const inBand = (y: number) => Math.max(artTop + 9, Math.min(groundY - 2, y));
+            outlineText(ctx, '700 degree-days', cx - colW / 2 - 8, inBand(yOfDD(NEED) - 4),
+                'bold 10px monospace', '#0f172a', 'right', fullW * 0.5);
+            if (!stalled) {
+                outlineText(ctx, '± ' + num(windowDays) + ' days', cx + colW / 2 + 7,
+                    inBand(yOfDD(NEED) + 11), 'bold 10px monospace', DOUBT, 'left', fullW * 0.2);
+            }
         }
 
-        outlineText(ctx, stalled ? 'at the base: nothing adds'
-            : '3 x √' + days.toFixed(0) + ' = ' + (SIGMA * Math.sqrt(days)).toFixed(0)
-              + ' degree-days',
+        outlineText(ctx, stalled ? 'at 10 °C it banks nothing'
+            : 'banks ' + num(perDay) + ' degree-days a day',
             safeRight / 2, stageBottom - 34, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
-        outlineText(ctx, stalled ? 'no date at all'
-            : (SIGMA * Math.sqrt(days)).toFixed(0) + ' / ' + perDay.toFixed(1)
-              + ' = ± ' + wobble.toFixed(1) + ' days',
+        outlineText(ctx, stalled ? 'so it never tassels'
+            : num(doubt) + ' / ' + num(perDay) + ' = ± ' + num(windowDays) + ' days',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace',
-            stalled ? DEAD : WINDOW, 'center', safeRight - 30);
+            stalled ? DEAD : DOUBT, 'center', safeRight - 30);
 
         fitText(ctx, stalled ? 'it never tassels'
-            : inSeason ? 'day ' + days.toFixed(0) + ', ± ' + wobble.toFixed(1)
-                : 'day ' + days.toFixed(0) + ': too slow',
+            : days > 365 ? 'over a year to tassel'
+                : 'tassels on day ' + days.toFixed(0) + ', ± ' + num(windowDays),
             safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'Degree-days from sowing', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, 'Corn banks the warmth', safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {
-                fraction: Math.max(0, Math.min(1, stalled ? 0 : 1 - wobble / 30)),
-                caption: 'Precisely When It Tassels',
-                low: 'nearly a month',
-                high: 'under a day',
-                stops: [DEAD, '#fcd34d', WINDOW] as [string, string, string],
+                fraction: Math.max(0, Math.min(1, stalled ? 0 : 1 - windowDays / 20)),
+                caption: 'How Sure of the Date',
+                low: 'weeks either side',
+                high: 'inside a day',
+                stops: [DEAD, '#fcd34d', DOUBT] as [string, string, string],
             },
             note: stalled
-                ? 'At 10 °C the plant is exactly at its base temperature, so no degree-days accumulate at all and the total never reaches '
-                  + need + '. There is no date to predict.'
-                : 'At ' + mean.toFixed(1) + ' °C the plant gains ' + perDay.toFixed(1)
-                  + ' degree-days a day, reaching ' + need + ' on day ' + days.toFixed(0)
-                  + '. The daily scatter of 3 °C adds through its squares to '
-                  + (SIGMA * Math.sqrt(days)).toFixed(0) + ' degree-days, which is ± '
-                  + wobble.toFixed(1) + ' days.',
+                ? 'At 10 °C corn is exactly at its base temperature, so it banks nothing at all and never reaches 700 degree-days. There is no date to predict.'
+                : 'Banking ' + num(perDay) + ' degree-days a day, corn reaches 700 on day '
+                  + days.toFixed(0) + '. A ' + num(swing)
+                  + ' °C daily swing leaves ' + num(doubt)
+                  + ' degree-days of doubt in that total, which is ± ' + num(windowDays) + ' days.',
         };
     };
 
     return (
         <LabCanvas
             title="The Forecast a Plant Can Make"
-            readout={({ raw }) => meanOf(raw).toFixed(1) + ' °C mean'}
+            readout={({ raw }) => meanOf(raw).toFixed(1) + ' °C on average'}
             controlLabel="Mean Daily Temperature"
             controlKey="thermalMean"
             controlMin={10}
@@ -196,12 +206,12 @@ export const L3B26ThermalLab = ({ state, onStateChange }: Props) => {
             controlInitial={20}
             controlDisplay={raw => meanOf(raw).toFixed(1) + ' °C'}
             control2={{
-                label: 'Degree-Days Needed',
-                key: 'thermalNeed',
-                min: 175,
-                max: 2800,
-                initial: 700,
-                display: raw => needOf(raw) + ' degree-days',
+                label: 'Day-to-Day Swing',
+                key: 'thermalSwing',
+                min: 1,
+                max: 6,
+                initial: 3,
+                display: raw => swingOf(raw).toFixed(1) + ' °C',
             }}
             accent="rose"
             sky={['#fff1f2', '#f8fafc']}

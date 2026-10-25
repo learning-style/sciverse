@@ -9,7 +9,7 @@ import { AssessmentData } from '../../types';
  * 5.5 C/km above its cloud base rather than 10 -- two thresholds, a conditionally
  * unstable band covering most days, and breaking even at 4.5 x base / (rate - 5.5)),
  * L3B26 (an organism develops on ACCUMULATED warmth, not calendar time: degree-days
- * are the daily mean minus a base temperature, maize needs about 700 of them from
+ * are the daily mean minus a base temperature, corn needs about 700 of them from
  * sowing to tasselling, and because spreads add through their squares the date is
  * predictable to +/- 2.5 days seventy days ahead -- from a forecast that expires in a
  * fortnight. The honest limit is the independence that sqrt(n) needs: 5-day spells
@@ -63,7 +63,7 @@ export const bigIdea26Level3Assessment: AssessmentData = {
             id: 3,
             difficulty: 'easy',
             discipline: 'biology',
-            question: 'A maize plant has a base temperature of 10 °C. How many degree-days does a day with a mean temperature of 15 °C give it?',
+            question: 'A corn plant has a base temperature of 10 °C. How many degree-days does a day with a mean temperature of 15 °C give it?',
             options: [
                 '15',
                 '5',
@@ -125,7 +125,7 @@ export const bigIdea26Level3Assessment: AssessmentData = {
             id: 7,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'Maize needs 700 degree-days and gains 10 a day, so it tassels on day 70. Daily means scatter about the seasonal mean by 3 °C. How precisely can that date be predicted?',
+            question: 'Corn needs 700 degree-days and gains 10 a day, so it tassels on day 70. Daily means scatter about the seasonal mean by 3 °C. How precisely can that date be predicted?',
             options: [
                 'To about ± 2.5 days — spreads add through their squares, so 3 x √70 = 25 degree-days, and 25 / 10 = 2.5',
                 'Not at all, because a weather forecast carries no information past about 15 days',
