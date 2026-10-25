@@ -305,15 +305,39 @@ so a 32 C town stays quiet while a 19 C town storms. L2B26 uses Dolbear's 1897 c
 law and makes its second dial the counting **window**, because that is where a
 calibrated proxy really fails.
 
-**Then Level 3 took the three calibration constants apart and found the same thing in
+**Then Level 3 took Level 2's calibration constants apart and found the same thing in
 each: a dependence nobody had noticed.** The 26 km/h hid **sin(latitude)**, so there
 is no rule at all at the equator. The 10 C/km hid **whether condensation had
 started**, so there is a second threshold at 5.5 and a conditionally unstable band
-covering most days. Three chirps per degree hid an **exponential**, so the rule is
-good over about twelve degrees. **A calibration constant is a dependence you have not
+covering most days. **A calibration constant is a dependence you have not
 noticed yet, and the rule's range is wherever that dependence starts to matter** --
 which is why a more precise wrong constant is still wrong, and why **a derivation
 gives you the rule and its limits out of the same algebra** while measuring never can.
+
+**The biology deliberately breaks that pattern, and it took two attempts to get there.**
+The first L3B26 asked why Dolbear's fitted straight line works at all, given that
+chirping is muscle chemistry and chemical rates double every 10 C -- so the line is a
+**chord** through a doubling curve, exact at its two anchors, 25% high between them,
+and worth about ten degrees. The maths is clean and the lesson was wrong anyway: a
+reader read it and said there was not much biology in it. **Strip it down and it is
+approximation theory with one line of biology as a premise**, which is not what a
+**B** slot is for. It is parked whole in `docs/parked/`.
+
+**The replacement changes the question instead of taking a constant apart.** L3B26 is
+now **degree-days**: an organism develops on *accumulated* warmth, so the event comes
+when `sum(daily mean - base)` reaches a species constant, and the base temperature is
+L2B26's 13 C cricket silence **promoted from a nuisance to the mechanism**. Then the
+result worth having -- spreads add through their squares (L2B16), so the accumulated
+total after 70 days is uncertain by only `3 x sqrt(70) = 25` degree-days, which is
+**+/- 2.5 days seventy days ahead** from a forecast that expires in a fortnight.
+**A prediction that depends on the weather beats a prediction of the weather**, because
+everything that makes tomorrow uncertain is exactly what averages away in a total. Its
+honest limit is the independence `sqrt(n)` needs: five-day **spells** leave 14
+independent pushes of 5 sigma each, so the figure is **+/- 5.6 days, not 2.5**.
+
+**So a P/C/B slot has to earn its discipline.** The test is not whether the lesson is
+correct or even good -- it is whether removing the discipline would leave the lesson
+standing. Chord-through-a-curve survives with no biology at all; degree-days does not.
 
 **Four closing biology lessons now turn on a shape rather than a fact**, and each
 says so: L3B18's two curves gave a **ratio** that collapses, L3B19's two factors a
@@ -722,6 +746,22 @@ registry rows and all 163 wired labs, reporting 0. Its `--selftest` pins the rea
 failure and the corrected row, and asserts the row shape still parses, because a
 registry format change that silently stopped matching would disarm the scan rather
 than fail it.
+
+**The label counter was blind to two ordinary ways of writing a label.**
+`drawn_labels` took the first argument of `outlineText` with `[^,]+`, which stops at
+the **comma inside `toFixed(1)`**, and it only looked at an argument that *began* with
+a quote -- so a label behind a ternary was invisible too. Both are completely normal,
+so the check reported labs whose artwork is fully labelled: L3B26's new lab drew three
+labels and was counted as one. It now scans the real argument with a paren- and
+string-aware `first_arg`, and counts any string literal inside the expression, ternary
+branches included, as the one label it draws. The corpus went from 17 findings to 16 --
+the one false positive and nothing else. **A false positive is as damaging as a miss**,
+so the fix belongs in the checker rather than in a contorted label.
+
+The scanner itself had the classic bug on the first attempt: it skipped to the closing
+quote and never consumed it, so the next pass reopened on that quote and ran to the end
+of the file. Its `--selftest` now pins a `toFixed` label, a ternary label, a bare
+variable, a wordless number, and a comma inside a string.
 
 **`Accent` is a closed union: `indigo | emerald | rose`** (physics/chemistry/
 biology). Anything else is a type error, not a fallback.

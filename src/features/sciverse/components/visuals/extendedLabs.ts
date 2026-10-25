@@ -208,7 +208,7 @@ import { L2C26StabilityLab } from './L2C26StabilityLab';
 import { L2B26CricketLab } from './L2B26CricketLab';
 import { L3P26GeostrophicLab } from './L3P26GeostrophicLab';
 import { L3C26TriggerLab } from './L3C26TriggerLab';
-import { L3B26FitLab } from './L3B26FitLab';
+import { L3B26ThermalLab } from './L3B26ThermalLab';
 import { L2P27TransitLab } from './L2P27TransitLab';
 import { L2C27CutterLab } from './L2C27CutterLab';
 import { L2B27MarginLab } from './L2B27MarginLab';
@@ -436,7 +436,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2b26: L2B26CricketLab,
     l3p26: L3P26GeostrophicLab,
     l3c26: L3C26TriggerLab,
-    l3b26: L3B26FitLab,
+    l3b26: L3B26ThermalLab,
     l2p27: L2P27TransitLab,
     l2c27: L2C27CutterLab,
     l2b27: L2B27MarginLab,

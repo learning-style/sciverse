@@ -8,21 +8,24 @@ import { AssessmentData } from '../../types';
  * sin(latitude)), L3C26 (condensation releases latent heat, so the bubble cools at
  * 5.5 C/km above its cloud base rather than 10 -- two thresholds, a conditionally
  * unstable band covering most days, and breaking even at 4.5 x base / (rate - 5.5)),
- * L3B26 (chirping is a chemical rate, which doubles every 10 C, so Dolbear's line is
- * a chord through two points of a doubling curve -- high in the middle of its range,
- * low outside it, and worth about ten degrees). Questions 3, 7 and 11 were rewritten
- * when that lesson dropped Q10, the exponent and the tangent: Q7 in particular had
- * asserted that the line sits below the curve on BOTH sides, which is true of a
- * tangent and false of a chord.
- * The spine: each Level 2 calibration constant was a dependence nobody had noticed,
- * and the rule's range is wherever that dependence starts to matter.
+ * L3B26 (an organism develops on ACCUMULATED warmth, not calendar time: degree-days
+ * are the daily mean minus a base temperature, maize needs about 700 of them from
+ * sowing to tasselling, and because spreads add through their squares the date is
+ * predictable to +/- 2.5 days seventy days ahead -- from a forecast that expires in a
+ * fortnight. The honest limit is the independence that sqrt(n) needs: 5-day spells
+ * make it +/- 5.6 days). All five biology questions were rewritten on 24 October 2026
+ * when that lesson replaced one about fitting a straight line to chirp rates, which a
+ * reader rightly said had almost no biology in it.
+ * The spine: the physics and chemistry each found a dependence hiding in a Level 2
+ * constant, and the range is where it starts to matter -- while the biology changes the
+ * question, because a running total is deaf to the day-to-day noise that kills a forecast.
  * 12 questions: 4 easy -> 4 medium -> 4 hard
  */
 export const bigIdea26Level3Assessment: AssessmentData = {
     bigIdea: 26,
     level: 3,
     title: 'How Do We Predict Weather?',
-    subtitle: 'Level 3 -- The Balance, the Lift, and the Doubling',
+    subtitle: 'Level 3 -- The Balance, the Lift, and the Total',
     icon: '🧭',
     questions: [
         // ── EASY ──
@@ -60,31 +63,31 @@ export const bigIdea26Level3Assessment: AssessmentData = {
             id: 3,
             difficulty: 'easy',
             discipline: 'biology',
-            question: 'Dolbear fitted a straight line to cricket chirp rates. Why should we not expect a straight line to be right?',
+            question: 'A maize plant has a base temperature of 10 °C. How many degree-days does a day with a mean temperature of 15 °C give it?',
             options: [
-                'Because crickets are unpredictable animals',
-                'Because chirping is driven by muscle chemistry, and chemical rates multiply with temperature rather than adding',
-                'Because he only used one species',
-                'Because temperature cannot be measured accurately enough'
+                '15',
+                '5',
+                '150',
+                '1.5'
             ],
             correctIndex: 1,
-            hint: 'What does a chemical rate do for every 10 °C of warming?',
-            explanation: 'A chemical rate roughly doubles for every 10 °C. So the count goes 24 at 10 °C, 48 at 20 and 96 at 30 — each ten degrees multiplies by two, where a straight line would add the same amount every time. The steps are 24 and then 48, not 24 and then 24. A straight line through a doubling curve can only ever be a local fit.'
+            hint: 'Only the warmth above the base temperature counts towards development.',
+            explanation: '15 - 10 = 5 degree-days. The first 10 °C buys nothing, because below 10 °C the plant does not develop at all. That subtraction is why cool summers are disproportionately worse rather than slightly worse: a 20 °C mean gives 10 degree-days a day and tassels on day 70, while a 15 °C mean gives only 5 a day and takes 140.'
         },
         {
             id: 4,
             difficulty: 'easy',
             discipline: 'biology',
-            question: 'Each Level 3 lesson found something hidden inside a Level 2 constant. Which set is right?',
+            question: 'Two of the three Level 3 lessons found a dependence hiding inside a Level 2 constant. Which two?',
             options: [
-                'All three constants were simply measured wrongly',
-                '26 km/h hid sin(latitude), 10 °C/km hid whether condensation had started, and 3 chirps per degree hid an exponential',
-                'All three hid the same quantity, which was temperature',
-                'The constants hid nothing — they were exact'
+                'The physics and the chemistry: 26 km/h hid sin(latitude), and 10 °C/km hid whether condensation had started',
+                'The physics and the biology',
+                'All three found one, and it was temperature every time',
+                'None of them — the constants were exact'
             ],
-            correctIndex: 1,
-            hint: 'What did each derivation turn out to depend on that the fitted number could not show?',
-            explanation: 'None of the Level 2 rules was wrong; each replaced something that varies with a single number, which works exactly where that thing does not vary much. That is why every one of them came with a condition — the middle latitudes, nothing condensing, one species over a range — and the condition was the boundary of the answer.'
+            correctIndex: 0,
+            hint: 'Which lesson changed the question instead of taking a constant apart?',
+            explanation: 'Neither Level 2 rule was wrong; each had replaced something that varies with a single number, which works exactly where that thing does not vary much. So each came with a condition — the middle latitudes, nothing condensing — and the condition was the boundary of the answer. The biology lesson did something else entirely: instead of taking a constant apart, it stopped trying to predict the weather and predicted what the weather adds up to.'
         },
 
         // ── MEDIUM ──
@@ -122,16 +125,16 @@ export const bigIdea26Level3Assessment: AssessmentData = {
             id: 7,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'Dolbear fits his line through measurements at 10 °C and 30 °C, where the cricket gives 24 and 96 chirps in 25 seconds. What does that line say at 20 °C?',
+            question: 'Maize needs 700 degree-days and gains 10 a day, so it tassels on day 70. Daily means scatter about the seasonal mean by 3 °C. How precisely can that date be predicted?',
             options: [
-                'It says 60, which is 25% high — a line passes through the average of its two ends, and the truth is 48',
-                'It says 48, which is right, because 20 °C is halfway between the two fitted points',
-                'It says 60, which is 25% low',
-                'It says 72, the average of 48 and 96'
+                'To about ± 2.5 days — spreads add through their squares, so 3 x √70 = 25 degree-days, and 25 / 10 = 2.5',
+                'Not at all, because a weather forecast carries no information past about 15 days',
+                'To about ± 21 days — seventy days each uncertain by 3 °C',
+                'To about ± 0.3 days'
             ],
             correctIndex: 0,
-            hint: 'A straight line passes through the midpoint of its two ends. What is the average of 24 and 96?',
-            explanation: 'A straight line goes through the average of its two ends: (24 + 96) / 2 = 60. The cricket really gives 48, so the line reads 25% high. It is high rather than low because the curve sags below the chord joining two of its points, and the reason is in the steps: going up ten degrees from 20 °C adds 48 chirps while coming down ten degrees only loses 24, so the average of the two ends has to sit above the middle value. Note where the error lives — the line is exactly right at 10 and 30 °C, where it was pinned, and worst in the middle of its own range.'
+            hint: 'Independent spreads do not add directly. What do they add through?',
+            explanation: 'The spread of a sum of n independent contributions is σ√n rather than σn: 3 x √70 = 25 degree-days, only 3.6% of 700. Divide by the 10 degree-days gained each day and the date is good to ± 2.5 days — seventy days ahead, from a forecast that expires in a fortnight. Each day is still 3 °C uncertain; that ignorance has been diluted by sixty-nine others. The ± 21 answer adds the spreads directly instead of through their squares. And the scaling favours the long view: the spread grows as √n while the wait grows as n, so four times the wait only doubles the doubt.'
         },
         {
             id: 8,
@@ -184,31 +187,31 @@ export const bigIdea26Level3Assessment: AssessmentData = {
             id: 11,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'A line fitted through 10 °C and 30 °C is 25% out in the middle. A line fitted through 0 °C and 20 °C is also 25% out in the middle, though the counts down there are half the size. What does that tell you?',
+            question: 'The ± 2.5 days assumed that each day was independent of the next. Warm and cool periods really come in spells of about 5 days. What does that do to the prediction?',
             options: [
-                'The error depends only on how wide the span is, not on where the span sits',
-                'The two lines are really the same line',
-                'It is a coincidence of these particular temperatures',
-                'The error depends on the size of the counts, and here they happen to cancel'
+                'Makes it worse: only 14 independent spells, each pushing the total for 5 days running, so the spread grows by about √5 to ± 5.6 days',
+                'Nothing, because the season still contains 70 days whatever order they come in',
+                'Makes it better, because spells average out over a whole season',
+                'Makes it worse by a factor of 5, to ± 12.5 days'
             ],
             correctIndex: 0,
-            hint: 'What is the same about those two fits, and what is different?',
-            explanation: 'Doubling cares about ratios rather than amounts: across any 20-degree span the far end is four times the near end, whether that is 12 to 48 or 24 to 96. The shape of the problem is identical, so the percentage error has to be identical too. That is what makes a working range a property of the rule rather than of the day you happened to use it. Halve the span to 10 degrees and the error falls to 6.0%; halve it again to 5 degrees and it is 1.7%.'
+            hint: 'How many independent things are being added up, and how big is each one?',
+            explanation: 'Independence is the condition the square-root rule needs. If a deviation lasts 5 days, a 70-day season holds only 70 / 5 = 14 independent spells, and each pushes the total by 5σ rather than σ. Adding 14 such pushes through their squares gives √14 x 15 = 56 degree-days, or ± 5.6 days — worse by √5, not by 5. Fewer and bigger independent pushes give the square-root rule less to work with, so the order of the days matters to the uncertainty even though it does not matter to the plant. And ± 5.6 days months ahead still beats anything a weather forecast can do.'
         },
         {
             id: 12,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'What is the general lesson the three Level 3 derivations share?',
+            question: 'The physics and chemistry lessons each took a constant apart. The biology lesson did something different. What?',
             options: [
-                'Fitted rules should be replaced by derived ones wherever possible',
-                'A calibration constant is a dependence you have not noticed yet, and the rule\'s range is wherever that dependence starts to matter',
-                'Constants should be quoted to more decimal places',
-                'Weather cannot really be predicted at all'
+                'It gave up predicting the weather and predicted what the weather adds up to, which survives for months because the error in a sum grows only as the square root',
+                'It found a fourth hidden dependence',
+                'It showed that weather cannot be predicted at all',
+                'It measured the same constant to more decimal places'
             ],
-            correctIndex: 1,
-            hint: 'What did each of the three constants turn out to be standing in for?',
-            explanation: 'Each Level 2 rule replaced something that varies with a single number, which is exactly right where that thing does not vary much — so each came with a condition, and the condition was the boundary of the answer. More decimal places would not help: a more precise wrong constant is still wrong, and measuring the 26 to four figures tells you nothing about the equator. What tells you about the equator is finding the sine. A derivation gives you the rule and its limits out of the same algebra, which is what measuring can never do.'
+            correctIndex: 0,
+            hint: 'What is a running total immune to?',
+            explanation: 'A weather forecast dies in about a fortnight because its error doubles every day and a half. A forecast of an accumulated total survives for months because its error grows only as √n while the total grows as n. Those are the same fact from opposite sides: what makes tomorrow uncertain is day-to-day variation, and a running total is deaf to exactly that. So the Big Idea ends by changing the question — for when to sow, when to spray or when the pollen will fly, do not predict the weather, predict the thing that adds it up.'
         }
     ]
 };

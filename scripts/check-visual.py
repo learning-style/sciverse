@@ -250,17 +250,53 @@ def canvas_lines(src):
     return out
 
 
+def first_arg(src, start):
+    """The whole first argument after `outlineText(ctx,` -- not just up to the next
+    comma. `[^,]+` stopped inside `mean.toFixed(1)`, so every label built with a
+    toFixed went uncounted, and a label behind a ternary went uncounted too. Both are
+    ordinary ways to write one, which made this check report labs whose artwork is
+    fully labelled."""
+    depth, i, n = 0, start, len(src)
+    while i < n:
+        c = src[i]
+        if c in '\'"`':
+            quote, i = c, i + 1
+            while i < n and src[i] != quote:
+                i += 2 if src[i] == '\\' else 1
+            i += 1          # consume the closing quote, or it reopens on it
+        elif c in '([{':
+            depth, i = depth + 1, i + 1
+        elif c in ')]}':
+            if depth == 0:
+                return src[start:i]
+            depth, i = depth - 1, i + 1
+        elif c == ',' and depth == 0:
+            return src[start:i]
+        else:
+            i += 1
+    return src[start:]
+
+
+LITERAL = re.compile(r"'([^'\\]*(?:\\.[^'\\]*)*)'|\"([^\"\\]*(?:\\.[^\"\\]*)*)\"|`([^`]*)`")
+
+
 def drawn_labels(src):
     """Word labels attached to the artwork."""
     labels = []
-    for m in re.finditer(r'outlineText\(\s*ctx\s*,\s*([^,]+),', src, re.S):
-        arg = m.group(1).strip()
-        if arg[:1] in ('`', "'", '"'):
-            if words_of(arg[1:-1]):
-                labels.append(arg)
-        elif re.match(r'^[A-Za-z_]\w*$', arg):
+    for m in re.finditer(r'outlineText\(\s*ctx\s*,', src):
+        arg = first_arg(src, m.end()).strip()
+        if not arg:
+            continue
+        if re.match(r'^[A-Za-z_]\w*$', arg):
             # a variable holding text -- it renders words at run time
             labels.append(arg)
+            continue
+        # any string inside the expression that carries words makes this one label,
+        # ternary branches included: it draws one string, so it counts once
+        for parts in LITERAL.findall(arg):
+            if words_of(''.join(parts)):
+                labels.append(arg)
+                break
     for m in re.finditer(r'fillText\(\s*(`[^`]*`|\'[^\']*\'|"[^"]*")', src, re.S):
         txt = m.group(1)[1:-1]
         if words_of(txt):
@@ -430,6 +466,23 @@ def selftest():
          says_what_it_means("MAX_CM + ' cm'"), False)
     want('a worded end counts', says_what_it_means("'faint: you see deeper'"), True)
     want('a worded end with a unit counts', says_what_it_means("'25 cm deep'"), True)
+
+    # The label counter used `[^,]+` for the first argument, so it stopped inside
+    # `toFixed(1)` and saw nothing behind a ternary -- both ordinary ways to write a
+    # label, which made it report labs whose artwork is fully labelled.
+    want('a toFixed label counts',
+         len(drawn_labels("outlineText(ctx, mean.toFixed(1) + ' a day', x, y);")), 1)
+    want('a ternary label counts once',
+         len(drawn_labels("outlineText(ctx, hot ? 'warm here' : 'cold here', x, y);")), 1)
+    want('a bare variable counts',
+         len(drawn_labels("outlineText(ctx, caption, x, y);")), 1)
+    want('a wordless number does not count',
+         len(drawn_labels("outlineText(ctx, total.toFixed(1), x, y);")), 0)
+    # a comma inside the string must not end the argument, and the closing quote must
+    # be consumed or the scanner reopens on it and runs to the end of the file
+    want('a comma inside the string is not the end',
+         first_arg("outlineText(ctx, 'a, b' + x, 9)", len("outlineText(ctx,")).strip(),
+         "'a, b' + x")
 
     # The real wiring failure: a physics lesson in biology's colour, which is a legal
     # member of the Accent union and so compiles cleanly. Both directions, because a

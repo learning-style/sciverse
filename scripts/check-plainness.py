@@ -58,6 +58,7 @@ def prose(path):
 # listed, however familiar they look: 'evaporation' and 'diffusion' have to be
 # explained where they are used. Matched through inflections by ordinary().
 ORDINARY_STEMS = set("""
+remark remarks remarkable
 # number words, which were absent altogether: "twenty-four" reported
 # because compound_ordinary() asks ordinary() about each half, and
 # ordinary() reads this list and CORE -- never ORDINARY.
@@ -297,7 +298,7 @@ def selftest():
 
     plain = ("My grandmother asked a question about the wheelbarrow, and the "
              "material's brightness was surprising, so we went downstairs "
-             "afterwards to look at the thunderstorm.")
+             "afterwards to look at the thunderstorm. It was remarkable.")
     assert not hard_words(plain), 'everyday words flagged: ' + repr(hard_words(plain))
 
     # The filter that had hidden every Level 2 and Level 3 lesson. An id that matches
