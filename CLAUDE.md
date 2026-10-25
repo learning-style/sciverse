@@ -100,7 +100,7 @@ lesson's header *and* body — a header alone will mislead you):
 | | Mechanism | Mechanism + Limit | Limit | Quantity only |
 |---|---|---|---|---|
 | Level 2 (85) | 24 | — | 11 | 50 |
-| Level 3 (78) | 14 | 39 | 17 | 8 |
+| Level 3 (81) | 15 | 41 | 17 | 8 |
 
 Big Ideas 17 and 18 were built after that audit and are counted above, as are 19 to
 24. **Everything after Big Idea 18 was classified by whoever wrote it**, which is not
@@ -339,6 +339,48 @@ independent pushes of 5 sigma each, so the figure is **+/- 5.6 days, not 2.5**.
 correct or even good -- it is whether removing the discipline would leave the lesson
 standing. Chord-through-a-curve survives with no biology at all; degree-days does not.
 
+**Big Idea 27's Level 3 is the first trio where all three lessons turn out to be about
+the same contractions**, and it got there by explaining Level 2's numbers rather than
+adding to them. L2P27 had measured a squeezing wave at 3 cm/s against food advancing at
+0.04, concluded the muscle must be mixing, and never said how a muscle moves food at
+all -- so the conclusion was read off a ratio.
+
+**L3P27 supplies the mechanism and the ratio becomes a measurement.** Peristalsis is a
+travelling pinch, so the mouthful is *enclosed* and gravity is left with no path: all it
+can do is add weight, which is why you can drink standing on your head. Pressure is
+measured in **centimetres of water** on purpose, so the test is cm against cm with no
+`rho g h` and no conversion -- 80 against a 25 cm lift is a margin of 3.2. Then the two
+confirmations that make it a mechanism rather than a story: a sealing travelling ring
+cannot be slipped past, so food moves at the wave speed, predicting an **8 second
+swallow** against a real five to ten; and if the small intestine's rings did that, food
+would cross 600 cm in **200 seconds** rather than 4.2 hours. So `0.04/3 = 1/75` is a
+**count** -- about one contraction in seventy-five travels.
+
+**L3C27 earns the number the whole Big Idea rested on.** Joining two glucose molecules
+releases one water, so a unit *inside* a chain is 162 g/mol and not glucose's 180 -- and
+**162/180 = 0.900 exactly**, so using free glucose is precisely 10% low at any mass.
+**The missing tenth is the water**, which makes the bond count and the molar mass the
+same fact. Its limit is a different kind from L2C27's: 3% of the joins are α-1,6, facing
+sideways, and amylase cannot cut them at any dose. **Not enough is fixed by more of it;
+not able is fixed by nothing** -- an enzyme is a shape, not an effort.
+
+**L3B27 closes it by noticing the two are the same fact.** A free enzyme is paid in
+**time**, a fixed one in **contact**, and L2B27's margin of 8.6 was a complete answer to
+97% of the question because every term in it was about time or about the fluid. Contact
+is bought by squeezes: `contacts = (length/speed) x rate` is about **2,500 presses** per
+mouthful. The two dials then separate visibly -- length buys both, while the contraction
+rate buys contacts and leaves the margin *exactly* where it was, so weak contractions
+halve the presses while **every number a stopwatch can reach stays normal.**
+
+**And the close is a reversal, which makes it the third instance of that pattern.**
+L3P27's seventy-four non-travelling contractions in every seventy-five look like a gut
+running at 1.3% efficiency. They are the presses. **Going nowhere is the mechanism** --
+transport has to happen once per mouthful, contact two and a half thousand times. With
+L3B21's tiny ATP store sharpening its sensor and L3B22's faint echoes reaching the
+bottom, that is three times an apparent weakness has turned out to be the mechanism:
+**when a biological system looks badly designed, check what the apparent waste is paid
+for.**
+
 **Four closing biology lessons now turn on a shape rather than a fact**, and each
 says so: L3B18's two curves gave a **ratio** that collapses, L3B19's two factors a
 **product** that peaks, L3B20's a **reciprocal** that turns a steady decline into a
@@ -385,7 +427,7 @@ villi, so L2B27 says plainly that one organ is solving two problems: **area** ge
 glucose across the wall, and **length** buys the time to make the glucose at all. A
 lesson that counts only one of a shared organ's two jobs should name the other.
 
-the one to watch, and **70 of its 78 lessons already carry Mechanism or Limit
+the one to watch, and **73 of its 81 lessons already carry Mechanism or Limit
 reasoning**. The 8 that are Quantity alone each pass the third test — L3C15's ICE
 tables, L3P14's sampling rate, L3B14's 138 silent swaps all change a decision.
 
