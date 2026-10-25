@@ -317,6 +317,7 @@ import { getL2P27Script } from './l2p27-how-long-does-food-take';
 import { getL2C27Script } from './l2c27-how-many-cutters';
 import { getL2B27Script } from './l2b27-why-the-tube-is-so-long';
 import { getL3P27Script } from './l3p27-why-you-can-drink-upside-down';
+import { getL3C27Script } from './l3c27-where-the-bond-count-comes-from';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1410,6 +1411,7 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l2c27': getL2C27Script,
     'l2b27': getL2B27Script,
     'l3p27': getL3P27Script,
+    'l3c27': getL3C27Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1987,6 +1989,7 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2c27', title: 'How Many Cutters?', subtitle: 'One molecule could not do it in a hundred ages of the universe', discipline: 'chemistry', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '✂️', accentColor: 'emerald', crossLinks: ['c27', 'l2c25'], level: 2 },
     { id: 'l2b27', title: 'Why the Tube Is So Long', subtitle: 'The job needs 69.5 cm, and you have 600', discipline: 'biology', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '📏', accentColor: 'rose', crossLinks: ['l2p27', 'l2c27'], level: 2 },
     { id: 'l3p27', title: 'Why You Can Drink Upside Down', subtitle: 'A ring that seals behind it, so up stops mattering', discipline: 'physics', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '🤸', accentColor: 'indigo', crossLinks: ['l2p27', 'l2c27'], level: 3 },
+    { id: 'l3c27', title: 'Where the Bond Count Comes From', subtitle: 'Every join is a water that left, and 3% face sideways', discipline: 'chemistry', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '🔗', accentColor: 'emerald', crossLinks: ['l2c27', 'l3c2'], level: 3 },
     { id: 'l3b23', title: 'Why the Edge Does the Work', subtitle: 'One rule for every shape: the largest circle that fits', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '⭕', accentColor: 'rose', crossLinks: ['l2b23', 'l3c23'], level: 3 },
     { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
     { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },
