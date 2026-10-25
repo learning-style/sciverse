@@ -136,7 +136,9 @@ export const L3B26ThermalLab = ({ state, onStateChange }: Props) => {
         if (showInPlot) {
             outlineText(ctx, 'needs ' + need + ' degree-days', left + 4, yOf(need) + 12,
                 'bold 10px monospace', TARGET, 'left', plotW - 8);
-            outlineText(ctx, mean.toFixed(1) + ' °C: ' + perDay.toFixed(1) + ' a day',
+            // the temperature is already on the dial and in the readout, so the space
+            // is better spent naming what is being gained ten OF
+            outlineText(ctx, perDay.toFixed(1) + ' degree-days a day',
                 left + 4, plotBottom - 6, 'bold 10px monospace',
                 stalled ? DEAD : TOTAL, 'left', plotW - 8);
         }
