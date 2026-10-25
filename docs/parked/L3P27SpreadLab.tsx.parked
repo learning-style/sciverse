@@ -1,0 +1,237 @@
+import { LabCanvas, fitText, outlineText } from './LabCanvas';
+import type { LabScene } from './LabCanvas';
+
+interface Props {
+    state: Record<string, unknown>;
+    onStateChange: (key: string, value: unknown) => void;
+}
+
+// One idea: the transit time is a spread, and what matters is its LEFT tail. The
+// cutting needs 1,736 s against a mean of 15,000, so a linear time axis puts the one
+// comparison the lesson is about into 7% of the width and the picture cannot show it.
+// The axis is therefore in MARGINS -- multiples of the cutting time -- which puts the
+// threshold at a line the eye can find.
+//
+// And the share leaving unfinished is counted, not shaded: 20 parcels at the 2.5th,
+// 7.5th ... 97.5th percentile, so one parcel is exactly 5% of the meal and the learner
+// reads "2 of 20 left unfinished" off the screen. At n = 1 that is 2 parcels and the
+// true figure is 10.9%, which 2/20 reports honestly; at n = 11 it is none.
+const NEED = 1736;             // s, from L2C27: the cutting a slice of bread takes
+const PARCELS = 20;
+const AXIS_MAX = 16;           // margins; beyond this a parcel is pinned at the end
+const TUBE = '#4338ca';
+const SAFE = '#047857';
+const LATE = '#64748b';
+const FAIL = '#be123c';
+
+const segOf = (dial: number): number => Math.max(1, Math.min(25, Math.round(dial)));
+const hoursOf = (dial: number): number => Math.max(2, Math.min(8, Math.round(dial * 10) / 10));
+
+// P(still inside at t) for n equal well-mixed segments: the Erlang survival sum.
+// Built up term by term so x^k never has to be formed on its own.
+const stillInside = (t: number, n: number, T: number): number => {
+    const x = n * t / T;
+    let term = Math.exp(-x);
+    let sum = term;
+    for (let k = 1; k < n; k++) {
+        term *= x / k;
+        sum += term;
+    }
+    return Math.min(1, Math.max(0, sum));
+};
+
+const arrivalAt = (q: number, n: number, T: number): number => {
+    let lo = 0;
+    let hi = T * 40;
+    for (let i = 0; i < 70; i++) {
+        const mid = (lo + hi) / 2;
+        if (1 - stillInside(mid, n, T) < q) lo = mid; else hi = mid;
+    }
+    return lo;
+};
+
+export const L3P27SpreadLab = ({ state, onStateChange }: Props) => {
+    const phase = (state.phase as string) || 'intro';
+
+    const drawScene = ({ ctx, safeRight, t, raw, raw2, stageTop, stageBottom }: LabScene) => {
+        const n = segOf(raw);
+        const hours = hoursOf(raw2);
+        const T = hours * 3600;
+        const spread = 1 / Math.sqrt(n);
+
+        // one parcel per 5% of the meal, each at the middle of its own twentieth
+        const margins: number[] = [];
+        for (let i = 0; i < PARCELS; i++) {
+            margins.push(arrivalAt((i + 0.5) / PARCELS, n, T) / NEED);
+        }
+        const short = margins.filter(m => m < 1).length;
+        const earliest = margins[0];
+        // One parcel is 5% of the meal, so anything under 2.5% rounds to no parcels at
+        // all -- true at n = 2, where 2.3% really does leave early. The count stays the
+        // honest coarse reading and the note admits what it cannot resolve.
+        const share = 1 - stillInside(NEED, n, T);
+
+        const artTop = stageTop + 18;
+        const artBottom = stageBottom - 52;
+        const usable = artBottom - artTop;
+        const LBL = 15;
+        const GAPS = 12;
+        const fit = Math.max(0, Math.min(2, Math.floor((usable - 22 - GAPS) / LBL)));
+        const showBarLabel = fit >= 2;
+        const showAxisLabel = fit >= 1;
+        const labels = (showBarLabel ? LBL : 0) + (showAxisLabel ? LBL : 0);
+
+        const left = 26;
+        const fullW = Math.max(80, safeRight - 52);
+        // floored below any stage height that renders, and both heights capped by what
+        // the label rows leave, so the drawing cannot outgrow its band
+        const artRoom = Math.max(10, usable - labels - GAPS);
+        const barH = Math.max(6, Math.min(artRoom * 0.3, 22));
+        const stripH = Math.max(12, Math.min(artRoom * 0.62, 56));
+
+        const blockH = barH + (showBarLabel ? LBL : 0) + 8 + stripH + 4
+            + (showAxisLabel ? LBL : 0);
+        let y = artTop + Math.max(0, (usable - blockH) / 2);
+
+        // the tube, divided into its n stirred segments -- countable
+        const barTop = y;
+        ctx.fillStyle = '#e0e7ff';
+        ctx.fillRect(left, barTop, fullW, barH);
+        ctx.strokeStyle = TUBE;
+        ctx.lineWidth = 1.4;
+        ctx.strokeRect(left, barTop, fullW, barH);
+        const cell = fullW / n;
+        ctx.lineWidth = 1;
+        for (let k = 1; k < n; k++) {
+            ctx.beginPath();
+            ctx.moveTo(left + cell * k, barTop);
+            ctx.lineTo(left + cell * k, barTop + barH);
+            ctx.stroke();
+        }
+        // a stirring swirl in each segment, but only where one would be legible
+        if (cell >= 13 && barH >= 12) {
+            ctx.strokeStyle = TUBE;
+            ctx.lineWidth = 1.2;
+            for (let k = 0; k < n; k++) {
+                const scx = left + cell * (k + 0.5);
+                const scy = barTop + barH / 2;
+                const sr = Math.min(cell * 0.26, barH * 0.3);
+                ctx.beginPath();
+                ctx.arc(scx, scy, sr, t * 1.6 + k, t * 1.6 + k + Math.PI * 1.45);
+                ctx.stroke();
+            }
+        }
+        y += barH;
+        const barLabelY = showBarLabel ? y + 12 : 0;
+        if (showBarLabel) y += LBL;
+        y += 8;
+
+        // the 20 parcels, placed by the margin they arrive with
+        const stripTop = y;
+        const axisY = stripTop + stripH;
+        const axisW = fullW;
+        const xOf = (m: number) => left + axisW * Math.min(1, m / AXIS_MAX);
+        const needX = xOf(1);
+
+        ctx.strokeStyle = '#cbd5e1';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(left, axisY);
+        ctx.lineTo(left + axisW, axisY);
+        ctx.stroke();
+
+        // everything left of this line left before its cutting was done
+        if (needX > left + 1) {
+            ctx.fillStyle = 'rgba(190,18,60,0.12)';
+            ctx.fillRect(left, stripTop, needX - left, stripH);
+        }
+        ctx.strokeStyle = FAIL;
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(needX, stripTop - 2);
+        ctx.lineTo(needX, axisY + 3);
+        ctx.stroke();
+
+        const dotR = Math.max(1.8, Math.min(3, stripH * 0.08));
+        const rowGap = Math.max(6, (stripH - 10) / 2);
+        for (let i = 0; i < PARCELS; i++) {
+            const m = margins[i];
+            ctx.fillStyle = m < 1 ? FAIL : m < 2 ? LATE : SAFE;
+            ctx.beginPath();
+            ctx.arc(xOf(m), stripTop + 5 + (i % 2) * rowGap, dotR, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        y = axisY + 4;
+        const axisLabelY = showAxisLabel ? y + 11 : 0;
+
+        if (showBarLabel) {
+            outlineText(ctx, n + (n === 1 ? ' segment, stirred' : ' segments, each stirred'),
+                safeRight / 2, barLabelY, 'bold 11px monospace', TUBE, 'center', fullW);
+        }
+        if (showAxisLabel) {
+            outlineText(ctx, 'margin 1: the time needed', needX, axisLabelY,
+                'bold 10px monospace', FAIL,
+                needX > left + axisW * 0.6 ? 'right' : 'left', axisW - 10);
+        }
+
+        outlineText(ctx, 'spread = mean / √' + n + ' = ' + Math.round(spread * 100) + '%',
+            safeRight / 2, stageBottom - 34, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
+        outlineText(ctx, short > 0 ? short + ' of 20 parcels left early'
+            : 'earliest of 20: margin ' + earliest.toFixed(1),
+            safeRight / 2, stageBottom - 14, 'bold 12px monospace',
+            short > 0 ? FAIL : SAFE, 'center', safeRight - 30);
+
+        fitText(ctx, short > 0 ? short + ' of 20 left unfinished' : 'all 20 finished in time',
+            safeRight / 2, 94, safeRight - 24, 16);
+        fitText(ctx, 'Arrival margin, 20 parcels', safeRight / 2, 118, safeRight - 24, 13);
+
+        return {
+            meter: {
+                fraction: Math.max(0, Math.min(1, 1 - short / PARCELS)),
+                caption: 'Parcels With Time Enough',
+                low: 'the tail leaves early',
+                high: 'every parcel finished',
+                stops: [FAIL, '#fcd34d', SAFE] as [string, string, string],
+            },
+            note: n + (n === 1 ? ' stirred segment gives a spread equal to the mean'
+                : ' stirred segments give a spread of ' + Math.round(spread * 100)
+                  + '% of the mean')
+                + ', so the earliest of 20 parcels arrives with margin '
+                + earliest.toFixed(1) + '. ' + (short > 0
+                    ? short + ' of the 20 left before their cutting was done.'
+                    : share >= 0.005
+                        ? 'No parcel of 20 is small enough to show it, but '
+                          + (share * 100).toFixed(1) + '% of the meal still left early.'
+                        : 'Every parcel had the time it needed.'),
+        };
+    };
+
+    return (
+        <LabCanvas
+            title="Does It All Take the Same Time?"
+            readout={({ raw }) => segOf(raw) + ' stirred segments'}
+            controlLabel="Segments"
+            controlKey="gutSegments"
+            controlMin={1}
+            controlMax={25}
+            controlInitial={11}
+            controlDisplay={raw => segOf(raw) + (segOf(raw) === 1 ? ' segment' : ' segments')}
+            control2={{
+                label: 'Mean Transit Time',
+                key: 'meanTransit',
+                min: 2,
+                max: 8,
+                initial: 4.2,
+                display: raw => hoursOf(raw).toFixed(1) + ' h',
+            }}
+            accent="indigo"
+            sky={['#eef2ff', '#f8fafc']}
+            completeTitle="Level 3 Complete!"
+            completeSubtitle="How Does Food Become Usable Energy?"
+            completeNote="A normal average can hide a failing tail!"
+            phase={phase}
+            onStateChange={onStateChange}
+            drawScene={drawScene}
+        />
+    );
+};

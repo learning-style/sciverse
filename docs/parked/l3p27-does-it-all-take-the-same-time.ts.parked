@@ -1,0 +1,161 @@
+import { DialogNode } from '../../types';
+
+/**
+ * Level 3 (grades 9-12) for Big Idea 27, physics. Mechanism + Limit.
+ *
+ * It removes a simplification L2P27 made in the same breath as it contradicted it.
+ * L2P27 wrote time = length / speed, which treats the meal as one parcel moving
+ * together -- and then PROVED the muscle is mostly mixing rather than carrying, which
+ * swaps the front of the parcel with the back. Both cannot be true, and the learner
+ * has already met both, which is what makes this a Mechanism lesson needing no new
+ * apparatus.
+ *
+ * The model is n well-mixed segments in series. A well-mixed segment has no memory --
+ * a molecule that has been in it an hour is no likelier to leave next minute than one
+ * that just arrived -- so its own spread equals its own mean, tau = T/n. Spreads add
+ * through their squares, exactly as L2B16's two cues did, so
+ *
+ *   total spread = tau x sqrt(n) = T / sqrt(n),   and   spread / mean = 1 / sqrt(n)
+ *
+ * which is derived, not asserted, from one fact the curriculum already owns. The
+ * measured spread of small-bowel transit is about 30%, so n is about 1/0.30^2 = 11:
+ * the gut behaves like roughly a dozen stirred segments in series, which is what
+ * segmentation contractions physically are.
+ *
+ * Then the result that matters, and it is not the one the set-up suggests. At n = 11
+ * the earliest 1% of the meal still leaves with 3.75 times the cutting time it needs,
+ * so the margin swallows the spread completely. The spread only bites when the
+ * segmentation fails: at n = 1, one stirred bag, 10.9% of the meal leaves before it is
+ * finished and the earliest 1% has a margin of 0.09.
+ *
+ * So the irony is the lesson: mixing CREATES the spread, and mixing in many small
+ * segments is what keeps the spread harmless. One big mixer is the disaster.
+ *
+ * Frames stated: every time is measured from the moment that parcel of food enters the
+ * small intestine, and every spread is of arrival times at its far end.
+ *
+ * Still standing: spread = mean for one memoryless segment is asserted with its reason
+ * and not proved, because proving it needs more statistics than this level; n was
+ * inferred from a measured spread rather than counted anatomically; and the segments
+ * were taken to be equal.
+ */
+export function getL3P27Script(): Record<string, DialogNode> {
+    return {
+        root: {
+            id: 'root',
+            speaker: 'AI',
+            content: "L2P27 told you two things, and they contradict each other. It is worth noticing that before going any further, because the contradiction is this whole lesson.\n\n**The first thing** was a formula:\n\ntime in the small intestine = length / speed = 600 / 0.04 = **15,000 s**, about 4.2 hours\n\n**The second thing** was a measurement. The squeezing wave travels at about 3 cm/s while the food advances at about 0.04 cm/s, 75 times slower -- so the muscle is not carrying the food along. It is **mixing** it.\n\nNow put those together. Mixing means the food near the front of a parcel gets swapped with the food near the back, over and over, thousands of times on the way down. So some of what you swallowed first will arrive last, and some of what you swallowed last will arrive first.\n\n**A formula that gives one number for the whole meal cannot survive that.** `length / speed` is the time for a parcel that travels in a neat block, and L2P27 proved in its own second half that nothing travels in a neat block.\n\nSo 4.2 hours is not *the* time. It is an **average**, and the real question is how widely the actual times are spread around it -- because the food that leaves early is the food that has had the least time to be digested.\n\nYour dials are **Segments**, which the lesson will define, and **Mean Transit Time** in **hours (h)**.\n\nBefore any of that. If the small intestine were a single, perfectly stirred bag, what would the spread of arrival times look like?",
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'intro' } },
+            options: [
+                { id: 'huge', label: "Enormous — some would leave almost at once and some would linger for ages.", nextNodeId: 'defining', sentiment: 'positive' },
+                { id: 'tight', label: "Narrow — stirring mixes everything evenly, so everything leaves at about the same time.", nextNodeId: 'misconception' }
+            ]
+        },
+
+        misconception: {
+            id: 'misconception',
+            speaker: 'AI',
+            content: "Stirring makes the **contents** uniform. It does the opposite for the **times**, and separating those two is the key to the whole lesson.\n\nThink about what a perfectly stirred bag does to one molecule. The bag has an outlet. At every instant, the molecule has some small chance of happening to be at the outlet and leaving. Stirring means that chance is the **same at every instant** -- being well mixed is exactly what destroys any relationship between where a molecule is now and where it was a moment ago.\n\nSo a stirred bag has **no memory**. A molecule that has been in it for an hour is no more likely to leave in the next minute than one that arrived a second ago. Nothing is keeping count.\n\nAnd that has a consequence you can reason out without any formula. If the chance of leaving is constant, then:\n\n- some molecules are unlucky and leave **almost immediately**, because nothing was stopping them\n- some are lucky and are **still in there** long after the average, because nothing was pushing them out\n\nThat is the widest spread a flow can have, not the narrowest. **A perfect mixer is a perfect scrambler of time.**\n\nFor a memoryless time like this one, the spread turns out to be **equal to the mean** -- a 4.2 hour average would come with a 4.2 hour spread. Proving that equality needs more statistics than we have here, so take it as given, with the memorylessness as the reason it is plausible.\n\n**Which is alarming**, because a spread that size means a serious share of the meal leaves very early indeed. So the real intestine had better not be one stirred bag.",
+            options: [
+                { id: 'cont', label: "So what is it instead?", nextNodeId: 'defining' }
+            ]
+        },
+
+        defining: {
+            id: 'defining',
+            speaker: 'AI',
+            content: "A row of small ones. That is what **segmentation** is -- the gut pinches itself into short compartments, stirs each one, and passes it along to the next.\n\nSo model the tube as **n segments in series**, each well mixed, each handing on to the one below. We will call n the **Segments** dial. The food must pass through all n of them, so:\n\n- each segment's own mean time is **τ = T / n**, where T is the total mean\n- each segment has no memory, so each segment's own spread is **τ** as well\n\nNow the step that does the work, and it is one you already own. **L2B16** found that two independent errors do not add directly -- they **add through their squares**. The same is true of these n independent waiting times, because each segment scrambles time on its own:\n\n**total spread² = τ² + τ² + ... (n times) = n τ²**\n\nSo **total spread = τ √n**, and since τ = T/n:\n\n**total spread = T / √n**, and therefore **spread / mean = 1 / √n**\n\nThis holds while the segments are **independent and equal in size**, which is the condition to keep in view.\n\n**Read what that says.** Stirring in one big bag gives a spread equal to the mean (n = 1, and 1/√1 = 1). Chopping the same tube into 4 stirred segments **halves** it. Into 100, and the spread is a tenth of the mean -- almost a pipe.\n\n**Nothing about the stirring changed.** The same total mixing, the same total time, and the spread fell by a factor of ten purely because it was done in more, smaller stages.",
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'network' } },
+            options: [
+                { id: 'work', label: "So how many segments does a real gut have?", nextNodeId: 'worked' }
+            ]
+        },
+
+        worked: {
+            id: 'worked',
+            speaker: 'AI',
+            content: "**Turn the formula round and let the measurement answer.** The spread of small-bowel transit times can be measured directly -- feed people a marker and time its arrival -- and it comes out at roughly **30%** of the mean.\n\nspread / mean = 1 / √n, so **n = 1 / (spread/mean)²**\n\nn = 1 / 0.30² = 1 / 0.09 = **about 11**\n\n**The gut behaves like about a dozen stirred segments in series**, and nobody had to cut one open to find that out -- it came from a spread. That is a satisfying thing in itself, and it matches what segmentation looks like on a scan.\n\nNow use it. Mean T = 15,000 s, and spread = 15,000 / √11 = **4,500 s**, about 1.3 hours.\n\nSo arrival times run roughly from under 3 hours to over 6. **Does that threaten the digestion?** From L2C27 the cutting needs **1,736 s**, so compare the earliest arrivals against that:\n\n| | leaves at | margin against 1,736 s |\n| --- | --- | --- |\n| earliest **1%** | 6,500 s | **3.75** |\n| earliest **5%** | 8,400 s | **4.85** |\n| the **median** | 14,500 s | **8.4** |\n\n**Every row finishes comfortably.** The earliest one percent of the meal -- the unluckiest molecules in the whole system -- still gets nearly four times the time it needs.\n\nSo the answer to the question this lesson opened with is: **the spread is real, it is large, and it does not matter.** L2B27's margin of 8.6 is big enough to swallow it whole.",
+            options: [
+                { id: 'check', label: "Then when does it matter?", nextNodeId: 'math_check' }
+            ]
+        },
+
+        math_check: {
+            id: 'math_check',
+            speaker: 'AI',
+            content: "Good question, and it is the one worth asking. Suppose segmentation fails -- the gut stops pinching into compartments and behaves like **one** long stirred bag, so n drops from 11 to 1. The mean transit time is unchanged at 15,000 s.\n\nWhat happens to the spread, and roughly what share of the meal now leaves before its 1,736 s of cutting is done?",
+            options: [
+                { id: 'big', label: "The spread becomes 15,000 s — equal to the mean — and about 11% leaves unfinished", nextNodeId: 'explore', sentiment: 'positive' },
+                { id: 'none', label: "The spread grows but nothing leaves unfinished, because the mean is still 8.6 times the need", nextNodeId: 'math_wrong' },
+                { id: 'eleven', label: "The spread grows by a factor of 11, and most of the meal leaves unfinished", nextNodeId: 'math_wrong' }
+            ]
+        },
+
+        math_wrong: {
+            id: 'math_wrong',
+            speaker: 'AI',
+            content: "The spread goes as 1/√n, so dropping n from 11 to 1 multiplies it by **√11 = 3.3**, from 4,500 s to 15,000 s -- the full mean, which is the one-stirred-bag case.\n\n15,000 s is **8.6 times** the 1,736 s needed, so you might think nothing could possibly leave unfinished. **That is the mistake, and it is the reason this lesson exists.** A margin applies to the **mean**, and the mean is not what leaves first. With a spread equal to the mean, the earliest arrivals are not a little early -- they are **drastically** early, because a memoryless time has no floor at all. Some molecules leave almost at once.\n\nWork it through properly and about **11%** of the meal leaves before its cutting is done. The earliest 1% leaves at about 150 s, a margin of **0.09** -- it has had **a ninth** of the time it needed.\n\n| | n = 11 | n = 1 |\n| --- | --- | --- |\n| spread / mean | **30%** | **100%** |\n| earliest 1% margin | **3.75** | **0.09** |\n| leaves unfinished | **~0%** | **10.9%** |\n\nAnd *most of the meal* is too pessimistic in the other direction -- the median parcel is still fine. **It is the tail that fails, not the meal**, which is exactly why an average hid the problem.",
+            options: [
+                { id: 'retry', label: "Spread equal to the mean, and about 11% leaves unfinished.", nextNodeId: 'explore' }
+            ]
+        },
+
+        explore: {
+            id: 'explore',
+            speaker: 'AI',
+            content: "Both dials are live. The tube is drawn as its **n** stirred segments -- countable -- and below it **20 parcels** of one meal, each worth 5% of it, placed by the **margin** they arrive with. The line marks margin 1, where a parcel has had exactly the cutting time it needs. Anything to the left of the line left too early.\n\nThings worth doing:\n\n- Start at **11 segments** and **4.2 h**. Spread 30%, every parcel out at margin 4.3 or better, and the whole cloud sits well to the right of the line\n- Now walk the segments down and watch the cloud **stretch to the left**. At 8 the earliest is 3.8, at 4 it is 2.4, at 2 it is **1.05** -- right on the line but still past it. Only at **1 segment** does a parcel actually cross: **2 of 20**, which is the 10.9% you calculated\n- **So at a healthy transit time the spread alone is almost never enough.** The note will tell you that 2.3% of the meal leaves early at 2 segments even though no parcel of 20 is small enough to show it -- the picture rounds, and it says so\n- **Now change both.** Put the transit time down to **2.0 h** and sweep the segments again. The crossing happens much sooner: **4 segments** is the last safe setting, 3 loses one parcel, 2 loses two, and 1 loses four\n- That is the shape of a real failure -- **two things wrong together.** A shortened transit is survivable and poor segmentation is survivable, and both at once is not\n- At the other end, **25 segments and 8 h**: the earliest parcel arrives at margin **10.7** and the latest at 23.7. Even the unluckiest twentieth has ten times the time it needs\n- And notice what you cannot reach: **a spread of zero**. 1/√n never gets there, so there is always a tail. The question is never whether one exists, only whether the margin covers it",
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'explore' } },
+            options: [
+                { id: 'cp', label: "Checkpoint", nextNodeId: 'checkpoint' }
+            ]
+        },
+
+        checkpoint: {
+            id: 'checkpoint',
+            speaker: 'AI',
+            content: "Here is the thing to get straight, because it sounds like a paradox.\n\nThe **mixing** is what creates the spread -- a stirred compartment scrambles time, and that is the whole reason arrival times are spread at all. And yet a healthy gut, which mixes constantly, has a **narrow** spread.\n\nHow is that possible?",
+            options: [
+                { id: 'many', label: "Because it mixes in many small segments rather than one big one, and 1/√n falls as the stages multiply.", nextNodeId: 'checkpoint_correct', sentiment: 'positive' },
+                { id: 'gentle', label: "Because the gut mixes gently, so it scrambles the times less than a laboratory stirrer would.", nextNodeId: 'checkpoint_wrong' },
+                { id: 'cancel', label: "Because mixing forwards and mixing backwards cancel out over a long enough tube.", nextNodeId: 'checkpoint_wrong' }
+            ]
+        },
+
+        checkpoint_wrong: {
+            id: 'checkpoint_wrong',
+            speaker: 'AI',
+            content: "Look again at where **n** entered the derivation, because the answer is structural and has nothing to do with how hard the stirring is.\n\nEach segment is taken to be **perfectly** mixed -- the worst case, the maximum possible scrambling -- and the spread still came out at 1/√n of the mean. **The vigour of the mixing never appeared in the algebra at all.** Only the **number of stages** did.\n\nThe reason is the squares. One segment of mean τ contributes a spread of τ. Twelve of them contribute τ√12 in total while the mean contributes 12τ, so the spread grows as **√n** and the mean grows as **n**. Dividing, the ratio falls as 1/√n. **A parcel that is unlucky in one segment is overwhelmingly likely to be average in the other eleven**, and that averaging is what narrows the distribution.\n\nSo *gentler mixing* is not the mechanism, and it would be the wrong fix: gentle mixing would break L2C27's condition that every enzyme is busy every second. **The gut needs vigorous mixing and a narrow spread at the same time, and chopping the tube into segments is how it gets both.**\n\nAnd *cancelling out* is not it either. Spreads never cancel -- they add through their squares, so every segment makes the total spread **larger**, never smaller. What falls is the spread *relative to the mean*, because the mean grows faster.",
+            options: [
+                { id: 'retry', label: "Many small stages, and the squares do the rest.", nextNodeId: 'checkpoint_correct' }
+            ]
+        },
+
+        checkpoint_correct: {
+            id: 'checkpoint_correct',
+            speaker: 'AI',
+            content: "**And that is a design worth recognising, because it is not only a gut.**\n\nThe same trick appears wherever something has to be thoroughly mixed and still arrive on schedule: a sequence of small stirred stages gives you the mixing of a stirrer and the timing of a pipe. One big tank gives you the mixing and loses the timing.\n\nSo the three facts fit together with nothing left over:\n\n- **mixing is required**, because L2C27's formula only holds while every enzyme is busy every second\n- **mixing scrambles time**, so a spread of arrival times is unavoidable\n- **mixing in n stages** makes that spread 1/√n of the mean, so it can be made as small as you like by doing it in more places\n\nThe failure mode falls straight out, too. Anything that stops the gut pinching into compartments -- disease, damage, surgery -- lowers **n** without necessarily changing the mean transit time at all. **A patient could have an entirely normal 4.2 hour average and still lose a tenth of every meal**, and a measurement of the average would show nothing wrong. You would have to measure the **spread**.\n\nWhich raises the question L3C27 picks up. All of this compared arrival times against **1,736 s** -- a figure L2C27 looked up rather than worked out. Where does it come from, and is every one of those bonds really the same?",
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'checkpoint' } },
+            options: [
+                { id: 'disc', label: "The average was hiding the whole problem!", nextNodeId: 'discovery' }
+            ]
+        },
+
+        discovery: {
+            id: 'discovery',
+            speaker: 'AI',
+            content: "**You removed a simplification that L2P27 had already contradicted in its own second half.**\n\n- `time = length / speed` is the time for a parcel travelling in a block, and L2P27 proved nothing travels in a block: the wave is 75 times faster than the advance, so the muscle **mixes**. So **4.2 hours is an average**, not the time\n- A well-mixed compartment has **no memory**: being mixed is exactly what destroys any link between where a molecule is now and where it was. So its chance of leaving is constant in time, and its **spread equals its mean** -- asserted with that reason, since proving it needs more statistics than this level\n- **A perfect mixer is a perfect scrambler of time**, which is the opposite of what stirring does to the contents. Keeping those two apart is the key to the lesson\n- Model the tube as **n** stirred **segments** in series -- which is what **segmentation** physically is. Each has mean **τ = T/n** and spread **τ**\n- Spreads **add through their squares**, exactly as **L2B16's** two cues did: total spread² = nτ², so **total spread = τ√n = T/√n**, and **spread / mean = 1/√n**. Condition: the segments are independent and equal\n- **The vigour of the mixing never enters the algebra.** Only the number of stages does -- because the spread grows as √n while the mean grows as n\n- Run it backwards on a measurement: a measured spread of **30%** gives **n = 1/0.30² ≈ 11**. The gut behaves like about a dozen stirred segments, inferred from a spread rather than cut open\n- **And then the result the set-up did not suggest.** At n = 11 the earliest **1%** of the meal still leaves with a margin of **3.75**, and the earliest 5% with **4.85**. The spread is real, it is large, and **L2B27's margin of 8.6 swallows it whole**\n- **It bites only when the segmentation fails.** At n = 1 the spread equals the mean, **10.9%** of the meal leaves unfinished, and the earliest 1% has a margin of **0.09** -- a ninth of the time it needed. The mean transit time is **unchanged** throughout, so an average would show nothing wrong. **You would have to measure the spread**\n- So the apparent paradox resolves: **mixing creates the spread, and mixing in many small segments is what keeps it harmless.** One big mixer is the disaster. The gut needs vigorous mixing for the chemistry and a narrow spread for the timing, and segmenting is how it has both\n- **Still standing:** spread = mean for one segment was given, not proved. **n** was inferred from a spread, not counted. The segments were taken as equal and independent, and a real gut's are neither. And every comparison used **1,736 s**, which L2C27 looked up -- **L3C27 goes and gets it.**",
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'discovery' } },
+            options: [
+                { id: 'done', label: "Complete L3P27", nextNodeId: 'complete' }
+            ]
+        },
+
+        complete: {
+            id: 'complete',
+            speaker: 'AI',
+            content: "**Level 3 Physics Complete -- How Does Food Become Usable Energy?**\n\nL2P27 gave one number for the whole meal. This asked what the spread around it is, using a result the level below had already proved.\n\n**Summary Table:**\n| | L2P27 said | L3P27 says |\n| --- | --- | --- |\n| The transit time | 4.2 hours | the **mean** of a spread |\n| Why there is a spread | -- | mixing has **no memory**, so it scrambles time |\n| One stirred bag | -- | spread **equals** the mean |\n| n stirred segments | -- | spread / mean = **1/√n**, by squares adding |\n| What sets the spread | -- | the **number** of stages, never the vigour |\n| A measured 30% spread | -- | **n ≈ 11** segments, inferred not counted |\n| The earliest 1% | -- | margin **3.75**: the spread is swallowed |\n| If segmentation fails | -- | n = 1, **10.9%** leaves unfinished, margin **0.09** |\n| What a normal average proves | that all is well | **nothing** -- the mean is unchanged |\n\n**The one line to remember:** the mixing that L2P27 discovered is both why arrival times must be spread out and, done in a dozen small stages instead of one big one, why that spread is harmless -- so a gut can be a thorough mixer and a punctual pipe at the same time, and the failure it is vulnerable to is invisible to any measurement of the average.",
+            onEnterAction: { type: 'SET_VISUAL', payload: { phase: 'complete' } },
+            options: []
+        }
+    };
+}

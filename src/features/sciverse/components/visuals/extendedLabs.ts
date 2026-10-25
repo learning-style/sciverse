@@ -212,6 +212,7 @@ import { L3B26ThermalLab } from './L3B26ThermalLab';
 import { L2P27TransitLab } from './L2P27TransitLab';
 import { L2C27CutterLab } from './L2C27CutterLab';
 import { L2B27MarginLab } from './L2B27MarginLab';
+import { L3P27RingLab } from './L3P27RingLab';
 import { L2C17SteelLab } from './L2C17SteelLab';
 import { L2B17HollowLab } from './L2B17HollowLab';
 import { L3P17BucklingLab } from './L3P17BucklingLab';
@@ -440,6 +441,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2p27: L2P27TransitLab,
     l2c27: L2C27CutterLab,
     l2b27: L2B27MarginLab,
+    l3p27: L3P27RingLab,
     l2c17: L2C17SteelLab,
     l2b17: L2B17HollowLab,
     l3p17: L3P17BucklingLab,
