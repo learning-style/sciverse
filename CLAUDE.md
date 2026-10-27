@@ -99,7 +99,7 @@ lesson's header *and* body — a header alone will mislead you):
 
 | | Mechanism | Mechanism + Limit | Limit | Quantity only |
 |---|---|---|---|---|
-| Level 2 (85) | 24 | — | 11 | 50 |
+| Level 2 (88) | 24 | — | 13 | 51 |
 | Level 3 (81) | 15 | 41 | 17 | 8 |
 
 Big Ideas 17 and 18 were built after that audit and are counted above, as are 19 to
@@ -380,6 +380,42 @@ L3B21's tiny ATP store sharpening its sensor and L3B22's faint echoes reaching t
 bottom, that is three times an apparent weakness has turned out to be the mechanism:
 **when a biological system looks badly designed, check what the apparent waste is paid
 for.**
+
+**Big Idea 28's Level 2 is the first trio where all three lessons are the same shape --
+a product of two factors -- and each one asks which factor has run out of room.** Its
+collision scan mattered more than any so far, because the obvious ground was taken twice
+over: **L3P11 owns flow resistance comprehensively** (pressure drop = flow x resistance,
+resistance as 1/radius^4, the 85 mmHg over 5 L/min), and **Big Idea 5 owns homeostasis,
+negative feedback and set points** (b5, l2b5's sweat heat budget, l3b5). So Big Idea 28
+had to be about the *matching between* systems rather than the mechanics of one, which
+is what its own question actually asks.
+
+**L2P28** is the pump, not the pipes: `blood per minute = heart rate x volume per beat`.
+70 x 70 = 4.9 L/min, and an adult holds about 5 litres, so the heart sends the whole
+supply round in roughly a minute. Sprinting is 180 x 110 = 19.8, and the gains multiply
+-- 2.6 x 1.6 = 4.0. The rate has far more room than the volume, and turned round the
+formula becomes a diagnosis: 4.2 L/min on a pulse of 100 is 42 mL a beat, a racing pulse
+moving *less* blood than a resting body. **L2C28** weighs what C28 only described:
+`sugar = concentration x volume`, so 0.9 x 5 = **4.5 g**, less than a teaspoon, against a
+5.5 g gap and a 15 g slice. **L2B28** closes it with `oxygen used = flow x taken per
+litre`, 5 x 50 = 250 mL/min rising to 20 x 170 = 3,400.
+
+**The spine is that in each one a different kind of tightness binds**, and the body
+routes around it rather than breaking it: the volume per beat runs out of **filling
+time** (0.86 s at 70 beats, 0.33 s at 180), so the heart beats more often; the blood has
+**no room at all**, so the clearing runs *during* the meal; and oxygen per litre has a
+**hard ceiling at 200 mL**, so a trained heart moves more litres instead. **Working
+together means having another factor to push on** -- and the useful question of any
+product is never how big a factor is but how much room it has left. The check question
+makes that concrete: at 190 mL/L, 190 is a far bigger number than the flow's 20 and it
+is the useless one.
+
+**L2C28 also pays Big Idea 27 back.** Its 5.5 g gap against a 15 g slice looks
+unsurvivable until you divide by L2C27's 29 minutes: 15/29 is about **0.5 g a minute**,
+and a resting body clears about 0.5 g a minute. The gut's slowness is not a defect, it
+is what makes a teaspoon-sized buffer work -- and a drink with 40 g absorbed in ten
+minutes arrives at 4 g/min, eight times the clearance, which is a far harder problem
+than more grams eaten slowly.
 
 **Four closing biology lessons now turn on a shape rather than a fact**, and each
 says so: L3B18's two curves gave a **ratio** that collapses, L3B19's two factors a

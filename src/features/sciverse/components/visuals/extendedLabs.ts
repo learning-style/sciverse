@@ -217,6 +217,7 @@ import { L3C27BranchLab } from './L3C27BranchLab';
 import { L3B27ContactLab } from './L3B27ContactLab';
 import { L2P28OutputLab } from './L2P28OutputLab';
 import { L2C28SugarLab } from './L2C28SugarLab';
+import { L2B28OxygenLab } from './L2B28OxygenLab';
 import { L2C17SteelLab } from './L2C17SteelLab';
 import { L2B17HollowLab } from './L2B17HollowLab';
 import { L3P17BucklingLab } from './L3P17BucklingLab';
@@ -450,6 +451,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l3b27: L3B27ContactLab,
     l2p28: L2P28OutputLab,
     l2c28: L2C28SugarLab,
+    l2b28: L2B28OxygenLab,
     l2c17: L2C17SteelLab,
     l2b17: L2B17HollowLab,
     l3p17: L3P17BucklingLab,

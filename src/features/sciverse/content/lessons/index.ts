@@ -321,6 +321,7 @@ import { getL3C27Script } from './l3c27-where-the-bond-count-comes-from';
 import { getL3B27Script } from './l3b27-the-job-the-length-cannot-do';
 import { getL2P28Script } from './l2p28-two-ways-to-pump-more';
 import { getL2C28Script } from './l2c28-no-room-in-the-blood';
+import { getL2B28Script } from './l2b28-the-factor-with-no-room';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
 import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
@@ -1418,6 +1419,7 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3b27': getL3B27Script,
     'l2p28': getL2P28Script,
     'l2c28': getL2C28Script,
+    'l2b28': getL2B28Script,
 };
 
 const LEVEL1_NORMALIZE_ALL_LESSONS = LEVEL1_NORMALIZATION_ENABLED;
@@ -1999,6 +2001,7 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3b27', title: 'The Job the Length Cannot Do', subtitle: 'A free enzyme is paid in time, a fixed one in contact', discipline: 'biology', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '🧫', accentColor: 'rose', crossLinks: ['l3p27', 'l3c27'], level: 3 },
     { id: 'l2p28', title: 'Two Ways to Pump More', subtitle: 'Rate times volume per beat, and only one has room', discipline: 'physics', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🫀', accentColor: 'indigo', crossLinks: ['p28', 'l2p24'], level: 2 },
     { id: 'l2c28', title: 'No Room in the Blood', subtitle: 'Less than a teaspoon, against a 15 gram slice', discipline: 'chemistry', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🩸', accentColor: 'emerald', crossLinks: ['c28', 'l2c27'], level: 2 },
+    { id: 'l2b28', title: 'The Factor With No Room', subtitle: 'A litre carries 200 mL, and that is the whole ceiling', discipline: 'biology', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🫁', accentColor: 'rose', crossLinks: ['l2p28', 'l2c28'], level: 2 },
     { id: 'l3b23', title: 'Why the Edge Does the Work', subtitle: 'One rule for every shape: the largest circle that fits', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '⭕', accentColor: 'rose', crossLinks: ['l2b23', 'l3c23'], level: 3 },
     { id: 'l3p19', title: 'Why the Ground Stops Drinking', subtitle: 'Dry soil pulls, but the pull has further to reach', discipline: 'physics', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🪨', accentColor: 'indigo', crossLinks: ['l2p19', 'p19'], level: 3 },
     { id: 'l3c19', title: 'Why Nitrate Is the One That Leaves', subtitle: 'Soil grips positive ions and repels nitrate', discipline: 'chemistry', bigIdea: 19, bigIdeaTitle: 'How Does Soil Support Life?', icon: '🌱', accentColor: 'emerald', crossLinks: ['l2c19', 'l3p19'], level: 3 },
