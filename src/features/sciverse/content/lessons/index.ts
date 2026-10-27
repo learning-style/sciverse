@@ -195,7 +195,7 @@ import { getL2C6Script } from './l2c6-float-sink-sorting';
 import { getL2B6Script } from './l2b6-swim-bladder';
 import { getL3P6Script } from './l3p6-buoyancy-from-pressure';
 import { getL3C6Script } from './l3c6-seawater-layers';
-import { getL3B6Script } from './l3b6-swim-bladder-depth';
+import { getL3B6Script } from './l3b6-the-sac-that-cannot-hold-still';
 import { getL2P7Script } from './l2p7-ohms-law';
 import { getL2C7Script } from './l2c7-electrode-potentials';
 import { getL2B7Script } from './l2b7-electric-eel';

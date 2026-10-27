@@ -39,11 +39,16 @@ export const bigIdea6Level3Assessment: AssessmentData = {
             id: 3,
             difficulty: 'easy',
             discipline: 'biology',
-            question: 'Boyle\'s law says that at a steady temperature, doubling the pressure on a gas:',
-            options: ['Halves its volume', 'Doubles its volume', 'Leaves its volume unchanged', 'Doubles its mass'],
-            correctIndex: 0,
-            hint: 'p₁ x V₁ = p₂ x V₂.',
-            explanation: 'If p doubles, V must halve to keep p x V the same.'
+            question: 'A swim bladder is a gas sac walled in thin connective tissue. As a fish swims deeper, what sets the size of that sac?',
+            options: [
+                'The amount of gas sealed inside it',
+                'The pressure of the water outside, which squeezes it until the gas pushes back just as hard',
+                'The muscles of the body cavity, which the fish controls directly',
+                'Nothing — a sealed sac keeps its volume'
+            ],
+            correctIndex: 1,
+            hint: 'The wall is thin tissue, not armour. What can it actually resist?',
+            explanation: 'The wall only contains the gas; it cannot hold the sea off. So the sac is squeezed to whatever size balances the water outside, and every 10 m of seawater adds about one atmosphere -- so a sac carried from the surface to 10 m is squeezed to roughly half, with nothing having leaked. That is why a swim bladder is not an organ the fish simply sets to a size.'
         },
         {
             id: 4,
@@ -80,11 +85,16 @@ export const bigIdea6Level3Assessment: AssessmentData = {
             id: 7,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'A swim bladder holds 30 cm³ of gas at 20 m (3 atm). What volume does that gas take up at 50 m (6 atm)?',
-            options: ['15 cm³', '60 cm³', '30 cm³', '12 cm³'],
-            correctIndex: 0,
-            hint: 'Use the pressures, not the depths.',
-            explanation: '3 x 30 / 6 = 15 cm³. Using the depths instead, 30 x 20 / 50, gives the wrong 12 cm³.'
+            question: 'A sealed fish at 90 m must push gas into its bladder against 10 atmospheres, using blood that arrives carrying oxygen at a fraction of one. How does the gas gland manage it?',
+            options: [
+                'It pumps the gas in with muscle',
+                'It secretes lactic acid, which makes haemoglobin release its oxygen, and a rete mirabile hands that oxygen back between vessels until its pressure is high enough',
+                'It absorbs gas directly from the water through the bladder wall',
+                'It swallows air at the surface and holds it'
+            ],
+            correctIndex: 1,
+            hint: 'Nothing pumps. What happens if a gas keeps being handed back instead of being allowed to leave?',
+            explanation: 'Acid makes haemoglobin let go -- the Root effect -- so acidified blood releases free oxygen. The rete mirabile is a bundle of capillaries in which blood flowing to the gland runs alongside blood flowing away, so the released oxygen diffuses straight back into the incoming vessels, over and over. The net does not pump; it traps, and trapping repeated thousands of times does a pump\'s work. Swallowing air is the other design, a physostome, which needs a duct to the gut and a trip to the surface.'
         },
         {
             id: 8,
@@ -121,7 +131,7 @@ export const bigIdea6Level3Assessment: AssessmentData = {
             id: 11,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'Two fish hover with the same gas volume, one at 5 m and one at 95 m. Each rises 5 m. Whose swim bladder grows by the bigger share?',
+            question: 'Two fish hover with the same gas volume, one at 5 m and one at 95 m. Each rises 5 m. Whose swim bladder grows by the bigger share, and why does that make the shallow fish less stable?',
             options: ['The fish at 5 m: its gas grows by 50%, against 5% for the fish at 95 m', 'The fish at 95 m, because the pressure there is higher', 'The same share, because both rose 5 m', 'Neither, because the amount of gas is fixed'],
             correctIndex: 0,
             hint: 'Boyle\'s law works in ratios of pressure.',
