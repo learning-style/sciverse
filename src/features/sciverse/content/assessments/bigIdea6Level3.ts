@@ -134,8 +134,8 @@ export const bigIdea6Level3Assessment: AssessmentData = {
             question: 'Two fish hover with the same gas volume, one at 5 m and one at 95 m. Each rises 5 m. Whose swim bladder grows by the bigger share, and why does that make the shallow fish less stable?',
             options: ['The fish at 5 m: its gas grows by 50%, against 5% for the fish at 95 m', 'The fish at 95 m, because the pressure there is higher', 'The same share, because both rose 5 m', 'Neither, because the amount of gas is fixed'],
             correctIndex: 0,
-            hint: 'Boyle\'s law works in ratios of pressure.',
-            explanation: 'From 5 m to the surface, 1.5 atm falls to 1.0 atm, so the volume grows by 1.5 times. From 95 m to 90 m, 10.5 atm falls to 10.0 atm: only 1.05 times.'
+            hint: 'Pressure works in ratios. Which 5 m changes the pressure by more of itself?',
+            explanation: 'From 5 m to the surface the pressure falls from 1.5 atm to 1.0, so the sac grows by half again. From 95 m to 90 m it falls from 10.5 to 10.0 -- about a twentieth. The same 5 m is a violent change near the surface and a mild one far down, which is why the shallow fish is the unstable one: its sac swells enough to make it rise faster, which swells it further. That is the runaway the gas gland exists to correct, and it is backwards from what most people guess.'
         },
         {
             id: 12,
