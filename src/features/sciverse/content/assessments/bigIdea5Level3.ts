@@ -3,7 +3,7 @@ import { AssessmentData } from '../../types';
 /**
  * Big Idea 5 Assessment -- LEVEL 3 (grades 9-12).
  * Covers L3P5 (friction, efficiency and self-locking), L3C5 (heat of dissolving
- * and van 't Hoff's rule), L3B5 (vapour pressure, humidity and the limit of
+ * and van 't Hoff's rule), L3B5, rewritten structure-first on 27 October 2026 (vapour pressure, humidity and the limit of
  * sweat). The theme across all three is what limits each trade.
  * 12 questions: 4 easy -> 4 medium -> 4 hard
  */
@@ -80,11 +80,16 @@ export const bigIdea5Level3Assessment: AssessmentData = {
             id: 7,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'Air at 35 °C has 40% humidity; the saturation vapour pressure is 5.6 kPa. With 240 W per kPa, what is the most heat sweat can carry away?',
-            options: ['About 806 W', 'About 538 W', 'About 1,344 W', 'About 96 W'],
-            correctIndex: 0,
-            hint: 'Skin minus air, then multiply.',
-            explanation: 'Air: 0.40 x 5.6 = 2.24 kPa. Difference: 3.36 kPa. 240 x 3.36 = 806 W. Using the air\'s 2.24 kPa alone gives 538 W.'
+            question: 'A sweat gland makes its fluid at body temperature, deep in the dermis. So where does the cooling actually happen?',
+            options: [
+                'In the coil, which produces cool fluid',
+                'When a water molecule leaves the film on the skin — it takes the energy it needs to break away from the skin beneath it',
+                'In the duct, as the salt is drawn back out',
+                'In the widened blood vessels of the dermis'
+            ],
+            correctIndex: 1,
+            hint: 'Nothing cold comes out of a sweat gland. So what step removes heat?',
+            explanation: 'Warm water sitting on warm skin removes nothing. The cooling is in the leaving: a molecule held by the water around it needs energy to break free, and it takes that energy from the skin. So the chain is vessels bring the heat, the coil and duct bring the water, and the air performs the step that actually cools -- which is why the body cannot choose how much sweat evaporates. Its control ends at the pore.'
         },
         {
             id: 8,
@@ -121,11 +126,16 @@ export const bigIdea5Level3Assessment: AssessmentData = {
             id: 11,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'A worker makes 500 W in a light breeze at 35 °C and 70% humidity. How fast does the body warm? (245,000 J for each °C)',
-            options: ['About 1.4 °C per hour', 'It holds steady', 'About 7.3 °C per hour', 'About 5.9 °C per hour'],
-            correctIndex: 0,
-            hint: 'Find the most cooling, then what is left over.',
-            explanation: 'Air: 3.92 kPa; difference 1.68 kPa; cooling 403 W; 97 W short. 97 x 3,600 / 245,000 = 1.4 °C per hour. Ignoring sweat gives 7.3.'
+            question: 'On a humid day hard work makes sweat bead up and run off you. On a dry day the same work makes sweat that vanishes. Which is cooling you more, and why?',
+            options: [
+                'The humid day — more sweat is visible, so more is being produced',
+                'The dry day — sweat that runs off took water from your blood and removed almost no heat, because it never made the one transition that matters',
+                'They cool equally; the water leaves either way',
+                'The humid day, because running water carries heat away by conduction'
+            ],
+            correctIndex: 1,
+            hint: 'Which route takes heat with it: leaving as liquid, or leaving as vapour?',
+            explanation: 'Only evaporation carries heat. A drop that lands on the ground cost you water and bought you almost nothing. The feeling is misleading in exactly the wrong direction -- dripping feels like hard cooling and is the sign of cooling failing -- which is why humid heat harms people who would be fine on a hotter, drier day, and why the figure to watch is how much water is in the air rather than the temperature.'
         },
         {
             id: 12,

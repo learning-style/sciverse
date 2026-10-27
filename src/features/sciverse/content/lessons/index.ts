@@ -189,7 +189,7 @@ import { getL2C5Script } from './l2c5-henry-law';
 import { getL2B5Script } from './l2b5-sweat-budget';
 import { getL3P5Script } from './l3p5-self-locking-jack';
 import { getL3C5Script } from './l3c5-heat-of-dissolving';
-import { getL3B5Script } from './l3b5-sweat-limit';
+import { getL3B5Script } from './l3b5-the-gland-and-the-air';
 import { getL2P6Script } from './l2p6-fraction-submerged';
 import { getL2C6Script } from './l2c6-float-sink-sorting';
 import { getL2B6Script } from './l2b6-swim-bladder';
@@ -1839,7 +1839,7 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     // Big Idea 5 -- Level 3 (grades 9-12)
     { id: 'l3p5', title: 'Why a Jack Holds Its Load', subtitle: 'Friction, efficiency and self-locking', discipline: 'physics', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🔩', accentColor: 'indigo', crossLinks: ['l2p5'], level: 3 },
     { id: 'l3c5', title: 'Why Warm Drinks Lose Their Fizz', subtitle: "van 't Hoff: the heat of dissolving sets the slope", discipline: 'chemistry', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🌡️', accentColor: 'emerald', crossLinks: ['l2c5', 'l3p5'], level: 3 },
-    { id: 'l3b5', title: 'The Limit of Sweat', subtitle: 'Vapour pressure, humidity and the wet-bulb limit', discipline: 'biology', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🥵', accentColor: 'rose', crossLinks: ['l2b5', 'l3c5'], level: 3 },
+    { id: 'l3b5', title: 'The Gland and the Air', subtitle: 'The skin delivers heat and water; the air decides', discipline: 'biology', bigIdea: 5, bigIdeaTitle: 'How Can a Small Force Do a Big Job?', icon: '🥵', accentColor: 'rose', crossLinks: ['l2b5', 'l3c5'], level: 3 },
 
     // Big Idea 6 -- Level 2 (grades 6-8)
     { id: 'l2p6', title: 'How Much of an Iceberg Is Hidden?', subtitle: 'Fraction under water = object density / liquid density', discipline: 'physics', bigIdea: 6, bigIdeaTitle: 'Why Do Things Float or Sink?', icon: '🧊', accentColor: 'indigo', crossLinks: ['p6'], level: 2 },
