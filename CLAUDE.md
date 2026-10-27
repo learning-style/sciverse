@@ -476,6 +476,57 @@ for a swing that widened five degrees. Judge a lesson by its body.
 `docs/big-ideas.md` holds the Big Idea table. `docs/curriculum-roadmap.md` and
 `docs/cross-discipline-sprint.md` hold the planning behind it.
 
+## Writing a Level 3 biology lesson
+
+**A reader reviewing the Level 3 biology lessons said they were too mathematical and
+that biology students would be lost. Measuring it showed the complaint was righter than
+it sounded, and about something different.** L3B is *not* more arithmetic-dense than
+L3P -- 194 digits per 1,000 words against 211, and fewer printed relations. What it is,
+is nearly **empty of biology**: counting words that name a structure, a shape or what
+something is *for*, **19 of 27 L3B lessons carried fewer than 5 per thousand, and four
+carried none at all** (L3B5, L3B6, L3B11, L3B16). They are quantitative-reasoning
+lessons wearing biological nouns.
+
+**So the lever is not subtracting the arithmetic, it is adding the biology.** The same
+density a physics student reads as *the point* lands on a biology student as the *whole
+lesson*, because there is nothing else in it. Numbers are fine in biology; numbers with
+no biology around them are the defect.
+
+`scripts/check-biology.py` enforces the standard, scoped to **L3B only** -- Level 2's
+verb is Calculate, so L2B27's fifteen printed formulas are correct rather than a fault:
+
+| | |
+|---|---|
+| **structure** | **≥ 10** structural or functional words per 1,000, which is where L3B22, L3B23 and L3B2 already sit -- the three that read as biology |
+| **formulas** | **at most 2** printed `=` relations; Level 3's rule is Mechanism first, and a third means the lesson has become a derivation |
+
+It reported **26 of 27 failing** when first written. `--selftest` guards both directions
+with an arithmetic-only lesson and the same subject explained.
+
+**L3B27 is the pattern to copy.** It made its closing argument with `contacts =
+(length/speed) x rate` and said *2,500* sixteen times; the rewrite reaches the identical
+conclusion through anatomy. An enzyme is a **folded protein** whose active site is a
+**pocket**; an α-1,4 join lies along the chain and an α-1,6 sticks out sideways, so **a
+different enzyme means a differently shaped pocket** -- which is enzyme specificity in
+one sentence and explains why no quantity of amylase helps. That pocket is **anchored in
+the membrane** beside the **transporter** that carries glucose in, studding the
+**microvilli** of the **brush border**, so the last cut and the uptake happen in one
+place: **put the last step of a process where the product is needed.** Because it is
+anchored it cannot go to its food, which is what L3P27's non-travelling contractions are
+for -- the same reversal as before, now earned by structure. And **coeliac disease is the
+proof that structure is not a detail**: flatten the microvilli and the positions vanish
+while every molecule stays perfect. *A free enzyme's usefulness is its quantity; an
+anchored one's is its position.*
+
+Measured: structural words **34 -> 231** (11.4 -> 70.6 per 1k), printed formulas
+**11 -> 0**, digits **443 -> 100**. The old version is whole in `docs/level4/`, and its
+two arithmetic assessment questions were rewritten structurally rather than deleted.
+
+**Do not empty the slot to fix this.** Moving all 27 L3B lessons out at once would leave
+every Big Idea without a closing biology lesson, orphan roughly 100 assessment questions,
+and dangle every L3P and L3C *still standing* line that hands over to them. Rewrite one,
+park its predecessor, move on.
+
 ## Writing a lesson
 
 **Content**
@@ -869,6 +920,7 @@ python3 scripts/check-syntax.py              # will it parse: open strings, stra
 python3 scripts/check-legacy-visuals.py      # the 96 pairs check-lessons cannot see
 python3 scripts/check-plainness.py           # hard words a lesson never defines
 python3 scripts/check-visual.py              # can the visual be read on its own?
+python3 scripts/check-biology.py             # does the biology lesson contain biology?
 ```
 
 **`check-visual.py` was missing from this list** and had fallen out of the routine,

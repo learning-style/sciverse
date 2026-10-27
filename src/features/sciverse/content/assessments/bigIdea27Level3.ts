@@ -8,18 +8,23 @@ import { AssessmentData } from '../../types';
  * 8 s swallow, so the small intestine's 1/75 is a count of how many contractions travel),
  * L3C27 (joining releases a water, so a unit in a chain is 162 g/mol and not 180 --
  * exactly 10% -- giving 5.6 x 10^22 bonds; and 3% are alpha-1,6, which amylase cannot cut
- * at any dose), and L3B27 (a free enzyme is paid in time, a fixed one in contact;
- * contacts = time x rate = 2,500 presses, which weak contractions halve while leaving the
- * transit time and L2B27's margin untouched).
+ * at any dose), and L3B27 (what that enzyme IS: a
+ * folded protein whose active site is a pocket shaped for one join, anchored in the
+ * membrane of the lining cells beside the transporter that takes the sugar in, studding
+ * the microvilli of the brush border -- so the food must be brought to it, which is what
+ * the non-travelling contractions are for, and flattening the surface ruins digestion
+ * without a single enzyme being faulty).
  * The spine: the gut has two jobs and one muscle, and the 74 contractions in 75 that
  * transport nothing are the ones that press food against the wall.
+ * Questions 8 and 11 were rewritten on 26 October 2026 when L3B27 was rebuilt
+ * structure-first; both had been arithmetic about presses.
  * 12 questions: 4 easy -> 4 medium -> 4 hard
  */
 export const bigIdea27Level3Assessment: AssessmentData = {
     bigIdea: 27,
     level: 3,
     title: 'How Does Food Become Usable Energy?',
-    subtitle: 'Level 3 -- The Ring, the Water, and the Press',
+    subtitle: 'Level 3 -- The Ring, the Water, and the Pocket',
     icon: '🤸',
     questions: [
         // ── EASY ──
@@ -134,16 +139,16 @@ export const bigIdea27Level3Assessment: AssessmentData = {
             id: 8,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'Food is in the small intestine for 15,000 s, and segmenting contractions come about 10 times a minute. How many times is each mouthful pressed against the wall?',
+            question: 'The enzymes that make the last cuts sit in the membrane of the lining cells, with a transporter channel beside them. Why does being anchored there help?',
             options: [
-                'About 2,500',
-                'About 10, once per contraction type',
-                'About 150,000',
-                'It cannot be counted from these two numbers'
+                'It holds the enzyme still so the bond cannot escape it',
+                'The sugar it releases appears a few nanometres from the channel that carries it into the cell, so the last cut and the uptake happen in one place',
+                'The membrane makes the enzyme work faster',
+                'It stops the enzyme being digested by amylase'
             ],
-            correctIndex: 0,
-            hint: 'Contacts = time in the tube x the rate of squeezing. Watch the minutes and seconds.',
-            explanation: '15,000 s x 10 per minute / 60 = about 2,500 presses. Each squeeze tightens, drives the contents outwards against the lining where the fixed enzymes are, and lets go. So every bit of a meal is pushed against the wall two and a half thousand times on the way down -- which is the currency the last 3% is paid in, and it is bought by squeezing rather than by time.'
+            correctIndex: 1,
+            hint: 'Glucose cannot cross a membrane by itself. What does it need, and where is it?',
+            explanation: 'What this enzyme releases is finished -- a single glucose, ready to absorb and useless if it is not. Glucose cannot cross a membrane unaided; it needs a transporter, a protein folded into a channel. Building the enzyme into the same membrane guarantees the product appears beside the way in. A free enzyme would cut out in the flow and release sugar into a moving current, to find a wall before the wall was behind it. The principle is general: put the last step of a process where the product is needed.'
         },
 
         // ── HARD ──
@@ -181,16 +186,16 @@ export const bigIdea27Level3Assessment: AssessmentData = {
             id: 11,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'Somebody\'s contractions weaken from 10 a minute to 5, with 600 cm of tube and normal advance speed. What would a clinician timing a marker through the gut see?',
+            question: 'In coeliac disease the immune system flattens the microvilli of the brush border. The cells can still make isomaltase and maltase perfectly well. What happens to the last 3%?',
             options: [
-                'A transit time twice as long',
-                'Nothing wrong at all — the transit time and L2B27\'s margin of 8.6 are both unchanged, while the presses have halved',
-                'A transit time half as long',
-                'A margin of 4.3 instead of 8.6'
+                'It continues, because the enzyme is still being produced',
+                'It largely fails: an anchored enzyme is useful for its position, and flattening the surface destroys the positions without touching the molecules',
+                'It slows down exactly in proportion to the lost surface',
+                'It speeds up, because a smooth wall is easier for food to reach'
             ],
             correctIndex: 1,
-            hint: 'Does the contraction rate appear anywhere in length divided by speed?',
-            explanation: 'The transit time is length over speed, and the contraction rate is in neither. So it stays at 15,000 s and the margin stays at 8.6 -- every number a stopwatch can reach is normal -- while the presses against the wall fall from 2,500 to 1,250. A normal transit time proves nothing about the last 3%. Compare a 100 cm bowel, where both collapse together, because the length was buying both.'
+            hint: 'Where can an anchored enzyme be if its anchor is gone?',
+            explanation: 'These molecules are not useful as molecules but as positions -- a pocket held in a membrane with its active site facing the food and a transporter beside it. Flatten the microvilli and most of those positions no longer exist, so most of the enzyme the cell makes is never installed anywhere it can act. A free enzyme\'s usefulness really is its quantity, which was L2C27\'s whole result about amylase; an anchored one\'s is its place. The uncut pieces travel on and feed the bacteria of the large intestine, which is where the symptoms come from -- not a missing enzyme, a missing surface.'
         },
         {
             id: 12,
@@ -205,7 +210,7 @@ export const bigIdea27Level3Assessment: AssessmentData = {
             ],
             correctIndex: 2,
             hint: 'Count what a non-travelling contraction does, rather than what it fails to do.',
-            explanation: 'It tightens, drives the contents against the lining where the fixed enzymes are, and releases. That is one press, and there are about 2,500 of them. The 74 were never doing transport -- they are doing the other job, which amylase cannot do and time cannot buy. Judging the gut by how far its squeezes move food is like judging a mixer by how far it carries the cake: going nowhere is the mechanism. Transport has to happen once per mouthful; contact has to happen two and a half thousand times.'
+            explanation: 'It tightens, drives the contents against the lining where the fixed enzymes are, and releases. That is one press, and with contractions about ten a minute over four hours there are a couple of thousand of them. The 74 were never doing transport -- they are doing the other job, which amylase cannot do and time cannot buy. Judging the gut by how far its squeezes move food is like judging a mixer by how far it carries the cake: going nowhere is the mechanism. Transport has to happen once per mouthful; contact has to happen two and a half thousand times.'
         }
     ]
 };

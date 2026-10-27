@@ -318,7 +318,7 @@ import { getL2C27Script } from './l2c27-how-many-cutters';
 import { getL2B27Script } from './l2b27-why-the-tube-is-so-long';
 import { getL3P27Script } from './l3p27-why-you-can-drink-upside-down';
 import { getL3C27Script } from './l3c27-where-the-bond-count-comes-from';
-import { getL3B27Script } from './l3b27-the-job-the-length-cannot-do';
+import { getL3B27Script } from './l3b27-the-enzyme-that-cannot-leave';
 import { getL2P28Script } from './l2p28-two-ways-to-pump-more';
 import { getL2C28Script } from './l2c28-no-room-in-the-blood';
 import { getL2B28Script } from './l2b28-the-factor-with-no-room';
@@ -1998,7 +1998,7 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2b27', title: 'Why the Tube Is So Long', subtitle: 'The job needs 69.5 cm, and you have 600', discipline: 'biology', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '📏', accentColor: 'rose', crossLinks: ['l2p27', 'l2c27'], level: 2 },
     { id: 'l3p27', title: 'Why You Can Drink Upside Down', subtitle: 'A ring that seals behind it, so up stops mattering', discipline: 'physics', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '🤸', accentColor: 'indigo', crossLinks: ['l2p27', 'l2c27'], level: 3 },
     { id: 'l3c27', title: 'Where the Bond Count Comes From', subtitle: 'Every join is a water that left, and 3% face sideways', discipline: 'chemistry', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '🔗', accentColor: 'emerald', crossLinks: ['l2c27', 'l3c2'], level: 3 },
-    { id: 'l3b27', title: 'The Job the Length Cannot Do', subtitle: 'A free enzyme is paid in time, a fixed one in contact', discipline: 'biology', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '🧫', accentColor: 'rose', crossLinks: ['l3p27', 'l3c27'], level: 3 },
+    { id: 'l3b27', title: 'The Enzyme That Cannot Leave', subtitle: 'A pocket bolted to the wall, beside the way in', discipline: 'biology', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '🧫', accentColor: 'rose', crossLinks: ['l3c27', 'l3p27'], level: 3 },
     { id: 'l2p28', title: 'Two Ways to Pump More', subtitle: 'Rate times volume per beat, and only one has room', discipline: 'physics', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🫀', accentColor: 'indigo', crossLinks: ['p28', 'l2p24'], level: 2 },
     { id: 'l2c28', title: 'No Room in the Blood', subtitle: 'Less than a teaspoon, against a 15 gram slice', discipline: 'chemistry', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🩸', accentColor: 'emerald', crossLinks: ['c28', 'l2c27'], level: 2 },
     { id: 'l2b28', title: 'The Factor With No Room', subtitle: 'A litre carries 200 mL, and that is the whole ceiling', discipline: 'biology', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🫁', accentColor: 'rose', crossLinks: ['l2p28', 'l2c28'], level: 2 },
