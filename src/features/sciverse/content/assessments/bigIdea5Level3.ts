@@ -83,7 +83,7 @@ export const bigIdea5Level3Assessment: AssessmentData = {
             question: 'A sweat gland makes its fluid at body temperature, deep in the dermis. So where does the cooling actually happen?',
             options: [
                 'In the coil, which produces cool fluid',
-                'When a water molecule leaves the film on the skin — it takes the energy it needs to break away from the skin beneath it',
+                'When a water molecule leaves the layer of sweat on the skin — it takes the energy it needs to break away from the skin beneath it',
                 'In the duct, as the salt is drawn back out',
                 'In the widened blood vessels of the dermis'
             ],
