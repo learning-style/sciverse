@@ -9,6 +9,7 @@ interface Props {
 const MAX_C = 1200;
 const ALIGNED = '#047857';
 const RANDOM = '#94a3b8';
+const RANDOM_INK = '#475569';   // the same grey, dark enough to survive a halo as text
 
 const MATERIALS: { name: string; tc: number }[] = [
     { name: 'nickel', tc: 354 },
@@ -78,7 +79,7 @@ export const L2C16CurieLab = ({ state, onStateChange }: Props) => {
             }
         }
         outlineText(ctx, ferro ? 'domains aligned' : 'domains every which way',
-            gx + gw / 2, Math.min(top + gridH + 16, artBottom - 18), 'bold 11px monospace', ferro ? ALIGNED : RANDOM, 'center', gw - 10);
+            gx + gw / 2, Math.min(top + gridH + 16, artBottom - 18), 'bold 11px monospace', ferro ? ALIGNED : RANDOM_INK, 'center', gw - 10);
 
         // The temperature scale, with this material's Curie temperature marked
         const sy = Math.min(top + gridH + 26, artBottom - scaleH);

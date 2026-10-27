@@ -24,6 +24,7 @@ const MAG = '#be123c';
 const CRY = '#0369a1';
 const FIELD = '#475569';
 const DEAD = '#94a3b8';
+const MUTED = '#475569';   // the same grey, dark enough to survive a halo as text
 const INK = '#0f172a';
 const LBL = 15;
 const MAX_INC = 80;
@@ -197,11 +198,11 @@ export const L3B16HeadLab = ({ state, onStateChange }: Props) => {
         const slot = artTop + artH;
         if (rows >= 1) {
             outlineText(ctx, 'magnetite feels a torque', left + fullW / 2, slot + 11,
-                'bold 11px monospace', level ? DEAD : MAG, 'center', fullW);
+                'bold 11px monospace', level ? MUTED : MAG, 'center', fullW);
         }
         if (rows >= 2) {
             outlineText(ctx, lit ? 'cryptochrome reads the angle' : 'cryptochrome is dark',
-                left + fullW / 2, slot + 26, 'bold 11px monospace', lit ? CRY : DEAD, 'center', fullW);
+                left + fullW / 2, slot + 26, 'bold 11px monospace', lit ? CRY : MUTED, 'center', fullW);
         }
 
         outlineText(ctx, level ? 'the field is level' : 'dips ' + inc + '° into the ground',
@@ -209,7 +210,7 @@ export const L3B16HeadLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, level ? 'no tilt: neither can read it'
             : lit ? 'torque and yield: 2 readings' : 'torque only: 1 reading',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace',
-            level ? DEAD : lit ? CRY : MAG, 'center', safeRight - 30);
+            level ? MUTED : lit ? CRY : MAG, 'center', safeRight - 30);
 
         fitText(ctx, level ? 'No poleward here' : 'Poleward from the tilt',
             safeRight / 2, 94, safeRight - 24, 16);

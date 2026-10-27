@@ -25,6 +25,7 @@ const PLUME = '#a16207';
 const WARM = '#b45309';
 const DOUBT = '#047857';
 const DEAD = '#94a3b8';
+const MUTED = '#475569';   // the same grey, dark enough to survive a halo as text
 
 const meanOf = (dial: number): number => Math.max(10, Math.min(30, Math.round(dial * 2) / 2));
 const swingOf = (dial: number): number => Math.max(1, Math.min(6, Math.round(dial * 2) / 2));
@@ -170,7 +171,7 @@ export const L3B26ThermalLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, stalled ? 'so it never tassels'
             : num(doubt) + ' / ' + num(perDay) + ' = ± ' + num(windowDays) + ' days',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace',
-            stalled ? DEAD : DOUBT, 'center', safeRight - 30);
+            stalled ? MUTED : DOUBT, 'center', safeRight - 30);
 
         fitText(ctx, stalled ? 'it never tassels'
             : days > 365 ? 'over a year to tassel'

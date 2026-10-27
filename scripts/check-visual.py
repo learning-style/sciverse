@@ -47,6 +47,17 @@ CAPTION_BUDGET = 33
 # Median across the corpus is 5 scene strings. Ten is already a wall of text.
 BUSY_STRINGS = 10
 
+# outlineText paints a near-black halo behind any colour brighter than 0.6, so that a
+# pale fill shows up on a light background, and the halo is 2-4px wide. A MID-TONE is
+# caught between the two: bright enough to be given the dark halo, too dark for the fill
+# to show through it, so at 11-13px the halo meets in the middle of every stem and the
+# glyphs render as hollow outlines. A reader sent a screenshot of exactly this -- slate
+# #94a3b8, brightness 0.631, used as the text colour in five labs. White is unaffected
+# because the fill is maximally contrasting against the halo, which is what the dark
+# halo is for.
+HALO_DARK = 0.6       # outlineText's own threshold
+HALO_SHOWS = 0.78     # above this the fill is bright enough to survive the halo
+
 
 def _top_ternary(expr):
     """(q, c) -- the top-level '?' and its matching ':', or None."""
@@ -277,6 +288,47 @@ def first_arg(src, start):
     return src[start:]
 
 
+def nth_arg(src, start, n):
+    """The nth argument (0-based) of a call whose arguments begin at `start`."""
+    i = start
+    for _ in range(n):
+        i += len(first_arg(src, i))
+        if i >= len(src) or src[i] != ',':
+            return ''
+        i += 1
+    return first_arg(src, i)
+
+
+def brightness(col):
+    """Perceived brightness 0..1, or None if it is not a plain hex colour."""
+    h = col.strip().lstrip('#')
+    if len(h) == 3:
+        h = ''.join(c * 2 for c in h)
+    if not re.fullmatch(r'[0-9a-fA-F]{6}', h):
+        return None
+    r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
+    return (0.299 * r + 0.587 * g + 0.114 * b) / 255
+
+
+def text_colours(src):
+    """(colour, text) for every colour outlineText is asked to paint words in.
+
+    The colour is the 5th argument after ctx, and it is often a ternary over named
+    constants, so both literals and resolvable const names are collected.
+    """
+    consts = dict(re.findall(r"const\s+([A-Za-z_]\w*)\s*=\s*'(#[0-9a-fA-F]{3,6})'", src))
+    out = []
+    for m in re.finditer(r'outlineText\(\s*ctx\s*,', src):
+        txt = nth_arg(src, m.end(), 0).strip()
+        col = nth_arg(src, m.end(), 4)
+        for lit in re.findall(r"'(#[0-9a-fA-F]{3,6})'", col):
+            out.append((lit, txt))
+        for name in re.findall(r'\b([A-Za-z_]\w*)\b', col):
+            if name in consts:
+                out.append((consts[name], txt))
+    return out
+
+
 LITERAL = re.compile(r"'([^'\\]*(?:\\.[^'\\]*)*)'|\"([^\"\\]*(?:\\.[^\"\\]*)*)\"|`([^`]*)`")
 
 
@@ -400,6 +452,15 @@ def check(path):
             probs.append('units do not work: ' + why + ' -- ' + lit[:60])
             break
 
+    # 11: a mid-tone is unreadable as text, because outlineText haloes it in near-black
+    for col, txt in text_colours(src):
+        br = brightness(col)
+        if br is not None and HALO_DARK < br <= HALO_SHOWS:
+            probs.append('text in ' + col + ' (brightness ' + ('%.2f' % br)
+                         + ') gets a near-black halo that swallows the fill: '
+                         + (txt[:46] if txt else '?'))
+            break
+
     # 10: the gauge's ends must say what they mean
     ends = gauge_ends(src)
     if ends and not says_what_it_means(ends[0]) and not says_what_it_means(ends[1]):
@@ -498,6 +559,23 @@ def selftest():
     want('physics in indigo is quiet',
          ACCENT_FOR[accent_rows(right)[0][1]] == accent_rows(right)[0][2], True)
     want('the corpus agrees with its disciplines', accent_scan(), [])
+
+    # The reported failure: slate as a text colour, haloed in near-black and unreadable.
+    # Both directions, because a band wide enough to pass white-on-dark must still catch
+    # the mid-tone, and a band that caught white would flag 9 labs that are correct.
+    lab = ("const GREY = '#94a3b8';\n"
+           "outlineText(ctx, 'none switch on', x, y, 'bold 12px monospace', GREY, 'c', w);")
+    want('a const colour is resolved', text_colours(lab), [('#94a3b8', "'none switch on'")])
+    want('slate as text is caught', HALO_DARK < brightness('#94a3b8') <= HALO_SHOWS, True)
+    want('white on a dark object is quiet', HALO_DARK < brightness('#ffffff') <= HALO_SHOWS, False)
+    want('near-black ink is quiet', HALO_DARK < brightness('#0f172a') <= HALO_SHOWS, False)
+    want('pale yellow on space is quiet', HALO_DARK < brightness('#fde68a') <= HALO_SHOWS, False)
+    want('the replacement reads', HALO_DARK < brightness('#475569') <= HALO_SHOWS, False)
+    want('a ternary gives both sides',
+         sorted(c for c, _ in text_colours(
+             "const A = '#be123c';\nconst B = '#94a3b8';\n"
+             "outlineText(ctx, 'x y', a, b, 'f', ok ? A : B, 'c', w);")),
+         ['#94a3b8', '#be123c'])
 
     print('selftest ok' if not bad else 'selftest FAILED (' + str(bad) + ')')
     return 1 if bad else 0

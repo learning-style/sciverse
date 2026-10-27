@@ -81,7 +81,7 @@ export const L3C14DipoleLab = ({ state, onStateChange }: Props) => {
         ctx.lineTo(cx, lowest + 6);
         ctx.stroke();
         ctx.restore();
-        outlineText(ctx, 'line of symmetry', cx + 8, cy - sumRoom + 16, '10px monospace', '#94a3b8', 'left', 130);
+        outlineText(ctx, 'line of symmetry', cx + 8, cy - sumRoom + 16, '10px monospace', '#475569', 'left', 130);
 
         for (const end of ends) {
             arrow([cx, cy], end, EMERALD, 3);

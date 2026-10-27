@@ -26,7 +26,7 @@ export const P35SortingMachineLab = ({ state, onStateChange }: Props) => {
         const magX = safeRight * 0.62;
         ctx.fillStyle = '#334155';
         ctx.fillRect(magX - 34, beltY - 84, 68, 22);
-        outlineText(ctx, 'MAGNET', magX, beltY - 68, 'bold 13px monospace', '#fbbf24');
+        outlineText(ctx, 'MAGNET', magX, beltY - 68, 'bold 13px monospace', '#b45309');
 
         // Accuracy falls off once the belt outruns the magnet.
         const accuracy = v < 0.45 ? 0.97 : Math.max(0.12, 0.97 - (v - 0.45) * 1.5);

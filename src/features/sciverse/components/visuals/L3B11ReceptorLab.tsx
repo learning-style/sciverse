@@ -31,6 +31,7 @@ const MW = 1;               // the stored receptor's half-width, in notch units
 const LIT = '#be123c';
 const DIM = '#b45309';
 const GREY = '#94a3b8';
+const MUTED = '#475569';   // the same grey, dark enough to survive a halo as text
 const INK = '#0f172a';
 
 // the scattered order in which cells turn out to carry the fitting shape, so raising the
@@ -151,14 +152,14 @@ export const L3B11ReceptorLab = ({ state, onStateChange }: Props) => {
         if (rows >= 2) {
             outlineText(ctx, on > 0 ? 'the ones that fit divide' : 'no receptor fits this bump',
                 left + fullW / 2, slot + 26, 'bold 11px monospace',
-                on > 0 ? (good ? LIT : DIM) : GREY, 'center', fullW);
+                on > 0 ? (good ? LIT : DIM) : MUTED, 'center', fullW);
         }
 
         outlineText(ctx, count + ' of ' + TOTAL + ' carry the shape', safeRight / 2,
             stageBottom - 34, 'bold 12px monospace', INK, 'center', safeRight - 30);
         outlineText(ctx, binds ? on + ' switch on and divide' : 'drifted: none switch on',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace',
-            binds ? (good ? LIT : DIM) : GREY, 'center', safeRight - 30);
+            binds ? (good ? LIT : DIM) : MUTED, 'center', safeRight - 30);
 
         fitText(ctx, !binds ? 'The shape drifted'
             : count === 0 ? 'No cell here fits'

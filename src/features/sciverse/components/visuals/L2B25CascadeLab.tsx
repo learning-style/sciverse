@@ -58,8 +58,10 @@ export const L2B25CascadeLab = ({ state, onStateChange }: Props) => {
             }
             // a row that ran out of room says so, rather than pretending
             if (count > MAX_DOTS) {
+                // a structural marker rather than a data colour: SPREAD is a mid-tone,
+                // and outlineText would halo it in near-black and swallow the dots
                 outlineText(ctx, '...', left + 4 + shown * pitch + 4, cyRow + 4,
-                    'bold 11px monospace', SPREAD, 'left', 20);
+                    'bold 11px monospace', '#475569', 'left', 20);
             }
             if (showCounts) {
                 outlineText(ctx, comma(count), left + fullW, cyRow + 4,

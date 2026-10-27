@@ -938,6 +938,30 @@ quote and never consumed it, so the next pass reopened on that quote and ran to 
 of the file. Its `--selftest` now pins a `toFixed` label, a ternary label, a bare
 variable, a wordless number, and a comma inside a string.
 
+**A mid-tone is unreadable as text, and the halo that was meant to help is what
+destroys it.** A reader sent a screenshot of L3B11 in which two lines were hollow
+outlines rather than letters, and the font was not the problem -- the same monospace
+renders perfectly in the lines above and below them. `outlineText` paints a **near-black
+halo** behind any colour brighter than **0.6**, so that a pale fill shows up on a light
+background, and that halo is **2-4px** wide. White survives it, because a white fill is
+maximally contrasting against a dark outline, which is exactly what the feature is for.
+A **mid-tone does not**: slate `#94a3b8` sits at brightness **0.631**, just over the
+threshold, so it is given the dark halo and then has no contrast left to show through
+it. At 11-13px the halo meets in the middle of every stem and the glyphs go hollow.
+
+It was the text colour in **five** labs -- L3B11, L3B16, L3B26, L3C14 and L2C16 -- plus
+an amber `MAGNET` in P35 and a rose ellipsis in L2B25. The fix keeps the colour
+association and makes it legible: use a **darker shade of the same hue** for the words
+and leave the pale one for the drawing. `#475569` is the muted ink the five now share.
+
+`check-visual.py` flags any text colour in the band **0.6 to 0.78** -- bright enough to
+be haloed, too dark to survive it. It parses the colour argument properly (it is usually
+a ternary over named constants, so literals and resolvable const names are both
+collected) and its `--selftest` guards both directions: slate is caught, while white,
+near-black ink, the pale yellow C50 prints on a dark space background, and the
+replacement are all quiet. **A band wide enough to pass white-on-dark must still catch
+the mid-tone**, or it has disarmed itself. It reports 0 across the corpus.
+
 **`Accent` is a closed union: `indigo | emerald | rose`** (physics/chemistry/
 biology). Anything else is a type error, not a fallback.
 
