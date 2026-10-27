@@ -76,3 +76,26 @@ layout failures. Its replacement keeps the same closing insight -- that the
 squeezing which transports nothing is what presses food against the wall -- and
 reaches it through structure instead of arithmetic, so the Level 3 assessment's
 biology questions needed only light rewording rather than replacement.
+
+## l3b11-memory-race.ts, L3B11RaceLab.tsx
+
+Parked October 2026, replaced by `l3b11-the-shape-you-already-had.ts` and
+`L3B11ReceptorLab.tsx`. Big Idea 11's closing biology lesson was built on
+`doublings = log (target / start) / log 2` -- memory cells at 1,250 against a germ at
+100, 120 hours against 52 -- and its lab plotted two exponential curves against hours.
+It measured **zero** structural biology words in `check-biology.py`, and nothing in the
+picture was a cell.
+
+The replacement keeps the head start, which is the old lesson's real insight, and
+reaches it through **clonal selection** instead: a lymphocyte carries thousands of
+copies of one **receptor** shape, the body builds millions of those shapes at random in
+the bone marrow *before* meeting any germ, and the germ's role is to **pick** rather
+than to teach. So a vaccine teaches nothing -- it runs the selection early and grows a
+clone of a shape that was always yours. The two failure modes then fall out
+structurally: lose the race, or **antigenic drift**, where the memory cells are
+perfectly healthy and the stored shape is out of date.
+
+Reinstating the parked version would cost the structural account of what a receptor
+is, and would put the arithmetic back in a slot whose verb is Model rather than
+Calculate. The logs are genuinely Level 4 material: the lesson they belong in is one
+about measuring exponential growth, not one about immunity.

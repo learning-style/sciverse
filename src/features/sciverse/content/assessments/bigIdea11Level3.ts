@@ -4,18 +4,18 @@ import { AssessmentData } from '../../types';
  * Big Idea 11 Assessment -- LEVEL 3 (grades 9-12).
  * Covers L3P11 (pressure drop = flow x resistance; resistance ∝ length / radius^4),
  * L3C11 (the bicarbonate buffer, pH = 6.1 + log (bicarbonate / (0.03 x CO2
- * pressure))), L3B11 (doublings = log (target / start) / log 2, the memory race).
+ * pressure))), L3B11 (receptors, clonal selection and antigenic drift).
  *
  * The distractors are the mistakes each lesson works through: squaring once,
- * the ratio upside down, adding cells instead of doubling them, and moving CO2
- * the wrong way.
+ * the ratio upside down, a germ that teaches a shape rather than picking one, and
+ * moving CO2 the wrong way.
  * 12 questions: 4 easy -> 4 medium -> 4 hard
  */
 export const bigIdea11Level3Assessment: AssessmentData = {
     bigIdea: 11,
     level: 3,
     title: 'How Do We Stay Healthy?',
-    subtitle: 'Level 3 -- Resistance, Buffers and the Memory Race',
+    subtitle: 'Level 3 -- Resistance, Buffers and the Shape You Already Had',
     icon: '🫀',
     questions: [
         // ── EASY ──
@@ -43,11 +43,11 @@ export const bigIdea11Level3Assessment: AssessmentData = {
             id: 3,
             difficulty: 'easy',
             discipline: 'biology',
-            question: 'The number of doublings needed to grow from a start to a target is:',
-            options: ['log (target / start) / log 2', '(target − start) / 2', 'target / start / 2', 'log 2 / log (target / start)'],
+            question: 'The receptor shapes your lymphocytes carry are made:',
+            options: ['Before any germ arrives, at random, in the bone marrow', 'After a germ is examined, to match its antigen', 'Only after a vaccine, from the instructions it carries', 'By the germ, as it divides inside you'],
             correctIndex: 0,
-            hint: 'Start from target / start = 2ⁿ and take logs.',
-            explanation: 'log (target / start) = n x log 2, so n = log (target / start) / log 2.'
+            hint: 'Could a cell inspect an unfamiliar protein and build its complement before a germ doubles?',
+            explanation: 'Lymphocytes mature continuously in the bone marrow, each one assembling its receptor gene from segments shuffled almost at random, so the library of shapes exists before anything arrives. Nothing examines the germ: its role is to pick, not to teach.'
         },
         {
             id: 4,
@@ -84,21 +84,21 @@ export const bigIdea11Level3Assessment: AssessmentData = {
             id: 7,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'Memory cells start at 1,250 and double every 12 hours until there are 100,000. About how long does that take?',
-            options: ['About 76 hours', 'About 960 hours', 'About 40 hours', '80 hours'],
+            question: 'Someone is vaccinated. Afterwards their library of receptor shapes holds:',
+            options: ['The same shapes as before, with thousands more copies of one of them', 'One brand-new shape, built from the vaccine', 'Antibodies in place of receptors', 'Fewer shapes, because the ones that did not match were discarded'],
             correctIndex: 0,
-            hint: 'Ratio first: 100,000 / 1,250.',
-            explanation: 'The ratio is 80, and log 80 / log 2 = 1.90 / 0.301 = 6.3 doublings, x 12 hours = 76 hours. 960 hours multiplies the ratio by 12.'
+            hint: 'Where did the matching receptor come from in the first place?',
+            explanation: 'The vaccine shows a harmless version of the antigen so that clonal selection runs early. The matching cells were already there; the vaccine finds them, grows the clone and leaves memory cells behind. The shape was always yours, and only the number of copies changed.'
         },
         {
             id: 8,
             difficulty: 'medium',
             discipline: 'cross',
-            question: 'A booster doubles the memory cells. With cells doubling every 12 hours, why does it save exactly 12 hours?',
-            options: ['Twice as many cells is exactly one doubling further up the ladder', 'A booster only lasts 12 hours', 'The germ slows down by 12 hours', 'Twice as many cells halves the time'],
+            question: 'Two people meet the same germ. One has a handful of cells that fit it, the other thousands. Both clones divide at the same rate. Why is the second person less likely to fall ill?',
+            options: ['The germ is multiplying too, so the clone that starts larger reaches a useful size days sooner', 'The second person makes antibodies that bind more tightly', 'Memory cells divide faster than ordinary lymphocytes', 'The germ multiplies more slowly inside a vaccinated person'],
             correctIndex: 0,
-            hint: 'How many doublings does twice the cells skip?',
-            explanation: 'Doubling the start halves target / start, and log 2 / log 2 = 1: one doubling fewer, one doubling time sooner.'
+            hint: 'Both sides start on the day of the infection.',
+            explanation: 'Antibodies work, but only once there are enough of them, and enough takes a clone of a certain size. A handful of cells needs about five days; thousands need about two. Protection is the outcome of a race, which is why it also depends on age and on the dose of germ.'
         },
         // ── HARD ──
         {
@@ -125,21 +125,21 @@ export const bigIdea11Level3Assessment: AssessmentData = {
             id: 11,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'A vaccinated person has 5,000 memory cells (52 hours to reach 100,000). They meet a germ that starts at 100, doubles every 2.5 hours, and makes you ill at 1 billion. Who wins?',
-            options: ['Memory: the germ needs about 58 hours', 'The germ: it needs about 23 hours', 'The germ: it needs about 47 hours', 'Neither: they tie at 52 hours'],
+            question: 'Two vaccinated people fall ill anyway. In one, the right cells were found and expanded too slowly. In the other, nothing was found at all. Which is which, and which one needs the vaccine remade?',
+            options: ['The first lost the race, which a bigger head start helps; the second is antigenic drift, and only a remade vaccine helps', 'Both are antigenic drift, so both need the vaccine remade', 'Both are lost races, so neither needs the vaccine remade', 'The second means the memory cells died, so a booster of the same vaccine fixes it'],
             correctIndex: 0,
-            hint: 'The germ needs log (10⁹ / 100) / log 2 doublings.',
-            explanation: '7 / 0.301 = 23.3 doublings, x 2.5 hours = 58 hours, after memory\'s 52. 23 is the number of doublings, not hours; 47 hours is for a germ doubling every 2 hours.'
+            hint: 'One is a failure of timing. The other is a failure of recognition.',
+            explanation: 'Losing the race means recognition worked and the clone was out-grown. Drift means the antigen changed shape, so the stored receptor is the complement of last year with nothing to bind -- the memory cells are perfectly healthy and recognise nothing, and no head start fixes that. It is why influenza is remade yearly while measles, whose antibody-binding regions are also the regions it uses to enter cells, is not.'
         },
         {
             id: 12,
             difficulty: 'hard',
             discipline: 'cross',
             question: 'What do Big Idea 11\'s Level 3 lessons have in common?',
-            options: ['A small change in a ratio makes a big change in the result: radius⁴, the log of a ratio, and a head start of doublings', 'Every result changes in step with its cause', 'None of them uses a ratio', 'They all use the same formula'],
+            options: ['Each supplies one thing immune recognition needs: pressure to carry the shapes, acidity held steady to keep them the shapes they were, and a library that already holds one that fits', 'Every result changes in step with its cause', 'They all use the same formula', 'Each describes a separate organ with nothing in common'],
             correctIndex: 0,
-            hint: 'Look at how each result depends on its cause.',
-            explanation: '80% radius gave 41% flow; halving the base and the acid kept pH; fifty times the cells saved only 5.6 doublings. Health turns on ratios.'
+            hint: 'Immune recognition is shapes meeting shapes. What has to be true at once for that to work?',
+            explanation: 'A receptor is a folded protein held by weak attractions that depend on which parts carry a charge, and that depends on acidity -- so L3C11 buffer keeps every shape trustworthy for a lifetime. L3P11 pressure carries the clone to the infection, and L3B11 library does the recognising. Take away any one and the other two are useless.'
         }
     ]
 };

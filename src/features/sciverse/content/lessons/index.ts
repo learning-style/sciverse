@@ -225,7 +225,7 @@ import { getL2C11Script } from './l2c11-ph-tens';
 import { getL2B11Script } from './l2b11-vaccine-effectiveness';
 import { getL3P11Script } from './l3p11-flow-resistance';
 import { getL3C11Script } from './l3c11-blood-buffer';
-import { getL3B11Script } from './l3b11-memory-race';
+import { getL3B11Script } from './l3b11-the-shape-you-already-had';
 import { getL2P12Script } from './l2p12-inverse-square';
 import { getL2C12Script } from './l2c12-missing-element';
 import { getL2B12Script } from './l2b12-trait-spread';
@@ -1899,7 +1899,7 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     // Big Idea 11 -- Level 3 (grades 9-12)
     { id: 'l3p11', title: 'Why Narrow Arteries Matter So Much', subtitle: 'Pressure drop = flow x resistance, and radius⁴', discipline: 'physics', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '🫀', accentColor: 'indigo', crossLinks: ['l2p11', 'l2p7'], level: 3 },
     { id: 'l3c11', title: 'How Blood Holds Its pH', subtitle: 'The bicarbonate buffer', discipline: 'chemistry', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '🫁', accentColor: 'emerald', crossLinks: ['l2c11', 'l3c2'], level: 3 },
-    { id: 'l3b11', title: 'Racing the Germ', subtitle: 'Memory cells and a head start of doublings', discipline: 'biology', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '🧫', accentColor: 'rose', crossLinks: ['l2b11', 'l2b9'], level: 3 },
+    { id: 'l3b11', title: 'The Shape You Already Had', subtitle: 'Receptors, clonal selection and why a vaccine teaches nothing', discipline: 'biology', bigIdea: 11, bigIdeaTitle: 'How Do We Stay Healthy?', icon: '🧫', accentColor: 'rose', crossLinks: ['l2b11', 'l3c11'], level: 3 },
 
     // Big Idea 12 -- Level 2 (grades 6-8)
     { id: 'l2p12', title: 'Gravity by Distance', subtitle: 'The inverse-square law, from the centre out', discipline: 'physics', bigIdea: 12, bigIdeaTitle: 'How Do Hidden Rules Shape Big Patterns?', icon: '🚀', accentColor: 'indigo', crossLinks: ['p12'], level: 2 },
