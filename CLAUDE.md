@@ -500,8 +500,54 @@ verb is Calculate, so L2B27's fifteen printed formulas are correct rather than a
 | **structure** | **≥ 10** structural or functional words per 1,000, which is where L3B22, L3B23 and L3B2 already sit -- the three that read as biology |
 | **formulas** | **at most 2** printed `=` relations; Level 3's rule is Mechanism first, and a third means the lesson has become a derivation |
 
-It reported **26 of 27 failing** when first written. `--selftest` guards both directions
-with an arithmetic-only lesson and the same subject explained.
+It reported **26 of 27 failing** when first written, and **21 of 27** now. `--selftest`
+guards both directions with an arithmetic-only lesson and the same subject explained.
+
+**The four zero-biology lessons are done, and they were the right four to take first.**
+L3B5 (sweat), L3B6 (the swim bladder), L3B11 (immune memory) and L3B16 (magnetic
+navigation) were rebuilt in Big Ideas nothing else was touching, so nothing shifted
+underneath them. What they taught, in order of how much it transfers:
+
+**Ask what the sense or the organ is physically able to report, and the lesson writes
+itself.** L3B16 was a weighted average that searched splits of a vote. The simplification
+worth removing was one L2B16 had named without noticing: it treated *the magnetic sense*
+as one black box returning a bearing. There is no needle in a bird -- there is a
+**magnetite** crystal feeling a **torque**, and **cryptochrome** in the **retina** whose
+**radical pair** yield the field alters, and *neither can report north*, because
+**a torque and an angle both fail to distinguish a thing from its opposite**. That single
+observation gives the inclination compass, the cage experiment, the failure at the
+magnetic equator, and the reason the stars must be a **reference** rather than a second
+vote. **A Limit that follows from what a structure can feel is worth more than a Limit
+that follows from an error budget.**
+
+**The deepest structural fact is often the one the arithmetic was standing on.** L3B11
+raced memory cells through `doublings = log (target / start) / log 2` and never said what
+a memory cell *is*. One level down is **clonal selection**: a lymphocyte carries thousands
+of copies of **one receptor** shape, the body builds millions of shapes at random in the
+**bone marrow** *before* meeting any germ, so **nothing is designed and the germ's role is
+to pick**. The head start survives intact, and a vaccine turns out to teach nothing at
+all. **Look for the thing the numbers presuppose.**
+
+**A lesson whose dial is hypersensitive at one end is telling you where its mechanism
+lives.** L3B6's swim bladder needs 4 units of gas at the surface and 84 at 200 m, because
+pressure works in ratios -- so the instability is worst *shallowest*, which is the
+opposite of the intuition, and it is why a **gas gland** is required rather than merely
+useful.
+
+**And two of the four found the structure by asking where the work is NOT done.** L3B5's
+sweat gland and duct do no cooling whatever -- the cooling happens when a molecule leaves
+the film, in the air -- so sweat that runs off has already failed, and a fan restores a
+gradient rather than removing heat. L3B16's bird does no measuring of north. **Naming the
+place the thing does not happen is often the clearest way to say what the structure is
+for.**
+
+**Replacing an L3B lesson costs more outside it than inside it.** Each of the four needed
+its Big Idea's Level 3 assessment opened and its biology questions rebuilt -- five for
+Big Idea 11, four for 16 -- because every one was arithmetic on the removed formula and
+**not one checker can see that**. Two also left pointers behind: L3C11 and L3C16 both end
+by announcing what the biology lesson will do, and `l3b24`'s header credited *the L3B16
+device: try values, find the bottom*, which no longer exists. Grep the corpus for the
+lesson's **id**, its **formula** and its **title** before committing.
 
 **L3B27 is the pattern to copy.** It made its closing argument with `contacts =
 (length/speed) x rate` and said *2,500* sixteen times; the rewrite reaches the identical
