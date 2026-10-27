@@ -15,7 +15,7 @@ import { DialogNode } from '../../types';
  * One falls steeply, one rises gently, so the total has a minimum -- and at that
  * minimum the friction cost is EXACTLY HALF the upkeep cost, every time, whatever
  * the constants. That is what lets a learner find the optimum by inspection instead
- * of by differentiating, which is the L3B16 device: try values, find the bottom.
+ * of by differentiating: try values either side, and find the bottom.
  *
  * The minimum sits at r^3 proportional to Q (verified: r^3/Q is 1.4142 at Q = 1, 2,
  * 4 and 8), so doubling the flow widens the vessel by 2^(1/3) = 1.26. Flow is

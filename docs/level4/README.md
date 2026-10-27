@@ -99,3 +99,28 @@ Reinstating the parked version would cost the structural account of what a recep
 is, and would put the arithmetic back in a slot whose verb is Model rather than
 Calculate. The logs are genuinely Level 4 material: the lesson they belong in is one
 about measuring exponential growth, not one about immunity.
+
+## l3b16-trusting-the-sharper-cue.ts, L3B16WeightLab.tsx
+
+Parked October 2026, replaced by `l3b16-the-compass-that-cannot-say-north.ts` and
+`L3B16HeadLab.tsx`. Big Idea 16's closing biology lesson was a weighted average --
+`combined error = sqrt((share1 x error1)² + (share2 x error2)²)`, searched across splits
+to find a lowest point at 94/6, which is (20/5)² = 16 to 1. The reasoning was sound and
+the search was a good device, but the lesson measured **zero** structural biology words,
+and its lab plotted an error curve against a share of a vote.
+
+The replacement removes a better simplification, one L2B16 named without noticing: it
+treated **the magnetic sense** as a single black box returning a bearing. There is no
+needle in a bird. There are two candidate structures -- **magnetite** crystals feeling a
+**torque**, and **cryptochrome** in the **retina** forming a **radical pair** whose yield
+the field alters -- and *neither can report north*, because a torque and an angle both
+fail to distinguish a thing from its opposite. So what a bird has is an **inclination**
+compass that names poleward and equatorward, which is what the cage experiment shows and
+what fails at the magnetic equator. L2B16's bias problem is then solved by
+**calibration** against the still point the night sky turns about, not by averaging --
+which reverses L2B16's conclusion while keeping every number in it.
+
+Reinstating the parked version would cost all of that, and would put a search over a
+formula back into the slot that closes the Big Idea. The weighting argument is genuinely
+Level 4 material: it belongs in a lesson about combining measurements, not in one about
+how an animal senses a field.

@@ -4,14 +4,14 @@ import { AssessmentData } from '../../types';
  * Big Idea 16 Assessment -- LEVEL 3 (grades 9-12).
  * Covers L3P16 (B = mu0 n I, and why an MRI cannot be wound in copper), L3C16
  * (hysteresis: remanence, coercivity, loop area as heat per cycle), L3B16
- * (searching splits of the vote, and why a blind average loses to one good cue).
+ * (magnetite, cryptochrome, and why neither structure can report north).
  * 12 questions: 4 easy -> 4 medium -> 4 hard
  */
 export const bigIdea16Level3Assessment: AssessmentData = {
     bigIdea: 16,
     level: 3,
     title: 'How Do Magnets Help Us Navigate and Build Machines?',
-    subtitle: 'Level 3 -- Coils, Hysteresis Loops, and Weighted Cues',
+    subtitle: 'Level 3 -- Coils, Hysteresis Loops, and a Compass With No North',
     icon: '🧲',
     questions: [
         // ── EASY ──
@@ -44,11 +44,11 @@ export const bigIdea16Level3Assessment: AssessmentData = {
             id: 3,
             difficulty: 'easy',
             discipline: 'biology',
-            question: 'The vote divides in proportion to 1 / error². A cue twice as sharp as another carries how many times the vote?',
-            options: ['Twice', 'Four times', 'The square root of two times', 'The same, since both are cues'],
-            correctIndex: 1,
-            hint: 'The error is squared before it is turned upside down.',
-            explanation: 'Halving the error quarters the error squared, so it multiplies that cue\'s share of the vote by four. Sharpness pays off faster than it improves — which is why one good cue can outvote several poor ones.'
+            question: 'Earth\'s field is reversed completely, so it runs the other way along the same line. What happens to the torque on a magnetite crystal in a bird\'s beak?',
+            options: ['Nothing — swinging into line with the field has two ends, so the torque is identical', 'It reverses, twisting the crystal the other way', 'It doubles', 'It falls to zero'],
+            correctIndex: 0,
+            hint: 'Where does a crystal settle when a torque swings it into line?',
+            explanation: 'The crystal settles in exactly the same place and pulls exactly as hard on exactly the same anchor, so the cell holding it cannot tell the two cases apart. Cryptochrome fails the same test for the same kind of reason: its radical pair responds to the angle between the field and the molecule, and reversing the field leaves that angle unchanged. Neither structure can report north.'
         },
         {
             id: 4,
@@ -76,11 +76,11 @@ export const bigIdea16Level3Assessment: AssessmentData = {
             id: 6,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'A bird has a star sense good to ±5° and a magnetic sense good to ±20°. Splitting the vote at its best point, what is the combined error?',
-            options: ['±4.85°', '±5.00°', '±10.31°', '±12.50°'],
+            question: 'A migrating bird sits in a cage inside coils. Reversing the field\'s horizontal part leaves its heading unchanged; reversing the vertical part turns it right around. What does that show?',
+            options: ['It reads the angle at which the field dips into the ground, not the direction a needle swings to', 'Its compass is simply weaker than a compass needle', 'It was using the stars all along, not the field', 'The horizontal part of Earth\'s field is too small for any animal to detect'],
             correctIndex: 0,
-            hint: 'The best split is (20/5)² = 16 to 1, so the sharp cue takes 94% of the vote.',
-            explanation: 'At a 94% / 6% split, √((0.94 x 5)² + (0.06 x 20)²) = √23.53 = ±4.85°. Searching the splits shows the lowest point sits there, not at either end: half the vote gives ±10.31° and ignoring the vague cue gives ±5.00°. So the vague cue still earns about 6% of the say.'
+            hint: 'Which part does a compass needle actually swing into line with?',
+            explanation: 'A needle lives or dies by the horizontal part, and the bird ignored it. It was turned around by the part a needle barely uses — so what the bird reads is the inclination, the angle measured downward from the horizontal ground. An angle of dip has no north in it: it names poleward or equatorward and nothing else.'
         },
         {
             id: 7,
@@ -113,16 +113,16 @@ export const bigIdea16Level3Assessment: AssessmentData = {
             id: 9,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'A young bird learns the split backwards: its star sense really is ±5° and its magnetic sense ±20°, but it gives the magnetic cue 94% of the vote. Its combined error comes out at ±18.83°. Is it better off than a bird that simply splits the vote evenly?',
+            question: 'Magnetic rock pulls every magnetic reading the same 8° east, and L2B16 proved that averaging cancels scatter but never a bias. So what does a young bird do with the stars, and why does it work?',
             options: [
-                'Yes, because any split beats an even one',
-                'No — an even split gives ±10.31°, so the reversed split is far worse',
-                'Yes, because ±18.83° is still better than the ±20° magnetic cue alone',
-                'They come out the same, since the same two cues are involved'
+                'It takes far more magnetic readings, since a bias falls as the square root of the count',
+                'It averages the star bearing with the magnetic bearing, which removes half of the bias',
+                'It finds the still point the stars turn about and corrects the magnetic compass against it — a reference no hillside of rock can bias',
+                'It abandons the magnetic sense for good once it has seen the stars once'
             ],
-            correctIndex: 1,
-            hint: 'Compare 18.83 with the even-split figure, not with the vague cue.',
-            explanation: 'The reversed split gives ±18.83° and a 341 km miss over 1,000 km, against ±10.31° and 182 km for an even split — worse than not bothering at all, and close to the vague cue used alone. The method only helps when the split is right, which is what cue-conflict experiments test: rotate the magnetic field and see which cue the bird follows.'
+            correctIndex: 2,
+            hint: 'One of the two cues can be checked against something the ground cannot reach.',
+            explanation: 'Over a few hours every star sweeps round except near one point, and that still point is the centre of the rotation. Finding it needs no constellations, only the geometry of the motion, and it has nothing to do with the ground. So the stars are not a second vote to be averaged in — they are the reference, and the magnetic compass is the one that gets corrected. That is why a second cue of a different kind is worth more than twenty repeats of the first.'
         },
         {
             id: 10,
@@ -158,16 +158,16 @@ export const bigIdea16Level3Assessment: AssessmentData = {
             id: 12,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'Splitting the vote at its best point cuts the combined error below either cue alone. What does it do nothing about?',
+            question: 'Why does the mechanism itself predict that a bird\'s magnetic compass fails at the magnetic equator?',
             options: [
-                'Scatter in the individual readings',
-                'A bias — an error that leans the same way every time',
-                'The difference in quality between the two cues',
-                'The distance the error becomes over a long flight'
+                'Earth\'s field is weakest there, so no structure could detect it at all',
+                'Its compass is the angle at which the field dips, and at the equator the field lies level — so there is no tilt to read',
+                'Magnetite loses its magnetism at tropical temperatures',
+                'Bright equatorial light saturates cryptochrome in the retina'
             ],
             correctIndex: 1,
-            hint: 'L2B16 made the same distinction with twenty readings of one cue.',
-            explanation: 'Splitting the vote, like averaging, works on scatter — errors that fall on both sides and partly cancel. A bias survives untouched, however many cues you combine and however carefully you divide the say. And the split itself must be known: get it backwards and you end up worse off than not splitting at all.'
+            hint: 'What does an inclination compass have left when the inclination is zero?',
+            explanation: 'The whole compass is the steepness of the dip, so a level field has nothing in it to tell poleward from equatorward. Birds that cross the equator do it on other cues, which is a consequence of the mechanism rather than an oddity. Magnetite is in no danger from the heat: L2C16 put its Curie temperature at 585 °C against a body at 41 °C.'
         }
     ]
 };

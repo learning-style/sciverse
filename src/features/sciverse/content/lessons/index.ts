@@ -324,7 +324,7 @@ import { getL2C28Script } from './l2c28-no-room-in-the-blood';
 import { getL2B28Script } from './l2b28-the-factor-with-no-room';
 import { getL3P16Script } from './l3p16-making-a-field';
 import { getL3C16Script } from './l3c16-why-magnets-stay';
-import { getL3B16Script } from './l3b16-trusting-the-sharper-cue';
+import { getL3B16Script } from './l3b16-the-compass-that-cannot-say-north';
 
 type ScriptFactory = () => Record<string, DialogNode>;
 
@@ -1942,7 +1942,7 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2b16', title: 'Two Cues Beat One', subtitle: 'Averaging cuts scatter by the root of the count', discipline: 'biology', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '🕊️', accentColor: 'rose', crossLinks: ['b16', 'l2p16'], level: 2 },
     { id: 'l3p16', title: 'Making a Field', subtitle: 'B = μ₀ n I: turns per metre times amps', discipline: 'physics', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '🔌', accentColor: 'indigo', crossLinks: ['l2p16', 'p16'], level: 3 },
     { id: 'l3c16', title: 'Why Some Magnets Stay', subtitle: 'Hysteresis: remanence, coercivity, and loop area as heat', discipline: 'chemistry', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '🧲', accentColor: 'emerald', crossLinks: ['l2c16', 'c16'], level: 3 },
-    { id: 'l3b16', title: 'Trusting the Sharper Cue', subtitle: 'Why a blind average loses, and the split that beats it', discipline: 'biology', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '⭐', accentColor: 'rose', crossLinks: ['l2b16', 'b16'], level: 3 },
+    { id: 'l3b16', title: 'The Compass That Cannot Say North', subtitle: 'Magnetite, cryptochrome, and a sense that reads a tilt', discipline: 'biology', bigIdea: 16, bigIdeaTitle: 'How Do Magnets Help Us Navigate and Build Machines?', icon: '🧭', accentColor: 'rose', crossLinks: ['l2b16', 'l2c16'], level: 3 },
     { id: 'l2p17', title: 'How Much Can It Carry?', subtitle: 'Stress is force divided by area', discipline: 'physics', bigIdea: 17, bigIdeaTitle: 'How Do Structures Stay Standing?', icon: '🏗️', accentColor: 'indigo', crossLinks: ['p17', 'l2p5'], level: 2 },
     { id: 'l2c17', title: 'How Much Steel Does It Need?', subtitle: 'Concrete squeezed, steel stretched, and the numbers', discipline: 'chemistry', bigIdea: 17, bigIdeaTitle: 'How Do Structures Stay Standing?', icon: '🧱', accentColor: 'emerald', crossLinks: ['c17', 'l2p17'], level: 2 },
     { id: 'l2b17', title: 'Why Bones Are Hollow', subtitle: 'The same material, standing further out', discipline: 'biology', bigIdea: 17, bigIdeaTitle: 'How Do Structures Stay Standing?', icon: '🦴', accentColor: 'rose', crossLinks: ['b17', 'l2p17'], level: 2 },

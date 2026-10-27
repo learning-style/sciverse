@@ -153,7 +153,7 @@ import { L2C16CurieLab } from './L2C16CurieLab';
 import { L2B16CuesLab } from './L2B16CuesLab';
 import { L3P16CoilLab } from './L3P16CoilLab';
 import { L3C16LoopLab } from './L3C16LoopLab';
-import { L3B16WeightLab } from './L3B16WeightLab';
+import { L3B16HeadLab } from './L3B16HeadLab';
 import { L2P17ColumnLab } from './L2P17ColumnLab';
 import { L2P18DischargeLab } from './L2P18DischargeLab';
 import { L2C18LoadLab } from './L2C18LoadLab';
@@ -387,7 +387,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2b16: L2B16CuesLab,
     l3p16: L3P16CoilLab,
     l3c16: L3C16LoopLab,
-    l3b16: L3B16WeightLab,
+    l3b16: L3B16HeadLab,
     l2p17: L2P17ColumnLab,
     l2p18: L2P18DischargeLab,
     l2c18: L2C18LoadLab,
