@@ -51,7 +51,7 @@ export const L3B22ImpedanceLab = ({ state, onStateChange }: Props) => {
         const pct = reflectPct(z1, z2);
         const passed = 100 - pct;
         const same = Math.abs(z2 - z1) < 1e-9;
-        const wall = pct > 20;
+        const wall = pct > 5;
 
         const artTop = stageTop + 18;
         const artBottom = stageBottom - 52;
@@ -138,11 +138,13 @@ export const L3B22ImpedanceLab = ({ state, onStateChange }: Props) => {
                 'bold 11px monospace', '#334155', 'center', half);
         }
         if (rows >= 3) {
-            outlineText(ctx, same ? 'no boundary: no echo'
-                : pct < 0.01 ? 'faint: the pulse goes deeper'
-                    : pct < 5 ? 'a boundary you can see'
-                        : pct < 60 ? 'a wall: the image stops'
-                            : 'nothing gets in: no scan',
+            // the same five bands the lesson tabulates, so the canvas says whether
+            // the number is any good rather than only how big it is
+            outlineText(ctx, same ? 'invisible: nothing marks it'
+                : pct < 0.1 ? 'ideal for a scan'
+                    : pct < 5 ? 'a strong edge, most passes'
+                        : pct < 60 ? 'bright edge, shadow behind'
+                            : 'a wall: nothing gets in',
                 safeRight / 2, rowY(2),
                 'bold 12px monospace', same ? '#64748b' : (wall ? WALL : ROSE), 'center', safeRight - 24);
         }
@@ -161,7 +163,7 @@ export const L3B22ImpedanceLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: meterFrac(pct),
                 caption: 'Pulse Reflected (stretched)',
-                low: 'faint: you see deeper',
+                low: 'faint: ideal for a scan',
                 high: 'total: no scan',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },

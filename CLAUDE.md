@@ -626,6 +626,38 @@ park its predecessor, move on.
 - A summary table in the `complete` node.
 - The biology lesson ties all three disciplines together.
 
+**A lesson's thesis must be on the main path, and the node graph walk will not catch
+it.** A reader called L3B22 confusing and asked a question the lesson should have
+answered in its first screen: *is an echo good or bad -- do we want it all reflected or
+not?* The answer was in the lesson. It was in **`math_wrong`**. A learner who answered
+the checkpoint correctly went straight from `math_check` to `explore` and never read
+that **ultrasound works because its echoes are faint** -- which is the entire point of
+the lesson and the reversal the Big Idea closes on. Every node was reachable, so the
+graph walk passed; the defect is that **answering correctly gave you the worse lesson**,
+exactly as L2C1 once hid its definitions on the misconception branch.
+
+So the rule is sharper than *reachable from both branches*: **anything the `discovery`
+node claims you found must be explained somewhere a learner who answers correctly
+actually reads.** A rough scan for that -- a bolded claim that `discovery` states, which
+only a wrong-answer node explains -- reports **87 candidates in 55 lessons**, but it
+matches sentence fragments often enough that it is not yet trustworthy enough to wire
+in. It is worth refining before it is believed, and worth believing once refined.
+
+**And give a lesson's verdict before its numbers.** L3B22 had six boundaries tabulated
+with a reflected percentage and no column saying whether each was good. The repair was
+one paragraph and one column: a scan needs **some** of the pulse back or the boundary is
+invisible, and **nearly all** of it to carry on or there is nothing left for what lies
+deeper, so what it wants is a whisper. Then the matrix of all 64 pairs makes the point
+by itself -- **only 6 of them are any use**, and every one is a pair of soft tissues
+differing by about one per cent. The lab's five verdict bands now partition the same 64
+pairs identically, which is a cross-check worth building in: 8 invisible, 6 ideal, 14 a
+strong edge, 20 a shadow, 16 a wall.
+
+**Whatever is not reflected is transmitted, not absorbed.** The reader reached for
+*absorbed*, and it is the natural word, but absorption is a separate loss that happens
+as sound crosses a material rather than at the boundary. The two shares that add to
+100% at a boundary are **reflected** and **passed on**.
+
 **Every directional quantity must state its frame of reference.** This is the
 single most common defect found in review — a flux with no reservoir named, a
 "sink" defined against a different reservoir than its own fluxes, "in" and "out"
