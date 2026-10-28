@@ -4,14 +4,15 @@ import { AssessmentData } from '../../types';
  * Big Idea 15 Assessment -- LEVEL 3 (grades 9-12).
  * Covers L3P15 (the amplitude correction T = T0 (1 + theta^2/16)), L3C15
  * (balancing numbers as powers, ICE tables, and what delta n does under
- * pressure), L3B15 (Lotka-Volterra equilibria and the 2 pi / sqrt(r m) lap).
+ * pressure), L3B15 (a lynx's time budget, the ceiling its body sets, and why a
+ * balance point can be a ridge).
  * 12 questions: 4 easy -> 4 medium -> 4 hard
  */
 export const bigIdea15Level3Assessment: AssessmentData = {
     bigIdea: 15,
     level: 3,
     title: 'How Do Systems Find Balance?',
-    subtitle: 'Level 3 -- Swing Size, Powers in K, and Cycle Length',
+    subtitle: 'Level 3 -- Swing Size, Powers in K, and a Balance That Repels',
     icon: '🔁',
     questions: [
         // ── EASY ──
@@ -39,11 +40,11 @@ export const bigIdea15Level3Assessment: AssessmentData = {
             id: 3,
             difficulty: 'easy',
             discipline: 'biology',
-            question: 'In the Lotka-Volterra rules, the term a × N × P describes:',
-            options: ['Hares lost, which needs a lynx and a hare to meet', 'Hares born each year', 'Lynx dying of old age', 'The carrying capacity of the wood'],
+            question: 'A lynx spends its year either searching for hares or handling them. Which of the two gets shorter as hares become more plentiful?',
+            options: ['Searching — more hares means a shorter walk between them', 'Handling — a crowded wood makes each kill quicker', 'Both, and in proportion', 'Neither; a lynx hunts at one rate whatever the density'],
             correctIndex: 0,
-            hint: 'Why are both populations in the same term?',
-            explanation: 'A loss requires a meeting, so it depends on both numbers at once. That coupling is what turns a balance point into a cycle.'
+            hint: 'Which of the two jobs could the wood possibly change?',
+            explanation: 'Handling is the stalk, the kill, the carry, the meal and the digestion, and every part of it is set by the lynx body rather than by the wood -- a stomach does not hold a whole hare, so the animal caches the rest and comes back over two or three days. The hares can only ever shorten the search.'
         },
         {
             id: 4,
@@ -80,11 +81,11 @@ export const bigIdea15Level3Assessment: AssessmentData = {
             id: 7,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'With r = 0.6 and m = 0.6 a year, how long is one lap of the predator-prey cycle?',
-            options: ['About 10.5 years', 'About 1.2 years', 'About 3.6 years', 'About 21 years'],
+            question: 'Handling one hare costs a lynx 2 days. Now imagine hares so thick that one is always within reach, so searching costs nothing. What is the most the lynx can take in a year?',
+            options: ['About 182 — a year is 365 days and each hare costs 2 of them', 'There is no most, since there is always another hare within reach', '365, which is one a day', 'About 730'],
             correctIndex: 0,
-            hint: 'period = 2π / √(r m).',
-            explanation: 'r × m = 0.36, √0.36 = 0.6, and 2π/0.6 = 10.5 years -- close to the roughly ten-year beat in a century of lynx and hare trapping records.'
+            hint: 'Divide the year by what one hare costs.',
+            explanation: '365 / 2 = 182, and that is the answer whether the wood holds ten thousand hares or ten million. One a day would be right if handling took one day, which is worth noticing: the ceiling is 365 divided by the handling time, so halving the handling doubles the ceiling. Nothing the wood does can raise it.'
         },
         {
             id: 8,
@@ -121,18 +122,18 @@ export const bigIdea15Level3Assessment: AssessmentData = {
             id: 11,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'An indiscriminate poison lowers hare growth r from 0.6 to 0.4 and raises lynx death m from 0.6 to 0.9. What happens at balance?',
-            options: ['Both populations fall in proportion', 'Hares rise to 1,500 and lynx fall to about 13', 'Hares fall to 500 and lynx stay at 20', 'Hares stay at 1,000 because their own rate barely changed'],
+            question: 'Births match losses at about 1,083 hares when the wood holds 20 lynx. Double the lynx to 40. Roughly where does that balance point move to?',
+            options: ['About 2,200, which is twice as far', 'About 7,200, which is more than six times as far', 'It stays near 1,083, since the balance point belongs to the hares', 'About 540, which is half as far'],
             correctIndex: 1,
-            hint: 'Check which letters appear in each equilibrium.',
-            explanation: 'N* = m/(ca) = 0.9/0.0006 = 1,500 -- containing no hare quantity at all -- and P* = r/a = 0.4/0.03 = 13.3. More hares than before the poison. Broad-spectrum insecticides have caused worse outbreaks for exactly this reason.'
+            hint: 'Births are 0.6 per hare. Set them equal to the lynx catch and multiply out the brackets before solving.',
+            explanation: 'Births 0.6N equal the catch 365L / (10,000/N + 2). Multiplying out gives 6,000 + 1.2N = 365L, so the balance sits at N = (365L - 6,000) / 1.2. At 20 lynx that is 1,083; at 40 it is 7,167. The jump is far more than double because 6,000 of the lynx-days are spent searching whatever happens, and only what is left over presses on the hares. Doubling a predator population does not double its grip -- it does much more.'
         },
         {
             id: 12,
             difficulty: 'hard',
             discipline: 'cross',
             question: 'Each Level 3 lesson removed something that looked like a detail. What did the three removals have in common?',
-            options: ['Each replaced an approximation with an exact answer', 'Each showed the discarded detail was carrying the behaviour: the swing size sets the timing, the powers set whether pressure acts, and the coupled rates set the cycle', 'Each made the maths simpler', 'Each showed the Level 2 formulas were wrong'],
+            options: ['Each replaced an approximation with an exact answer', 'Each showed the discarded detail was carrying the behaviour: the swing size sets the timing, the powers set whether pressure acts, and the handling time decides whether the wood holds at all', 'Each made the maths simpler', 'Each showed the Level 2 formulas were wrong'],
             correctIndex: 1,
             hint: 'None of the Level 2 formulas was wrong within its conditions.',
             explanation: 'Small swings, one-to-one reactions and fixed rates all looked like tidying. Each carried the behaviour. And none of the replacements is exact either: θ²/16 is one term of a series, Kc assumes independent particles, and the wood has no carrying capacity.'

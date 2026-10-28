@@ -147,7 +147,7 @@ import { L2C15ShiftLab } from './L2C15ShiftLab';
 import { L2B15BalanceLab } from './L2B15BalanceLab';
 import { L3P15SwingLab } from './L3P15SwingLab';
 import { L3C15IceLab } from './L3C15IceLab';
-import { L3B15CycleLab } from './L3B15CycleLab';
+import { L3B15TimeLab } from './L3B15TimeLab';
 import { L2P16CompassLab } from './L2P16CompassLab';
 import { L2C16CurieLab } from './L2C16CurieLab';
 import { L2B16CuesLab } from './L2B16CuesLab';
@@ -381,7 +381,7 @@ export const EXTENDED_LAB_COMPONENTS: Record<string, ComponentType<LabProps>> = 
     l2b15: L2B15BalanceLab,
     l3p15: L3P15SwingLab,
     l3c15: L3C15IceLab,
-    l3b15: L3B15CycleLab,
+    l3b15: L3B15TimeLab,
     l2p16: L2P16CompassLab,
     l2c16: L2C16CurieLab,
     l2b16: L2B16CuesLab,

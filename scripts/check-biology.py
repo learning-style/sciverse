@@ -31,13 +31,22 @@ L = os.path.join(os.path.dirname(os.path.abspath(__file__)),
 
 # Words that name a structure, a shape, or a function. Deliberately concrete: these
 # are what a biology lesson says when it is explaining a thing rather than counting it.
+# The first list was written against molecular and cellular biology -- enzymes,
+# membranes, receptors -- and was blind to a lesson about a whole animal. L3B17 is
+# called 'What the hollow bone is really worth' and scored 4.5, because 'bone' was not
+# a word it knew. The second group is organismal anatomy and life history, which names
+# a structure or what it is for exactly as the first group does.
 STRUCTURE = (
-    'structure', 'shape', 'shaped', 'fold', 'folded', 'folding', 'protein', 'membrane',
-    'cell wall', 'organelle', 'active site', 'enzyme', 'receptor', 'tissue', 'organ',
-    'fibre', 'fiber', 'capillary', 'vessel wall', 'pocket', 'binds', 'binding', 'bound',
-    'anchored', 'embedded', 'lining', 'surface of', 'villi', 'villus', 'microvilli',
-    'brush border', 'evolv', 'adapt', 'selection', 'species', 'gland', 'hormone',
-    'muscle', 'nerve', 'stalk', 'pore', 'channel', 'transporter', 'strand', 'chain of',
+    'structure', 'shape', 'shaped', 'fold', 'folded', 'folding', 'unfold', 'protein',
+    'membrane', 'cell wall', 'organelle', 'active site', 'enzyme', 'receptor', 'tissue',
+    'organ', 'fibre', 'fiber', 'capillary', 'vessel wall', 'pocket', 'binds', 'binding',
+    'bound', 'unbound', 'anchored', 'embedded', 'lining', 'surface of', 'villi',
+    'villus', 'microvilli', 'brush border', 'evolv', 'adapt', 'selection', 'species',
+    'gland', 'hormone', 'muscle', 'nerve', 'stalk', 'pore', 'channel', 'transporter',
+    'strand', 'chain of',
+    # organismal
+    'stomach', 'gut', 'digest', 'litter', 'gestation', 'jaw', 'claw', 'beak', 'lung',
+    'gill', 'bone', 'skeleton', 'anatom', 'leaf', 'seed', 'kidney', 'liver', 'heart',
 )
 FLOOR = 10.0          # structural words per 1,000 words
 MAX_FORMULAS = 2
@@ -55,7 +64,11 @@ def prose(path):
 def score(text):
     low = text.lower()
     words = len(re.findall(r"[A-Za-z']+", text))
-    hits = sum(low.count(k) for k in STRUCTURE)
+    # Anchored at a word start, not anywhere in a word. A plain substring count made
+    # 'liver' match DELIVER, DELIVERY and DELIVERED -- 23 of its 39 hits across the
+    # corpus were a verb about moving things. Only the START is anchored, so a prefix
+    # still carries its inflections: 'digest' takes digestion, 'evolv' takes evolved.
+    hits = sum(len(re.findall(r'(?<![a-z])' + re.escape(k), low)) for k in STRUCTURE)
     # a printed relation, not an inline 'x = 5' aside: both sides carry something
     formulas = len(re.findall(r'\*\*[^*]{0,80}=[^*]{0,80}\*\*', text))
     per_k = hits / max(1, words) * 1000
@@ -71,8 +84,10 @@ def selftest():
             bad += 1
             print('  FAIL %s: got %r, wanted %r' % (label, got, expect))
 
-    # a lesson that counts biological nouns without explaining any biology
-    counting = ('content: "The gut moves 600 cm of food at 0.04 cm/s, so the time is '
+    # A lesson that counts biological nouns without explaining any biology. It used to
+    # say 'gut', which the widened list now counts -- correctly, so the fixture moved to
+    # a word that names no structure rather than the list moving back.
+    counting = ('content: "The tube moves 600 cm of food at 0.04 cm/s, so the time is '
                 '15,000 s. The rate is 10 a minute, so the total is 2,500. '
                 '**contacts = time x rate**",\n')
     w, h, perk, f = score(counting)
@@ -86,6 +101,20 @@ def selftest():
     w2, h2, perk2, f2 = score(explained)
     want('explained lesson clears the floor', perk2 >= FLOOR, True)
     want('explained lesson has no formulas', f2, 0)
+
+    # The matcher is anchored at a word start, in both directions: a verb that merely
+    # contains a structural word must not count, and a prefix must still take its
+    # inflections, or the widening has broken what was already working.
+    want('deliver is not a liver',
+         score('content: "the vessel delivers and delivered and delivery",\n')[1], 0)
+    want('a liver is a liver',
+         score('content: "the liver and the kidney",\n')[1], 2)
+    want('digestion counts as digest',
+         score('content: "digestion begins",\n')[1], 1)
+    want('unfolded still counts',
+         score('content: "the protein unfolded",\n')[1], 2)
+    want('a hollow bone counts',
+         score('content: "the bone is hollow, and bones are light",\n')[1], 2)
 
     # formulas are counted only when printed as a relation
     want('one printed relation counts',

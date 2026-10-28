@@ -124,3 +124,39 @@ Reinstating the parked version would cost all of that, and would put a search ov
 formula back into the slot that closes the Big Idea. The weighting argument is genuinely
 Level 4 material: it belongs in a lesson about combining measurements, not in one about
 how an animal senses a field.
+
+## l3b15-cycle-length.ts, L3B15CycleLab.tsx
+
+Parked October 2026, replaced by `l3b15-the-ceiling-a-body-sets.ts` and
+`L3B15TimeLab.tsx`. A reader reviewing it said the formulas were beyond Level 3 and
+that the gloss on `c` -- *how much of a new lynx a caught hare pays for* -- meant
+nothing. Both were right.
+
+It was Lotka-Volterra: `change in hares = rN - aNP`, `change in lynx = caNP - mP`, four
+fitted rates, equilibria at `P* = r/a` and `N* = m/(ca)`, and a cycle period of
+`2 pi / sqrt(r m)` giving 10.5 years against the real record's ten. The period is the
+part that cannot stay. Deriving the frequency of small oscillations about a
+Lotka-Volterra fixed point needs the eigenvalues of a Jacobian, which is undergraduate
+dynamical systems -- so a grades 9-12 learner could only **accept** it, which is the
+recipe CLAUDE.md's second test exists to catch. And `c` is a conversion efficiency,
+a quantity with no everyday handle at all: 0.02 of a lynx per hare, or 50 hares per
+lynx, is a ratio of two things that are not the same kind of thing. It measured **1**
+structural word and **23** printed formulas, the worst pair in the L3B slot.
+
+The replacement removes exactly what L2B15 named -- *each lynx catches 30, whatever
+else changes* -- with a **time budget** rather than a differential equation. A lynx's
+year goes into **searching**, which the wood controls and which halves whenever the
+hares double, or **handling**, which is anatomy: the jaw, the claws, the meal, the
+**gut**. So the catch saturates at `365 / handling days`, and L2B15's 30 turns out to be
+10 days plus 2, worked out in a wood of exactly 1,000 hares.
+
+The payoff is the Big Idea's own question. A pendulum pushed further gets a **bigger**
+push back and a reaction pushed from balance does too; a wood pushed up gets a
+**smaller** one, because the predators are running out of hours. So the balance point is
+a **ridge**, not a valley -- 840 born against 798 taken at 1,400 hares, 480 against 503
+at 800 -- and *systems find balance* turns out to carry a condition nobody had stated.
+
+Reinstating the parked version would put an un-derivable period back into the slot that
+closes the Big Idea. The Lotka-Volterra model is genuinely Level 4: it belongs in a
+lesson that can afford linearisation, where the period is derived rather than handed
+over.
