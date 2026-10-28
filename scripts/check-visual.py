@@ -560,6 +560,19 @@ def selftest():
          ACCENT_FOR[accent_rows(right)[0][1]] == accent_rows(right)[0][2], True)
     want('the corpus agrees with its disciplines', accent_scan(), [])
 
+    # The shrink has an 8px floor, so a long string goes illegible rather than failing.
+    # Both directions: a line that fits must stay quiet, or 223 labs would report.
+    want('a 12px line of 29 chars still renders at 12', shrunk_to(29, 12, PANEL - 30), 12)
+    want('L3B22 constant footer was illegible', shrunk_to(47, 12, PANEL - 30), 8)
+    want('its replacement is readable', shrunk_to(23, 12, PANEL - 30), 12)
+    want('maxWidth parses safeRight - 24', max_width('safeRight - 24'), PANEL - 24)
+    want('maxWidth leaves fullW alone', max_width('fullW - 8'), None)
+    lab = ("outlineText(ctx, 'equal on both sides and there is no echo at all', "
+           "x, y, 'bold 12px monospace', C, 'center', safeRight - 30);")
+    want('the real failure is caught', [r[2] for r in tiny_strings(lab)], [8])
+    ok = lab.replace('equal on both sides and there is no echo at all', 'equal sides, so no echo')
+    want('the fix is quiet', tiny_strings(ok), [])
+
     # The reported failure: slate as a text colour, haloed in near-black and unreadable.
     # Both directions, because a band wide enough to pass white-on-dark must still catch
     # the mid-tone, and a band that caught white would flag 9 labs that are correct.
@@ -588,6 +601,71 @@ def selftest():
 ACCENT_FOR = {'physics': 'indigo', 'chemistry': 'emerald', 'biology': 'rose'}
 LESSON_INDEX = os.path.join(os.path.dirname(VISUALS), '..', 'content', 'lessons', 'index.ts')
 EXTENDED = os.path.join(VISUALS, 'extendedLabs.ts')
+
+
+# outlineText and fitText shrink a string until it fits, and they stop at 8px. So an
+# over-long string does not fail loudly -- it quietly becomes illegible, which is how
+# L3B22 came to print five lines at 8-10px on a common panel while every checker passed.
+# The readable floor is 11px, and monospace advance is about 0.6 x the size.
+PANEL = 240           # safeRight at the common 400px desktop panel AND on a phone
+READABLE = 11
+
+
+def shrunk_to(chars, nominal, maxw):
+    """The size outlineText will actually render at, given its 8px floor."""
+    size = nominal
+    while size > 8 and chars * 0.6 * size > maxw:
+        size -= 1
+    return size
+
+
+def max_width(expr):
+    """The maxWidth argument, where it can be resolved against a 240px panel."""
+    e = expr.strip()
+    m = re.fullmatch(r'safeRight\s*-\s*(\d+)', e)
+    if m:
+        return PANEL - int(m.group(1))
+    if e == 'safeRight':
+        return PANEL
+    if re.fullmatch(r'\d+', e):
+        return int(e)
+    return None          # fullW, half and friends depend on the lab's own layout
+
+
+def tiny_strings(src):
+    """(chars, nominal, rendered, text) for each string that cannot reach 11px."""
+    out = []
+    for m in re.finditer(r'\b(outlineText|fitText)\(\s*ctx\s*,', src):
+        args = [nth_arg(src, m.end(), i) for i in range(7)]
+        if m.group(1) == 'outlineText':
+            font, mw = args[3], args[6]
+            fm = re.search(r'(\d+)px', font)
+        else:                      # fitText(ctx, text, x, y, maxWidth, size)
+            font, mw = args[5], args[4]
+            fm = re.fullmatch(r'\s*(\d+)\s*', font)
+        if not fm:
+            continue
+        w = max_width(mw)
+        if w is None:
+            continue
+        chars = est_len(args[0])
+        if chars < 4:
+            continue
+        size = shrunk_to(chars, int(fm.group(1)), w)
+        if size < READABLE:
+            out.append((chars, int(fm.group(1)), size, longest_branch(args[0])[:48]))
+    return out
+
+
+def tiny_scan():
+    """Every lab's unreadable strings, worst first."""
+    hits = []
+    for name in sorted(os.listdir(VISUALS)):
+        if not name.endswith('.tsx') or name == 'LabCanvas.tsx':
+            continue
+        for row in tiny_strings(open(os.path.join(VISUALS, name)).read()):
+            hits.append((name,) + row)
+    return hits
 
 
 def accent_rows(index_src):
@@ -660,6 +738,10 @@ def main():
     for m in mism:
         print('!! ' + m)
     print(str(len(mism)) + ' accent(s) disagreeing with their lesson\'s discipline')
+    tiny = tiny_scan()
+    print(str(len(tiny)) + ' string(s) cannot reach 11px at a ' + str(PANEL)
+          + 'px panel, in ' + str(len({t[0] for t in tiny})) + ' lab(s)'
+          + ' -- a backlog; this number should only ever go down')
     return 1 if total or mism else 0
 
 

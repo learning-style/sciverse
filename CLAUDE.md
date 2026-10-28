@@ -1005,6 +1005,30 @@ near-black ink, the pale yellow C50 prints on a dark space background, and the
 replacement are all quiet. **A band wide enough to pass white-on-dark must still catch
 the mid-tone**, or it has disarmed itself. It reports 0 across the corpus.
 
+**A constant string that reads as a verdict will eventually be false.** A reader
+dialling L3B22 said the words never changed and the canvas insisted there was no echo.
+Its second footer was hardcoded -- *equal on both sides and there is no echo at all* --
+printed whatever the dials said, so at the opening setting of soft tissue against liver
+it flatly contradicted the line above it reading **0.0037%**. There is an echo in **56
+of the 64** dial combinations; only the 8 where both sides pick the same tissue have
+none. **A line that states the current state must be computed from the dials**, and the
+giveaway is a sentence in the present tense with no ternary in it. The permanent lines
+are the ones that are true at every setting -- *echo = (difference / sum)²* is fine.
+
+**And the same lab was a wall of illegible type, which no checker could see.** CLAUDE.md
+has said to budget 30 characters at 12px since Big Idea 24, but nothing measured it.
+`outlineText` and `fitText` shrink until a string fits and **stop at 8px**, so an
+over-long line does not fail -- it goes quietly unreadable. At the common 240px panel
+**five of L3B22's seven strings rendered at 8-10px** and two still overflowed.
+
+`check-visual.py` now computes the size each string will actually render at, using
+`est_len` so an interpolation counts as five characters and a ternary takes its longer
+branch, and reports the total as a standing count rather than as per-lab problems --
+because it found **371 strings in 158 labs**, which would drown the 16 real findings.
+**The number should only ever go down.** Its `--selftest` pins the real failure at 8px,
+its replacement at 12, and the fact that `fullW` and `half` are deliberately not
+resolved, since they depend on each lab's own layout: the count is a floor, not a total.
+
 **`Accent` is a closed union: `indigo | emerald | rose`** (physics/chemistry/
 biology). Anything else is a type error, not a fallback.
 
