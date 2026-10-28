@@ -568,6 +568,49 @@ Measured: structural words **34 -> 231** (11.4 -> 70.6 per 1k), printed formulas
 **11 -> 0**, digits **443 -> 100**. The old version is whole in `docs/level4/`, and its
 two arithmetic assessment questions were rewritten structurally rather than deleted.
 
+**A reader's confusion about one word can be a diagnosis of the whole lesson.** The
+question asked of L3B15 was *what does `c` mean?* -- its gloss read *how much of a new
+lynx a caught hare pays for*, which is unreadable. But `c` is a **conversion
+efficiency**, 0.02 of a lynx per hare, and the reason no gloss works is that it is a
+ratio of two things that are not the same kind of thing. **A quantity with no everyday
+handle is a sign the lesson is in the wrong slot**, and the same reader's second
+sentence said so outright: *the formulas are too complex for L3, perhaps L4.* They were
+right. The period of small oscillations about a Lotka-Volterra fixed point needs the
+eigenvalues of a Jacobian, so `2 pi / sqrt(r m)` could only be **accepted** -- the recipe
+the second test exists to catch.
+
+**The replacement swapped a differential equation for a time budget, and lost nothing.**
+A lynx's year goes into **searching**, which the wood controls and which halves whenever
+the hares double, or **handling**, which is anatomy: the jaw, the claws, the carry, the
+meal, the **gut**. A stomach does not hold a whole hare, so the animal caches the rest
+and returns over two or three days, and **a lynx on a kill is not hunting**. The catch
+therefore saturates at `365 / handling days`, and L2B15's borrowed 30 turns out to be
+10 days plus 2, worked out in a wood of exactly 1,000 hares -- *a rule fitted at one
+density is a rule about that density*. **Where a model needs machinery the level does
+not own, look for the same result in a budget of something countable.**
+
+And it answers the Big Idea better than the equations did. A pendulum pushed further
+gets a **bigger** push back and so does a reaction pushed from balance; a wood pushed up
+gets a **smaller** one, because the predators are running out of hours. So the balance
+point is a **ridge**: 840 born against 798 taken at 1,400 hares, 480 against 503 at 800.
+**Systems do not find balance -- systems whose restoring push grows with the departure
+find balance**, which is a condition no lesson in the Big Idea had stated.
+
+**A word list written for one scale of biology is blind to another.** `check-biology.py`
+was built against enzymes, membranes and receptors, so L3B17 -- *What the hollow bone is
+really worth* -- scored **4.5**, because `bone` was not a word it knew. 18 organismal
+terms were added (stomach, gut, digest, litter, gestation, jaw, claw, lung, bone, leaf
+...), and only **two** lessons changed status, both true positives. **When widening a
+checker, measure which rows flip before trusting the new total.**
+
+Widening it exposed the matcher. A plain `low.count(k)` made `liver` match **deliver**,
+**delivery** and **delivered** -- 23 of its 39 corpus hits were a verb about moving
+things. It is now anchored at a word **start** only, `(?<![a-z])`, so a prefix still
+carries its inflections (`digest` takes digestion, `evolv` takes evolved) while a word
+buried inside another does not count. Both directions are in `--selftest`, and so is the
+fixture that broke: the arithmetic-only lesson used to say *gut*, which the widened list
+now counts correctly, so **the fixture moved rather than the list moving back**.
+
 **Do not empty the slot to fix this.** Moving all 27 L3B lessons out at once would leave
 every Big Idea without a closing biology lesson, orphan roughly 100 assessment questions,
 and dangle every L3P and L3C *still standing* line that hands over to them. Rewrite one,
@@ -1239,6 +1282,16 @@ Nothing was wrong with the code; an empty commit re-triggered it and it went
 green. **If gh-pages has not moved, read the job conclusion rather than waiting
 longer** -- and note that the API watcher can hit GitHub's rate limit, which also
 reads as *pending* and is worth distinguishing before reporting a state.
+
+**A reader's screenshot may be of a build you have already fixed.** A report arrived
+that L3B16's labels were still hollow, after the halo fix had been pushed and verified.
+They were -- in the bundle that reader's browser was holding. The way to settle it in one
+step is to read the colour out of **both** deployed bundles: the minified call still
+carries the ternary, `d?Gp:yh`, and resolving `Gp` gives `#475569` in the current build
+and `#94a3b8` in the one before it. **Resolve the minified variable in the current and
+the previous `gh-pages` bundle before changing anything**, because re-fixing a fixed
+thing is how a second bug gets introduced. `git log --format=%H FETCH_HEAD -3` gives the
+earlier deploys to compare against.
 
 Every deep link returns HTTP 404 from GitHub Pages — Pages has no SPA rewrite,
 so the deploy copies `index.html` to `404.html` and React Router takes over. The
