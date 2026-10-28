@@ -320,6 +320,9 @@ import { getL3P27Script } from './l3p27-why-you-can-drink-upside-down';
 import { getL3C27Script } from './l3c27-where-the-bond-count-comes-from';
 import { getL3B27Script } from './l3b27-the-enzyme-that-cannot-leave';
 import { getL2P28Script } from './l2p28-two-ways-to-pump-more';
+import { getL3P28Script } from './l3p28-the-beat-that-cannot-fill';
+import { getL3C28Script } from './l3c28-the-store-that-takes-no-water';
+import { getL3B28Script } from './l3b28-the-litres-come-from-somewhere';
 import { getL2C28Script } from './l2c28-no-room-in-the-blood';
 import { getL2B28Script } from './l2b28-the-factor-with-no-room';
 import { getL3P16Script } from './l3p16-making-a-field';
@@ -1418,6 +1421,9 @@ const BASE_LESSON_SCRIPTS: Record<string, ScriptFactory> = {
     'l3c27': getL3C27Script,
     'l3b27': getL3B27Script,
     'l2p28': getL2P28Script,
+    'l3p28': getL3P28Script,
+    'l3c28': getL3C28Script,
+    'l3b28': getL3B28Script,
     'l2c28': getL2C28Script,
     'l2b28': getL2B28Script,
 };
@@ -2000,6 +2006,9 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l3c27', title: 'Where the Bond Count Comes From', subtitle: 'Every join is a water that left, and 3% face sideways', discipline: 'chemistry', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '🔗', accentColor: 'emerald', crossLinks: ['l2c27', 'l3c2'], level: 3 },
     { id: 'l3b27', title: 'The Enzyme That Cannot Leave', subtitle: 'A pocket bolted to the wall, beside the way in', discipline: 'biology', bigIdea: 27, bigIdeaTitle: 'How Does Food Become Usable Energy?', icon: '🧫', accentColor: 'rose', crossLinks: ['l3c27', 'l3p27'], level: 3 },
     { id: 'l2p28', title: 'Two Ways to Pump More', subtitle: 'Rate times volume per beat, and only one has room', discipline: 'physics', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🫀', accentColor: 'indigo', crossLinks: ['p28', 'l2p24'], level: 2 },
+    { id: 'l3p28', title: 'The Beat That Cannot Fill', subtitle: 'A cycle has two parts, and only one of them can be hurried', discipline: 'physics', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🫀', accentColor: 'indigo', crossLinks: ['l2p28', 'l3p11'], level: 3 },
+    { id: 'l3c28', title: 'The Store That Takes No Water', subtitle: 'Osmotic pull counts particles and ignores mass', discipline: 'chemistry', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🧪', accentColor: 'emerald', crossLinks: ['l2c28', 'l3c27'], level: 3 },
+    { id: 'l3b28', title: 'The Litres Come From Somewhere', subtitle: 'Output times share, and the one floor that never pays', discipline: 'biology', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🩸', accentColor: 'rose', crossLinks: ['l2b28', 'l3p11'], level: 3 },
     { id: 'l2c28', title: 'No Room in the Blood', subtitle: 'Less than a teaspoon, against a 15 gram slice', discipline: 'chemistry', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🩸', accentColor: 'emerald', crossLinks: ['c28', 'l2c27'], level: 2 },
     { id: 'l2b28', title: 'The Factor With No Room', subtitle: 'A litre carries 200 mL, and that is the whole ceiling', discipline: 'biology', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🫁', accentColor: 'rose', crossLinks: ['l2p28', 'l2c28'], level: 2 },
     { id: 'l3b23', title: 'Why the Edge Does the Work', subtitle: 'One rule for every shape: the largest circle that fits', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '⭕', accentColor: 'rose', crossLinks: ['l2b23', 'l3c23'], level: 3 },

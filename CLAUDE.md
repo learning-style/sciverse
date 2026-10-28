@@ -417,6 +417,51 @@ is what makes a teaspoon-sized buffer work -- and a drink with 40 g absorbed in 
 minutes arrives at 4 g/min, eight times the clearance, which is a far harder problem
 than more grams eaten slowly.
 
+**Big Idea 28's Level 3 is the first trio built entirely from what Level 2 confessed
+to**, and it took no guessing at all -- each of the three *still standing* lines was the
+next lesson's first paragraph, which is the cheapest way to find a Level 3 there is.
+
+L2P28 said *past about 180 the filling time runs short, so the product stops rising --
+which this lesson states but does not model*. **L3P28 models it.** A cycle is `60/rate`
+seconds in two parts, and the **squeeze** is a contraction of muscle about **0.20 s**
+long that cannot be hurried -- so **every second taken off the cycle comes out of the
+filling**, and a full 110 mL needs 0.15 s. That puts the best rate at `60/0.35 = 171` and
+the output at **zero** at `60/0.20 = 300`, where the whole cycle is the squeeze. Above
+the peak the rate **cancels** and the output falls in a straight line. It corrects L2P28
+gently -- its 180 x 110 = 19.8 becomes **17.6** -- and the real finding is that
+**L2P28's two factors were never independent**: the rate sets the volume.
+
+L2C28 said *where the sugar goes is not counted here at all*. **L3C28 counts it**, and
+the answer is a colligative property: osmotic pull **counts particles and ignores mass**.
+100 g of glucose in a 1.5 L liver is 0.370 mol/L, **123% of everything else the cell
+holds**, 9.4 atm -- the cells would burst. The mass cannot be reduced without throwing
+the energy away, **but the count can**, and joining is the only operation that does one
+without the other. As glycogen, 50,000 units to a chain, the same 100 g is **0.0025%** of
+normal. **Branching solves a different problem entirely** -- one branched molecule is
+still one particle -- and buys release, since an enzyme works at a chain's **end**; the
+branch points are the **α-1,6** links L3C27 showed amylase cannot cut.
+
+L2B28 said *the extraction figure is an average over a whole body when a sprinting leg
+and a resting arm differ enormously*. **L3B28 stops averaging.** The flow reaching one
+muscle is **output x share**, and both rise: the heart manages **x4.0** while the share
+goes 20% to 83%, **x4.2**, so the muscle gets **16.6** times its resting blood. With the
+shares left alone it would have had 4.0 L/min, which at L2B28's 200 mL ceiling is 800 mL
+of oxygen against the 3,000+ a sprint needs. **Nothing was created; it was taken**, from
+the gut and the kidneys, by **arterioles** whose ring of smooth muscle doubles their
+radius -- and L3P11's `radius⁴` turns a doubling into exactly **x16**.
+
+**So the Big Idea's answer is that systems work together by trading, and each lesson
+names what pays**: the filling, the cell, the gut. **C28 is the one designed best,
+because it found the move that costs nothing** -- changing a count leaves the mass alone.
+And the close is a **floor rather than a share**: the brain takes 0.75 L/min at rest and
+0.75 at maximum, so the real architecture is one thing that cannot be touched and
+everything else negotiating above it. That is why **fainting** is the first sign a total
+has collapsed, and why lying flat is the treatment.
+
+**Level 2 asks which factor has room; Level 3 asks what using that room costs the other
+factor** -- and in two cases of three the answer is that the factors were never
+independent. That question is worth carrying to the next Big Idea.
+
 **Four closing biology lessons now turn on a shape rather than a fact**, and each
 says so: L3B18's two curves gave a **ratio** that collapses, L3B19's two factors a
 **product** that peaks, L3B20's a **reciprocal** that turns a steady decline into a
@@ -972,6 +1017,21 @@ working on the canvas. `check-visual.py` now checks this: a printed
 `A unitX x B unitY = C unitX` with unitY different is flagged unless the first term
 is a rate, it is regression-tested against this exact line, and it reports 0 across
 the corpus.
+
+**An over-long string is now measured rather than merely budgeted.** CLAUDE.md has said
+to budget 30 characters at 12px since Big Idea 24, and nothing checked it until L3B22
+turned up with five of its seven strings rendering at 8-10px. `check-visual.py` computes
+the size each string will really render at and prints a **standing count**, because the
+first honest run found **340 strings in 149 labs** -- far too many to report per lab
+without drowning the 16 real findings. The number should only ever go down.
+
+**Its estimator had to be fixed before the count could be trusted.** `est_len` collapsed
+the pattern `' + expr + '`, so an interpolation with no literal *after* it --
+`'best at ' + Math.round(r)` -- kept its **source text** and counted as twenty characters
+instead of five. That over-reported by **35 strings** and would have had me shorten lines
+that were already fine. It now splits on top-level `+` and measures each operand as its
+literal or as five. Fixing it also exposed a genuine 224-character note in L3P16 that the
+under-count had been hiding, which is the useful direction for a checker error to go.
 
 **And the halving had to be drawn, not asserted.** The old picture said "the probe
 sends and listens, so halve the journey" in a caption and showed one arrow. The new

@@ -183,13 +183,52 @@ def longest_branch(expr):
 
 
 def est_len(expr):
-    """Rendered length of a TS string expression, counting an interpolation as 5."""
+    """Rendered length of a TS string expression, counting an interpolation as 5.
+
+    The operands are split on top-level '+' and each one is measured as its literal
+    text or, if it is an expression, as five characters. The earlier version matched
+    the pattern ' + expr + ' instead, so an interpolation with no literal AFTER it --
+    `'best at ' + Math.round(r)` -- kept its source text and was counted as twenty
+    characters rather than five. That over-reported real labs once this estimator was
+    used for the 11px width check as well as for the note budget.
+    """
     t = longest_branch(expr)
-    t = re.sub(r"'\s*\+\s*[^+]*?\+\s*'", 'XXXXX', t)
-    t = re.sub(r"\$\{[^{}]*\}", 'XXXXX', t)
-    t = re.sub(r"[`'\"]", '', t)
-    t = re.sub(r"\s*\+\s*", '', t)
-    return len(re.sub(r'\s+', ' ', t).strip().rstrip(','))
+    t = re.sub(r"\$\{[^{}]*\}", "'XXXXX'", t)
+    total, depth, cur, quote, i = 0, 0, '', None, 0
+    parts = []
+    while i < len(t):
+        c = t[i]
+        if quote:
+            cur += c
+            if c == '\\':
+                cur += t[i + 1:i + 2]
+                i += 2
+                continue
+            if c == quote:
+                quote = None
+        elif c in '\'"`':
+            quote, cur = c, cur + c
+        elif c in '([{':
+            depth, cur = depth + 1, cur + c
+        elif c in ')]}':
+            depth, cur = depth - 1, cur + c
+        elif c == '+' and depth == 0:
+            parts.append(cur)
+            cur = ''
+        else:
+            cur += c
+        i += 1
+    parts.append(cur)
+    for raw in parts:
+        piece = raw.strip().rstrip(',')
+        if not piece:
+            continue
+        lit = LITERAL.fullmatch(piece)
+        if lit:
+            total += len(re.sub(r'\s+', ' ', ''.join(lit.groups(''))))
+        else:
+            total += 5
+    return total
 
 
 def note_of(src):

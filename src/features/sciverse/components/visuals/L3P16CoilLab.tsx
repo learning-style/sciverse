@@ -84,7 +84,7 @@ export const L3P16CoilLab = ({ state, onStateChange }: Props) => {
                 high: 'a strong field',
                 stops: ['#eef2ff', '#a5b4fc', INDIGO] as [string, string, string],
             },
-            note: `A coil of ${perMetre.toLocaleString()} turns per metre carrying ${amps.toFixed(1)} A holds ${milli.toFixed(2)} mT along its axis, about ${earths.toFixed(0)} times Earth's ${EARTH_UT} µT. B is a straight line in both dials, and the coil's diameter does not appear in the formula at all.`,
+            note: `A coil of ${perMetre.toLocaleString()} turns per metre carrying ${amps.toFixed(1)} A holds ${milli.toFixed(2)} mT along its axis, about ${earths.toFixed(0)} times Earth's ${EARTH_UT} µT. B is a straight line in both dials, and the coil's diameter is not in the formula at all.`,
         };
     };
 
