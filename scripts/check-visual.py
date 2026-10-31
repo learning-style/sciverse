@@ -612,6 +612,17 @@ def selftest():
     ok = lab.replace('equal on both sides and there is no echo at all', 'equal sides, so no echo')
     want('the fix is quiet', tiny_strings(ok), [])
 
+    # The note must open by saying what the picture is, not by reading a dial.
+    reads = ("note: 'There is ' + fill.toFixed(2) + ' s to fill, more than the 0.15 s"
+             " a full beat needs.',\n        };")
+    want('a note opening on a value is caught', orients(reads), False)
+    says = ("note: 'One second of a beating heart: each beat is a fixed squeeze, then"
+            " whatever time is left to fill with blood. ' + x,\n        };")
+    want('a note opening on a statement is quiet', orients(says), True)
+    want('too short to orient anyone is caught',
+         orients("note: 'Try it. ' + x,\n        };"), False)
+    want('a lab with no note is not judged', orients('const x = 1;'), True)
+
     # The reported failure: slate as a text colour, haloed in near-black and unreadable.
     # Both directions, because a band wide enough to pass white-on-dark must still catch
     # the mid-tone, and a band that caught white would flag 9 labs that are correct.
@@ -707,6 +718,62 @@ def tiny_scan():
     return hits
 
 
+# A reader said a lab's title was catchy but told them nothing: "The Beat That Cannot
+# Fill -- filling with WHAT?" The canvas has to answer that without the lesson beside it,
+# and the only slot with room for a sentence is the note, which wrapNote lays out across
+# the WHOLE canvas width in three lines. So the note's first sentence must be a standing
+# statement of what the picture is, before any dialled value -- "One second of a beating
+# heart: each beat is a fixed squeeze, then whatever time is left to fill with blood."
+# On the first run 161 of 165 notes opened with a reading instead.
+#
+# This is a floor and not a guarantee: a value-free sentence can still say nothing. It
+# catches the notes that open with a number, which is the common case.
+ORIENT_MIN = 25          # characters, so a stub like 'Try the dials.' does not pass
+
+
+def opening_sentence(expr):
+    """The note's first sentence, with every dialled value marked."""
+    t = longest_branch(expr)
+    t = re.sub(r"\$\{[^{}]*\}", ' @ ', t)
+    # Two literals joined by + are one string broken over two source lines, not a
+    # value. Splice them first, or every wrapped note reads as though it opened on a
+    # reading -- which is how L3B28 reported while plainly orienting the reader.
+    while True:
+        spliced = re.sub(r"'(\s*)\+\s*'", '', t, count=1)
+        if spliced == t:
+            break
+        t = spliced
+    t = re.sub(r"'\s*\+[^+]*(?:\+[^+']*)*?\+\s*'", ' @ ', t)
+    t = re.sub(r"'\s*\+\s*[^']*$", ' @ ', t)
+    t = re.sub(r"^[^']*\+\s*'", ' @ ', t)
+    t = re.sub(r"[`'\"]", '', t)
+    t = re.sub(r"\s*\+\s*", '', t)
+    t = re.sub(r'\s+', ' ', t).strip()
+    m = re.search(r'[.:]\s', t)
+    return t[:m.start()] if m else t
+
+
+def orients(src):
+    """True when the note opens by saying what the picture is."""
+    m = re.search(r'note:\s*(.*?),\n\s*\};', src, re.S)
+    if not m:
+        return True
+    head = opening_sentence(m.group(1))
+    return '@' not in head and len(head) >= ORIENT_MIN
+
+
+def orientation_scan():
+    """Labs whose note opens with a reading rather than with what the picture is."""
+    out = []
+    for name in sorted(os.listdir(VISUALS)):
+        if not name.endswith('.tsx') or name == 'LabCanvas.tsx':
+            continue
+        src = open(os.path.join(VISUALS, name)).read()
+        if re.search(r'note:\s*(.*?),\n\s*\};', src, re.S) and not orients(src):
+            out.append(name)
+    return out
+
+
 def accent_rows(index_src):
     """(id, discipline, accentColor) for every registry row that carries all three."""
     return re.findall(r"\{ id: '([a-z0-9]+)',[^}]*?discipline: '(\w+)',"
@@ -778,6 +845,9 @@ def main():
         print('!! ' + m)
     print(str(len(mism)) + ' accent(s) disagreeing with their lesson\'s discipline')
     tiny = tiny_scan()
+    orient = orientation_scan()
+    print(str(len(orient)) + ' note(s) open with a reading rather than with what the'
+          + ' picture is -- a backlog; this number should only ever go down')
     print(str(len(tiny)) + ' string(s) cannot reach 11px at a ' + str(PANEL)
           + 'px panel, in ' + str(len({t[0] for t in tiny})) + ' lab(s)'
           + ' -- a backlog; this number should only ever go down')

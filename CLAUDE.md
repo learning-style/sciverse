@@ -1018,6 +1018,37 @@ working on the canvas. `check-visual.py` now checks this: a printed
 is a rate, it is regression-tested against this exact line, and it reports 0 across
 the corpus.
 
+**A catchy title is not an orientation, and the canvas has to supply one.** A reader
+looking at L3P28 asked the question the whole lab had assumed away: *The Beat That Cannot
+Fill -- filling with WHAT?* Nothing on that canvas said **heart** or **blood**. The
+labels read `squeeze 0.20 s`, `98 of 110 mL a beat`, `too fast to fill` -- every one of
+them intelligible only to somebody who had already read the lesson on the right. **A
+visual learner was being handed a riddle.**
+
+So a canvas has to answer four questions on its own, and the slots already exist:
+
+| | the question | where it goes |
+|---|---|---|
+| 1 | **what am I looking at?** | the `note`'s first sentence, and the `readout` |
+| 2 | **what do the parts mean?** | labels that name real things, not abstractions |
+| 3 | **why does it move?** | the rest of the `note` |
+| 4 | **is this good or bad?** | the meter's `low` and `high` |
+
+**The note is the only slot with room for a sentence**, because `wrapNote` lays it out
+across the **whole canvas width** in three lines -- about 200 characters at the narrow
+panel, far more at a desktop. So **the note's first sentence must be a standing statement
+of what the picture is, before any dialled value.** L3P28's now opens *One second of a
+beating heart: each beat is a fixed squeeze, then whatever time is left to fill with
+blood*, and the rest of the canvas was renamed to match: `blood out`, `blood in`,
+`a heart at 100 beats a minute`, `too fast: beats half empty`.
+
+`check-visual.py` counts the notes that open on a reading instead, and the first honest
+run found **161 of 165**. It prints as a standing count that should only ever go down.
+**It is a floor, not a guarantee** -- a value-free sentence can still say nothing, which
+is why `ORIENT_MIN` rejects a 14-character stub. Its scanner had to splice **literal +
+literal** joins first, or every note wrapped over two source lines reads as though it
+opened on a value: L3B28 reported while plainly orienting the reader.
+
 **An over-long string is now measured rather than merely budgeted.** CLAUDE.md has said
 to budget 30 characters at 12px since Big Idea 24, and nothing checked it until L3B22
 turned up with five of its seven strings rendering at 8-10px. `check-visual.py` computes

@@ -118,7 +118,7 @@ export const L3B28ShareLab = ({ state, onStateChange }: Props) => {
             + restMuscle.toFixed(1), safeRight / 2, stageBottom - 14,
             'bold 12px monospace', MUTED, 'center', safeRight - 30);
 
-        fitText(ctx, (muscle / restMuscle).toFixed(1) + 'x the resting flow',
+        fitText(ctx, 'muscle gets ' + (muscle / restMuscle).toFixed(1) + 'x rest',
             safeRight / 2, 94, safeRight - 24, 16);
         fitText(ctx, starved ? 'The brain is starved' : 'The brain never pays',
             safeRight / 2, 118, safeRight - 24, 13);
@@ -127,17 +127,16 @@ export const L3B28ShareLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, muscle / (MAX_OUT * 0.9))),
                 caption: 'Blood Reaching the Muscle',
-                low: 'resting: 1 litre',
+                low: 'at rest: 1 L a minute',
                 high: 'all the heart moves',
                 stops: ['#fecdd3', '#fda4af', MUSCLE] as [string, string, string],
             },
-            note: starved
-                ? 'The muscle is taking ' + share + '% of ' + out.toFixed(1) + ' L/min, leaving only '
-                  + others.toFixed(2) + ' for everything else -- less than the 0.75 the brain must have. '
-                  + 'This is the body that ends up on the floor.'
-                : 'The heart sends ' + out.toFixed(1) + ' L/min and the muscle takes ' + share + '% of it, so '
-                  + muscle.toFixed(1) + ' reaches it against ' + restMuscle.toFixed(1)
-                  + ' at rest. With its share unmoved it would have had ' + held.toFixed(1) + '.',
+            // what the bar IS, before any dialled value
+            note: 'The bar is all the blood a heart moves in a minute, shared among the beds wanting it;'
+                + ' the tick marks the muscle at its resting share. ' + (starved
+                    ? 'Only ' + others.toFixed(2) + ' L is left for everything else, under the 0.75 the brain must have.'
+                    : 'The muscle gets ' + muscle.toFixed(1) + ' L against ' + restMuscle.toFixed(1)
+                      + ' at rest, and ' + held.toFixed(1) + ' if its share had not moved.'),
         };
     };
 

@@ -91,7 +91,7 @@ export const L3P28FillingLab = ({ state, onStateChange }: Props) => {
         ctx.strokeRect(left, y0 + barTop, fullW, barH);
         if (showLbl) {
             tag('squeeze ' + squeeze.toFixed(2) + ' s', left, y0 + 10, 'left', SQUEEZE);
-            tag('filling ' + fill.toFixed(2) + ' s', left + fullW, y0 + 10, 'right', MUTED);
+            tag('refill ' + fill.toFixed(2) + ' s', left + fullW, y0 + 10, 'right', MUTED);
         }
 
         // ---- block 1: how full one beat managed to get
@@ -102,7 +102,7 @@ export const L3P28FillingLab = ({ state, onStateChange }: Props) => {
         ctx.fillStyle = BLOOD;
         ctx.fillRect(left, y1 + barTop, Math.max(0, fullW * frac), barH);
         if (showLbl) {
-            tag(Math.round(sv) + ' of ' + SV_MAX + ' mL a beat', left + fullW / 2, y1 + 10, 'center', BLOOD);
+            tag('blood in: ' + Math.round(sv) + ' of ' + SV_MAX + ' mL', left + fullW / 2, y1 + 10, 'center', BLOOD);
         }
 
         // ---- block 2: the output against the best this heart could do
@@ -120,7 +120,7 @@ export const L3P28FillingLab = ({ state, onStateChange }: Props) => {
         ctx.lineTo(left + fullW, y2 + barTop + barH);
         ctx.stroke();
         if (showLbl) {
-            tag(out.toFixed(1) + ' of ' + bestOut.toFixed(1) + ' L/min',
+            tag('blood out: ' + out.toFixed(1) + ' of ' + bestOut.toFixed(1) + ' L/min',
                 left + fullW / 2, y2 + 10, 'center', topped ? GOOD : MUTED);
         }
 
@@ -129,36 +129,36 @@ export const L3P28FillingLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'best at ' + Math.round(bestRate) + ', zero at ' + Math.round(deadRate),
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', MUTED, 'center', safeRight - 30);
 
-        fitText(ctx, out.toFixed(1) + ' L a minute', safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, dead ? 'No time to fill'
-            : topped ? 'Every beat is full' : 'Past the best rate',
+        fitText(ctx, 'blood out: ' + out.toFixed(1) + ' L/min', safeRight / 2, 94, safeRight - 24, 16);
+        fitText(ctx, dead ? 'No time to refill at all'
+            : topped ? 'Every beat fills right up' : 'Beating too fast to refill',
             safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, out / bestOut)),
-                caption: 'Output Against the Best',
-                low: 'too fast to fill',
-                high: 'every beat a full one',
+                caption: 'Blood Out, Against the Best',
+                low: 'too fast: beats half empty',
+                high: 'every beat full of blood',
                 stops: [MUTED, '#a5b4fc', GOOD] as [string, string, string],
             },
-            note: dead
-                ? 'At ' + rate + ' a minute one cycle is ' + cycle.toFixed(2) + ' s and the squeeze takes all of it,'
-                  + ' so nothing flows in and nothing comes out. The heart is beating and moving no blood.'
-                : topped
-                    ? 'There is ' + fill.toFixed(2) + ' s to fill, more than the ' + FULL_FILL
-                      + ' s a full 110 mL needs, so every beat is complete and beating faster is pure gain'
-                      + ' up to ' + Math.round(bestRate) + '.'
-                    : 'Only ' + fill.toFixed(2) + ' s is left to fill, against the ' + FULL_FILL
-                      + ' s a full beat needs, so each beat carries ' + Math.round(sv) + ' mL. The rate is'
-                      + ' still climbing and the output is falling.',
+            // the opening sentence says what the picture IS, before any dialled value,
+            // so a reader who never looks at the lesson still knows what is filling
+            note: 'One second of a beating heart: each beat is a fixed squeeze, then whatever time is left'
+                + ' to fill with blood. ' + (dead
+                    ? 'At ' + rate + ' the squeeze fills the whole second, so no blood goes in and none comes out.'
+                    : topped
+                        ? 'There is ' + fill.toFixed(2) + ' s to fill, over the ' + FULL_FILL
+                          + ' s a full 110 mL needs, so faster is pure gain to ' + Math.round(bestRate) + '.'
+                        : 'Only ' + fill.toFixed(2) + ' s is left of the ' + FULL_FILL
+                          + ' s a full beat needs, so each carries ' + Math.round(sv) + ' mL and the output falls.'),
         };
     };
 
     return (
         <LabCanvas
             title="The Beat That Cannot Fill"
-            readout={({ raw }) => rateOf(raw) + ' beats a minute'}
+            readout={({ raw }) => 'a heart at ' + rateOf(raw) + ' beats a minute'}
             controlLabel="Heart Rate"
             controlKey="beatRate"
             controlMin={60}

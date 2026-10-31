@@ -134,7 +134,7 @@ export const L3C28CountLab = ({ state, onStateChange }: Props) => {
                 left + fullW / 2, rowY(0), 'bold 11px monospace', SUGAR, 'center', fullW);
         }
         if (rows >= 2) {
-            outlineText(ctx, arrows > 0 ? 'water follows the pieces' : 'no water follows',
+            outlineText(ctx, arrows > 0 ? 'water follows the pieces' : 'no water follows in',
                 left + fullW / 2, rowY(1), 'bold 11px monospace',
                 arrows > 0 ? WATER : MUTED, 'center', fullW);
         }
@@ -146,7 +146,7 @@ export const L3C28CountLab = ({ state, onStateChange }: Props) => {
             safeRight / 2, stageBottom - 14, 'bold 12px monospace',
             bursts ? DANGER : swells ? WATER : MUTED, 'center', safeRight - 30);
 
-        fitText(ctx, (atm < 0.01 ? atm.toExponential(0) : atm.toFixed(1)) + ' atm pulling in',
+        fitText(ctx, (atm < 0.01 ? atm.toExponential(0) : atm.toFixed(1)) + ' atm of water pull',
             safeRight / 2, 94, safeRight - 24, 16);
         fitText(ctx, bursts ? 'The cell bursts'
             : swells ? 'The cell takes water in' : 'No water follows',
@@ -155,27 +155,25 @@ export const L3C28CountLab = ({ state, onStateChange }: Props) => {
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, Math.log10(Math.max(share, 1e-5)) / 5 + 1)),
-                caption: 'Pull, Against the Cell',
-                low: 'nothing follows it',
+                caption: 'Water Pulled Into the Cell',
+                low: 'no water follows',
                 high: 'the cell bursts',
                 stops: [MUTED, WATER, DANGER] as [string, string, string],
             },
-            note: bursts
-                ? grams + ' g in chains of ' + chain + ' is ' + conc.toFixed(3) + ' mol/L of particles, '
-                  + (share * 100).toFixed(0) + '% of everything else the cell holds. Water pours in and the cell splits.'
-                : swells
-                    ? 'The same ' + grams + ' g, now in chains of ' + chain + ', is down to '
-                      + (share * 100).toFixed(1) + '% of the cell\'s normal load. The mass has not changed at all.'
-                    : 'In chains of ' + chain + ' the same ' + grams + ' g is '
-                      + (share * 100).toExponential(1) + '% of normal. Same sugar, same energy, '
-                      + 'and the water outside cannot tell it is there.',
+            // what the picture IS comes first, and the dialled value second
+            note: 'One liver cell storing sugar. The coloured area is the mass; the pieces are the particles'
+                + ' dissolved, and water counts pieces. ' + (bursts
+                    ? 'Here they come to ' + (share * 100).toFixed(0) + '% of all the cell holds, so water pours in and it splits.'
+                    : swells
+                        ? 'Joined up, the same mass is down to ' + (share * 100).toFixed(1) + '% of the cell\'s normal load.'
+                        : 'At ' + (share * 100).toExponential(1) + '% of normal the water cannot tell the sugar is there.'),
         };
     };
 
     return (
         <LabCanvas
             title="The Store That Takes No Water"
-            readout={({ raw }) => gramsOf(raw) + ' g stored'}
+            readout={({ raw }) => 'a liver cell storing ' + gramsOf(raw) + ' g'}
             controlLabel="Sugar Stored"
             controlKey="sugarStored"
             controlMin={10}
