@@ -167,11 +167,12 @@ export const L3B22ImpedanceLab = ({ state, onStateChange }: Props) => {
                 high: 'total: no scan',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
-            note: nearName + ' at ' + z1.toFixed(2) + ' meeting ' + farName + ' at '
+            note: 'Two tissues meeting, and how much of an ultrasound pulse comes back. '
+                + (nearName + ' at ' + z1.toFixed(2) + ' meeting ' + farName + ' at '
                 + z2.toFixed(2) + ' MRayl reflects ' + pct.toFixed(4)
                 + '% of the pulse. ' + (same
                     ? 'Equal impedances make no echo at all.'
-                    : 'The rest carries on deeper.'),
+                    : 'The rest carries on deeper.')),
         };
     };
 

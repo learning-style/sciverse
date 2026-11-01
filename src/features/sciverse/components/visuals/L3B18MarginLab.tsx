@@ -113,9 +113,10 @@ export const L3B18MarginLab = ({ state, onStateChange }: Props) => {
                 high: '100% of the ' + REF + ' °C spare',
                 stops: ['#fff1f2', '#fda4af', SAFE] as [string, string, string],
             },
-            note: 'At ' + degC + ' \u00b0C the water holds ' + inWater.toFixed(1)
+            note: 'A river warming, and the trout in it. '
+                + ('At ' + degC + ' \u00b0C the water holds ' + inWater.toFixed(1)
                 + ' mg/L and the trout needs ' + needs.toFixed(2) + ' times as much oxygen as at ' + REF
-                + ' \u00b0C, which leaves ' + (share * 100).toFixed(0) + '% of the spare it had at ' + REF + ' \u00b0C.',
+                + ' \u00b0C, which leaves ' + (share * 100).toFixed(0) + '% of the spare it had at ' + REF + ' \u00b0C.'),
         };
     };
 

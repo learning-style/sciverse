@@ -171,10 +171,11 @@ export const L3B6BladderLab = ({ state, onStateChange }: Props) => {
                 high: 'too big: it rises',
                 stops: [DOWN, SACLINE, UP] as [string, string, string],
             },
-            note: 'At ' + depth + ' m the water presses with ' + trim(atm)
+            note: 'A fish at depth, with the gas sac that holds it level. '
+                + ('At ' + depth + ' m the water presses with ' + trim(atm)
                 + ' atmospheres, so ' + gas + ' units of gas are squeezed to a sac of '
                 + trim(sac) + '. Level needs ' + trim(NEUTRAL * atm)
-                + ' units here -- which is why the dial is so touchy near the surface and so slow deep down.',
+                + ' units here.'),
         };
     };
 

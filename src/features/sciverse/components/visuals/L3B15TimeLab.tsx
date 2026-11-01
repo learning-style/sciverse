@@ -128,7 +128,8 @@ export const L3B15TimeLab = ({ state, onStateChange }: Props) => {
                 high: 'handling every day',
                 stops: [SEARCH_INK, '#fbbf24', HANDLE] as [string, string, string],
             },
-            note: level
+            note: "A lynx's year, split by searching and handling. "
+                + (level
                 ? 'At ' + hares + ' hares the two bars are within a fiftieth of each other, which is L2B15'
                   + "'s balance point. Nudge it either way and look again: it leaves in whichever direction you push."
                 : rising
@@ -137,7 +138,7 @@ export const L3B15TimeLab = ({ state, onStateChange }: Props) => {
                       + '. The births have no ceiling at all, so they pull further ahead every year.'
                     : 'Hares are thin on the ground, so searching takes ' + search.toFixed(1)
                       + ' days and the lynx still take ' + Math.round(taken) + ' against '
-                      + Math.round(born) + ' born. The wood goes on emptying.',
+                      + Math.round(born) + ' born. The wood goes on emptying.'),
         };
     };
 

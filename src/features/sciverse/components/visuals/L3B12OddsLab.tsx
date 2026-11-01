@@ -93,7 +93,8 @@ export const L3B12OddsLab = ({ state, onStateChange }: Props) => {
                 high: 'all dark',
                 stops: ['#f5f5f4', '#a8a29e', '#1f2937'] as [string, string, string],
             },
-            note: `Starting at ${(startShare * 100).toFixed(0)}% dark, odds of ${startOdds.toFixed(4)}, multiplied by ${ratio.toFixed(2)} each generation: ${(endShare * 100).toFixed(0)}% dark after ${GENERATIONS} generations.`,
+            note: 'A population of moths, and how its dark share changes each generation. '
+                + (`Starting at ${(startShare * 100).toFixed(0)}% dark, odds of ${startOdds.toFixed(4)}, multiplied by ${ratio.toFixed(2)} each generation: ${(endShare * 100).toFixed(0)}% dark after ${GENERATIONS} generations.`),
         };
     };
 

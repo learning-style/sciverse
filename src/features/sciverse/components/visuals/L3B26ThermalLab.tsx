@@ -187,12 +187,13 @@ export const L3B26ThermalLab = ({ state, onStateChange }: Props) => {
                 high: 'inside a day',
                 stops: [DEAD, '#fcd34d', DOUBT] as [string, string, string],
             },
-            note: stalled
+            note: 'A corn plant on its way to tasselling. '
+                + (stalled
                 ? 'At 10 °C corn is exactly at its base temperature, so it banks nothing at all and never reaches 700 degree-days. There is no date to predict.'
                 : 'Banking ' + num(perDay) + ' degree-days a day, corn reaches 700 on day '
                   + days.toFixed(0) + '. A ' + num(swing)
                   + ' °C daily swing leaves ' + num(doubt)
-                  + ' degree-days of doubt in that total, which is ± ' + num(windowDays) + ' days.',
+                  + ' degree-days of doubt in that total, which is ± ' + num(windowDays) + ' days.'),
         };
     };
 

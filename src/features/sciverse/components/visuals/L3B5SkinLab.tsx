@@ -236,9 +236,10 @@ export const L3B5SkinLab = ({ state, onStateChange }: Props) => {
                 high: 'dry: the water leaves',
                 stops: ['#64748b', SWEAT, HEAT] as [string, string, string],
             },
-            note: drying
+            note: 'A slice through skin, from the gland up to the air. '
+                + (drying
                 ? 'The air is ' + humid + '% full, so water leaves the sweat faster than it comes back. The layer thins, and every molecule that leaves takes heat from the skin with it.'
-                : 'The air is ' + humid + '% full, so as much water comes back to the sweat as leaves it. The gland is working just as hard, the layer thickens and runs off, and the heat stays in.',
+                : 'The air is ' + humid + '% full, so as much water comes back to the sweat as leaves it. The gland is working just as hard, the layer thickens and runs off, and the heat stays in.'),
         };
     };
 

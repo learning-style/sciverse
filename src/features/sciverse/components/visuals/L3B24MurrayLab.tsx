@@ -149,9 +149,10 @@ export const L3B24MurrayLab = ({ state, onStateChange }: Props) => {
                 high: 'the lowest cost',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
-            note: 'At ' + flow + ' nL/s the best radius is ' + best.toFixed(0) + ' µm, where friction is half the upkeep. '
+            note: 'A xylem vessel, and the two costs that set its radius. '
+                + ('At ' + flow + ' nL/s the best radius is ' + best.toFixed(0) + ' µm, where friction is half the upkeep. '
                 + radius + ' µm costs ' + (above * 100).toFixed(0)
-                + '% more than the lowest, and the cube of the best radius tracks the flow.',
+                + '% more than the lowest, and the best radius cubed tracks flow.'),
         };
     };
 

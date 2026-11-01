@@ -121,7 +121,8 @@ export const L3B8PawLab = ({ state, onStateChange }: Props) => {
                 high: 'much heat lost',
                 stops: ['#e0f2fe', '#93c5fd', '#1d4ed8'] as [string, string, string],
             },
-            note: `With ${flow.toFixed(1)} g of blood each second arriving at ${arrival} °C, the paws lose ${lost.toFixed(1)} W and ${(handedBack * 100).toFixed(0)}% of the heat is handed back to the body.`,
+            note: "A fox's leg, with warm blood going down and cold blood coming back beside it. "
+                + (`With ${flow.toFixed(1)} g of blood each second arriving at ${arrival} °C, the paws lose ${lost.toFixed(1)} W and ${(handedBack * 100).toFixed(0)}% of the heat is handed back to the body.`),
         };
     };
 

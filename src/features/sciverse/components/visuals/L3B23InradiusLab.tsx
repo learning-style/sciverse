@@ -107,10 +107,11 @@ export const L3B23InradiusLab = ({ state, onStateChange }: Props) => {
                 high: 'three weeks of it',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
-            note: AREA + ' mm² at ' + ratio + ' times longer than wide is '
+            note: 'A wound of one area, and the largest circle that fits inside it. '
+                + (AREA + ' mm² at ' + ratio + ' times longer than wide is '
                 + longMm.toFixed(0) + ' by ' + shortMm.toFixed(1)
                 + ' mm, so the largest circle inside it has a radius of '
-                + inradiusMm.toFixed(2) + ' mm and it closes in ' + days.toFixed(1) + ' days.',
+                + inradiusMm.toFixed(2) + ' mm and it closes in ' + days.toFixed(1) + ' days.'),
         };
     };
 

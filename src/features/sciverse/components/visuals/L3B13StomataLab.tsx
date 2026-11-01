@@ -90,7 +90,8 @@ export const L3B13StomataLab = ({ state, onStateChange }: Props) => {
                 high: 'the most sugar',
                 stops: ['#e0f2fe', '#86efac', '#15803d'] as [string, string, string],
             },
-            note: `At an opening of ${opening.toFixed(2)}, the leaf loses ${water.toFixed(1)} litres and makes ${sugar.toFixed(1)} g of sugar: ${perLitre.toFixed(1)} g for each litre. With ${available} litres available it ends the day with ${sugarToday.toFixed(1)} g.`,
+            note: "A leaf's pores, and what they cost the plant. "
+                + (`At an opening of ${opening.toFixed(2)}, the leaf loses ${water.toFixed(1)} litres and makes ${sugar.toFixed(1)} g of sugar: ${perLitre.toFixed(1)} g for each litre. With ${available} litres available it ends the day with ${sugarToday.toFixed(1)} g.`),
         };
     };
 

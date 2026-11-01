@@ -181,10 +181,11 @@ export const L3B27BrushBorderLab = ({ state, onStateChange }: Props) => {
                 high: 'all of it cut and taken in',
                 stops: [MEMBRANE, '#fcd34d', ENZYME] as [string, string, string],
             },
-            note: villi === 0
+            note: 'The gut wall up close, with its enzymes. '
+                + (villi === 0
                 ? 'With the microvilli flattened there is nowhere for an anchored enzyme to sit, so the joined pieces drift past a smooth wall. The molecules may be perfect; the positions are gone.'
-                : villi + ' microvilli carry the enzymes, and the contents are pressed onto them '
-                  + press + ' times a minute. Each join that breaks releases its sugar beside a channel that takes it straight in.',
+                : villi + ' microvilli carry the enzymes, and the contents press onto them '
+                  + press + ' times a minute. Each join that breaks releases its sugar beside a channel that takes it straight in.'),
         };
     };
 

@@ -126,11 +126,12 @@ export const L3B20SuddenLab = ({ state, onStateChange }: Props) => {
                 high: 'too far for a book',
                 stops: ['#fff1f2', '#fda4af', CURVE] as [string, string, string],
             },
-            note: 'At age ' + age + ' this eye has ' + accom.toFixed(1)
+            note: 'An eye losing focus with age, against a book held at one distance. '
+                + ('At age ' + age + ' this eye has ' + accom.toFixed(1)
                 + ' D left, so its nearest focus is ' + nearCm.toFixed(0)
                 + ' cm. The book at ' + READ_CM + ' cm needs ' + READ_D.toFixed(1) + ' D, '
                 + (needsGlasses ? 'so it is short by ' + shortfall.toFixed(1) + ' D.'
-                    : 'which it still has.'),
+                    : 'which it still has.')),
         };
     };
 

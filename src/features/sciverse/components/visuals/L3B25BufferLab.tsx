@@ -113,12 +113,13 @@ export const L3B25BufferLab = ({ state, onStateChange }: Props) => {
                 high: 'runs away: catastrophe',
                 stops: [SAFE, '#fcd34d', BROKEN] as [string, string, string],
             },
-            note: dies
+            note: 'A switch gene and its reach, layer by layer across a network. '
+                + (dies
                 ? 'A switch on ' + breadth + ' genes with ' + (share * 100).toFixed(0)
                   + '% lacking a spare gives g = ' + gain.toFixed(2) + ', so the cascade dies after '
                   + total.toFixed(2) + ' genes in total. The threshold share is 1/' + breadth + '.'
                 : 'g = ' + gain.toFixed(2) + ' is at or past the threshold, so the cascade never dies out. '
-                  + 'A switch this wide needs the share below 1/' + breadth + '.',
+                  + 'A switch this wide needs the share below 1/' + breadth + '.'),
         };
     };
 

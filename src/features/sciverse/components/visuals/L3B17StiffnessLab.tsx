@@ -82,10 +82,11 @@ export const L3B17StiffnessLab = ({ state, onStateChange }: Props) => {
                 high: '50 times',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
-            note: 'The same material as a solid rod of radius ' + rod
+            note: 'A bone rolled from a rod into a tube. '
+                + ('The same material as a solid rod of radius ' + rod
                 + ' mm, rolled into a ' + wall + ' mm wall, reaches '
                 + reach.toFixed(2) + ' times as far -- and is ' + gain.toFixed(1)
-                + ' times stiffer, because distance counts to the fourth power.',
+                + ' times stiffer, distance counts to the fourth power.'),
         };
     };
 

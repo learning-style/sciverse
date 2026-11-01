@@ -116,7 +116,8 @@ export const L3B1EngineLab = ({ state, onStateChange }: Props) => {
                 low: 'Almost none',
                 high: 'Life-threatening',
             },
-            note: `Trapped, that heat would raise the body by ${trapped.toFixed(2)} °C. A rise of 5 °C is life-threatening, which is why the sweat has to evaporate.`,
+            note: 'This is the heat a working body makes, and where it has to go. '
+                + (`Trapped, that heat would raise the body by ${trapped.toFixed(2)} °C. A rise of 5 °C is life-threatening, which is why the sweat has to evaporate.`),
         };
     };
 

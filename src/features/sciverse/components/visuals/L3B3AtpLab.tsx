@@ -109,7 +109,8 @@ export const L3B3AtpLab = ({ state, onStateChange }: Props) => {
                 low: 'Almost all heat',
                 high: 'Most of it caught',
             },
-            note: `${Math.round(caught)} kJ of glucose's 2,870 kJ is caught in ${count} ATP. The other ${Math.round(heat)} kJ is released as heat along the way.`,
+            note: 'The energy in one glucose, and how much of it is caught in ATP. '
+                + (`${Math.round(caught)} kJ of glucose's 2,870 kJ is caught in ${count} ATP. The other ${Math.round(heat)} kJ is released as heat along the way.`),
         };
     };
 

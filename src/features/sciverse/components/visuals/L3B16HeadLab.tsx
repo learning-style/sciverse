@@ -226,16 +226,17 @@ export const L3B16HeadLab = ({ state, onStateChange }: Props) => {
                 high: 'steep: a firm heading',
                 stops: [DEAD, '#fda4af', MAG] as [string, string, string],
             },
-            note: level
+            note: "The head of a bird, with the field running through it. "
+                + (level
                 ? 'At the magnetic equator the field is level, so there is no tilt to read and nothing tells'
-                  + ' poleward from equatorward. Neither structure is broken: a level field has no steepness in it.'
+                  + ' poleward from equatorward. Neither structure is broken.'
                 : lit
                     ? 'The field dips ' + inc + '°, and both structures report that line: the crystals by the torque'
                       + ' pulling on their anchor, the retina by how much product the reaction makes. Reverse the'
                       + ' field and nothing changes.'
                     : 'With ' + light + '% light the retina cannot start the reaction, so only the torque on the'
                       + ' crystals is left. It still gives the line and its ' + inc + '° tilt, and still has no'
-                      + ' way along it.',
+                      + ' way along it.'),
         };
     };
 

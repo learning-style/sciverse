@@ -121,9 +121,10 @@ export const L3B21SignalLab = ({ state, onStateChange }: Props) => {
                 high: 'an enormous signal',
                 stops: ['#fff1f2', '#fda4af', SIGNAL] as [string, string, string],
             },
-            note: 'The same ' + moved + ' unit' + (moved === 1 ? '' : 's')
+            note: 'Two pools in a cell, ATP and ADP, each one unit at a time. '
+                + ('The same ' + moved + ' unit' + (moved === 1 ? '' : 's')
                 + ' is ' + fall + '% of the ATP pool and ' + rise + '% of the ADP pool, '
-                + 'because ADP is ' + ratio + ' times scarcer. So the cell watches ADP.',
+                + 'because ADP is ' + ratio + ' times scarcer. So the cell watches ADP.'),
         };
     };
 

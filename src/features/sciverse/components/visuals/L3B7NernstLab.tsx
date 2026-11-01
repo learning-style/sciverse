@@ -114,7 +114,8 @@ export const L3B7NernstLab = ({ state, onStateChange }: Props) => {
                 high: 'pushes ions out',
                 stops: ['#e0e7ff', '#e2e8f0', '#ffe4e6'] as [string, string, string],
             },
-            note: `With ${outside.toFixed(1)} mM outside and ${inside} mM inside, potassium's balancing voltage is ${mvText(potential)} mV, the inside compared with the outside.`,
+            note: 'A nerve cell membrane, with potassium inside and outside. '
+                + (`With ${outside.toFixed(1)} mM outside and ${inside} mM inside, potassium's balancing voltage is ${mvText(potential)} mV, the inside compared with the outside.`),
         };
     };
 

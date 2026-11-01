@@ -182,20 +182,9 @@ def longest_branch(expr):
     return expr
 
 
-def est_len(expr):
-    """Rendered length of a TS string expression, counting an interpolation as 5.
-
-    The operands are split on top-level '+' and each one is measured as its literal
-    text or, if it is an expression, as five characters. The earlier version matched
-    the pattern ' + expr + ' instead, so an interpolation with no literal AFTER it --
-    `'best at ' + Math.round(r)` -- kept its source text and was counted as twenty
-    characters rather than five. That over-reported real labs once this estimator was
-    used for the 11px width check as well as for the note budget.
-    """
-    t = longest_branch(expr)
-    t = re.sub(r"\$\{[^{}]*\}", "'XXXXX'", t)
-    total, depth, cur, quote, i = 0, 0, '', None, 0
-    parts = []
+def top_level_parts(t):
+    """The operands of a '+' chain, quote- and bracket-aware."""
+    parts, depth, cur, quote, i = [], 0, '', None, 0
     while i < len(t):
         c = t[i]
         if quote:
@@ -219,20 +208,57 @@ def est_len(expr):
             cur += c
         i += 1
     parts.append(cur)
-    for raw in parts:
+    return parts
+
+
+def est_len(expr, _depth=0):
+    """Rendered length of a TS string expression, counting an interpolation as 5.
+
+    The operands are split on top-level '+' and each one is measured as its literal
+    text or, if it is an expression, as five characters. The earlier version matched
+    the pattern ' + expr + ' instead, so an interpolation with no literal AFTER it --
+    `'best at ' + Math.round(r)` -- kept its source text and was counted as twenty
+    characters rather than five. That over-reported real labs once this estimator was
+    used for the 11px width check as well as for the note budget.
+    """
+    t = longest_branch(expr)
+    if _depth and t.strip() == expr.strip() and '+' not in t:
+        return 5
+    t = re.sub(r"\$\{[^{}]*\}", "'XXXXX'", t)
+    total = 0
+    for raw in top_level_parts(t):
         piece = raw.strip().rstrip(',')
+        # a parenthesised operand is a sub-expression, not a value: recurse into it,
+        # or `'opener ' + (cond ? 'a' : 'b')` counts the whole branch as five
+        while len(piece) > 1 and piece[0] == '(' and piece[-1] == ')':
+            inner = piece[1:-1]
+            depth = 0
+            for ch in inner:
+                if ch in '([{':
+                    depth += 1
+                elif ch in ')]}':
+                    depth -= 1
+                    if depth < 0:
+                        break
+            if depth != 0:
+                break
+            piece = inner.strip()
         if not piece:
             continue
         lit = LITERAL.fullmatch(piece)
         if lit:
             total += len(re.sub(r'\s+', ' ', ''.join(lit.groups(''))))
+        elif _depth < 3 and LITERAL.search(piece):
+            # a sub-expression with literals in it: measure its longest branch, with a
+            # hard depth bound so a self-similar expression cannot recurse for ever
+            total += est_len(piece, _depth + 1)
         else:
             total += 5
     return total
 
 
 def note_of(src):
-    m = re.search(r"\n\s*note:\s*(.*?)(?=\n\s*\}\s*;|\n\s*\};)", src, re.S)
+    m = NOTE_EXPR.search(src)
     return est_len(m.group(1)) if m else 0
 
 
@@ -613,14 +639,18 @@ def selftest():
     want('the fix is quiet', tiny_strings(ok), [])
 
     # The note must open by saying what the picture is, not by reading a dial.
-    reads = ("note: 'There is ' + fill.toFixed(2) + ' s to fill, more than the 0.15 s"
-             " a full beat needs.',\n        };")
+    reads = ("\n            note: 'There is ' + fill.toFixed(2) + ' s to fill, more than"
+             " the 0.15 s a full beat needs.',\n        };")
     want('a note opening on a value is caught', orients(reads), False)
-    says = ("note: 'One second of a beating heart: each beat is a fixed squeeze, then"
-            " whatever time is left to fill with blood. ' + x,\n        };")
+    says = ("\n            note: 'One second of a beating heart: each beat is a fixed"
+            " squeeze, then whatever time is left to fill with blood. ' + x,\n        };")
     want('a note opening on a statement is quiet', orients(says), True)
     want('too short to orient anyone is caught',
-         orients("note: 'Try it. ' + x,\n        };"), False)
+         orients("\n            note: 'Try it. ' + x,\n        };"), False)
+    # an apostrophe in the prose must not read as a string delimiter
+    want('an apostrophe in the opener is fine',
+         orients("\n            note: \"A fox's leg, with warm blood going down and cold"
+                 " blood coming back beside it. \" + (x),\n        };"), True)
     want('a lab with no note is not judged', orients('const x = 1;'), True)
 
     # The reported failure: slate as a text colour, haloed in near-black and unreadable.
@@ -732,30 +762,37 @@ ORIENT_MIN = 25          # characters, so a stub like 'Try the dials.' does not 
 
 
 def opening_sentence(expr):
-    """The note's first sentence, with every dialled value marked."""
+    """The note's first sentence, with every dialled value marked.
+
+    Split on top-level '+' and walk the operands, rather than matching quote
+    patterns: an apostrophe inside the prose -- a fox's leg, potassium's voltage --
+    reads as a string delimiter to any regex that counts quotes, which had four
+    correctly-written notes reporting as though they opened on a reading.
+    """
     t = longest_branch(expr)
-    t = re.sub(r"\$\{[^{}]*\}", ' @ ', t)
-    # Two literals joined by + are one string broken over two source lines, not a
-    # value. Splice them first, or every wrapped note reads as though it opened on a
-    # reading -- which is how L3B28 reported while plainly orienting the reader.
-    while True:
-        spliced = re.sub(r"'(\s*)\+\s*'", '', t, count=1)
-        if spliced == t:
+    out = ''
+    for raw in top_level_parts(t):
+        piece = raw.strip().rstrip(',')
+        while len(piece) > 1 and piece[0] == '(' and piece[-1] == ')':
+            piece = piece[1:-1].strip()
+        lit = LITERAL.fullmatch(piece)
+        if lit:
+            out += re.sub(r"\$\{[^{}]*\}", ' @ ', ''.join(lit.groups('')))
+        else:
+            out += ' @ '
+        if re.search(r'[.:]\s', re.sub(r'\s+', ' ', out)):
             break
-        t = spliced
-    t = re.sub(r"'\s*\+[^+]*(?:\+[^+']*)*?\+\s*'", ' @ ', t)
-    t = re.sub(r"'\s*\+\s*[^']*$", ' @ ', t)
-    t = re.sub(r"^[^']*\+\s*'", ' @ ', t)
-    t = re.sub(r"[`'\"]", '', t)
-    t = re.sub(r"\s*\+\s*", '', t)
-    t = re.sub(r'\s+', ' ', t).strip()
-    m = re.search(r'[.:]\s', t)
-    return t[:m.start()] if m else t
+    out = re.sub(r'\s+', ' ', out).strip()
+    m = re.search(r'[.:]\s', out)
+    return out[:m.start()] if m else out
+
+
+NOTE_EXPR = re.compile(r"\n\s*note:\s*(.*?)(?=\n\s*\}\s*;|\n\s*\};)", re.S)
 
 
 def orients(src):
     """True when the note opens by saying what the picture is."""
-    m = re.search(r'note:\s*(.*?),\n\s*\};', src, re.S)
+    m = NOTE_EXPR.search(src)
     if not m:
         return True
     head = opening_sentence(m.group(1))
@@ -769,7 +806,7 @@ def orientation_scan():
         if not name.endswith('.tsx') or name == 'LabCanvas.tsx':
             continue
         src = open(os.path.join(VISUALS, name)).read()
-        if re.search(r'note:\s*(.*?),\n\s*\};', src, re.S) and not orients(src):
+        if NOTE_EXPR.search(src) and not orients(src):
             out.append(name)
     return out
 

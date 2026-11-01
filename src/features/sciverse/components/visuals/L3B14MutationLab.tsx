@@ -100,7 +100,7 @@ export const L3B14MutationLab = ({ state, onStateChange }: Props) => {
                 high: 'all silent',
                 stops: ['#fff1f2', '#fda4af', SILENT] as [string, string, string],
             },
-            note: `At position ${position} of a codon, ${silent} of the 192 possible changes are silent (${share}%), ${changes} change the amino acid and ${stop} involve a stop. With ${inserted} bases inserted, ${tail}`,
+            note: `A gene read in threes, codon by codon. At position ${position} of a codon, ${silent} of the 192 possible changes are silent (${share}%), ${changes} change the amino acid. With ${inserted} bases inserted, ${tail}`,
         };
     };
 

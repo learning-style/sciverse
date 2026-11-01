@@ -104,7 +104,8 @@ export const L3B4LogSensesLab = ({ state, onStateChange }: Props) => {
                 high: 'Many',
                 stops: ['#ffe4e6', '#fb7185', '#9f1239'] as [string, string, string],
             },
-            note: `With k = ${k.toFixed(2)}, a range of ${powerOfTen(range)} holds about ${Math.round(steps).toLocaleString()} just noticeable steps -- ${Math.round(perTen)} in every ten-fold increase.`,
+            note: "A sense's range, and how many steps a sense can tell apart in it. "
+                + (`With k = ${k.toFixed(2)}, a range of ${powerOfTen(range)} holds about ${Math.round(steps).toLocaleString()} just noticeable steps -- ${Math.round(perTen)} in every ten-fold increase.`),
         };
     };
 

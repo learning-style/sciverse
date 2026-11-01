@@ -108,7 +108,7 @@ export const L3B28ShareLab = ({ state, onStateChange }: Props) => {
             // the pair only has to clear each other: 26 characters of the 28 that fit
             outlineText(ctx, 'brain ' + brain.toFixed(2), left, rowY(1),
                 'bold 11px monospace', starved ? DANGER : BRAIN, 'left', fullW);
-            outlineText(ctx, 'share held: ' + held.toFixed(1), left + fullW, rowY(1),
+            outlineText(ctx, 'rest 20%: ' + held.toFixed(1) + ' L', left + fullW, rowY(1),
                 'bold 11px monospace', MUTED, 'right', fullW);
         }
 
@@ -131,12 +131,13 @@ export const L3B28ShareLab = ({ state, onStateChange }: Props) => {
                 high: 'all the heart moves',
                 stops: ['#fecdd3', '#fda4af', MUSCLE] as [string, string, string],
             },
-            // what the bar IS, before any dialled value
-            note: 'The bar is all the blood a heart moves in a minute, shared among the beds wanting it;'
-                + ' the tick marks the muscle at its resting share. ' + (starved
-                    ? 'Only ' + others.toFixed(2) + ' L is left for everything else, under the 0.75 the brain must have.'
-                    : 'The muscle gets ' + muscle.toFixed(1) + ' L against ' + restMuscle.toFixed(1)
-                      + ' at rest, and ' + held.toFixed(1) + ' if its share had not moved.'),
+            // What the bar IS, before any dialled value -- and the tick needs its share
+            // named: a reader asked what 4.8 meant, moved from where, and in what unit.
+            note: 'The bar is all the blood a heart moves in a minute, shared among the organs;'
+                + ' the tick is the muscle on its resting 20% share. ' + (starved
+                    ? 'Only ' + others.toFixed(2) + ' L a minute is left for the rest, under the 0.75 the brain must have.'
+                    : 'It gets ' + muscle.toFixed(1) + ' L a minute here, against ' + restMuscle.toFixed(1)
+                      + ' at rest and ' + held.toFixed(1) + ' on that 20%.'),
         };
     };
 

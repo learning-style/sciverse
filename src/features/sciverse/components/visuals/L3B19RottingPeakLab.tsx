@@ -114,11 +114,12 @@ export const L3B19RottingPeakLab = ({ state, onStateChange }: Props) => {
                 high: 'the best rate',
                 stops: ['#fff1f2', '#fdba74', BEST] as [string, string, string],
             },
-            note: 'At ' + full + '% full the water factor is ' + water.toFixed(2)
+            note: 'Soil pores, with water and air in them, and how fast the dead material rots. '
+                + ('At ' + full + '% full the water factor is ' + water.toFixed(2)
                 + ', the air factor ' + air.toFixed(2) + ', so rotting runs at '
                 + rate.toFixed(2) + ' of its best. '
                 + (atPeak ? 'This is the peak.'
-                    : (full < PEAK_AT ? 'Water is short here.' : 'Air is short here.')),
+                    : (full < PEAK_AT ? 'Water is short here.' : 'Air is short here.'))),
         };
     };
 

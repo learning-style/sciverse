@@ -106,7 +106,8 @@ export const L3B10HabitatLab = ({ state, onStateChange }: Props) => {
                 high: 'all species left',
                 stops: ['#fef2f2', '#86efac', '#15803d'] as [string, string, string],
             },
-            note: `With ${area.toLocaleString()} km² of the 10,000 km² forest left and z = ${z.toFixed(2)}, about ${Math.round(species)} of the 400 species remain.`,
+            note: 'A forest shrinking, and the species left in what is still standing. '
+                + (`With ${area.toLocaleString()} km² of the 10,000 km² forest left and z = ${z.toFixed(2)}, about ${Math.round(species)} of the 400 species remain.`),
         };
     };
 

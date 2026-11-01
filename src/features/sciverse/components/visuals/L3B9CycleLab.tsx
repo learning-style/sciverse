@@ -92,7 +92,8 @@ export const L3B9CycleLab = ({ state, onStateChange }: Props) => {
                 high: 'most cells dividing',
                 stops: ['#fff1f2', '#fb7185', '#9f1239'] as [string, string, string],
             },
-            note: `${dividing} of ${COUNTED} cells are in mitosis, so a ${hours}-hour cycle spends ${inMitosis.toFixed(1)} hours dividing and ${inInterphase.toFixed(1)} hours in interphase.`,
+            note: 'A field of cells under a microscope, and how many are caught dividing. '
+                + (`${dividing} of ${COUNTED} cells are in mitosis, so a ${hours}-hour cycle spends ${inMitosis.toFixed(1)} hours dividing and ${inInterphase.toFixed(1)} hours in interphase.`),
         };
     };
 
