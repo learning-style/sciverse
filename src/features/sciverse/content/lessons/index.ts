@@ -322,7 +322,7 @@ import { getL3B27Script } from './l3b27-the-enzyme-that-cannot-leave';
 import { getL2P28Script } from './l2p28-two-ways-to-pump-more';
 import { getL3P28Script } from './l3p28-the-beat-that-cannot-fill';
 import { getL3C28Script } from './l3c28-the-store-that-takes-no-water';
-import { getL3B28Script } from './l3b28-the-litres-come-from-somewhere';
+import { getL3B28Script } from './l3b28-what-a-litre-lets-go';
 import { getL2C28Script } from './l2c28-no-room-in-the-blood';
 import { getL2B28Script } from './l2b28-the-factor-with-no-room';
 import { getL3P16Script } from './l3p16-making-a-field';
@@ -2008,7 +2008,7 @@ export const LESSON_REGISTRY: LessonMeta[] = [
     { id: 'l2p28', title: 'Two Ways to Pump More', subtitle: 'Rate times volume per beat, and only one has room', discipline: 'physics', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🫀', accentColor: 'indigo', crossLinks: ['p28', 'l2p24'], level: 2 },
     { id: 'l3p28', title: 'The Beat That Cannot Fill', subtitle: 'A cycle has two parts, and only one of them can be hurried', discipline: 'physics', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🫀', accentColor: 'indigo', crossLinks: ['l2p28', 'l3p11'], level: 3 },
     { id: 'l3c28', title: 'The Store That Takes No Water', subtitle: 'Osmotic pull counts particles and ignores mass', discipline: 'chemistry', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🧪', accentColor: 'emerald', crossLinks: ['l2c28', 'l3c27'], level: 3 },
-    { id: 'l3b28', title: 'The Litres Come From Somewhere', subtitle: 'Output times share, and the one floor that never pays', discipline: 'biology', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🩸', accentColor: 'rose', crossLinks: ['l2b28', 'l3p11'], level: 3 },
+    { id: 'l3b28', title: 'What a Litre Lets Go', subtitle: 'The oxygen dissociation curve, and why a working muscle gets more', discipline: 'biology', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🩸', accentColor: 'rose', crossLinks: ['l2b28', 'l2p28'], level: 3 },
     { id: 'l2c28', title: 'No Room in the Blood', subtitle: 'Less than a teaspoon, against a 15 gram slice', discipline: 'chemistry', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🩸', accentColor: 'emerald', crossLinks: ['c28', 'l2c27'], level: 2 },
     { id: 'l2b28', title: 'The Factor With No Room', subtitle: 'A litre carries 200 mL, and that is the whole ceiling', discipline: 'biology', bigIdea: 28, bigIdeaTitle: 'How Do Body Systems Work Together?', icon: '🫁', accentColor: 'rose', crossLinks: ['l2p28', 'l2c28'], level: 2 },
     { id: 'l3b23', title: 'Why the Edge Does the Work', subtitle: 'One rule for every shape: the largest circle that fits', discipline: 'biology', bigIdea: 23, bigIdeaTitle: 'How Do Materials Break and Recover?', icon: '⭕', accentColor: 'rose', crossLinks: ['l2b23', 'l3c23'], level: 3 },

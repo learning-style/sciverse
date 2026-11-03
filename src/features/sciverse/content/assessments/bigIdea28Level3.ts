@@ -6,7 +6,7 @@ import { AssessmentData } from '../../types';
  * filling is left, so the output peaks at 171 and is zero at 300), L3C28 (osmotic
  * pull is colligative: joining glucose into chains of 50,000 divides the particle
  * count without touching the mass), and L3B28 (flow to a muscle is output times
- * share, 4.0 x 4.2 = 16.6, above a brain floor that is never squeezed).
+ * the oxygen dissociation curve, and the Bohr shift that moves it).
  *
  * The distractors are the mistakes each lesson works through: treating the two
  * cardiac factors as independent, reaching for mass where the water counts
@@ -45,11 +45,11 @@ export const bigIdea28Level3Assessment: AssessmentData = {
             id: 3,
             difficulty: 'easy',
             discipline: 'biology',
-            question: 'The blood reaching one working muscle is:',
-            options: ['The heart\'s output multiplied by that muscle\'s share of it', 'The heart\'s output, since all of it passes through every tissue', 'Fixed by the muscle\'s size', 'The heart\'s output divided by the number of organs'],
-            correctIndex: 0,
-            hint: 'Two numbers, not one.',
-            explanation: 'Output times share. At rest a muscle takes 20% of 5.0 L/min, which is 1.0; in hard exercise it takes 83% of 20.0, which is 16.6. Both factors rose, which is why the supply went up sixteen times when the heart only managed four.'
+            question: 'Blood leaves the lungs 98% saturated and reaches a resting muscle, where haemoglobin is 77% saturated. How much of a litre of 200 mL does it give up?',
+            options: ['All 200 mL', 'About 150 mL', 'About 40 mL, because the difference is 21% and 21% of 200 is about 40', 'None, until the muscle starts working'],
+            correctIndex: 2,
+            hint: 'Read both saturations and subtract.',
+            explanation: 'The difference between arriving and leaving is what the tissue got. That is where L2B28 got its resting figure of 50 mL, and it means three quarters of the cargo goes straight back to the lungs -- not waste, but the reserve available if the muscle works harder.'
         },
         {
             id: 4,
@@ -76,16 +76,11 @@ export const bigIdea28Level3Assessment: AssessmentData = {
             id: 6,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'A heart quadruples its output from 5.0 to 20.0 L/min, and a working muscle ends up with 16.6 L/min instead of 1.0. Where did the extra four-fold come from?',
-            options: [
-                'From the muscle extracting more oxygen from each litre',
-                'From blood held in reserve and released during exercise',
-                'From the heart, which actually managed sixteen times its resting output',
-                'From the muscle\'s share, which rose from 20% to 83% — the gut and the kidneys gave it up'
-            ],
-            correctIndex: 3,
-            hint: 'Two factors multiply. The question names one of them.',
-            explanation: 'The total rose x4.0 and the share rose x4.2, and 4.0 x 4.2 = 16.6. With the shares left alone the muscle would have had 20% of 20.0 = 4.0 L/min, which at L2B28\'s 200 mL ceiling is only 800 mL of oxygen a minute against the 3,000+ a sprint needs. Nothing was created: it was taken.'
+            question: 'Why is the oxygen dissociation curve S-shaped rather than a straight line?',
+            options: ['Because red cells change shape as they squeeze through a capillary', 'Because haemoglobin carries four oxygens, and binding one makes the next easier to bind', 'Because oxygen dissolves more readily at high pressure', 'Because blood slows down in the capillaries'],
+            correctIndex: 1,
+            hint: 'How many oxygens does one haemoglobin molecule carry?',
+            explanation: 'One haemoglobin is four subunits. Binding the first oxygen changes the shape of the whole molecule so the second binds more easily, and the second helps the third. That is cooperative binding: shallow at the start because the first is hard to attach, steep in the middle as each helps the next, and flat at the top once almost no sites are left.'
         },
         {
             id: 7,
@@ -101,11 +96,11 @@ export const bigIdea28Level3Assessment: AssessmentData = {
             id: 8,
             difficulty: 'medium',
             discipline: 'biology',
-            question: 'A muscle\'s arterioles double in radius. By L3P11, flow through a tube goes as the fourth power of the radius. What happens to the flow?',
-            options: ['It doubles', 'It quadruples', 'It rises sixteen-fold', 'It rises by 19%'],
+            question: 'The same drop of 2.7 kPa releases about 2% of the load high on the curve and about 45% in the middle. What does that buy?',
+            options: ['Nothing useful; it is a side effect of the protein shape', 'It makes the blood carry more oxygen in total', 'Blood still leaves the lungs nearly full when air is thin, while a small fall at a muscle unloads a large share', 'It lets the lungs work at a lower pressure than the tissues'],
             correctIndex: 2,
-            hint: 'Two to the fourth power.',
-            explanation: '2⁴ = 16, which is exactly the muscle\'s sixteen-fold rise. A vessel a tenth of a millimetre across becoming two tenths redirects a fifth of the whole circulation, which is why a ring of smooth muscle too small to see is a sufficient steering mechanism. Going the other way, a mere 19% widening already doubles the flow.'
+            hint: 'Where on the curve is blood loading, and where is it unloading?',
+            explanation: 'The curve is flat exactly where blood loads and steep exactly where it unloads. High on the flat part the partial pressure can fall a long way -- a head cold, thin mountain air -- and the blood still leaves nearly full. Down on the steep part a small fall dumps a large share. Being hard to move at the top and easy to move in the middle is what makes haemoglobin a delivery system rather than a container.'
         },
         // ── HARD ──
         {
@@ -142,16 +137,11 @@ export const bigIdea28Level3Assessment: AssessmentData = {
             id: 11,
             difficulty: 'hard',
             discipline: 'biology',
-            question: 'The brain takes 0.75 L/min at rest and 0.75 L/min at maximum effort, while its share falls from 15% to under 4%. What does that make it?',
-            options: [
-                'A small customer, so there is never pressure on its supply',
-                'A coincidence of these numbers; at other efforts its flow rises and falls too',
-                'A floor rather than a share — every other organ competes for what is left above it',
-                'The organ most willing to give up flow, since its share drops so far'
-            ],
-            correctIndex: 2,
-            hint: 'Ask what would happen if it were squeezed like the gut.',
-            explanation: 'The brain is 2% of your mass and takes 15% of a resting circulation -- seven times its share by weight, and the most expensive tissue you own per gram. What is unusual is how little its demand varies, and its arterioles hold that flow steady against whatever else is happening. That is why fainting is the first visible sign that a total has collapsed, and why lying a fainting person flat is the treatment: it removes the height the blood had to be pushed up, so a smaller output can still meet the floor.'
+            question: 'A working muscle makes carbon dioxide, which makes the blood slightly acidic, which shifts the dissociation curve to the right. What is doing the deciding?',
+            options: ['The brain, which detects the working muscle and signals the blood to release more', 'Nothing measures or decides: the waste the muscle makes is itself the signal, so oxygen is released where it is being used', 'The heart, which pumps harder and forces more oxygen out', 'The lungs, which load the blood differently for a working body'],
+            correctIndex: 1,
+            hint: 'Walk the chain and ask which step involves anything noticing anything.',
+            explanation: 'Every link is ordinary chemistry happening where it happens: the muscle respires, respiring makes carbon dioxide, carbon dioxide makes the blood acidic, acid loosens the grip on oxygen. No nerve carries a request and no hormone is released. The signal arrives exactly where it is needed because that is where it was made -- which is how body systems work together with nothing in charge. The heart changes how many litres arrive, which is a different factor.'
         },
         {
             id: 12,

@@ -160,3 +160,33 @@ Reinstating the parked version would put an un-derivable period back into the sl
 closes the Big Idea. The Lotka-Volterra model is genuinely Level 4: it belongs in a
 lesson that can afford linearisation, where the period is derived rather than handed
 over.
+
+## l3b28-the-litres-come-from-somewhere.ts, L3B28ShareLab.tsx
+
+Parked November 2026, replaced by `l3b28-what-a-litre-lets-go.ts` and
+`L3B28CurveLab.tsx`. A reader said it was med school material and that the Big Idea's
+question had stopped being asked. Both were right.
+
+It was **regional blood flow redistribution**: output times share, the muscle going from
+20% to 83% while the gut and kidneys are squeezed, arterioles doubling their radius and
+L3P11's `radius⁴` turning that into x16, above a brain floor of 0.75 L/min. The
+arithmetic is sound and the mechanism is real -- it is simply undergraduate physiology.
+It appears in no AP Biology, A-level Biology or NGSS unit; the nearest high school course
+that teaches it is A-level PE. And *How Do Body Systems Work Together?* is not answered
+by a table of organ perfusions, which is the reader's second and better point.
+
+The replacement is squarely on the syllabus: the **oxygen dissociation curve**, which is
+core AP Biology and core A-level Biology, and where **reading values off the graph is the
+examined skill**. It also removes exactly what L2B28 confessed to -- that its *taken from
+each litre* was an average with no account of where 50 and 170 came from. The curve
+supplies both: 98% in the lungs against 77% at a resting muscle is 21% of 200 mL, about
+40; against 33% at a working one it is about 130; and with the **Bohr shift** about 155.
+
+And it answers the Big Idea properly. A working muscle makes carbon dioxide, which makes
+the blood acidic, which loosens haemoglobin's grip -- so **the waste left over from using
+oxygen is the signal that releases more of it**, with no nerve, no hormone and nothing
+measuring anything. Systems work together by one system's output being another's input.
+
+Reinstating the parked version would put undergraduate physiology back into a high
+school slot. Regional perfusion belongs in a physiology course, where arteriolar tone
+can be taught properly rather than asserted.
