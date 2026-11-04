@@ -223,23 +223,23 @@ export const L3B5SkinLab = ({ state, onStateChange }: Props) => {
         outlineText(ctx, 'air ' + humid + '% full of water',
             safeRight / 2, stageBottom - 34, 'bold 12px monospace', VAPOUR, 'center', safeRight - 30);
 
-        fitText(ctx, drying ? 'water leaves with heat' : 'as many come back',
+        fitText(ctx, drying ? 'Vapour takes heat' : 'Liquid takes none',
             safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, drying ? 'The sweat thins' : 'The sweat runs off instead',
+        fitText(ctx, drying ? 'The sweat layer thins' : 'The sweat layer runs off',
             safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {
                 fraction: leaving,
-                caption: 'Room Left in the Air',
-                low: 'none: the sweat stays',
-                high: 'dry: the water leaves',
+                caption: 'Room in the Air for Sweat',
+                low: 'sweat as liquid',
+                high: 'sweat as vapour',
                 stops: ['#64748b', SWEAT, HEAT] as [string, string, string],
             },
             note: 'A slice through skin, from the gland up to the air. '
                 + (drying
-                ? 'The air is ' + humid + '% full, so water leaves the sweat faster than it comes back. The layer thins, and every molecule that leaves takes heat from the skin with it.'
-                : 'The air is ' + humid + '% full, so as much water comes back to the sweat as leaves it. The gland is working just as hard, the layer thickens and runs off, and the heat stays in.'),
+                ? 'The air is ' + humid + '% full, so water leaves the sweat as vapour faster than it comes back. The layer thins, and every molecule that leaves takes heat from the skin with it.'
+                : 'The air is ' + humid + '% full, so as much water comes back to the sweat as leaves it. The gland works as hard, the layer thickens and runs off as liquid, and no heat leaves.'),
         };
     };
 

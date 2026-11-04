@@ -87,7 +87,7 @@ export const L3B13StomataLab = ({ state, onStateChange }: Props) => {
                 fraction: Math.max(0, Math.min(1, perLitre / 6)),
                 caption: 'Sugar for Each Litre',
                 low: 'no sugar made',
-                high: 'the most sugar',
+                high: 'the most sugar made',
                 stops: ['#e0f2fe', '#86efac', '#15803d'] as [string, string, string],
             },
             note: "A leaf's pores, and what they cost the plant. "

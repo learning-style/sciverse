@@ -167,8 +167,8 @@ export const L3B6BladderLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, sac / (NEUTRAL * 2))),
                 caption: 'How Big the Sac Is',
-                low: 'squeezed: it sinks',
-                high: 'too big: it rises',
+                low: 'small: it sinks',
+                high: 'big: it rises',
                 stops: [DOWN, SACLINE, UP] as [string, string, string],
             },
             note: 'A fish at depth, with the gas sac that holds it level. '

@@ -145,8 +145,8 @@ export const L3B24MurrayLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, lowest / total)),
                 caption: 'How Near the Lowest Cost',
-                low: 'paying far too much',
-                high: 'the lowest cost',
+                low: 'paying too much',
+                high: 'paying the lowest',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
             note: 'A xylem vessel, and the two costs that set its radius. '

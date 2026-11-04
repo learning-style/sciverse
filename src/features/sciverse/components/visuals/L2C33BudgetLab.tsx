@@ -106,8 +106,8 @@ export const L2C33BudgetLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (net + 1.8) / 3.6)),
                 caption: 'Carbon Source or Carbon Sink',
-                low: 'Sink: air losing',
-                high: 'Source: air gaining',
+                low: 'Sink: losing',
+                high: 'Source: gaining',
                 // Asserted as a tuple: drawScene is a standalone const, so the
                 // contextual type from LabFooter never reaches this literal and it
                 // would otherwise infer as string[].

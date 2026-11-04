@@ -127,7 +127,7 @@ export const L2C24JunctionLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, share)),
                 caption: 'The Full Burn',
-                low: 'much CO: dangerous',
+                low: 'much CO: danger',
                 high: 'little CO: safer',
                 stops: ['#b45309', '#fcd34d', EMERALD] as [string, string, string],
             },

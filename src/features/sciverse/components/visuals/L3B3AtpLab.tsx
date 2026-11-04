@@ -106,8 +106,8 @@ export const L3B3AtpLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, pct / 100)),
                 caption: 'Share Caught as ATP',
-                low: 'Almost all heat',
-                high: 'Most of it caught',
+                low: 'little caught',
+                high: 'most caught',
             },
             note: 'The energy in one glucose, and how much of it is caught in ATP. '
                 + (`${Math.round(caught)} kJ of glucose's 2,870 kJ is caught in ${count} ATP. The other ${Math.round(heat)} kJ is released as heat along the way.`),

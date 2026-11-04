@@ -124,7 +124,7 @@ export const L2C25ChainLab = ({ state, onStateChange }: Props) => {
                 fraction: Math.max(0, Math.min(1, Math.log10(chain) / 6)),
                 caption: 'Cycles Before It Stops',
                 low: 'a hundred cycles',
-                high: 'a million: more damage',
+                high: 'a million cycles',
                 stops: ['#ecfdf5', '#fcd34d', CARRIER] as [string, string, string],
             },
             note: 'Stopped on 1 cycle in ' + big(stopOne) + ', a carrier gets ' + big(chain)

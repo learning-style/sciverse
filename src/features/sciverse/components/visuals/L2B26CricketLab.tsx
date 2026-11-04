@@ -155,8 +155,8 @@ export const L2B26CricketLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (temp - T_LOW) / (T_HIGH - T_LOW))),
                 caption: 'What the Cricket Says',
-                low: 'too cold to chirp',
-                high: 'outside the range',
+                low: 'cold: slower',
+                high: 'warm: faster',
                 stops: ['#eef2ff', '#6ee7b7', YOURS] as [string, string, string],
             },
             note: 'The ticks are one cricket chirping at one steady rate. You heard '

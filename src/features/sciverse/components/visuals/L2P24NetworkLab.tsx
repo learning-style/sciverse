@@ -153,8 +153,8 @@ export const L2P24NetworkLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, delivery / 80)),
                 caption: 'Water Delivered',
-                low: 'almost nothing arrives',
-                high: 'every pipe flat out',
+                low: 'nothing arrives',
+                high: 'all of it arrives',
                 stops: ['#eef2ff', '#818cf8', INDIGO] as [string, string, string],
             },
             note: trunkTight

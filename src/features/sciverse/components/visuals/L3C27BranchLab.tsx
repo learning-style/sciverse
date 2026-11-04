@@ -188,8 +188,8 @@ export const L3C27BranchLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, share / 0.06)),
                 caption: 'Joins Amylase Cannot Cut',
-                low: 'nearly all cuttable',
-                high: '5% of joins stuck',
+                low: '1 in 50 stuck',
+                high: '1 in 20 stuck',
                 stops: [CHAIN, '#fcd34d', STUCK] as [string, string, string],
             },
             note: grams + ' g of starch is ' + grams + '/162 = ' + moles.toFixed(3)

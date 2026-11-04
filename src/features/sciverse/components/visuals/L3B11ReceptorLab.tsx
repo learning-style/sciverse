@@ -173,8 +173,8 @@ export const L3B11ReceptorLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, count / 8)),
                 caption: 'Cells That Fit This Germ',
-                low: 'a handful: five days',
-                high: 'thousands: two days',
+                low: 'handful: 5 days',
+                high: 'thousands: 2 days',
                 stops: [GREY, DIM, LIT] as [string, string, string],
             },
             note: !binds

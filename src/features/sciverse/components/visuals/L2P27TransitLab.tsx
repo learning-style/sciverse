@@ -117,7 +117,7 @@ export const L2P27TransitLab = ({ state, onStateChange }: Props) => {
                 fraction: Math.max(0, Math.min(1, Math.log10(ratio) / Math.log10(300))),
                 caption: 'Squeezes Per Length',
                 low: 'carrying the food',
-                high: 'mixing it instead',
+                high: 'mixing the food',
                 stops: ['#e0f2fe', '#fcd34d', FOOD] as [string, string, string],
             },
             note: carrying

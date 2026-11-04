@@ -102,7 +102,7 @@ export const L3B10HabitatLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, species / FULL_SPECIES)),
                 caption: 'Species Left',
-                low: 'none left',
+                low: 'no species left',
                 high: 'all species left',
                 stops: ['#fef2f2', '#86efac', '#15803d'] as [string, string, string],
             },

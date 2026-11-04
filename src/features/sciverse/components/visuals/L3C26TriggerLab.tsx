@@ -210,7 +210,7 @@ export const L3C26TriggerLab = ({ state, onStateChange }: Props) => {
                 fraction: Math.max(0, Math.min(1, (rate - 4) / 8)),
                 caption: 'The Air Cooling Rate',
                 low: 'under 5.5: stable',
-                high: 'over 10: by itself',
+                high: 'over 10: storms',
                 stops: [COLD, '#6ee7b7', WARM] as [string, string, string],
             },
             note: stable

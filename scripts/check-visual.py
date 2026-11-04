@@ -625,6 +625,17 @@ def selftest():
          ACCENT_FOR[accent_rows(right)[0][1]] == accent_rows(right)[0][2], True)
     want('the corpus agrees with its disciplines', accent_scan(), [])
 
+    # The meter's two end labels share one 13px line across a 272px bar on a phone.
+    # The real failure is L3P28's pair, which needed 400px; its replacement fits.
+    def ends_px(lo, hi):
+        return round((len(lo) + len(hi)) * END_PX + END_GAP)
+    want('L3P28 overlapped on a phone',
+         ends_px('too fast: beats half empty', 'every beat full of blood') > METER_W, True)
+    want('its replacement fits', ends_px('beats half empty', 'beats full') <= METER_W, True)
+    want('a 33-char pair is the practical ceiling',
+         ends_px('sweat as liquid', 'sweat as vapour') <= METER_W, True)
+    want('the corpus has no overlapping meter ends', meter_ends_scan(), [])
+
     # The shrink has an 8px floor, so a long string goes illegible rather than failing.
     # Both directions: a line that fits must stay quiet, or 223 labs would report.
     want('a 12px line of 29 chars still renders at 12', shrunk_to(29, 12, PANEL - 30), 12)
@@ -811,6 +822,45 @@ def orientation_scan():
     return out
 
 
+# ---------------------------------------------------------------------------
+# The meter's two end labels share one line: `low` is drawn left-aligned at the
+# bar's left edge and `high` right-aligned at its right edge, both in bold 13px
+# monospace, across a bar `Math.min(W - 48, 620)` wide. On a 320px phone that is
+# 272px, so a pair whose two strings together need more than that overlaps --
+# exactly the way L2B23's two captions printed on top of one another, and
+# invisible to the stage-bounds check because the footer band is not the stage.
+#
+# A reader hit the wording half of this first: L3B5 read 'none: the sweat stays'
+# against 'dry: the water leaves', which is two different subjects and two
+# different sentence shapes at the two ends of one quantity. The wording rule is
+# a judgement and stays in CLAUDE.md; this is the half that can be measured.
+METER_W = 272         # Math.min(W - 48, 620) at a 320px phone canvas
+END_PX = 13 * 0.6     # bold 13px monospace advance
+END_GAP = 10          # the smallest gap that still reads as two labels
+
+
+def meter_ends_scan():
+    """Meter pairs whose two end labels collide on a 320px phone canvas."""
+    probs = []
+    for name in sorted(os.listdir(VISUALS)):
+        if not name.endswith('.tsx') or name == 'LabCanvas.tsx':
+            continue
+        src = open(os.path.join(VISUALS, name)).read()
+        for m in re.finditer(r'meter:\s*\{(.*?)\n\s*\},', src, re.S):
+            body = m.group(1)
+            lo = re.search(r"low:\s*'((?:[^'\\]|\\.)*)'", body)
+            hi = re.search(r"high:\s*'((?:[^'\\]|\\.)*)'", body)
+            if not (lo and hi):
+                continue       # built from an expression; est_len cannot place it
+            need = (len(lo.group(1)) + len(hi.group(1))) * END_PX + END_GAP
+            if need > METER_W:
+                probs.append(name + ": meter ends need " + str(round(need))
+                             + "px of " + str(METER_W) + " on a phone, so '"
+                             + lo.group(1) + "' and '" + hi.group(1)
+                             + "' overlap")
+    return probs
+
+
 def accent_rows(index_src):
     """(id, discipline, accentColor) for every registry row that carries all three."""
     return re.findall(r"\{ id: '([a-z0-9]+)',[^}]*?discipline: '(\w+)',"
@@ -881,6 +931,10 @@ def main():
     for m in mism:
         print('!! ' + m)
     print(str(len(mism)) + ' accent(s) disagreeing with their lesson\'s discipline')
+    ends = meter_ends_scan()
+    for e in ends:
+        print('!! ' + e)
+    print(str(len(ends)) + ' meter end-label pair(s) that overlap on a phone')
     tiny = tiny_scan()
     orient = orientation_scan()
     print(str(len(orient)) + ' note(s) open with a reading rather than with what the'
@@ -888,7 +942,7 @@ def main():
     print(str(len(tiny)) + ' string(s) cannot reach 11px at a ' + str(PANEL)
           + 'px panel, in ' + str(len({t[0] for t in tiny})) + ' lab(s)'
           + ' -- a backlog; this number should only ever go down')
-    return 1 if total or mism else 0
+    return 1 if total or mism or ends else 0
 
 
 if __name__ == '__main__':

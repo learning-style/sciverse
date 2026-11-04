@@ -112,7 +112,7 @@ export const L2P25DoublingLab = ({ state, onStateChange }: Props) => {
                 fraction: Math.max(0, Math.min(1, error / DEAD)),
                 caption: 'How Wrong the Forecast Is',
                 low: 'still useful',
-                high: 'as wrong as the weather',
+                high: 'no longer useful',
                 stops: ['#eef2ff', '#fcd34d', GONE] as [string, string, string],
             },
             note: 'A starting error of ' + start.toFixed(6) + ' °C doubles ' + steps

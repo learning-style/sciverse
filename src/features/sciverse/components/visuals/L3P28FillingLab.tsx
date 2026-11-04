@@ -138,8 +138,8 @@ export const L3P28FillingLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, out / bestOut)),
                 caption: 'Blood Out, Against the Best',
-                low: 'too fast: beats half empty',
-                high: 'every beat full of blood',
+                low: 'beats half empty',
+                high: 'beats full',
                 stops: [MUTED, '#a5b4fc', GOOD] as [string, string, string],
             },
             // the opening sentence says what the picture IS, before any dialled value,

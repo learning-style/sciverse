@@ -177,8 +177,8 @@ export const L3B27BrushBorderLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: share,
                 caption: 'The Last 3% Finished',
-                low: 'the pieces travel on',
-                high: 'all of it cut and taken in',
+                low: 'none taken in',
+                high: 'all taken in',
                 stops: [MEMBRANE, '#fcd34d', ENZYME] as [string, string, string],
             },
             note: 'The gut wall up close, with its enzymes. '

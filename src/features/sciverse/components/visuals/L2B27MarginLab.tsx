@@ -180,7 +180,7 @@ export const L2B27MarginLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: share,
                 caption: 'How Much of the Meal Is Cut',
-                low: 'part of it leaves uncut',
+                low: 'part of it uncut',
                 high: 'all of it cut',
                 stops: [LOST, '#fcd34d', SPARE] as [string, string, string],
             },

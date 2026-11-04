@@ -163,7 +163,7 @@ export const L3B22ImpedanceLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: meterFrac(pct),
                 caption: 'Pulse Reflected (stretched)',
-                low: 'faint: ideal for a scan',
+                low: 'faint: ideal scan',
                 high: 'total: no scan',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },

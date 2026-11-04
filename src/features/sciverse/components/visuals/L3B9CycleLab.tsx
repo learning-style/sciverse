@@ -88,8 +88,8 @@ export const L3B9CycleLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, index / 0.3)),
                 caption: 'Mitotic Index',
-                low: 'no cells dividing',
-                high: 'most cells dividing',
+                low: 'no cells divide',
+                high: 'most cells divide',
                 stops: ['#fff1f2', '#fb7185', '#9f1239'] as [string, string, string],
             },
             note: 'A field of cells under a microscope, and how many are caught dividing. '

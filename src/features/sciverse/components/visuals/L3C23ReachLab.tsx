@@ -115,7 +115,7 @@ export const L3C23ReachLab = ({ state, onStateChange }: Props) => {
                 fraction: Math.max(0, Math.min(1, pctSafe / 100)),
                 caption: 'How Much Bare Steel Is Protected',
                 low: 'the middle rusts',
-                high: 'all of it protected',
+                high: 'nothing rusts',
                 stops: ['#fef2f2', '#6ee7b7', EMERALD] as [string, string, string],
             },
             note: 'A ' + bareMm + ' mm bare strip wet with ' + wetName + ', which carries the circuit about '

@@ -84,7 +84,7 @@ export const L3P12OrbitLab = ({ state, onStateChange }: Props) => {
                 fraction: Math.max(0, Math.min(1, speed / MAX_SPEED)),
                 caption: 'Orbit Speed',
                 low: 'too slow to orbit',
-                high: 'fast enough to orbit',
+                high: 'fast enough',
                 stops: ['#e0e7ff', '#818cf8', '#3730a3'] as [string, string, string],
             },
             note: `At ${height.toLocaleString()} km up, gravity is ${gravity.toFixed(2)} N/kg, so a circular orbit needs ${(speed / 1000).toFixed(1)} km/s and one lap takes ${lapText(lap)} -- whatever the satellite's mass.`,

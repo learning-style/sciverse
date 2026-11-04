@@ -109,8 +109,8 @@ export const L3B18MarginLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, share)),
                 caption: 'Spare Oxygen Left to the Trout',
-                low: '0%',
-                high: '100% of the ' + REF + ' °C spare',
+                low: 'no spare left',
+                high: 'all the spare left',
                 stops: ['#fff1f2', '#fda4af', SAFE] as [string, string, string],
             },
             note: 'A river warming, and the trout in it. '

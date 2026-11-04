@@ -183,8 +183,8 @@ export const L3B26ThermalLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, stalled ? 0 : 1 - windowDays / 20)),
                 caption: 'How Sure of the Date',
-                low: 'weeks either side',
-                high: 'inside a day',
+                low: 'weeks either way',
+                high: 'a day either way',
                 stops: [DEAD, '#fcd34d', DOUBT] as [string, string, string],
             },
             note: 'A corn plant on its way to tasselling. '

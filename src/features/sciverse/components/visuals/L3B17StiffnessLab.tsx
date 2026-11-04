@@ -78,8 +78,8 @@ export const L3B17StiffnessLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, (gain - 1) / 49)),
                 caption: 'Stiffness Gain',
-                low: 'same as the rod',
-                high: '50 times',
+                low: '1 x the rod',
+                high: '50 x the rod',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
             note: 'A bone rolled from a rod into a tube. '

@@ -222,8 +222,8 @@ export const L3B16HeadLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, inc / MAX_INC)),
                 caption: 'The Tilt There Is To Read',
-                low: 'level: no poleward',
-                high: 'steep: a firm heading',
+                low: 'level: no heading',
+                high: 'steep: a heading',
                 stops: [DEAD, '#fda4af', MAG] as [string, string, string],
             },
             note: "The head of a bird, with the field running through it. "

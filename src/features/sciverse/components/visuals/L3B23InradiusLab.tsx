@@ -104,7 +104,7 @@ export const L3B23InradiusLab = ({ state, onStateChange }: Props) => {
                 fraction: Math.max(0, Math.min(1, days / MAX_DAYS)),
                 caption: 'Days to Close',
                 low: 'closed in a day',
-                high: 'three weeks of it',
+                high: 'closed in weeks',
                 stops: ['#fff1f2', '#fda4af', ROSE] as [string, string, string],
             },
             note: 'A wound of one area, and the largest circle that fits inside it. '

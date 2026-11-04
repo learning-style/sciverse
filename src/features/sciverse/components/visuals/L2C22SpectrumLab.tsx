@@ -118,7 +118,7 @@ export const L2C22SpectrumLab = ({ state, onStateChange }: Props) => {
                 fraction: Math.max(0, Math.min(1, have / 7500)),
                 caption: 'Resolving Power You Have',
                 low: 'too blunt to trust',
-                high: 'sharp enough to trust',
+                high: 'sharp enough',
                 stops: ['#ecfdf5', '#6ee7b7', EMERALD] as [string, string, string],
             },
             note: 'At ' + nm.toFixed(1) + ' nm an instrument sharp to ' + sharp.toFixed(1)

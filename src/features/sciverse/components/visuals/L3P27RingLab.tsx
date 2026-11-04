@@ -178,7 +178,7 @@ export const L3P27RingLab = ({ state, onStateChange }: Props) => {
                 fraction: Math.max(0, Math.min(1, flat ? 1 : margin / 4)),
                 caption: 'Strength Against the Lift',
                 low: 'too weak to lift it',
-                high: 'three times over',
+                high: 'strong enough',
                 stops: [LOSE, '#fcd34d', WIN] as [string, string, string],
             },
             note: flat

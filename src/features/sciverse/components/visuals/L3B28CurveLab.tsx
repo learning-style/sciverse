@@ -148,8 +148,8 @@ export const L3B28CurveLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, given / CAP)),
                 caption: 'Oxygen Given to the Tissue',
-                low: 'blood passes by full',
-                high: 'nearly all its load',
+                low: 'gives up none',
+                high: 'gives up nearly all',
                 stops: ['#fff1f2', '#fda4af', GIVEN] as [string, string, string],
             },
             note: 'The curve is how tightly haemoglobin holds oxygen at each pressure, and the bar under is the'

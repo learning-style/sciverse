@@ -146,8 +146,8 @@ export const L3C22LadderLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, gap / RY)),
                 caption: 'Energy of the Jump',
-                low: 'small drop: infrared',
-                high: 'big drop: ultraviolet',
+                low: 'small: infrared',
+                high: 'big: ultraviolet',
                 stops: ['#ecfdf5', '#6ee7b7', EMERALD] as [string, string, string],
             },
             note: valid

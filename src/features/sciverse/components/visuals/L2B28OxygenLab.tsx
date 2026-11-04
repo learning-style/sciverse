@@ -148,8 +148,8 @@ export const L2B28OxygenLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, take / 200)),
                 caption: 'Taken From Each Litre',
-                low: 'a resting muscle',
-                high: 'all of it: the ceiling',
+                low: 'little of the 200',
+                high: 'all of the 200',
                 stops: ['#bfdbfe', TAKEN, ARTERY] as [string, string, string],
             },
             note: 'Each litre arrives with ' + UNITS + ' units of oxygen, 10 mL each. The muscle takes '

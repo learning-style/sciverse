@@ -110,7 +110,7 @@ export const L3B25BufferLab = ({ state, onStateChange }: Props) => {
                 fraction: Math.max(0, Math.min(1, gain / 2)),
                 caption: 'Genes Broken Per Gene',
                 low: 'dies out: safe',
-                high: 'runs away: catastrophe',
+                high: 'runs away: fatal',
                 stops: [SAFE, '#fcd34d', BROKEN] as [string, string, string],
             },
             note: 'A switch gene and its reach, layer by layer across a network. '

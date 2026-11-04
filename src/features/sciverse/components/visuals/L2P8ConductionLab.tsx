@@ -85,8 +85,8 @@ export const L2P8ConductionLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: strength,
                 caption: 'Heat Flow Each Second',
-                low: 'small heat through',
-                high: 'much heat through',
+                low: 'small heat flow',
+                high: 'much heat flow',
                 stops: ['#e0e7ff', '#fdba74', '#c2410c'] as [string, string, string],
             },
             note: `${cm} cm of ${name}, 1 m² with a 20 °C difference between its faces, lets ${wattText(flow)} W of heat through each second.`,

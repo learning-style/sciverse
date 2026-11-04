@@ -88,8 +88,8 @@ export const L2B2CellSizeLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, foldedRatio / 6)),
                 caption: 'Surface For Each Unit of Volume',
-                low: 'The middle starves',
-                high: 'Plenty of surface',
+                low: 'little surface',
+                high: 'plenty of surface',
             },
             note: starving
                 ? `At ${side} µm the volume demands more than the surface can supply. Stay small, or fold the membrane.`

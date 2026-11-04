@@ -110,8 +110,8 @@ export const L3B19RottingPeakLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, rate)),
                 caption: 'How Fast Dead Material Rots',
-                low: 'stopped',
-                high: 'the best rate',
+                low: 'rotting stopped',
+                high: 'rotting fastest',
                 stops: ['#fff1f2', '#fdba74', BEST] as [string, string, string],
             },
             note: 'Soil pores, with water and air in them, and how fast the dead material rots. '

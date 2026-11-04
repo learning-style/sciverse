@@ -105,7 +105,7 @@ export const L3C24ControlLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, eqSteadier)),
                 caption: 'Settles on the Steadier',
-                low: 'an even mixture',
+                low: 'an even mix',
                 high: 'almost all steadier',
                 stops: ['#fef3c7', '#6ee7b7', STEADIER] as [string, string, string],
             },

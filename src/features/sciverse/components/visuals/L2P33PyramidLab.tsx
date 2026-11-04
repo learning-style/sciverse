@@ -81,7 +81,7 @@ export const L2P33PyramidLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.min(1, Math.pow(efficiency / 0.2, 0.5)),
                 caption: 'How Far the Energy Reaches',
-                low: 'Almost none reaches',
+                low: 'none reaches',
                 high: 'Reaches the top',
             },
             note,

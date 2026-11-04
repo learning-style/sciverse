@@ -86,7 +86,7 @@ export const L3B2DiffusionLab = ({ state, onStateChange }: Props) => {
                 fraction: Math.max(0, Math.min(1, 1 - arriveNow / (survive * 3))),
                 caption: 'Can Oxygen Arrive in Time?',
                 low: 'Arrives too late',
-                high: 'Arrives in good time',
+                high: 'Arrives in time',
             },
             note: 'A single cell, and how far oxygen must travel in it. '
                 + (starving

@@ -124,8 +124,8 @@ export const L3B15TimeLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, catchYear / ceiling)),
                 caption: 'The Catch Against Its Ceiling',
-                low: 'searching most days',
-                high: 'handling every day',
+                low: 'below the ceiling',
+                high: 'at the ceiling',
                 stops: [SEARCH_INK, '#fbbf24', HANDLE] as [string, string, string],
             },
             note: "A lynx's year, split by searching and handling. "

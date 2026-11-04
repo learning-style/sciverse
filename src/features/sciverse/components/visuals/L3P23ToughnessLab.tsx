@@ -107,8 +107,8 @@ export const L3P23ToughnessLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: stretch(crit),
                 caption: 'Crack It Tolerates (stretched)',
-                low: 'thinner than a hair',
-                high: 'visible, and inspectable',
+                low: 'too small to see',
+                high: 'visible by eye',
                 stops: ['#eef2ff', '#a5b4fc', INDIGO] as [string, string, string],
             },
             note: matName + ' has a toughness of ' + kic.toFixed(1) + ' MPa√m, so at '

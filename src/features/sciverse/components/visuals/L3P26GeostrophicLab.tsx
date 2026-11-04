@@ -188,8 +188,8 @@ export const L3P26GeostrophicLab = ({ state, onStateChange }: Props) => {
             meter: {
                 fraction: Math.max(0, Math.min(1, wind / WIND_CAP)),
                 caption: 'The Wind It Settles To',
-                low: 'a steady balance',
-                high: 'never settles at all',
+                low: 'it settles',
+                high: 'it never settles',
                 stops: ['#eef2ff', '#fcd34d', PUSH] as [string, string, string],
             },
             note: runaway
