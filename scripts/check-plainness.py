@@ -59,6 +59,12 @@ def prose(path):
 # explained where they are used. Matched through inflections by ordinary().
 ORDINARY_STEMS = set("""
 remark remarks remarkable
+# 'ocean' is 5 letters, so compound_ordinary()'s len <= 4 shortcut does not reach it
+# and 'open-ocean' -- 10 characters -- reported as a hard word. It had been passing
+# only because a DEFINING verb happened to sit inside the 140 characters after it,
+# which an edit to the NEXT bullet pushed out of range. A brittle pass, not a
+# definition; the word is everyday and belongs here.
+ocean oceans
 # number words, which were absent altogether: "twenty-four" reported
 # because compound_ordinary() asks ordinary() about each half, and
 # ordinary() reads this list and CORE -- never ORDINARY.
@@ -327,6 +333,16 @@ def selftest():
     assert defines(poss, "molecule's"), 'possessive of a defined term reported'
     assert not defines('we measured the homeostasis\'s value yesterday.',
                        "homeostasis's"), 'possessive read as defined'
+
+    # A hyphenated compound is only as plain as its longest half. 'open-ocean' is ten
+    # characters, so it reports unless compound_ordinary() can clear 'ocean' -- which
+    # needs the word in ORDINARY_STEMS, since compound_ordinary() reaches the lists
+    # through ordinary() and its len <= 4 shortcut stops at four letters.
+    assert compound_ordinary('open-ocean'), 'open-ocean still reads as jargon'
+    assert not hard_words('Perch and cod are open-ocean fish.'), \
+        'open-ocean reported: ' + repr(hard_words('Perch and cod are open-ocean fish.'))
+    # ...and widening it must not clear a compound whose halves are not everyday.
+    assert not compound_ordinary('enteric-coated'), 'the compound rule went too wide'
 
     print('selftest ok')
     return 0

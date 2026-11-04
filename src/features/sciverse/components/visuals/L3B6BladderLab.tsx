@@ -11,11 +11,21 @@ interface Props {
 // other, and the water column alongside.
 //
 // The dial mapping carries the lesson by itself. The sac's size is gas / pressure, and
-// 'neutral' is one fixed size -- so holding the fish level needs about 4 gas units at the
-// surface and about 84 at 200 m. The dial is therefore hypersensitive in the shallows and
+// 'neutral' is one fixed size -- so holding the fish level needs 41 cm3 of gas at the
+// surface and 861 at 200 m. The dial is therefore hypersensitive in the shallows and
 // sluggish deep down, which is exactly the instability the lesson is about, felt rather
 // than asserted.
-const NEUTRAL = 4;             // the sac size at which the fish neither rises nor sinks
+//
+// A reader asked how '4 units of gas squeezed to a sac of 4' was arrived at, and could
+// not find the calculation on the lesson side either. Both halves were real. The units
+// were arbitrary, so the division had nothing to divide; and the lesson had dropped
+// Boyle's law without putting anything in its place. The sac is now in cm3 and the gas
+// in cm3 MEASURED AT THE SURFACE -- a quantity of gas has no volume until you say what
+// presses on it -- so the footers can print the division itself. And 41 cm3 is not a new
+// number: it is L2B6's own answer for a 1,000 g fish hovering in seawater, so Level 3
+// inherits the figure and removes only the assumption that it stays that size.
+const NEUTRAL = 41;            // cm3 of sac a 1,000 g fish needs to hover -- L2B6's answer
+const DEAD = NEUTRAL * 0.06;   // the band within which the fish counts as level
 const BODY = '#64748b';
 const SAC = '#e0f2fe';
 const SACLINE = '#0369a1';
@@ -26,7 +36,7 @@ const UP = '#047857';
 const DOWN = '#b45309';
 
 const depthOf = (dial: number): number => Math.max(0, Math.min(200, Math.round(dial / 5) * 5));
-const gasOf = (dial: number): number => Math.max(0, Math.min(100, Math.round(dial)));
+const gasOf = (dial: number): number => Math.max(0, Math.min(900, Math.round(dial / 10) * 10));
 
 export const L3B6BladderLab = ({ state, onStateChange }: Props) => {
     const phase = (state.phase as string) || 'intro';
@@ -36,9 +46,10 @@ export const L3B6BladderLab = ({ state, onStateChange }: Props) => {
         const gas = gasOf(raw2);
         const atm = 1 + depth / 10;
         const sac = gas / atm;                    // squeezed by the water outside
+        const need = NEUTRAL * atm;               // cm3 at the surface to hold it level
         const off = sac - NEUTRAL;
-        const rising = off > 0.25;
-        const sinking = off < -0.25;
+        const rising = off > DEAD;
+        const sinking = off < -DEAD;
         const trim = (x: number) => x.toFixed(1).replace(/\.0$/, '');
 
         const artTop = stageTop + 18;
@@ -127,7 +138,7 @@ export const L3B6BladderLab = ({ state, onStateChange }: Props) => {
         }
 
         // which way the fish is going
-        const arm = Math.min(Math.abs(off) * 4, Math.max(0, artH * 0.5 - fH * 0.6 - 6), 20);
+        const arm = Math.min(Math.abs(off) * 0.5, Math.max(0, artH * 0.5 - fH * 0.6 - 6), 20);
         if (arm > 4 && (rising || sinking)) {
             const dir = rising ? -1 : 1;
             const tipY = fy + dir * (fH * 0.6 + arm);
@@ -152,30 +163,32 @@ export const L3B6BladderLab = ({ state, onStateChange }: Props) => {
                 safeRight / 2, rowY(1), 'bold 10px monospace', GLAND, 'center', safeRight - 24);
         }
 
-        outlineText(ctx, depth + ' m: ' + trim(atm) + ' atmospheres',
+        // The two footers run the division the whole lab turns on, long form: the
+        // squeeze first, then the arithmetic, with both numbers named above it.
+        outlineText(ctx, 'gas ' + gas + ' cm³, squeezed ' + trim(atm) + 'x',
             safeRight / 2, stageBottom - 34, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
-        outlineText(ctx, rising ? 'the sac is too big: rising'
-            : sinking ? 'the sac is squeezed: sinking' : 'level',
+        outlineText(ctx, 'sac = ' + gas + ' / ' + trim(atm) + ' = ' + trim(sac),
             safeRight / 2, stageBottom - 14, 'bold 12px monospace',
             rising ? UP : sinking ? DOWN : SACLINE, 'center', safeRight - 30);
 
         fitText(ctx, rising ? 'rising' : sinking ? 'sinking' : 'level at ' + depth + ' m',
             safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'The sac the water squeezes', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, '41 cm³ of sac holds it level', safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {
                 fraction: Math.max(0, Math.min(1, sac / (NEUTRAL * 2))),
-                caption: 'How Big the Sac Is',
+                caption: 'Sac Size Against the 41 cm³',
                 low: 'small: it sinks',
                 high: 'big: it rises',
                 stops: [DOWN, SACLINE, UP] as [string, string, string],
             },
-            note: 'A fish at depth, with the gas sac that holds it level. '
-                + ('At ' + depth + ' m the water presses with ' + trim(atm)
-                + ' atmospheres, so ' + gas + ' units of gas are squeezed to a sac of '
-                + trim(sac) + '. Level needs ' + trim(NEUTRAL * atm)
-                + ' units here.'),
+            note: 'A 1,000 g fish at depth, with the gas sac that holds it level. '
+                + ('At ' + depth + ' m the water presses ' + trim(atm)
+                + 'x harder than at the surface, so ' + gas
+                + ' cm³ of gas is squeezed to ' + trim(sac)
+                + ' cm³ of sac. L2B6 found it needs 41, so ' + trim(need)
+                + ' cm³ here.'),
         };
     };
 
@@ -183,19 +196,19 @@ export const L3B6BladderLab = ({ state, onStateChange }: Props) => {
         <LabCanvas
             title="The Sac That Cannot Hold Still"
             readout={({ raw }) => depthOf(raw) + ' m down'}
-            controlLabel="Depth"
+            controlLabel="Depth Below the Surface"
             controlKey="bladderDepth"
             controlMin={0}
             controlMax={200}
             controlInitial={0}
             controlDisplay={raw => depthOf(raw) + ' m'}
             control2={{
-                label: 'Gas Added',
+                label: 'Gas Added at the Surface',
                 key: 'bladderGas',
                 min: 0,
-                max: 100,
-                initial: 4,
-                display: raw => gasOf(raw) + ' units',
+                max: 900,
+                initial: 41,
+                display: raw => gasOf(raw) + ' cm³',
             }}
             accent="rose"
             sky={['#fff1f2', '#f8fafc']}

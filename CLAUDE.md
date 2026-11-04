@@ -863,6 +863,50 @@ only a 300-word vocabulary, so *all*, *most* and *help* are genuinely absent fro
 L2P5: pull the lesson's own word list and choose from it rather than guessing.
 Keep each pair under about 340px, since `low` and `high` share one 13px line.
 
+**An arbitrary unit is a division with nothing to divide.** A reader asked how L3B6's
+canvas got *4 units of gas squeezed into a sac of 4*, and could not find the calculation
+on the lesson side either. Both halves were real defects and they had one cause. The dial
+counted nameless *units*, so the sac and the gas shared a scale with no quantity behind
+it -- `gas / pressure` was arithmetically fine and physically unreadable, because nothing
+said what one unit was. And the lesson had dropped Boyle's law (correctly: the parked
+version was `p1 V1 = p2 V2` and scored zero biology) **without putting anything in its
+place**, so the rule the picture ran was written down nowhere.
+
+**The fix was not to re-add the formula but to inherit the level below's number.** L2B6
+already works it out: a **1,000 g** fish whose body is 1.07 g/cm³ hovers in seawater on
+**41 cm³** of gas. That is the same fish, and Level 3's whole job is to remove the
+assumption that 41 cm³ *stays* 41 cm³. So the sac is in cm³ and the gas in **cm³ measured
+at the surface** -- a quantity of gas has no volume until you say what presses on it --
+and the footers can then print the division itself, long form, with every number named:
+
+```
+footer 1   gas 861 cm³, squeezed 21x
+footer 2   sac = 861 / 21 = 41
+```
+
+**A level that inherits a figure rather than inventing one makes the handover visible.**
+41 cm³ at the surface, 82 at 10 m, 410 at 90 m, **861 at 200 m** -- same fish, same sac,
+twenty-one times the gas, which is also what the gas gland is working against.
+
+Three things came out of the same edit. **A species table is the cheapest biology there
+is**: five rows -- carp, herring, perch, cod, shark -- with each one's depth range and the
+gas column that range costs, and the designs sort themselves, because a gulper has to live
+within one breath of the surface while the shark's column is **empty** and it alone has no
+depth limit. **A question whose answer is printed in another question's stem is not a
+question**: Q8 asked *why does a swim bladder break L3P6's result that the buoyant force
+does not change with depth*, which hands Q9 its answer. And **10 of 12 correct answers sat
+at index 0**, so always picking the first option scored 83% -- the same defect as Big Idea
+28's, now spread 3/3/3/3 with every answer verified in place.
+
+**Widening a word list can break a pass that was never real.** `check-plainness.py` had
+been quiet about *open-ocean* only because a DEFINING verb happened to fall inside the 140
+characters after it; inserting a bullet *after* that sentence pushed the verb out of range
+and the word reported. The word is everyday, so `ocean` went into `ORDINARY_STEMS` -- which
+is what `compound_ordinary()` reads, since its `len <= 4` shortcut stops at four letters --
+and the corpus backlog fell from **453 to 423** undefined words in **154** lessons, every
+one a true positive. Both directions are in `--selftest`: *open-ocean* must go quiet and
+*enteric-coated* must not.
+
 **Name what a derived number IS, not just its value.** The notch lab now parked in
 `docs/level4/` printed `K = 1 + 2 x 1.0 = 3.0` with nothing saying what K was, and drew a notch without
 marking which direction was *across* the pull and which was *along* it -- so the
@@ -1151,6 +1195,28 @@ because it found **371 strings in 158 labs**, which would drown the 16 real find
 **The number should only ever go down.** Its `--selftest` pins the real failure at 8px,
 its replacement at 12, and the fact that `fullW` and `half` are deliberately not
 resolved, since they depend on each lab's own layout: the count is a floor, not a total.
+
+**Both ends of a gauge must say the same kind of thing.** L3B5 read `none: the sweat
+stays` against `dry: the water leaves` -- two subjects, two sentence shapes, and a noun
+("water") that could as easily have meant the water already in the air. The reader asked
+*where does it leave?* and the gauge could not say. The repair came out of the lesson's own
+distinction: sweat leaves **as liquid** or **as vapour**, and only the second takes heat.
+So both ends read `sweat as liquid` and `sweat as vapour` -- same subject, same shape, one
+word of difference -- and the two verdict lines above became parallel too.
+
+**Then the measurable half, corpus-wide: 30 of 164 gauges had a pair that cannot fit.**
+`low` is drawn left-aligned at the bar's left edge and `high` right-aligned at its right,
+both bold 13px monospace, across `Math.min(W - 48, 620)` -- **272px on a 320px phone**. So
+a pair needing more than that **overlaps**, and the stage-bounds check is blind to it
+because the footer band is not the stage. L3P28's pair wanted 400px of 272. **Budget 33
+characters for the pair**, both ends together.
+
+Four of the thirty were wrong rather than merely long, and only the measuring found them:
+L2B26's bar is temperature across 5-40 °C and **both** ends said the cricket was outside
+its usable range; L2B28's top of the bar is the 200 mL hard ceiling, not "a working
+muscle"; L3B16 read `level: no poleward`, a sentence with its noun missing; and L3B18 read
+`0%` against `100% of the 12 °C spare`. `check-visual.py` now measures the pair and reports
+**0 across 226 labs**.
 
 **`Accent` is a closed union: `indigo | emerald | rose`** (physics/chemistry/
 biology). Anything else is a type error, not a fallback.
