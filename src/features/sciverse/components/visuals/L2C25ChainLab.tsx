@@ -111,7 +111,7 @@ export const L2C25ChainLab = ({ state, onStateChange }: Props) => {
                 'bold 12px monospace', '#334155', 'center', safeRight - 24);
         }
 
-        outlineText(ctx, 'chain length = ' + big(chain), cx, stageBottom - 34,
+        outlineText(ctx, 'chain length = ' + big(chain) + ' ozone', cx, stageBottom - 34,
             'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
         outlineText(ctx, big(atoms) + ' atoms wreck ' + big(destroyed), cx, stageBottom - 14,
             'bold 12px monospace', CARRIER, 'center', safeRight - 30);

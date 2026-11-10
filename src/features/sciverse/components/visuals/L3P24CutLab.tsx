@@ -135,8 +135,8 @@ export const L3P24CutLab = ({ state, onStateChange }: Props) => {
         });
         ctx.restore();
 
-        outlineText(ctx, 'cut = ' + winner.pipes.map(k => capOf[k]).join(' + ') + ' = ' + delivery,
-            safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
+        outlineText(ctx, 'cut = ' + winner.pipes.map(k => capOf[k]).join(' + ') + ' = ' + delivery + ' L/min',
+            safeRight / 2, stageBottom - 34, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
         outlineText(ctx, 'delivery = ' + delivery + ' L/min',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', CUT, 'center', safeRight - 30);
 

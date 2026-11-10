@@ -165,7 +165,7 @@ export const L2B27MarginLab = ({ state, onStateChange }: Props) => {
                 'bold 11px monospace', WALL, 'center', safeRight - 24);
         }
 
-        outlineText(ctx, cm + ' cm / ' + showNeed + ' cm = ' + showMargin,
+        outlineText(ctx, cm + ' cm / ' + showNeed + ' cm = ' + showMargin + 'x',
             safeRight / 2, stageBottom - 34, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
         outlineText(ctx, enough ? 'finishes ' + showMargin + ' times over'
             : 'too short: ' + Math.round((1 - share) * 100) + '% leaves uncut',

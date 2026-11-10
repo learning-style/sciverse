@@ -165,9 +165,9 @@ export const L3B6BladderLab = ({ state, onStateChange }: Props) => {
 
         // The two footers run the division the whole lab turns on, long form: the
         // squeeze first, then the arithmetic, with both numbers named above it.
-        outlineText(ctx, 'gas ' + gas + ' cm³, squeezed ' + trim(atm) + 'x',
+        outlineText(ctx, 'gas ' + gas + ' cm³ / squeeze ' + trim(atm),
             safeRight / 2, stageBottom - 34, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
-        outlineText(ctx, 'sac = ' + gas + ' / ' + trim(atm) + ' = ' + trim(sac),
+        outlineText(ctx, 'sac size = ' + trim(sac) + ' cm³',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace',
             rising ? UP : sinking ? DOWN : SACLINE, 'center', safeRight - 30);
 
@@ -186,8 +186,8 @@ export const L3B6BladderLab = ({ state, onStateChange }: Props) => {
             note: 'A 1,000 g fish at depth, with the gas sac that holds it level. '
                 + ('At ' + depth + ' m the water presses ' + trim(atm)
                 + 'x harder than at the surface, so ' + gas
-                + ' cm³ of gas is squeezed to ' + trim(sac)
-                + ' cm³ of sac. L2B6 found it needs 41, so ' + trim(need)
+                + ' cm³ of gas squeezes to ' + trim(sac)
+                + ' cm³ of sac. L2B6 needs 41 cm³, so ' + trim(need)
                 + ' cm³ here.'),
         };
     };

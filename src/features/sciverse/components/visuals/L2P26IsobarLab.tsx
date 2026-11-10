@@ -130,16 +130,17 @@ export const L2P26IsobarLab = ({ state, onStateChange }: Props) => {
                 'bold 11px monospace', WIND, 'left', 34);
         }
 
-        outlineText(ctx, diff + ' hPa over ' + dist + ' km = ' + gradient.toFixed(1),
-            safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
-        outlineText(ctx, wind < 15 ? 'not enough to move a flag'
-            : wind < 40 ? 'a brisk ordinary day'
-                : wind < 70 ? 'a gale'
-                    : wind < 120 ? 'a severe storm' : 'stronger than any storm',
+        outlineText(ctx, diff + ' hPa / ' + dist + ' km',
+            safeRight / 2, stageBottom - 34, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
+        outlineText(ctx, '= ' + gradient.toFixed(1) + ' hPa per 100 km',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', WIND, 'center', safeRight - 30);
 
         fitText(ctx, 'wind ' + wind.toFixed(0) + ' km/h', safeRight / 2, 94, safeRight - 24, 16);
-        fitText(ctx, 'How close are the lines?', safeRight / 2, 118, safeRight - 24, 13);
+        fitText(ctx, wind < 15 ? 'not enough to move a flag'
+            : wind < 40 ? 'a brisk ordinary day'
+                : wind < 70 ? 'a gale'
+                    : wind < 120 ? 'a severe storm' : 'stronger than any storm',
+            safeRight / 2, 118, safeRight - 24, 13);
 
         return {
             meter: {
@@ -149,9 +150,10 @@ export const L2P26IsobarLab = ({ state, onStateChange }: Props) => {
                 high: 'a severe storm',
                 stops: ['#eef2ff', '#fcd34d', WIND] as [string, string, string],
             },
-            note: diff + ' hPa spread over ' + dist + ' km is a gradient of ' + gradient.toFixed(1)
+            note: 'A weather map with the wind on it: the curved lines are isobars. '
+                + diff + ' hPa over ' + dist + ' km is a gradient of ' + gradient.toFixed(1)
                 + ' hPa per 100 km, so about ' + wind.toFixed(0)
-                + ' km/h. Spread the rings apart and the wind falls with the numbers unchanged.',
+                + ' km/h. Spread the isobars apart and the wind falls.',
         };
     };
 

@@ -92,8 +92,8 @@ export const L3C24ControlLab = ({ state, onStateChange }: Props) => {
                 safeRight / 2, lab2Row, 'bold 12px monospace', STEADIER, 'center', safeRight - 24);
         }
 
-        outlineText(ctx, (gap * 1000).toFixed(0) + '/(8.314 x ' + kelvin + ') = ' + expo.toFixed(2),
-            safeRight / 2, stageBottom - 34, 'bold 13px monospace', '#0f172a', 'center', safeRight - 30);
+        outlineText(ctx, (gap * 1000).toFixed(0) + ' J/mol / (R x ' + kelvin + ' K)',
+            safeRight / 2, stageBottom - 34, 'bold 12px monospace', '#0f172a', 'center', safeRight - 30);
         outlineText(ctx, 'e to the ' + expo.toFixed(2) + ' = ' + ratio.toFixed(1)
             + ', so ' + (eqSteadier * 100).toFixed(0) + '%',
             safeRight / 2, stageBottom - 14, 'bold 12px monospace', STEADIER, 'center', safeRight - 30);

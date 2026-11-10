@@ -907,6 +907,52 @@ and the corpus backlog fell from **453 to 423** undefined words in **154** lesso
 one a true positive. Both directions are in `--selftest`: *open-ocean* must go quiet and
 *enteric-coated* must not.
 
+**And give it its unit, which is usually the same job.** A reader read L3B6's footer --
+`sac = 100 / 6.5 = 15.4` -- and asked what 15.4 was 15.4 **of**. Nothing on the canvas
+said. **A number with no unit is not a smaller defect than a number with no name**, because
+for most of what these labs draw the unit *is* the name. The repair was both halves at
+once: `sac size = 41 cm³`, naming the quantity on the left and carrying its unit on the
+right.
+
+`check-visual.py` now checks it, narrowly so that it reports results rather than formulas:
+the string must print a **value** (so `Q = m x c x dT` and `echo = (difference / sum)²` name
+themselves and are exempt); only the tail after the **last** `=` is judged; and a unit, a
+superscript, `%`, `x`/`times`/`per`, or any naming word of three letters satisfies it, so
+**2,500 presses** and **8.6x** both pass -- a count's noun is its unit. It found **12
+candidates in 11 labs**, of which five were real:
+
+| | was | now |
+|---|---|---|
+| L2P26 | `8 hPa over 200 km = 4.0` | `8 hPa / 200 km` then `= 4.0 hPa per 100 km` |
+| L3P24 | `cut = 7 + 5 = 12` | `cut = 7 + 5 = 12 L/min` |
+| L2C25 | `chain length = 100,000` | `chain length = 100,000 ozone` |
+| L2B27 | `69.5 cm / 8.1 cm = 8.6` | `... = 8.6x` -- a ratio's unit is *times* |
+| L3C24 | `6200/(8.314 x 318) = 3.86` | `6200 J/mol / (R x 318 K)` |
+
+**L3C24 was two defects wearing one coat**: the 6200 had no unit *and* 8.314 was an
+unnamed constant, which is the L2C22 lesson again. Its exponent is legitimately
+dimensionless -- the lesson says outright that you cannot raise e to a power with units --
+so naming R and uniting the 6200 fixed it without inventing a unit for the answer.
+
+**The other seven are dimensionless by definition and already named, so a unit would be a
+lie.** They are allowlisted *with a reason each*: resolving power is nm/nm and the
+cancelling is the point, friction/upkeep is a ratio of two costs, `g` is genes per gene,
+`b` is an exponent, `n` numbers the rungs, a slope is one quantity over itself. **A dead
+allowlist entry silently disarms the check**, so the selftest asserts every entry still
+flags without it -- which caught L3C24's becoming dead the moment its footer was fixed.
+
+Two traps cost a rewrite each, and both are about *not* reporting a lab that is fine.
+`str.isalnum()` is **true for the superscript digits**, so Python's `\b` broke `\bmm\b`
+inside `mm⁴` and every mm⁴/cm³ result read as unitless. And the tail is often a
+parenthesised ternary -- `(done ? ', all 20 cut' : ' of 20')` -- whose words a placeholder
+collapse throws away, so every branch's literals are now read.
+
+**`bad` was already the selftest's failure counter.** Naming a new fixture after it did not
+fail a check -- it replaced the counter with a string, so `bad += 1` threw and the whole
+run reported a single meaningless failure. Same class as naming a local after a `LabScene`
+field, in a new place: **a selftest that cannot count is worse than no selftest**, because
+it looks like it ran.
+
 **Name what a derived number IS, not just its value.** The notch lab now parked in
 `docs/level4/` printed `K = 1 + 2 x 1.0 = 3.0` with nothing saying what K was, and drew a notch without
 marking which direction was *across* the pull and which was *along* it -- so the

@@ -17,6 +17,7 @@ Five checkable properties per lab:
   8. NOT BUSY   the scene does not drown its point in text
   9. UNITS      a printed multiplication's units can give the stated result
  10. GAUGE ENDS the meter's ends say what they MEAN, not just how big they are
+ 11. RESULT UNIT a printed '= value' carries a unit or a naming word
 
 Usage:  python3 scripts/check-visual.py [LabFile.tsx ...]
         python3 scripts/check-visual.py --selftest
@@ -425,6 +426,163 @@ def shape_count(src):
     return len(re.findall(r'ctx\.(?:fillRect|strokeRect|arc|ellipse|moveTo|quadraticCurveTo)\(', src))
 
 
+# ---------------------------------------------------------------------------
+# 11: a printed result must carry its unit.
+#
+# A reader read L3B6's footer -- `sac = 100 / 6.5 = 15.4` -- and asked what 15.4
+# was 15.4 OF. Nothing on the canvas said. A number with no unit beside it is not
+# a smaller finding than a number with no name: it is the same finding, because
+# the unit IS the name for most of what these labs draw.
+#
+# The rule is narrow on purpose, so it reports results rather than formulas:
+#   - the string must print a VALUE, not only symbols. `Q = m x c x dT` and
+#     `echo = (difference / sum)²` name themselves and are exempt.
+#   - only the tail after the LAST '=' is judged, which is the result.
+#   - a unit, a superscript, '%', 'x'/'times'/'per', or any naming word of three
+#     letters or more all satisfy it: '2,500 presses' and '8.6x' are both fine.
+#
+# Two traps cost a rewrite each. `str.isalnum()` is true for the superscript
+# digits, so Python's \b broke `\bmm\b` inside `mm` + superscript four, and
+# every mm4/cm3 result reported as unitless. And the tail is often a
+# parenthesised ternary -- `(done ? ', all 20 cut' : ' of 20')` -- whose words a
+# placeholder collapse throws away, so every branch's literals are read.
+SUPERS = '\u00b2\u00b3\u00b9\u2070\u2074\u2075\u2076\u2077\u2078\u2079'
+UNITISH = re.compile(r"(?:%|\u00b0|\u00b5|[" + SUPERS + r"]|\bx\b|\btimes\b|\bper\b|"
+                     r"\b(?:mm|cm|m|km|nm|s|ms|us|min|h|hr|g|kg|t|N|J|kJ|W|K|V|A|L|mL|Hz"
+                     r"|MHz|eV|atm|bar|Pa|hPa|kPa|mol|cal|kcal|ppm|dB|rpm|yr)\b)")
+
+# Quantities that are dimensionless BY DEFINITION and already named on the canvas.
+# Giving one of these a unit would be a lie, so each is listed with its reason
+# rather than reworded. A new entry needs a reason of the same kind.
+UNITLESS_OK = {
+    'L2C22SpectrumLab.tsx': 'resolving power is nm / nm -- the units cancel, which is'
+                            ' the whole point of the lesson',
+    'L3B24MurrayLab.tsx': 'friction / upkeep is a ratio of two costs in the same units',
+    'L3B25BufferLab.tsx': 'g is genes broken per gene; the meter caption names it',
+    'L3C18ExponentLab.tsx': 'b is an exponent',
+    'L3C22LadderLab.tsx': 'n numbers the rungs',
+    'L3P25MapLab.tsx': 'a slope of one quantity against itself',
+}
+
+
+def literals_in(expr):
+    """Every string literal in an expression, including a ternary's branches."""
+    return ' '.join(''.join(g or '' for g in m.groups())
+                    for m in LITERAL.finditer(expr))
+
+
+def rendered(expr):
+    """Literal text kept; anything interpolated becomes a value placeholder."""
+    out = ''
+    for raw in top_level_parts(expr):
+        piece = raw.strip().rstrip(',')
+        while len(piece) > 1 and piece[0] == '(' and piece[-1] == ')':
+            piece = piece[1:-1].strip()
+        lit = LITERAL.fullmatch(piece)
+        if lit:
+            out += ''.join(g or '' for g in lit.groups())
+        else:
+            inner = literals_in(piece)
+            out += '\u00a7' + (inner if inner else '')
+    return out
+
+
+def printed_rows(src):
+    """Every string the canvas prints, as its source expression."""
+    for fn in ('outlineText', 'fitText'):
+        for args in call_args(src, fn):
+            parts = arg_parts(args)
+            if len(parts) > 1:
+                yield parts[1]
+    for key in ('note', 'caption', 'low', 'high', 'display', 'readout'):
+        for m in re.finditer(r"\b" + key + r":\s*((?:'(?:[^'\\]|\\.)*'"
+                             r"|\"(?:[^\"\\]|\\.)*\")"
+                             r"(?:\s*\+\s*(?:[^,\n]|\([^()]*\))+)*)", src):
+            yield m.group(1)
+
+
+def call_args(src, fn):
+    """The argument list of every fn(...) call, bracket- and string-aware."""
+    for m in re.finditer(r"\b" + fn + r"\(", src):
+        i, depth, q, buf = m.end(), 1, None, ''
+        while i < len(src) and depth:
+            c = src[i]
+            if q:
+                buf += c
+                if c == '\\':
+                    buf += src[i + 1]
+                    i += 2
+                    continue
+                if c == q:
+                    q = None
+                i += 1
+                continue
+            if c in '\'"`':
+                q = c
+                buf += c
+                i += 1
+                continue
+            if c == '(':
+                depth += 1
+            elif c == ')':
+                depth -= 1
+                if not depth:
+                    break
+            buf += c
+            i += 1
+        yield buf
+
+
+def arg_parts(buf):
+    """Top-level comma split of an argument list."""
+    parts, depth, q, cur, i = [], 0, None, '', 0
+    while i < len(buf):
+        c = buf[i]
+        if q:
+            cur += c
+            if c == '\\':
+                cur += buf[i + 1]
+                i += 2
+                continue
+            if c == q:
+                q = None
+            i += 1
+            continue
+        if c in '\'"`':
+            q = c
+            cur += c
+            i += 1
+            continue
+        if c in '([{':
+            depth += 1
+        if c in ')]}':
+            depth -= 1
+        if c == ',' and depth == 0:
+            parts.append(cur)
+            cur = ''
+            i += 1
+            continue
+        cur += c
+        i += 1
+    parts.append(cur)
+    return parts
+
+
+def unitless_results(src):
+    """Printed '= <value>' rows whose result carries neither a unit nor a name."""
+    out = []
+    for expr in printed_rows(src):
+        txt = rendered(expr)
+        if '=' not in txt or '\u00a7' not in txt:
+            continue                    # a symbolic formula prints no value
+        tail = txt.rsplit('=', 1)[1]
+        if '\u00a7' not in tail:
+            continue                    # the result is a word, not a number
+        if UNITISH.search(tail) or re.search(r'[A-Za-z]{3,}', tail):
+            continue
+        out.append(re.sub(r'\s+', ' ', txt)[:60])
+    return out
+
 def check(path):
     src = strip(open(path).read())
     probs = []
@@ -491,6 +649,11 @@ def check(path):
     labels, shapes = drawn_labels(src), shape_count(src)
     if shapes >= 6 and len(labels) < 2:
         probs.append(str(shapes) + ' shapes drawn but only ' + str(len(labels)) + ' word label(s)')
+
+    # 11: a printed result must carry its unit
+    if os.path.basename(path) not in UNITLESS_OK:
+        for row in unitless_results(src):
+            probs.append('printed result has no unit: ' + row)
 
     # 6: the note is a caption, not a paragraph -- past the budget it is clipped
     n = note_of(src)
@@ -635,6 +798,33 @@ def selftest():
     want('a 33-char pair is the practical ceiling',
          ends_px('sweat as liquid', 'sweat as vapour') <= METER_W, True)
     want('the corpus has no overlapping meter ends', meter_ends_scan(), [])
+
+    # 11: a printed result carries its unit. The real failure is L3B6's footer, which a
+    # reader asked about -- 15.4 OF WHAT -- and the fix that answers it.
+    # `bad` is this selftest's failure counter, which want() closes over -- naming a
+    # fixture after it silently broke the whole run rather than failing a check.
+    unnamed = "outlineText(ctx, 'sac = ' + gas + ' / ' + trim(atm) + ' = ' + trim(sac), x, y);"
+    want('the real failure is caught', unitless_results(unnamed),
+         ['sac = \u00a7 / \u00a7 = \u00a7'])
+    named = "outlineText(ctx, 'sac size = ' + trim(sac) + ' cm\u00b3', x, y);"
+    want('naming it and giving it a unit is quiet', unitless_results(named), [])
+    # a symbolic formula names itself through its symbols and prints no value
+    want('a symbolic formula is exempt',
+         unitless_results("outlineText(ctx, 'Q = m x c x dT', x, y);"), [])
+    # str.isalnum() is true for the superscript digits, so a naive \b broke here
+    want('a superscript unit counts as a unit',
+         unitless_results("outlineText(ctx, 'I = \u03c0 r / 4 = ' + i + ' mm\u2074', x, y);"), [])
+    # the tail is often a ternary, whose branch words a placeholder collapse loses
+    want("a ternary's branches supply the words",
+         unitless_results("outlineText(ctx, n + ' x ' + p + ' = ' + t"
+                          " + (done ? ', all 20 cut' : ' of 20'), x, y);"), [])
+    # a count's noun is its unit
+    want('a count named by its noun is quiet',
+         unitless_results("outlineText(ctx, 'presses = ' + n + ' presses', x, y);"), [])
+    for name in UNITLESS_OK:
+        src = strip(open(os.path.join(VISUALS, name)).read())
+        want(name + ' is on the allowlist for a reason',
+             bool(unitless_results(src)), True)
 
     # The shrink has an 8px floor, so a long string goes illegible rather than failing.
     # Both directions: a line that fits must stay quiet, or 223 labs would report.
